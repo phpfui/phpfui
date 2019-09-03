@@ -3,6 +3,10 @@ PHP Wrapper for Zurb Foundation
 
 PHPFUI, PHP Foundation User Interface, is a 7.1 PHP library that produces HTML formated for [Zurb Foundation](https://foundation.zurb.com/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of a OO language. It currently uses Foundation 6.5 and PHP 7.1 or higher.
 
+> "I was surprised that people were prepared to write HTML. In my initial requirements for this thing, I had assumed, as an absolute pre-condition, that nobody would have to do HTML or deal with URLs. If you use the original World Wide Web program, you never see a URL or have to deal with HTML. You're presented with the raw information. You then input more information. So you are linking information to information--like using a word processor. That was a surprise to me--that people were prepared to painstakingly write HTML."
+
+[Sir Tim Berners-Lee, inventor of the World Wide Web](http://web.archive.org/web/20050831085206/http://www.w3journal.com/3/s1.interview.html)
+
 ## Usage
 ```PHP
 use PHPFUI;
