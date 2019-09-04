@@ -46,7 +46,7 @@ echo $page;
   * HTML 5 Sortable => html5sortable
 * Place your style sheet in /css/style.css.  It will be added last.
 
-## Documenation
+## Documentation
 PHPDOC Blocks.
 
 ## License

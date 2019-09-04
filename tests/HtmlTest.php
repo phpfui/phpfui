@@ -10,19 +10,16 @@
  * code
  */
 
-error_reporting(E_ALL);
-
-require_once("vendor/autoload.php");
+require_once("bootstrap.php");
 
 use Kevintweber\PhpunitMarkupValidators\Assert\AssertHtml5;
 
 class HtmlTest extends \PHPUnit\Framework\TestCase
-	{
+  {
 
-	public function testPage()
-		{
-		$page = new \PHPFUI\Page();
-		AssertHTML5::isValidMarkup($page);
-		}
+  public function testPage()
+    {
+    AssertHTML5::isValidMarkup(new \PHPFUI\Page());
+    }
 
-	}
+  }
