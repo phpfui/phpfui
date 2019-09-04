@@ -1,0 +1,20 @@
+<?php
+
+namespace PHPFUI;
+
+class FormError extends HTML5Element
+	{
+
+	public function __construct(string $message = 'Please correct the errors shown.')
+		{
+		parent::__construct('div');
+		$this->addClass('alert');
+		$this->addClass('callout');
+		$this->addAttribute('data-abide-error');
+		$this->addAttribute('aria-live', 'assertive');
+		$this->addAttribute('style', 'display: none;');
+		$icon = new Icon('exclamation-triangle');
+		$this->add("<p>{$icon} {$message}</p>");
+		}
+
+	}

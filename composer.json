@@ -1,0 +1,27 @@
+{
+    "name": "phpfui/PHPFUI",
+    "description": "PHP Object Oriented Wrapper for Zurb Foundation",
+    "minimum-stability": "stable",
+    "keywords": ["zurb","foundation","UI","reponsive", "css", "scss"],
+    "homepage": "https://github.com/phpfui/phpfui",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruce Wells",
+            "email": "brucekwells@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "kevintweber/phpunit-markup-validators": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
+    },
+    "autoload": {
+        "psr-0": {"PHPFUI": "src/"}
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
