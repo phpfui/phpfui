@@ -1,5 +1,5 @@
 {
-    "name": "phpfui/PHPFUI",
+    "name": "phpfui/phpfui",
     "description": "PHP Object Oriented Wrapper for Zurb Foundation",
     "minimum-stability": "stable",
     "keywords": ["zurb","foundation","UI","reponsive", "css", "scss"],

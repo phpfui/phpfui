@@ -10,8 +10,6 @@
  * code
  */
 
-require_once 'bootstrap.php';
-
 use Kevintweber\PhpunitMarkupValidators\Assert\AssertHtml5;
 
 class InputTest extends \PHPUnit\Framework\TestCase

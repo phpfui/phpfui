@@ -30,5 +30,5 @@ if (file_exists($file = $vendorDir . '/autoload.php')) {
 } else if (file_exists($file = './vendor/autoload.php')) {
     require_once $file;
 } else {
-    throw new \RuntimeException("Not found composer autoload");
+		throw new \RuntimeException("Composer autoload file not found");
 }
