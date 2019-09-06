@@ -1,11 +1,15 @@
 # PHPFUI
 PHP Wrapper for Zurb Foundation
 
-PHPFUI, PHP Foundation User Interface, is a 7.1 PHP library that produces HTML formated for [Zurb Foundation](https://foundation.zurb.com/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of a OO language. It currently uses Foundation 6.5 and PHP 7.1 or higher.
+**PHPFUI**, **PHP** **F**oundation **U**ser **I**nterface, is a 7.1 PHP library that produces HTML formated for [Zurb Foundation](https://foundation.zurb.com/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of a OO language. It currently uses Foundation 6.5 and PHP 7.1 or higher.
 
 > "I was surprised that people were prepared to write HTML. In my initial requirements for this thing, I had assumed, as an absolute pre-condition, that nobody would have to do HTML or deal with URLs. If you use the original World Wide Web program, you never see a URL or have to deal with HTML. You're presented with the raw information. You then input more information. So you are linking information to information--like using a word processor. That was a surprise to me--that people were prepared to painstakingly write HTML."
 
 [Sir Tim Berners-Lee, inventor of the World Wide Web](http://web.archive.org/web/20050831085206/http://www.w3journal.com/3/s1.interview.html)
+
+Using PHPFUI for view output will produce 100% valid HTML and insulate you from future changes to Foundation, your custom HMTL layouts, CSS and JS library changes. You write to a abstract concept (I want a checkbox here), and the library will output a checkbox formated for Foundation. You can inherit from CheckBox and add your own take on a checkbox, and when the graphic designer decides they have the most awesome checkbox ever, you simply change your CheckBox class, and it is changed on every page system wide.
+
+Don't write HTML by hand!
 
 ## Usage
 ```PHP
@@ -21,6 +25,7 @@ $fieldset->add(new Input\TextArea('text', 'Enter some text'));
 $fieldset->add(new Submit());
 $form->add($fieldset);
 $page->add($form);
+$page->addStyleSheet('/css/styles.css');
 echo $page;
 ```
 
@@ -44,10 +49,13 @@ echo $page;
   * Slick Carousel => slick
   * JQuery Autocomplete => jquery-autocomplete
   * HTML 5 Sortable => html5sortable
-* Place your style sheet in /css/style.css.  It will be added last.
+
+## Versioning
+
+Versioning will match the [Zurb Foundation versions](https://github.com/zurb/foundation-sites/releases/) for Major and Minor Semantic Versions.  PHPFUI patch level will be set in by the Patch version.  So PHPFUI Version 6.5.0 would be the first version of the library, 6.5.1 would be the first patch of PHPFUI. Both should work with any Foundation 6.5.x version.
 
 ## Documentation
-PHPDOC Blocks.
+PHPDOC Blocks.  PHPFUI/InstaDoc coming soon.
 
 ## License
 PHPFUI is distributed under the MIT License.

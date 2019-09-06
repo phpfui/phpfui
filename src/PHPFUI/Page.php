@@ -13,7 +13,7 @@ class Page extends Base
   private $edgeVersion = 0;
   private $favIcon;
   private $fireFoxVersion = 0;
-  private $foundationStyleSheets = []; //'/foundation/css/foundation.min.css'];
+  private $foundationStyleSheets = [];
   private $headJavascript = [];
   private $headScripts = [];
   private $headTags = [
@@ -37,14 +37,6 @@ class Page extends Base
   public function __construct()
     {
     parent::__construct();
-//    $array = [];
-//    $array['abide'] = [
-//      'live_validate'    => false,
-//      'validate_on_blur' => false,
-//      'focus_on_invalid' => true,
-//      'error_labels'     => true,
-//      'timeout'          => 1000,
-//    ];
     $client = $_SERVER['HTTP_USER_AGENT'] ?? '';
     $this->android = preg_match('/Android|Silk/i', $client);
     $this->ios = preg_match('/iPhone|iPad|iPod/i', $client);

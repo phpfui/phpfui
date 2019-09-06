@@ -1,5 +1,5 @@
 {
-    "name": "phpfui/PHPFUI",
+    "name": "phpfui/phpfui",
     "description": "PHP Object Oriented Wrapper for Zurb Foundation",
     "minimum-stability": "stable",
     "keywords": ["zurb","foundation","UI","reponsive", "css", "scss"],
@@ -13,7 +13,11 @@
     ],
     "require": {
         "php": ">=7.1",
-        "kevintweber/phpunit-markup-validators": "^2.0"
+        "kevintweber/phpunit-markup-validators": "^2.0",
+        "rexxars/html-validator": "^2.2",
+        "zurb/foundation": "^6.5",
+        "froala/wysiwyg-editor": "^3.0",
+        "fortawesome/font-awesome": "^4"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0"
