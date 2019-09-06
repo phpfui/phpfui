@@ -4,9 +4,9 @@ namespace PHPFUI;
 
 class Tabs extends Base
 	{
+	private $contentSection;
 
 	private $tabs = [];
-	private $contentSection;
 	private $tabSection;
 	private $vertical = false;
 
