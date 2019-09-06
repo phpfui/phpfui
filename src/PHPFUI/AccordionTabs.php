@@ -5,7 +5,7 @@ namespace PHPFUI;
 class AccordionTabs extends Base
 	{
 
-	protected $tabs = [];
+	private $tabs = [];
 	private $contentSection;
 	private $tabSection;
 
@@ -30,7 +30,7 @@ class AccordionTabs extends Base
 	 */
 	public function addTab(string $tabText, string $content, bool $active = false)
 		{
-		$this->content[$tabText] = ['content' => $content,
+		$this->tabs[$tabText] = ['content' => $content,
 																'active'  => $active];
 
 		return $this;
@@ -82,7 +82,7 @@ class AccordionTabs extends Base
 			$this->contentSection->addClass('tabs-content');
 			$this->contentSection->addAttribute('data-tabs-content', $this->tabSection->getId());
 
-			foreach ($this->content as $name => $content)
+			foreach ($this->tabs as $name => $content)
 				{
 				$div = new HTML5Element('div');
 				$div->addClass('tabs-panel');

@@ -20,7 +20,7 @@ class SortableTable extends Table
 		{
 		parent::__construct();
 
-		$this->url = $url = $_SERVER['REQUEST_URI'];
+		$this->url = $url = $_SERVER['REQUEST_URI'] ?? '';
 		$queryStart = strpos($this->url, '?');
 
 		if ($queryStart)

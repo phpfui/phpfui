@@ -278,7 +278,7 @@ class Table extends HTML5Element
 
 			if (! $spanCount)
 				{
-				$spanCount = count($this->rows[0]);
+				$spanCount = count($this->rows[0] ?? []);
 				}
 			$placeholder = "<tr><td colspan='{$spanCount}'><span class='center'>Drop Row Here</span></td></tr>";
 			$this->page->addJavaScript('sortable(".table-sortable",{items:"tr.row-sortable",forcePlaceholderSize:true,placeholder:"' . $placeholder . '",handle:"td.handle"})');

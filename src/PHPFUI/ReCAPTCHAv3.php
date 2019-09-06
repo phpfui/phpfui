@@ -33,7 +33,6 @@ class ReCAPTCHAv3
       return;
       }
     $callbackKey = 'Google-{__CLASS__}-Response';
-    $logger = new \Tools\Logger($callbackKey);
     $this->publicKey = $publicKey;
     $page->addHeadScript('https://www.google.com/recaptcha/api.js?render=' . $this->publicKey);
     // action is the page name
@@ -60,7 +59,6 @@ JAVASCRIPT;
       {
       $recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
       $resp = $recaptcha->verify($_POST[$callbackKey], $_SERVER['REMOTE_ADDR']);
-      $logger->debug($resp);
       $callable($resp);
 
       if ($resp->isSuccess())

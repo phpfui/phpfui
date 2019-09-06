@@ -205,7 +205,7 @@ class Page extends Base
    */
   public function getBaseURL() : string
     {
-    $url = $_SERVER['REQUEST_URI'];
+    $url = $_SERVER['REQUEST_URI'] ?? '';
     $queryStart = strpos($url, '?');
 
     if ($queryStart)
@@ -240,7 +240,7 @@ class Page extends Base
   public function getQueryParameters() : array
     {
     $parameters = [];
-    $url = $_SERVER['REQUEST_URI'];
+    $url = $_SERVER['REQUEST_URI'] ?? '';
     $queryStart = strpos($url, '?');
 
     if ($queryStart)

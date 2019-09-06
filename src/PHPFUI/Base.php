@@ -332,9 +332,10 @@ abstract class Base implements \Countable
 			return self::$response;
 			}
 
+		$output = '';
 		try
 			{
-			$output = "{$this->getStart()}";
+			$output .= "{$this->getStart()}";
 
 			if (self::$debug && $output)
 				{

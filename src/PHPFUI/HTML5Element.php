@@ -108,6 +108,7 @@ class HTML5Element extends Base
 	public function setElement($element) : HTML5Element
 		{
 		$this->element = $element;
+		$this->noEndTag = isset(self::$noEndTags[strtolower($element)]);
 
 		return $this;
 		}

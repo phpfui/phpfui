@@ -5,7 +5,7 @@ namespace PHPFUI;
 class Tabs extends Base
 	{
 
-	protected $tabs = [];
+	private $tabs = [];
 	private $contentSection;
 	private $tabSection;
 	private $vertical = false;
@@ -32,7 +32,7 @@ class Tabs extends Base
 	 */
 	public function addTab(string $tabText, string $content, bool $active = false) : Tabs
 		{
-		$this->content[$tabText] = ['content' => $content,
+		$this->tabs[$tabText] = ['content' => $content,
 																'active'  => $active];
 
 		return $this;
@@ -107,7 +107,7 @@ class Tabs extends Base
 			$this->contentSection->addClass('tabs-content');
 			$this->contentSection->addAttribute('data-tabs-content', $this->tabSection->getId());
 
-			foreach ($this->content as $name => $content)
+			foreach ($this->tabs as $name => $content)
 				{
 				$div = new HTML5Element('div');
 				$div->addClass('tabs-panel');
