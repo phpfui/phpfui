@@ -1,4 +1,5 @@
-# PHPFUI
+# PHPFUI [![Build Status](https://travis-ci.org/phpfui/phpfui.png?branch=master)](https://travis-ci.org/phpfui/phpfui)
+
 PHP Wrapper for Zurb Foundation
 
 PHPFUI, PHP Foundation User Interface, is a 7.1 PHP library that produces HTML formated for [Zurb Foundation](https://foundation.zurb.com/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of a OO language. It currently uses Foundation 6.5 and PHP 7.1 or higher.
