@@ -12,15 +12,11 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
-        "kevintweber/phpunit-markup-validators": "^2.0",
-        "rexxars/html-validator": "^2.2",
-        "zurb/foundation": "^6.5",
-        "froala/wysiwyg-editor": "^3.0",
-        "fortawesome/font-awesome": "^4"
+        "php": ">=7.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.0"
+        "phpunit/phpunit": "~7.0",
+        "phpfui/html-unit-tester": "^1.0"
     },
     "autoload": {
         "psr-0": {"PHPFUI": "src/"}

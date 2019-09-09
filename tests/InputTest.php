@@ -10,18 +10,14 @@
  * code
  */
 
-require_once 'bootstrap.php';
-
-use Kevintweber\PhpunitMarkupValidators\Assert\AssertHtml5;
-
-class InputTest extends \PHPUnit\Framework\TestCase
+class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
   {
 
   private $page;
   private $submit;
   private $form;
 
-  protected function setUp() : void
+  public function setUp() : void
     {
     $this->page = new \PHPFUI\Page();
     $this->submit = new \PHPFUI\Submit();
@@ -31,21 +27,21 @@ class InputTest extends \PHPUnit\Framework\TestCase
   public function testAutoComplete()
     {
     $autoComplete = new \PHPFUI\Input\AutoComplete($this->page, function(){}, 'text', 'autoComplete', 'AutoComplete');
-    AssertHTML5::isValidMarkup($autoComplete);
+    $this->assertValidHtml($autoComplete);
     $this->form->add($autoComplete);
     }
 
   public function testCheckBox()
     {
     $checkBox = new \PHPFUI\Input\CheckBox('checkBox', 'CheckBox');
-    AssertHTML5::isValidMarkup($checkBox);
+    $this->assertValidHtml($checkBox);
     $this->form->add($checkBox);
     }
 
   public function testCheckBoxBoolean()
     {
     $checkBoxBoolean = new \PHPFUI\Input\CheckBoxBoolean('checkBoxBoolean', 'CheckBoxBoolean');
-    AssertHTML5::isValidMarkup($checkBoxBoolean);
+    $this->assertValidHtml($checkBoxBoolean);
     $this->form->add($checkBoxBoolean);
     }
 
@@ -53,14 +49,14 @@ class InputTest extends \PHPUnit\Framework\TestCase
     {
     $color = new \PHPFUI\Input\Color('color', 'Color');
     $color->deleteAttribute('pattern'); // not valid html but foundation uses it
-    AssertHTML5::isValidMarkup($color);
+    $this->assertValidHtml($color);
     $this->form->add($color);
     }
 
   public function testDate()
     {
     $date = new \PHPFUI\Input\Date($this->page, 'date', 'Date');
-    AssertHTML5::isValidMarkup($date);
+    $this->assertValidHtml($date);
     $this->form->add($date);
     }
 
@@ -68,189 +64,189 @@ class InputTest extends \PHPUnit\Framework\TestCase
     {
     $dateTime = new \PHPFUI\Input\DateTime($this->page, 'dateTime', 'DateTime');
     $dateTime->deleteAttribute('pattern'); // not valid html but foundation uses it
-    AssertHTML5::isValidMarkup($dateTime);
+    $this->assertValidHtml($dateTime);
     $this->form->add($dateTime);
     }
 
   public function testEmail()
     {
     $email = new \PHPFUI\Input\Email('email', 'Email');
-    AssertHTML5::isValidMarkup($email);
+    $this->assertValidHtml($email);
     $this->form->add($email);
     }
 
   public function testFile()
     {
     $file = new \PHPFUI\Input\File($this->page, 'file', 'File');
-    AssertHTML5::isValidMarkup($file);
+    $this->assertValidHtml($file);
     $this->form->add($file);
     }
 
   public function testHidden()
     {
     $hidden = new \PHPFUI\Input\Hidden('hidden', 'Hidden');
-    AssertHTML5::isValidMarkup($hidden);
+    $this->assertValidHtml($hidden);
     $this->form->add($hidden);
     }
 
   public function testImage()
     {
     $image = new \PHPFUI\Input\Image('image', 'Image');
-    AssertHTML5::isValidMarkup($image);
+    $this->assertValidHtml($image);
     $this->form->add($image);
     }
 
   public function testLimitSelect()
     {
     $limitSelect = new \PHPFUI\Input\LimitSelect($this->page, 50);
-    AssertHTML5::isValidMarkup($limitSelect);
+    $this->assertValidHtml($limitSelect);
     $this->form->add($limitSelect);
     }
 
   public function testMonth()
     {
     $month = new \PHPFUI\Input\Month('month', 'Month');
-    AssertHTML5::isValidMarkup($month);
+    $this->assertValidHtml($month);
     $this->form->add($month);
     }
 
   public function testMonthYear()
     {
     $monthYear = new \PHPFUI\Input\MonthYear($this->page, 'monthYear', 'MonthYear');
-    AssertHTML5::isValidMarkup($monthYear);
+    $this->assertValidHtml($monthYear);
     $this->form->add($monthYear);
     }
 
   public function testMultiSelect()
     {
     $multiSelect = new \PHPFUI\Input\MultiSelect('multiSelect', 'MultiSelect');
-    AssertHTML5::isValidMarkup($multiSelect);
+    $this->assertValidHtml($multiSelect);
     $this->form->add($multiSelect);
     }
 
   public function testNumber()
     {
     $number = new \PHPFUI\Input\Number('number', 'Number');
-    AssertHTML5::isValidMarkup($number);
+    $this->assertValidHtml($number);
     $this->form->add($number);
     }
 
   public function testPassword()
     {
     $password = new \PHPFUI\Input\Password('password', 'Password');
-    AssertHTML5::isValidMarkup($password);
+    $this->assertValidHtml($password);
     $this->form->add($password);
     }
 
   public function testRadio()
     {
     $radio = new \PHPFUI\Input\Radio('radio', 'Radio');
-    AssertHTML5::isValidMarkup($radio);
+    $this->assertValidHtml($radio);
     $this->form->add($radio);
     }
 
   public function testRadioGroup()
     {
     $radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', 'RadioGroup');
-    AssertHTML5::isValidMarkup($radioGroup);
+    $this->assertValidHtml($radioGroup);
     $this->form->add($radioGroup);
     }
 
   public function testRange()
     {
     $range = new \PHPFUI\Input\Range('range', 'Range');
-    AssertHTML5::isValidMarkup($range);
+    $this->assertValidHtml($range);
     $this->form->add($range);
     }
 
   public function testSearch()
     {
     $search = new \PHPFUI\Input\Search('search', 'Search');
-    AssertHTML5::isValidMarkup($search);
+    $this->assertValidHtml($search);
     $this->form->add($search);
     }
 
   public function testSelect()
     {
     $select = new \PHPFUI\Input\Select('select', 'Select');
-    AssertHTML5::isValidMarkup($select);
+    $this->assertValidHtml($select);
     $this->form->add($select);
     }
 
   public function testSelectAutoComplete()
     {
     $selectAutoComplete = new \PHPFUI\Input\SelectAutoComplete($this->page, 'selectAutoComplete', 'SelectAutoComplete', true);
-    AssertHTML5::isValidMarkup($selectAutoComplete);
+    $this->assertValidHtml($selectAutoComplete);
     $this->form->add($selectAutoComplete);
     }
 
   public function testSwitchCheckBox()
     {
     $switchCheckBox = new \PHPFUI\Input\SwitchCheckBox('switchCheckBox', 'SwitchCheckBox');
-    AssertHTML5::isValidMarkup($switchCheckBox);
+    $this->assertValidHtml($switchCheckBox);
     $this->form->add($switchCheckBox);
     }
 
   public function testSwitchRadio()
     {
     $switchRadio = new \PHPFUI\Input\SwitchRadio('switchRadio', 'SwitchRadio');
-    AssertHTML5::isValidMarkup($switchRadio);
+    $this->assertValidHtml($switchRadio);
     $this->form->add($switchRadio);
     }
 
   public function testTel()
     {
     $tel = new \PHPFUI\Input\Tel('tel', 'Tel');
-    AssertHTML5::isValidMarkup($tel);
+    $this->assertValidHtml($tel);
     $this->form->add($tel);
     }
 
   public function testText()
     {
     $text = new \PHPFUI\Input\Text('text', 'Text');
-    AssertHTML5::isValidMarkup($text);
+    $this->assertValidHtml($text);
     $this->form->add($text);
     }
 
   public function testTextArea()
     {
     $textArea = new \PHPFUI\Input\TextArea('textArea', 'TextArea');
-    AssertHTML5::isValidMarkup($textArea);
+    $this->assertValidHtml($textArea);
     $this->form->add($textArea);
     }
 
   public function testTime()
     {
     $time = new \PHPFUI\Input\Time($this->page, 'time', 'Time');
-    AssertHTML5::isValidMarkup($time);
+    $this->assertValidHtml($time);
     $this->form->add($time);
     }
 
   public function testUrl()
     {
     $url = new \PHPFUI\Input\Url('url', 'Url');
-    AssertHTML5::isValidMarkup($url);
+    $this->assertValidHtml($url);
     $this->form->add($url);
     }
 
   public function testWeek()
     {
     $week = new \PHPFUI\Input\Week('week', 'Week');
-    AssertHTML5::isValidMarkup($week);
+    $this->assertValidHtml($week);
     $this->form->add($week);
     }
 
   public function testZip()
     {
     $zip = new \PHPFUI\Input\Zip($this->page, 'zip', 'Zip');
-    AssertHTML5::isValidMarkup($zip);
+    $this->assertValidHtml($zip);
     $this->form->add($zip);
     }
 
   public function testPage()
     {
     $this->form->add($this->submit);
-    AssertHTML5::isValidMarkup($this->page);
+    $this->assertValidHtml($this->page);
     }
 
   }

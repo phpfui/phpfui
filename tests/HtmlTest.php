@@ -10,16 +10,12 @@
  * code
  */
 
-require_once 'bootstrap.php';
-
-use Kevintweber\PhpunitMarkupValidators\Assert\AssertHtml5;
-
-class HtmlTest extends \PHPUnit\Framework\TestCase
+class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
   {
 
   private $page;
 
-  protected function setUp() : void
+  public function setUp() : void
     {
     $this->page = new \PHPFUI\Page();
     }
@@ -28,14 +24,14 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $accordion = new \PHPFUI\Accordion();
     $accordion->addTab('Tab', 'Content');
-    AssertHTML5::isValidMarkup($accordion);
+    $this->assertValidHtml($accordion);
     $this->page->add($accordion);
     }
 
   public function testAccordionMenu()
     {
     $accordianMenu = new \PHPFUI\AccordionMenu();
-    AssertHTML5::isValidMarkup($accordianMenu);
+    $this->assertValidHtml($accordianMenu);
     $this->page->add($accordianMenu);
     }
 
@@ -43,28 +39,28 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $accordionTabs = new \PHPFUI\AccordionTabs($this->page);
     $accordionTabs->addTab('Tab', new \PHPFUI\Callout());
-    AssertHTML5::isValidMarkup($accordionTabs);
+    $this->assertValidHtml($accordionTabs);
     $this->page->add($accordionTabs);
     }
 
   public function testAccordionToFromList()
     {
     $accordionToFromList = new \PHPFUI\AccordionToFromList($this->page, 'fieldName', [], [], 'callbackIndex', function(){});
-    AssertHTML5::isValidMarkup($accordionToFromList);
+    $this->assertValidHtml($accordionToFromList);
     $this->page->add($accordionToFromList);
     }
 
   public function testBadge()
     {
     $badge = new \PHPFUI\Badge('badge');
-    AssertHTML5::isValidMarkup($badge);
+    $this->assertValidHtml($badge);
     $this->page->add($badge);
     }
 
   public function testBlockGrid()
     {
     $blockGrid = new \PHPFUI\BlockGrid();
-    AssertHTML5::isValidMarkup($blockGrid);
+    $this->assertValidHtml($blockGrid);
     $this->page->add($blockGrid);
     }
 
@@ -72,14 +68,14 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $crumbs = new \PHPFUI\BreadCrumbs();
     $crumbs->addCrumb('Crumb', '/Crumby');
-    AssertHTML5::isValidMarkup($crumbs);
+    $this->assertValidHtml($crumbs);
     $this->page->add($crumbs);
     }
 
   public function testButton()
     {
     $button = new \PHPFUI\Button('Click Me');
-    AssertHTML5::isValidMarkup($button);
+    $this->assertValidHtml($button);
     $this->page->add($button);
     }
 
@@ -87,7 +83,7 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $buttonGroup = new \PHPFUI\ButtonGroup();
     $buttonGroup->addButton(new \PHPFUI\Button('Click Me'));
-    AssertHTML5::isValidMarkup($buttonGroup);
+    $this->assertValidHtml($buttonGroup);
     $this->page->add($buttonGroup);
     }
 
@@ -95,14 +91,14 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $callout = new \PHPFUI\Callout();
     $callout->add('Call me out!');
-    AssertHTML5::isValidMarkup($callout);
+    $this->assertValidHtml($callout);
     $this->page->add($callout);
     }
 
   public function testCancel()
     {
     $cancel = new \PHPFUI\Cancel();
-    AssertHTML5::isValidMarkup($cancel);
+    $this->assertValidHtml($cancel);
     $this->page->add($cancel);
     }
 
@@ -110,119 +106,119 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $card = new \PHPFUI\Card();
     $card->addSection('Section')->addDivider('Divider')->addImage(new \PHPFUI\Image('/image.png'));
-    AssertHTML5::isValidMarkup($card);
+    $this->assertValidHtml($card);
     $this->page->add($card);
     }
 
   public function testCell()
     {
     $cell = new \PHPFUI\Cell();
-    AssertHTML5::isValidMarkup($cell);
+    $this->assertValidHtml($cell);
     $this->page->add($cell);
     }
 
   public function testCloseButton()
     {
     $closeButton = new \PHPFUI\CloseButton(new \PHPFUI\Button('Close Me'));
-    AssertHTML5::isValidMarkup($closeButton);
+    $this->assertValidHtml($closeButton);
     $this->page->add($closeButton);
     }
 
   public function testDisplay()
     {
     $display = new \PHPFUI\Display('label', 'text');
-    AssertHTML5::isValidMarkup($display);
+    $this->assertValidHtml($display);
     $this->page->add($display);
     }
 
   public function testDrillDownMenu()
     {
     $drillDownMenu = new \PHPFUI\DrillDownMenu();
-    AssertHTML5::isValidMarkup($drillDownMenu);
+    $this->assertValidHtml($drillDownMenu);
     $this->page->add($drillDownMenu);
     }
 
   public function testDropDown()
     {
     $dropDown = new \PHPFUI\DropDown(new \PHPFUI\Button('Click Me'), new \PHPFUI\Callout());
-    AssertHTML5::isValidMarkup($dropDown);
+    $this->assertValidHtml($dropDown);
     $this->page->add($dropDown);
     }
 
   public function testDropDownButton()
     {
     $dropDownButton = new \PHPFUI\DropDownButton('Button');
-    AssertHTML5::isValidMarkup($dropDownButton);
+    $this->assertValidHtml($dropDownButton);
     $this->page->add($dropDownButton);
     }
 
   public function testDropDownMenu()
     {
     $dropDownMenu = new \PHPFUI\DropDownMenu();
-    AssertHTML5::isValidMarkup($dropDownMenu);
+    $this->assertValidHtml($dropDownMenu);
     $this->page->add($dropDownMenu);
     }
 
   public function testEmbed()
     {
     $embed = new \PHPFUI\Embed();
-    AssertHTML5::isValidMarkup($embed);
+    $this->assertValidHtml($embed);
     $this->page->add($embed);
     }
 
   public function testEqualizer()
     {
     $equalizer = new \PHPFUI\Equalizer();
-    AssertHTML5::isValidMarkup($equalizer);
+    $this->assertValidHtml($equalizer);
     $this->page->add($equalizer);
     }
 
   public function testFieldSet()
     {
     $fieldSet = new \PHPFUI\FieldSet();
-    AssertHTML5::isValidMarkup($fieldSet);
+    $this->assertValidHtml($fieldSet);
     $this->page->add($fieldSet);
     }
 
   public function testForm()
     {
     $form = new \PHPFUI\Form($this->page);
-    AssertHTML5::isValidMarkup($form);
+    $this->assertValidHtml($form);
     $this->page->add($form);
     }
 
   public function testFormError()
     {
     $formError = new \PHPFUI\FormError();
-    AssertHTML5::isValidMarkup($formError);
+    $this->assertValidHtml($formError);
     $this->page->add($formError);
     }
 
   public function testGridContainer()
     {
     $gridContainer = new \PHPFUI\GridContainer();
-    AssertHTML5::isValidMarkup($gridContainer);
+    $this->assertValidHtml($gridContainer);
     $this->page->add($gridContainer);
     }
 
   public function testGridX()
     {
     $gridX = new \PHPFUI\GridX();
-    AssertHTML5::isValidMarkup($gridX);
+    $this->assertValidHtml($gridX);
     $this->page->add($gridX);
     }
 
   public function testGridY()
     {
     $gridY = new \PHPFUI\GridY('100em');
-    AssertHTML5::isValidMarkup($gridY);
+    $this->assertValidHtml($gridY);
     $this->page->add($gridY);
     }
 
   public function testHeader()
     {
     $header = new \PHPFUI\Header('Header');
-    AssertHTML5::isValidMarkup($header);
+    $this->assertValidHtml($header);
     $this->page->add($header);
     }
 
@@ -230,28 +226,28 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $hTML5Element = new \PHPFUI\HTML5Element('div');
     $hTML5Element->add('Some text');
-    AssertHTML5::isValidMarkup($hTML5Element);
+    $this->assertValidHtml($hTML5Element);
     $this->page->add($hTML5Element);
     }
 
   public function testIcon()
     {
     $icon = new \PHPFUI\Icon('edit');
-    AssertHTML5::isValidMarkup($icon);
+    $this->assertValidHtml($icon);
     $this->page->add($icon);
     }
 
   public function testImage()
     {
     $image = new \PHPFUI\Image('/test.png');
-    AssertHTML5::isValidMarkup($image);
+    $this->assertValidHtml($image);
     $this->page->add($image);
     }
 
   public function testInput()
     {
     $input = new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy');
-    AssertHTML5::isValidMarkup($input);
+    $this->assertValidHtml($input);
     $this->page->add($input);
     }
 
@@ -261,49 +257,49 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     $inputGroup->addInput(new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy'));
     $inputGroup->addLabel('Label');
     $inputGroup->addButton(new \PHPFUI\Button('Button'));
-    AssertHTML5::isValidMarkup($inputGroup);
+    $this->assertValidHtml($inputGroup);
     $this->page->add($inputGroup);
     }
 
   public function testLabel()
     {
     $label = new \PHPFUI\Label('Label');
-    AssertHTML5::isValidMarkup($label);
+    $this->assertValidHtml($label);
     $this->page->add($label);
     }
 
   public function testLink()
     {
     $link = new \PHPFUI\Link('http://www.ibm.com', 'IBM');
-    AssertHTML5::isValidMarkup($link);
+    $this->assertValidHtml($link);
     $this->page->add($link);
     }
 
   public function testMediaObject()
     {
     $mediaObject = new \PHPFUI\MediaObject();
-    AssertHTML5::isValidMarkup($mediaObject);
+    $this->assertValidHtml($mediaObject);
     $this->page->add($mediaObject);
     }
 
   public function testMenu()
     {
     $menu = new \PHPFUI\Menu('Menu', '/Menu');
-    AssertHTML5::isValidMarkup($menu);
+    $this->assertValidHtml($menu);
     $this->page->add($menu);
     }
 
   public function testMultiColumn()
     {
     $multiColumn = new \PHPFUI\MultiColumn(new \PHPFUI\Link('http://www.ibm.com', 'IBM'), new \PHPFUI\Button('Go'));
-    AssertHTML5::isValidMarkup($multiColumn);
+    $this->assertValidHtml($multiColumn);
     $this->page->add($multiColumn);
     }
 
   public function testOffCanvas()
     {
     $offCanvas = new \PHPFUI\OffCanvas(new \PHPFUI\Callout());
-    AssertHTML5::isValidMarkup($offCanvas);
+    $this->assertValidHtml($offCanvas);
     $this->page->add($offCanvas);
     }
 
@@ -312,14 +308,14 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     $orbit = new \PHPFUI\Orbit();
     $orbit->addHTMLSlide(new \PHPFUI\Callout('warning'), 'Warning Will Robinson', true);
     $orbit->addImageSlide(new \PHPFUI\Image('/lostInSpace.png'), 'Will Robinson', true);
-    AssertHTML5::isValidMarkup($orbit);
+    $this->assertValidHtml($orbit);
     $this->page->add($orbit);
     }
 
   public function testOrderableTable()
     {
     $orderableTable = new \PHPFUI\OrderableTable($this->page);
-    AssertHTML5::isValidMarkup($orderableTable);
+    $this->assertValidHtml($orderableTable);
     $this->page->add($orderableTable);
     }
 
@@ -327,28 +323,28 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $orderedList = new \PHPFUI\OrderedList();
     $orderedList->addItem(new \PHPFUI\ListItem('Item', '/item'));
-    AssertHTML5::isValidMarkup($orderedList);
+    $this->assertValidHtml($orderedList);
     $this->page->add($orderedList);
     }
 
   public function testPagination()
     {
     $pagination = new \PHPFUI\Pagination(10, 100, '/paginate?page=PAGE');
-    AssertHTML5::isValidMarkup($pagination);
+    $this->assertValidHtml($pagination);
     $this->page->add($pagination);
     }
 
   public function testPanel()
     {
     $panel = new \PHPFUI\Panel('Panel');
-    AssertHTML5::isValidMarkup($panel);
+    $this->assertValidHtml($panel);
     $this->page->add($panel);
     }
 
   public function testPayPalExpress()
     {
     $payPalExpress = new \PHPFUI\PayPalExpress($this->page, 'ClientId');
-    AssertHTML5::isValidMarkup($payPalExpress);
+    $this->assertValidHtml($payPalExpress);
     $this->page->add($payPalExpress);
     }
 
@@ -356,35 +352,35 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $progressBar = new \PHPFUI\ProgressBar();
     $progressBar->setPercent(50);
-    AssertHTML5::isValidMarkup($progressBar);
+    $this->assertValidHtml($progressBar);
     $this->page->add($progressBar);
     }
 
   public function testRangeSlider()
     {
     $rangeSlider = new \PHPFUI\RangeSlider($this->page, 'name', new \PHPFUI\Input('text', 'value'));
-    AssertHTML5::isValidMarkup($rangeSlider);
+    $this->assertValidHtml($rangeSlider);
     $this->page->add($rangeSlider);
     }
 
   public function testReCAPTCHA()
     {
     $reCAPTCHA = new \PHPFUI\ReCAPTCHA($this->page, 'public', 'private');
-    AssertHTML5::isValidMarkup($reCAPTCHA);
+    $this->assertValidHtml($reCAPTCHA);
     $this->page->add($reCAPTCHA);
     }
 
   public function testReset()
     {
     $reset = new \PHPFUI\Reset();
-    AssertHTML5::isValidMarkup($reset);
+    $this->assertValidHtml($reset);
     $this->page->add($reset);
     }
 
   public function testReveal()
     {
     $reveal = new \PHPFUI\Reveal($this->page, new \PHPFUI\Button('Reveal Me'));
-    AssertHTML5::isValidMarkup($reveal);
+    $this->assertValidHtml($reveal);
     $this->page->add($reveal);
     }
 
@@ -392,98 +388,98 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $slickSlider = new \PHPFUI\SlickSlider($this->page);
     $slickSlider->addImage('/test.png')->addSlide(new \PHPFUI\Header('Slide'));
-    AssertHTML5::isValidMarkup($slickSlider);
+    $this->assertValidHtml($slickSlider);
     $this->page->add($slickSlider);
     }
 
   public function testSlider()
     {
     $slider = new \PHPFUI\Slider($this->page, 12);
-    AssertHTML5::isValidMarkup($slider);
+    $this->assertValidHtml($slider);
     $this->page->add($slider);
     }
 
   public function testSortableTable()
     {
     $sortableTable = new \PHPFUI\SortableTable();
-    AssertHTML5::isValidMarkup($sortableTable);
+    $this->assertValidHtml($sortableTable);
     $this->page->add($sortableTable);
     }
 
   public function testSplitButton()
     {
     $splitButton = new \PHPFUI\SplitButton('Text', '/link');
-    AssertHTML5::isValidMarkup($splitButton);
+    $this->assertValidHtml($splitButton);
     $this->page->add($splitButton);
     }
 
   public function testSticky()
     {
     $sticky = new \PHPFUI\Sticky(new \PHPFUI\Callout());
-    AssertHTML5::isValidMarkup($sticky);
+    $this->assertValidHtml($sticky);
     $this->page->add($sticky);
     }
 
   public function testSubHeader()
     {
     $subHeader = new \PHPFUI\SubHeader('Sub Header');
-    AssertHTML5::isValidMarkup($subHeader);
+    $this->assertValidHtml($subHeader);
     $this->page->add($subHeader);
     }
 
   public function testSubmit()
     {
     $submit = new \PHPFUI\Submit();
-    AssertHTML5::isValidMarkup($submit);
+    $this->assertValidHtml($submit);
     $this->page->add($submit);
     }
 
   public function testTable()
     {
     $table = new \PHPFUI\Table();
-    AssertHTML5::isValidMarkup($table);
+    $this->assertValidHtml($table);
     $this->page->add($table);
     }
 
   public function testTabs()
     {
     $tabs = new \PHPFUI\Tabs();
-    AssertHTML5::isValidMarkup($tabs);
+    $this->assertValidHtml($tabs);
     $this->page->add($tabs);
     }
 
   public function testThumbnail()
     {
     $thumbnail = new \PHPFUI\Thumbnail(new \PHPFUI\Image('/test.png'));
-    AssertHTML5::isValidMarkup($thumbnail);
+    $this->assertValidHtml($thumbnail);
     $this->page->add($thumbnail);
     }
 
   public function testTitleBar()
     {
     $titleBar = new \PHPFUI\TitleBar();
-    AssertHTML5::isValidMarkup($titleBar);
+    $this->assertValidHtml($titleBar);
     $this->page->add($titleBar);
     }
 
   public function testToFromList()
     {
     $toFromList = new \PHPFUI\ToFromList($this->page, 'tofrom', [], [], 'index', function(){});
-    AssertHTML5::isValidMarkup($toFromList);
+    $this->assertValidHtml($toFromList);
     $this->page->add($toFromList);
     }
 
   public function testToolTip()
     {
     $toolTip = new \PHPFUI\ToolTip(new \PHPFUI\Button('Tip Me'), 'This is your tip');
-    AssertHTML5::isValidMarkup($toolTip);
+    $this->assertValidHtml($toolTip);
     $this->page->add($toolTip);
     }
 
   public function testTopBar()
     {
     $topBar = new \PHPFUI\TopBar();
-    AssertHTML5::isValidMarkup($topBar);
+    $this->assertValidHtml($topBar);
     $this->page->add($topBar);
     }
 
@@ -491,20 +487,20 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
     $unorderedList = new \PHPFUI\UnorderedList();
     $unorderedList->addItem(new \PHPFUI\ListItem('Item', '/item'));
-    AssertHTML5::isValidMarkup($unorderedList);
+    $this->assertValidHtml($unorderedList);
     $this->page->add($unorderedList);
     }
 
   public function testYouTube()
     {
     $youTube = new \PHPFUI\YouTube(123456789);
-    AssertHTML5::isValidMarkup($youTube);
+    $this->assertValidHtml($youTube);
     $this->page->add($youTube);
     }
 
   public function testPage()
     {
-    AssertHTML5::isValidMarkup($this->page);
+    $this->assertValidHtml($this->page);
     }
 
   }
