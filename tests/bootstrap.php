@@ -7,8 +7,9 @@ function classNameExists(string $className) : string
   $path = ".\\src\\$className.php";
   if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
     {
-    $path = str_replace("\\", '/', $path);
+    $path = str_replace('\\', '/', $path);
     }
+
   return file_exists($path) ? $path : '';
   }
 
@@ -27,8 +28,8 @@ $vendorDir = __DIR__ . '/../../..';
 
 if (file_exists($file = $vendorDir . '/autoload.php')) {
     require_once $file;
-} else if (file_exists($file = './vendor/autoload.php')) {
+} elseif (file_exists($file = './vendor/autoload.php')) {
     require_once $file;
 } else {
-		throw new \RuntimeException("Composer autoload file not found");
+		throw new \RuntimeException('Composer autoload file not found');
 }

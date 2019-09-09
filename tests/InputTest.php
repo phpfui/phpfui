@@ -12,10 +12,10 @@
 
 class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
   {
+  private $form;
 
   private $page;
   private $submit;
-  private $form;
 
   public function setUp() : void
     {
@@ -131,6 +131,12 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
     $this->form->add($number);
     }
 
+  public function testPage()
+    {
+    $this->form->add($this->submit);
+    $this->assertValidHtml($this->page);
+    }
+
   public function testPassword()
     {
     $password = new \PHPFUI\Input\Password('password', 'Password');
@@ -241,12 +247,6 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
     $zip = new \PHPFUI\Input\Zip($this->page, 'zip', 'Zip');
     $this->assertValidHtml($zip);
     $this->form->add($zip);
-    }
-
-  public function testPage()
-    {
-    $this->form->add($this->submit);
-    $this->assertValidHtml($this->page);
     }
 
   }

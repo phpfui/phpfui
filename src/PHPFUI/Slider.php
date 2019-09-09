@@ -4,11 +4,10 @@ namespace PHPFUI;
 
 class Slider extends HTML5Element
   {
-  private $handle;
   private $max = 100;
 
   private $min = 0;
-  private $rangeHandle = null;
+  private $sliderHangle = null;
   private $started = false;
   private $step = 1;
   private $value;
@@ -20,7 +19,7 @@ class Slider extends HTML5Element
     $this->value = $value;
     $this->addClass('slider');
     $this->setAttribute('data-slider');
-    $this->handle = $handle ? : new SliderHandle($value);
+    $this->sliderHangle = $handle ? : new SliderHandle($value);
     }
 
   public function setMax(int $max = 100) : Slider
@@ -52,7 +51,7 @@ class Slider extends HTML5Element
 
   public function setRangeHandle(SliderHandle $handle) : Slider
     {
-    $this->rangeHandle = $handle;
+    $this->sliderHangle = $handle;
 
     return $this;
     }
@@ -93,26 +92,16 @@ class Slider extends HTML5Element
         $this->addClass('vertical');
         $this->setAttribute('data-vertical', 'true');
         }
-      $this->handle->addAttribute('aria-valuemax', $this->max);
-      $this->handle->addAttribute('aria-valuemin', $this->min);
-      $this->handle->addAttribute('aria-valuenow', $this->value);
-      $this->add($this->handle);
+      $this->sliderHangle->addAttribute('aria-valuemax', $this->max);
+      $this->sliderHangle->addAttribute('aria-valuemin', $this->min);
+      $this->sliderHangle->addAttribute('aria-valuenow', $this->value);
+      $this->setAttribute('data-initial-end', $this->sliderHangle->getValue());
+      $this->add($this->sliderHangle);
       $this->add("<span class='slider-fill' data-slider-fill></span>");
 
-      if ($this->rangeHandle)
+      if ($this->sliderHangle && ! $this->sliderHangle->getBind())
         {
-        $this->add($this->rangeHandle);
-        $this->setAttribute('data-initial-end', $this->rangeHandle->getValue());
-        }
-
-      if (! $this->handle->getBind())
-        {
-        $this->add($this->handle->getInput());
-        }
-
-      if ($this->rangeHandle && ! $this->rangeHandle->getBind())
-        {
-        $this->add($this->rangeHandle->getInput());
+        $this->add($this->sliderHangle->getInput());
         }
       }
 
