@@ -31,19 +31,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
       }
     }
 
-  public function testAccordionTabs()
-    {
-    $accordionTabs = new \PHPFUI\AccordionTabs($this->page);
-    $accordionTabs->addTab('Tab', new \PHPFUI\Callout());
-    $this->assertValidHtml($accordionTabs);
-    }
-
-  public function testAccordionToFromList()
-    {
-    $accordionToFromList = new \PHPFUI\AccordionToFromList($this->page, 'fieldName', [], [], 'callbackIndex', function(){});
-    $this->assertValidHtml($accordionToFromList);
-    }
-
   public function testBlockGrid()
     {
     $blockGrid = new \PHPFUI\BlockGrid();
