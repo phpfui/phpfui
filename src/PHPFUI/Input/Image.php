@@ -18,6 +18,7 @@ class Image extends \PHPFUI\HTML5Element
     parent::__construct('input');
     $this->addAttribute('type', 'image');
     $this->addAttribute('src', $src);
+
     if (empty($alt))
       {
       $alt = $src;

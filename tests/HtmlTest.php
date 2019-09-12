@@ -22,15 +22,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
     $this->ks = new \PHPFUI\KitchenSink($this->page);
     }
 
-  public function testKitchenSinkExamples() : void
-    {
-    $examples = $this->ks->getExamples();
-    foreach ($examples as $name => $example)
-      {
-      $this->assertValidHtml($this->ks->$example(), $name);
-      }
-    }
-
   public function testBlockGrid()
     {
     $blockGrid = new \PHPFUI\BlockGrid();
@@ -132,7 +123,16 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 
   public function testKitchenSink()
     {
-    $this->assertValidHtml($this->ks->getAll());
+    $this->assertValidHtml($this->ks->render());
+    }
+
+  public function testKitchenSinkExamples() : void
+    {
+    $examples = $this->ks->getExamples();
+    foreach ($examples as $name => $example)
+      {
+      $this->assertValidHtml($this->ks->$example(), $name);
+      }
     }
 
   public function testLabel()
@@ -240,13 +240,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
     $this->assertValidHtml($table);
     }
 
-//  public function testTabs()
-//    {
-//    $tabs = $this->ks->getTabs();
-//    echo $tabs;
-//    $this->assertValidHtml($this->ks->getTabs());
-//    }
-
   public function testToFromList()
     {
     $toFromList = new \PHPFUI\ToFromList($this->page, 'tofrom', [], [], 'index', function(){});
@@ -267,37 +260,4 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
     }
 
   }
-
-//  public function getAccordion() : Accordion
-//  public function getAccordionMenu() : AccordionMenu
-//  public function getBadge() : Container
-//  public function getBreadCrumbs() : BreadCrumbs
-//  public function getButton() : Container
-//  public function getButtonGroup() : ButtonGroup
-//  public function getCallout() : Container
-//  public function getCard() : Card
-//  public function getCloseButton() : Container
-//  public function getDrillDownMenu() : Container
-//  public function getDropDownButton() : DropDown
-//  public function getDropDownMenu() : Container
-//  public function getDropDownPane() : Container
-//  public function getEqualizer() : Equalizer
-//  public function getLabel() : Container
-//  public function getMenu() : Container
-//  public function getOffCanvas() : Container
-//  public function getOrbit() : Orbit
-//  public function getPagination() : Pagination
-//  public function getProgressBar() : Container
-//  public function getResponsiveEmbed() : Embed
-//  public function getReveal() : Container
-//  public function getSlider() : Container
-//  public function getSplitButton() : SplitButton
-//  public function getSwitch() : Container
-//  public function getTabs() : Container
-//  public function getThumbnail() : Container
-//  public function getTitleBar() : TitleBar
-//  public function getToggler() : Container
-//  public function getToolTip() : Container
-//  public function getTopBar() : TopBar
-
 

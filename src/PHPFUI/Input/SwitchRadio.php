@@ -3,77 +3,78 @@
 namespace PHPFUI\Input;
 
 class SwitchRadio extends \PHPFUI\HTML5Element
-  {
-  protected $input;
-  private $active = '';
-  private $inactive = '';
-  private $started = false;
-  private $screenReaderTitle = '';
+	{
+	protected $input;
+	private $active = '';
+	private $inactive = '';
+	private $started = false;
 
-  public function __construct(string $name, $value = 0, string $screenReaderTitle = '', string $type = 'radio')
-    {
-    parent::__construct('div');
-    $this->screenReaderTitle = $screenReaderTitle;
-    $this->addClass('switch');
-    $this->input = new \PHPFUI\HTML5Element('input');
-    $this->input->addAttribute('type', $type);
-    $this->input->addAttribute('name', $name);
-    $this->input->addClass('switch-input');
-    $this->input->setAttribute('value', $value);
-    }
+	private $title = '';
 
-  public function setActiveLabel(string $label) : SwitchRadio
-    {
-    $this->active = $label;
+	public function __construct(string $name, $value = 0, string $title = '', string $type = 'radio')
+		{
+		parent::__construct('div');
+		$this->title = $title;
+		$this->addClass('switch');
+		$this->input = new \PHPFUI\HTML5Element('input');
+		$this->input->addAttribute('type', $type);
+		$this->input->addAttribute('name', $name);
+		$this->input->addClass('switch-input');
+		$this->input->setAttribute('value', $value);
+		}
 
-    return $this;
-    }
+	public function setActiveLabel(string $label) : SwitchRadio
+		{
+		$this->active = $label;
 
-  public function setChecked(bool $checked = true) : SwitchRadio
-    {
-    if ($checked)
-      {
-      $this->input->setAttribute('checked');
-      }
-    else
-      {
-      $this->input->deleteAttribute('checked');
-      }
+		return $this;
+		}
 
-    return $this;
-    }
+	public function setChecked(bool $checked = true) : SwitchRadio
+		{
+		if ($checked)
+			{
+			$this->input->setAttribute('checked');
+			}
+		else
+			{
+			$this->input->deleteAttribute('checked');
+			}
 
-  public function setInactiveLabel(string $label) : SwitchRadio
-    {
-    $this->inactive = $label;
+		return $this;
+		}
 
-    return $this;
-    }
+	public function setInactiveLabel(string $label) : SwitchRadio
+		{
+		$this->inactive = $label;
 
-  protected function getStart() : string
-    {
-    if (! $this->started)
-      {
-      $this->started = true;
-      $this->add($this->input);
-      $label = new \PHPFUI\HTML5Element('label');
-      $label->addClass('switch-paddle');
-      $label->addAttribute('for', $this->input->getId());
-      $label->add("<span class='show-for-sr'>{$this->screenReaderTitle}</span>");
+		return $this;
+		}
 
-      if ($this->active)
-        {
-        $label->add("<span class='switch-active' aria-hidden='true'>{$this->active}</span>");
-        }
+	protected function getStart() : string
+		{
+		if (! $this->started)
+			{
+			$this->started = true;
+			$this->add($this->input);
+			$label = new \PHPFUI\HTML5Element('label');
+			$label->addClass('switch-paddle');
+			$label->addAttribute('for', $this->input->getId());
+			$label->add("<span class='show-for-sr'>{$this->title}</span>");
 
-      if ($this->active)
-        {
-        $label->add("<span class='switch-inactive' aria-hidden='true'>{$this->inactive}</span>");
-        }
-      $this->add($label);
-      }
+			if ($this->active)
+				{
+				$label->add("<span class='switch-active' aria-hidden='true'>{$this->active}</span>");
+				}
 
-    return parent::getStart();
-    }
+			if ($this->active)
+				{
+				$label->add("<span class='switch-inactive' aria-hidden='true'>{$this->inactive}</span>");
+				}
+			$this->add($label);
+			}
 
-  }
+		return parent::getStart();
+		}
+
+	}

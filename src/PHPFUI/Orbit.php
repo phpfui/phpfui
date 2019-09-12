@@ -118,6 +118,7 @@ class Orbit extends HTML5Element
         $this->addAttribute('data-use-m-u-i', 'false');
         }
       $this->wrapper->add($this->container);
+
       if ($this->bullets)
         {
         $this->add($this->bullets);

@@ -9,29 +9,21 @@ namespace PHPFUI;
  */
 class KitchenSink
   {
+  private $index = 0;
+  private $lines = [];
 
   private $page;
 
   public function __construct(Page $page)
     {
     $this->page = $page;
-    }
+    $index = 0;
+    $names = ['Pork', 'Beef', 'Lamb', 'Fish', 'Nuts', 'Fruit', 'Vegtables', 'Bread', 'Pasta', 'Desserts', 'Sugar', ];
 
-  public function getAll() : Container
-    {
-    $container = new Container();
-
-    $examples = $this->getExamples();
-    $hr = '';
-    foreach ($examples as $name => $example)
+    foreach ($names as $name)
       {
-      $container->add($hr);
-      $container->add(new Header($name, 2));
-      $container->add($this->$example());
-      $hr = new HTML5Element('hr');
+      $this->lines[] = ['name' => $name, 'id' => $index++];
       }
-
-    return $container;
     }
 
   public function exampleAccordion() : Accordion
@@ -481,13 +473,20 @@ class KitchenSink
   //  $container->add($parent);
 
 
-  public function exampleSwitch() : Container
+  public function exampleSwitchCheckBox() : Container
     {
     $container = new Container();
 
-    $switchCB = new Input\SwitchCheckBox('name', true, 'Do you like me');
+    $switchCB = new Input\SwitchCheckBox('name', true, 'Do you like me?');
     $switchCB->setActiveLabel('Yes')->setInactiveLabel('No')->addClass('large');
     $container->add($switchCB);
+
+    return $container;
+    }
+
+  public function exampleSwitchRadio() : Container
+    {
+    $container = new Container();
 
     $switchRB1 = new Input\SwitchRadio('radio', 1);
     $switchRB1->setActiveLabel('Yes')->setInactiveLabel('No')->addClass('large');
@@ -551,6 +550,20 @@ class KitchenSink
     $titlebar->addRight('<button class="menu-icon" type="button"></button>');
 
     return $titlebar;
+    }
+
+  public function exampleToFromList() : ToFromList
+    {
+    $index = 'id';
+    $callback = [$this, 'getToFromListName'];
+    $split = mt_rand(0, count($this->lines) - 1);
+    $notInGroup = array_slice($this->lines, $split);
+    $inGroup = array_slice($this->lines, 0, $split);
+    $toFromList = new \PHPFUI\ToFromList($this->page, 'groups', $inGroup, $notInGroup, $index, $callback);
+    $toFromList->setInName('In Group');
+    $toFromList->setOutName('Out Group');
+
+    return $toFromList;
     }
 
   public function exampleToggler() : Container
@@ -618,6 +631,66 @@ class KitchenSink
     return $topbar;
     }
 
+  /**
+   * Get all the example functions
+   *
+   * return array of method names indexed by English name
+   */
+  public function getExamples() : array
+    {
+    $examples = [];
+
+    $prefix = 'example';
+    $prefixLen = strlen($prefix);
+    $methods = get_class_methods(self::class);
+
+    foreach ($methods as $methodName)
+      {
+      if (0 === strpos($methodName, $prefix))
+        {
+        $name = substr($methodName, $prefixLen);
+        $examples[$name] = $methodName;
+        }
+      }
+
+    return $examples;
+    }
+
+  public function getToFromListName(string $fieldName, string $index, $line, string $type) : string
+    {
+    if (! is_array($line))
+      {
+      $line = $this->lines[$line];
+      }
+    $hidden = new \PHPFUI\Input\Hidden($type . $fieldName . '[]', $line[$index]);
+
+    return "{$hidden}" . $line['name'];
+    }
+
+  public function render() : string
+    {
+    $container = new Container();
+
+    $examples = $this->getExamples();
+    $hr = '';
+    $realHr = new HTML5Element('hr');
+
+    foreach ($examples as $name => $example)
+      {
+      $container->add($hr);
+      $container->add(new Header($name, 2));
+      $container->add($this->{$example}());
+
+      if ($this->page->isDone())
+        {
+        return '';
+        }
+      $hr = $realHr;
+      }
+
+    return "{$container}";
+    }
+
   private function generateMenu(string $name, int $count, bool $active = false) : Menu
     {
     $names = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
@@ -626,7 +699,7 @@ class KitchenSink
 
     for ($i = 0; $i < $count; ++$i)
       {
-      $item = new MenuItem($names[$i].' '.$name, '#');
+      $item = new MenuItem($names[$i] . ' ' . $name, '#');
       $item->setActive($active);
       $active = false;
       $menu->addMenuItem($item);
@@ -641,6 +714,7 @@ class KitchenSink
     $menu->addMenuItem(new MenuItem('One', '#'));
     $menu->addMenuItem(new MenuItem('Two', '#'));
     $three = new MenuItem('Three', '#');
+
     if ($subMenu)
       {
       $menu->addSubMenu($three, $subMenu);
@@ -651,6 +725,7 @@ class KitchenSink
       $menu->addMenuItem($three);
       }
     $menu->addMenuItem(new MenuItem('Four', '#'));
+
     if ($class)
       {
       $menu->addClass($class);
@@ -681,30 +756,4 @@ class KitchenSink
     return $menu;
     }
 
-  /**
-   * Get all the example functions
-   *
-   * return array of method names indexed by English name
-   */
-  public function getExamples() : array
-    {
-    $examples = [];
-
-    $prefix = 'example';
-    $prefixLen = strlen($prefix);
-    $methods = get_class_methods(self::class);
-
-    foreach ($methods as $methodName)
-      {
-      if (strpos($methodName, $prefix) === 0)
-        {
-        $name = substr($methodName, $prefixLen);
-        $examples[$name] = $methodName;
-        }
-      }
-
-    return $examples;
-    }
-
   }
-

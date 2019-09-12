@@ -11,8 +11,9 @@ class MediaObject extends HTML5Element
 		$this->addClass('media-object');
 		}
 
-	public function addSection(HTML5Element $section, bool $main = false, string $alignment = '') : MediaObject
+	public function addSection(HTML5Element $content, bool $main = false, string $alignment = '') : MediaObject
 		{
+		$section = new HTML5Element('div');
 		$section->addClass('media-object-section');
 
 		if ($main)
@@ -33,6 +34,18 @@ class MediaObject extends HTML5Element
 				throw new \Exception(__METHOD__ . ': $alignment must be one of (' . implode(',', $validAlignments) . ')');
 				}
 			$section->addClass($align);
+			}
+
+		if ($content instanceof Image)
+			{
+			$thumbnail = new HTML5Element('div');
+			$thumbnail->addClass('thumbnail');
+			$thumbnail->add($content);
+			$section->add($thumbnail);
+			}
+		else
+			{
+			$section->add($content);
 			}
 		$this->add($section);
 

@@ -91,7 +91,7 @@ class Menu extends HTML5Element
 				}
 			}
 
-		return $false;
+		return false;
 		}
 
 	public function setIconAlignment(string $type) : Menu
