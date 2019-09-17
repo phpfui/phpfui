@@ -61,21 +61,20 @@ class Bar extends HTML5Element
 		}
 
 	private function getSection(array $items, string $class) : ?HTML5Element
-    {
-    $element = null;
+		{
+		$element = null;
 
-    if ($items)
-      {
-      $element = new HTML5Element('div');
-      $element->addClass($this->className . '-' . $class);
+		if ($items)
+			{
+			$element = new HTML5Element('div');
+			$element->addClass($this->className . '-' . $class);
 
-      foreach ($items as $item)
-        {
-        $element->add($item);
-        }
+			foreach ($items as $item)
+				{
+				$element->add($item);
+				}
 			}
 
-			return $element;
+		return $element;
 		}
-
 	}

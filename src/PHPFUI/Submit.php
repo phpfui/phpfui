@@ -25,5 +25,4 @@ class Submit extends Button
 		$this->addAttribute('type', 'submit');
 		$this->addAttribute('onkeypress', 'event.keyCode!=13;');
 		}
-
 	}

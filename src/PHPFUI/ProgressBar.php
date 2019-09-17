@@ -75,5 +75,4 @@ class ProgressBar extends HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

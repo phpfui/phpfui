@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class SliderHandle extends HTML5Element
 	{
-
 	private $bind = null;
 	private $input;
 	private $value;
@@ -44,5 +43,4 @@ class SliderHandle extends HTML5Element
 		{
 		return $this->value;
 		}
-
 	}

@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class OrderableTable extends Table
 	{
-
 	public function __construct(Page $page)
 		{
 		parent::__construct();
@@ -16,5 +15,4 @@ class OrderableTable extends Table
 		$this->sortableBodyClass = ' class="table-sortable"';
 		$this->sortableTrClass = ' class="row-sortable"><td class="handle">&updownarrow;</td';
 		}
-
 	}

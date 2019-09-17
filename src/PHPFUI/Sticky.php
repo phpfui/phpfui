@@ -34,5 +34,4 @@ class Sticky extends HTML5Element
 
 		return $this;
 		}
-
 	}

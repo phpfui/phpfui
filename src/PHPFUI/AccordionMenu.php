@@ -2,9 +2,11 @@
 
 namespace PHPFUI;
 
+/**
+ * AccordionMenu has main sections that accordion to reveal submenu sections
+ */
 class AccordionMenu extends Menu
 	{
-
 	private $separator = '~|~';
 	private $started = false;
 
@@ -21,12 +23,12 @@ class AccordionMenu extends Menu
 		$subMenu->addClass('vertical');
 		$subMenu->addClass('nested');
 
-    if (empty($label->getLink()))
+		if (empty($label->getLink()))
 			{
 			$label->setLink('#');
 			}
 
-    if ('#' != $label->getLink())
+		if ('#' != $label->getLink())
 			{
 			$this->setAttribute('data-submenu-toggle', 'true');
 			}
@@ -71,5 +73,4 @@ class AccordionMenu extends Menu
 
 		return parent::getStart();
 		}
-
 	}

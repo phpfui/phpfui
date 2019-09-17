@@ -96,5 +96,4 @@ class SortableTable extends Table
 
 		return "<span class='float-right'><a href='{$link}'>{$indicator}</a></span>";
 		}
-
 	}

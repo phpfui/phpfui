@@ -8,7 +8,6 @@ namespace PHPFUI;
  */
 class HTML5Element extends Base
 	{
-
 	private $element;
 	private $noEndTag = false;
 	private static $noEndTags = [
@@ -188,5 +187,4 @@ class HTML5Element extends Base
 
 		return $output . '>';
 		}
-
 	}

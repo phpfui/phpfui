@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class RadioGroup extends Input implements \Countable
 	{
-
 	protected $buttons = [];
 	protected $separateRows = false;
 
@@ -96,5 +95,4 @@ class RadioGroup extends Input implements \Countable
 
 		return "{$output}";
 		}
-
 	}

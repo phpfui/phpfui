@@ -19,5 +19,4 @@ class Email extends Input
 		{
 		parent::__construct('email', $name, $label, $value);
 		}
-
 	}

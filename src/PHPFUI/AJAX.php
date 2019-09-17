@@ -13,11 +13,10 @@ class AJAX
 	 * Set up an AJAX callback
 	 *
 	 * @param string $name JavaScript function name to be created
-	 * @param string $confirmQuestion prompt with this question if
-	 *  						 set
+	 * @param string $confirmQuestion prompt with this question if set
 	 *
-	 * The $name is used as the generated function name. Is is also
-	 * POSTed to the page as the 'action' parameter.
+	 * The $name is used as the generated function name. Is is also POSTed to the page as the 'action'
+	 * parameter.
 	 */
 	public function __construct(string $name, string $confirmQuestion = '')
 		{
@@ -30,8 +29,6 @@ class AJAX
 	 * parameter type according to:
 	 *
 	 * https://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
-	 *
-	 *
 	 */
 	public function addFunction(string $function, string $script) : AJAX
 		{
@@ -95,5 +92,4 @@ class AJAX
 
 		return $js;
 		}
-
 	}

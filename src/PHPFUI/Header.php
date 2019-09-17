@@ -21,5 +21,4 @@ class Header extends HTML5Element
 		parent::__construct("h{$size}");
 		$this->add($title);
 		}
-
 	}

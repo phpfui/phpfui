@@ -3,34 +3,87 @@
 namespace PHPFUI;
 
 class ToFromList extends Base
-  {
-  protected $callback;
-  protected $callbackIndex;
-  protected $fieldName;
-  protected $inGroup;
-  protected $inName = 'In';
-  protected $notInGroup;
-  protected $outName = 'Out';
-  protected $page;
+	{
+	protected $callback;
+	protected $callbackIndex;
+	protected $inGroup;
+	protected $inIcon;
+	protected $inName = 'In';
+	protected $name;
+	protected $notInGroup;
+	protected $outIcon;
+	protected $outName = 'Out';
+	protected $page;
 
-  private static $outputJs = false;
+	private static $outputJs = false;
 
-  public function __construct(Page $page, string $fieldName, array $inGroup, array $notInGroup, $callbackIndex, callable $callback)
-    {
-    parent::__construct();
-    $this->page = $page;
-    $this->inGroup = $inGroup;
-    $this->notInGroup = $notInGroup;
-    $this->fieldName = $fieldName;
-    $this->callbackIndex = $callbackIndex;
-    $this->callback = $callback;
+	/**
+	 * The ToFromList implements a two side by side panes that uses can drag and drop from one side to
+	 * the other.  It does not support ordering within panes. It assumes you are picking data from a
+	 * master list and putting each item in to one group or the other.
+	 *
+	 * @param Page $page needed for JavaScript
+	 * @param string $name identifying this ToFromList from others on the same page.  Needs to be
+	 *  		 unique per page
+	 * @param array $inGroup data for the selected group.  See below for array requirements.
+	 * @param array $notInGroup data for the unselected group.  See below for array requirements.
+	 * @param string $callbackIndex is used to identify records by index in your master set of data.
+	 * @param callable $callback used to format the text used to drag and drop.
+	 *
+	 * The data:
+	 *
+	 * The ToFromList assumes you have one master array with numeric indexes from 0 to what ever. Each
+	 * item in the master array must be an array and have an index specified by $callbackIndex. It will
+	 * be the record number of itself in the master array.  This is needed because we can not use the
+	 * array index from the $inGroup or $notInGroup, as those are subsets of the master array. So each
+	 * element in the master array must keep track of it's own index in the master array. You can
+	 * include any other data in this array you want, but it is recommend you have a human readable
+	 * name, or a way to get this, as you will need to return that in the callback function.
+	 *
+	 * The callback:
+	 *
+	 * The callback should have the following signature:
+	 *
+	 * @param string $name this is the name of the field that will be POSTed with either "in" or
+	 *  						 "out" (depending on the side) prepended.  You can also change either of these two
+	 *  						 values if you want.
+	 */
+	public function __construct(Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
+		{
+		parent::__construct();
+		$this->page = $page;
+		$this->inGroup = $inGroup;
+		$this->notInGroup = $notInGroup;
+		$this->name = $name;
+		$this->callbackIndex = $callbackIndex;
+		$this->callback = $callback;
 
-    if (! self::$outputJs)
-      {
-      self::$outputJs = true;
-      $csrf = Session::csrf();
-      $csrfField = Session::csrfField();
-      $js = 'function allowDropToFromList(e){if(e.preventDefault)e.preventDefault();e.dataTransfer.effectAllowed="move";return true;}' .
+		$this->inIcon = new \PHPFUI\Container();
+		$rightIcon = new Icon('arrow-right');
+		$rightIcon->addAttribute('style', 'color:green');
+		$rightIcon->addClass('show-for-medium');
+		$this->inIcon->add($rightIcon);
+		$downIcon = new Icon('arrow-down');
+		$downIcon->addAttribute('style', 'color:green');
+		$downIcon->addClass('show-for-small-only');
+		$this->inIcon->add($downIcon);
+
+		$this->outIcon = new \PHPFUI\Container();
+		$leftIcon = new Icon('arrow-left');
+		$leftIcon->addAttribute('style', 'color:red');
+		$leftIcon->addClass('show-for-medium');
+		$this->outIcon->add($leftIcon);
+		$upIcon = new Icon('arrow-up');
+		$upIcon->addAttribute('style', 'color:red');
+		$upIcon->addClass('show-for-small-only');
+		$this->outIcon->add($upIcon);
+
+		if (! self::$outputJs)
+			{
+			self::$outputJs = true;
+			$csrf = Session::csrf();
+			$csrfField = Session::csrfField();
+			$js = 'function allowDropToFromList(e){if(e.preventDefault)e.preventDefault();e.dataTransfer.effectAllowed="move";return true;}' .
         'function moveToFromList(e,parentid){$("#"+e).remove();' .
         "var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:e,DropParentId:'#'+parentid};" .
         '$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}})};' .
@@ -42,116 +95,142 @@ class ToFromList extends Base
         "if(!node)return false;var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:draggedid,DropParentId:'#'+parentid};" .
         '$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}});' .
         '$(draggedid).remove();e.stopPropagation();return true;}';
-      $this->page->addJavaScript($js);
-      }
-    $this->processRequest();
-    }
+			$this->page->addJavaScript($js);
+			}
+		$this->processRequest();
+		}
 
-  public function setInName(string $inName) : ToFromList
-    {
-    $this->inName = $inName;
+	/**
+	 * You can customize the "in" icon (or remove it) by passing in html
+	 *
+	 * @param mixed $inIcon should convert to valid html string
+	 */
+	public function setInIcon($inIcon) : ToFromList
+		{
+		$this->inIcon = $inIcon;
 
-    return $this;
-    }
+		return $this;
+		}
 
-  public function setOutName(string $outName) : ToFromList
-    {
-    $this->outName = $outName;
+	/**
+	 * Sets the header name for the "in" group
+	 */
+	public function setInName(string $inName) : ToFromList
+		{
+		$this->inName = $inName;
 
-    return $this;
-    }
+		return $this;
+		}
 
-  protected function createWindow(array $group, string $type) : string
-    {
-    $output = "<div id='{$this->fieldName}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->fieldName}\")' ondragover='allowDropToFromList(event)'>";
+	/**
+	 * You can customize the "out" icon (or remove it) by passing in html
+	 *
+	 * @param mixed $outIcon should convert to valid html string
+	 */
+	public function setOutIcon($outIcon) : ToFromList
+		{
+		$this->outIcon = $outIcon;
 
-    foreach ($group as $line)
-      {
-      $output .= $this->makeDiv($this->fieldName . '_' . $line[$this->callbackIndex], $type, call_user_func($this->callback, $this->fieldName, $this->callbackIndex, $line, $type));
-      }
-    $output .= '</div>';
+		return $this;
+		}
 
-    return $output;
-    }
+	/**
+	 * Sets the header name for the "out" group
+	 */
+	public function setOutName(string $outName) : ToFromList
+		{
+		$this->outName = $outName;
 
-  protected function getBody() : string
-    {
-    $row = new GridX();
-    $in = new Cell();
-    $in->setMedium(6);
-    $in->add("<h3>{$this->inName}</h3>");
-    $in->add($this->createWindow($this->inGroup, 'in'));
-    $row->add($in);
-    $out = new Cell();
-    $out->setMedium(6);
-    $out->add("<h3>{$this->outName}</h3>");
-    $out->add($this->createWindow($this->notInGroup, 'out'));
-    $row->add($out);
+		return $this;
+		}
 
-    return "{$row}";
-    }
+	protected function createWindow(array $group, string $type) : string
+		{
+		$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";
 
-  protected function getEnd() : string
-    {
-    return '';
-    }
+		foreach ($group as $line)
+			{
+			$output .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
+			}
+		$output .= '</div>';
 
-  protected function getStart() : string
-    {
-    return '';
-    }
+		return $output;
+		}
 
-  protected function makeDiv(string $id, string $type, string $html) : string
-    {
-    $span = new HTML5Element('span');
+	protected function getBody() : string
+		{
+		$row = new GridX();
+		$in = new Cell();
+		$in->setMedium(6);
+		$in->add("<h3>{$this->inName}</h3>");
+		$in->add($this->createWindow($this->inGroup, 'in'));
+		$row->add($in);
+		$out = new Cell();
+		$out->setMedium(6);
+		$out->add("<h3>{$this->outName}</h3>");
+		$out->add($this->createWindow($this->notInGroup, 'out'));
+		$row->add($out);
 
-    if ('in' == $type)
-      {
-      $span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->fieldName . '_out")');
-      $icon = new Icon('arrow-right');
-      $icon->addAttribute('style', 'color:green');
-      }
-    else
-      {
-      $span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->fieldName . '_in")');
-      $icon = new Icon('arrow-left');
-      $icon->addAttribute('style', 'color:red');
-      }
-    $span->add($icon);
-    $span->add($html);
+		return "{$row}";
+		}
 
-    return "<div id='{$id}' draggable='true' ondragstart='dragStartToFromList(event)' class='draggable'>{$span}</div>";
-    }
+	protected function getEnd() : string
+		{
+		return '';
+		}
 
-  private function processRequest() : void
-    {
-    if (Session::checkCSRF())
-      {
+	protected function getStart() : string
+		{
+		return '';
+		}
 
-      if (isset($_GET['action']))
-        {
-        switch ($_GET['action'])
+	protected function makeDiv(string $id, string $type, string $html) : string
+		{
+		$span = new HTML5Element('span');
+
+		if ('in' == $type)
+			{
+			$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_out")');
+			$icon = $this->inIcon;
+			}
+		else
+			{
+			$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_in")');
+			$icon = $this->outIcon;
+			}
+		$span->add($icon);
+		$span->add($html);
+
+		return "<div id='{$id}' draggable='true' ondragstart='dragStartToFromList(event)' class='draggable'>{$span}</div>";
+		}
+
+	private function processRequest() : void
+		{
+		if (Session::checkCSRF())
+			{
+			if (isset($_GET['action']))
+				{
+				switch ($_GET['action'])
           {
           case 'getDragDropItem':
             $dragDropId = trim($_GET['DraggedId'], '#');
-            [$fieldName, $id] = explode('_', $dragDropId);
+            [$name, $id] = explode('_', $dragDropId);
 
-            if ($fieldName == $this->fieldName) // it is us, process
-              {
+            if ($name == $this->name)
+            { // it is us, process
               /** @noinspection PhpUnusedLocalVariableInspection */
-              [$junk, $type] = explode('_', $_GET['DropParentId']);
-              $html = call_user_func($this->callback, $fieldName, $this->callbackIndex, $id, $type);
+            	[$junk, $type] = explode('_', $_GET['DropParentId']);
+            	$html = call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
 
-              if ($html)
-                {
-                $this->page->setResponse($this->makeDiv($dragDropId, $type, $html));
-                }
-              }
+            	if ($html)
+            		{
+            		$this->page->setResponse($this->makeDiv($dragDropId, $type, $html));
+            		}
+            }
 
             break;
           }
-        }
-      }
-    }
-
-  }
+				}
+			}
+		}
+	}

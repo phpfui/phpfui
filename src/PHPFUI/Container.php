@@ -8,7 +8,6 @@ namespace PHPFUI;
  */
 class Container implements \Countable
 	{
-
 	private $objects = [];
 
 	public function __construct()
@@ -29,7 +28,27 @@ class Container implements \Countable
 	 */
 	public function add($object) : Container
 		{
-		$this->objects[] = $object;
+		if (null !== $object)
+			{
+			$this->objects[] = $object;
+			}
+
+		return $this;
+		}
+
+	/**
+	 * Adds to the front of the container
+	 *
+	 * @param mixed $object should be convertable to string
+	 *
+	 * @return Base
+	 */
+	public function addAsFirst($object) : Container
+		{
+		if (null !== $object)
+			{
+			array_unshift($this->objects, $object);
+			}
 
 		return $this;
 		}
@@ -67,5 +86,4 @@ class Container implements \Countable
 
 		return $this;
 		}
-
 	}

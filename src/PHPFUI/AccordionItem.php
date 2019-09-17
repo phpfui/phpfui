@@ -31,5 +31,4 @@ class AccordionItem extends ListItem
 
 		return $this;
 		}
-
 	}

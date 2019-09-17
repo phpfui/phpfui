@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class DropDownMenu extends Menu
 	{
-
 	private $width = null;
 
 	public function __construct()
@@ -46,5 +45,4 @@ class DropDownMenu extends Menu
 
 		return parent::getStart();
 		}
-
 	}

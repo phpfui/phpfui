@@ -19,5 +19,4 @@ class Password extends Input
 		{
 		parent::__construct('password', $name, $label, $value);
 		}
-
 	}

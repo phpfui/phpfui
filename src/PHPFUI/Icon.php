@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Icon extends HTML5Element
 	{
-
 	private $link;
 
 	/**
@@ -77,5 +76,4 @@ class Icon extends HTML5Element
 
 		return $output . parent::getStart();
 		}
-
 	}

@@ -19,5 +19,4 @@ class Url extends Input
 		{
 		parent::__construct('url', $name, $label, $value);
 		}
-
 	}

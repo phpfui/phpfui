@@ -19,5 +19,4 @@ class Week extends Input
 		{
 		parent::__construct('week', $name, $label, $value);
 		}
-
 	}

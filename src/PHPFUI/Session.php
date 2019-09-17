@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 abstract class SessionHandler
 	{
-
 	abstract public function checkCSRF(string $request = '') : bool;
 
 	abstract public function csrf(string $quote = '') : string;
@@ -14,7 +13,6 @@ abstract class SessionHandler
 
 class DefaultSessionHandler extends SessionHandler
 	{
-
 	private $csrfValue = '';
 
 	public function checkCSRF(string $request = '') : bool
@@ -54,7 +52,6 @@ class DefaultSessionHandler extends SessionHandler
  */
 class Session
 	{
-
 	private static $handler = null;
 
 	public static function checkCSRF(string $request = '') : bool
@@ -86,5 +83,4 @@ class Session
 
 		return self::$handler;
 		}
-
 	}

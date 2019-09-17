@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class FormError extends HTML5Element
 	{
-
 	public function __construct(string $message = 'Please correct the errors shown.')
 		{
 		parent::__construct('div');
@@ -16,5 +15,4 @@ class FormError extends HTML5Element
 		$icon = new Icon('exclamation-triangle');
 		$this->add("<p>{$icon} {$message}</p>");
 		}
-
 	}

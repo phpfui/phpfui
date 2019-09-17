@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 abstract class HTMLList extends HTML5Element
 	{
-
 	public function __construct($type)
 		{
 		parent::__construct($type);
@@ -26,5 +25,4 @@ abstract class HTMLList extends HTML5Element
 
 		return $this;
 		}
-
 	}

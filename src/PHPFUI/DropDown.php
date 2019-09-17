@@ -7,15 +7,13 @@ namespace PHPFUI;
  */
 class DropDown extends Base
 	{
-
 	private $dropDown;
 	private $hover;
 
 	/**
 	 * Construct a DropDown
 	 *
-	 * @param HTML5Element $dropTarget what to click on to initite
-	 *                     drop down
+	 * @param HTML5Element $dropTarget what to click on to initite drop down
 	 * @param HTML5Element $dropDown what you are going to drop
 	 */
 	public function __construct(HTML5Element $dropTarget, HTML5Element $dropDown)
@@ -96,5 +94,4 @@ class DropDown extends Base
 
 		return '';
 		}
-
 	}

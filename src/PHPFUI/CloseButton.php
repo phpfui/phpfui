@@ -30,5 +30,4 @@ class CloseButton extends Button
 			}
 		$element->addAttribute('data-closable', $closeAction);
 		}
-
 	}

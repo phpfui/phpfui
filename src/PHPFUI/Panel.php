@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Panel extends HTML5Element
 	{
-
 	protected $text;
 
 	/**
@@ -56,5 +55,4 @@ class Panel extends HTML5Element
 		{
 		return $this->text;
 		}
-
 	}

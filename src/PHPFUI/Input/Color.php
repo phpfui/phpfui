@@ -18,5 +18,4 @@ class Color extends Input
 		{
 		parent::__construct('color', $name, $value);
 		}
-
 	}

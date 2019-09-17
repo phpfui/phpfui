@@ -119,5 +119,4 @@ class MenuItem extends HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

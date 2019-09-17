@@ -9,7 +9,6 @@ namespace PHPFUI;
  */
 class Reveal extends HTML5Element
 	{
-
 	private $page;
 
 	/**
@@ -88,5 +87,4 @@ class Reveal extends HTML5Element
 
 		return $this;
 		}
-
 	}

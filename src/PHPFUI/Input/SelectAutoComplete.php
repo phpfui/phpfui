@@ -190,5 +190,4 @@ class SelectAutoComplete extends Select
 
 		return $text->output() . $this->hidden->output();
 		}
-
 	}

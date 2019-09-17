@@ -12,5 +12,4 @@ class TopBar extends Bar
 		{
 		parent::__construct('top');
 		}
-
 	}

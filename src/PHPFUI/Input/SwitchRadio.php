@@ -76,5 +76,4 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

@@ -20,5 +20,4 @@ class Reset extends Button
 		$this->setAttribute('type', 'reset');
 		$this->setAttribute('value', $value);
 		}
-
 	}

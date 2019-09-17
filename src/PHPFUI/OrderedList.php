@@ -7,10 +7,8 @@ namespace PHPFUI;
  */
 class OrderedList extends HTMLList
 	{
-
 	public function __construct()
 		{
 		parent::__construct('ol');
 		}
-
 	}

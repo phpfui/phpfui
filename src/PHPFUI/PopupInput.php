@@ -31,5 +31,4 @@ class PopupInput
 		return '$("#' . $this->inputId . '").val($("#' . $input->getId() . '").val());' . '$("#' . $this->updateFieldId . '").val("' .
 			$input->getId() . '");' . '$("#' . $this->revealId . '").foundation("open");';
 		}
-
 	}

@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class MultiSelect extends Select
 	{
-
 	private $gridSize = 12;
 	private $numberColumns = 1;
 
@@ -106,5 +105,4 @@ class MultiSelect extends Select
 
 		return "{$fieldSet}";
 		}
-
 	}

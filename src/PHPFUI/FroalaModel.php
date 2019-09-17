@@ -157,5 +157,4 @@ abstract class FroalaModel
 		{
 		return false;
 		}
-
 	}

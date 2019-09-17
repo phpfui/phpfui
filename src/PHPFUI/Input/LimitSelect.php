@@ -92,5 +92,4 @@ class LimitSelect extends Select
 
 		return $this;
 		}
-
 	}

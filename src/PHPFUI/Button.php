@@ -8,7 +8,6 @@ namespace PHPFUI;
  */
 class Button extends HTML5Element
 	{
-
 	protected $link;
 	protected $text;
 	private $started = false;
@@ -36,9 +35,15 @@ class Button extends HTML5Element
 		}
 
 	/**
+	 * returns the button link
+	 */
+	public function getLink()
+		{
+		return $this->link;
+		}
+
+	/**
 	 * returns the button text
-	 *
-	 * @return string
 	 */
 	public function getText()
 		{
@@ -49,7 +54,6 @@ class Button extends HTML5Element
 	 * Set the disabled state of the button
 	 *
 	 * @param bool $disabled defaults to true
-	 *
 	 */
 	public function setDisabled($disabled = true) : void
 		{
@@ -78,5 +82,4 @@ class Button extends HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

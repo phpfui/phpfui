@@ -26,5 +26,4 @@ class ToolTip extends HTML5Element
 		$this->addAttribute('tabindex', '1');
 		$this->addAttribute('data-disable-hover', 'false');
 		}
-
 	}

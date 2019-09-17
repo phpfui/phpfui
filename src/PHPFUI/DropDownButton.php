@@ -48,7 +48,6 @@ class DropDownButton extends Button
 
 	protected function getEnd() : string
 		{
-
 		return parent::getEnd() . $this->dropDown;
 		}
 
@@ -88,5 +87,4 @@ class DropDownButton extends Button
 
 		return parent::getStart();
 		}
-
 	}

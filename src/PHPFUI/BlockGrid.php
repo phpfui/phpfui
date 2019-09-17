@@ -60,5 +60,4 @@ class BlockGrid extends HTML5Element
 			$this->addClass("{$size}-block-grid-{$setting}");
 			}
 		}
-
 	}

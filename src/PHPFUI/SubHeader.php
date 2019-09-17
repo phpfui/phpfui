@@ -14,5 +14,4 @@ class SubHeader extends Header
 		{
 		parent::__construct($title, 3);
 		}
-
 	}

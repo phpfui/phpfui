@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class SplitButton extends Button
 	{
-
 	private $items = [];
 	private $menu;
 	private $started = false;
@@ -56,5 +55,4 @@ class SplitButton extends Button
 
 		return HTML5Element::getStart();
 		}
-
 	}

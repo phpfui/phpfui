@@ -24,5 +24,4 @@ class CheckBoxBoolean extends CheckBox
 		parent::__construct($name, $label, 1);
 		$this->setChecked($value);
 		}
-
 	}

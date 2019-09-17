@@ -25,14 +25,15 @@ class TextHelper
 			{
 			$js .= $comma;
 
-			if (! $normalArray) // use object notation
-				{
+			if (! $normalArray)
+				{ // use object notation
+
 				$js .= $key . ':';
 				}
 			$comma = ',';
 
 			switch (gettype($value))
-				{
+					{
 				/** @noinspection PhpMissingBreakStatementInspection */
 				case 'object':
 					$value = json_decode(json_encode($value), true);
@@ -60,7 +61,7 @@ class TextHelper
 				case 'NULL':
 				case 'unknown type':
 					$js .= 'null';
-				}
+					}
 			}
 
 		return $js . ($normalArray ? ']' : '}');
@@ -85,5 +86,4 @@ class TextHelper
 		{
 		return htmlspecialchars_decode($string, ENT_QUOTES | ENT_HTML5);
 		}
-
 	}

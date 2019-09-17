@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Animation
 	{
-
 	private static $animations = [
 		'slide-in-down'           => true,
 		'slide-in-left'           => true,
@@ -57,5 +56,4 @@ class Animation
 		{
 		return empty($animation) || isset(self::$animations[$animation]);
 		}
-
 	}

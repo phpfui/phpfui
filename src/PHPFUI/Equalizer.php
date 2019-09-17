@@ -11,11 +11,11 @@ class Equalizer extends HTML5Element
 	private static $watchMaster = 0;
 
 	public function __construct(?HTML5Element $base = null)
-    {
-    if (! $base)
-      {
-      $base = new GridX();
-      }
+		{
+		if (! $base)
+			{
+			$base = new GridX();
+			}
 
 		parent::__construct($base->getElement());
 		$this->base = $base;
@@ -49,5 +49,4 @@ class Equalizer extends HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

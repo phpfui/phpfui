@@ -8,7 +8,6 @@ namespace PHPFUI\Input;
  */
 class TextArea extends Input
 	{
-
 	private $rows = 10;
 
 	/**
@@ -108,5 +107,4 @@ class TextArea extends Input
 			$page->addStyleSheet($css);
 			}
 		}
-
 	}

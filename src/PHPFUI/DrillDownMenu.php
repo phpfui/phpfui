@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class DrillDownMenu extends Menu
 	{
-
 	public function __construct()
 		{
 		parent::__construct();
@@ -34,5 +33,4 @@ class DrillDownMenu extends Menu
 
 		return $this;
 		}
-
 	}

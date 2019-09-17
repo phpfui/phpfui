@@ -47,5 +47,4 @@ class Display extends GridX
 
 		return "<div class='medium-3 small-4 columns'><label {$class}><strong>{$this->label}</strong></label></div><div {$class}>{$this->text}</div>";
 		}
-
 	}

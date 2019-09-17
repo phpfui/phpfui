@@ -19,5 +19,4 @@ class Text extends Input
 		{
 		parent::__construct('text', $name, $label, $value);
 		}
-
 	}

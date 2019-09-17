@@ -41,8 +41,9 @@ input[type="date"]::-webkit-inner-spin-button {z-index: 1;}
 input[type="date"]::-webkit-clear-button {z-index: 1;}
 CHROME_CSS);
 			}
-		elseif (! $page->hasDatePicker())  // if we can't use a native, then use JS version
-			{
+		elseif (! $page->hasDatePicker())
+			{  // if we can't use a native, then use JS version
+
 			parent::__construct('text', $name, $label, $value);
 			$page->addTailScript('/datepicker/js/foundation-datepicker.min.js');
 			$page->addStyleSheet('/datepicker/css/foundation-datepicker.min.css');
@@ -102,8 +103,9 @@ CHROME_CSS);
 
 	protected function getStart() : string
 		{
-		if (! $this->page->hasDatePicker())  // if we can't use a native, then use JS version
-			{
+		if (! $this->page->hasDatePicker())
+			{  // if we can't use a native, then use JS version
+
 			$id = $this->getId();
 			$dollar = '$';
 			$this->page->addJavaScript("{$dollar}('#{$id}').fdatepicker(" . \PHPFUI\TextHelper::arrayToJS($this->options) . ');');
@@ -111,5 +113,4 @@ CHROME_CSS);
 
 		return parent::getStart();
 		}
-
 	}

@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class ButtonGroup extends HTML5Element implements \Countable
 	{
-
 	protected $buttons = [];
 	private $started = false;
 
@@ -21,8 +20,6 @@ class ButtonGroup extends HTML5Element implements \Countable
 	 * Add a button to the group with optional class
 	 *
 	 * @param Button $button to add
-	 *
-	 * @return void
 	 */
 	public function addButton(Button $button) : ButtonGroup
 		{
@@ -35,8 +32,6 @@ class ButtonGroup extends HTML5Element implements \Countable
 	 * Add a class to all buttons in group
 	 *
 	 * @param string $class to add
-	 *
-	 * @return void
 	 */
 	public function addButtonClass($class) : ButtonGroup
 		{
@@ -50,7 +45,6 @@ class ButtonGroup extends HTML5Element implements \Countable
 
 	/**
 	 * Returns the number of buttons in the group
-	 *
 	 */
 	public function count() : int
 		{
@@ -63,8 +57,6 @@ class ButtonGroup extends HTML5Element implements \Countable
 	 *
 	 * @param int $index of the button to replace
 	 * @param Button $button to replace
-	 *
-	 * @return void
 	 */
 	public function setButton($index, Button $button) : ButtonGroup
 		{
@@ -94,5 +86,4 @@ class ButtonGroup extends HTML5Element implements \Countable
 
 		return parent::getStart();
 		}
-
 	}

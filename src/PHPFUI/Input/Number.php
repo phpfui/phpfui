@@ -19,5 +19,4 @@ class Number extends Input
 		{
 		parent::__construct('number', $name, $label, $value);
 		}
-
 	}

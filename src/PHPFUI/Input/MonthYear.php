@@ -9,7 +9,6 @@ namespace PHPFUI\Input;
  */
 class MonthYear extends \PHPFUI\Base
 	{
-
 	protected $hidden;
 	protected $label;
 	protected $monthSelect;
@@ -158,5 +157,4 @@ JAVASCRIPT;
 
 		return '';
 		}
-
 	}

@@ -21,5 +21,4 @@ class DateTime extends Input
 		{
 		parent::__construct('datetime-local', $name, $label, $value);
 		}
-
 	}

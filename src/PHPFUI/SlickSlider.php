@@ -93,5 +93,4 @@ class SlickSlider extends HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

@@ -63,5 +63,4 @@ class Accordion extends UnorderedList
 
 		return $listItem;
 		}
-
 	}

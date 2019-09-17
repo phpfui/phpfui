@@ -69,5 +69,4 @@ class CheckBox extends Input
 
 		return '';
 		}
-
 	}

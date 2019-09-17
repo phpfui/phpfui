@@ -380,5 +380,4 @@ class Table extends HTML5Element
 
 		return $output;
 		}
-
 	}

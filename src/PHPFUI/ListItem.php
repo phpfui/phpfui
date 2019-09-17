@@ -15,5 +15,4 @@ class ListItem extends HTML5Element
 		parent::__construct('li');
 		$this->add($content);
 		}
-
 	}

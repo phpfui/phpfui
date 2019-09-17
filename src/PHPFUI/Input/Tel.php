@@ -19,5 +19,4 @@ class Tel extends Input
 		{
 		parent::__construct('tel', $name, $label, $value);
 		}
-
 	}

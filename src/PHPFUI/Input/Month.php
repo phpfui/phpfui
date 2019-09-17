@@ -19,5 +19,4 @@ class Month extends Input
 		{
 		parent::__construct('month', $name, $label, $value);
 		}
-
 	}

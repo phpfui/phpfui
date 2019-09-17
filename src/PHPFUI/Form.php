@@ -3,8 +3,9 @@
 namespace PHPFUI;
 
 /**
- * The Form class handles all the housekeeping of dealing with forms, including automatically setting up validation, a CSRF field and handling a submit button.
- * Form submissions can be detected with isMyCallback and appropriate work on if it returns true.
+ * The Form class handles all the housekeeping of dealing with forms, including automatically
+ * setting up validation, a CSRF field and handling a submit button. Form submissions can be
+ * detected with isMyCallback.  If it returns true, you should do appropriate work
  */
 class Form extends HTML5Element
 	{
@@ -78,15 +79,14 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
       submit.prop('value',text).css('background-color',color);},3000);
   },
   });
-});
-});
+	});
+	});
 JAVASCRIPT;
 			}
 		}
 
 	/**
-	 * Returns true if the submit button passed in the ctor was pressed.
-	 *
+	 * Returns true if the submit button passed in the ctor was pressed by the user.
 	 */
 	public function isMyCallback() : bool
 		{
@@ -95,8 +95,6 @@ JAVASCRIPT;
 
 	/**
 	 * Any clickable element passed to this function will issue an AJAX call to save the form.
-	 *
-	 *
 	 */
 	public function saveOnClick(HTML5Element $button) : Form
 		{
@@ -112,6 +110,11 @@ JAVASCRIPT;
 		return $this;
 		}
 
+	/**
+	 * Forms automatically ask the user if they are sure they want to navigate away from the page if the
+	 * user has entered any data.  You can use this to turn off that behavior.  A good example of why
+	 * you might want to do this is search criteria type forms where the data is not normally saved.
+	 */
 	public function setAreYouSure(bool $areYouSure = true) : Form
 		{
 		$this->areYouSure = $areYouSure;
@@ -143,5 +146,4 @@ JAVASCRIPT;
 
 		return parent::getStart();
 		}
-
 	}

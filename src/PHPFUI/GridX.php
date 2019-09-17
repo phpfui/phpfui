@@ -23,5 +23,4 @@ class GridX extends HTML5Element
 
 		return $this;
 		}
-
 	}

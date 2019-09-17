@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class MediaObject extends HTML5Element
 	{
-
 	public function __construct()
 		{
 		parent::__construct('div');
@@ -58,5 +57,4 @@ class MediaObject extends HTML5Element
 
 		return $this;
 		}
-
 	}

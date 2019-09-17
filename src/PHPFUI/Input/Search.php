@@ -19,5 +19,4 @@ class Search extends Input
 		{
 		parent::__construct('search', $name, $label, $value);
 		}
-
 	}

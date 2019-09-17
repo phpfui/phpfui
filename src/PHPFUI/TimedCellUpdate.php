@@ -61,5 +61,4 @@ class TimedCellUpdate extends Base
 		{
 		return '';
 		}
-
 	}

@@ -159,5 +159,4 @@ class Menu extends HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

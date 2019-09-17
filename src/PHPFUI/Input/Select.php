@@ -179,5 +179,4 @@ class Select extends Input implements \Countable
 
 		return $label . $error;
 		}
-
 	}

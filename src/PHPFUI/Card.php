@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class Card extends HTML5Element
 	{
-
 	public function __construct()
 		{
 		parent::__construct('div');
@@ -30,5 +29,4 @@ class Card extends HTML5Element
 
 		return $this;
 		}
-
 	}

@@ -9,16 +9,14 @@ return PhpCsFixer\Config::create()
 	->setIndent("\t")
 	->setLineEnding("\r\n")
 	->setRules([
-		'array_syntax' => [
-			'syntax' => 'short'
-			],
+		'array_syntax' => ['syntax' => 'short'],
 		'blank_line_after_namespace' => true,
 		'blank_line_before_return' => true,
-//		'braces' => [
-//			'position_after_control_structures' => 'next',
-//			'position_after_functions_and_oop_constructs' => 'next',
-//			'position_after_anonymous_constructs' => 'next',
-//			],
+		'braces' => [
+			'position_after_control_structures' => 'next',
+			'position_after_functions_and_oop_constructs' => 'next',
+			'position_after_anonymous_constructs' => 'next',
+			],
 		'combine_consecutive_unsets' => true,
 		'elseif' => true,
 		'no_trailing_whitespace' => true,

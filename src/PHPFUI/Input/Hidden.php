@@ -18,5 +18,4 @@ class Hidden extends \PHPFUI\Input
 		{
 		parent::__construct('hidden', $name, $value);
 		}
-
 	}

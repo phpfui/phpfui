@@ -24,5 +24,4 @@ class GridY extends HTML5Element
 
 		return $this;
 		}
-
 	}

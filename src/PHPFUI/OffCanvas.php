@@ -187,5 +187,4 @@ class OffCanvas extends Base
 
 		return $this;
 		}
-
 	}

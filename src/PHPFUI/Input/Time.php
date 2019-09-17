@@ -21,17 +21,19 @@ class Time extends Input
 	 */
 	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', ?string $value = '', int $interval = 15)
 		{
-		if ($page->isAndroid())  // use a native picker for Android in hh:mm:ss format
-			{
+		if ($page->isAndroid())
+			{  // use a native picker for Android in hh:mm:ss format
+
 			$value = self::toMilitary($value);
 			parent::__construct('time', $name, $label, $value);
-		  // use a native picker for Android in hh:mm:ss format
+			// use a native picker for Android in hh:mm:ss format
 			$this->addAttribute('pattern', 'military');
 			$page->addPluginDefault('Abide', 'patterns["military"]', '/^(((([0-1][0-9])|(2[0-3])):?[0-5][0-9])|(24:?00))/');
 			$this->addAttribute('step', $interval * 60);
 			}
-		elseif (! $page->hasTimePicker())  // if we can't use a native, then use JS version
-			{
+		elseif (! $page->hasTimePicker())
+			{  // if we can't use a native, then use JS version
+
 			parent::__construct('text', $name, $label, $value);
 			$page->addJavaScript('$("#' . $this->getId() . '").AnyPicker({mode:"datetime",rowsNavigation:"scroller+buttons",selectedDate:"' . $value .
 				'",dateTimeFormat:"h:mm AA",intervals:{h:1,m:' . $interval . '},viewSections:{header:["headerTitle"],contentTop:[],contentBottom:[],footer:["cancelButton","clearButton","setButton"]}});');
@@ -60,7 +62,7 @@ class Time extends Input
 		if (strpos($timeString, 'A') || strpos($timeString, 'P'))
 			{
 			switch ($positions)
-				{
+					{
 				case 4:
 					[$hour, $minute, $second, $ampm] = $array;
 
@@ -80,7 +82,7 @@ class Time extends Input
 					$hour = (int) $timeString;
 
 					break;
-				}
+					}
 
 			if (false !== strpos($ampm, 'P'))
 				{
@@ -90,7 +92,7 @@ class Time extends Input
 		else
 			{
 			switch ($positions)
-				{
+					{
 				case 3:
 					[$hour, $minute, $second] = $array;
 
@@ -105,7 +107,7 @@ class Time extends Input
 					$hour = (int) $timeString;
 
 					break;
-				}
+					}
 			}
 
 		if ($hour > 23 || $hour < 0 || $minute < 0 || $minute > 59)
@@ -118,5 +120,4 @@ class Time extends Input
 
 		return "{$hour}:{$minute}:{$second}";
 		}
-
 	}

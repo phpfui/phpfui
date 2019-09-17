@@ -230,5 +230,4 @@ class Pagination extends HTML5Element
 
 		return $item;
 		}
-
 	}

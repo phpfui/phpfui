@@ -32,7 +32,6 @@ namespace PHPFUI;
  */
 class MultiColumn extends GridX implements \Countable
 	{
-
 	private $objects = [];
 	private $smallColumn = 12;
 	private $started = false;
@@ -116,5 +115,4 @@ class MultiColumn extends GridX implements \Countable
 
 		return parent::getStart();
 		}
-
 	}

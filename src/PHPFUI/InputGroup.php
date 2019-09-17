@@ -43,5 +43,4 @@ class InputGroup extends HTML5Element
 
 		return $this;
 		}
-
 	}

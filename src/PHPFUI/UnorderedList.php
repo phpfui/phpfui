@@ -9,7 +9,6 @@ namespace PHPFUI;
  */
 class UnorderedList extends HTMLList
 	{
-
 	private $sortable;
 
 	/**
@@ -44,5 +43,4 @@ class UnorderedList extends HTMLList
 
 		return $this;
 		}
-
 	}

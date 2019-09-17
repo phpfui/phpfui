@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class TitleBar extends Bar
 	{
-
 	private $title;
 
 	/**
@@ -28,5 +27,4 @@ class TitleBar extends Bar
 
 		return parent::getStart();
 		}
-
 	}

@@ -34,7 +34,7 @@ class Input extends \PHPFUI\Input
 		$this->label = $label;
 
 		switch ($this->type)
-			{
+				{
 			case 'email':
 				$this->errorMessages['Must be a valid email address with @ sign and domain'] = true;
 				$this->addAttribute('pattern', $this->type);
@@ -61,7 +61,7 @@ class Input extends \PHPFUI\Input
 				$this->addAttribute('pattern', $this->type);
 
 				break;
-			}
+				}
 		}
 
 	/**
@@ -202,5 +202,4 @@ class Input extends \PHPFUI\Input
 
 		return $label . parent::getStart();
 		}
-
 	}

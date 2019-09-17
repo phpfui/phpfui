@@ -70,5 +70,4 @@ class ReCAPTCHA extends HTML5Element
 		{
 		return $this->isValid;
 		}
-
 	}

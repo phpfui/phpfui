@@ -26,5 +26,4 @@ class GridContainer extends HTML5Element
 		{
 		$this->addClass('full');
 		}
-
 	}

@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Radio extends Input
 	{
-
 	private $checked = '';
 
 	/**
@@ -57,5 +56,4 @@ class Radio extends Input
 
 		return "<input {$attributes} {$classes} {$this->checked} {$this->disabled}/><label for='{$id}' class='{$labelClass}'>";
 		}
-
 	}

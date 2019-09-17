@@ -30,5 +30,4 @@ class Thumbnail extends HTML5Element
 			$this->addClass('thumbnail');
 			}
 		}
-
 	}

@@ -87,5 +87,4 @@ class Cell extends HTML5Element
 			$this->addClass("{$size}-{$setting}");
 			}
 		}
-
 	}

@@ -136,5 +136,4 @@ class Link extends HTML5Element
 
 		return new Link('tel:' . $number, $text, false);
 		}
-
 	}

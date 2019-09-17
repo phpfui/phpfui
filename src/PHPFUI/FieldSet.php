@@ -23,5 +23,4 @@ class FieldSet extends HTML5Element
 			$this->add("<legend>{$legend}</legend>");
 			}
 		}
-
 	}
