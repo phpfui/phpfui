@@ -59,8 +59,15 @@ Versioning will match the [Zurb Foundation versions](https://github.com/zurb/fou
 PHPDOC Blocks.  PHPFUI/InstaDoc coming soon.
 
 ## Examples
-See [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php)
-Add [kitchenSink.php](https://github.com/phpfui/phpfui/blob/master/examples/kitchenSink.php) to your root directory for an example page.
+#### Add the following files to a public directory for testing
+* [kitchenSink.php](https://github.com/phpfui/phpfui/blob/master/examples/kitchenSink.php) examples to show most classes.
+* [paginate.php](https://github.com/phpfui/phpfui/blob/master/examples/paginate.php) allows you to test pagination parametes.
+* [sortableTable.php](https://github.com/phpfui/phpfui/blob/master/examples/sortableTable.php) interactive SortableTable example with pagination.
+* [abide.php](https://github.com/phpfui/phpfui/blob/master/examples/abide.php) a more realistic Abide demo.
+
+## Unit Testing
+#### Also good for some basic usage examples
+* [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php) Example generating class used for unit testing.
 
 ## License
 PHPFUI is distributed under the MIT License.

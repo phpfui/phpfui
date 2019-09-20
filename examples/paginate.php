@@ -3,7 +3,7 @@
 namespace PHPFUI;
 
 // Your autoloader here
-include '../common.php';
+include '../vendor/autoload.php';
 
 $page = new Page();
 // You need a reasonable style sheet as well.  Default Foundation will work.
@@ -15,7 +15,7 @@ $o = $_GET['o'] ?? 10;
 $ff = $_GET['ff'] ?? 0;
 $c = $_GET['c'] ?? false;
 
-$mainColumn = new \PHPFUI\Cell(12);
+$mainColumn = new Cell(12);
 $mainColumn->addClass('main-column');
 $mainColumn->add(new Header('Pagination Tester'));
 
@@ -30,13 +30,13 @@ $mainColumn->add($paginate);
 
 $form = new Form($page);
 $fieldSet = new FieldSet('Change Parameters');
-$of = new \PHPFUI\Input\Number('o', 'Total Pages', $o);
+$of = new Input\Number('o', 'Total Pages', $o);
 $of->setToolTip('Total pages in view');
-$window = new \PHPFUI\Input\Number('w', 'Page Window', $w);
+$window = new Input\Number('w', 'Page Window', $w);
 $window->setToolTip('Number of pages to show on either side of current page');
-$fastForward = new \PHPFUI\Input\Number('ff', 'Fast Forward', $ff);
+$fastForward = new Input\Number('ff', 'Fast Forward', $ff);
 $fastForward->setToolTip('Pages to advance instead of elipse');
-$center = new \PHPFUI\Input\CheckBoxBoolean('c', 'Center', $c);
+$center = new Input\CheckBoxBoolean('c', 'Center', $c);
 $center->setToolTip('Check to center the paginator');
 $mc = new MultiColumn($of, $window, $fastForward, $center);
 $mc->addClass('align-center-middle');

@@ -3,7 +3,7 @@
 namespace PHPFUI;
 
 // Your autoloader here
-include '../common.php';
+include '../vendor/autoload.php';
 
 try
 	{
