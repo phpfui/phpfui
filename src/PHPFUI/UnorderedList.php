@@ -39,6 +39,7 @@ class UnorderedList extends HTMLList
 			{
 			$item->addClass('sortableItem');
 			}
+
 		parent::addItem($item);
 
 		return $this;

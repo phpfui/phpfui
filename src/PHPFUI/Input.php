@@ -149,6 +149,7 @@ class Input extends HTML5Element
 			{
 			$this->addAttribute('name', $this->name);
 			}
+
 		$this->addAttribute('type', $this->type);
 
 		if (null !== $this->value)

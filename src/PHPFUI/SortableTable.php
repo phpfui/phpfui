@@ -63,6 +63,7 @@ class SortableTable extends Table
 			{
 			$order = 'a';
 			}
+
 		$this->sortedOrder = $order;
 		$this->sortedColumn = $column;
 
@@ -92,6 +93,7 @@ class SortableTable extends Table
 			{
 			return '';
 			}
+
 		$link = $this->url . '?' . http_build_query($parameters);
 
 		return "<span class='float-right'><a href='{$link}'>{$indicator}</a></span>";

@@ -37,6 +37,7 @@ class RadioGroup extends Input implements \Countable
 			{
 			$value = $label;
 			}
+
 		$this->buttons[] = ['label'    => $label,
 												'value'    => $value,
 												'disabled' => $disabled ? 'disabled' : '',];
@@ -77,6 +78,7 @@ class RadioGroup extends Input implements \Countable
 			$label->add($this->getToolTip($this->label));
 			$output->add($label);
 			}
+
 		$rows = new \PHPFUI\GridX();
 
 		foreach ($this->buttons as $button)
@@ -91,6 +93,7 @@ class RadioGroup extends Input implements \Countable
 				$rows->add('<br>');
 				}
 			}
+
 		$output->add($rows);
 
 		return "{$output}";

@@ -102,6 +102,7 @@ class Tabs extends Base
 				{
 				$this->tabSection->addClass('vertical');
 				}
+
 			$this->tabSection->addClass('tabs');
 			$this->contentSection = new HTML5Element('div');
 			$this->contentSection->addClass('tabs-content');
@@ -121,6 +122,7 @@ class Tabs extends Base
 					$div->addClass('is-active');
 					$item->addClass('is-active');
 					}
+
 				$this->tabSection->addItem($item);
 				$this->contentSection->add($div);
 				}

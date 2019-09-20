@@ -25,6 +25,7 @@ class Embed extends HTML5Element
 			{
 			throw new \Exception(__METHOD__ . ': $ratio must be one of (' . implode(',', $validRatios) . ')');
 			}
+
 		$this->addClass($ratio);
 
 		return $this;

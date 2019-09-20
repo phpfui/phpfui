@@ -370,6 +370,7 @@ abstract class Base implements \Countable
 					$output .= "\n";
 					}
 				}
+
 			$body = "{$this->getBody()}";
 			$output .= $body;
 
@@ -377,6 +378,7 @@ abstract class Base implements \Countable
 				{
 				$output .= "\n";
 				}
+
 			$end = "{$this->getEnd()}";
 			$output .= $end;
 

@@ -82,6 +82,7 @@ class DropDownButton extends Button
 				{
 				$menu->addMenuItem($item);
 				}
+
 			$this->dropDown->add($menu);
 			}
 

@@ -45,6 +45,7 @@ class Slider extends HTML5Element
 			{
 			throw new Exception('ERROR: ' . __METHOD__ . ' $function must be ' . implode(' or ', $functions));
 			}
+
 		$this->setAttribute('data-position-value-function', $function);
 		$this->setAttribute('data-non-linear-base', $base);
 		}
@@ -92,6 +93,7 @@ class Slider extends HTML5Element
 				$this->addClass('vertical');
 				$this->setAttribute('data-vertical', 'true');
 				}
+
 			$this->sliderHangle->addAttribute('aria-valuemax', $this->max);
 			$this->sliderHangle->addAttribute('aria-valuemin', $this->min);
 			$this->sliderHangle->addAttribute('aria-valuenow', $this->value);

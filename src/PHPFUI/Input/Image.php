@@ -23,6 +23,7 @@ class Image extends \PHPFUI\HTML5Element
 			{
 			$alt = $src;
 			}
+
 		$this->addAttribute('alt', $alt);
 		}
 	}

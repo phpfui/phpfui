@@ -20,13 +20,10 @@ class TimedCellUpdate extends Base
 	 * @param string $callbackId the id of the element to update
 	 * @param callable $callback PHP callback that will be called
 	 *                             every timeout interval. Should return the new
-	 *                             contents of the cell
-	 * @param int $timeout interval to be called back, default 30
-	 *                    seconds
-	 * @param string $offString if the callback returns this string,
-	 *                         the timer will be turned off. Default is blank,
-	 *               so if the callback returns blank, the timer is
-	 *               turned off.
+	 *  													 contents of the cell. It is passed the id of the field being updated.
+	 * @param int $timeout interval to be called back, default 30 seconds
+	 * @param string $offString if the callback returns this string, the timer will be turned off.
+	 *  						 Default is blank, so if the callback returns blank, the timer is turned off.
 	 */
 	public function __construct(Page $page, string $callbackId, callable $callback, int $timeout = 30, string $offString = '')
 		{
@@ -38,7 +35,7 @@ class TimedCellUpdate extends Base
 		$csrf = Session::csrf();
 		$csrfField = Session::csrfField();
 		$dollar = '$';
-		$js = "var startTimer=function(){var timerId=setInterval(function(){{$dollar}." . "ajax({dataType:'json',type:'POST',traditional:true,data:{{$csrfField}:'{$csrf}',id:'{$callbackId}'," . "callback:'{$cbn}'}}).success(function(data){{$dollar}('#{$callbackId}').html(data.response);if(data.response=='{$offString}'){clearInterval(timerId);}});},{$timeout});};startTimer();";
+		$js = "var startTimer=function(){var timerId=setInterval(function(){{$dollar}.ajax({dataType:'json',type:'POST',traditional:true,data:{{$csrfField}:'{$csrf}',id:'{$callbackId}',callback:'{$cbn}'},success:function(data){{$dollar}('#{$callbackId}').html(data.response);if(data.response=='{$offString}'){clearInterval(timerId);}}})},{$timeout})};startTimer();";
 		$page->addJavaScript($js);
 
 		if (isset($_POST['callback']) && $_POST['callback'] == $cbn && $_POST[$csrfField] == $csrf && $callbackId == $_POST['id'])

@@ -112,8 +112,10 @@ class PayPalExpress extends HTML5Element
 				{
 				$js .= 'window.location.href = "' . $this->errorUrl . '";';
 				}
+
 			$js .= '}';
 			}
+
 		$js .= '},"#' . $this->getId() . '");';
 		$this->page->addJavaScript($js);
 

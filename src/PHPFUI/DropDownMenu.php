@@ -35,6 +35,7 @@ class DropDownMenu extends Menu
 				{
 				$this->width = max($this->width, strlen($item->getName()));
 				}
+
 			$this->width = (int) ($this->width * 0.8);
 			}
 

@@ -37,6 +37,7 @@ class Accordion extends UnorderedList
 			{
 			$listItem->addClass('is-active');
 			}
+
 		$listItem->addContent($content);
 		$this->addItem($listItem);
 

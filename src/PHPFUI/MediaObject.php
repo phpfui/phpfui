@@ -32,6 +32,7 @@ class MediaObject extends HTML5Element
 				{
 				throw new \Exception(__METHOD__ . ': $alignment must be one of (' . implode(',', $validAlignments) . ')');
 				}
+
 			$section->addClass($align);
 			}
 
@@ -46,6 +47,7 @@ class MediaObject extends HTML5Element
 			{
 			$section->add($content);
 			}
+
 		$this->add($section);
 
 		return $this;

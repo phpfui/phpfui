@@ -68,6 +68,7 @@ class ProgressBar extends HTML5Element
 			{
 			$this->label = "{$this->current}%";
 			}
+
 		$this->setAttribute('aria-valuetext', $this->label);
 		$this->setAttribute('aria-valuenow', $this->current);
 		$this->setAttribute('aria-valuemin', $this->min);

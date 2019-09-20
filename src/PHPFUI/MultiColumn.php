@@ -107,6 +107,7 @@ class MultiColumn extends GridX implements \Countable
 						{
 						$cell->setSmall($sizes[$number]);
 						}
+
 					$cell->add($this->objects[$i - 1]);
 					parent::add($cell);
 					}

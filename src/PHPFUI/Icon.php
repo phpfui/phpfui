@@ -71,6 +71,7 @@ class Icon extends HTML5Element
 				{
 				$link = "href='{$this->link}' ";
 				}
+
 			$output = "<a id='{$id}a' {$link}>";
 			}
 

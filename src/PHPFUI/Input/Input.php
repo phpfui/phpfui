@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Generic input class with default error handling
  */
-class Input extends \PHPFUI\Input
+abstract class Input extends \PHPFUI\Input
 	{
 	protected $error;
 	protected $errorMessages = [];
@@ -28,13 +28,13 @@ class Input extends \PHPFUI\Input
 	 *
 	 * @throws \Exception if an invalid input type or a specific class exists for an input type like Date
 	 */
-	protected function __construct(string $type, string $name = '', string $label = '', ?string $value = '')
+	public function __construct(string $type, string $name = '', string $label = '', ?string $value = '')
 		{
 		parent::__construct($type, $name, $value);
 		$this->label = $label;
 
 		switch ($this->type)
-				{
+			{
 			case 'email':
 				$this->errorMessages['Must be a valid email address with @ sign and domain'] = true;
 				$this->addAttribute('pattern', $this->type);
@@ -61,7 +61,7 @@ class Input extends \PHPFUI\Input
 				$this->addAttribute('pattern', $this->type);
 
 				break;
-				}
+			}
 		}
 
 	/**

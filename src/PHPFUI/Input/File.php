@@ -46,6 +46,7 @@ class File extends Input
 			{
 			$value = '.' . $value;
 			}
+
 		$this->addAttribute('accept', implode(' ', $extensions));
 
 		return $this;

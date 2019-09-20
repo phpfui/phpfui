@@ -344,6 +344,7 @@ class Page extends Base
 				$parameters = '?' . $parameters;
 				}
 			}
+
 		$timeout = (int) $timeout;
 
 		if (! $timeout)
@@ -416,6 +417,7 @@ class Page extends Base
 				$output .= $reveal;
 				}
 			}
+
 		$scripts = [
       '/foundation/js/vendor/jquery.min.js',
       '/foundation/js/vendor/what-input.min.js',
@@ -427,6 +429,7 @@ class Page extends Base
 			{
 			$output .= "<script src='{$src}'></script>{$nl}";
 			}
+
 		$output .= '<script>';
 
 		foreach ($this->plugins as $plugin => $options)
@@ -436,6 +439,7 @@ class Page extends Base
 				$output .= "Foundation.{$plugin}.defaults.{$name}={$value};";
 				}
 			}
+
 		$output .= '$(document).foundation();' . $nl;
 		$this->javascript = array_merge($this->javascript, $this->javascriptLast);
 
@@ -443,6 +447,7 @@ class Page extends Base
 			{
 			$output .= "{$js};{$nl}";
 			}
+
 		$output .= '</script></body></html>';
 
 		return $output;
@@ -457,6 +462,7 @@ class Page extends Base
 			{
 			$output .= $comment;
 			}
+
 		$output .= "<html class='no-js' lang='{$this->language}'>{$nl}<head>";
 
 		foreach ($this->headTags as $tag)
@@ -468,6 +474,7 @@ class Page extends Base
 			{
 			$output .= "<link rel='shortcut icon' href='{$this->favIcon}' />{$nl}";
 			}
+
 		$output .= "<title>{$this->pageName}</title>{$nl}";
 		// always place foundation css first
 		$this->styleSheets = array_merge($this->foundationStyleSheets, $this->styleSheets);
@@ -491,6 +498,7 @@ class Page extends Base
 			{
 			$output .= '<style>' . implode(';', $this->css) . '</style>' . $nl;
 			}
+
 		$output .= '</head><body>';
 
 		return $output;

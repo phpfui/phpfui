@@ -32,8 +32,10 @@ class AccordionToFromList extends ToFromList
 				{
 				$tabContent .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
 				}
+
 			$accordion->addTab($tabText, $tabContent);
 			}
+
 		$output .= $accordion . '</div>';
 
 		return $output;

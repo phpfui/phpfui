@@ -114,6 +114,7 @@ class MenuItem extends HTML5Element
 				$this->addClass('menu-text');
 				$text = $this->name;
 				}
+
 			$this->prepend($text);
 			}
 

@@ -58,5 +58,9 @@ Versioning will match the [Zurb Foundation versions](https://github.com/zurb/fou
 ## Documentation
 PHPDOC Blocks.  PHPFUI/InstaDoc coming soon.
 
+## Examples
+See [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php)
+Add [kitchenSink.php](https://github.com/phpfui/phpfui/blob/master/examples/kitchenSink.php) to your root directory for an example page.
+
 ## License
 PHPFUI is distributed under the MIT License.

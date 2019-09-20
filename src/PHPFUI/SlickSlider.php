@@ -28,19 +28,6 @@ class SlickSlider extends HTML5Element
 		}
 
 	/**
-	 * Add an attribute as defined by the slider
-	 *
-	 * @param mixed $value of any type
-	 *
-	 */
-	public function addAttribute(string $attribute, $value = '') : Base
-		{
-		$this->attributes[$attribute] = $value;
-
-		return $this;
-		}
-
-	/**
 	 * Add an image and alt text to the slider
 	 *
 	 * @param string $image path/filename of image to add
@@ -68,6 +55,19 @@ class SlickSlider extends HTML5Element
 	public function addSlide(string $html) : SlickSlider
 		{
 		$this->slides[] = $html;
+
+		return $this;
+		}
+
+	/**
+	 * Add an attribute as defined by the slider
+	 *
+	 * @param mixed $value of any type
+	 *
+	 */
+	public function addSliderAttribute(string $attribute, $value = '') : Base
+		{
+		$this->attributes[$attribute] = $value;
 
 		return $this;
 		}

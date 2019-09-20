@@ -36,6 +36,7 @@ class DropDown extends Base
 			{
 			throw new \Exception(__METHOD__ . ': $alignment must be one of (' . implode(',', $validAlignments) . ')');
 			}
+
 		$this->dropDown->addAttribute('data-alignment', $alignment);
 
 		return $this;
@@ -65,6 +66,7 @@ class DropDown extends Base
 			{
 			throw new \Exception(__METHOD__ . ': $position must be one of (' . implode(',', $validPositions) . ')');
 			}
+
 		$this->dropDown->addAttribute('data-position', $position);
 
 		return $this;

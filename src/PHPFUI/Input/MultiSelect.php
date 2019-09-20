@@ -77,6 +77,7 @@ class MultiSelect extends Select
 				{
 				$cell = new \PHPFUI\Cell($this->gridSize / $this->numberColumns);
 				}
+
 			$checkBox = new CheckBox($this->name, $option['label'], $option['value'], false);
 
 			if ($option['selected'])
@@ -88,6 +89,7 @@ class MultiSelect extends Select
 				{
 				$checkBox->setDisabled();
 				}
+
 			$cell->add($checkBox);
 
 			if (++$row >= $rowCount)
@@ -101,6 +103,7 @@ class MultiSelect extends Select
 			{
 			$gridx->add($cell);
 			}
+
 		$fieldSet->add($gridx);
 
 		return "{$fieldSet}";

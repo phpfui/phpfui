@@ -28,6 +28,7 @@ class CloseButton extends Button
 			{
 			throw new \Exception(__CLASS__ . ": {$closeAction} is not a valid annimation type");
 			}
+
 		$element->addAttribute('data-closable', $closeAction);
 		}
 	}

@@ -6,6 +6,17 @@ namespace PHPFUI;
  * A simple class to contain more complex examples demostrating
  * PHPFUI library methods and techniques.  Also used in unit
  * testing for more complete html tests.
+ *
+ * @todo
+ * AccordionToFromList
+ * Link
+ * MediaObject
+ * PopupInput
+ * RadioTable
+ * RadioTableCell
+ * SortableTable
+ * Sticky
+ * Tabs
  */
 class KitchenSink
 	{
@@ -26,7 +37,7 @@ class KitchenSink
 			}
 		}
 
-	public function exampleAccordion() : Accordion
+	public function baseAccordion() : Accordion
 		{
 		$accordion = new Accordion();
 		$accordion->addTab('Accordion 1', 'some text');
@@ -36,14 +47,14 @@ class KitchenSink
 		return $accordion;
 		}
 
-	public function exampleAccordionMenu() : AccordionMenu
+	public function baseAccordionMenu() : AccordionMenu
 		{
 		$accordionMenu = $this->makeMenu(new AccordionMenu(), 'Accordion Menu', '', $this->subMenu());
 
 		return $accordionMenu;
 		}
 
-	public function exampleBadge() : Container
+	public function baseBadge() : Container
 		{
 		$container = new Container();
 
@@ -71,7 +82,7 @@ class KitchenSink
 		}
 
 
-	public function exampleBreadCrumbs() : BreadCrumbs
+	public function baseBreadCrumbs() : BreadCrumbs
 		{
 		$breadCrumbs = new BreadCrumbs();
 		$breadCrumbs->addCrumb('Home', '#');
@@ -82,7 +93,7 @@ class KitchenSink
 		return $breadCrumbs;
 		}
 
-	public function exampleButton() : Container
+	public function baseButton() : Container
 		{
 		$container = new Container();
 
@@ -116,7 +127,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleButtonGroup() : ButtonGroup
+	public function baseButtonGroup() : ButtonGroup
 		{
 		$group = new ButtonGroup();
 		$group->addButton(new Button('One'));
@@ -127,7 +138,7 @@ class KitchenSink
 		}
 
 
-	public function exampleCallout() : Container
+	public function baseCallout() : Container
 		{
 		$container = new Container();
 
@@ -141,17 +152,17 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleCard() : Card
+	public function baseCard() : Card
 		{
 		$card = new Card();
 		$card->addDivider(new Header("I'm featured", 4));
-		$card->addImage(new Image('/images/rectangle-1.jpg'));
+		$card->addImage(new Image('https://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg'));
 		$card->addSection('This card makes use of the card-divider element.');
 
 		return $card;
 		}
 
-	public function exampleCloseButton() : Container
+	public function baseCloseButton() : Container
 		{
 		$container = new Container();
 
@@ -171,7 +182,14 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleDrillDownMenu() : Container
+	public function extraDisplay() : Display
+		{
+		$display = new Display('Label', 'Static text');
+
+		return $display;
+		}
+
+	public function baseDrillDownMenu() : Container
 		{
 		$container = new Container();
 
@@ -184,7 +202,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleDropDownButton() : DropDown
+	public function baseDropDownButton() : DropDown
 		{
 		$dropDownButton = new DropDownButton('Drop Down Button');
 		$dropMenu = new Menu();
@@ -203,7 +221,7 @@ class KitchenSink
 		return $dropDown;
 		}
 
-	public function exampleDropDownMenu() : Container
+	public function baseDropDownMenu() : Container
 		{
 		$container = new Container();
 
@@ -215,7 +233,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleDropDownPane() : Container
+	public function baseDropDownPane() : Container
 		{
 		$container = new Container();
 
@@ -237,7 +255,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleEqualizer() : Equalizer
+	public function baseEqualizer() : Equalizer
 		{
 		$innerEqualizer = new Equalizer(new Callout());
 		$co1 = new Callout('primary');
@@ -262,7 +280,7 @@ class KitchenSink
 		return $equalizer;
 		}
 
-	public function exampleHeader() : Container
+	public function baseHeader() : Container
 		{
 		$container = new \PHPFUI\Container();
 		$container->add(new \PHPFUI\Header('Header 1', 1));
@@ -275,7 +293,14 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleLabel() : Container
+	public function extraIcon() : Icon
+		{
+		$icon = new Icon('edit', '#');
+
+		return $icon;
+		}
+
+	public function baseLabel() : Container
 		{
 		$container = new Container();
 
@@ -302,7 +327,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleMenu() : Container
+	public function baseMenu() : Container
 		{
 		$container = new Container();
 
@@ -318,7 +343,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleOffCanvas() : Container
+	public function baseOffCanvas() : Container
 		{
 		$container = new Container();
 
@@ -329,17 +354,17 @@ class KitchenSink
 
 		$off = new HTML5Element('div');
 		$off->add('
-      <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <ul class="vertical menu">
-        <li><a href="#">Foundation</a></li>
-        <li><a href="#">Dot</a></li>
-        <li><a href="#">ZURB</a></li>
-        <li><a href="#">Com</a></li>
-        <li><a href="#">Slash</a></li>
-        <li><a href="#">Sites</a></li>
-      </ul>');
+				<button class="close-button" aria-label="Close menu" type="button" data-close>
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<ul class="vertical menu">
+					<li><a href="#">Foundation</a></li>
+					<li><a href="#">Dot</a></li>
+					<li><a href="#">ZURB</a></li>
+					<li><a href="#">Com</a></li>
+					<li><a href="#">Slash</a></li>
+					<li><a href="#">Sites</a></li>
+				</ul>');
 
 		$toggle = new Button('Toggle OffCanvas');
 		$offCanvas->addOff($off, $toggle);
@@ -350,7 +375,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleOrbit() : Orbit
+	public function baseOrbit() : Orbit
 		{
 		$orbit = new Orbit('Some out of the world images');
 		$orbit->addImageSlide(new Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg'), 'Space, the final frontier.');
@@ -361,7 +386,34 @@ class KitchenSink
 		return $orbit;
 		}
 
-	public function exampleOrderedList() : OrderedList
+	public function extraOrderableTable() : OrderableTable
+		{
+		$table = new \PHPFUI\OrderableTable($this->page);
+		$table->setCaption('This is the table caption');
+		$table->addArrowNavigation($this->page);
+		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
+		$table->setHeaders($headers);
+		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
+		$table->setFooters(array_combine($headers, $headers));
+
+		for ($i = 0; $i < 10; ++$i)
+			{
+			$numbers = [];
+
+			foreach ($headers as $field)
+				{
+				$numbers[$field] = rand();
+				}
+
+			$numbers['Edit'] = new Input\Text('edit[]');
+			$numbers['CheckBox'] = new Input\CheckBox('check[]');
+			$table->addRow($numbers);
+			}
+
+		return $table;
+		}
+
+	public function baseOrderedList() : OrderedList
 		{
 		$orderedList = new \PHPFUI\OrderedList();
 		$orderedList->addItem(new \PHPFUI\ListItem('Item 1', '/item#1'));
@@ -371,14 +423,22 @@ class KitchenSink
 		return $orderedList;
 		}
 
-	public function examplePagination() : Pagination
+	public function extraPagination() : Pagination
 		{
 		$pagination = new Pagination(50, 100, '#');
 
 		return $pagination;
 		}
 
-	public function exampleProgressBar() : Container
+	public function extraPanel() : Panel
+		{
+		$panel = new Panel('This is a panel with a radius');
+		$panel->setRadius();
+
+		return $panel;
+		}
+
+	public function baseProgressBar() : Container
 		{
 		$container = new Container();
 
@@ -405,7 +465,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleResponsiveEmbed() : Embed
+	public function baseResponsiveEmbed() : Embed
 		{
 		$embed = new Embed();
 		$embed->add(new YouTube('WUgvvPRH7Oc'));
@@ -413,7 +473,7 @@ class KitchenSink
 		return $embed;
 		}
 
-	public function exampleReveal() : Container
+	public function baseReveal() : Container
 		{
 		$container = new Container();
 
@@ -442,7 +502,7 @@ class KitchenSink
 		}
 
 
-	public function exampleSlickSlider() : SlickSlider
+	public function extraSlickSlider() : SlickSlider
 		{
 		$slickSlider = new \PHPFUI\SlickSlider($this->page);
 		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg', 'Space, the final frontier.');
@@ -453,7 +513,7 @@ class KitchenSink
 		return $slickSlider;
 		}
 
-	public function exampleSlider() : Container
+	public function baseSlider() : Container
 		{
 		$container = new Container();
 
@@ -476,7 +536,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleSplitButton() : SplitButton
+	public function baseSplitButton() : SplitButton
 		{
 		$splitButton = new SplitButton('Split', '#');
 		$splitButton->addMenuItem(new MenuItem('Option 4', '#'));
@@ -489,14 +549,14 @@ class KitchenSink
 		return $splitButton;
 		}
 
-	public function exampleSubHeader()
+	public function extraSubHeader()
 		{
 		$subHeader = new \PHPFUI\SubHeader('Sub Header');
 
 		return $subHeader;
 		}
 
-	public function exampleSubmit() : Container
+	public function baseSubmit() : Container
 		{
 		$container = new \PHPFUI\Container();
 
@@ -525,7 +585,7 @@ class KitchenSink
 	//  $container->add($parent);
 
 
-	public function exampleSwitchCheckBox() : Container
+	public function baseSwitchCheckBox() : Container
 		{
 		$container = new Container();
 
@@ -536,7 +596,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleSwitchRadio() : Container
+	public function baseSwitchRadio() : Container
 		{
 		$container = new Container();
 
@@ -553,26 +613,37 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleTable() : Table
+	public function baseTable() : Table
 		{
 		$table = new \PHPFUI\Table();
 		$table->setCaption('This is the table caption');
 		$table->addArrowNavigation($this->page);
-		$headers = ['0' => 'Some', '1' => 'Numbers', '2' => '4', '3' => 'U'];
-//		$table->setHeaders($headers);
-		$table->setFooters($headers);
-		$numbers = ['0' => 1, '1' => 3, '2' => 5, '3' => 7];
-		$table->addRow($numbers);
-		$table->addRow(array_reverse($numbers));
-		$table->addRow(array_keys($numbers));
+		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
+		$table->setHeaders($headers);
+		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
+		$table->setFooters(array_combine($headers, $headers));
+
+		for ($i = 0; $i < 10; ++$i)
+			{
+			$numbers = [];
+
+			foreach ($headers as $field)
+				{
+				$numbers[$field] = rand();
+				}
+
+			$numbers['Edit'] = new Input\Text('edit[]');
+			$numbers['CheckBox'] = new Input\CheckBox('check[]');
+			$table->addRow($numbers);
+			}
 
 		return $table;
 		}
 
-	//  public function exampleTabs() : Container
+	//  public function baseTabs() : Container
 	//    {
 	//    $container = new Container();
-//
+	//
 	//    $tabs = new Tabs();
 	//    $tabs->addTab('One', 'Check me out! I\'m a super cool Tab panel with text content!');
 	//    $image = new Image('/images/rectangle-1.jpg');
@@ -580,7 +651,7 @@ class KitchenSink
 	//    $tabs->addTab('Three', '', true);
 	//    $tabs->addTab('Four', $image);
 	//    $container->add($tabs);
-//
+	//
 	//    $grid = new GridX();
 	//    $grid->setMargin();
 	//    $cell = new Cell(3, 2, 1);
@@ -597,11 +668,11 @@ class KitchenSink
 	//    $gridContainer = new GridContainer();
 	//    $gridContainer->add($grid);
 	//    $container->add($gridContainer);
-//
+	//
 	//    return $container;
 	//    }
 
-	public function exampleThumbnail() : Container
+	public function baseThumbnail() : Container
 		{
 		$container = new Container();
 
@@ -612,7 +683,16 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleTitleBar() : TitleBar
+	public function extraTimedCellUpdate() : HTML5Element
+		{
+		$div = new HTML5Element('div');
+
+		$timedCellUpdate = new TimedCellUpdate($this->page, $div->getId(), [$this, 'timedCellUpdateCallback'], 1);
+
+		return $div;
+		}
+
+	public function baseTitleBar() : TitleBar
 		{
 		$titlebar = new TitleBar('TitleBar');
 		$titlebar->addLeft('<button class="menu-icon" type="button"></button>');
@@ -621,7 +701,7 @@ class KitchenSink
 		return $titlebar;
 		}
 
-	public function exampleToFromList() : ToFromList
+	public function extraToFromList() : ToFromList
 		{
 		$index = 'id';
 		$callback = [$this, 'getToFromListName'];
@@ -635,7 +715,7 @@ class KitchenSink
 		return $toFromList;
 		}
 
-	public function exampleToggler() : Container
+	public function baseToggler() : Container
 		{
 		$container = new Container();
 
@@ -667,7 +747,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleToolTip() : Container
+	public function baseToolTip() : Container
 		{
 		$container = new Container();
 
@@ -677,7 +757,7 @@ class KitchenSink
 		return $container;
 		}
 
-	public function exampleTopBar() : TopBar
+	public function baseTopBar() : TopBar
 		{
 		$topbar = new TopBar();
 		$topbar->addLeft($this->makeMenu(new DropDownMenu(), 'Site Title', '', $this->subMenu()));
@@ -692,7 +772,7 @@ class KitchenSink
 		return $topbar;
 		}
 
-	public function exampleUnorderedList() : UnorderedList
+	public function baseUnorderedList() : UnorderedList
 		{
 		$unorderedList = new \PHPFUI\UnorderedList();
 		$unorderedList->addItem(new \PHPFUI\ListItem('Item', '/item'));
@@ -702,21 +782,15 @@ class KitchenSink
 		return $unorderedList;
 		}
 
-	public function examplYouTube() : YouTube
-		{
-		return new \PHPFUI\YouTube('123456789');
-		}
-
 	/**
-	 * Get all the example functions
-	 *
-	 * return array of method names indexed by English name
-	 */
-	public function getExamples() : array
+		 * Get all the example functions
+		 *
+		 * return array of method names indexed by English name
+		 */
+	public function getExamples(string $prefix = 'base') : array
 		{
 		$examples = [];
 
-		$prefix = 'example';
 		$prefixLen = strlen($prefix);
 		$methods = get_class_methods(self::class);
 
@@ -740,11 +814,11 @@ class KitchenSink
 		return "{$hidden}" . $line['name'];
 		}
 
-	public function render() : string
+	public function render(string $type = 'base') : string
 		{
 		$container = new Container();
 
-		$examples = $this->getExamples();
+		$examples = $this->getExamples($type);
 
 		ksort($examples);
 
@@ -754,17 +828,23 @@ class KitchenSink
 		foreach ($examples as $name => $example)
 			{
 			$container->add($hr);
-			$container->add(new Header($name, 2));
+			$container->add(new Header($name, 3));
 			$container->add($this->{$example}());
 
 			if ($this->page->isDone())
 				{
 				return '';
 				}
+
 			$hr = $realHr;
 			}
 
 		return "{$container}";
+		}
+
+	public function timedCellUpdateCallback(string $id) : string
+		{
+		return gmdate('H:i:s') . ' ' . $id;
 		}
 
 	private function generateMenu(string $name, int $count, bool $active = false) : Menu
@@ -800,6 +880,7 @@ class KitchenSink
 			$three->setActive(true);
 			$menu->addMenuItem($three);
 			}
+
 		$menu->addMenuItem(new MenuItem('Four', '#'));
 
 		if ($class)

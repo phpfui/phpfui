@@ -37,6 +37,7 @@ class Orbit extends HTML5Element
 			{
 			$item->addClass('is-active');
 			}
+
 		$div = new HTML5Element('div');
 		$div->add($html);
 		$item->add($div);
@@ -55,6 +56,7 @@ class Orbit extends HTML5Element
 			{
 			$item->addClass('is-active');
 			}
+
 		$figure = new HTML5Element('figure');
 		$figure->addClass('orbit-figure');
 		$image->addClass('orbit-image');
@@ -67,6 +69,7 @@ class Orbit extends HTML5Element
 			$cap->add($caption);
 			$figure->add($cap);
 			}
+
 		$item->add($figure);
 		$this->container->addItem($item);
 		$this->addBullet($active);
@@ -117,6 +120,7 @@ class Orbit extends HTML5Element
 				{
 				$this->addAttribute('data-use-m-u-i', 'false');
 				}
+
 			$this->wrapper->add($this->container);
 
 			if ($this->bullets)
@@ -142,6 +146,7 @@ class Orbit extends HTML5Element
 				$button->addClass('is-active');
 				$button->add('<span class="show-for-sr"> Current Slide</span>');
 				}
+
 			$this->bullets->add($button);
 			}
 		}

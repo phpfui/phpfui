@@ -57,6 +57,7 @@ class LimitSelect extends Select
 			{
 			$query .= '&';
 			}
+
 		$js = "function LimitSelect{$this->getId()}(newLimit){window.location='{$this->page->getBaseURL()}?{$query}'+'{$this->limitName}='+newLimit+'&{$this->pageName}='+computePage(newLimit,{$this->currentLimit},{$page})}";
 		$this->page->addJavaScript($js);
 

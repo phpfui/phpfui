@@ -65,12 +65,14 @@ class RadioTableCell extends HTML5Element
 			{
 			throw new \Exception('No parent set for ' . __CLASS__);
 			}
+
 		$value = $this->value;
 
 		if ('' === $value)
 			{
 			$value = $this->name;
 			}
+
 		$this->radioButton = new HTML5Element('input');
 		$this->radioButton->addAttribute('type', 'radio');
 		$this->radioButton->addAttribute('value', $value);
@@ -84,6 +86,7 @@ class RadioTableCell extends HTML5Element
 			$style = "color:{$this->onColor};background-color:{$this->onBackgroundColor};";
 			$this->radioButton->addAttribute('checked');
 			}
+
 		$this->addAttribute('style', $style);
 		$this->radioButton->addAttribute($this->disabled);
 
@@ -148,6 +151,7 @@ class RadioTableCell extends HTML5Element
 				$onClick .= 'checkRadioTable("' . $cb->getId() . '","' . $button->offColor . '","' . $button->offBackgroundColor . '");';
 				}
 			}
+
 		$radioButton->addAttribute('onclick', $onClick);
 		$this->addClass('RadioTableButton');
 		$this->addAttribute('for', $radioButton->getId());

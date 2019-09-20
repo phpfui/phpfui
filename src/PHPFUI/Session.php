@@ -33,6 +33,7 @@ class DefaultSessionHandler extends SessionHandler
 				{
 				$this->csrfValue = sha1(mt_rand());
 				}
+
 			$_SESSION[$this->csrfField()] = $this->csrfValue;
 			}
 

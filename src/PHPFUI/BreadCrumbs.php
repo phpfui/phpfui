@@ -67,9 +67,11 @@ class BreadCrumbs extends HTML5Element implements \Countable
 					$item = new ListItem($text);
 					$item->addClass('disabled');
 					}
+
 				$ul->add($item);
 				++$i;
 				}
+
 			$this->add($ul);
 			}
 

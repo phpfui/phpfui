@@ -77,6 +77,7 @@ class AJAX
 			$js .= 'if(window.confirm("' . $this->question . '")){';
 			$extra = '}';
 			}
+
 		$js .= 'data["' . $csrfField . '"]="' . $csrf . '";data["action"]="' . $this->name . '";$.ajax({dataType:"json",type:"POST",traditional:true,data:data';
 
 		if (empty($this->conditions['error']))
@@ -88,6 +89,7 @@ class AJAX
 			{
 			$js .= ",{$function}:(function(data,status,arg3){ {$script};})";
 			}
+
 		$js .= "});{$extra}}";
 
 		return $js;

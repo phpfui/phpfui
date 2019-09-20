@@ -28,6 +28,7 @@ class Link extends HTML5Element
 			{
 			$text = $link;
 			}
+
 		// break up long urls so they wrap better
 		$targets = ['.',
 								'@',
@@ -44,6 +45,7 @@ class Link extends HTML5Element
 			{
 			$replacements[] = $string . '<wbr>';
 			}
+
 		$text = str_replace($targets, $replacements, $text);
 
 		if ('#' == $link || ! $validate)
@@ -64,6 +66,7 @@ class Link extends HTML5Element
 				$this->addAttribute('target', '_blank');
 				}
 			}
+
 		$this->add($text);
 		}
 

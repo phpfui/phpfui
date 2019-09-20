@@ -40,6 +40,7 @@ class SelectAutoComplete extends Select
 			$suffix = '[]';
 			$nameField = str_replace($suffix, '', $nameField);
 			}
+
 		$nameField .= 'Text';
 		parent::__construct($nameField, $label);
 		$this->acInput = new \PHPFUI\Input\Text($nameField, $label);
@@ -128,12 +129,14 @@ class SelectAutoComplete extends Select
 					$comma = ',';
 					}
 				}
+
 			$js .= '];';
 			}
 		else
 			{
 			$this->arrayName .= 'Array';
 			}
+
 		$js .= "SelectAutoComplete('{$this->acFieldId}','{$this->hidden->getId()}',{$this->arrayName})";
 		$this->page->addJavaScript($js);
 
@@ -154,6 +157,7 @@ class SelectAutoComplete extends Select
 				$this->acInput->setValue($initValue);
 				}
 			}
+
 		$this->addAttribute('placeholder', $initLabel);
 		$this->addAttribute('autocomplete', 'off');
 		$this->hidden->setValue($initValue);
@@ -172,6 +176,7 @@ class SelectAutoComplete extends Select
 			$this->page->addJavaScript($js);
 			$this->page->addPluginDefault('Abide', "validators['SelectAutoCompleteRequired']", 'SelectAutoCompleteRequired');
 			}
+
 		$text = $this->upCastCopy($this->acInput, $this);
 		$text->setToolTip($this->toolTip);
 

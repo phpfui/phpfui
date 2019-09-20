@@ -32,6 +32,7 @@ class AccordionMenu extends Menu
 			{
 			$this->setAttribute('data-submenu-toggle', 'true');
 			}
+
 		$this->menuItems[$label->getName() . $this->separator . $label->getLink()] = $subMenu;
 
 		return $this;
@@ -64,10 +65,12 @@ class AccordionMenu extends Menu
 						$item->addClass('is-active');
 						$menuItem->setActive();
 						}
+
 					$menuItem->add($item);
 					$this->add($menuItem);
 					}
 				}
+
 			$this->menuItems = [];
 			}
 

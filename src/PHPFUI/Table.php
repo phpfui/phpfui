@@ -68,6 +68,7 @@ class Table extends HTML5Element
 				{
 				$this->columnAttributes[$column][$class] = '';
 				}
+
 			$this->columnAttributes[$column][$class] .= ' ' . $value;
 			}
 
@@ -246,6 +247,7 @@ class Table extends HTML5Element
 				{
 				$output .= $this->outputRow('th', $this->headers, 'thead', $this->widths, 'width');
 				}
+
 			$output .= "<tbody{$this->sortableBodyClass}>";
 			reset($this->colspans);
 
@@ -254,6 +256,7 @@ class Table extends HTML5Element
 				$output .= $this->outputRow('td', $row, '', current($this->colspans));
 				next($this->colspans);
 				}
+
 			$output .= '</tbody>' . $this->outputRow('td', $this->footers, 'tfoot');
 			}
 
@@ -280,6 +283,7 @@ class Table extends HTML5Element
 				{
 				$spanCount = count($this->rows[0] ?? []);
 				}
+
 			$placeholder = "<tr><td colspan='{$spanCount}'><span class='center'>Drop Row Here</span></td></tr>";
 			$this->page->addJavaScript('sortable(".table-sortable",{items:"tr.row-sortable",forcePlaceholderSize:true,placeholder:"' . $placeholder . '",handle:"td.handle"})');
 			}
@@ -293,12 +297,14 @@ class Table extends HTML5Element
 			{
 			return '';
 			}
+
 		$output = '';
 
 		if ($type)
 			{
 			$output .= "<{$type}>";
 			}
+
 		$recordId = 0;
 		$id = '';
 
@@ -307,6 +313,7 @@ class Table extends HTML5Element
 			$recordId = $row[$this->recordId];
 			$id = " id='{$this->recordId}-{$recordId}'";
 			}
+
 		$output .= "<tr{$id}{$this->sortableTrClass}>";
 
 		if (count($this->headers))
@@ -325,6 +332,7 @@ class Table extends HTML5Element
 						$tdclass .= " {$key}='{$class}'";
 						}
 					}
+
 				$final = '';
 
 				if (isset($row[$field]))
@@ -340,6 +348,7 @@ class Table extends HTML5Element
 					{
 					$final .= $this->getSortIndicator($field);
 					}
+
 				$id = '';
 
 				if ($recordId)
@@ -361,6 +370,7 @@ class Table extends HTML5Element
 					{
 					$output .= "<{$tdclass}{$id}>{$final}</{$td}>";
 					}
+
 				next($attribute);
 				}
 			}
@@ -371,6 +381,7 @@ class Table extends HTML5Element
 				$output .= "<{$td}>{$value}</{$td}>";
 				}
 			}
+
 		$output .= '</tr>';
 
 		if ($type)

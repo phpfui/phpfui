@@ -105,6 +105,7 @@ class Menu extends HTML5Element
 			{
 			throw new Exception(__METHOD__ . ' Error: Icon type {$type} should be one of ' . implode($types));
 			}
+
 		$this->addClass('icons');
 		$this->addClass('icon-' . $type);
 		$this->type = $type;
@@ -139,6 +140,7 @@ class Menu extends HTML5Element
 						{
 						$item->setAlignment($this->type);
 						}
+
 					$this->add($item);
 					}
 				else

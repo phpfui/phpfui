@@ -29,6 +29,7 @@ class Button extends HTML5Element
 			parent::__construct('button');
 			$this->addAttribute('type', 'button');
 			}
+
 		$this->link = $link;
 		$this->text = $text;
 		$this->addClass('button');

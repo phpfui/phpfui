@@ -130,6 +130,7 @@ class MonthYear extends \PHPFUI\Base
 			$jd->setDate(2000, $i, 10);
 			$this->monthSelect->addOption($i . ' - ' . $jd->format('F'), $i, $this->month == $jd->format('n'));
 			}
+
 		$this->yearSelect = new Select($this->name . 'Year', $this->label . ' Year', $this->year, 4);
 
 		if ($this->required)
@@ -142,6 +143,7 @@ class MonthYear extends \PHPFUI\Base
 			{
 			$this->yearSelect->addOption($i, $i, $this->year == $i);
 			}
+
 		$monthId = $this->monthSelect->getId();
 		$yearId = $this->yearSelect->getId();
 		$hiddenId = $this->hidden->getId();

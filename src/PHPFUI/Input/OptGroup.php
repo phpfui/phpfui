@@ -35,6 +35,7 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 			{
 			$value = $label;
 			}
+
 		$this->options[] = ['label'    => \PHPFUI\TextHelper::htmlentities($label),
                         'value'    => $value,
                         'selected' => $selected ? 'selected' : '',

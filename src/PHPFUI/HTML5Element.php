@@ -175,6 +175,7 @@ class HTML5Element extends Base
 			{
 			return '';
 			}
+
 		$output = "<{$this->element} ";
 		$output .= $this->getIdAttribute();
 		$output .= $this->getClass();

@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Bar extends HTML5Element
+abstract class Bar extends HTML5Element
 	{
 	protected $left = [];
 	protected $right = [];
@@ -13,7 +13,7 @@ class Bar extends HTML5Element
 	/**
 	 * Construct a TopBar
 	 */
-	protected function __construct(string $className)
+	public function __construct(string $className)
 		{
 		parent::__construct('div');
 		$this->className = $className . '-bar';

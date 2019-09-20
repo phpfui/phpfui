@@ -9,7 +9,6 @@
  * the LICENSE.md file that was distributed with this source
  * code
  */
-
 class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{
 	private $ks;
@@ -22,97 +21,97 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->ks = new \PHPFUI\KitchenSink($this->page);
 		}
 
-	public function testBlockGrid()
+	public function testBlockGrid() : void
 		{
 		$blockGrid = new \PHPFUI\BlockGrid();
 		$this->assertValidHtml($blockGrid);
 		}
 
-	public function testCancel()
+	public function testCancel() : void
 		{
 		$this->assertValidHtml(new \PHPFUI\Cancel('Cancel Me!'));
 		}
 
-	public function testCell()
+	public function testCell() : void
 		{
 		$cell = new \PHPFUI\Cell();
 		$this->assertValidHtml($cell);
 		}
 
-	public function testDisplay()
+	public function testDisplay() : void
 		{
 		$display = new \PHPFUI\Display('label', 'text');
 		$this->assertValidHtml($display);
 		}
 
-	public function testFieldSet()
+	public function testFieldSet() : void
 		{
 		$fieldSet = new \PHPFUI\FieldSet();
 		$this->assertValidHtml($fieldSet);
 		}
 
-	public function testForm()
+	public function testForm() : void
 		{
 		$form = new \PHPFUI\Form($this->page);
 		$this->assertValidHtml($form);
 		}
 
-	public function testFormError()
+	public function testFormError() : void
 		{
 		$formError = new \PHPFUI\FormError();
 		$this->assertValidHtml($formError);
 		}
 
-	public function testGridContainer()
+	public function testGridContainer() : void
 		{
 		$gridContainer = new \PHPFUI\GridContainer();
 		$this->assertValidHtml($gridContainer);
 		}
 
-	public function testGridX()
+	public function testGridX() : void
 		{
 		$gridX = new \PHPFUI\GridX();
 		$this->assertValidHtml($gridX);
 		}
 
-	public function testGridY()
+	public function testGridY() : void
 		{
 		$gridY = new \PHPFUI\GridY('100em');
 		$this->assertValidHtml($gridY);
 		}
 
-	public function testHeader()
+	public function testHeader() : void
 		{
 		$header = new \PHPFUI\Header('Header');
 		$this->assertValidHtml($header);
 		}
 
-	public function testHTML5Element()
+	public function testHTML5Element() : void
 		{
 		$hTML5Element = new \PHPFUI\HTML5Element('div');
 		$hTML5Element->add('Some text');
 		$this->assertValidHtml($hTML5Element);
 		}
 
-	public function testIcon()
+	public function testIcon() : void
 		{
 		$icon = new \PHPFUI\Icon('edit');
 		$this->assertValidHtml($icon);
 		}
 
-	public function testImage()
+	public function testImage() : void
 		{
 		$image = new \PHPFUI\Image('/test.png');
 		$this->assertValidHtml($image);
 		}
 
-	public function testInput()
+	public function testInput() : void
 		{
 		$input = new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy');
 		$this->assertValidHtml($input);
 		}
 
-	public function testInputGroup()
+	public function testInputGroup() : void
 		{
 		$inputGroup = new \PHPFUI\InputGroup();
 		$inputGroup->addInput(new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy'));
@@ -121,7 +120,7 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($inputGroup);
 		}
 
-	public function testKitchenSink()
+	public function testKitchenSink() : void
 		{
 		$this->assertValidHtml($this->ks->render());
 		}
@@ -129,19 +128,20 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 	public function testKitchenSinkExamples() : void
 		{
 		$examples = $this->ks->getExamples();
+
 		foreach ($examples as $name => $example)
 			{
-			$this->assertValidHtml($this->ks->$example(), $name);
+			$this->assertValidHtml($this->ks->{$example}(), $name);
 			}
 		}
 
-	public function testLabel()
+	public function testLabel() : void
 		{
 		$label = new \PHPFUI\Label('Label');
 		$this->assertValidHtml($label);
 		}
 
-	public function testLink()
+	public function testLink() : void
 		{
 		$link = new \PHPFUI\Link('http://www.ibm.com', 'IBM');
 		$this->assertValidHtml($link);
@@ -149,116 +149,50 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml(\PHPFUI\Link::phone('867-5309', 'Jenny'));
 		}
 
-	public function testMediaObject()
+	public function testMediaObject() : void
 		{
 		$mediaObject = new \PHPFUI\MediaObject();
 		$this->assertValidHtml($mediaObject);
 		}
 
-	public function testMultiColumn()
+	public function testMultiColumn() : void
 		{
 		$multiColumn = new \PHPFUI\MultiColumn(new \PHPFUI\Link('http://www.ibm.com', 'IBM'), new \PHPFUI\Button('Go'));
 		$this->assertValidHtml($multiColumn);
 		}
 
-	public function testOrderableTable()
-		{
-		$orderableTable = new \PHPFUI\OrderableTable($this->page);
-		$this->assertValidHtml($orderableTable);
-		}
-
-	public function testOrderedList()
-		{
-		$orderedList = new \PHPFUI\OrderedList();
-		$orderedList->addItem(new \PHPFUI\ListItem('Item', '/item'));
-		$this->assertValidHtml($orderedList);
-		}
-
-	public function testPage()
+	public function testPage() : void
 		{
 		$this->assertValidHtml($this->page);
 		}
 
-	public function testPanel()
+	public function testPanel() : void
 		{
 		$panel = new \PHPFUI\Panel('Panel');
 		$this->assertValidHtml($panel);
 		}
 
-	public function testPayPalExpress()
+	public function testPayPalExpress() : void
 		{
 		$payPalExpress = new \PHPFUI\PayPalExpress($this->page, 'ClientId');
 		$this->assertValidHtml($payPalExpress);
 		}
 
-	public function testReCAPTCHA()
+	public function testReCAPTCHA() : void
 		{
 		$reCAPTCHA = new \PHPFUI\ReCAPTCHA($this->page, 'public', 'private');
 		$this->assertValidHtml($reCAPTCHA);
 		}
 
-	public function testReset()
+	public function testReset() : void
 		{
 		$reset = new \PHPFUI\Reset();
 		$this->assertValidHtml($reset);
 		}
 
-	public function testSlickSlider()
-		{
-		$slickSlider = new \PHPFUI\SlickSlider($this->page);
-		$slickSlider->addImage('/test.png')->addSlide(new \PHPFUI\Header('Slide'));
-		$this->assertValidHtml($slickSlider);
-		}
-
-	public function testSortableTable()
-		{
-		$sortableTable = new \PHPFUI\SortableTable();
-		$this->assertValidHtml($sortableTable);
-		}
-
-	public function testSticky()
+	public function testSticky() : void
 		{
 		$sticky = new \PHPFUI\Sticky(new \PHPFUI\Callout());
 		$this->assertValidHtml($sticky);
 		}
-
-	public function testSubHeader()
-		{
-		$subHeader = new \PHPFUI\SubHeader('Sub Header');
-		$this->assertValidHtml($subHeader);
-		}
-
-	public function testSubmit()
-		{
-		$submit = new \PHPFUI\Submit();
-		$this->assertValidHtml($submit);
-		}
-
-	public function testTable()
-		{
-		$table = new \PHPFUI\Table();
-		$this->assertValidHtml($table);
-		}
-
-	public function testToFromList()
-		{
-		$toFromList = new \PHPFUI\ToFromList($this->page, 'tofrom', [], [], 'index', function()
-			{
-			});
-		$this->assertValidHtml($toFromList);
-		}
-
-	public function testUnorderedList()
-		{
-		$unorderedList = new \PHPFUI\UnorderedList();
-		$unorderedList->addItem(new \PHPFUI\ListItem('Item', '/item'));
-		$this->assertValidHtml($unorderedList);
-		}
-
-	public function testYouTube()
-		{
-		$youTube = new \PHPFUI\YouTube('123456789');
-		$this->assertValidHtml($youTube);
-		}
 	}
-

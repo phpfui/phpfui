@@ -97,6 +97,7 @@ class ToFromList extends Base
         '$(draggedid).remove();e.stopPropagation();return true;}';
 			$this->page->addJavaScript($js);
 			}
+
 		$this->processRequest();
 		}
 
@@ -152,6 +153,7 @@ class ToFromList extends Base
 			{
 			$output .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
 			}
+
 		$output .= '</div>';
 
 		return $output;
@@ -198,6 +200,7 @@ class ToFromList extends Base
 			$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_in")');
 			$icon = $this->outIcon;
 			}
+
 		$span->add($icon);
 		$span->add($html);
 
@@ -211,25 +214,28 @@ class ToFromList extends Base
 			if (isset($_GET['action']))
 				{
 				switch ($_GET['action'])
-          {
-          case 'getDragDropItem':
-            $dragDropId = trim($_GET['DraggedId'], '#');
-            [$name, $id] = explode('_', $dragDropId);
+					{
+					case 'getDragDropItem':
+						{
+						$dragDropId = trim($_GET['DraggedId'], '#');
+						[$name, $id] = explode('_', $dragDropId);
 
-            if ($name == $this->name)
-            { // it is us, process
-              /** @noinspection PhpUnusedLocalVariableInspection */
-            	[$junk, $type] = explode('_', $_GET['DropParentId']);
-            	$html = call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
+						if ($name == $this->name)
+							{ // it is us, process
 
-            	if ($html)
-            		{
-            		$this->page->setResponse($this->makeDiv($dragDropId, $type, $html));
-            		}
-            }
+							/** @noinspection PhpUnusedLocalVariableInspection */
+							[$junk, $type] = explode('_', $_GET['DropParentId']);
+							$html = call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
 
-            break;
-          }
+							if ($html)
+								{
+								$this->page->setResponse($this->makeDiv($dragDropId, $type, $html));
+								}
+							}
+
+						break;
+						}
+					}
 				}
 			}
 		}

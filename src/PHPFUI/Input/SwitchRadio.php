@@ -71,6 +71,7 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 				{
 				$label->add("<span class='switch-inactive' aria-hidden='true'>{$this->inactive}</span>");
 				}
+
 			$this->add($label);
 			}
 

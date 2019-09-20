@@ -30,6 +30,7 @@ class ReCAPTCHAv3
 			{
 			return;
 			}
+
 		$callbackKey = 'Google-{__CLASS__}-Response';
 		$this->publicKey = $publicKey;
 		$page->addHeadScript('https://www.google.com/recaptcha/api.js?render=' . $this->publicKey);
@@ -45,30 +46,30 @@ success:function(response){
     alert(response);
   } catch(e){
     alert('Error: '+response);
-  }
+		}
 	}
-	});
+		});
 JAVASCRIPT;
 
 		$js = "grecaptcha.ready(function(){grecaptcha.execute('{$secretKey}',{action:'{$action}'}).then(function(token){ {$jsCallback} });});";
 		$page->addJavaScript($js);
 
 		if (! empty($_POST[$callbackKey]))
-			{
+	{
 			$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
 			$resp = $recaptcha->verify($_POST[$callbackKey], $_SERVER['REMOTE_ADDR']);
 			$callable($resp);
 
 			if ($resp->isSuccess())
-				{
+		{
 				$this->isValid = true;
-				}
-			else
-				{
-				$this->errors = $resp->getErrorCodes();
-				}
-			}
 		}
+			else
+		{
+				$this->errors = $resp->getErrorCodes();
+		}
+	}
+}
 
 	/**
 	 * Returns any errors from Google
@@ -76,9 +77,9 @@ JAVASCRIPT;
 	 * @return array
 	 */
 	public function getErrors() : array
-		{
+	{
 		return $this->errors;
-		}
+	}
 
 	/**
 	 * Returns true if OK to proceed
@@ -86,9 +87,9 @@ JAVASCRIPT;
 	 * @return bool
 	 */
 	public function isValid() : bool
-		{
+	{
 		return $this->result >= $this->threshold;
-		}
+	}
 
 	/**
 	 * Set a threshold that user needs to pass.  Default 0.5
@@ -97,9 +98,9 @@ JAVASCRIPT;
 	 * @return ReCAPTCHAv3
 	 */
 	public function setThreshold(float $threshold = 0.5) : ReCAPTCHAv3
-		{
+	{
 		$this->threshold = $threshold;
 
 		return $this;
-		}
 	}
+}

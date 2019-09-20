@@ -81,6 +81,7 @@ class OffCanvas extends Base
 			{
 			throw new \Exception(__METHOD__ . ": {$position} must be one of " . implode(',', $positions));
 			}
+
 		$this->offCanvas->addClass("position-{$position}");
 
 		return $this;
@@ -111,6 +112,7 @@ class OffCanvas extends Base
 			{
 			throw new \Exception(__METHOD__ . ": {$transition} must be one of " . implode(',', $transitions));
 			}
+
 		$this->offCanvas->setAttribute('data-transition', $transition);
 
 		return $this;
@@ -173,6 +175,7 @@ class OffCanvas extends Base
 
 			throw new \Exception(__CLASS__ . "::set{$attribute}: {$screenSize} must be one of " . implode(',', $sizes));
 			}
+
 		$this->offCanvas->setAttribute($attribute . '-' . $screen);
 
 		return $this;

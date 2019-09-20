@@ -133,6 +133,7 @@ class Select extends Input implements \Countable
 				{
 				$label->addClass($class);
 				}
+
 			$label->addAttribute('for', $id);
 			$label->add($this->getToolTip($this->label));
 			}
@@ -145,6 +146,7 @@ class Select extends Input implements \Countable
 				{
 				$label->add(' <small>Required</small>');
 				}
+
 			$this->addAttribute('required');
 			}
 
@@ -175,6 +177,7 @@ class Select extends Input implements \Countable
 				$this->add("<option value='{$option['value']}' {$selected} {$disabled}>{$option['label']}</option>");
 				}
 			}
+
 		$this->add('</select>');
 
 		return $label . $error;

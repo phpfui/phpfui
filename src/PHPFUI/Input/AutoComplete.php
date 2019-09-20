@@ -68,6 +68,7 @@ class AutoComplete extends Input
 			{
 			$this->className = substr($this->className, $pos + 1);
 			}
+
 		$this->page = $page;
 		$this->page->addTailScript('/jquery-autocomplete/jquery.autocomplete.js');
 		$this->callback = $callback;
@@ -86,6 +87,7 @@ class AutoComplete extends Input
 				{
 				$js .= "{$option}:{$value},";
 				}
+
 			$js .= 'onSelect:function(suggestion){';
 			$js .= "if(noFF){var fld={$dollar}('#'+id);fld.attr('placeholder',suggestion.value);fld.attr('value','');};";
 			$js .= "{$dollar}('#'+id+'hidden').val(suggestion.data);";
