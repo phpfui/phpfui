@@ -50,11 +50,11 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
   var btn=$(this).find('input[type=submit]:focus');
   if (!btn.length) {// macHack! Safari does not keep the pressed submit button in focus, so get the first
     btn=$(this).find('input[type=submit]');
-			}
+    }
   if(btn[0].name!='{$this->submitName}'||btn[0].value!='{$this->submitValue}'){
     form.submit();// submit the form if not the button passed for special handling
     return 0;
-		}
+    }
   $.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
     beforeSend:function(request){
       submit.prop('value','Saving').css('background-color','black');
@@ -67,7 +67,7 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
       data=JSON.parse(response);
     } catch(e){
       alert('Error: '+response);
-	}
+    }
     submit.prop('value',data.response).css('background-color',data.color);
     {$successJS};
     setTimeout(function(){
@@ -82,34 +82,33 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
 		});
 		});
 JAVASCRIPT;
-}
-}
+			}
+		}
 
 	/**
 	 * Returns true if the submit button passed in the ctor was pressed by the user.
 	 */
 	public function isMyCallback() : bool
-	{
+		{
 		return Session::checkCSRF() && $this->submitName && ! empty($_POST[$this->submitName]) && $_POST[$this->submitName] == $this->submitValue;
-	}
+		}
 
 	/**
 	 * Any clickable element passed to this function will issue an AJAX call to save the form.
 	 */
 	public function saveOnClick(HTML5Element $button) : Form
-	{
+		{
 		$js = "var form=$(\"#{$this->getId()}\");";
 		$js .= "$.ajax({type:\"POST\",dataType:\"html\",data:form.serialize()+\"&{$this->submitName}={$this->submitValue}\"});";
 
 		if ($this->areYouSure)
-		{
+			{
 			$js .= 'form.trigger("reinitialize.areYouSure");';
-		}
-
+			}
 		$button->addAttribute('onclick', $js);
 
 		return $this;
-	}
+		}
 
 	/**
 	 * Forms automatically ask the user if they are sure they want to navigate away from the page if the
@@ -117,35 +116,34 @@ JAVASCRIPT;
 	 * you might want to do this is search criteria type forms where the data is not normally saved.
 	 */
 	public function setAreYouSure(bool $areYouSure = true) : Form
-	{
+		{
 		$this->areYouSure = $areYouSure;
 
 		return $this;
-	}
+		}
 
 	protected function getStart() : string
-	{
-		if (! $this->started)
 		{
+		if (! $this->started)
+			{
 			$this->started = true;
 			$areYouSure = '';
 
 			if ($this->areYouSure)
-			{
+				{
 				$this->page->addTailScript('/js/jquery.are-you-sure.js');
 				$id = $this->getId();
 				$this->page->addJavaScript('$("#' . $id . '").areYouSure({"addRemoveFieldsMarksDirty":true});');
 				$areYouSure = "$('#{$id}').trigger('reinitialize.areYouSure');";
-			}
-
+				}
 			$this->page->addJavaScript(str_replace('~areYouSure~', $areYouSure, $this->js));
 
 			if ('get' != $this->getAttribute('method'))
-			{
+				{
 				$this->add(new \PHPFUI\Input\Hidden(Session::csrfField(), Session::csrf()));
+				}
 			}
-		}
 
 		return parent::getStart();
+		}
 	}
-}

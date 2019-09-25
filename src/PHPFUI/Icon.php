@@ -75,6 +75,6 @@ class Icon extends HTML5Element
 			$output = "<a id='{$id}a' {$link}>";
 			}
 
-		return $output . parent::getStart();
+		return $output . $this->getToolTip(parent::getStart());
 		}
 	}

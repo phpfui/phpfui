@@ -42,7 +42,7 @@ CHROME_CSS
 			);
 			}
 		elseif (! $page->hasDatePicker())
-		{  // if we can't use a native, then use JS version
+			{  // if we can't use a native, then use JS version
 
 			parent::__construct('text', $name, $label, $value);
 			$page->addTailScript('/datepicker/js/foundation-datepicker.min.js');
@@ -50,12 +50,12 @@ CHROME_CSS
 			$this->addAttribute('data-date-format', 'yyyy-mm-dd');
 			$this->addOption('format', '"yyyy-mm-dd"');
 			$this->addAttribute('size', '10');
-		}
+			}
 		else
-		{
+			{
 			parent::__construct('date', $name, $label, $value);
+			}
 		}
-	}
 
 	/**
 	 * Add an option for the Foundation Date picker
@@ -65,11 +65,11 @@ CHROME_CSS
 	 *
 	 */
 	public function addOption(string $option, string $value) : Date
-	{
+		{
 		$this->options[$option] = $value;
 
 		return $this;
-	}
+		}
 
 	/**
 	 * Set the maximum date the date picker will allow. Not well
@@ -79,12 +79,12 @@ CHROME_CSS
 	 *
 	 */
 	public function setMaxDate(string $date) : Date
-	{
+		{
 		$this->addAttribute('max', $date);
 		$this->addOption('endDate', "'{$date}'");
 
 		return $this;
-	}
+		}
 
 	/**
 	 * Set the minumum date the date picker will allow. Not well
@@ -94,23 +94,23 @@ CHROME_CSS
 	 *
 	 */
 	public function setMinDate(string $date) : Date
-	{
+		{
 		$this->addAttribute('min', $date);
 		$this->addOption('startDate', "'{$date}'");
 
 		return $this;
-	}
+		}
 
 	protected function getStart() : string
-	{
+		{
 		if (! $this->page->hasDatePicker())
-		{  // if we can't use a native, then use JS version
+			{  // if we can't use a native, then use JS version
 
 			$id = $this->getId();
 			$dollar = '$';
 			$this->page->addJavaScript("{$dollar}('#{$id}').fdatepicker(" . \PHPFUI\TextHelper::arrayToJS($this->options) . ');');
-	}
+			}
 
 		return parent::getStart();
-}
-}
+		}
+	}

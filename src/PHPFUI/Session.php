@@ -33,7 +33,6 @@ class DefaultSessionHandler extends SessionHandler
 				{
 				$this->csrfValue = sha1(mt_rand());
 				}
-
 			$_SESSION[$this->csrfField()] = $this->csrfValue;
 			}
 
@@ -53,6 +52,9 @@ class DefaultSessionHandler extends SessionHandler
  */
 class Session
 	{
+	public const DEBUG_HTML = 1;
+	public const DEBUG_JAVASCRIPT = 2;
+
 	private static $handler = null;
 
 	public static function checkCSRF(string $request = '') : bool

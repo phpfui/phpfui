@@ -9,9 +9,13 @@ namespace PHPFUI;
  */
 abstract class Base implements \Countable
 	{
+
+	public const DEBUG_SOURCE = 1;
+	public const DEBUG_JAVASCRIPT = 2;
+
 	private $attributes = [];
 	private $classes = [];
-	private static $debug = false;
+	private static $debug = 0;
 	private static $done = false;
 	private $id = null;
 	private $items = [];
@@ -245,8 +249,13 @@ abstract class Base implements \Countable
 		return $this->classes;
 		}
 
-	public static function getDebug() : bool
+	public static function getDebug(int $flags = 0) : int
 		{
+		if ($flags)
+			{
+			return self::$debug & $flags;
+			}
+
 		return self::$debug;
 		}
 
@@ -352,39 +361,38 @@ abstract class Base implements \Countable
 
 		$output = '';
 
+		$debug = self::getDebug(SESSION::DEBUG_HTML) ? "\n" : '';
 		try
 			{
 			$output .= "{$this->getStart()}";
 
-			if (self::$debug && $output)
+			if ($output)
 				{
-				$output .= "\n";
+				$output .= $debug;
 				}
 
 			foreach ($this->items as $item)
 				{
 				$output .= "{$item}";
 
-				if (self::$debug && $item)
+				if ($item)
 					{
-					$output .= "\n";
+					$output .= $debug;
 					}
 				}
-
 			$body = "{$this->getBody()}";
 			$output .= $body;
 
-			if (self::$debug && $body)
+			if ($body)
 				{
-				$output .= "\n";
+				$output .= $debug;
 				}
-
 			$end = "{$this->getEnd()}";
 			$output .= $end;
 
-			if (self::$debug && $end)
+			if ($end)
 				{
-				$output .= "\n";
+				$output .= $debug;
 				}
 			}
 		catch (\Exception $e)
@@ -420,9 +428,16 @@ abstract class Base implements \Countable
 		return $this;
 		}
 
-	public static function setDebug(bool $debug = true) : void
+	public static function setDebug(int $level = 0) : void
 		{
-		self::$debug = $debug;
+		if ($level)
+			{
+			self::$debug |= $level;
+			}
+		else
+			{
+			self::$debug = 0;
+			}
 		}
 
 	/**

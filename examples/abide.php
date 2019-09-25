@@ -72,6 +72,18 @@ class State extends Input\SelectAutoComplete
 
 	}
 
+// we need sessions for automatic csrf check in Form
+try
+	{
+	session_start();
+	}
+catch (\Exception $e)
+	{
+	$_SESSION = [];
+	session_write_close();
+	session_start();
+	}
+
 $page = new Page();
 // You need a reasonable style sheet as well.  Default Foundation will work.
 $page->addStyleSheet('/css/style.css');

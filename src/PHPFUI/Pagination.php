@@ -112,7 +112,6 @@ class Pagination extends HTML5Element
 					$prevUrl = $this->getUrl($this->page - 1);
 					$item->add("<a href='{$prevUrl}' aria-label='{$this->previous} page'>{$text}</a>");
 					}
-
 				$this->ul->addItem($item);
 				$this->ul->addItem($this->getPageItem(0));
 
@@ -127,36 +126,34 @@ class Pagination extends HTML5Element
 						{
 						$this->ul->addItem($this->getPageItem($i));
 						}
-				} // 1-n ... x
+					} // 1-n ... x
 				elseif ($this->page <= $startWindow)
-						{
+					{
 					for ($i = 1; $i < $startWindow + $this->window; ++$i)
-							{
+						{
 						$this->ul->addItem($this->getPageItem($i));
-							}
-
+						}
 					$this->ul->addItem($this->getEllipsisItem($this->ff));
-				} // 1 ... range ... x
+					} // 1 ... range ... x
 				elseif ($this->page > $startWindow && $this->page < $endWindow)
-							{
+					{
 					$this->ul->addItem($this->getEllipsisItem(0 - $this->ff));
 
 					for ($i = $this->page - $this->window; $i <= $this->page + $this->window; ++$i)
-								{
+						{
 						$this->ul->addItem($this->getPageItem($i));
-								}
-
+						}
 					$this->ul->addItem($this->getEllipsisItem($this->ff));
-				} // 1 ... n-x
+					} // 1 ... n-x
 				else
-								{
+					{
 					$this->ul->addItem($this->getEllipsisItem(0 - $this->ff));
 
 					for ($i = $endWindow - $this->window; $i < $this->of - 1; ++$i)
-									{
+						{
 						$this->ul->addItem($this->getPageItem($i));
-									}
-								}
+						}
+					}
 
 				$this->ul->addItem($this->getPageItem($this->of - 1));
 				$item = new ListItem();
@@ -164,77 +161,73 @@ class Pagination extends HTML5Element
 				$text = "{$this->next} <span class='show-for-sr'>page</span>";
 
 				if ($this->page == $this->of - 1)
-								{
+					{
 					$item->add($text);
 					$item->disabled();
-								}
+					}
 				else
-								{
+					{
 					$nextUrl = $this->getUrl($this->page + 1);
 					$item->add("<a href='{$nextUrl}' aria-label='{$this->next} page'>{$text}</a>");
-								}
-
+					}
 				$this->ul->addItem($item);
-							}
-
+				}
 			$this->add($this->ul);
-						}
+			}
 
 		return parent::getStart();
-					}
+		}
 
 	private function getEllipsisItem(int $ff) : ListItem
-					{
+		{
 		$item = new ListItem();
 
 		if ($ff && $this->page + $ff > 0 && $this->page + $ff < $this->of)
-						{
+			{
 			$page = min(max(0, $this->page + $ff), $this->of - 1);
 			$sign = '';
 
 			if ($ff < 0)
-							{
+				{
 				$item->addClass('pagination-previous');
-							}
+				}
 			else
-							{
+				{
 				$sign = '+';
 				$item->addClass('pagination-next');
-							}
-
+				}
 			$url = $this->getUrl($page);
 			$item->add("<a href='{$url}' aria-label='Page {$page}'>{$sign}{$ff}</a>");
-						}
+			}
 		else
-						{
+			{
 			$item->addClass('ellipsis');
-						}
-
+			}
 		$item->addAttribute('aria-hidden', 'true');
 
 		return $item;
-					}
+		}
 
 	/**
 	 * $page is zero based, so add one for display only
 	 */
 	private function getPageItem(int $page) : ListItem
-					{
+		{
 		$item = new ListItem();
 
 		if ($page == $this->page)
-						{
+			{
 			++$page;
 			$item->addClass('current');
 			$item->add("<span class='show-for-sr'>You're on page</span> {$page}");
-						}
+			}
 		else
-						{
+			{
 			$url = $this->getUrl($page);
 			++$page;
 			$item->add("<a href='{$url}' aria-label='Page {$page}'>{$page}</a>");
-						}
+			}
 
 		return $item;
-					}
-				}
+		}
+	}
