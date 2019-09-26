@@ -361,7 +361,7 @@ abstract class Base implements \Countable
 
 		$output = '';
 
-		$debug = self::getDebug(SESSION::DEBUG_HTML) ? "\n" : '';
+		$debug = self::getDebug(Session::DEBUG_HTML) ? "\n" : '';
 		try
 			{
 			$output .= "{$this->getStart()}";
