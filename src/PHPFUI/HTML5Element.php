@@ -62,7 +62,6 @@ class HTML5Element extends Base
 	/**
 	 * Get the tool tip as a string
 	 *
-	 *
 	 * @return ToolTip|string
 	 */
 	public function getToolTip(string $label)
@@ -89,7 +88,6 @@ class HTML5Element extends Base
 	 * A simple way to set a confirm on click
 	 *
 	 * @param string $text confirm text
-	 *
 	 */
 	public function setConfirm($text) : HTML5Element
 		{
@@ -102,7 +100,6 @@ class HTML5Element extends Base
 	 * You can set the element type if you need to morph it for some reason
 	 *
 	 * @param string $element
-	 *
 	 */
 	public function setElement($element) : HTML5Element
 		{
@@ -116,7 +113,6 @@ class HTML5Element extends Base
 	 * Set the tool tip.  Can either be a ToolTip or a string.  If it is a string, it will be converted to a ToolTip
 	 *
 	 * @param string|ToolTip $tip
-	 *
 	 */
 	public function setToolTip($tip) : HTML5Element
 		{
