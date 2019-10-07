@@ -8,11 +8,11 @@ namespace PHPFUI;
 class Input extends HTML5Element
 	{
 	protected $disabled;
-	protected $name;
+	protected $name = '';
 	protected $placeholder = '';
 
-	protected $type;
-	protected $value;
+	protected $type = '';
+	protected $value = '';
 	private static $validInputs = [
     'button',
     'checkbox',
@@ -48,7 +48,7 @@ class Input extends HTML5Element
 	 *
 	 * @throws \Exception if an invalid input type or a specific class exists for an input type like Date
 	 */
-	public function __construct($type, $name, $value = null)
+	public function __construct($type, $name, $value = '')
 		{
 		parent::__construct('input');
 		$this->name = $name;
@@ -100,7 +100,7 @@ class Input extends HTML5Element
 	 */
 	public function getValue() : string
 		{
-		return $this->value;
+		return "{$this->value}";
 		}
 
 	/**

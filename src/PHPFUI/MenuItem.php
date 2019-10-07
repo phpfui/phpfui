@@ -9,6 +9,7 @@ class MenuItem extends HTML5Element
 	private $graphic;
 
 	private $link;
+	private $generatedLink;
 	private $name;
 	private $started = false;
 
@@ -27,6 +28,39 @@ class MenuItem extends HTML5Element
 	public function getLink() : string
 		{
 		return $this->link;
+		}
+
+	/**
+	 * Get the link as a \PHPFUI\Link from the MenuItem
+	 *
+	 * Due to the need to be able to add images to a MenuItem, getLink should only be called after the icon or image is set,
+	 * otherwise the graphic will not be rendered.
+	 */
+	public function getLinkObject() : ?Link
+		{
+		if ($this->generatedLink)
+			{
+			return $this->generatedLink;
+			}
+
+		$name = $this->name;
+		if ($this->link)
+			{
+			if ($this->graphic)
+				{
+				if (in_array($this->align, ['right', 'bottom']))
+					{
+					$name = "<span>{$name}</span> {$this->graphic}";
+					}
+				else
+					{
+					$name = "{$this->graphic} <span>{$name}</span>";
+					}
+				}
+			}
+		$this->generatedLink = new Link($this->link, $name, false);
+
+		return $this->generatedLink;
 		}
 
 	public function getName() : string
@@ -89,25 +123,7 @@ class MenuItem extends HTML5Element
 
 			if ($this->link)
 				{
-				$text = new HTML5Element('a');
-				$text->addAttribute('href', $this->link);
-
-				if ($this->graphic)
-					{
-					if (in_array($this->align, ['right',
-																			'bottom']))
-						{
-						$text->add("<span>{$this->name}</span> {$this->graphic}");
-						}
-					else
-						{
-						$text->add("{$this->graphic} <span>{$this->name}</span>");
-						}
-					}
-				else
-					{
-					$text->add($this->name);
-					}
+				$text = $this->getLinkObject();
 				}
 			else
 				{

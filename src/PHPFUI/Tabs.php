@@ -21,6 +21,11 @@ class Tabs extends Base
 		$this->vertical = $vertical;
 		}
 
+	public function count() : int
+		{
+		return count($this->tabs);
+		}
+
 	/**
 	 * Add a Tab
 	 *

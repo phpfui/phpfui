@@ -37,9 +37,9 @@ class Time extends Input
 			parent::__construct('text', $name, $label, $value);
 			$page->addJavaScript('$("#' . $this->getId() . '").AnyPicker({mode:"datetime",rowsNavigation:"scroller+buttons",selectedDate:"' . $value .
 				'",dateTimeFormat:"h:mm AA",intervals:{h:1,m:' . $interval . '},viewSections:{header:["headerTitle"],contentTop:[],contentBottom:[],footer:["cancelButton","clearButton","setButton"]}});');
-			$page->addStyleSheet('/anypicker/anypicker-font.css');
-			$page->addStyleSheet('/anypicker/anypicker.min.css');
-			$page->addTailScript('/anypicker/anypicker.min.js');
+			$page->addStyleSheet('anypicker/anypicker-font.css');
+			$page->addStyleSheet('anypicker/anypicker.min.css');
+			$page->addTailScript('anypicker/anypicker.min.js');
 			}
 		else
 			{

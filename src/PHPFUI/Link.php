@@ -32,10 +32,8 @@ class Link extends HTML5Element
 		// break up long urls so they wrap better
 		$targets = ['.',
 								'@',
-								'-',
 								'&',
 								'?',
-								'=',
 								'+',
 								'!',
 								':'];

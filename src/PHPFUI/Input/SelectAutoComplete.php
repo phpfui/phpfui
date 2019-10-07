@@ -47,7 +47,7 @@ class SelectAutoComplete extends Select
 		$this->realName = $name;
 		$this->page = $page;
 		$this->type = 'text'; // really a text Input field, not a Select
-		$this->page->addTailScript('/jquery-autocomplete/jquery.autocomplete.min.js');
+		$this->page->addTailScript('jquery.autocomplete.min.js');
 		$this->hidden = new \PHPFUI\Input\Hidden($this->realName);
 		$this->hidden->getId();
 

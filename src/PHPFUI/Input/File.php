@@ -22,8 +22,8 @@ class File extends Input
 		{
 		parent::__construct('file', $name, $label, null);
 		$this->page = $page;
-		$this->page->addTailScript('/dropify/js/dropify.min.js');
-		$this->page->addStyleSheet('/dropify/css/dropify.min.css');
+		$this->page->addTailScript('dropify/js/dropify.min.js');
+		$this->page->addStyleSheet('dropify/css/dropify.min.css');
 		$js = '$("#' . $this->getId() . '").dropify()';
 		$this->page->addJavaScript($js);
 		$this->addAttribute('data-height', 100);

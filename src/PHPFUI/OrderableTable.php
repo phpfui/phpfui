@@ -11,7 +11,7 @@ class OrderableTable extends Table
 		{
 		parent::__construct();
 		$this->page = $page;
-		$this->page->addTailScript('/html5sortable/html5sortable.min.js');
+		$this->page->addTailScript('html5sortable.min.js');
 		$this->sortableBodyClass = ' class="table-sortable"';
 		$this->sortableTrClass = ' class="row-sortable"><td class="handle">&updownarrow;</td';
 		}

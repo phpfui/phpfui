@@ -24,7 +24,7 @@ class UnorderedList extends HTMLList
 
 		if ($this->sortable)
 			{
-			$page->addTailScript('/html5sortable/html5sortable.min.js');
+			$page->addTailScript('html5sortable.min.js');
 			$page->addJavaScript("sortable('.sortable',{forcePlaceholderSize:true})");
 			$this->addClass('sortable');
 			}

@@ -44,9 +44,9 @@ class TextArea extends Input
 
 		$page->addJavaScript('$.FroalaEditor.DEFAULTS.key="' . $model->getKey() . '"');
 		$page->addJavaScript('$("textarea#' . $id . '").froalaEditor(' . \PHPFUI\TextHelper::arrayToJS($model->getParameters()) . ')');
-		$page->addStyleSheet('/froala/css/froala_editor.min.css');
-		$page->addStyleSheet('/froala/css/froala_style.min.css');
-		$page->addTailScript('/froala/js/froala_editor.min.js');
+		$page->addStyleSheet('froala/css/froala_editor.min.css');
+		$page->addStyleSheet('froala/css/froala_style.min.css');
+		$page->addTailScript('froala/js/froala_editor.min.js');
 
 		foreach ($model->getPlugins() as $plugin)
 			{
@@ -99,10 +99,10 @@ class TextArea extends Input
 
 	private function addPlugIn(\PHPFUI\Page $page, $plugin) : void
 		{
-		$page->addTailScript("/froala/js/plugins/{$plugin}.min.js");
-		$css = "/froala/css/plugins/{$plugin}.min.css";
+		$page->addTailScript("froala/js/plugins/{$plugin}.min.js");
+		$css = "froala/css/plugins/{$plugin}.min.css";
 
-		if (file_exists($_SERVER['DOCUMENT_ROOT'] . $css))
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . $page->getResourcePath($css)))
 			{
 			$page->addStyleSheet($css);
 			}

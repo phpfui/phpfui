@@ -45,8 +45,8 @@ CHROME_CSS
 			{  // if we can't use a native, then use JS version
 
 			parent::__construct('text', $name, $label, $value);
-			$page->addTailScript('/datepicker/js/foundation-datepicker.min.js');
-			$page->addStyleSheet('/datepicker/css/foundation-datepicker.min.css');
+			$page->addTailScript('datepicker/js/foundation-datepicker.min.js');
+			$page->addStyleSheet('datepicker/css/foundation-datepicker.min.css');
 			$this->addAttribute('data-date-format', 'yyyy-mm-dd');
 			$this->addOption('format', '"yyyy-mm-dd"');
 			$this->addAttribute('size', '10');

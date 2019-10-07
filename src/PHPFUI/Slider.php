@@ -7,7 +7,8 @@ class Slider extends HTML5Element
 	private $max = 100;
 
 	private $min = 0;
-	private $sliderHangle = null;
+	private $sliderHandle;
+	private $rangeHandle = null;
 	private $started = false;
 	private $step = 1;
 	private $value;
@@ -19,7 +20,7 @@ class Slider extends HTML5Element
 		$this->value = $value;
 		$this->addClass('slider');
 		$this->setAttribute('data-slider');
-		$this->sliderHangle = $handle ? : new SliderHandle($value);
+		$this->sliderHandle = $handle ? : new SliderHandle($value);
 		}
 
 	public function setMax(int $max = 100) : Slider
@@ -52,7 +53,7 @@ class Slider extends HTML5Element
 
 	public function setRangeHandle(SliderHandle $handle) : Slider
 		{
-		$this->sliderHangle = $handle;
+		$this->rangeHandle = $handle;
 
 		return $this;
 		}
@@ -94,16 +95,34 @@ class Slider extends HTML5Element
 				$this->setAttribute('data-vertical', 'true');
 				}
 
-			$this->sliderHangle->addAttribute('aria-valuemax', $this->max);
-			$this->sliderHangle->addAttribute('aria-valuemin', $this->min);
-			$this->sliderHangle->addAttribute('aria-valuenow', $this->value);
-			$this->setAttribute('data-initial-end', $this->sliderHangle->getValue());
-			$this->add($this->sliderHangle);
+			$this->sliderHandle->addAttribute('aria-valuemax', $this->max);
+			$this->sliderHandle->addAttribute('aria-valuemin', $this->min);
+			$this->sliderHandle->addAttribute('aria-valuenow', $this->value);
+			$this->setAttribute('data-initial-end', $this->sliderHandle->getValue());
+			$this->add($this->sliderHandle);
 			$this->add("<span class='slider-fill' data-slider-fill></span>");
 
-			if ($this->sliderHangle && ! $this->sliderHangle->getBind())
+			if ($this->rangeHandle)
 				{
-				$this->add($this->sliderHangle->getInput());
+				$this->add($this->rangeHandle);
+				}
+			if ($this->sliderHandle->getInput())
+				{
+				$this->add($this->sliderHandle->getInput());
+				}
+
+			if ($this->rangeHandle)
+				{
+				$endInput = $this->rangeHandle->getInput();
+				if ($endInput)
+					{
+					$this->setAttribute('data-initial-end', $endInput->getValue());
+					$this->add($this->rangeHandle->getInput());
+					}
+				else
+					{
+					$this->setAttribute('data-initial-end', $this->rangeHandle->getBind()->getValue());
+					}
 				}
 			}
 
