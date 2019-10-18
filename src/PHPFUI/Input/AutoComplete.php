@@ -70,7 +70,7 @@ class AutoComplete extends Input
 			}
 
 		$this->page = $page;
-		$this->page->addTailScript('/jquery-autocomplete/jquery.autocomplete.js');
+		$this->page->addTailScript('jquery.autocomplete.js');
 		$this->callback = $callback;
 		$this->addAttribute('autocomplete', 'off');
 

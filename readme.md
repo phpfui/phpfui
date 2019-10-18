@@ -30,30 +30,22 @@ $page->addStyleSheet('/css/styles.css');
 echo $page;
 ```
 
-## Dependancies not included in the repo
-- [Zurb Foundation 6.5](https://foundation.zurb.com/sites/docs/)
-- [Froala WYSIWYG HTML Editor](https://www.froala.com/wysiwyg-editor)
-- [Font-Awesome](https://fortawesome.github.io/Font-Awesome/)
-- [AnyPicker](https://curioussolutions.in/libraries/anypicker/)
-- [Foundation Date Picker](http://foundation-datepicker.peterbeno.com)
-- [Slick Carousel](http://kenwheeler.github.io/slick/)
-- [JQuery Autocomplete](https://github.com/devbridge/jQuery-Autocomplete)
-- [HTML 5 Sortable](http://farhadi.ir/projects/html5sortable)
-
 ## Installation Instructions
-* Download the above projects and create associated folders in your public folder
-  * Zurb Foundation 6.5 => foundation
-  * Froala WYSIWYG HTML Editor => froala
-  * Font-Awesome => font-awesome
-  * AnyPicker => anypicker
-  * Foundation Date Picker => datepicker
-  * Slick Carousel => slick
-  * JQuery Autocomplete => jquery-autocomplete
-  * HTML 5 Sortable => html5sortable
+
+composer require phpfui/phpfui
+
+#### Update git submodules
+git submodule update --init --recursive
+
+Run update.php from the phpfui/phpfui directory and supply the path of your public directory.  This will copy all required public files into your public directory in the proper locations (js directory). git submodule update and update.php should be run when ever you update PHPFUI.
 
 ## Versioning
 
-Versioning will match the [Zurb Foundation versions](https://github.com/zurb/foundation-sites/releases/) for Major and Minor Semantic Versions.  PHPFUI patch level will be set in by the Patch version.  So PHPFUI Version 6.5.0 would be the first version of the library, 6.5.1 would be the first patch of PHPFUI. Both should work with any Foundation 6.5.x version.
+Versioning will match the [Zurb Foundation versions](https://github.com/zurb/foundation-sites/releases/) for Major semantic versions. PHPUI will always support the most recent version of Foundation possible for the Major version. PHPFUI Minor version will include breaking changes and may incorporate changes for the latest version of Foundation. The PHPFUI Patch version will include non breaking changes or additions.  So PHPFUI Version 6.0.0 would be the first version of the library, 6.0.1 would be the first patch of PHPFUI. Both should work with any Foundation 6.5.x version.  PHPFUI 6.1.0 would be a breaking change to PHPFUI, but still track Foundation 6.5.x.  PHPFUI 7.0.0 would track Foundation 7.x series.
+
+## Depreciation and Foundation changes
+
+Since major versions of Foundation have in the past depreciated and obsolited things, PHPFUI will track the latest verison of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
 
 ## Documentation
 PHPDOC Blocks.  PHPFUI/InstaDoc coming soon.

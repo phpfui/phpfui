@@ -5,7 +5,7 @@ namespace PHPFUI;
 class SliderHandle extends HTML5Element
 	{
 	private $bind = null;
-	private $input;
+	private $input = null;
 	private $value;
 
 	public function __construct(int $value = 0, ?Input $bind = null)
@@ -22,11 +22,13 @@ class SliderHandle extends HTML5Element
 			{
 			$this->addAttribute('aria-controls', $bind->getId());
 			}
-
-		$this->input = new HTML5Element('input');
-		$this->input->getId();
-		$this->input->setAttribute('type', 'hidden');
-		$this->input->setAttribute('value', $value);
+		else
+			{
+			$this->input = new HTML5Element('input');
+			$this->input->getId();
+			$this->input->setAttribute('type', 'hidden');
+			$this->input->setAttribute('value', $value);
+			}
 		}
 
 	public function getBind() : ?Input
@@ -34,7 +36,7 @@ class SliderHandle extends HTML5Element
 		return $this->bind;
 		}
 
-	public function getInput() : HTML5Element
+	public function getInput() : ?HTML5Element
 		{
 		return $this->input;
 		}

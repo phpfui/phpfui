@@ -11,7 +11,6 @@ abstract class Base implements \Countable
 	{
 
 	public const DEBUG_SOURCE = 1;
-	public const DEBUG_JAVASCRIPT = 2;
 
 	private $attributes = [];
 	private $classes = [];

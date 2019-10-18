@@ -21,5 +21,6 @@ class Tel extends Input
 		$page->addTailScript('/js/jquery.mask.js');
 		$page->addJavaScript("$('input[type=\"tel\"').mask('(000) 000-0000');");
 		parent::__construct('tel', $name, $label, $value);
+		$this->setDataMask($page, '(000) 000-0000');
 		}
 	}

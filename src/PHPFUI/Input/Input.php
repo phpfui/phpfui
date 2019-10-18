@@ -64,6 +64,14 @@ abstract class Input extends \PHPFUI\Input
 			}
 		}
 
+	public function setDataMask(\PHPFUI\Page $page, string $mask) : Input
+		{
+		$page->addTailScript('jquery.mask.min.js');
+		$this->setAttribute('data-mask', $mask);
+
+		return $this;
+		}
+
 	/**
 	 * Set a specific error
 	 *

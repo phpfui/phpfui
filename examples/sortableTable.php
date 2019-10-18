@@ -25,7 +25,6 @@ $headers = ['s' => 'Sequence', 'r' => 'Random'];
 $table->setHeaders($headers)->setSortableColumns(array_keys($headers))->setSortedColumnOrder($column, $sort);
 
 $count = 10000;
-$limit = 20;
 $lastPage = (int)($count / $limit);
 if ($p >= 0 && $p < $lastPage)
 	{

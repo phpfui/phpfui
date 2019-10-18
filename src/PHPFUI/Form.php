@@ -131,7 +131,7 @@ JAVASCRIPT;
 
 			if ($this->areYouSure)
 				{
-				$this->page->addTailScript('/js/jquery.are-you-sure.js');
+				$this->page->addTailScript('jquery.are-you-sure.js');
 				$id = $this->getId();
 				$this->page->addJavaScript('$("#' . $id . '").areYouSure({"addRemoveFieldsMarksDirty":true});');
 				$areYouSure = "$('#{$id}').trigger('reinitialize.areYouSure');";

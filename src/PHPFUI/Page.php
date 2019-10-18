@@ -19,7 +19,6 @@ class Page extends Base
 	private $headTags = [
     '<meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-    '<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />',
   ];
 	private $ieComments = [];
 	private $IEMobile = false;
@@ -28,12 +27,12 @@ class Page extends Base
 	private $javascriptLast = [];
 	private $language = 'en';
 	private $pageName = 'Created with Zurb Foundation';
-	private $debugJavascript = '';
 
 	private $plugins = [];
 	private $reveals = [];
 	private $styleSheets = [];
 	private $tailScripts = [];
+	private $resourcePath = '/PHPFUI/';
 
 	public function __construct()
 		{
@@ -245,6 +244,25 @@ class Page extends Base
 		}
 
 	/**
+	 * Get fully qualified resource path root relative with resource if passed
+	 *
+	 * A $resource starting with / or http is not modified
+	 */
+	public function getResourcePath(string $resource = '') : string
+		{
+		if ($resource == '')
+			{
+			return $this->resourcePath;
+			}
+		if ($resource[0] == '/' || stripos($resource, 'http') === 0)
+			{
+			return $resource;
+			}
+
+		return $this->resourcePath . $resource;
+		}
+
+	/**
 	 * return true if it has a built in date picker detectable by
 	 * HTTP_USER_AGENT
 	 */
@@ -345,6 +363,7 @@ class Page extends Base
 				$parameters = '?' . $parameters;
 				}
 			}
+
 		$timeout = (int) $timeout;
 
 		if (! $timeout)
@@ -400,6 +419,16 @@ class Page extends Base
 		return $this;
 		}
 
+	/**
+	 * $resoursePath should start from the public root directory and include a trailing forward slash
+	 */
+	public function setResourcePath(string $resoursePath = '/PHPFUI/') : Page
+		{
+		$this->resourcePath = $path;
+
+		return $this;
+		}
+
 	protected function getBody() : string
 		{
 		return '';
@@ -417,17 +446,20 @@ class Page extends Base
 				$output .= $reveal;
 				}
 			}
+
 		$scripts = [
-      '/foundation/js/vendor/jquery.min.js',
-      '/foundation/js/vendor/what-input.min.js',
-      '/foundation/js/foundation.js',
+      'foundation/js/vendor/jquery.min.js',
+      'foundation/js/vendor/what-input.min.js',
+      'foundation/js/foundation.min.js',
     ];
 		$scripts = array_merge($scripts, $this->tailScripts);
 
 		foreach ($scripts as $src)
 			{
+			$src = $this->getResourcePath($src);
 			$output .= "<script src='{$src}'></script>{$nl}";
 			}
+
 		$output .= '<script>';
 
 		foreach ($this->plugins as $plugin => $options)
@@ -437,34 +469,30 @@ class Page extends Base
 				$output .= "Foundation.{$plugin}.defaults.{$name}={$value};";
 				}
 			}
+
 		$output .= '$(document).foundation();' . $nl;
 		$this->javascript = array_merge($this->javascript, $this->javascriptLast);
 
-		if (parent::getDebug(Session::DEBUG_JAVASCRIPT))
+		foreach ($this->javascript as $js)
 			{
-			$this->debugJavascript .= implode("\n", $this->javascript);
+			$output .= "{$js};{$nl}";
 			}
-		else
-			{
-			foreach ($this->javascript as $js)
-				{
-				$output .= "{$js};{$nl}";
-				}
-			}
-		$output .= "</script>{$this->debugJavascript}</body></html>";
+
+		$output .= '</script></body></html>';
 
 		return $output;
 		}
 
 	protected function getStart() : string
 		{
-		$nl = parent::getDebug(Session::DEBUG_HTML) ? "\n" : '';
+		$nl = parent::getDebug() ? "\n" : '';
 		$output = '<!DOCTYPE html>' . $nl;
 
 		foreach ($this->ieComments as $comment)
 			{
 			$output .= $comment;
 			}
+
 		$output .= "<html class='no-js' lang='{$this->language}'>{$nl}<head>";
 
 		foreach ($this->headTags as $tag)
@@ -476,36 +504,33 @@ class Page extends Base
 			{
 			$output .= "<link rel='shortcut icon' href='{$this->favIcon}' />{$nl}";
 			}
+
 		$output .= "<title>{$this->pageName}</title>{$nl}";
 		// always place foundation css first
 		$this->styleSheets = array_merge($this->foundationStyleSheets, $this->styleSheets);
 
 		foreach ($this->styleSheets as $sheet)
 			{
+			$sheet = $this->getResourcePath($sheet);
 			$output .= "<link rel='stylesheet' href='{$sheet}'>{$nl}";
 			}
 
 		foreach ($this->headScripts as $src)
 			{
+			$src = $this->getResourcePath($src);
 			$output .= "<script src='{$src}'></script>{$nl}";
 			}
 
-		if (parent::getDebug(Session::DEBUG_JAVASCRIPT))
+		foreach ($this->headJavascript as $src)
 			{
-			$this->debugJavascript .= implode("\n", $this->headJavascript);
-			}
-		else
-			{
-			foreach ($this->headJavascript as $src)
-				{
-				$output .= "<script>{$src}</script>{$nl}";
-				}
+			$output .= "<script>{$src}</script>{$nl}";
 			}
 
 		if ($this->css)
 			{
 			$output .= '<style>' . implode(';', $this->css) . '</style>' . $nl;
 			}
+
 		$output .= '</head><body>';
 
 		return $output;

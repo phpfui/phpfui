@@ -27,7 +27,6 @@ Panel
 PopupInput
 RadioTable
 RadioTableCell
-RangeSlider
 Reset
 SortableTable
 Sticky
@@ -229,7 +228,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 	public function testTel() : void
 			{
-		$tel = new \PHPFUI\Input\Tel('tel', 'Tel');
+		$tel = new \PHPFUI\Input\Tel($this->page, 'tel', 'Tel');
 		$this->assertValidHtml($tel);
 		$this->form->add($tel);
 			}

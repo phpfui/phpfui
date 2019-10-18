@@ -42,7 +42,7 @@ class Table extends HTML5Element
 	 */
 	public function addArrowNavigation(Page $page) : Table
 		{
-		$page->addTailScript('/js/jquery.arrow_nav.js');
+		$page->addTailScript('jquery.arrow_nav.js');
 		$this->addClass('arrow-nav');
 
 		return $this;
