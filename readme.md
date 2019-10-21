@@ -34,7 +34,8 @@ echo $page;
 
 composer require phpfui/phpfui
 
-Run update.php from the phpfui/phpfui directory and supply the path of your public directory.  This will copy all required public files into your public directory in the proper locations (js directory). update.php should be run when ever you update PHPFUI.
+Run update.php from the vendor/phpfui/phpfui directory and supply the path to your public directory / the directory for the various JS and CSS files PHPFUI uses (public/PHPFUI for example). This will copy all required public files into your public directory. The library defaults to public/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. update.php should be run when ever you update PHPFUI.
+
 
 ## Versioning
 
@@ -42,7 +43,7 @@ Versioning will match the [Zurb Foundation versions](https://github.com/zurb/fou
 
 ## Depreciation and Foundation changes
 
-Since major versions of Foundation have in the past depreciated and obsolited things, PHPFUI will track the latest verison of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
+Since major versions of Foundation have in the past depreciated and obsolited things, PHPFUI will track the latest version of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
 
 ## Documentation
 PHPDOC Blocks.  PHPFUI/InstaDoc coming soon.
