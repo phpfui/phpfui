@@ -16,7 +16,8 @@
         "zurb/foundation": "^6.5",
         "froala/wysiwyg-editor": "2.9.5",
         "fortawesome/font-awesome": "4.7.0",
-        "igorescobar/jquery-mask-plugin": "^1.14"
+        "igorescobar/jquery-mask-plugin": "^1.14",
+        "components/jquery": "^3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",

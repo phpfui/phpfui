@@ -34,10 +34,7 @@ echo $page;
 
 composer require phpfui/phpfui
 
-#### Update git submodules
-git submodule update --init --recursive
-
-Run update.php from the phpfui/phpfui directory and supply the path of your public directory.  This will copy all required public files into your public directory in the proper locations (js directory). git submodule update and update.php should be run when ever you update PHPFUI.
+Run update.php from the phpfui/phpfui directory and supply the path of your public directory.  This will copy all required public files into your public directory in the proper locations (js directory). update.php should be run when ever you update PHPFUI.
 
 ## Versioning
 
