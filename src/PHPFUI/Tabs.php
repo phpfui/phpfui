@@ -102,6 +102,7 @@ class Tabs extends Base
 			{
 			$this->tabSection = new UnorderedList();
 			$this->tabSection->addAttribute('data-tabs');
+			$this->tabSection->addAttribute('role', 'tablist');
 
 			if ($this->vertical)
 				{

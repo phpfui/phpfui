@@ -28,6 +28,9 @@ $subtrees['JeremyFagis/dropify'] = [
 $subtrees['codedance/jquery.AreYouSure'] = [
 	'jquery.are-you-sure.js' => '',
 	];
+$subtrees['ten1seven/what-input'] = [
+	'dist/what-input.min.js' => '',
+	];
 $subtrees['devbridge/jQuery-Autocomplete'] = [
 	'dist/jquery.autocomplete.min.js' => '',
 	];
@@ -62,12 +65,15 @@ $vendor['zurb/foundation'] = [
 	'dist/js/foundation.min.js' => 'foundation/js',
 	'dist/js/plugins/*.min.js' => 'foundation/js/plugins',
 	];
-$vendor['igorescobar'] = [
-	'jquery-mask-plugin/dist/jquery.mask.min.js' => '',
+$vendor['igorescobar/jquery-mask-plugin'] = [
+	'dist/jquery.mask.min.js' => '',
 	];
-$vendor['froala'] = [
-	'wysiwyg-editor/css/*' => 'froala/css',
-	'wysiwyg-editor/js/*' => 'froala/js',
+$vendor['froala/wysiwyg-editor'] = [
+	'css/*' => 'froala/css',
+	'js/*' => 'froala/js',
+	];
+$vendor['components/jquery'] = [
+	'jquery.min.js' => '',
 	];
 
 copyFiles('vendor', $directory, $vendor);

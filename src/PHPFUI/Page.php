@@ -448,8 +448,8 @@ class Page extends Base
 			}
 
 		$scripts = [
-      'foundation/js/vendor/jquery.min.js',
-      'foundation/js/vendor/what-input.min.js',
+      'jquery.min.js',
+      'what-input.min.js',
       'foundation/js/foundation.min.js',
     ];
 		$scripts = array_merge($scripts, $this->tailScripts);

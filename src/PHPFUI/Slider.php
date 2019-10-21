@@ -98,7 +98,7 @@ class Slider extends HTML5Element
 			$this->sliderHandle->addAttribute('aria-valuemax', $this->max);
 			$this->sliderHandle->addAttribute('aria-valuemin', $this->min);
 			$this->sliderHandle->addAttribute('aria-valuenow', $this->value);
-			$this->setAttribute('data-initial-end', $this->sliderHandle->getValue());
+			$this->setAttribute('data-initial-end', (float)$this->sliderHandle->getValue());
 			$this->add($this->sliderHandle);
 			$this->add("<span class='slider-fill' data-slider-fill></span>");
 
@@ -116,16 +116,20 @@ class Slider extends HTML5Element
 				$endInput = $this->rangeHandle->getInput();
 				if ($endInput)
 					{
-					$this->setAttribute('data-initial-end', $endInput->getValue());
 					$this->add($this->rangeHandle->getInput());
 					}
 				else
 					{
-					$this->setAttribute('data-initial-end', $this->rangeHandle->getBind()->getValue());
+					$endInput = $this->rangeHandle->getBind();
 					}
+				$this->setAttribute('data-initial-end', $endInput->getValue());
+				$this->rangeHandle->addAttribute('aria-valuemax', $this->max);
+				$this->rangeHandle->addAttribute('aria-valuemin', $this->min);
+				$this->rangeHandle->addAttribute('aria-valuenow', (int)$endInput->getValue());
 				}
 			}
 
 		return parent::getStart();
 		}
 	}
+

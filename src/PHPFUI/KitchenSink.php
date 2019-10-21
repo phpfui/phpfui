@@ -513,31 +513,28 @@ class KitchenSink
 		return $slickSlider;
 		}
 
-	/**
-	 * @todo fix aria issues
-	 */
-//	public function baseSlider() : Container
-//		{
-//		$container = new Container();
-//
-//		$container->add(new Slider($this->page, 25));
-//
-//		$data = new Input('number', 'data');
-//		$slider = new Slider($this->page, 12, new SliderHandle(12, $data));
-//		$slider->setVertical();
-//		$container->add($slider);
-//		$container->add($data);
-//
-//		$firstHandle = new Input('number', 'first');
-//		$secondHandle = new Input('number', 'second');
-//		$slider = new Slider($this->page, 25, new SliderHandle(25, $firstHandle));
-//		$slider->setRangeHandle(new SliderHandle(75, $secondHandle));
-//		$container->add($slider);
-//		$container->add($firstHandle);
-//		$container->add($secondHandle);
-//
-//		return $container;
-//		}
+	public function baseSlider() : Container
+		{
+		$container = new Container();
+
+		$container->add(new Slider($this->page, 25));
+
+		$data = new Input('number', 'data');
+		$slider = new Slider($this->page, 12, new SliderHandle(12, $data));
+		$slider->setVertical();
+		$container->add($slider);
+		$container->add($data);
+
+		$firstHandle = new Input('number', 'first');
+		$secondHandle = new Input('number', 'second');
+		$slider = new Slider($this->page, 25, new SliderHandle(25, $firstHandle));
+		$slider->setRangeHandle(new SliderHandle(75, $secondHandle));
+		$container->add($slider);
+		$container->add($firstHandle);
+		$container->add($secondHandle);
+
+		return $container;
+		}
 
 	public function baseSplitButton() : SplitButton
 		{
@@ -643,37 +640,37 @@ class KitchenSink
 		return $table;
 		}
 
-	//  public function baseTabs() : Container
-	//    {
-	//    $container = new Container();
-	//
-	//    $tabs = new Tabs();
-	//    $tabs->addTab('One', 'Check me out! I\'m a super cool Tab panel with text content!');
-	//    $image = new Image('/images/rectangle-1.jpg');
-	//    $tabs->addTab('Two', $image);
-	//    $tabs->addTab('Three', '', true);
-	//    $tabs->addTab('Four', $image);
-	//    $container->add($tabs);
-	//
-	//    $grid = new GridX();
-	//    $grid->setMargin();
-	//    $cell = new Cell(3, 2, 1);
-	//    $vtabs = new Tabs(true);
-	//    $vtabs->addTab('One', 'Check me out! I\'m VERTICAL!');
-	//    $vtabs->addTab('Two', $image);
-	//    $vtabs->addTab('Three', '', true);
-	//    $vtabs->addTab('Four', $image);
-	//    $cell->add($vtabs->getTabs());
-	//    $grid->add($cell);
-	//    $content = new Cell();
-	//    $content->add($vtabs->getContent());
-	//    $grid->add($content);
-	//    $gridContainer = new GridContainer();
-	//    $gridContainer->add($grid);
-	//    $container->add($gridContainer);
-	//
-	//    return $container;
-	//    }
+  public function baseTabs() : Container
+    {
+    $container = new Container();
+
+    $tabs = new Tabs();
+    $tabs->addTab('One', 'Check me out! I\'m a super cool Tab panel with text content!');
+    $image = new Image('/images/rectangle-1.jpg');
+    $tabs->addTab('Two', $image);
+    $tabs->addTab('Three', '', true);
+    $tabs->addTab('Four', $image);
+    $container->add($tabs);
+
+    $grid = new GridX();
+    $grid->setMargin();
+    $cell = new Cell(3, 2, 1);
+    $vtabs = new Tabs(true);
+    $vtabs->addTab('One', 'Check me out! I\'m VERTICAL!');
+    $vtabs->addTab('Two', $image);
+    $vtabs->addTab('Three', '', true);
+    $vtabs->addTab('Four', $image);
+    $cell->add($vtabs->getTabs());
+    $grid->add($cell);
+    $content = new Cell();
+    $content->add($vtabs->getContent());
+    $grid->add($content);
+    $gridContainer = new GridContainer();
+    $gridContainer->add($grid);
+    $container->add($gridContainer);
+
+    return $container;
+    }
 
 	public function baseThumbnail() : Container
 		{
