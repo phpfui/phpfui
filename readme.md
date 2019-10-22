@@ -14,7 +14,7 @@ Don't write HTML by hand!
 
 ## Usage
 ```PHP
-use PHPFUI;
+namespace PHPFUI;
 $page = new Page();
 $form = new Form($page);
 $fieldset = new FieldSet('A basic input form');
@@ -34,8 +34,7 @@ echo $page;
 
 composer require phpfui/phpfui
 
-Run update.php from the vendor/phpfui/phpfui directory and supply the path to your public directory / the directory for the various JS and CSS files PHPFUI uses (public/PHPFUI for example). This will copy all required public files into your public directory. The library defaults to public/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. update.php should be run when ever you update PHPFUI.
-
+Then run update.php from the vendor/phpfui/phpfui directory and supply the path to your public directory / the directory for the various JS and CSS files PHPFUI uses (public/PHPFUI for example). This will copy all required public files into your public directory. The library defaults to your-public-directory/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. update.php should be run when ever you update PHPFUI.
 
 ## Versioning
 
@@ -46,17 +45,18 @@ Versioning will match the [Zurb Foundation versions](https://github.com/zurb/fou
 Since major versions of Foundation have in the past depreciated and obsolited things, PHPFUI will track the latest version of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
 
 ## Documentation
-PHPDOC Blocks.  PHPFUI/InstaDoc coming soon.
+PHPDOC Blocks for now.  PHPFUI/InstaDoc coming soon.
 
 ## Examples
-#### Add the following files to a public directory for testing
+##### Add the following files to a public directory for testing
 * [kitchenSink.php](https://github.com/phpfui/phpfui/blob/master/examples/kitchenSink.php) examples to show most classes.
-* [paginate.php](https://github.com/phpfui/phpfui/blob/master/examples/paginate.php) allows you to test pagination parametes.
+* [paginate.php](https://github.com/phpfui/phpfui/blob/master/examples/paginate.php) allows you to test pagination parameters.
 * [sortableTable.php](https://github.com/phpfui/phpfui/blob/master/examples/sortableTable.php) interactive SortableTable example with pagination.
 * [abide.php](https://github.com/phpfui/phpfui/blob/master/examples/abide.php) a more realistic Abide demo.
 
 ## Unit Testing
-#### Also good for some basic usage examples
+Full unit testing using [phpfui/html-unit-tester](https://packagist.org/packages/phpfui/html-unit-tester)
+##### Also good for some basic usage examples
 * [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php) Example generating class used for unit testing.
 
 ## License

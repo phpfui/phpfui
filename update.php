@@ -10,7 +10,7 @@ if (! $directory)
 	return;
 	}
 
-$directory = __DIR__ . '/' . $directory;
+$directory = $directory;
 echo "Copying public files into {$directory}\n";
 
 // get subtrees
