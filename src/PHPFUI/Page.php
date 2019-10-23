@@ -37,6 +37,7 @@ class Page extends Base
 	public function __construct()
 		{
 		parent::__construct();
+		$this->addStyleSheet('font-awesome/css/font-awesome.min.css');
 		$client = $_SERVER['HTTP_USER_AGENT'] ?? '';
 		$this->android = preg_match('/Android|Silk/i', $client);
 		$this->ios = preg_match('/iPhone|iPad|iPod/i', $client);

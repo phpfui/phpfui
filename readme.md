@@ -53,11 +53,11 @@ PHPDOC Blocks for now.  PHPFUI/InstaDoc coming soon.
 * [paginate.php](https://github.com/phpfui/phpfui/blob/master/examples/paginate.php) allows you to test pagination parameters.
 * [sortableTable.php](https://github.com/phpfui/phpfui/blob/master/examples/sortableTable.php) interactive SortableTable example with pagination.
 * [abide.php](https://github.com/phpfui/phpfui/blob/master/examples/abide.php) a more realistic Abide demo.
+##### Also good for some basic usage examples
+* [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php) Example generating class used for unit testing.
 
 ## Unit Testing
 Full unit testing using [phpfui/html-unit-tester](https://packagist.org/packages/phpfui/html-unit-tester)
-##### Also good for some basic usage examples
-* [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php) Example generating class used for unit testing.
 
 ## License
 PHPFUI is distributed under the MIT License.

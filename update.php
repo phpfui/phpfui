@@ -75,8 +75,12 @@ $vendor['froala/wysiwyg-editor'] = [
 $vendor['components/jquery'] = [
 	'jquery.min.js' => '',
 	];
+$vendor['fortawesome/font-awesome'] = [
+	'css/*.min.css' => 'font-awesome/css',
+	'fonts' => 'font-awesome',
+	];
 
-copyFiles('vendor', $directory, $vendor);
+copyFiles('../..', $directory, $vendor);
 
 function copyFiles(string $fromDir, string $toDir, array $files)
 	{
