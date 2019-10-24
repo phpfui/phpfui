@@ -126,7 +126,7 @@ $form->add($nameInfo);
 
 $personalInfo = new FieldSet('Personal Information');
 $personalInfo->add(new MultiColumn(new Input\Date($page, 'birthday', 'Birthday'), new Input\Time($page, 'birthTime', 'Birthtime'), new Input\CheckBox('alive', 'Living?')));
-$personalInfo->add(new MultiColumn(new Input\Email('email', 'email'), new Input\Tel('cell', 'Cell Number')));
+$personalInfo->add(new MultiColumn(new Input\Email('email', 'email'), new Input\Tel($page, 'cell', 'Cell Number')));
 $form->add($personalInfo);
 
 $otherInfo = new FieldSet('Other Information');
