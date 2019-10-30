@@ -13,6 +13,29 @@ if (! $directory)
 $directory = $directory;
 echo "Copying public files into {$directory}\n";
 
+// get composer files
+$vendor = [];
+$vendor['zurb/foundation'] = [
+	'dist/js/foundation.min.js' => 'foundation/js',
+	'dist/js/plugins/*.min.js' => 'foundation/js/plugins',
+	];
+$vendor['igorescobar/jquery-mask-plugin'] = [
+	'dist/jquery.mask.min.js' => '',
+	];
+$vendor['froala/wysiwyg-editor'] = [
+	'css/*' => 'froala/css',
+	'js/*' => 'froala/js',
+	];
+$vendor['components/jquery'] = [
+	'jquery.min.js' => '',
+	];
+$vendor['fortawesome/font-awesome'] = [
+	'css/*.min.css' => 'font-awesome/css',
+	'fonts' => 'font-awesome',
+	];
+
+copyFiles('../..', $directory, $vendor);
+
 // get subtrees
 $subtrees = [];
 $subtrees['najlepsiwebdesigner/foundation-datepicker'] = [
@@ -57,30 +80,11 @@ $js['anypicker'] = [
 	'anypicker.min.js' => 'anypicker',
 	];
 
+$js['froala'] = [
+	'js' => 'froala',
+	];
+
 copyFiles('js', $directory, $js);
-
-// get composer files
-$vendor = [];
-$vendor['zurb/foundation'] = [
-	'dist/js/foundation.min.js' => 'foundation/js',
-	'dist/js/plugins/*.min.js' => 'foundation/js/plugins',
-	];
-$vendor['igorescobar/jquery-mask-plugin'] = [
-	'dist/jquery.mask.min.js' => '',
-	];
-$vendor['froala/wysiwyg-editor'] = [
-	'css/*' => 'froala/css',
-	'js/*' => 'froala/js',
-	];
-$vendor['components/jquery'] = [
-	'jquery.min.js' => '',
-	];
-$vendor['fortawesome/font-awesome'] = [
-	'css/*.min.css' => 'font-awesome/css',
-	'fonts' => 'font-awesome',
-	];
-
-copyFiles('../..', $directory, $vendor);
 
 function copyFiles(string $fromDir, string $toDir, array $files)
 	{

@@ -182,13 +182,6 @@ class KitchenSink
 		return $container;
 		}
 
-	public function extraDisplay() : Display
-		{
-		$display = new Display('Label', 'Static text');
-
-		return $display;
-		}
-
 	public function baseDrillDownMenu() : Container
 		{
 		$container = new Container();

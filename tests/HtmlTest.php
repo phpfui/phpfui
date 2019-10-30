@@ -38,12 +38,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($cell);
 		}
 
-	public function testDisplay() : void
-		{
-		$display = new \PHPFUI\Display('label', 'text');
-		$this->assertValidHtml($display);
-		}
-
 	public function testFieldSet() : void
 		{
 		$fieldSet = new \PHPFUI\FieldSet();
