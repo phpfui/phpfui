@@ -70,32 +70,55 @@ class SortableTable extends Table
 		return $this;
 		}
 
-	protected function getSortIndicator(string $column) : string
+	/**
+	 * @return string a link that will sort the column in ascending order
+	 */
+	public function getUpUrl(string $column) : string
 		{
-		$indicator = '&blacklozenge;';
 		$parameters = $this->parameters;
 		$parameters[$this->columnParameter] = $column;
 		$parameters[$this->sortParameter] = 'a';
+
+		return $this->url . '?' . http_build_query($parameters);
+		}
+
+	/**
+	 * @return string a link that will sort the column in descending order
+	 */
+	public function getDownUrl(string $column) : string
+		{
+		$parameters = $this->parameters;
+		$parameters[$this->columnParameter] = $column;
+		$parameters[$this->sortParameter] = 'd';
+
+		return $this->url . '?' . http_build_query($parameters);
+		}
+
+	protected function getSortIndicator(string $column) : string
+		{
+		if (! isset($this->sortableColumns[$column]))
+			{
+			return '';
+			}
+
+		$downUrl = $this->getDownUrl($column);
+		$down = '&Or;';
+		$upUrl = $this->getUpUrl($column);
+		$up = '&And;';
+		$indicator = "<a href='{$upUrl}'>{$up}</a><a href='{$downUrl}'>{$down}</a>";
 
 		if ($column == $this->sortedColumn)
 			{
 			if ('d' == $this->sortedOrder)
 				{
-				$indicator = '&blacktriangledown;';
+				$indicator = "<a href='{$upUrl}'>{$down}</a>";
 				}
 			else
 				{
-				$indicator = '&blacktriangle;';
-				$parameters[$this->sortParameter] = 'd';
+				$indicator = "<a href='{$downUrl}'>{$up}</a>";
 				}
 			}
-		elseif (! isset($this->sortableColumns[$column]))
-			{
-			return '';
-			}
 
-		$link = $this->url . '?' . http_build_query($parameters);
-
-		return "<span class='float-right'><a href='{$link}'>{$indicator}</a></span>";
+		return "<span class='float-right'>{$indicator}</span>";
 		}
 	}
