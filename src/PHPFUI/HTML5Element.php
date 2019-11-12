@@ -399,6 +399,32 @@ class HTML5Element extends Base
 		return $this;
 		}
 
+	/**
+	 *  Transfers attributes into this object from the passed object
+	 *
+	 *
+	 */
+	public function transferAttributes(Base $from) : Base
+		{
+		$this->attributes = array_merge($this->attributes, $from->attributes);
+		$from->attributes = [];
+
+		return $this;
+		}
+
+	/**
+	 *  Transfers attributes into this object from the passed object
+	 *
+	 *
+	 */
+	public function transferClasses(Base $from) : Base
+		{
+		$this->classes = array_merge($this->classes, $from->classes);
+		$from->classes = [];
+
+		return $this;
+		}
+
 	protected function getBody() : string
 		{
 		return '';
