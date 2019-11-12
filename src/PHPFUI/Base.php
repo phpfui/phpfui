@@ -12,13 +12,9 @@ abstract class Base implements \Countable
 
 	public const DEBUG_SOURCE = 1;
 
-	private $attributes = [];
-	private $classes = [];
 	private static $debug = 0;
 	private static $done = false;
-	private $id = null;
 	private $items = [];
-	private static $masterId = 0;
 	private $response = '';
 
 	public function __construct()
@@ -27,11 +23,6 @@ abstract class Base implements \Countable
 
 	public function __clone()
 		{
-		if ($this->hasId())
-			{
-			$this->newId();
-			}
-
 		foreach ($this->items as $key => $item)
 			{
 			if (is_object($item))
@@ -93,91 +84,12 @@ abstract class Base implements \Countable
 		}
 
 	/**
-   * Add an attribute the the object
-   *
-   * @param string $value of the attribute, blank for just a plain attribute
-   *
-   */
-	public function addAttribute(string $attribute, string $value = '') : Base
-		{
-		if (! isset($this->attributes[$attribute]))
-			{
-			$this->attributes[$attribute] = $value;
-			}
-		else
-			{
-			$this->attributes[$attribute] .= ' ' . $value;
-			}
-
-		return $this;
-		}
-
-	/**
-	 * Add a class to an object
-	 *
-	 * @param string $class name to add
-	 *
-	 */
-	public function addClass(string $class) : Base
-		{
-		foreach (explode(' ', $class) as $oneClass)
-			{
-			$this->classes[] = $oneClass;
-			}
-
-		return $this;
-		}
-
-	/**
 	 * Number of object in this object.  Does not count sub objects.
 	 *
 	 */
 	public function count() : int
 		{
 		return count($this->items);
-		}
-
-	/**
-	 * Deletes the attribute
-	 *
-	 *
-	 */
-	public function deleteAttribute(string $attribute) : Base
-		{
-		unset($this->attributes[$attribute]);
-
-		return $this;
-		}
-
-	/**
-	 * Deletes all attributes
-	 *
-	 */
-	public function deleteAttributes() : Base
-		{
-		$this->attributes = [];
-
-		return $this;
-		}
-
-	/**
-	 * Delete a class from the object
-	 *
-	 *
-	 */
-	public function deleteClass(string $classToDelete) : Base
-		{
-		foreach ($this->classes as $key => $class)
-			{
-			if ($classToDelete == $class)
-				{
-				unset($this->classes[$key]);
-
-				break;
-				}
-			}
-
-		return $this;
 		}
 
 	/**
@@ -191,63 +103,6 @@ abstract class Base implements \Countable
 		return $this;
 		}
 
-	/**
-	 * Get an attribute
-	 *
-	 *
-	 * @return ?string does not exist if null
-	 */
-	public function getAttribute(string $attribute) : ?string
-		{
-		return isset($this->attributes[$attribute]) ? $this->attributes[$attribute] : null;
-		}
-
-	/**
-	 * Returns the attribute strings
-	 *
-	 */
-	public function getAttributes() : string
-		{
-		$output = '';
-
-		foreach ($this->attributes as $type => $value)
-			{
-			if (! strlen($value))
-				{
-				$output .= ' ' . $type;
-				}
-			else
-				{
-				$output .= " {$type}='{$value}'";
-				}
-			}
-
-		return $output;
-		}
-
-	/**
-	 * Returns the class attribute
-	 *
-	 */
-	public function getClass() : string
-		{
-		if (count($this->classes))
-			{
-			return 'class="' . implode(' ', $this->classes) . '" ';
-			}
-
-		return '';
-		}
-
-	/**
-	 * Returns all classes for the object
-	 *
-	 */
-	public function getClasses() : array
-		{
-		return $this->classes;
-		}
-
 	public static function getDebug(int $flags = 0) : int
 		{
 		if ($flags)
@@ -258,34 +113,16 @@ abstract class Base implements \Countable
 		return self::$debug;
 		}
 
-	/**
-	 * Return the id of the object
-	 *
-	 * @return string
-	 */
-	public function getId()
+	public static function setDebug(int $level = 0) : void
 		{
-		if (null === $this->id)
+		if ($level)
 			{
-			$this->newId();
+			self::$debug |= $level;
 			}
-
-		return $this->id;
-		}
-
-	/**
-	 * Return the id of the object
-	 *
-	 * @return string
-	 */
-	public function getIdAttribute()
-		{
-		if (! $this->hasId())
+		else
 			{
-			return '';
+			self::$debug = 0;
 			}
-
-		return "id='{$this->id}' ";
 		}
 
 	/**
@@ -298,52 +135,12 @@ abstract class Base implements \Countable
 		}
 
 	/**
-	 * Return true if the class is present on the object
-	 *
-	 *
-	 */
-	public function hasClass(string $hasClass) : bool
-		{
-		foreach ($this->classes as $class)
-			{
-			if ($hasClass == $class)
-				{
-				return true;
-				}
-			}
-
-		return false;
-		}
-
-	/**
-	 * Is the id set
-	 *
-	 */
-	public function hasId() : bool
-		{
-		return null !== $this->id;
-		}
-
-	/**
 	 * Returns true if the page needs no more processing
 	 *
 	 */
 	public function isDone() : bool
 		{
 		return self::$done;
-		}
-
-	/**
-	 * Assign and auto increment the master id
-	 *
-	 * @return Base
-	 */
-	public function newId()
-		{
-		++self::$masterId;
-		$this->id = 'id' . self::$masterId;
-
-		return $this;
 		}
 
 	/**
@@ -410,44 +207,6 @@ abstract class Base implements \Countable
 	public function prepend($item) : Base
 		{
 		array_unshift($this->items, $item);
-
-		return $this;
-		}
-
-	/**
-	 * Set the attribute overwriting the prior value
-	 *
-	 * @param string $value of the attribute, blank for just a plain attribute
-	 *
-	 */
-	public function setAttribute(string $attribute, string $value = '') : Base
-		{
-		$this->attributes[$attribute] = $value;
-
-		return $this;
-		}
-
-	public static function setDebug(int $level = 0) : void
-		{
-		if ($level)
-			{
-			self::$debug |= $level;
-			}
-		else
-			{
-			self::$debug = 0;
-			}
-		}
-
-	/**
-	 * Set the base id of the object
-	 *
-	 * @param string $id id will have 'id' prepended to it when retrieved
-	 *
-	 */
-	public function setId($id) : Base
-		{
-		$this->id = $id;
 
 		return $this;
 		}
