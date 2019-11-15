@@ -87,13 +87,7 @@ class MultiColumn extends GridX implements \Countable
 
 			if ($number = count($this->objects))
 				{
-				$sizes = [0,
-									12,
-									6,
-									4,
-									3,
-									2,
-									2,];
+				$sizes = [0, 12, 6, 4, 3, 2, 2, ];
 
 				for ($i = 1; $i <= $number; ++$i)
 					{
@@ -105,7 +99,7 @@ class MultiColumn extends GridX implements \Countable
 						}
 					else
 						{
-						$cell->setSmall($sizes[$number]);
+						$cell->setSmall($sizes[$number] ?? 1);
 						}
 
 					$cell->add($this->objects[$i - 1]);
