@@ -90,6 +90,8 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 	public function testIcon() : void
 		{
 		$icon = new \PHPFUI\Icon('edit');
+		$icon->setTooltip('This is a tooltip');
+
 		$this->assertValidHtml($icon);
 		}
 
@@ -117,6 +119,16 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 	public function testKitchenSink() : void
 		{
 		$this->assertValidHtml($this->ks->render());
+		}
+
+	public function testKitchenSinkExtra() : void
+		{
+		$this->assertValidHtml($this->ks->render('extra'));
+		}
+
+	public function testKitchenSinkInput() : void
+		{
+		$this->assertValidHtml($this->ks->render('input'));
 		}
 
 	public function testKitchenSinkExamples() : void

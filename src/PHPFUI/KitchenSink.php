@@ -286,11 +286,22 @@ class KitchenSink
 		return $container;
 		}
 
-	public function extraIcon() : Icon
+	public function extraIcon() : Container
 		{
-		$icon = new Icon('edit', '#');
+		$container = new \PHPFUI\Container();
 
-		return $icon;
+		$iconPlain = new Icon('edit');
+		$container->add($iconPlain);
+		$iconPlainTip = new Icon('edit');
+		$iconPlainTip->setTooltip('I am a plain icon with a tooltip');
+		$container->add($iconPlainTip);
+		$iconLink = new Icon('edit', '#');
+		$container->add($iconLink);
+		$iconLinkTip = new Icon('edit', '#');
+		$iconLinkTip->setTooltip('I can even have a tooltip and a link!');
+		$container->add($iconLinkTip);
+
+		return $container;
 		}
 
 	public function baseLabel() : Container

@@ -75,6 +75,16 @@ class HTML5Element extends Base
 	/**
 	 * Get the tool tip as a string
 	 *
+	 * @return bool if there is a tool tip associated with this element
+	 */
+	public function hasToolTip()
+		{
+		return $this->tooltip !== null;
+		}
+
+	/**
+	 * Get the tool tip as a string
+	 *
 	 * @return ToolTip|string
 	 */
 	public function getToolTip(string $label)

@@ -23,7 +23,6 @@ class ToolTip extends HTML5Element
 		$this->addAttribute('title', TextHelper::htmlentities($tip));
 		$this->addAttribute('data-tooltip');
 		$this->addAttribute('aria-haspopup', 'true');
-		$this->addAttribute('tabindex', '1');
 		$this->addAttribute('data-disable-hover', 'false');
 		}
 	}

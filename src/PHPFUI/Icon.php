@@ -48,14 +48,7 @@ class Icon extends HTML5Element
 
 	protected function getEnd() : string
 		{
-		$output = parent::getEnd();
-
-		if ($this->link)
-			{
-			$output .= '</a>';
-			}
-
-		return $output;
+		return $this->link ? '</a>' : '';
 		}
 
 	protected function getStart() : string
@@ -75,6 +68,6 @@ class Icon extends HTML5Element
 			$output = "<a id='{$id}a' {$link}>";
 			}
 
-		return $output . $this->getToolTip(parent::getStart());
+		return $output . $this->getToolTip(parent::getStart() . parent::getBody() . parent::getEnd());
 		}
 	}
