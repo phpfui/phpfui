@@ -87,4 +87,16 @@ class Reveal extends HTML5Element
 
 		return $this;
 		}
+
+	/**
+	 * Load URL on open to populate Reveal
+	 */
+	public function loadUrlOnOpen(string $url) : Reveal
+		{
+		$id = $this->getId();
+		$this->page->addJavaScript('var $modal=$(\'#' . $id . '\');$.ajax(\'' . $url . '\').done(function(resp){$modal.html(resp).foundation(\'open\')})');
+
+		return $this;
+		}
+
 	}

@@ -97,8 +97,12 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 	public function testImage() : void
 		{
-		$image = new \PHPFUI\Image('/test.png');
+		$image = new \PHPFUI\Image('https://raw.githubusercontent.com/phpfui/phpfui/master/examples/PHPFUI.PNG');
 		$this->assertValidHtml($image);
+
+		$imageFile = new \PHPFUI\Image('');
+		$imageFile->base64EncodeFile('https://raw.githubusercontent.com/phpfui/phpfui/master/examples/PHPFUI.PNG');
+		$this->assertValidHtml($imageFile);
 		}
 
 	public function testInput() : void
@@ -194,6 +198,21 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		{
 		$reset = new \PHPFUI\Reset();
 		$this->assertValidHtml($reset);
+		}
+
+	public function testReveal() : void
+		{
+		$button = new \PHPFUI\Button('Reveal Me!');
+		$reveal = new \PHPFUI\Reveal($this->page, $button);
+		$close = $reveal->getCloseButton();
+		$reveal->showOnPageLoad();
+		$reveal->loadUrlOnOpen('https://raw.githubusercontent.com/phpfui/phpfui/master/examples/PHPFUI.PNG');
+
+		$container = new \PHPFUI\Container();
+		$container->add($button);
+		$container->add($reveal);
+
+		$this->assertValidHtml($container);
 		}
 
 	public function testSticky() : void
