@@ -15,10 +15,10 @@ class File extends Input
 	 * Construct an drag and drop file input field using Dropify
 	 *
 	 * @param Page $page needed to add js and css scrips
+	 * @param string $name of input field
 	 * @param string $label optional label for use
-	 * @param string $name of input field, default 'file'
 	 */
-	public function __construct(\PHPFUI\Page $page, string $label = '', string $name = 'file')
+	public function __construct(\PHPFUI\Page $page, string $name, string $label = '')
 		{
 		parent::__construct('file', $name, $label, null);
 		$this->page = $page;
