@@ -94,7 +94,7 @@ class MonthYear extends \PHPFUI\Base
 	 * @param bool $required default true
 	 *
 	 */
-	public function setRequired(bool $required = true) : MonthYear
+	public function setRequired(bool $required = true)
 		{
 		$this->required = $required;
 

@@ -4,7 +4,7 @@ namespace PHPFUI\Input;
 
 /**
  * AutoComplete allows you to have an autocomplete field for any
- * arbitray data source. Based on
+ * arbitrary data source. Based on
  * https://github.com/devbridge/jQuery-Autocomplete
  */
 class AutoComplete extends Input
@@ -13,14 +13,8 @@ class AutoComplete extends Input
 	protected $className;
 	protected $hidden;
 	protected $noFreeForm = false;
-	protected $options = [
-    'minChars'        => 3,
-    'type'            => "'POST'",
-    'autoSelectFirst' => 'true',
-  ];
+	protected $options = [];
 	protected $page;
-
-	private static $count = 0;
 
 	/**
 	 * Construct a AutoComplete.
@@ -74,27 +68,6 @@ class AutoComplete extends Input
 		$this->callback = $callback;
 		$this->addAttribute('autocomplete', 'off');
 
-		if (! self::$count++)
-			{
-			$url = $this->page->getBaseURL();
-			$csrf = \PHPFUI\Session::csrf("'");
-			$csrfField = \PHPFUI\Session::csrfField();
-			$dollar = '$';
-			$js = "function {$this->className}(id,fieldName,noFreeForm){var noFF=noFreeForm;";
-			$js .= "{$dollar}('#'+id).devbridgeAutocomplete({showNoSuggestionNotice:true,forceFixPosition:true,paramName:'{$this->className}',serviceUrl:'{$url}',params:{fieldName:fieldName,{$csrfField}:{$csrf}},";
-
-			foreach ($this->options as $option => $value)
-				{
-				$js .= "{$option}:{$value},";
-				}
-
-			$js .= 'onSelect:function(suggestion){';
-			$js .= "if(noFF){var fld={$dollar}('#'+id);fld.attr('placeholder',suggestion.value);fld.attr('value','');};";
-			$js .= "{$dollar}('#'+id+'hidden').val(suggestion.data);";
-			$js .= "{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:fieldName,{$this->className}:suggestion.data}});}})}";
-			$this->page->addJavaScript($js);
-			}
-
 		if (isset($_POST[$this->className]) && \PHPFUI\Session::checkCSRF() && $_POST['fieldName'] == $name)
 			{
 			$returnValue = json_encode(call_user_func($this->callback, $_POST));
@@ -106,17 +79,43 @@ class AutoComplete extends Input
         $this->page->setRawResponse($returnValue);
 				}
 			}
+		$csrf = \PHPFUI\Session::csrf("'");
+		$csrfField = \PHPFUI\Session::csrfField();
+		$dollar = '$';
+		$this->options = [
+			'minChars'               => 3,
+			'type'                   => "'POST'",
+			'autoSelectFirst'        => true,
+			'showNoSuggestionNotice' => true,
+			'paramName'              => "'{$this->className}'",
+			'serviceUrl'             => "'{$this->page->getBaseURL()}'",
+			'params'                 => ['fieldName' => "'{$name}'", $csrfField => $csrf],
+			'onSelect'               => "function(suggestion){if(noFF){var fld={$dollar}('#'+id);fld.attr('placeholder',suggestion.value);fld.attr('value','');};".
+																	"{$dollar}('#'+id+'hidden').val(suggestion.data);".
+																	"{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:'{$name}',{$this->className}:suggestion.data}})}",
+			];
 		}
 
 	/**
 	 * Add an option for
 	 * https://github.com/devbridge/jQuery-Autocomplete
-	 *
-	 *
 	 */
-	public function addOption(string $option, string $value) : AutoComplete
+	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\AutoComplete
 		{
 		$this->options[$option] = $value;
+
+		return $this;
+		}
+
+	/**
+	 * Remove an option for
+	 * https://github.com/devbridge/jQuery-Autocomplete
+	 *
+	 * @param string $option to remove
+	 */
+	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\AutoComplete
+		{
+		unset($this->options[$option]);
 
 		return $this;
 		}
@@ -130,26 +129,17 @@ class AutoComplete extends Input
 	 *
 	 * @return string
 	 */
-	public function getHiddenField()
+	public function getHiddenField() : \PHPFUI\Input\Hidden
 		{
 		return $this->hidden;
 		}
 
 	/**
-	 * Remove an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
-	 *
-	 * @param string $option to remove
-	 *
+	 * Called recursively by Reveal to force fixed postion autocomplete hints.
 	 */
-	public function removeOption(string $option) : AutoComplete
+	public function inReveal(bool $isInRevealModal = true) : \PHPFUI\Input\AutoComplete
 		{
-		if (isset($this->options[$option]))
-			{
-			unset($this->options[$option]);
-			}
-
-		return $this;
+		return $this->addAutoCompleteOption('forceFixPosition', $isInRevealModal);
 		}
 
 	/**
@@ -160,7 +150,7 @@ class AutoComplete extends Input
 	 * @param bool $on default true
 	 *
 	 */
-	public function setNoFreeForm(bool $on = true) : AutoComplete
+	public function setNoFreeForm(bool $on = true) : \PHPFUI\Input\AutoComplete
 		{
 		$this->noFreeForm = $on;
 
@@ -185,17 +175,28 @@ class AutoComplete extends Input
 	 *
 	 * @return AutoComplete
 	 */
-	public function setRequired(bool $required = true) : Input
+	public function setRequired(bool $required = true)
 		{
 		return $this->setNoFreeForm($required);
+		}
+
+	protected function getStart() : string
+		{
+		$id = $this->getId();
+		$js = "function {$id}(id,fieldName,noFreeForm){var noFF=noFreeForm;";
+		$js .= '$("#"+id).devbridgeAutocomplete(' . \PHPFUI\TextHelper::arrayToJS($this->options) . ')}';
+		$this->page->addJavaScript($js);
+
+		return parent::getStart();
 		}
 
 	protected function getEnd() : string
 		{
 		$id = $this->getId();
 		$noFreeForm = (int) ($this->noFreeForm);
-		$this->page->addJavaScript("{$this->className}('{$id}','{$this->name}',{$noFreeForm})");
+		$this->page->addJavaScript("{$id}('{$id}','{$this->name}',{$noFreeForm})");
 
 		return '';
 		}
+
 	}

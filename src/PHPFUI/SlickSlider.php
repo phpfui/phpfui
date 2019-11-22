@@ -23,7 +23,6 @@ class SlickSlider extends HTML5Element
 		$this->addClass('slick-slider');
 		$this->page = $page;
 		$page->addStyleSheet('slick/slick.css');
-		$page->addStyleSheet('slick/slick-theme.css');
 		$page->addTailScript('slick/slick.min.js');
 		}
 

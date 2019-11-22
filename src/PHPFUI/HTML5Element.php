@@ -435,6 +435,21 @@ class HTML5Element extends Base
 		return $this;
 		}
 
+	/**
+	 * Clones the first object and fills it with properties from the second object
+	 */
+	protected function upCastCopy(Base $to, Base $from) : Base
+		{
+		$returnValue = clone $to;
+
+		foreach ($to as $key => $value)
+			{
+			$returnValue->{$key} = $from->{$key};
+			}
+
+		return $returnValue;
+		}
+
 	protected function getBody() : string
 		{
 		return '';

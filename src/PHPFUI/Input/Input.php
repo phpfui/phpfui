@@ -157,7 +157,7 @@ abstract class Input extends \PHPFUI\Input
 	 *
 	 * @return MonthYear
 	 */
-	public function setRequired(bool $required = true) : Input
+	public function setRequired(bool $required = true)
 		{
 		$this->required = $required;
 		$this->addAttribute('required');

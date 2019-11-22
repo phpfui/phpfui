@@ -14,6 +14,13 @@ class SelectAutoComplete extends Select
 	protected $arrayName;
 	protected $freeformInput;
 	protected $hidden;
+	protected $autoCompleteOptions = [
+		'minChars'        => 1,
+		'type'            => "'POST'",
+		'autoSelectFirst' => 'true',
+		'lookup'          => 'arrayName',
+		'onSelect'        => 'function(suggestion){ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}',
+	];
 
 	protected $page;
 	protected $realName;
@@ -47,26 +54,55 @@ class SelectAutoComplete extends Select
 		$this->realName = $name;
 		$this->page = $page;
 		$this->type = 'text'; // really a text Input field, not a Select
-		$this->page->addTailScript('jquery.autocomplete.min.js');
+		$this->page->addTailScript('jquery.autocomplete.js');
 		$this->hidden = new \PHPFUI\Input\Hidden($this->realName);
 		$this->hidden->getId();
-
-		$dollar = '$';
-		$js = "function SelectAutoComplete(acFieldId,hiddenFieldId,arrayName){var fld={$dollar}('#'+hiddenFieldId);var ac={$dollar}('#'+acFieldId);" .
-			'ac.devbridgeAutocomplete({lookup:arrayName,autoSelectFirst:true,minChars:1,onSelect:function(suggestion){' .
-			'ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}});}';
-		$this->page->addJavaScript($js);
 		}
 
 	/**
-	 * Returns the hidden field id that is set on select and a
-	 * change event issued on it.
+	 * Add an option for
+	 * https://github.com/devbridge/jQuery-Autocomplete
+	 */
+	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\SelectAutoComplete
+		{
+		$this->autoCompleteOptions[$option] = $value;
+
+		return $this;
+		}
+
+	/**
+	 * Remove an option for
+	 * https://github.com/devbridge/jQuery-Autocomplete
+	 *
+	 * @param string $option to remove
+	 */
+	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\SelectAutoComplete
+		{
+		unset($this->autoCompleteOptions[$option]);
+
+		return $this;
+		}
+
+	/**
+	 * Returns the hidden field which is where the autocompleted
+	 * value will be stored. The hidden field name is the same name
+	 * as the AutoComplete field was constructed with. This should
+	 * generally be used to save the value the user has selected
+	 * when 'save' is passed to the callback.
 	 *
 	 * @return string
 	 */
-	public function getHiddenId()
+	public function getHiddenField() : \PHPFUI\Input\Hidden
 		{
-		return $this->hidden->getId();
+		return $this->hidden;
+		}
+
+	/**
+	 * Called recursively by Reveal to force fixed postion autocomplete hints.
+	 */
+	public function inReveal(bool $isInRevealModal = true) : \PHPFUI\Input\SelectAutoComplete
+		{
+		return $this->addAutoCompleteOption('forceFixPosition', $isInRevealModal);
 		}
 
 	/**
@@ -81,7 +117,7 @@ class SelectAutoComplete extends Select
 	 *
 	 * @return SelectAutoComplete
 	 */
-	public function setArray($name)
+	public function setArray($name) : \PHPFUI\Input\SelectAutoComplete
 		{
 		$this->arrayName = $name;
 
@@ -137,7 +173,8 @@ class SelectAutoComplete extends Select
 			$this->arrayName .= 'Array';
 			}
 
-		$js .= "SelectAutoComplete('{$this->acFieldId}','{$this->hidden->getId()}',{$this->arrayName})";
+		$id = $this->getId();
+		$js .= "{$id}('{$this->acFieldId}','{$this->hidden->getId()}',{$this->arrayName})";
 		$this->page->addJavaScript($js);
 
 		return '';
@@ -145,6 +182,13 @@ class SelectAutoComplete extends Select
 
 	protected function getStart() : string
 		{
+		$dollar = '$';
+		$options = \PHPFUI\TextHelper::arrayToJS($this->autoCompleteOptions);
+		$id = $this->getId();
+
+		$js = "function {$id}(acFieldId,hiddenFieldId,arrayName){var fld={$dollar}('#'+hiddenFieldId);var ac={$dollar}('#'+acFieldId);ac.devbridgeAutocomplete({$options});}";
+		$this->page->addJavaScript($js);
+
 		$initValue = $initLabel = '';
 
 		foreach ($this->options as $option)
@@ -154,7 +198,7 @@ class SelectAutoComplete extends Select
 				$initLabel = $option['label'];
 				$initValue = $option['value'];
 				$this->hidden->setValue($initValue);
-				$this->acInput->setValue($initValue);
+				$this->acInput->setValue($initLabel);
 				}
 			}
 

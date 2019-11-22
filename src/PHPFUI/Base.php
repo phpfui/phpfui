@@ -263,30 +263,24 @@ abstract class Base implements \Countable
 	abstract protected function getStart() : string;
 
 	/**
-	 * Clones the first object and fills it with properties from the second object
-	 *
-	 *
+	 * Recursively walks all objects and calls the passed method on each object where it exists
 	 */
-	protected function upCastCopy(Base $to, Base $from) : Base
+	public function walk(string $method) : Base
 		{
-		$returnValue = clone $to;
-
-		foreach ($to as $key => $value)
+		foreach ($this->items as $item)
 			{
-			$returnValue->{$key} = $from->{$key};
+			if (is_object($item))
+				{
+				if (method_exists($item, $method))
+					{
+					call_user_func([$item, $method]);
+					}
+				if ($item instanceof Base)
+					{
+					$item->walk($method);
+					}
+				}
 			}
-
-		return $returnValue;
-		}
-
-	/**
-	 * Walks all objects and applies the passed function
-	 *
-	 *
-	 */
-	protected function walk(callable $function, $data = null) : Base
-		{
-		array_walk($this->items, $function, $data);
 
 		return $this;
 		}
