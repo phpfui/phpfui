@@ -160,7 +160,14 @@ abstract class Input extends \PHPFUI\Input
 	public function setRequired(bool $required = true)
 		{
 		$this->required = $required;
-		$this->addAttribute('required');
+		if ($required)
+			{
+			$this->addAttribute('required');
+			}
+		else
+			{
+			$this->deleteAttribute('required');
+			}
 
 		return $this;
 		}

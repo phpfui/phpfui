@@ -168,18 +168,6 @@ class AutoComplete extends Input
 		return $this;
 		}
 
-	/**
-	 * Set required
-	 *
-	 * @param bool $required default true
-	 *
-	 * @return AutoComplete
-	 */
-	public function setRequired(bool $required = true)
-		{
-		return $this->setNoFreeForm($required);
-		}
-
 	protected function getStart() : string
 		{
 		$id = $this->getId();

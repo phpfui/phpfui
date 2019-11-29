@@ -213,19 +213,15 @@ class SelectAutoComplete extends Select
 			$this->hidden->addAttribute('onchange', $onChange);
 			}
 
+		$text = $this->upCastCopy($this->acInput, $this);
+		$text->setToolTip($this->toolTip);
+
 		if ($this->required)
 			{
 			$js = 'function SelectAutoCompleteRequired($el,required,parent){var name=$el.attr("name").slice(0,-4);' .
 				'return $("[name=\'"+name+"\']").val().length!=0||$("[name=\'"+name+"Text\']").val().length!=0;};';
 			$this->page->addJavaScript($js);
 			$this->page->addPluginDefault('Abide', "validators['SelectAutoCompleteRequired']", 'SelectAutoCompleteRequired');
-			}
-
-		$text = $this->upCastCopy($this->acInput, $this);
-		$text->setToolTip($this->toolTip);
-
-		if ($this->required)
-			{
 			$text->deleteAttribute('required');
 			$text->addAttribute('data-validator', 'SelectAutoCompleteRequired');
 			}

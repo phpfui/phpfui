@@ -9,6 +9,8 @@ class MultiSelect extends Select
 	{
 	private $gridSize = 12;
 	private $numberColumns = 1;
+	private $selectAll = '';
+	private $page;
 
 	/**
 	 * Construct a MultiSelect
@@ -47,6 +49,14 @@ class MultiSelect extends Select
 		return $this;
 		}
 
+	public function selectAll(\PHPFUI\Page $page, string $title = 'Select All') : MultiSelect
+		{
+		$this->selectAll = $title;
+		$this->page = $page;
+
+		return $this;
+		}
+
 	/**
 	 *
 	 * @return MultiColumn
@@ -67,7 +77,15 @@ class MultiSelect extends Select
 		// count / number of columns, truncated to int, then add one if odd number
 		$rowCount = (int)($this->count() / $this->numberColumns) + (int)(($this->count() % $this->numberColumns) > 0);
 
-		$fieldSet = new \PHPFUI\FieldSet($this->getToolTip($this->label));
+		$selectAllId = '';
+		if ($this->selectAll)
+			{
+			$selectAll = new CheckBox('', "<b>{$this->selectAll}</b>", 0);
+			$selectAllId = $selectAll->getId();
+			$selectAll->addAttribute('onClick', '$(".' . $selectAllId . '").prop("checked",this.checked)');
+			$fieldSet->add($selectAll);
+			}
+
 		$gridx = new \PHPFUI\GridX();
 		$row = 0;
 
@@ -78,7 +96,11 @@ class MultiSelect extends Select
 				$cell = new \PHPFUI\Cell($this->gridSize / $this->numberColumns);
 				}
 
-			$checkBox = new CheckBox($this->name, $option['label'], $option['value'], false);
+			$checkBox = new CheckBox($this->name, $option['label'], $option['value']);
+			if ($selectAllId)
+				{
+				$checkBox->addClass($selectAllId);
+				}
 
 			if ($option['selected'])
 				{
