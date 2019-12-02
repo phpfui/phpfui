@@ -10,7 +10,6 @@ class MultiSelect extends Select
 	private $gridSize = 12;
 	private $numberColumns = 1;
 	private $selectAll = '';
-	private $page;
 
 	/**
 	 * Construct a MultiSelect
@@ -49,10 +48,9 @@ class MultiSelect extends Select
 		return $this;
 		}
 
-	public function selectAll(\PHPFUI\Page $page, string $title = 'Select All') : MultiSelect
+	public function selectAll(string $title = 'Select All') : MultiSelect
 		{
 		$this->selectAll = $title;
-		$this->page = $page;
 
 		return $this;
 		}
