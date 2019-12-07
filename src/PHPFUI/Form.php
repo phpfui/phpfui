@@ -41,47 +41,46 @@ class Form extends HTML5Element
 			$this->submitName = $submit->getAttribute('name');
 			$this->submitValue = $submit->getAttribute('value');
 			$id = $this->getId();
+			$this->page->addJavaScript("$(document).ready(function(){formInit($('#{$id}'),$('#{$submitButtonId}'),'{$this->submitName}','{$this->submitValue}');})");
 			$this->js = <<<JAVASCRIPT
-$(document).ready(function(){var form=$('#{$id}');
+function formInit(form,submit,submitName,submitValue){
 form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',function(e){
-	var submit=$('#{$submitButtonId}'), color=submit.css('background-color'), text=submit.prop('value');
+	var color=submit.css('background-color'), text=submit.prop('value');
 	e.preventDefault();
-  ~areYouSure~
-  var btn=$(this).find('input[type=submit]:focus');
-  if (!btn.length) {// macHack! Safari does not keep the pressed submit button in focus, so get the first
-    btn=$(this).find('input[type=submit]');
-    }
-  if(btn[0].name!='{$this->submitName}'||btn[0].value!='{$this->submitValue}'){
-    form.submit();// submit the form if not the button passed for special handling
-    return 0;
-    }
-  $.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
-    beforeSend:function(request){
-      submit.prop('value','Saving').css('background-color','black');
-      request.setRequestHeader('Upgrade-Insecure-Requests', '1');
-      request.setRequestHeader('Accept', 'application/json');
-  },
-  success:function(response){
-    var data;
-    try{
-      data=JSON.parse(response);
-    } catch(e){
-      alert('Error: '+response);
-    }
-    submit.prop('value',data.response).css('background-color',data.color);
-    {$successJS};
-    setTimeout(function(){
-      submit.prop('value',text).css('background-color',color);},3000);
-  },
-  error:function (xhr, ajaxOptions, thrownError){
-    submit.prop('value',ajaxOptions+': '+xhr.status+' '+thrownError).css('background-color','red');
-    setTimeout(function(){
-      submit.prop('value',text).css('background-color',color);},3000);
-  },
-  });
-		});
-		});
+	~areYouSure~
+	var btn=$(this).find('input[type=submit]:focus');
+	if (!btn.length) {// macHack! Safari does not keep the pressed submit button in focus, so get the first
+		btn=$(this).find('input[type=submit]');
+		}
+	if(btn[0].name!=submitName||btn[0].value!=submitValue){
+		form.submit();// submit the form if not the button passed for special handling
+		return 0;
+		}
+	$.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
+		beforeSend:function(request){
+			submit.prop('value','Saving').css('background-color','black');
+			request.setRequestHeader('Upgrade-Insecure-Requests', '1');
+			request.setRequestHeader('Accept', 'application/json');
+	},
+	success:function(response){
+		var data;
+		try{
+			data=JSON.parse(response);
+		}catch(e){
+			alert('Error: '+response);
+		}
+		submit.prop('value',data.response).css('background-color',data.color);
+		{$successJS};
+		setTimeout(function(){
+			submit.prop('value',text).css('background-color',color);},3000);
+	},
+	error:function (xhr, ajaxOptions, thrownError){
+		submit.prop('value',ajaxOptions+': '+xhr.status+' '+thrownError).css('background-color','red');
+		setTimeout(function(){
+			submit.prop('value',text).css('background-color',color);},3000);
+	},})})}
 JAVASCRIPT;
+			$this->js = str_replace(["\t", "\n"], '', $this->js);
 			}
 		}
 
@@ -134,7 +133,7 @@ JAVASCRIPT;
 				$this->page->addTailScript('jquery.are-you-sure.js');
 				$id = $this->getId();
 				$this->page->addJavaScript('$("#' . $id . '").areYouSure({"addRemoveFieldsMarksDirty":true});');
-				$areYouSure = "$('#{$id}').trigger('reinitialize.areYouSure');";
+				$areYouSure = "form.trigger('reinitialize.areYouSure');";
 				}
 			$this->page->addJavaScript(str_replace('~areYouSure~', $areYouSure, $this->js));
 
