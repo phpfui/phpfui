@@ -10,7 +10,6 @@ namespace PHPFUI;
 class Form extends HTML5Element
 	{
 	private $areYouSure = true;
-	private $js = '';
 	private $page;
 	private $started = false;
 
@@ -22,10 +21,13 @@ class Form extends HTML5Element
 	 *
 	 * @param Submit $submit the submit button.  Passing the submit button does not add it to the page, you must do that elsewhere, but it does set up automatic
 	 * callback notification.
-	 * @param string $successJS JavaScript executed on page success. data will have what ever values are set in Page::setResponse or add additional
-	 * parameters with Page::setRawResponse
+	 * @param string $successFunctionName global JavaScript function
+	 *  						 to execute on page submission success. It will
+	 *  						 be passed one parameter which is the response
+	 *  						 from the POST, which is set via
+	 *  						 Page::setResponse or setRawResponse
 	 */
-	public function __construct(Page $page, Submit $submit = null, string $successJS = '')
+	public function __construct(Page $page, Submit $submit = null, string $successFunctionName = '')
 		{
 		parent::__construct('form');
 		$this->addAttribute('novalidate');
@@ -41,13 +43,12 @@ class Form extends HTML5Element
 			$this->submitName = $submit->getAttribute('name');
 			$this->submitValue = $submit->getAttribute('value');
 			$id = $this->getId();
-			$this->page->addJavaScript("$(document).ready(function(){formInit($('#{$id}'),$('#{$submitButtonId}'),'{$this->submitName}','{$this->submitValue}');})");
-			$this->js = <<<JAVASCRIPT
-function formInit(form,submit,submitName,submitValue){
+			$this->page->addJavaScript("$(document).ready(function(){formInit($('#{$id}'),$('#{$submitButtonId}'),'{$this->submitName}','{$this->submitValue}','{$successFunctionName}');})");
+			$js = <<<JAVASCRIPT
+function formInit(form,submit,submitName,submitValue,successFunction){
 form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',function(e){
 	var color=submit.css('background-color'), text=submit.prop('value');
 	e.preventDefault();
-	~areYouSure~
 	var btn=$(this).find('input[type=submit]:focus');
 	if (!btn.length) {// macHack! Safari does not keep the pressed submit button in focus, so get the first
 		btn=$(this).find('input[type=submit]');
@@ -70,7 +71,7 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
 			alert('Error: '+response);
 		}
 		submit.prop('value',data.response).css('background-color',data.color);
-		{$successJS};
+		if(successFunction>'')window[successFunction](data);
 		setTimeout(function(){
 			submit.prop('value',text).css('background-color',color);},3000);
 	},
@@ -80,7 +81,8 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
 			submit.prop('value',text).css('background-color',color);},3000);
 	},})})}
 JAVASCRIPT;
-			$this->js = str_replace(["\t", "\n"], '', $this->js);
+			$js = str_replace(["\t", "\n"], '', $js);
+			$page->addJavaScript($js);
 			}
 		}
 
@@ -97,12 +99,13 @@ JAVASCRIPT;
 	 */
 	public function saveOnClick(HTML5Element $button) : Form
 		{
-		$js = "var form=$(\"#{$this->getId()}\");";
-		$js .= "$.ajax({type:\"POST\",dataType:\"html\",data:form.serialize()+\"&{$this->submitName}={$this->submitValue}\"});";
+		$id = $this->getId();
+		$js = "var form{$id}=$(\"#{$this->getId()}\");";
+		$js .= "$.ajax({type:\"POST\",dataType:\"html\",data:form{$id}.serialize()+\"&{$this->submitName}={$this->submitValue}\"});";
 
 		if ($this->areYouSure)
 			{
-			$js .= 'form.trigger("reinitialize.areYouSure");';
+			$js .= "form{$id}.trigger(\"reinitialize.areYouSure\")";
 			}
 		$button->addAttribute('onclick', $js);
 
@@ -132,10 +135,8 @@ JAVASCRIPT;
 				{
 				$this->page->addTailScript('jquery.are-you-sure.js');
 				$id = $this->getId();
-				$this->page->addJavaScript('$("#' . $id . '").areYouSure({"addRemoveFieldsMarksDirty":true});');
-				$areYouSure = "form.trigger('reinitialize.areYouSure');";
+				$this->page->addJavaScript('$("#' . $id . '").on("submit",function(){$("#' . $id . '").trigger("reinitialize.areYouSure")}).areYouSure({"addRemoveFieldsMarksDirty":true})');
 				}
-			$this->page->addJavaScript(str_replace('~areYouSure~', $areYouSure, $this->js));
 
 			if ('get' != $this->getAttribute('method'))
 				{
