@@ -50,11 +50,11 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
 	var color=submit.css('background-color'), text=submit.prop('value');
 	e.preventDefault();
 	var btn=$(this).find('input[type=submit]:focus');
-	if (!btn.length) {// macHack! Safari does not keep the pressed submit button in focus, so get the first
+	if (!btn.length) {/* macHack! Safari does not keep the pressed submit button in focus, so get the first */
 		btn=$(this).find('input[type=submit]');
 		}
 	if(btn[0].name!=submitName||btn[0].value!=submitValue){
-		form.submit();// submit the form if not the button passed for special handling
+		form.submit();/* submit the form if not the button passed for special handling */
 		return 0;
 		}
 	$.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
