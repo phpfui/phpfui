@@ -52,7 +52,7 @@ class AutoComplete extends Input
 	public function __construct(\PHPFUI\Page $page, callable $callback, string $type, string $name, string $label = null, ?string $value = null)
 		{
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
-		$name .= 'Entered';
+		$name .= 'Text';
 		parent::__construct($type, $name, $label, $value);
 		$this->hidden->setId($this->getId() . 'hidden');
 		$this->add($this->hidden);
@@ -90,7 +90,7 @@ class AutoComplete extends Input
 			'paramName'              => "'{$this->className}'",
 			'serviceUrl'             => "'{$this->page->getBaseURL()}'",
 			'params'                 => ['fieldName' => "'{$name}'", $csrfField => $csrf],
-			'onSelect'               => "function(suggestion){if(noFF){var fld={$dollar}('#'+id);fld.attr('placeholder',suggestion.value);fld.attr('value','');};".
+			'onSelect'               => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};".
 																	"{$dollar}('#'+id+'hidden').val(suggestion.data);".
 																	"{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:'{$name}',{$this->className}:suggestion.data}})}",
 			];
@@ -171,6 +171,11 @@ class AutoComplete extends Input
 	protected function getStart() : string
 		{
 		$id = $this->getId();
+		if ($this->required)
+			{
+			$this->setAutoCompleteRequired($this->page, $this);
+			}
+
 		$js = "function {$id}(id,fieldName,noFreeForm){var noFF=noFreeForm;";
 		$js .= '$("#"+id).devbridgeAutocomplete(' . \PHPFUI\TextHelper::arrayToJS($this->options) . ')}';
 		$this->page->addJavaScript($js);

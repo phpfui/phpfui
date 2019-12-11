@@ -218,17 +218,12 @@ class SelectAutoComplete extends Select
 
 		if ($this->required)
 			{
-			$js = 'function SelectAutoCompleteRequired($el,required,parent){var name=$el.attr("name").slice(0,-4);' .
-				'return $("[name=\'"+name+"\']").val().length!=0||$("[name=\'"+name+"Text\']").val().length!=0;};';
-			$this->page->addJavaScript($js);
-			$this->page->addPluginDefault('Abide', "validators['SelectAutoCompleteRequired']", 'SelectAutoCompleteRequired');
-			$text->deleteAttribute('required');
-			$text->addAttribute('data-validator', 'SelectAutoCompleteRequired');
+			$this->setAutoCompleteRequired($this->page, $text);
 			}
 
 		if ($this->freeformInput)
 			{
-			$this->page->addJavaScript('$("#' . $text->getId() . '").on("change", function(){var f=$("#' . $this->hidden->getId() . '");f.val($(this).val());f.change()})');
+			$this->page->addJavaScript('$("#' . $text->getId() . '").on("change", function(){$("#' . $this->hidden->getId() . '").val($(this).val()).change()})');
 			}
 
 		$this->acFieldId = $text->getId();

@@ -172,6 +172,16 @@ abstract class Input extends \PHPFUI\Input
 		return $this;
 		}
 
+	protected function setAutoCompleteRequired(\PHPFUI\Page $page, \PHPFUI\Input\Input $text)
+		{
+		$js = 'function AutoCompleteRequired($el,required,parent){var name=$el.attr("name").slice(0,-4);' .
+			'return $("[name=\'"+name+"\']").val().length!=0||$("[name=\'"+name+"Text\']").val().length!=0;};';
+		$this->page->addJavaScript($js);
+		$this->page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
+		$text->deleteAttribute('required');
+		$text->addAttribute('data-validator', 'AutoCompleteRequired');
+		}
+
 	public function toggleFocus(\PHPFUI\HTML5Element $element) : Input
 		{
 		$this->addAttribute('data-toggle-focus', $element->getId());
