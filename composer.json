@@ -2,7 +2,7 @@
     "name": "phpfui/phpfui",
     "description": "PHP Object Oriented Wrapper for Zurb Foundation",
     "minimum-stability": "stable",
-    "keywords": ["zurb", "foundation", "zurb-foundation", "html", "Object Oriented", "PHP", "UI", "reponsive", "css", "scss"],
+    "keywords": ["zurb", "foundation", "zurb-foundation", "html", "Object Oriented", "Object-Oriented", "PHP", "UI", "responsive", "css", "scss"],
     "homepage": "https://github.com/phpfui/phpfui",
     "license": "MIT",
     "authors": [
