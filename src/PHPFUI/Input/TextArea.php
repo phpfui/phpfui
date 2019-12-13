@@ -85,13 +85,20 @@ class TextArea extends Input
 	protected function getStart() : string
 		{
 		$this->addAttribute('rows', $this->rows);
-		$output = $this->getLabel();
-		$output .= '<textarea ';
+		$label = new \PHPFUI\HTML5Element('label');
+		$label->add($this->getLabel());
+		if ($this->required)
+			{
+			$label->add(' <small>Required</small>');
+			}
+		$label->addAttribute('for', $this->getId());
+
+		$output = $label . '<textarea ';
 		$output .= $this->getIdAttribute();
 		$output .= " name='{$this->name}'";
 		$this->deleteAttribute('onkeypress');
 		$output .= $this->getAttributes();
-		$output .= "{$this->required}>";
+		$output .= '>';
 		$output .= $this->value;
 
 		return $output;
