@@ -82,7 +82,7 @@ class MenuItem extends HTML5Element
 		return $this;
 		}
 
-	public function setIcon(Icon $icon) : MenuItem
+	public function setIcon(IconBase $icon) : MenuItem
 		{
 		$this->graphic = $icon;
 

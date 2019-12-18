@@ -31,7 +31,7 @@ $vendor['components/jquery'] = [
 	];
 $vendor['fortawesome/font-awesome'] = [
 	'css/*.min.css' => 'font-awesome/css',
-	'fonts' => 'font-awesome',
+	'webfonts' => 'font-awesome',
 	];
 
 copyFiles('../..', $directory, $vendor);

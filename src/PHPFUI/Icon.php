@@ -4,10 +4,13 @@ namespace PHPFUI;
 
 /**
  * Wrapper for Font Awesome icons
+ *
+ * @depreciated 6.1.0 Icon will become the base class and no
+ *  						longer support Font Awesome V4, use FAIcon for
+ *  						Font Awesome 5 icons
  */
-class Icon extends HTML5Element
+class Icon extends IconBase
 	{
-	private $link;
 
 	/**
 	 * Construct an Icon.
@@ -18,56 +21,10 @@ class Icon extends HTML5Element
 	 */
 	public function __construct(string $icon, string $link = '')
 		{
-		$this->link = $link;
-		parent::__construct('i');
+		parent::__construct($icon, $link);
 		$this->addClass('fa');
 		$this->addClass('fa-2x');
 		$this->addClass('fa-' . $icon);
 		}
 
-	/**
-	 * returns the current link
-	 *
-	 */
-	public function getLink() : string
-		{
-		return $this->link;
-		}
-
-	/**
-	 * Set the link
-	 *
-	 *
-	 */
-	public function setLink(string $link) : Icon
-		{
-		$this->link = $link;
-
-		return $this;
-		}
-
-	protected function getEnd() : string
-		{
-		return $this->link ? '</a>' : '';
-		}
-
-	protected function getStart() : string
-		{
-		$output = '';
-
-		if ($this->link)
-			{
-			$id = $this->getId();
-			$link = '';
-
-			if ('#' != $this->link)
-				{
-				$link = "href='{$this->link}' ";
-				}
-
-			$output = "<a id='{$id}a' {$link}>";
-			}
-
-		return $output . $this->getToolTip(parent::getStart() . parent::getBody() . parent::getEnd());
-		}
 	}

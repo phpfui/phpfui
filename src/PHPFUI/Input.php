@@ -48,7 +48,7 @@ class Input extends HTML5Element
 	 *
 	 * @throws \Exception if an invalid input type or a specific class exists for an input type like Date
 	 */
-	public function __construct($type, $name, $value = '')
+	public function __construct(string $type, string $name, ?string $value = '')
 		{
 		parent::__construct('input');
 		$this->name = $name;

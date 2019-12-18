@@ -76,7 +76,7 @@ class Link extends HTML5Element
 	 *
 	 * @return string
 	 */
-	public static function email($email, $text = '', $subject = '')
+	public static function email(string $email, string $text = '', string $subject = '')
 		{
 		if (empty($text))
 			{
@@ -108,7 +108,7 @@ class Link extends HTML5Element
 	 *
 	 * @return Link
 	 */
-	public static function localUrl($link, $text = '')
+	public static function localUrl(string $link, string $text = '')
 		{
 		if (false === strpos($link, '//'))
 			{
@@ -127,7 +127,7 @@ class Link extends HTML5Element
 	 *
 	 * @return string
 	 */
-	public static function phone($number, $text = '')
+	public static function phone(string $number, string $text = '')
 		{
 		if (empty($text))
 			{
@@ -135,5 +135,24 @@ class Link extends HTML5Element
 			}
 
 		return new Link('tel:' . $number, $text, false);
+		}
+
+	/**
+	 * Format a telephone number for mobile functionality
+	 *
+	 * @param string $number can contain formatting characters, only
+	 *                         digits matter
+	 * @param string $text to show user
+	 *
+	 * @return string
+	 */
+	public static function sms(string $number = '', string $text = '')
+		{
+		if (empty($text))
+			{
+			$text = $number;
+			}
+
+		return new Link('sms:' . $number, $text, false);
 		}
 	}
