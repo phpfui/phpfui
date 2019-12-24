@@ -24,7 +24,7 @@
         "phpfui/html-unit-tester": "^1.0"
     },
     "autoload": {
-        "psr-4": {"PHPFUI\\": "src/"}
+        "psr-0": {"PHPFUI\\": "src/"}
     },
     "config": {
         "bin-dir": "bin"
