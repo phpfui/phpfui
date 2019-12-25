@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.1",
-        "zurb/foundation": "6.5.*",
+        "zurb/foundation": "6.6.*",
         "froala/wysiwyg-editor": "2.9.5",
         "fortawesome/font-awesome": "^5.2",
         "igorescobar/jquery-mask-plugin": "^1.14",
