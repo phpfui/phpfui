@@ -207,7 +207,7 @@ class HTML5Element extends Base
 		{
 		foreach (explode(' ', $class) as $oneClass)
 			{
-			$this->classes[] = $oneClass;
+			$this->classes[$oneClass] = true;
 			}
 
 		return $this;
@@ -243,15 +243,7 @@ class HTML5Element extends Base
 	 */
 	public function deleteClass(string $classToDelete) : Base
 		{
-		foreach ($this->classes as $key => $class)
-			{
-			if ($classToDelete == $class)
-				{
-				unset($this->classes[$key]);
-
-				break;
-				}
-			}
+		unset($this->classes[$classToDelete]);
 
 		return $this;
 		}
@@ -298,7 +290,7 @@ class HTML5Element extends Base
 		{
 		if (count($this->classes))
 			{
-			return 'class="' . implode(' ', $this->classes) . '" ';
+			return 'class="' . implode(' ', array_keys($this->classes)) . '" ';
 			}
 
 		return '';
@@ -310,7 +302,7 @@ class HTML5Element extends Base
 	 */
 	public function getClasses() : array
 		{
-		return $this->classes;
+		return array_keys($this->classes);
 		}
 
 	/**
@@ -345,20 +337,10 @@ class HTML5Element extends Base
 
 	/**
 	 * Return true if the class is present on the object
-	 *
-	 *
 	 */
-	public function hasClass(string $hasClass) : bool
+	public function hasClass(string $class) : bool
 		{
-		foreach ($this->classes as $class)
-			{
-			if ($hasClass == $class)
-				{
-				return true;
-				}
-			}
-
-		return false;
+		return isset($this->classes[$class]);
 		}
 
 	/**
