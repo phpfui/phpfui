@@ -64,6 +64,7 @@ class Installer
 			];
 		$subtrees['devbridge/jQuery-Autocomplete'] = [
 			'dist/jquery.autocomplete.min.js' => '',
+			'dist/jquery.autocomplete.js' => '',
 			];
 		$subtrees['kenwheeler/slick'] = [
 			'slick/slick.min.js' => 'slick',
