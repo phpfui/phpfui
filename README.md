@@ -45,7 +45,7 @@ Versioning will match the [Zurb Foundation versions](https://github.com/zurb/fou
 Since major versions of Foundation have in the past depreciated and obsolited things, PHPFUI will track the latest version of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
 
 ## Documentation
-PHPDOC Blocks for now.  PHPFUI/InstaDoc coming soon.
+Via [PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI)
 
 ## Examples
 ##### Add the following files to a public directory for testing
