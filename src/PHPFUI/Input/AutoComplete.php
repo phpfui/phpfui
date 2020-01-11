@@ -90,8 +90,8 @@ class AutoComplete extends Input
 			'paramName'              => "'{$this->className}'",
 			'serviceUrl'             => "'{$this->page->getBaseURL()}'",
 			'params'                 => ['fieldName' => "'{$name}'", $csrfField => $csrf],
-			'onSelect'               => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};".
-																	"{$dollar}('#'+id+'hidden').val(suggestion.data);".
+			'onSelect'               => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};" .
+																	"{$dollar}('#'+id+'hidden').val(suggestion.data);" .
 																	"{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:'{$name}',{$this->className}:suggestion.data}})}",
 			];
 		}
@@ -103,19 +103,6 @@ class AutoComplete extends Input
 	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\AutoComplete
 		{
 		$this->options[$option] = $value;
-
-		return $this;
-		}
-
-	/**
-	 * Remove an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
-	 *
-	 * @param string $option to remove
-	 */
-	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\AutoComplete
-		{
-		unset($this->options[$option]);
 
 		return $this;
 		}
@@ -140,6 +127,19 @@ class AutoComplete extends Input
 	public function inReveal(bool $isInRevealModal = true) : \PHPFUI\Input\AutoComplete
 		{
 		return $this->addAutoCompleteOption('forceFixPosition', $isInRevealModal);
+		}
+
+	/**
+	 * Remove an option for
+	 * https://github.com/devbridge/jQuery-Autocomplete
+	 *
+	 * @param string $option to remove
+	 */
+	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\AutoComplete
+		{
+		unset($this->options[$option]);
+
+		return $this;
 		}
 
 	/**
@@ -168,9 +168,19 @@ class AutoComplete extends Input
 		return $this;
 		}
 
+	protected function getEnd() : string
+		{
+		$id = $this->getId();
+		$noFreeForm = (int) ($this->noFreeForm);
+		$this->page->addJavaScript("{$id}('{$id}','{$this->name}',{$noFreeForm})");
+
+		return '';
+		}
+
 	protected function getStart() : string
 		{
 		$id = $this->getId();
+
 		if ($this->required)
 			{
 			$this->setAutoCompleteRequired($this->page, $this);
@@ -181,15 +191,6 @@ class AutoComplete extends Input
 		$this->page->addJavaScript($js);
 
 		return parent::getStart();
-		}
-
-	protected function getEnd() : string
-		{
-		$id = $this->getId();
-		$noFreeForm = (int) ($this->noFreeForm);
-		$this->page->addJavaScript("{$id}('{$id}','{$this->name}',{$noFreeForm})");
-
-		return '';
 		}
 
 	}

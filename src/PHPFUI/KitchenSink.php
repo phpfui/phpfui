@@ -286,24 +286,6 @@ class KitchenSink
 		return $container;
 		}
 
-	public function extraIcon() : Container
-		{
-		$container = new \PHPFUI\Container();
-
-		$iconPlain = new Icon('edit');
-		$container->add($iconPlain);
-		$iconPlainTip = new Icon('edit');
-		$iconPlainTip->setTooltip('I am a plain icon with a tooltip');
-		$container->add($iconPlainTip);
-		$iconLink = new Icon('edit', '#');
-		$container->add($iconLink);
-		$iconLinkTip = new Icon('edit', '#');
-		$iconLinkTip->setTooltip('I can even have a tooltip and a link!');
-		$container->add($iconLinkTip);
-
-		return $container;
-		}
-
 	public function baseLabel() : Container
 		{
 		$container = new Container();
@@ -390,33 +372,6 @@ class KitchenSink
 		return $orbit;
 		}
 
-	public function extraOrderableTable() : OrderableTable
-		{
-		$table = new \PHPFUI\OrderableTable($this->page);
-		$table->setCaption('This is the table caption');
-		$table->addArrowNavigation($this->page);
-		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
-		$table->setHeaders($headers);
-		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
-		$table->setFooters(array_combine($headers, $headers));
-
-		for ($i = 0; $i < 10; ++$i)
-			{
-			$numbers = [];
-
-			foreach ($headers as $field)
-				{
-				$numbers[$field] = rand();
-				}
-
-			$numbers['Edit'] = new Input\Text('edit[]');
-			$numbers['CheckBox'] = new Input\CheckBox('check[]');
-			$table->addRow($numbers);
-			}
-
-		return $table;
-		}
-
 	public function baseOrderedList() : OrderedList
 		{
 		$orderedList = new \PHPFUI\OrderedList();
@@ -425,21 +380,6 @@ class KitchenSink
 		$orderedList->addItem(new \PHPFUI\ListItem('Item 3', '/item#3'));
 
 		return $orderedList;
-		}
-
-	public function extraPagination() : Pagination
-		{
-		$pagination = new Pagination(50, 100, '#');
-
-		return $pagination;
-		}
-
-	public function extraPanel() : Panel
-		{
-		$panel = new Panel('This is a panel with a radius');
-		$panel->setRadius();
-
-		return $panel;
 		}
 
 	public function baseProgressBar() : Container
@@ -505,18 +445,6 @@ class KitchenSink
 		return $container;
 		}
 
-
-	public function extraSlickSlider() : SlickSlider
-		{
-		$slickSlider = new \PHPFUI\SlickSlider($this->page);
-		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg', 'Space, the final frontier.');
-		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg', 'Lets Rocket!', true);
-		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg', 'Encapsulating');
-		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg', 'Outta This World');
-
-		return $slickSlider;
-		}
-
 	public function baseSlider() : Container
 		{
 		$container = new Container();
@@ -551,13 +479,6 @@ class KitchenSink
 		$splitButton->sort();
 
 		return $splitButton;
-		}
-
-	public function extraSubHeader()
-		{
-		$subHeader = new \PHPFUI\SubHeader('Sub Header');
-
-		return $subHeader;
 		}
 
 	public function baseSubmit() : Container
@@ -687,15 +608,6 @@ class KitchenSink
 		return $container;
 		}
 
-	public function extraTimedCellUpdate() : HTML5Element
-		{
-		$div = new HTML5Element('div');
-
-		$timedCellUpdate = new TimedCellUpdate($this->page, $div->getId(), [$this, 'timedCellUpdateCallback'], 1);
-
-		return $div;
-		}
-
 	public function baseTitleBar() : TitleBar
 		{
 		$titlebar = new TitleBar('TitleBar');
@@ -703,20 +615,6 @@ class KitchenSink
 		$titlebar->addRight('<button class="menu-icon" type="button"></button>');
 
 		return $titlebar;
-		}
-
-	public function extraToFromList() : ToFromList
-		{
-		$index = 'id';
-		$callback = [$this, 'getToFromListName'];
-		$split = mt_rand(0, count($this->lines) - 1);
-		$notInGroup = array_slice($this->lines, $split);
-		$inGroup = array_slice($this->lines, 0, $split);
-		$toFromList = new \PHPFUI\ToFromList($this->page, 'groups', $inGroup, $notInGroup, $index, $callback);
-		$toFromList->setInName('In Group');
-		$toFromList->setOutName('Out Group');
-
-		return $toFromList;
 		}
 
 	public function baseToggler() : Container
@@ -784,6 +682,108 @@ class KitchenSink
 		$unorderedList->addItem(new \PHPFUI\ListItem('Item C', '/item#c'));
 
 		return $unorderedList;
+		}
+
+	public function extraIcon() : Container
+		{
+		$container = new \PHPFUI\Container();
+
+		$iconPlain = new Icon('edit');
+		$container->add($iconPlain);
+		$iconPlainTip = new Icon('edit');
+		$iconPlainTip->setTooltip('I am a plain icon with a tooltip');
+		$container->add($iconPlainTip);
+		$iconLink = new Icon('edit', '#');
+		$container->add($iconLink);
+		$iconLinkTip = new Icon('edit', '#');
+		$iconLinkTip->setTooltip('I can even have a tooltip and a link!');
+		$container->add($iconLinkTip);
+
+		return $container;
+		}
+
+	public function extraOrderableTable() : OrderableTable
+		{
+		$table = new \PHPFUI\OrderableTable($this->page);
+		$table->setCaption('This is the table caption');
+		$table->addArrowNavigation($this->page);
+		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
+		$table->setHeaders($headers);
+		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
+		$table->setFooters(array_combine($headers, $headers));
+
+		for ($i = 0; $i < 10; ++$i)
+			{
+			$numbers = [];
+
+			foreach ($headers as $field)
+				{
+				$numbers[$field] = rand();
+				}
+
+			$numbers['Edit'] = new Input\Text('edit[]');
+			$numbers['CheckBox'] = new Input\CheckBox('check[]');
+			$table->addRow($numbers);
+			}
+
+		return $table;
+		}
+
+	public function extraPagination() : Pagination
+		{
+		$pagination = new Pagination(50, 100, '#');
+
+		return $pagination;
+		}
+
+	public function extraPanel() : Panel
+		{
+		$panel = new Panel('This is a panel with a radius');
+		$panel->setRadius();
+
+		return $panel;
+		}
+
+
+	public function extraSlickSlider() : SlickSlider
+		{
+		$slickSlider = new \PHPFUI\SlickSlider($this->page);
+		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg', 'Space, the final frontier.');
+		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg', 'Lets Rocket!', true);
+		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg', 'Encapsulating');
+		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg', 'Outta This World');
+
+		return $slickSlider;
+		}
+
+	public function extraSubHeader()
+		{
+		$subHeader = new \PHPFUI\SubHeader('Sub Header');
+
+		return $subHeader;
+		}
+
+	public function extraTimedCellUpdate() : HTML5Element
+		{
+		$div = new HTML5Element('div');
+
+		$timedCellUpdate = new TimedCellUpdate($this->page, $div->getId(), [$this, 'timedCellUpdateCallback'], 1);
+
+		return $div;
+		}
+
+	public function extraToFromList() : ToFromList
+		{
+		$index = 'id';
+		$callback = [$this, 'getToFromListName'];
+		$split = mt_rand(0, count($this->lines) - 1);
+		$notInGroup = array_slice($this->lines, $split);
+		$inGroup = array_slice($this->lines, 0, $split);
+		$toFromList = new \PHPFUI\ToFromList($this->page, 'groups', $inGroup, $notInGroup, $index, $callback);
+		$toFromList->setInName('In Group');
+		$toFromList->setOutName('Out Group');
+
+		return $toFromList;
 		}
 
 	/**

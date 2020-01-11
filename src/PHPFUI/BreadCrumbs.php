@@ -25,7 +25,7 @@ class BreadCrumbs extends HTML5Element implements \Countable
 	 */
 	public function addCrumb(string $text, string $link = '') : BreadCrumbs
 		{
-		$this->links[$text] = $link;
+		$this->links[$text . '|' . count($this)] = $link;
 
 		return $this;
 		}
@@ -51,6 +51,7 @@ class BreadCrumbs extends HTML5Element implements \Countable
 
 			foreach ($this->links as $text => $link)
 				{
+				list($text, $junk) = explode('|', $text);
 				if ($count == $i)
 					{
 					$item = new ListItem("<span class='show-for-sr'>Current: </span>{$text}");

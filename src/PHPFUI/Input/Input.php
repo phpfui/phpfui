@@ -64,14 +64,6 @@ abstract class Input extends \PHPFUI\Input
 			}
 		}
 
-	public function setDataMask(\PHPFUI\Page $page, string $mask) : Input
-		{
-		$page->addTailScript('jquery.mask.min.js');
-		$this->setAttribute('data-mask', $mask);
-
-		return $this;
-		}
-
 	/**
 	 * Set a specific error
 	 *
@@ -125,6 +117,14 @@ abstract class Input extends \PHPFUI\Input
 		return $this->label;
 		}
 
+	public function setDataMask(\PHPFUI\Page $page, string $mask) : Input
+		{
+		$page->addTailScript('jquery.mask.min.js');
+		$this->setAttribute('data-mask', $mask);
+
+		return $this;
+		}
+
 	/**
 	 * Set a hint
 	 *
@@ -160,6 +160,7 @@ abstract class Input extends \PHPFUI\Input
 	public function setRequired(bool $required = true)
 		{
 		$this->required = $required;
+
 		if ($required)
 			{
 			$this->addAttribute('required');
@@ -170,16 +171,6 @@ abstract class Input extends \PHPFUI\Input
 			}
 
 		return $this;
-		}
-
-	protected function setAutoCompleteRequired(\PHPFUI\Page $page, \PHPFUI\Input\Input $text)
-		{
-		$js = 'function AutoCompleteRequired($el,required,parent){var name=$el.attr("name").slice(0,-4);' .
-			'return $("[name=\'"+name+"\']").val().length!=0||$("[name=\'"+name+"Text\']").val().length!=0;};';
-		$this->page->addJavaScript($js);
-		$this->page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
-		$text->deleteAttribute('required');
-		$text->addAttribute('data-validator', 'AutoCompleteRequired');
 		}
 
 	public function toggleFocus(\PHPFUI\HTML5Element $element) : Input
@@ -226,5 +217,15 @@ abstract class Input extends \PHPFUI\Input
 			}
 
 		return $label . parent::getStart();
+		}
+
+	protected function setAutoCompleteRequired(\PHPFUI\Page $page, \PHPFUI\Input\Input $text) : void
+		{
+		$js = 'function AutoCompleteRequired($el,required,parent){var name=$el.attr("name").slice(0,-4);' .
+			'return $("[name=\'"+name+"\']").val().length!=0||$("[name=\'"+name+"Text\']").val().length!=0;};';
+		$this->page->addJavaScript($js);
+		$this->page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
+		$text->deleteAttribute('required');
+		$text->addAttribute('data-validator', 'AutoCompleteRequired');
 		}
 	}

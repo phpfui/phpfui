@@ -23,6 +23,7 @@ class Table extends HTML5Element
 	protected $footers = [];
 
 	protected $headers = [];
+	protected $nextRowAttributes = [];
 	protected $page = null;
 	protected $recordId = '';
 	protected $rows = [];
@@ -102,6 +103,16 @@ class Table extends HTML5Element
 		}
 
 	/**
+	 * You can add any attribute to the next row (tr) that you want.  This only applies to the next row to be output and is reset for the next row.
+	 */
+	public function addNextRowAttribute(string $attribute, string $value) : Table
+		{
+		$this->nextRowAttributes[$attribute][] = $value;
+
+		return $this;
+		}
+
+	/**
 	 * Add a row.  You can also pass column spans which are
 	 * possitional and do not need a corresponding index to the row.
 	 *
@@ -114,6 +125,8 @@ class Table extends HTML5Element
 		{
 		$this->rows[] = $row;
 		$this->colspans[] = $colspans;
+		$this->rowAttributes[] = $this->nextRowAttributes;
+		$this->nextRowAttributes = [];
 
 		return $this;
 		}
@@ -245,16 +258,18 @@ class Table extends HTML5Element
 
 			if ($this->displayHeaders)
 				{
-				$output .= $this->outputRow('th', $this->headers, 'thead', $this->widths, 'width');
+				$output .= $this->outputRow('th', $this->headers, 'thead', [], $this->widths, 'width');
 				}
 
 			$output .= "<tbody{$this->sortableBodyClass}>";
 			reset($this->colspans);
+			reset($this->rowAttributes);
 
 			foreach ($this->rows as $row)
 				{
-				$output .= $this->outputRow('td', $row, '', current($this->colspans));
+				$output .= $this->outputRow('td', $row, '', current($this->rowAttributes), current($this->colspans));
 				next($this->colspans);
+				next($this->rowAttributes);
 				}
 
 			$output .= '</tbody>' . $this->outputRow('td', $this->footers, 'tfoot');
@@ -291,7 +306,7 @@ class Table extends HTML5Element
 		return '<div style="overflow-x:auto;">' . parent::getStart();
 		}
 
-	protected function outputRow(string $td, array $row, string $type = '', array $attribute = [], string $attributeName = 'colspan') : string
+	protected function outputRow(string $td, array $row, string $type = '', array $rowAttributes = [], array $attribute = [], string $attributeName = 'colspan') : string
 		{
 		if (! count($row))
 			{
@@ -314,7 +329,14 @@ class Table extends HTML5Element
 			$id = " id='{$this->recordId}-{$recordId}'";
 			}
 
-		$output .= "<tr{$id}{$this->sortableTrClass}>";
+		$rowAttributeString = '';
+
+		foreach ($rowAttributes as $rowAttribute => $value)
+			{
+			$rowAttributeString .= " {$rowAttribute}='" . implode(' ', $value) . "' ";
+			}
+
+		$output .= "<tr{$id}{$rowAttributeString}{$this->sortableTrClass}>";
 
 		if (count($this->headers))
 			{

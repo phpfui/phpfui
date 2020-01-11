@@ -1,6 +1,8 @@
 vendor/
 .idea/
 bin/
+src/PHPFUI/HTMLUnitTester
+src/PHPFUI/InstaDoc
 composer.lock
 .php_cs.cache
 .phpunit.result.cache

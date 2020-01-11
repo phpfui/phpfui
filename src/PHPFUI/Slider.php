@@ -7,8 +7,8 @@ class Slider extends HTML5Element
 	private $max = 100;
 
 	private $min = 0;
-	private $sliderHandle;
 	private $rangeHandle = null;
+	private $sliderHandle;
 	private $started = false;
 	private $step = 1;
 	private $value;
@@ -106,6 +106,7 @@ class Slider extends HTML5Element
 				{
 				$this->add($this->rangeHandle);
 				}
+
 			if ($this->sliderHandle->getInput())
 				{
 				$this->add($this->sliderHandle->getInput());
@@ -114,6 +115,7 @@ class Slider extends HTML5Element
 			if ($this->rangeHandle)
 				{
 				$endInput = $this->rangeHandle->getInput();
+
 				if ($endInput)
 					{
 					$this->add($this->rangeHandle->getInput());
@@ -132,4 +134,3 @@ class Slider extends HTML5Element
 		return parent::getStart();
 		}
 	}
-

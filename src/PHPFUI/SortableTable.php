@@ -35,9 +35,33 @@ class SortableTable extends Table
 		return $this->url;
 		}
 
+	/**
+	 * @return string a link that will sort the column in descending order
+	 */
+	public function getDownUrl(string $column) : string
+		{
+		$parameters = $this->parameters;
+		$parameters[$this->columnParameter] = $column;
+		$parameters[$this->sortParameter] = 'd';
+
+		return $this->url . '?' . http_build_query($parameters);
+		}
+
 	public function getParsedParameters() : array
 		{
 		return $this->parameters;
+		}
+
+	/**
+	 * @return string a link that will sort the column in ascending order
+	 */
+	public function getUpUrl(string $column) : string
+		{
+		$parameters = $this->parameters;
+		$parameters[$this->columnParameter] = $column;
+		$parameters[$this->sortParameter] = 'a';
+
+		return $this->url . '?' . http_build_query($parameters);
 		}
 
 	public function setParameters(string $column = 'c', string $sort = 's') : SortableTable
@@ -68,30 +92,6 @@ class SortableTable extends Table
 		$this->sortedColumn = $column;
 
 		return $this;
-		}
-
-	/**
-	 * @return string a link that will sort the column in ascending order
-	 */
-	public function getUpUrl(string $column) : string
-		{
-		$parameters = $this->parameters;
-		$parameters[$this->columnParameter] = $column;
-		$parameters[$this->sortParameter] = 'a';
-
-		return $this->url . '?' . http_build_query($parameters);
-		}
-
-	/**
-	 * @return string a link that will sort the column in descending order
-	 */
-	public function getDownUrl(string $column) : string
-		{
-		$parameters = $this->parameters;
-		$parameters[$this->columnParameter] = $column;
-		$parameters[$this->sortParameter] = 'd';
-
-		return $this->url . '?' . http_build_query($parameters);
 		}
 
 	protected function getSortIndicator(string $column) : string

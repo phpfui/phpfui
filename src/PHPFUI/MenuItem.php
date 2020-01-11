@@ -6,10 +6,10 @@ class MenuItem extends HTML5Element
 	{
 	private $active = false;
 	private $align;
+	private $generatedLink;
 	private $graphic;
 
 	private $link;
-	private $generatedLink;
 	private $name;
 	private $started = false;
 
@@ -44,6 +44,7 @@ class MenuItem extends HTML5Element
 			}
 
 		$name = $this->name;
+
 		if ($this->link)
 			{
 			if ($this->graphic)

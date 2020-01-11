@@ -87,6 +87,7 @@ class TextArea extends Input
 		$this->addAttribute('rows', $this->rows);
 		$label = new \PHPFUI\HTML5Element('label');
 		$label->add($this->getLabel());
+
 		if ($this->required)
 			{
 			$label->add(' <small>Required</small>');

@@ -113,18 +113,6 @@ abstract class Base implements \Countable
 		return self::$debug;
 		}
 
-	public static function setDebug(int $level = 0) : void
-		{
-		if ($level)
-			{
-			self::$debug |= $level;
-			}
-		else
-			{
-			self::$debug = 0;
-			}
-		}
-
 	/**
 	 * Get the current response
 	 *
@@ -158,6 +146,7 @@ abstract class Base implements \Countable
 		$output = '';
 
 		$debug = self::getDebug(Session::DEBUG_HTML) ? "\n" : '';
+
 		try
 			{
 			$output .= "{$this->getStart()}";
@@ -211,6 +200,18 @@ abstract class Base implements \Countable
 		return $this;
 		}
 
+	public static function setDebug(int $level = 0) : void
+		{
+		if ($level)
+			{
+			self::$debug |= $level;
+			}
+		else
+			{
+			self::$debug = 0;
+			}
+		}
+
 	/**
 	 * Sets the page response directly
 	 *
@@ -245,6 +246,30 @@ abstract class Base implements \Countable
 		}
 
 	/**
+	 * Recursively walks all objects and calls the passed method on each object where it exists
+	 */
+	public function walk(string $method) : Base
+		{
+		foreach ($this->items as $item)
+			{
+			if (is_object($item))
+				{
+				if (method_exists($item, $method))
+					{
+					call_user_func([$item, $method]);
+					}
+
+				if ($item instanceof Base)
+					{
+					$item->walk($method);
+					}
+				}
+			}
+
+		return $this;
+		}
+
+	/**
 	 * You must provide a getBody function.  It will be called after start and before end.
 	 *
 	 */
@@ -261,27 +286,4 @@ abstract class Base implements \Countable
 	 *
 	 */
 	abstract protected function getStart() : string;
-
-	/**
-	 * Recursively walks all objects and calls the passed method on each object where it exists
-	 */
-	public function walk(string $method) : Base
-		{
-		foreach ($this->items as $item)
-			{
-			if (is_object($item))
-				{
-				if (method_exists($item, $method))
-					{
-					call_user_func([$item, $method]);
-					}
-				if ($item instanceof Base)
-					{
-					$item->walk($method);
-					}
-				}
-			}
-
-		return $this;
-		}
 	}

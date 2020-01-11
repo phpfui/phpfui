@@ -26,6 +26,7 @@ class FAIcon extends IconBase
 	public function __construct(string $prefix, string $icon, string $link = '')
 		{
 		parent::__construct($icon, $link);
+
 		if (! isset(self::$prefixes[$prefix]))
 			{
 			throw new \Exception("{$prefix} not a valid FontAwesome prefix");

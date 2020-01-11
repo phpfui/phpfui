@@ -137,6 +137,7 @@ class Menu extends HTML5Element
 				if ($item instanceof MenuItem)
 					{
 					$somethingActive |= $item->getActive();
+
 					if ($this->type)
 						{
 						$item->setAlignment($this->type);

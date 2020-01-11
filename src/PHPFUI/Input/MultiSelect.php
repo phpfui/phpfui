@@ -76,6 +76,7 @@ class MultiSelect extends Select
 		$rowCount = (int)($this->count() / $this->numberColumns) + (int)(($this->count() % $this->numberColumns) > 0);
 
 		$selectAllId = '';
+
 		if ($this->selectAll)
 			{
 			$selectAll = new CheckBox('', "<b>{$this->selectAll}</b>", 0);
@@ -95,6 +96,7 @@ class MultiSelect extends Select
 				}
 
 			$checkBox = new CheckBox($this->name, $option['label'], $option['value']);
+
 			if ($selectAllId)
 				{
 				$checkBox->addClass($selectAllId);

@@ -11,4 +11,3 @@ interface SessionHandler
 	public function csrfField() : string;
 
 	}
-

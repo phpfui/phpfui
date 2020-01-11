@@ -12,8 +12,6 @@ class SelectAutoComplete extends Select
 	protected $acFieldId;
 	protected $acInput;
 	protected $arrayName;
-	protected $freeformInput;
-	protected $hidden;
 	protected $autoCompleteOptions = [
 		'minChars'        => 1,
 		'type'            => "'POST'",
@@ -21,6 +19,8 @@ class SelectAutoComplete extends Select
 		'lookup'          => 'arrayName',
 		'onSelect'        => 'function(suggestion){ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}',
 	];
+	protected $freeformInput;
+	protected $hidden;
 
 	protected $page;
 	protected $realName;
@@ -71,19 +71,6 @@ class SelectAutoComplete extends Select
 		}
 
 	/**
-	 * Remove an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
-	 *
-	 * @param string $option to remove
-	 */
-	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\SelectAutoComplete
-		{
-		unset($this->autoCompleteOptions[$option]);
-
-		return $this;
-		}
-
-	/**
 	 * Returns the hidden field which is where the autocompleted
 	 * value will be stored. The hidden field name is the same name
 	 * as the AutoComplete field was constructed with. This should
@@ -103,6 +90,19 @@ class SelectAutoComplete extends Select
 	public function inReveal(bool $isInRevealModal = true) : \PHPFUI\Input\SelectAutoComplete
 		{
 		return $this->addAutoCompleteOption('forceFixPosition', $isInRevealModal);
+		}
+
+	/**
+	 * Remove an option for
+	 * https://github.com/devbridge/jQuery-Autocomplete
+	 *
+	 * @param string $option to remove
+	 */
+	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\SelectAutoComplete
+		{
+		unset($this->autoCompleteOptions[$option]);
+
+		return $this;
 		}
 
 	/**

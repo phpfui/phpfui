@@ -29,10 +29,10 @@ class Page extends Base
 	private $pageName = 'Created with Zurb Foundation';
 
 	private $plugins = [];
+	private $resourcePath = '/PHPFUI/';
 	private $reveals = [];
 	private $styleSheets = [];
 	private $tailScripts = [];
-	private $resourcePath = '/PHPFUI/';
 
 	public function __construct()
 		{
@@ -251,11 +251,12 @@ class Page extends Base
 	 */
 	public function getResourcePath(string $resource = '') : string
 		{
-		if ($resource == '')
+		if ('' == $resource)
 			{
 			return $this->resourcePath;
 			}
-		if ($resource[0] == '/' || stripos($resource, 'http') === 0)
+
+		if ('/' == $resource[0] || 0 === stripos($resource, 'http'))
 			{
 			return $resource;
 			}

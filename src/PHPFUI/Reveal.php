@@ -78,23 +78,32 @@ class Reveal extends HTML5Element
 		}
 
 	/**
+	 * Load URL on open to populate Reveal
+	 *
+	 * @param string $url to load
+	 * @param string $targetId is optional area to load html into, default is entire Reveal window
+	 */
+	public function loadUrlOnOpen(string $url, string $targetId = '') : Reveal
+		{
+		$id = $this->getId();
+
+		if (! $targetId)
+			{
+			$targetId = $id;
+			}
+
+		$this->page->addJavaScript('$(\'#' . $id . '\').on("open.zf.reveal", function(){$.ajax(\'' . $url . '\').done(function(resp){$(\'#' . $targetId . '\').html(resp)})})');
+
+		return $this;
+		}
+
+	/**
 	 * Show the model immediately on page load
 	 */
 	public function showOnPageLoad() : Reveal
 		{
 		$id = $this->getId();
 		$this->page->addJavaScript("$('#{$id}').foundation('open');");
-
-		return $this;
-		}
-
-	/**
-	 * Load URL on open to populate Reveal
-	 */
-	public function loadUrlOnOpen(string $url) : Reveal
-		{
-		$id = $this->getId();
-		$this->page->addJavaScript('var $modal=$(\'#' . $id . '\');$.ajax(\'' . $url . '\').done(function(resp){$modal.html(resp).foundation(\'open\')})');
 
 		return $this;
 		}
