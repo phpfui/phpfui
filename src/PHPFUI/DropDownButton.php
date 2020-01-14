@@ -39,6 +39,15 @@ class DropDownButton extends Button
 		return $this;
 		}
 
+	/**
+	 * Return the number dropdown items
+	 *
+	 */
+	public function count() : int
+		{
+		return count($this->items);
+		}
+
 	public function sort() : DropDownButton
 		{
 		$this->sorted = true;

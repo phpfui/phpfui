@@ -31,6 +31,14 @@ class Menu extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Number of object in this object.  Does not count sub objects.
+	 */
+	public function count() : int
+		{
+		return count($this->menuItems);
+		}
+
 	public function getActive() : bool
 		{
 		foreach ($this->menuItems as $menuItem)
