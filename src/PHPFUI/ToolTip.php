@@ -3,17 +3,14 @@
 namespace PHPFUI;
 
 /**
- * ToolTips are very handy.  They are disabled by default for
- * mobile
+ * ToolTips are very handy.  They are disabled by default for mobile.
  */
 class ToolTip extends HTML5Element
 	{
 
 	/**
-	 * Construct a ToolTip
-	 *
 	 * @param mixed $content that needs a tooltip
-	 * @param string $tip text
+	 * @param string $tip text of the tip. Do not include markup as it will not be rendered correctly.
 	 */
 	public function __construct($content, string $tip)
 		{

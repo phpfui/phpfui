@@ -13,7 +13,6 @@ class Page extends Base
 	private $edgeVersion = 0;
 	private $favIcon;
 	private $fireFoxVersion = 0;
-	private $foundationStyleSheets = [];
 	private $headJavascript = [];
 	private $headScripts = [];
 	private $headTags = [
@@ -26,7 +25,7 @@ class Page extends Base
 	private $javascript = [];
 	private $javascriptLast = [];
 	private $language = 'en';
-	private $pageName = 'Created with Zurb Foundation';
+	private $pageName = 'Created with Foundation';
 
 	private $plugins = [];
 	private $resourcePath = '/PHPFUI/';
@@ -59,8 +58,6 @@ class Page extends Base
 
 	/**
 	 * Add dedupped inline css
-	 *
-	 *
 	 */
 	public function addCSS(string $css) : Page
 		{
@@ -71,8 +68,6 @@ class Page extends Base
 
 	/**
 	 * Add dedupped JavaScript to the header
-	 *
-	 *
 	 */
 	public function addHeadJavaScript(string $js) : Page
 		{
@@ -85,7 +80,6 @@ class Page extends Base
 	 * Add a dedupped header script
 	 *
 	 * @param string $module path to script
-	 *
 	 */
 	public function addHeadScript(string $module) : Page
 		{
@@ -96,8 +90,6 @@ class Page extends Base
 
 	/**
 	 * Add a meta tag to the head section of the page
-	 *
-	 *
 	 */
 	public function addHeadTag(string $tag) : Page
 		{
@@ -108,9 +100,10 @@ class Page extends Base
 
 	/**
 	 * Add IE commands.  For example you should restrict IE 8 and lower clients.
+	 *
+	 * ```
 	 * $page->addIEComments('<!--[if lt IE9]><script>window.location="/old/index.html";</script><![endif]-->');
-	 *
-	 *
+	 * ```
 	 */
 	public function addIEComments(string $comment) : Page
 		{
@@ -121,8 +114,6 @@ class Page extends Base
 
 	/**
 	 * Add dedupped JavaScript to the page
-	 *
-	 *
 	 */
 	public function addJavaScript(string $js) : Page
 		{
@@ -133,8 +124,6 @@ class Page extends Base
 
 	/**
 	 * Add dedupped JavaScript as the last JavaScript on the page
-	 *
-	 *
 	 */
 	public function addJavaScriptLast(string $js) : Page
 		{
@@ -157,7 +146,6 @@ class Page extends Base
 	 * Add a reveal dialog to the page
 	 *
 	 * @param Reveal $reveal dialog to store in the page
-	 *
 	 */
 	public function addReveal(Reveal $reveal) : Page
 		{
@@ -170,7 +158,6 @@ class Page extends Base
 	 * Add dedupped Style Sheet to the page
 	 *
 	 * @param string $module filename
-	 *
 	 */
 	public function addStyleSheet(string $module) : Page
 		{
@@ -183,7 +170,6 @@ class Page extends Base
 	 * Add a dedupped script to the end of the page
 	 *
 	 * @param string $module path to script
-	 *
 	 */
 	public function addTailScript(string $module) : Page
 		{
@@ -194,7 +180,6 @@ class Page extends Base
 
 	/**
 	 * Return just the base URI without the query string
-	 *
 	 */
 	public function getBaseURL() : string
 		{
@@ -211,7 +196,6 @@ class Page extends Base
 
 	/**
 	 * Return the Fav Icon
-	 *
 	 */
 	public function getFavIcon() : string
 		{
@@ -220,7 +204,6 @@ class Page extends Base
 
 	/**
 	 * Return the current page name
-	 *
 	 */
 	public function getPageName() : string
 		{
@@ -265,8 +248,7 @@ class Page extends Base
 		}
 
 	/**
-	 * return true if it has a built in date picker detectable by
-	 * HTTP_USER_AGENT
+	 * return true if it has a built in date picker detectable by  HTTP_USER_AGENT
 	 */
 	public function hasDatePicker() : bool
 		{
@@ -274,8 +256,7 @@ class Page extends Base
 		}
 
 	/**
-	 * return true if it has a built in date time picker detectable
-	 * by HTTP_USER_AGENT
+	 * return true if it has a built in date time picker detectable by HTTP_USER_AGENT
 	 */
 	public function hasDateTimePicker() : bool
 		{
@@ -283,8 +264,7 @@ class Page extends Base
 		}
 
 	/**
-	 * return true if it has a built in time picker detectable by
-	 * HTTP_USER_AGENT
+	 * return true if it has a built in time picker detectable by HTTP_USER_AGENT
 	 */
 	public function hasTimePicker() : bool
 		{
@@ -293,7 +273,6 @@ class Page extends Base
 
 	/**
 	 * Return true if Android platform
-	 *
 	 */
 	public function isAndroid() : bool
 		{
@@ -302,7 +281,6 @@ class Page extends Base
 
 	/**
 	 * Return true if Chrome browser
-	 *
 	 */
 	public function isChrome() : bool
 		{
@@ -311,7 +289,6 @@ class Page extends Base
 
 	/**
 	 * Return true if Windows Mobile browser
-	 *
 	 */
 	public function isIEMobile() : bool
 		{
@@ -320,7 +297,6 @@ class Page extends Base
 
 	/**
 	 * Return true if IOS platform
-	 *
 	 */
 	public function isIOS() : bool
 		{
@@ -335,8 +311,6 @@ class Page extends Base
 	 * @param string $url default '', current url
 	 * @param string $parameters default ''
 	 * @param int $timeout default 0
-	 *
-	 * @return \PHPFUI\Page
 	 */
 	public function redirect(string $url = '', string $parameters = '', int $timeout = 0) : Page
 		{
@@ -383,10 +357,9 @@ class Page extends Base
 
 	/**
 	 * Sets the Fav Icon (shown in browser tabs and elsewhere in the
-	 * browser
+	 * browser)
 	 *
 	 * @param string $path to favicon
-	 *
 	 */
 	public function setFavIcon(string $path) : Page
 		{
@@ -397,8 +370,6 @@ class Page extends Base
 
 	/**
 	 * Set the page language
-	 *
-	 *
 	 */
 	public function setLanguage(string $lang) : Page
 		{
@@ -408,11 +379,9 @@ class Page extends Base
 		}
 
 	/**
-	 * Set the page name.  Defaults to "Created with Zurb
-	 * Foundation"
+	 * Set the page name.  Defaults to "Created with Foundation"
 	 *
 	 * @param string $name of page
-	 *
 	 */
 	public function setPageName(string $name) : Page
 		{
@@ -508,8 +477,6 @@ class Page extends Base
 			}
 
 		$output .= "<title>{$this->pageName}</title>{$nl}";
-		// always place foundation css first
-		$this->styleSheets = array_merge($this->foundationStyleSheets, $this->styleSheets);
 
 		foreach ($this->styleSheets as $sheet)
 			{

@@ -8,11 +8,8 @@ namespace PHPFUI;
 class RadioTable extends Input implements \Countable
 	{
 	protected $buttons = [];
-	private static $js = '';
 
 	/**
-	 * Construct a RadioTable
-	 *
 	 * @param string $name of the button
 	 * @param ?string $value initial value
 	 */
@@ -20,18 +17,12 @@ class RadioTable extends Input implements \Countable
 		{
 		parent::__construct('text', $name, null, $value);
 
-		if (! self::$js)
-			{
-			self::$js = 'function checkRadioTable(id,foregroundColor,backgroundColor){var cb=$("#"+id);' .
-        'cb.parent().prop("style","background-color:"+backgroundColor+";color:"+foregroundColor+";");};';
-			$page->addJavaScript(self::$js);
-			}
+		$page->addJavaScript('function checkRadioTable(id,foregroundColor,backgroundColor){var cb=$("#"+id);' .
+        'cb.parent().prop("style","background-color:"+backgroundColor+";color:"+foregroundColor+";");};');
 		}
 
 	/**
 	 * Add a optional button
-	 *
-	 *
 	 */
 	public function addButton(RadioTableCell $button) : RadioTable
 		{
@@ -61,7 +52,6 @@ class RadioTable extends Input implements \Countable
 
 	/**
 	 * Get buttons, indexed by name
-	 *
 	 */
 	public function getButtons() : array
 		{

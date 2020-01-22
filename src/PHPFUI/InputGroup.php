@@ -8,9 +8,6 @@ namespace PHPFUI;
 class InputGroup extends HTML5Element
 	{
 
-	/**
-	 * Construct an input group
-	 */
 	public function __construct()
 		{
 		parent::__construct('div');

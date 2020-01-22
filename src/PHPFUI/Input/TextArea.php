@@ -4,7 +4,8 @@ namespace PHPFUI\Input;
 
 /**
  * A text area wrapper with support for WYSIWYG html editing
- * https://www.froala.com/wysiwyg-editor
+ *
+ * @link https://www.froala.com/wysiwyg-editor
  */
 class TextArea extends Input
 	{
@@ -25,14 +26,12 @@ class TextArea extends Input
 		}
 
 	/**
-	 * enable html editing using
-	 * https://www.froala.com/wysiwyg-editor
+	 * enable html editing using froala wysiwyg-editor
 	 *
+	 * @link https://www.froala.com/wysiwyg-editor
 	 * @param Page $page requires JS
-	 *
-	 * @return TextArea
 	 */
-	public function htmlEditing(\PHPFUI\Page $page, \PHPFUI\FroalaModel $model)
+	public function htmlEditing(\PHPFUI\Page $page, \PHPFUI\FroalaModel $model) : TextArea
 		{
 		$id = $this->getId();
 
@@ -60,10 +59,8 @@ class TextArea extends Input
 	 * Set the number of rows the text area occupies
 	 *
 	 * @param int $rows default 10
-	 *
-	 * @return TextArea
 	 */
-	public function setRows($rows = 10)
+	public function setRows($rows = 10) : TextArea
 		{
 		$this->rows = $rows;
 

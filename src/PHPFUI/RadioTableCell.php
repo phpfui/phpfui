@@ -23,11 +23,6 @@ class RadioTableCell extends HTML5Element
 		$this->value = $value;
 		}
 
-	/**
-	 * Return true if disabled
-	 *
-	 * @bool bool
-	 */
 	public function getDisabled() : bool
 		{
 		return ! empty($this->disabled);

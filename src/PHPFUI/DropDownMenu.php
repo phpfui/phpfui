@@ -13,6 +13,9 @@ class DropDownMenu extends Menu
 		$this->addAttribute('data-dropdown-menu');
 		}
 
+	/**
+	 * Make a good guess as to the width required by this menu
+	 */
 	public function computeWidth() : DropDownMenu
 		{
 		$this->width = 0;
@@ -20,6 +23,9 @@ class DropDownMenu extends Menu
 		return $this;
 		}
 
+	/**
+	 * Set the width to a fixed number of EMS.
+	 */
 	public function setWidth(int $ems) : DropDownMenu
 		{
 		$this->width = $ems;

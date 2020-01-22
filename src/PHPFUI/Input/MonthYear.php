@@ -55,7 +55,6 @@ class MonthYear extends \PHPFUI\Base
 	 * day. Use 0 for last day of the month
 	 *
 	 * @param int $day defaults to today's date
-	 *
 	 */
 	public function setDay(int $day) : MonthYear
 		{
@@ -66,8 +65,6 @@ class MonthYear extends \PHPFUI\Base
 
 	/**
 	 * Set the maximum allowed year (4 digits)
-	 *
-	 *
 	 */
 	public function setMaxYear(int $max) : MonthYear
 		{
@@ -78,8 +75,6 @@ class MonthYear extends \PHPFUI\Base
 
 	/**
 	 * Set the minimum allowed year (4 digits)
-	 *
-	 *
 	 */
 	public function setMinYear(int $min) : MonthYear
 		{
@@ -88,13 +83,7 @@ class MonthYear extends \PHPFUI\Base
 		return $this;
 		}
 
-	/**
-	 * Set required
-	 *
-	 * @param bool $required default true
-	 *
-	 */
-	public function setRequired(bool $required = true)
+	public function setRequired(bool $required = true) : MonthYear
 		{
 		$this->required = $required;
 

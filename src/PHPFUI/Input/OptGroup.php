@@ -27,7 +27,6 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 	 * @param string $value for the Select. Returned when posted.
 	 * @param bool $selected true if selected, default false
 	 * @param bool $disabled default false
-	 *
 	 */
 	public function addOption(string $label, string $value = '', bool $selected = false, bool $disabled = false) : OptGroup
 		{

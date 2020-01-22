@@ -11,10 +11,7 @@ class Tabs extends Base
 	private $vertical = false;
 
 	/**
-	 * Construct a Tab
-	 *
-	 * @param bool $vertical default false, pass true for a vertical
-	 *             tab structure
+	 * @param bool $vertical default false, pass true for a vertical tab structure
 	 */
 	public function __construct(bool $vertical = false)
 		{
@@ -22,13 +19,10 @@ class Tabs extends Base
 		}
 
 	/**
-	 * Add a Tab
-	 *
 	 * @param string $tabText to display on the tab
 	 * @param string $content html to be displayed when the tab is
 	 *                         selected, can be any Base or plain html
 	 * @param bool $active optional, default false
-	 *
 	 */
 	public function addTab(string $tabText, string $content, bool $active = false) : Tabs
 		{

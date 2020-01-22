@@ -3,7 +3,7 @@
 namespace PHPFUI;
 
 /**
- * Simple wrapper for OrderedList <ol>
+ * Simple wrapper for OrderedList
  */
 class OrderedList extends HTMLList
 	{

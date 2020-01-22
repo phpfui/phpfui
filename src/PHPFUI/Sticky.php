@@ -7,11 +7,10 @@ class Sticky extends HTML5Element
 
 	/**
 	 * Create a Sticky object.  You must create it with the parent
-	 * object you want to contain the Sticky element inside. The
+	 * object you want that will contain the Sticky element inside. The
 	 * Sticky object will be automatically added to the parent.
 	 *
 	 * You can then add anything you want into the Sticky object.
-	 *
 	 */
 	public function __construct(HTML5Element $parent)
 		{

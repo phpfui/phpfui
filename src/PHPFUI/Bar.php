@@ -10,9 +10,6 @@ abstract class Bar extends HTML5Element
 	private $className;
 	private $started = false;
 
-	/**
-	 * Construct a TopBar
-	 */
 	public function __construct(string $className)
 		{
 		parent::__construct('div');
@@ -20,6 +17,9 @@ abstract class Bar extends HTML5Element
 		$this->addClass($this->className);
 		}
 
+	/**
+	 * Add an item to the left side.
+	 */
 	public function addLeft($item) : Bar
 		{
 		$this->left[] = $item;
@@ -27,6 +27,9 @@ abstract class Bar extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Add an item to the right side after previously added item.
+	 */
 	public function addRight($item) : Bar
 		{
 		$this->right[] = $item;
@@ -34,6 +37,9 @@ abstract class Bar extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Add an item on the the left before any previously added items
+	 */
 	public function pushLeft($item) : Bar
 		{
 		array_push($this->left, $item);
@@ -41,6 +47,9 @@ abstract class Bar extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Adds an item before the other items on the right.
+	 */
 	public function pushRight($item) : Bar
 		{
 		array_push($this->right, $item);

@@ -24,7 +24,6 @@ class Container implements \Countable
 	 * Add an item to the Container
 	 *
 	 * @param string|Base $object need to support output interface or __toString
-	 *
 	 */
 	public function add($object) : Container
 		{
@@ -40,8 +39,6 @@ class Container implements \Countable
 	 * Adds to the front of the container
 	 *
 	 * @param mixed $object should be convertable to string
-	 *
-	 * @return Base
 	 */
 	public function addAsFirst($object) : Container
 		{
@@ -55,7 +52,6 @@ class Container implements \Countable
 
 	/**
 	 * Supports the Countable interface
-	 *
 	 */
 	public function count() : int
 		{
@@ -78,7 +74,6 @@ class Container implements \Countable
 	 * Add an item to the beginning of the Container
 	 *
 	 * @param string|Base $object need to support output interface or __toString
-	 *
 	 */
 	public function prepend($object) : Container
 		{

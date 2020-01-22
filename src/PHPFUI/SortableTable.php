@@ -30,6 +30,9 @@ class SortableTable extends Table
 			}
 		}
 
+	/**
+	 * Returns the base url of the current page, with no query parameters
+	 */
 	public function getBaseUrl() : string
 		{
 		return $this->url;
@@ -47,6 +50,9 @@ class SortableTable extends Table
 		return $this->url . '?' . http_build_query($parameters);
 		}
 
+	/**
+	 * Get parameters parsed off the url
+	 */
 	public function getParsedParameters() : array
 		{
 		return $this->parameters;
@@ -64,6 +70,9 @@ class SortableTable extends Table
 		return $this->url . '?' . http_build_query($parameters);
 		}
 
+	/**
+	 * Set the column and sort direction parameter names.
+	 */
 	public function setParameters(string $column = 'c', string $sort = 's') : SortableTable
 		{
 		$this->columnParameter = $column;
@@ -72,6 +81,9 @@ class SortableTable extends Table
 		return $this;
 		}
 
+	/**
+	 * Set the valid sortable columns
+	 */
 	public function setSortableColumns(array $columns) : SortableTable
 		{
 		$this->sortableColumns = array_flip($columns);
@@ -79,6 +91,9 @@ class SortableTable extends Table
 		return $this;
 		}
 
+	/**
+	 * Set the current sorted column and sorted order.
+	 */
 	public function setSortedColumnOrder(string $column, string $order) : SortableTable
 		{
 		$order = strtolower($order);
@@ -94,6 +109,9 @@ class SortableTable extends Table
 		return $this;
 		}
 
+	/**
+	 * Get the correct current sort indicator based on the column passed.
+	 */
 	protected function getSortIndicator(string $column) : string
 		{
 		if (! isset($this->sortableColumns[$column]))

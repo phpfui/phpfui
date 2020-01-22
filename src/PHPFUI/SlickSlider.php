@@ -13,8 +13,6 @@ class SlickSlider extends HTML5Element
 	private $slides = [];
 
 	/**
-	 * Construct a SlickSlider carousel
-	 *
 	 * @param Page $page to add JS
 	 */
 	public function __construct(Page $page)
@@ -58,7 +56,7 @@ class SlickSlider extends HTML5Element
 		}
 
 	/**
-	 * Add a free form slide
+	 * Add a free form slide of html
 	 */
 	public function addSlide(string $html) : SlickSlider
 		{
@@ -71,7 +69,6 @@ class SlickSlider extends HTML5Element
 	 * Add an attribute as defined by the slider
 	 *
 	 * @param mixed $value of any type
-	 *
 	 */
 	public function addSliderAttribute(string $attribute, $value = '') : Base
 		{

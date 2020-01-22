@@ -8,6 +8,10 @@ class SliderHandle extends HTML5Element
 	private $input = null;
 	private $value;
 
+	/**
+	 * @param int $value of the slider on initializion
+	 * @param Input $bind Input field to update when the slider is changed.
+	 */
 	public function __construct(int $value = 0, ?Input $bind = null)
 		{
 		parent::__construct('span');
@@ -31,16 +35,25 @@ class SliderHandle extends HTML5Element
 			}
 		}
 
+	/**
+	 * Get the bound input field
+	 */
 	public function getBind() : ?Input
 		{
 		return $this->bind;
 		}
 
+	/**
+	 * Get the hidden input field if no binding was set up. Could be null.
+	 */
 	public function getInput() : ?HTML5Element
 		{
 		return $this->input;
 		}
 
+	/**
+	 * Get the initialized value of the slider
+	 */
 	public function getValue() : int
 		{
 		return $this->value;

@@ -5,14 +5,14 @@ namespace PHPFUI;
 /**
  * Wrapper for tables. Arrays passed in must be indexed with
  * column names.
- *
- *  $table = new \PHPFUI\Table(); $table->setHeaders({'value' =>
- *  'Members Signed In', 'key' => 'In the Past X Days']);
- *  $table->addColumnAttribute('value', ['style' =>
- *    'text-align:center;']);
- *  foreach ($results as $key => $value) {
+ * ```
+ *  $table = new \PHPFUI\Table(); $table->setHeaders({'value' => 'Members Signed In', 'key' => 'In the Past X Days']);
+ *  $table->addColumnAttribute('value', ['style' => 'text-align:center;']);
+ *  foreach ($results as $key => $value)
+ *  	{
  *    $signupTable->addRow(['key' => $key, 'value' => $value]);
- *    }
+ *  	}
+ * ```
  */
 class Table extends HTML5Element
 	{
@@ -38,8 +38,15 @@ class Table extends HTML5Element
 		}
 
 	/**
-	 * Allow arrow keys to move up and down rows with edit controls
-	 * in them.
+	 * Number of rows in the table.
+	 */
+	public function count() : int
+		{
+		return count($this->rows);
+		}
+
+	/**
+	 * Allow arrow keys to move up and down rows with edit controls in them.
 	 */
 	public function addArrowNavigation(Page $page) : Table
 		{
@@ -114,7 +121,7 @@ class Table extends HTML5Element
 
 	/**
 	 * Add a row.  You can also pass column spans which are
-	 * possitional and do not need a corresponding index to the row.
+	 * possitional and do not need keys corresponding index to the row.
 	 *
 	 * @param array $row array indexes must correspond to headers if
 	 *                        used.
@@ -142,9 +149,7 @@ class Table extends HTML5Element
 		}
 
 	/**
-	 * Return the id used to give each row a unique id. The id
-	 * should be unique (like primary key if displaying a table) for
-	 * each row in the table.
+	 * Return the index key used to give each row a unique id.
 	 */
 	public function getRecordId() : string
 		{
@@ -198,11 +203,13 @@ class Table extends HTML5Element
 		}
 
 	/**
-	 * Specify the row index that will be used for a unique Id
+	 * Specify the row index key that will be used to form a unique Id for the row.
+	 *
+	 * $key should be the index into the row array that uniquely identifies the row in the table.
 	 */
-	public function setRecordId(string $id) : Table
+	public function setRecordId(string $key) : Table
 		{
-		$this->recordId = $id;
+		$this->recordId = $key;
 
 		return $this;
 		}

@@ -22,15 +22,7 @@ class ToFromList extends Base
 	 * the other.  It does not support ordering within panes. It assumes you are picking data from a
 	 * master list and putting each item in to one group or the other.
 	 *
-	 * @param Page $page needed for JavaScript
-	 * @param string $name identifying this ToFromList from others on the same page.  Needs to be
-	 *  		 unique per page
-	 * @param array $inGroup data for the selected group.  See below for array requirements.
-	 * @param array $notInGroup data for the unselected group.  See below for array requirements.
-	 * @param string $callbackIndex is used to identify records by index in your master set of data.
-	 * @param callable $callback used to format the text used to drag and drop.
-	 *
-	 * The data:
+	 * **The data:**
 	 *
 	 * The ToFromList assumes you have one master array with numeric indexes from 0 to what ever. Each
 	 * item in the master array must be an array and have an index specified by $callbackIndex. It will
@@ -40,13 +32,21 @@ class ToFromList extends Base
 	 * include any other data in this array you want, but it is recommend you have a human readable
 	 * name, or a way to get this, as you will need to return that in the callback function.
 	 *
-	 * The callback:
+	 * **The callback:**
 	 *
 	 * The callback should have the following signature:
 	 *
-	 * @param string $name this is the name of the field that will be POSTed with either "in" or
-	 *  						 "out" (depending on the side) prepended.  You can also change either of these two
-	 *  						 values if you want.
+	 * ```
+	 * function (string $fieldName, string $index, mixed $userData, string $type) : string
+   * ```
+	 *
+	 * @param Page $page needed for JavaScript
+	 * @param string $name identifying this ToFromList from others on the same page.  Needs to be
+	 *  		 unique per page
+	 * @param array $inGroup data for the selected group.  See below for array requirements.
+	 * @param array $notInGroup data for the unselected group.  See below for array requirements.
+	 * @param string $callbackIndex is used to identify records by index in your master set of data.
+	 * @param callable $callback used to format the text used to drag and drop.
 	 */
 	public function __construct(Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
 		{

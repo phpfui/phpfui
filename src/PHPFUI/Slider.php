@@ -14,7 +14,11 @@ class Slider extends HTML5Element
 	private $value;
 	private $vertical = false;
 
-	public function __construct(Page $page, int $value = 0, ?SliderHandle $handle = null)
+	/**
+	 * @param int $value the initial slider value
+	 * @param SliderHandle $handle an optional slider handle. You must supply this if you want a field to be updated by slider changes.
+	 */
+	public function __construct(int $value = 0, ?SliderHandle $handle = null)
 		{
 		parent::__construct('div');
 		$this->value = $value;
@@ -23,6 +27,9 @@ class Slider extends HTML5Element
 		$this->sliderHandle = $handle ? : new SliderHandle($value);
 		}
 
+	/**
+	 * The max allowed value
+	 */
 	public function setMax(int $max = 100) : Slider
 		{
 		$this->max = $max;
@@ -30,6 +37,9 @@ class Slider extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * The min allowed value
+	 */
 	public function setMin(int $min = 0) : Slider
 		{
 		$this->min = $min;
@@ -37,6 +47,9 @@ class Slider extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * @param string $function algorithm used for non linear function, must be either log or pow
+	 */
 	public function setNonLinear(int $base = 5, string $function = 'log') : Slider
 		{
 		$functions = ['log',
@@ -51,6 +64,9 @@ class Slider extends HTML5Element
 		$this->setAttribute('data-non-linear-base', $base);
 		}
 
+	/**
+	 * Specify a range handle
+	 */
 	public function setRangeHandle(SliderHandle $handle) : Slider
 		{
 		$this->rangeHandle = $handle;
@@ -58,6 +74,9 @@ class Slider extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Set the step up or down
+	 */
 	public function setStep(int $step = 1) : Slider
 		{
 		$this->step = $step;
@@ -65,6 +84,9 @@ class Slider extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Set the initial value for the slider
+	 */
 	public function setValue(int $value) : Slider
 		{
 		$this->value = $value;
@@ -72,6 +94,9 @@ class Slider extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Set the slider to be vertical
+	 */
 	public function setVertical(bool $vertical = true) : Slider
 		{
 		$this->vertical = $vertical;

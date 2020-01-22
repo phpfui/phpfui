@@ -33,7 +33,7 @@ class TextHelper
 			$comma = ',';
 
 			switch (gettype($value))
-						{
+				{
 				/** @noinspection PhpMissingBreakStatementInspection */
 				case 'object':
 					$value = json_decode(json_encode($value), true);
@@ -61,7 +61,7 @@ class TextHelper
 				case 'NULL':
 				case 'unknown type':
 					$js .= 'null';
-						}
+				}
 			}
 
 		return $js . ($normalArray ? ']' : '}');

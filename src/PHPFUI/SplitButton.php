@@ -11,9 +11,6 @@ class SplitButton extends Button
 	private $menu;
 	private $started = false;
 
-	/**
-	 * Construct a SplitButton
-	 */
 	public function __construct(string $text, string $link)
 		{
 		HTML5Element::__construct('div');

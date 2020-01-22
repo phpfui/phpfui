@@ -9,8 +9,6 @@ class Thumbnail extends HTML5Element
 	{
 
 	/**
-	 * Constuct a Thumbnail image
-	 *
 	 * @param string $url for optional link
 	 */
 	public function __construct(Image $img, string $url = '')

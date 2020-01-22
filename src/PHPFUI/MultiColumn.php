@@ -20,15 +20,16 @@ namespace PHPFUI;
  *
  * The constructor can take multiple parameteters. So the
  * following are equivalent:
- *
+ * ```
  * $mc = new \PHPFUI\MultiColumn();
  * $mc->add($a);
  * $mc->add($b);
  * $mc->add($c);
- *
+ * ```
  * and:
- *
+ * ```
  * $mc = new \PHPFUI\MultiColumn($a, $b, $c);
+ * ```
  */
 class MultiColumn extends GridX implements \Countable
 	{

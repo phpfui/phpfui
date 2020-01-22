@@ -8,9 +8,6 @@ namespace PHPFUI;
 class GridY extends HTML5Element
 	{
 
-	/**
-	 * Construct a GridY element.
-	 */
 	public function __construct(string $height)
 		{
 		parent::__construct('div');

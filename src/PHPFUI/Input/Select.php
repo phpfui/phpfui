@@ -32,8 +32,6 @@ class Select extends Input implements \Countable
 
 	/**
 	 * Add an OptGroup
-	 *
-	 *
 	 */
 	public function addOptGroup(OptGroup $group) : Select
 		{
@@ -50,7 +48,6 @@ class Select extends Input implements \Countable
 	 * @param bool $selected default false, pass true to preselect
 	 *                     this option
 	 * @param bool $disabled default false
-	 *
 	 */
 	public function addOption(string $label, string $value = null, bool $selected = false, bool $disabled = false) : Select
 		{
@@ -64,7 +61,6 @@ class Select extends Input implements \Countable
 
 	/**
 	 * Return the number of options added
-	 *
 	 */
 	public function count() : int
 		{
@@ -72,8 +68,7 @@ class Select extends Input implements \Countable
 		}
 
 	/**
-	 * remove all options.
-	 *
+	 * Remove all options.
 	 */
 	public function removeAll() : Select
 		{
@@ -83,10 +78,10 @@ class Select extends Input implements \Countable
 		}
 
 	/**
-	 * remove an option.  Returns true on success.
+	 * Remove an option.  Returns true on success.
 	 *
 	 * @param string $value of selection to be removed
-	 *
+	 * @return bool returns true if option was removed.
 	 */
 	public function removeOption(string $value) : bool
 		{
@@ -107,10 +102,9 @@ class Select extends Input implements \Countable
 	 * Select an option based on the value passed
 	 *
 	 * @param string $selection to be selected
-	 *
 	 * @return Select
 	 */
-	public function select($selection)
+	public function select($selection) : Select
 		{
 		foreach ($this->options as &$values)
 			{

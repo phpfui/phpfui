@@ -14,6 +14,11 @@ class Embed extends HTML5Element
 		$this->setRatio($ratio);
 		}
 
+	/**
+	 * Set the aspect ratio
+	 *
+	 * @param string $ratio must be one of vertical, panorama, square, widescreen
+	 */
 	public function setRatio(string $ratio) : Embed
 		{
 		$validRatios = ['vertical',

@@ -2,6 +2,9 @@
 
 namespace PHPFUI\Input;
 
+/**
+ * Use a switch instead of a radio button
+ */
 class SwitchRadio extends \PHPFUI\HTML5Element
 	{
 	protected $input;
@@ -23,6 +26,9 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 		$this->input->setAttribute('value', $value);
 		}
 
+	/**
+	 * Display this label when active
+	 */
 	public function setActiveLabel(string $label) : SwitchRadio
 		{
 		$this->active = $label;
@@ -44,6 +50,9 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Display this label when not active
+	 */
 	public function setInactiveLabel(string $label) : SwitchRadio
 		{
 		$this->inactive = $label;

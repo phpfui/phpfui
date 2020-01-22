@@ -26,9 +26,9 @@ class AJAX
 
 	/**
 	 * Add a function parameter and the script that matches the
-	 * parameter type according to:
+	 * parameter type according to jQuery.ajax
 	 *
-	 * https://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
+	 * @link https://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
 	 */
 	public function addFunction(string $function, string $script) : AJAX
 		{

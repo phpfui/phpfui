@@ -14,12 +14,8 @@ abstract class HTMLList extends HTML5Element
 
 	/**
 	 * Adds a ListItem to the list
-	 *
-	 * @param ListItem $item to add to the list
-	 *
-	 * @return HTMLList
 	 */
-	public function addItem(ListItem $item)
+	public function addItem(ListItem $item) : HTMLList
 		{
 		$this->add($item);
 

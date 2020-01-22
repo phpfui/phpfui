@@ -28,8 +28,6 @@ class RadioGroup extends Input implements \Countable
 	 * @param string $label for the button
 	 * @param string $value for the button returned on post
 	 * @param bool $disabled default false
-	 *
-	 * @return Radio
 	 */
 	public function addButton($label, $value = null, $disabled = false) : RadioGroup
 		{
@@ -58,8 +56,6 @@ class RadioGroup extends Input implements \Countable
 	 * Set if each radio button should be on a separate row
 	 *
 	 * @param bool $sep default true
-	 *
-	 * @return Radio
 	 */
 	public function setSeparateRows($sep = true) : RadioGroup
 		{

@@ -26,6 +26,11 @@ class DropDown extends Base
 		$this->add($dropTarget);
 		}
 
+	/**
+	 * Set the alignment of the drop down
+	 *
+	 * @param string $alignment must be one of left, center, right
+	 */
 	public function setAlignment(string $alignment) : DropDown
 		{
 		$validAlignments = ['left',
@@ -46,7 +51,6 @@ class DropDown extends Base
 	 * DropDown on hover
 	 *
 	 * @param bool $hover default true
-	 *
 	 */
 	public function setHover(bool $hover = true) : DropDown
 		{
@@ -55,6 +59,11 @@ class DropDown extends Base
 		return $this;
 		}
 
+	/**
+	 * Set the position of the drop down (drop up anyone?)
+	 *
+	 * @param string $position must be one of top, bottom, left, right
+	 */
 	public function setPosition(string $position) : DropDown
 		{
 		$validPositions = ['top',

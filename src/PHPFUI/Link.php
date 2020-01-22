@@ -14,6 +14,7 @@ class Link extends HTML5Element
 	 *
 	 * @param string $link validated for correctness
 	 * @param string $text shown to user for link
+	 * @param bool $validate link will be validated via FILTER_VALIDATE_URL unless this is false
 	 */
 	public function __construct(?string $link, string $text = '', bool $validate = true)
 		{
@@ -73,10 +74,8 @@ class Link extends HTML5Element
 	 * @param string @email must be a valid address
 	 * @param string $text to show user (like user's name)
 	 * @param string $subject is optional
-	 *
-	 * @return string
 	 */
-	public static function email(string $email, string $text = '', string $subject = '')
+	public static function email(string $email, string $text = '', string $subject = '') : Link
 		{
 		if (empty($text))
 			{
@@ -105,10 +104,8 @@ class Link extends HTML5Element
 	 *
 	 * @param string $link validated for correctness
 	 * @param string $text shown to user for link
-	 *
-	 * @return Link
 	 */
-	public static function localUrl(string $link, string $text = '')
+	public static function localUrl(string $link, string $text = '') : Link
 		{
 		if (false === strpos($link, '//'))
 			{
@@ -124,10 +121,8 @@ class Link extends HTML5Element
 	 * @param string $number can contain formatting characters, only
 	 *                         digits matter
 	 * @param string $text to show user
-	 *
-	 * @return string
 	 */
-	public static function phone(string $number, string $text = '')
+	public static function phone(string $number, string $text = '') : Link
 		{
 		if (empty($text))
 			{
@@ -143,10 +138,8 @@ class Link extends HTML5Element
 	 * @param string $number can contain formatting characters, only
 	 *                         digits matter
 	 * @param string $text to show user
-	 *
-	 * @return string
 	 */
-	public static function sms(string $number = '', string $text = '')
+	public static function sms(string $number = '', string $text = '') : Link
 		{
 		if (empty($text))
 			{

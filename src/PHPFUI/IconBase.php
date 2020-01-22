@@ -26,7 +26,6 @@ class IconBase extends HTML5Element
 
 	/**
 	 * returns the current link
-	 *
 	 */
 	public function getLink() : string
 		{
@@ -35,8 +34,6 @@ class IconBase extends HTML5Element
 
 	/**
 	 * Set the link
-	 *
-	 *
 	 */
 	public function setLink(string $link) : Icon
 		{

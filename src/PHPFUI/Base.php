@@ -32,10 +32,6 @@ abstract class Base implements \Countable
 			}
 		}
 
-	/**
-	 * Convert to string
-	 *
-	 */
 	public function __toString() : string
 		{
 		try
@@ -85,7 +81,6 @@ abstract class Base implements \Countable
 
 	/**
 	 * Number of object in this object.  Does not count sub objects.
-	 *
 	 */
 	public function count() : int
 		{
@@ -94,7 +89,6 @@ abstract class Base implements \Countable
 
 	/**
 	 * Form is done rendering
-	 *
 	 */
 	public function done(bool $done = true) : Base
 		{
@@ -103,6 +97,9 @@ abstract class Base implements \Countable
 		return $this;
 		}
 
+	/**
+	 * Gets the current debug setting
+	 */
 	public static function getDebug(int $flags = 0) : int
 		{
 		if ($flags)
@@ -115,7 +112,6 @@ abstract class Base implements \Countable
 
 	/**
 	 * Get the current response
-	 *
 	 */
 	public function getResponse() : string
 		{
@@ -124,7 +120,6 @@ abstract class Base implements \Countable
 
 	/**
 	 * Returns true if the page needs no more processing
-	 *
 	 */
 	public function isDone() : bool
 		{
@@ -136,7 +131,7 @@ abstract class Base implements \Countable
 	 *
 	 * @return string
 	 */
-	public function output()
+	public function output() : string
 		{
 		if ($this->isDone())
 			{
@@ -190,8 +185,6 @@ abstract class Base implements \Countable
 
 	/**
 	 * Add an object in front of existing object
-	 *
-	 *
 	 */
 	public function prepend($item) : Base
 		{
@@ -200,6 +193,9 @@ abstract class Base implements \Countable
 		return $this;
 		}
 
+	/**
+	 * Set the debug level, 1 or higher is on
+	 */
 	public static function setDebug(int $level = 0) : void
 		{
 		if ($level)
@@ -214,8 +210,6 @@ abstract class Base implements \Countable
 
 	/**
 	 * Sets the page response directly
-	 *
-	 *
 	 */
 	public function setRawResponse(string $response) : Base
 		{
@@ -233,7 +227,6 @@ abstract class Base implements \Countable
 	 * Set a response in the standard format ('reponse' and 'color' array)
 	 *
 	 * @param string $color used for the save button
-	 *
 	 */
 	public function setResponse(string $response, string $color = 'lime') : Base
 		{
@@ -271,19 +264,16 @@ abstract class Base implements \Countable
 
 	/**
 	 * You must provide a getBody function.  It will be called after start and before end.
-	 *
 	 */
 	abstract protected function getBody() : string;
 
 	/**
 	 * You must provide a getEnd function.  It will be called last on output.
-	 *
 	 */
 	abstract protected function getEnd() : string;
 
 	/**
 	 * You must provide a getStart function.  It will be called first on output.
-	 *
 	 */
 	abstract protected function getStart() : string;
 	}

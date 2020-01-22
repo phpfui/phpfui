@@ -5,7 +5,8 @@ namespace PHPFUI\Input;
 /**
  * Allow drap and drop handling for input type="name"
  * Use Input('file', ... for traditional upload button
- * Uses http://jeremyfagis.github.io/dropify/
+ *
+ * @link http://jeremyfagis.github.io/dropify/
  */
 class File extends Input
 	{
@@ -35,8 +36,6 @@ class File extends Input
 	 * will be prepopulated with the restriction
 	 *
 	 * @param array $extensions without the period (.)
-	 *
-	 * @return void
 	 */
 	public function setAllowedExtensions(array $extensions) : File
 		{

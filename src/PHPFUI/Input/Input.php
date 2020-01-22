@@ -25,7 +25,6 @@ abstract class Input extends \PHPFUI\Input
 	 * @param string $label optional label for use, will have
 	 *               automatic for='id' logic applied
 	 * @param ?string $value default initial value
-	 *
 	 * @throws \Exception if an invalid input type or a specific class exists for an input type like Date
 	 */
 	public function __construct(string $type, string $name = '', string $label = '', ?string $value = '')
@@ -68,7 +67,6 @@ abstract class Input extends \PHPFUI\Input
 	 * Set a specific error
 	 *
 	 * @param string $error to display on form validation
-	 *
 	 */
 	public function addErrorMessage(string $error) : Input
 		{
@@ -110,7 +108,6 @@ abstract class Input extends \PHPFUI\Input
 
 	/**
 	 * Return the label for the input field
-	 *
 	 */
 	public function getLabel() : string
 		{
@@ -129,7 +126,6 @@ abstract class Input extends \PHPFUI\Input
 	 * Set a hint
 	 *
 	 * @param string $hint to display with input
-	 *
 	 */
 	public function setHint(string $hint) : Input
 		{
@@ -140,8 +136,6 @@ abstract class Input extends \PHPFUI\Input
 
 	/**
 	 * Set a label if not specified in constructor
-	 *
-	 *
 	 */
 	public function setLabel(string $label) : Input
 		{
@@ -154,10 +148,8 @@ abstract class Input extends \PHPFUI\Input
 	 * Set required
 	 *
 	 * @param bool $required default true
-	 *
-	 * @return MonthYear
 	 */
-	public function setRequired(bool $required = true)
+	public function setRequired(bool $required = true) : Input
 		{
 		$this->required = $required;
 
@@ -173,6 +165,9 @@ abstract class Input extends \PHPFUI\Input
 		return $this;
 		}
 
+	/**
+	 * Toggle the passed in element when this field gets focus.
+	 */
 	public function toggleFocus(\PHPFUI\HTML5Element $element) : Input
 		{
 		$this->addAttribute('data-toggle-focus', $element->getId());

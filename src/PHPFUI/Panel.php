@@ -10,8 +10,6 @@ class Panel extends HTML5Element
 	protected $text;
 
 	/**
-	 * Construct a Panel
-	 *
 	 * @param string $text for the Panel
 	 */
 	public function __construct(string $text = '')

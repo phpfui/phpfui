@@ -10,7 +10,7 @@ class SubHeader extends Header
 	 *
 	 * @param string $title of the headline
 	 */
-	public function __construct($title)
+	public function __construct(string $title)
 		{
 		parent::__construct($title, 3);
 		}

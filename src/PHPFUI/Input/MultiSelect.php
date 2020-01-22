@@ -30,10 +30,8 @@ class MultiSelect extends Select
 	 *              the array will be selected if it matches the
 	 *              options previously set. If not an array, then
 	 *              just preselect the one value.
-	 *
-	 * @return MultiSelect
 	 */
-	public function select($selections)
+	public function select($selections) : MultiSelect
 		{
 		if (! is_array($selections))
 			{
@@ -48,6 +46,9 @@ class MultiSelect extends Select
 		return $this;
 		}
 
+	/**
+	 * Add a select all option
+	 */
 	public function selectAll(string $title = 'Select All') : MultiSelect
 		{
 		$this->selectAll = $title;
@@ -56,8 +57,7 @@ class MultiSelect extends Select
 		}
 
 	/**
-	 *
-	 * @return MultiColumn
+	 * Set the number of columns across
 	 */
 	public function setColumns(int $numberColumns = 1, int $gridSize = 12) : MultiSelect
 		{

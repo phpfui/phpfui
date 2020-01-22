@@ -63,8 +63,6 @@ class Input extends HTML5Element
 
 	/**
 	 * Return true if disabled
-	 *
-	 * @bool bool
 	 */
 	public function getDisabled() : bool
 		{
@@ -73,13 +71,15 @@ class Input extends HTML5Element
 
 	/**
 	 * Returns the name of the input field
-	 *
 	 */
 	public function getName() : string
 		{
 		return $this->name;
 		}
 
+	/**
+	 * Returns the current placeholder
+	 */
 	public function getPlaceholder() : string
 		{
 		return $this->placeholder;
@@ -87,7 +87,6 @@ class Input extends HTML5Element
 
 	/**
 	 * Returns the type of the input field
-	 *
 	 */
 	public function getType() : string
 		{
@@ -96,7 +95,6 @@ class Input extends HTML5Element
 
 	/**
 	 * Return the initial value of the input field
-	 *
 	 */
 	public function getValue() : string
 		{
@@ -105,9 +103,6 @@ class Input extends HTML5Element
 
 	/**
 	 * Set disabled
-	 *
-	 * @param bool $disabled default to true
-	 *
 	 */
 	public function setDisabled(bool $disabled = true) : Input
 		{
@@ -134,7 +129,6 @@ class Input extends HTML5Element
 	 * Set the initial value of the input field
 	 *
 	 * @param string $value
-	 *
 	 */
 	public function setValue($value) : Input
 		{

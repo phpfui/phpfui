@@ -4,8 +4,9 @@ namespace PHPFUI\Input;
 
 /**
  * AutoComplete allows you to have an autocomplete field for any
- * arbitrary data source. Based on
- * https://github.com/devbridge/jQuery-Autocomplete
+ * arbitrary data source. Based on jQuery-Autocomplete
+ *
+ * @link https://github.com/devbridge/jQuery-Autocomplete
  */
 class AutoComplete extends Input
 	{
@@ -19,35 +20,36 @@ class AutoComplete extends Input
 	/**
 	 * Construct a AutoComplete.
 	 *
+	 * **Required callback behavior:**
+	 *
+	 * The callback function must take an array and returns an
+	 * array.
+	 *
+	 * **Input Array:**
+	 *
+	 * If the input array contains an index named **'save'** then the
+	 * user has indicated they have selected text value passed in
+	 * the **'AutoComplete'** index. This generally means you should set
+	 * the value of the hidden field (set / getHiddenField) to the
+	 * value of **'AutoComplete'**. If save is not set, you must return
+	 * matches for the text in **'AutoComplete'** in the format
+	 * descriped below.
+	 *
+	 * **Return Array:**
+	 *
+	 * Has one index **'suggestions'** that contains an array of matches
+	 * in the form of `['value' => 'Text to display', 'data' => 123]`.
+	 * If **'save'** is specified, the **'suggestions'** value should be an
+	 *  empty array.
+	 *
 	 * @param Page $page requires JS
-	 * @param callable $callback See below for correct callback
+	 * @param callable $callback See above for correct callback
 	 *                             behavior
 	 * @param string $type of input field
 	 * @param string $name of field
 	 * @param string $label for field, optional
 	 * @param ?string $value initial value, optional
 	 *
-	 * Required callback behavior:
-	 *
-	 * The callback function must take an array and returns an
-	 * array.
-	 *
-	 * Input Array:
-	 *
-	 * If the input array contains an index named 'save' then the
-	 * user has indicated they have selected text value passed in
-	 * the 'AutoComplete' index. This generally means you should set
-	 * the value of the hidden field (set getHiddenField) to the
-	 * value of 'AutoComplete'. If save is not set, you must return
-	 * matches for the text in 'AutoComplete' in the format
-	 * descriped below.
-	 *
-	 * Return Array:
-	 *
-	 * Has one index 'suggestions' that contains an array of matches
-	 * in the form of ['value' => 'Text to display', 'data' => 123].
-	 * If 'save' is specified, the 'suggestions' value should be an
-	 * empty array.
 	 */
 	public function __construct(\PHPFUI\Page $page, callable $callback, string $type, string $name, string $label = null, ?string $value = null)
 		{
@@ -97,8 +99,9 @@ class AutoComplete extends Input
 		}
 
 	/**
-	 * Add an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
+	 * Add an option for jQuery-Autocomplete.
+	 *
+	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
 	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\AutoComplete
 		{
@@ -113,8 +116,6 @@ class AutoComplete extends Input
 	 * as the AutoComplete field was constructed with. This should
 	 * generally be used to save the value the user has selected
 	 * when 'save' is passed to the callback.
-	 *
-	 * @return string
 	 */
 	public function getHiddenField() : \PHPFUI\Input\Hidden
 		{
@@ -130,8 +131,9 @@ class AutoComplete extends Input
 		}
 
 	/**
-	 * Remove an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
+	 * Remove an option for jQuery-Autocomplete.
+	 *
+	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 *
 	 * @param string $option to remove
 	 */
@@ -146,9 +148,6 @@ class AutoComplete extends Input
 	 * If No Free Form is turned on, then the user can only pick
 	 * suggested values.  It is off by default allowing the user to
 	 * specify any text and not just suggestions.
-	 *
-	 * @param bool $on default true
-	 *
 	 */
 	public function setNoFreeForm(bool $on = true) : \PHPFUI\Input\AutoComplete
 		{

@@ -10,10 +10,8 @@ class Submit extends Button
 	{
 
 	/**
-	 * Construct a Submit button
-	 *
-	 * @param string $text of button
-	 * @param string $name of field to be submitted
+	 * @param string $text of button, defaults to 'Save'
+	 * @param string $name of field to be submitted, will be 'submit' unless provided
 	 */
 	public function __construct(string $text = 'Save', string $name = 'submit')
 		{

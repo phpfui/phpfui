@@ -38,7 +38,7 @@ class Button extends HTML5Element
 	/**
 	 * returns the button link
 	 */
-	public function getLink()
+	public function getLink() : string
 		{
 		return $this->link;
 		}
@@ -46,7 +46,7 @@ class Button extends HTML5Element
 	/**
 	 * returns the button text
 	 */
-	public function getText()
+	public function getText() : string
 		{
 		return $this->text;
 		}
@@ -56,7 +56,7 @@ class Button extends HTML5Element
 	 *
 	 * @param bool $disabled defaults to true
 	 */
-	public function setDisabled($disabled = true) : void
+	public function setDisabled($disabled = true) : Button
 		{
 		if ($disabled)
 			{
@@ -66,6 +66,8 @@ class Button extends HTML5Element
 			{
 			$this->deleteClass('disabled');
 			}
+
+		return $this;
 		}
 
 	protected function getStart() : string

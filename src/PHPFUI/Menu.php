@@ -102,6 +102,9 @@ class Menu extends HTML5Element
 		return false;
 		}
 
+	/**
+	 * @param string $type must one of top, right, bottom, left
+	 */
 	public function setIconAlignment(string $type) : Menu
 		{
 		$types = ['top',
@@ -121,6 +124,9 @@ class Menu extends HTML5Element
 		return $this;
 		}
 
+	/**
+	 * Sort the menu by name displayed to the user.
+	 */
 	public function sort() : Menu
 		{
 		$this->sorted = true;

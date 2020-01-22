@@ -16,12 +16,12 @@ class Pagination extends HTML5Element
 	private $window = 3;
 
 	/**
-	 * Show a pagination nav
+	 * Show a pagination nav. If there is only one page, the paginator will not be generated.
 	 *
 	 * @param int $page current page you are on, zero based
 	 * @param int $of number of total pages, one based
 	 * @param string $baseUrl for navigation. The string 'PAGE'
-	 *                         will be replaced by the page number
+	 *                         will be replaced by the current page number
 	 */
 	public function __construct(int $page, int $of, string $baseUrl)
 		{
@@ -44,7 +44,10 @@ class Pagination extends HTML5Element
 		return $this;
 		}
 
-	public function getUrl(int $page) : string
+	/**
+	 * Return the url with the correct page included
+	 */
+	protected function getUrl(int $page) : string
 		{
 		return str_replace('PAGE', $page, $this->baseUrl);
 		}

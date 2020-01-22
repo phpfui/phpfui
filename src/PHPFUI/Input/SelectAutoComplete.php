@@ -60,8 +60,9 @@ class SelectAutoComplete extends Select
 		}
 
 	/**
-	 * Add an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
+	 * Add an option for jQuery-Autocomplete
+	 *
+	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
 	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\SelectAutoComplete
 		{
@@ -76,8 +77,6 @@ class SelectAutoComplete extends Select
 	 * as the AutoComplete field was constructed with. This should
 	 * generally be used to save the value the user has selected
 	 * when 'save' is passed to the callback.
-	 *
-	 * @return string
 	 */
 	public function getHiddenField() : \PHPFUI\Input\Hidden
 		{
@@ -93,9 +92,9 @@ class SelectAutoComplete extends Select
 		}
 
 	/**
-	 * Remove an option for
-	 * https://github.com/devbridge/jQuery-Autocomplete
+	 * Remove an option for jQuery-Autocomplete
 	 *
+	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 * @param string $option to remove
 	 */
 	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\SelectAutoComplete
@@ -114,8 +113,6 @@ class SelectAutoComplete extends Select
 	 * array name of the first SelectAutoComplete name.
 	 *
 	 * @param string $name of array
-	 *
-	 * @return SelectAutoComplete
 	 */
 	public function setArray($name) : \PHPFUI\Input\SelectAutoComplete
 		{
@@ -127,9 +124,7 @@ class SelectAutoComplete extends Select
 	/**
 	 * Set the tool tip.  Can either be a ToolTip or a string.  If it is a string, it will be converted to a ToolTip
 	 *
-	 * @param string ,ToolTip $tip
-	 *
-	 * @return HTML5Element
+	 * @param string|ToolTip $tip can be either a string or ToolTip
 	 */
 	public function setToolTip($tip) : \PHPFUI\HTML5Element
 		{

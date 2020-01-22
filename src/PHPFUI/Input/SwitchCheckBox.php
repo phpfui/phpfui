@@ -2,6 +2,9 @@
 
 namespace PHPFUI\Input;
 
+/**
+ * Show a check box as a switch
+ */
 class SwitchCheckBox extends SwitchRadio
 	{
 	public function __construct(string $name, $value = 0, string $title = '')

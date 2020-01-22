@@ -32,7 +32,6 @@ class BreadCrumbs extends HTML5Element implements \Countable
 
 	/**
 	 * Return the number of crumbs
-	 *
 	 */
 	public function count() : int
 		{

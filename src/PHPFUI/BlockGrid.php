@@ -17,26 +17,28 @@ class BlockGrid extends HTML5Element
 		$this->large = $large;
 		}
 
-	public function addBlock($text) : void
+	public function addBlock($text) : BlockGrid
 		{
 		$this->add("<li>{$text}</li>");
+
+		return $this;
 		}
 
-	public function setLarge($number)
+	public function setLarge($number) : BlockGrid
 		{
 		$this->large = (int) $number;
 
 		return $this;
 		}
 
-	public function setMedium($number)
+	public function setMedium($number) : BlockGrid
 		{
 		$this->medium = (int) $number;
 
 		return $this;
 		}
 
-	public function setSmall($number)
+	public function setSmall($number) : BlockGrid
 		{
 		$this->small = (int) $number;
 

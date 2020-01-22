@@ -16,16 +16,15 @@ class Cell extends HTML5Element
 	 * Construct a Cell.  Pass the number of columns you want an
 	 * element to take for each breakpoint.
 	 *
-	 * Example:
-	 *
+	 * **Example:**
+	 * ```
 	 * $col = new \PHPFUI\Cell(6, 4, 3);
-	 *
+	 * ```
 	 * On a small page the item will take up 1/2 the width. On a
 	 * medium page 1/3 and on a large page 1/4
 	 *
 	 * You don't have to specify all parameters, subsequent
 	 * parameters will default to the last parameter given.
-	 *
 	 */
 	public function __construct(int $small = 0, int $medium = 0, int $large = 0)
 		{

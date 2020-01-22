@@ -48,7 +48,10 @@ class Time extends Input
 			}
 		}
 
-	public static function toMilitary($timeString)
+	/**
+	 * Convert a time string to military format, which is the stand format for times in HTML
+	 */
+	public static function toMilitary(string $timeString) : string
 		{
 		$timeString = str_replace('P', ' P', strtoupper($timeString));
 		$timeString = str_replace('A', ' A', $timeString);

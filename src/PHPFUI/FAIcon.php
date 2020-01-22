@@ -19,6 +19,7 @@ class FAIcon extends IconBase
 	/**
 	 * Construct an Icon.
 	 *
+	 * @param string $prefix must be one of fas, far, fal, fad, fab
 	 * @param string $icon the bare name of the icon as documented
 	 *               by Font Awesome
 	 * @param string $link optional link

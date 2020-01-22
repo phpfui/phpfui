@@ -4,8 +4,9 @@ namespace PHPFUI\Input;
 
 /**
  * Date input control with support for native mobile input and a
- * custom datepicker for desktops
- * http://foundation-datepicker.peterbeno.com
+ * custom datepicker for desktops.
+ *
+ * @link http://foundation-datepicker.peterbeno.com
  */
 class Date extends Input
 	{
@@ -16,7 +17,7 @@ class Date extends Input
 	/**
 	 * Construct a Date input. Native mobile date controls used
 	 * where possible. Custom date picker based off Bootstrap for
-	 * desktops
+	 * desktops.
 	 *
 	 * @param Page $page for needed JS
 	 * @param string $name of field
@@ -59,10 +60,9 @@ CHROME_CSS
 
 	/**
 	 * Add an option for the Foundation Date picker
-	 * http://foundation-datepicker.peterbeno.com
 	 *
+	 * @link http://foundation-datepicker.peterbeno.com
 	 * @param string $option name
-	 *
 	 */
 	public function addOption(string $option, string $value) : Date
 		{
@@ -76,7 +76,6 @@ CHROME_CSS
 	 * supported by all browsers.
 	 *
 	 * @param string $date in YYYY/MM/DD format
-	 *
 	 */
 	public function setMaxDate(string $date) : Date
 		{
@@ -91,7 +90,6 @@ CHROME_CSS
 	 * supported by all browsers.
 	 *
 	 * @param string $date in YYYY/MM/DD format
-	 *
 	 */
 	public function setMinDate(string $date) : Date
 		{

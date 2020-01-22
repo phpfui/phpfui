@@ -6,9 +6,6 @@ class TitleBar extends Bar
 	{
 	private $title;
 
-	/**
-	 * Construct a TitleBar
-	 */
 	public function __construct(string $title = '')
 		{
 		parent::__construct('title');

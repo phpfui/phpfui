@@ -8,9 +8,6 @@ namespace PHPFUI;
 class Accordion extends UnorderedList
 	{
 
-	/**
-	 * Construct an Accordion
-	 */
 	public function __construct()
 		{
 		parent::__construct();
@@ -26,8 +23,6 @@ class Accordion extends UnorderedList
 	 * @param string $content html shown when the tab is clicked
 	 * @param bool $active set to true to expand on initial load,
 	 *                     default false
-	 *
-	 * @return ListItem
 	 */
 	public function addTab(string $tabText, string $content, bool $active = false) : Accordion
 		{
@@ -51,7 +46,6 @@ class Accordion extends UnorderedList
 	 * @param string $tabText what the tab will show to the user
 	 * @param bool $active set to true to expand on initial load,
 	 *                     default false
-	 *
 	 */
 	public function getTab(string $tabText, bool $active = false) : AccordionItem
 		{

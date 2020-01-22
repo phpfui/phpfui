@@ -3,7 +3,7 @@
 namespace PHPFUI;
 
 /**
- * Create a table that is orderable
+ * Create a table that is orderable via drag and drop
  */
 class OrderableTable extends Table
 	{

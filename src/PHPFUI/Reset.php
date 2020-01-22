@@ -9,8 +9,6 @@ class Reset extends Button
 	{
 
 	/**
-	 * Construct a Reset input
-	 *
 	 * @param string $name of the field
 	 * @param string $value defaults to empty
 	 */

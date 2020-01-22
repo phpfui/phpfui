@@ -3,10 +3,12 @@
 namespace PHPFUI;
 
 /**
- * Implements Googles ReCaptcha V3
+ * Implements Googles ReCaptcha V3 (but not currently working)
  *
  * There is no UI element created for this and it can not be
  * added to a page.
+ *
+ * Warning: This is a work in progress and not currently working.
  */
 class ReCAPTCHAv3
 	{
@@ -17,8 +19,6 @@ class ReCAPTCHAv3
 	private $threshold = 0.5;
 
 	/**
-	 * Constuct a ReCAPTCHAv3
-	 *
 	 * @param Page $page since we need to add JS
 	 * @param string $publicKey your public key
 	 * @param string $secretKey your private key
@@ -72,8 +72,6 @@ JAVASCRIPT;
 
 	/**
 	 * Returns any errors from Google
-	 *
-	 * @return array
 	 */
 	public function getErrors() : array
 		{
@@ -82,8 +80,6 @@ JAVASCRIPT;
 
 	/**
 	 * Returns true if OK to proceed
-	 *
-	 * @return bool
 	 */
 	public function isValid() : bool
 		{
@@ -92,9 +88,6 @@ JAVASCRIPT;
 
 	/**
 	 * Set a threshold that user needs to pass.  Default 0.5
-	 *
-	 *
-	 * @return ReCAPTCHAv3
 	 */
 	public function setThreshold(float $threshold = 0.5) : ReCAPTCHAv3
 		{

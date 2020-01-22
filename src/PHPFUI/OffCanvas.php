@@ -51,7 +51,6 @@ class OffCanvas extends Base
 	 *
 	 * @param string $id id from addOff when the off canvas was
 	 *               added.
-	 *
 	 */
 	public function setInCanvasFor(string $id, string $screenSize) : OffCanvas
 		{
@@ -67,7 +66,6 @@ class OffCanvas extends Base
 	 *               added.
 	 * @param string $position one of ['left', 'right', 'top',
 	 *               'bottom']
-	 *
 	 */
 	public function setPosition(string $id, string $position) : OffCanvas
 		{
@@ -100,7 +98,6 @@ class OffCanvas extends Base
 	 * @param string $id id from addOff when the off canvas was
 	 *               added.
 	 * @param string $transition one of ['over', 'push']
-	 *
 	 */
 	public function setTransition(string $id, string $transition) : OffCanvas
 		{

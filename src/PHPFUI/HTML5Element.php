@@ -36,10 +36,8 @@ class HTML5Element extends Base
 
 	/**
 	 * Construct an object with the tag name, ie. DIV, SPAN, TEXTAREA, etc
-	 *
-	 * @param string $element
 	 */
-	public function __construct($element)
+	public function __construct(string $element)
 		{
 		parent::__construct();
 		$this->element = $element;
@@ -59,7 +57,6 @@ class HTML5Element extends Base
 	 * Add an attribute the the object
 	 *
 	 * @param string $value of the attribute, blank for just a plain attribute
-	 *
 	 */
 	public function addAttribute(string $attribute, string $value = '') : HTML5Element
 		{
@@ -79,7 +76,6 @@ class HTML5Element extends Base
 	 * Add a class to an object
 	 *
 	 * @param string $class name to add
-	 *
 	 */
 	public function addClass(string $class) : HTML5Element
 		{
@@ -92,9 +88,7 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Deletes the attribute
-	 *
-	 *
+	 * Deletes the passed attribute
 	 */
 	public function deleteAttribute(string $attribute) : HTML5Element
 		{
@@ -105,7 +99,6 @@ class HTML5Element extends Base
 
 	/**
 	 * Deletes all attributes
-	 *
 	 */
 	public function deleteAttributes() : HTML5Element
 		{
@@ -116,8 +109,6 @@ class HTML5Element extends Base
 
 	/**
 	 * Delete a class from the object
-	 *
-	 *
 	 */
 	public function deleteClass(string $classToDelete) : HTML5Element
 		{
@@ -126,6 +117,9 @@ class HTML5Element extends Base
 		return $this;
 		}
 
+	/**
+	 * Disabled the element
+	 */
 	public function disabled() : HTML5Element
 		{
 		$this->addClass('disabled');
@@ -136,7 +130,6 @@ class HTML5Element extends Base
 	/**
 	 * Get an attribute
 	 *
-	 *
 	 * @return ?string does not exist if null
 	 */
 	public function getAttribute(string $attribute) : ?string
@@ -145,8 +138,8 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Returns the attribute strings
-	 *
+	 * Returns the attribute strings. Attributes with values are returned as name/value pairs,
+	 * attributes without values are returned as just the attribute name.
 	 */
 	public function getAttributes() : string
 		{
@@ -168,8 +161,7 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Returns the class attribute
-	 *
+	 * Returns the class attribute ready for insertion into an element.
 	 */
 	public function getClass() : string
 		{
@@ -183,7 +175,6 @@ class HTML5Element extends Base
 
 	/**
 	 * Returns all classes for the object
-	 *
 	 */
 	public function getClasses() : array
 		{
@@ -192,8 +183,6 @@ class HTML5Element extends Base
 
 	/**
 	 * Return the type of the element
-	 *
-	 * @return string
 	 */
 	public function getElement() : string
 		{
@@ -201,9 +190,9 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Return the id of the object
-	 *
-	 * @return string
+	 * Return the id of the object. Elements will not have an id unless this method is called. The id is returned as a string
+	 * starting with id followed by a unique number to the page. Id numbers are deterministic and start start with 1. Once assigned
+	 * an id, an element will always have the same id. It will get a new id if cloned.
 	 */
 	public function getId() : string
 		{
@@ -216,9 +205,7 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Return the id of the object
-	 *
-	 * @return string
+	 * Return the id attribute of the object as a name/value pair. If no id has been requested, and empty string is returned.
 	 */
 	public function getIdAttribute() : string
 		{
@@ -233,7 +220,7 @@ class HTML5Element extends Base
 	/**
 	 * Get the tool tip as a string
 	 *
-	 * @return ToolTip|string
+	 * @return ToolTip|string return type depends on if the tip was set as a string or ToolTip object.
 	 */
 	public function getToolTip(string $label)
 		{
@@ -264,8 +251,7 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Is the id set
-	 *
+	 * Does this object have an id set already?
 	 */
 	public function hasId() : bool
 		{
@@ -273,8 +259,6 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Get the tool tip as a string
-	 *
 	 * @return bool if there is a tool tip associated with this element
 	 */
 	public function hasToolTip() : bool
@@ -283,9 +267,7 @@ class HTML5Element extends Base
 		}
 
 	/**
-	 * Assign and auto increment the master id
-	 *
-	 * @return Base
+	 * Assign a new id to this element.
 	 */
 	public function newId() : HTML5Element
 		{
@@ -299,7 +281,6 @@ class HTML5Element extends Base
 	 * Set the attribute overwriting the prior value
 	 *
 	 * @param string $value of the attribute, blank for just a plain attribute
-	 *
 	 */
 	public function setAttribute(string $attribute, string $value = '') : HTML5Element
 		{
@@ -336,8 +317,7 @@ class HTML5Element extends Base
 	/**
 	 * Set the base id of the object
 	 *
-	 * @param string $id id will have 'id' prepended to it when retrieved
-	 *
+	 * @param string $id to set. Will be returned as set. It is up to the caller to prevent duplicate ids.
 	 */
 	public function setId($id) : HTML5Element
 		{
@@ -370,6 +350,9 @@ class HTML5Element extends Base
 		return $this;
 		}
 
+	/**
+	 * Will toggle the provided element on click with the provided animation.
+	 */
 	public function toggleAnimate(HTML5Element $element, string $animation) : HTML5Element
 		{
 		$this->addAttribute('data-toggle', $element->getId());
@@ -381,6 +364,9 @@ class HTML5Element extends Base
 		return $this;
 		}
 
+	/**
+	 * Will toggle the class on the provided element on click.
+	 */
 	public function toggleClass(HTML5Element $element, string $class) : HTML5Element
 		{
 		$this->addAttribute('data-toggle', $element->getId());
@@ -394,7 +380,7 @@ class HTML5Element extends Base
 	/**
 	 *  Moves attributes into this object from the passed object
 	 */
-	public function transferAttributes(Base $from) : HTML5Element
+	public function transferAttributes(HTML5Element $from) : HTML5Element
 		{
 		$this->attributes = array_merge($this->attributes, $from->attributes);
 		$from->attributes = [];
@@ -405,7 +391,7 @@ class HTML5Element extends Base
 	/**
 	 *  Moves classes into this object from the passed object
 	 */
-	public function transferClasses(Base $from) : HTML5Element
+	public function transferClasses(HTML5Element $from) : HTML5Element
 		{
 		$this->classes = array_merge($this->classes, $from->classes);
 		$from->classes = [];
@@ -447,7 +433,7 @@ class HTML5Element extends Base
 	/**
 	 * Clones the first object and fills it with properties from the second object
 	 */
-	protected function upCastCopy(Base $to, Base $from) : Base
+	protected function upCastCopy(HTML5Element $to, HTML5Element $from) : HTML5Element
 		{
 		$returnValue = clone $to;
 
