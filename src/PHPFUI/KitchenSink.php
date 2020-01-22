@@ -449,17 +449,17 @@ class KitchenSink
 		{
 		$container = new Container();
 
-		$container->add(new Slider($this->page, 25));
+		$container->add(new Slider(25));
 
 		$data = new Input('number', 'data');
-		$slider = new Slider($this->page, 12, new SliderHandle(12, $data));
+		$slider = new Slider(12, new SliderHandle(12, $data));
 		$slider->setVertical();
 		$container->add($slider);
 		$container->add($data);
 
 		$firstHandle = new Input('number', 'first');
 		$secondHandle = new Input('number', 'second');
-		$slider = new Slider($this->page, 25, new SliderHandle(25, $firstHandle));
+		$slider = new Slider(25, new SliderHandle(25, $firstHandle));
 		$slider->setRangeHandle(new SliderHandle(75, $secondHandle));
 		$container->add($slider);
 		$container->add($firstHandle);
