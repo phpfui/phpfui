@@ -31,7 +31,7 @@ class MultiSelect extends Select
 	 *              options previously set. If not an array, then
 	 *              just preselect the one value.
 	 */
-	public function select($selections) : MultiSelect
+	public function select($selections) : Select
 		{
 		if (! is_array($selections))
 			{
