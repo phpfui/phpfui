@@ -7,12 +7,12 @@ namespace PHPFUI;
  *
  * This creates a UI element that displays the "I am not a robot" checkbox.
  *
- * Suggested use on contact form
+ * Suggested use on a page
  * ```
- * $captcha = new \PHPFUI\ReCAPTCHA($this->page, 'public key', 'private key');
+ * $captcha = new \PHPFUI\ReCAPTCHA($page, 'public key', 'private key');
  * $page->add($captcha);
  * ```
- * On post
+ * On POST
  * ```
  * if ($captcha->isValid()) proceed();
  * else print_r($captcha->getErrors());
