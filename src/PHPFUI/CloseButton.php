@@ -21,14 +21,16 @@ class CloseButton extends Button
 		parent::__construct('<span aria-hidden="true">&times;</span>');
 		$this->deleteClass('button');
 		$this->addClass('close-button');
-		$this->addAttribute('aria-label', 'Close');
+		$this->addAttribute('aria-label', 'Close modal');
 		$this->addAttribute('data-close');
 
-		if (! Animation::isValid($closeAction))
+		if ($closeAction)
 			{
-			throw new \Exception(__CLASS__ . ": {$closeAction} is not a valid annimation type");
+			if (!Animation::isValid($closeAction))
+				{
+				throw new \Exception(__CLASS__ . ": {$closeAction} is not a valid annimation type");
+				}
+			$element->addAttribute('data-closable', $closeAction);
 			}
-
-		$element->addAttribute('data-closable', $closeAction);
 		}
 	}

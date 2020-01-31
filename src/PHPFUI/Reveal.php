@@ -27,7 +27,6 @@ class Reveal extends HTML5Element
 		$this->addAttribute('data-reveal');
 		$openingElement->addAttribute('data-open', $this->getId());
 		$closeButton = new CloseButton($this);
-		$this->deleteAttribute('data-closable');
 		$this->add($closeButton);
 		$page->addReveal($this);
 		$dollar = '$';

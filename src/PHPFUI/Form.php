@@ -138,7 +138,7 @@ JAVASCRIPT;
 				$this->page->addJavaScript('$("#' . $id . '").on("submit",function(){$("#' . $id . '").trigger("reinitialize.areYouSure")}).areYouSure({"addRemoveFieldsMarksDirty":true})');
 				}
 
-			if ('get' != $this->getAttribute('method'))
+			if ('get' != strtolower($this->getAttribute('method')))
 				{
 				$this->add(new \PHPFUI\Input\Hidden(Session::csrfField(), Session::csrf()));
 				}

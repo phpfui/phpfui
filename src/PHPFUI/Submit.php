@@ -21,6 +21,6 @@ class Submit extends Button
 		$this->addAttribute('value', $text);
 		$this->addAttribute('name', $name);
 		$this->addAttribute('type', 'submit');
-		$this->addAttribute('onkeypress', 'event.keyCode!=13;');
+		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 		}
 	}
