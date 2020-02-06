@@ -26,12 +26,16 @@ class Page extends Base
 	private $javascriptLast = [];
 	private $language = 'en';
 	private $pageName = 'Created with Foundation';
-
 	private $plugins = [];
 	private $resourcePath = '/PHPFUI/';
 	private $reveals = [];
 	private $styleSheets = [];
 	private $tailScripts = [];
+	private $baseScripts = [
+      'jquery.min.js',
+      'what-input.min.js',
+      'foundation/js/foundation.min.js',
+    ];
 
 	public function __construct()
 		{
@@ -356,6 +360,17 @@ class Page extends Base
 		}
 
 	/**
+	 * You can override the base scripts includes (and effectively remove Foundation and JQuery libraries).
+	 * This makes PHPFUI a more generic HTML Framework.
+	 */
+	public function setBaseScripts(array $scripts) : Page
+		{
+		$this->baseScripts = $scripts;
+
+		return $this;
+		}
+
+	/**
 	 * Sets the Fav Icon (shown in browser tabs and elsewhere in the
 	 * browser)
 	 *
@@ -418,12 +433,7 @@ class Page extends Base
 				}
 			}
 
-		$scripts = [
-      'jquery.min.js',
-      'what-input.min.js',
-      'foundation/js/foundation.min.js',
-    ];
-		$scripts = array_merge($scripts, $this->tailScripts);
+		$scripts = array_merge($this->baseScripts, $this->tailScripts);
 
 		foreach ($scripts as $src)
 			{
@@ -441,7 +451,7 @@ class Page extends Base
 				}
 			}
 
-		$output .= '$(document).foundation();' . $nl;
+		$output .= 'if(typeof jQuery!=="undefined"){$(document).foundation();' . $nl;
 		$this->javascript = array_merge($this->javascript, $this->javascriptLast);
 
 		foreach ($this->javascript as $js)
@@ -449,7 +459,7 @@ class Page extends Base
 			$output .= "{$js};{$nl}";
 			}
 
-		$output .= '</script></body></html>';
+		$output .= '}</script></body></html>';
 
 		return $output;
 		}

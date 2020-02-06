@@ -3,8 +3,8 @@
 namespace PHPFUI;
 
 /**
- * Submit buttons are treated as buttons for PHPFUI purposes, as
- * they look like buttons.  In HTML, they are input fields.
+ * Submit buttons are actual buttons.  Due to the implementation of Foundation 6.6
+ * they can not be input fields, but will function like a traditional input type.
  */
 class Submit extends Button
 	{
@@ -15,12 +15,11 @@ class Submit extends Button
 	 */
 	public function __construct(string $text = 'Save', string $name = 'submit')
 		{
-		HTML5Element::__construct('input');
-		$this->addClass('button');
+		parent::__construct($text);
+		$this->setAttribute('type', 'submit');
 		$this->addClass('radius');
 		$this->addAttribute('value', $text);
 		$this->addAttribute('name', $name);
-		$this->addAttribute('type', 'submit');
 		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 		}
 	}

@@ -67,7 +67,7 @@ class Session
 	/**
 	 * Return the flash for the key provided
 	 */
-	public static function getFlash(string $key = '') : string
+	public static function getFlash(string $key = '')
 		{
 		if ($key)
 			{
