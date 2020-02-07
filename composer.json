@@ -1,8 +1,8 @@
 {
     "name": "phpfui/phpfui",
-    "description": "PHP Object Oriented Wrapper for Zurb Foundation",
+    "description": "PHP Object Oriented Wrapper for the Foundation CSS Framework",
     "minimum-stability": "stable",
-    "keywords": ["zurb", "foundation", "zurb-foundation", "html", "Object Oriented", "Object-Oriented", "PHP", "UI", "responsive", "css", "scss"],
+    "keywords": ["foundation", "framework", "html", "Object Oriented", "Object-Oriented", "PHP", "UI", "responsive", "css", "scss"],
     "homepage": "http://www.phpfui.com",
     "license": "MIT",
     "authors": [
