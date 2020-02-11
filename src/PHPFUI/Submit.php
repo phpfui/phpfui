@@ -16,8 +16,9 @@ class Submit extends Button
 	public function __construct(string $text = 'Save', string $name = 'submit')
 		{
 		parent::__construct($text);
-		$this->setAttribute('type', 'submit');
 		$this->addClass('radius');
+		$this->addClass('submit');
+		$this->deleteAttribute('type');
 		$this->addAttribute('value', $text);
 		$this->addAttribute('name', $name);
 		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
