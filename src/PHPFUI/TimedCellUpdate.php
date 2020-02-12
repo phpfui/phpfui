@@ -21,7 +21,7 @@ class TimedCellUpdate extends Base
 	 * @param callable $callback PHP callback that will be called
 	 *                             every timeout interval. Should return the new
 	 *  													 contents of the cell. It is passed the id of the field being updated.
-	 * @param int $timeout interval to be called back, default 30 seconds
+	 * @param int $timeoutSeconds interval to be called back, default 30 seconds
 	 * @param string $offString if the callback returns this string, the timer will be turned off.
 	 *  						 Default is blank, so if the callback returns blank, the timer is turned off.
 	 */

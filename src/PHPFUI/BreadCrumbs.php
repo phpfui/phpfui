@@ -50,7 +50,8 @@ class BreadCrumbs extends HTML5Element implements \Countable
 
 			foreach ($this->links as $text => $link)
 				{
-				list($text, $junk) = explode('|', $text);
+				[$text, $junk] = explode('|', $text);
+
 				if ($count == $i)
 					{
 					$item = new ListItem("<span class='show-for-sr'>Current: </span>{$text}");

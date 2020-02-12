@@ -8,6 +8,11 @@ namespace PHPFUI;
 class Page extends Base
 	{
 	private $android = false;
+	private $baseScripts = [
+      'jquery.min.js',
+      'what-input.min.js',
+      'foundation/js/foundation.min.js',
+    ];
 	private $chrome = false;
 	private $css = [];
 	private $edgeVersion = 0;
@@ -31,11 +36,6 @@ class Page extends Base
 	private $reveals = [];
 	private $styleSheets = [];
 	private $tailScripts = [];
-	private $baseScripts = [
-      'jquery.min.js',
-      'what-input.min.js',
-      'foundation/js/foundation.min.js',
-    ];
 
 	public function __construct()
 		{

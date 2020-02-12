@@ -125,16 +125,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($this->ks->render());
 		}
 
-	public function testKitchenSinkExtra() : void
-		{
-		$this->assertValidHtml($this->ks->render('extra'));
-		}
-
-	public function testKitchenSinkInput() : void
-		{
-		$this->assertValidHtml($this->ks->render('input'));
-		}
-
 	public function testKitchenSinkExamples() : void
 		{
 		$examples = $this->ks->getExamples();
@@ -143,6 +133,16 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 			{
 			$this->assertValidHtml($this->ks->{$example}(), $name);
 			}
+		}
+
+	public function testKitchenSinkExtra() : void
+		{
+		$this->assertValidHtml($this->ks->render('extra'));
+		}
+
+	public function testKitchenSinkInput() : void
+		{
+		$this->assertValidHtml($this->ks->render('input'));
 		}
 
 	public function testLabel() : void

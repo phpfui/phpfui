@@ -31,9 +31,24 @@ class Session
 	{
 	public const DEBUG_HTML = 1;
 	public const DEBUG_JAVASCRIPT = 2;
+	private static $flash = [];
 
 	private static $handler = null;
-	private static $flash = [];
+
+	public static function checkCSRF(string $request = '') : bool
+		{
+		return self::getHandler()->checkCSRF($request);
+		}
+
+	public static function csrf(string $quote = '') : string
+		{
+		return self::getHandler()->csrf($quote);
+		}
+
+	public static function csrfField() : string
+		{
+		return self::getHandler()->csrfField();
+		}
 
 	/**
 	 * Loads the flash from the previous page and removes it for the next
@@ -42,9 +57,22 @@ class Session
 		{
 		if ($_SESSION['flash'] ?? false)
 			{
-			static::$flash = $_SESSION['flash'];
+			self::$flash = $_SESSION['flash'];
 			unset($_SESSION['flash']);
 			}
+		}
+
+	/**
+	 * Return the flash for the key provided
+	 */
+	public static function getFlash(string $key = '')
+		{
+		if ($key)
+			{
+			return self::$flash[$key] ?? '';
+			}
+
+		return '';
 		}
 
 	/**
@@ -62,33 +90,6 @@ class Session
 			{
 			unset($_SESSION['flash'][$key]);
 			}
-		}
-
-	/**
-	 * Return the flash for the key provided
-	 */
-	public static function getFlash(string $key = '')
-		{
-		if ($key)
-			{
-			return static::$flash[$key] ?? '';
-			}
-		return '';
-		}
-
-	public static function checkCSRF(string $request = '') : bool
-		{
-		return self::getHandler()->checkCSRF($request);
-		}
-
-	public static function csrf(string $quote = '') : string
-		{
-		return self::getHandler()->csrf($quote);
-		}
-
-	public static function csrfField() : string
-		{
-		return self::getHandler()->csrfField();
 		}
 
 	/**

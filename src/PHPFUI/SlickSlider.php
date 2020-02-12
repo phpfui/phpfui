@@ -47,15 +47,6 @@ class SlickSlider extends HTML5Element
 		}
 
 	/**
-	 * Return the number of slides
-	 *
-	 */
-	public function count() : int
-		{
-		return count($this->slides);
-		}
-
-	/**
 	 * Add a free form slide of html
 	 */
 	public function addSlide(string $html) : SlickSlider
@@ -75,6 +66,15 @@ class SlickSlider extends HTML5Element
 		$this->attributes[$attribute] = $value;
 
 		return $this;
+		}
+
+	/**
+	 * Return the number of slides
+	 *
+	 */
+	public function count() : int
+		{
+		return count($this->slides);
 		}
 
 	protected function getBody() : string

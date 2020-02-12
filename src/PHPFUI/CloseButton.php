@@ -26,7 +26,7 @@ class CloseButton extends Button
 
 		if ($closeAction)
 			{
-			if (!Animation::isValid($closeAction))
+			if (! Animation::isValid($closeAction))
 				{
 				throw new \Exception(__CLASS__ . ": {$closeAction} is not a valid annimation type");
 				}

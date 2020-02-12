@@ -45,14 +45,6 @@ class Pagination extends HTML5Element
 		}
 
 	/**
-	 * Return the url with the correct page included
-	 */
-	protected function getUrl(int $page) : string
-		{
-		return str_replace('PAGE', $page, $this->baseUrl);
-		}
-
-	/**
 	 * Set the fast forward number.  Defaults to no fast forward.
 	 */
 	public function setFastForward(int $ff = 0) : Pagination
@@ -179,6 +171,14 @@ class Pagination extends HTML5Element
 			}
 
 		return parent::getStart();
+		}
+
+	/**
+	 * Return the url with the correct page included
+	 */
+	protected function getUrl(int $page) : string
+		{
+		return str_replace('PAGE', $page, $this->baseUrl);
 		}
 
 	private function getEllipsisItem(int $ff) : ListItem
