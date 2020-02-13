@@ -47,11 +47,11 @@ class Form extends HTML5Element
 			$js = <<<JAVASCRIPT
 function formInit(form,submit,submitName,submitValue,successFunction){
 form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',function(e){
-	var color=submit.css('background-color'), text=submit.prop('value');
+	var color=submit.css('background-color'), text=submit.html();
 	e.preventDefault();
-	var btn=$(this).find('input[type=submit]:focus');
+	var btn=$(this).find('button.submit:focus');
 	if (!btn.length) {/* macHack! Safari does not keep the pressed submit button in focus, so get the first */
-		btn=$(this).find('input[type=submit]');
+		btn=$(this).find('button.submit');
 		}
 	if(btn[0].name!=submitName||btn[0].value!=submitValue){
 		form.submit();/* submit the form if not the button passed for special handling */
@@ -59,7 +59,7 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
 		}
 	$.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
 		beforeSend:function(request){
-			submit.prop('value','Saving').css('background-color','black');
+			submit.html('Saving').css('background-color','black');
 			request.setRequestHeader('Upgrade-Insecure-Requests', '1');
 			request.setRequestHeader('Accept', 'application/json');
 	},
@@ -70,15 +70,15 @@ form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',f
 		}catch(e){
 			alert('Error: '+response);
 		}
-		submit.prop('value',data.response).css('background-color',data.color);
+		submit.html(data.response).css('background-color',data.color);
 		if(successFunction>'')window[successFunction](data);
 		setTimeout(function(){
-			submit.prop('value',text).css('background-color',color);},3000);
+			submit.html(text).css('background-color',color);},3000);
 	},
 	error:function (xhr, ajaxOptions, thrownError){
-		submit.prop('value',ajaxOptions+': '+xhr.status+' '+thrownError).css('background-color','red');
+		submit.html(ajaxOptions+': '+xhr.status+' '+thrownError).css('background-color','red');
 		setTimeout(function(){
-			submit.prop('value',text).css('background-color',color);},3000);
+			submit.html(text).css('background-color',color);},3000);
 	},})})}
 JAVASCRIPT;
 			$js = str_replace(["\t", "\n"], '', $js);

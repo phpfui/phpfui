@@ -2,13 +2,13 @@
 
 PHP Wrapper for the Foundation CSS Framework
 
-**PHPFUI**, **PHP** **F**oundation **U**ser **I**nterface, is a 7.1 PHP library that produces HTML formated for [Foundation](https://get.foundation/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of a OO language. It currently uses Foundation 6.6 and PHP 7.1 or higher.
+**PHPFUI**, **PHP** **F**oundation **U**ser **I**nterface, is a 7.1 PHP library that produces HTML formated for [Foundation](https://get.foundation/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of an OO language. It currently uses Foundation 6.6 and PHP 7.1 or higher.
 
 > "I was surprised that people were prepared to write HTML. In my initial requirements for this thing, I had assumed, as an absolute pre-condition, that nobody would have to do HTML or deal with URLs. If you use the original World Wide Web program, you never see a URL or have to deal with HTML. You're presented with the raw information. You then input more information. So you are linking information to information--like using a word processor. That was a surprise to me--that people were prepared to painstakingly write HTML."
 
 [Sir Tim Berners-Lee, inventor of the World Wide Web](http://web.archive.org/web/20050831085206/http://www.w3journal.com/3/s1.interview.html)
 
-Using PHPFUI for view output will produce 100% valid HTML and insulate you from future changes to Foundation, your custom HMTL layouts, CSS and JS library changes. You write to a abstract concept (I want a checkbox here), and the library will output a checkbox formated for Foundation. You can inherit from CheckBox and add your own take on a checkbox, and when the graphic designer decides they have the most awesome checkbox ever, you simply change your CheckBox class, and it is changed on every page system wide.
+Using PHPFUI for view output will produce 100% valid HTML and insulate you from future changes to Foundation, your custom HMTL layouts, CSS and JS library changes. You write to an abstract concept (I want a checkbox here), and the library will output a checkbox formatted for Foundation. You can inherit from CheckBox and add your own take on a checkbox, and when the graphic designer decides they have the most awesome checkbox ever, you simply change your CheckBox class, and it is changed on every page system wide.
 
 Don't write HTML by hand!
 
@@ -32,9 +32,13 @@ echo $page;
 
 ## Installation Instructions
 
-composer require phpfui/phpfui
+    composer require phpfui/phpfui
 
-Then run update.php from the vendor/phpfui/phpfui directory and supply the path to your public directory / the directory for the various JS and CSS files PHPFUI uses (public/PHPFUI for example). This will copy all required public files into your public directory. The library defaults to your-public-directory/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. update.php should be run when ever you update PHPFUI.
+Then run **update.php** from the vendor/phpfui/phpfui directory and supply the path to your public directory / the directory for the various JS and CSS files PHPFUI uses. This will copy all required public files into your public directory. For example:
+
+    php vendor/phpfui/phpfui/update.php public/PHPFUI
+
+The PHPFUI library defaults to your-public-directory/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. **update.php** should be run when ever you update PHPFUI.
 
 ## Versioning
 
@@ -42,7 +46,7 @@ Versioning will match the [Foundation versions](https://github.com/foundation/fo
 
 ## Depreciation and Foundation changes
 
-Since major versions of Foundation have in the past depreciated and obsolited things, PHPFUI will track the latest version of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
+Since major versions of Foundation have in the past depreciated and obsoleted things, PHPFUI will track the latest version of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
 
 ## Documentation
 Via [PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI)
