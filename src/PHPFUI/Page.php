@@ -451,6 +451,7 @@ class Page extends Base
 				}
 			}
 
+		$output .= '$(document).foundation();';
 		$this->javascript = array_merge($this->javascript, $this->javascriptLast);
 
 		foreach ($this->javascript as $js)
@@ -458,7 +459,7 @@ class Page extends Base
 			$output .= "{$js};{$nl}";
 			}
 
-		$output .= '$(document).foundation();</script></body></html>';
+		$output .= '</script></body></html>';
 
 		return $output;
 		}
