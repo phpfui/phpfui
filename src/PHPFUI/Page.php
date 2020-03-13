@@ -27,6 +27,7 @@ class Page extends Base
 	private $ieComments = [];
 	private $IEMobile = false;
 	private $ios = false;
+	private $javascriptFirst = [];
 	private $javascript = [];
 	private $javascriptLast = [];
 	private $language = 'en';
@@ -122,6 +123,16 @@ class Page extends Base
 	public function addJavaScript(string $js) : Page
 		{
 		$this->javascript[sha1($js)] = $js;
+
+		return $this;
+		}
+
+	/**
+	 * Add dedupped JavaScript as the first JavaScript before Foundation
+	 */
+	public function addJavaScriptFirst(string $js) : Page
+		{
+		$this->javascriptFirst[sha1($js)] = $js;
 
 		return $this;
 		}
@@ -449,6 +460,11 @@ class Page extends Base
 				{
 				$output .= "Foundation.{$plugin}.defaults.{$name}={$value};";
 				}
+			}
+
+		foreach ($this->javascriptFirst as $js)
+			{
+			$output .= "{$js};{$nl}";
 			}
 
 		$output .= '$(document).foundation();';
