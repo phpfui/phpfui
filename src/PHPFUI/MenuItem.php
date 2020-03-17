@@ -64,6 +64,16 @@ class MenuItem extends HTML5Element
 		return $this->generatedLink;
 		}
 
+	/**
+	 * You can set the link object directly if needed to set specific properties
+	 */
+	public function setLinkObject(Link $linkObject) : MenuItem
+		{
+		$this->generatedLink = $linkObject;
+
+		return $this;
+		}
+
 	public function getName() : string
 		{
 		return $this->name;

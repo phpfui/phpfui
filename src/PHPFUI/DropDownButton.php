@@ -74,7 +74,6 @@ class DropDownButton extends Button
 			$this->dropDown = new \PHPFUI\HTML5Element('div');
 			$this->addAttribute('data-toggle', $this->dropDown->getId());
 
-			$this->maxLength = (int) ($this->maxLength * 0.75);
 			$this->dropDown->addAttribute('style', "width:{$this->maxLength}em;");
 			$this->dropDown->addClass('dropdown-pane');
 			$this->dropDown->addAttribute('data-dropdown');
