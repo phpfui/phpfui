@@ -23,6 +23,7 @@ class Table extends HTML5Element
 	protected $footers = [];
 
 	protected $headers = [];
+	protected $rowAttributes = [];
 	protected $nextRowAttributes = [];
 	protected $page = null;
 	protected $recordId = '';
@@ -31,6 +32,7 @@ class Table extends HTML5Element
 	protected $sortableTrClass = '';
 	protected $strict = false;
 	protected $widths = [];
+	protected $alwaysOutput = false;
 
 	public function __construct()
 		{
@@ -157,6 +159,16 @@ class Table extends HTML5Element
 		}
 
 	/**
+	 * By default, tables will not output if they have no rows
+	 */
+	public function setAlwaysOutput(bool $alwaysOutput = true) : Table
+		{
+		$this->alwaysOutput = $alwaysOutput;
+
+		return $this;
+		}
+
+	/**
 	 * Set the table caption
 	 */
 	public function setCaption(string $caption) : Table
@@ -256,7 +268,7 @@ class Table extends HTML5Element
 		{
 		$output = '';
 
-		if (count($this->rows))
+		if (count($this->rows) || $this->alwaysOutput)
 			{
 			if ($this->caption)
 				{
