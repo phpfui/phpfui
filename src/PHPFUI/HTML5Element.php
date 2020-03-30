@@ -147,7 +147,7 @@ class HTML5Element extends Base
 
 		foreach ($this->attributes as $type => $value)
 			{
-			if (! strlen($value))
+			if ($value === false)
 				{
 				$output .= ' ' . $type;
 				}
@@ -167,7 +167,7 @@ class HTML5Element extends Base
 		{
 		if (count($this->classes))
 			{
-			return 'class="' . implode(' ', array_keys($this->classes)) . '" ';
+			return "class='" . implode(' ', array_keys($this->classes)) . "' ";
 			}
 
 		return '';
