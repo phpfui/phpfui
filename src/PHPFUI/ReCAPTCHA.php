@@ -20,11 +20,15 @@ namespace PHPFUI;
  */
 class ReCAPTCHA extends HTML5Element
 	{
-	private $errors = null;
+	private $errors = [];
 
 	private $isValid = false;
 
 	/**
+	 * Create a Google ReCAPTCHA.  If either $publicKey or
+	 * $secretKey are blank, the ReCAPTCHA will not be added to the
+	 * page and validation will always return true.
+	 *
 	 * @param Page $page since we need to add JS
 	 * @param string $publicKey your public key
 	 * @param string $secretKey your private key
@@ -32,23 +36,30 @@ class ReCAPTCHA extends HTML5Element
 	public function __construct(Page $page, string $publicKey, string $secretKey)
 		{
 		parent::__construct('div');
-		$this->addClass('g-recaptcha');
-		$this->addAttribute('data-sitekey', $publicKey);
-		$page->addHeadScript('https://www.google.com/recaptcha/api.js');
-
-		if (! empty($_POST['g-recaptcha-response']))
+		if ($publicKey && $secretKey)
 			{
-			$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
-			$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+			$this->addClass('g-recaptcha');
+			$this->addAttribute('data-sitekey', $publicKey);
+			$page->addHeadScript('https://www.google.com/recaptcha/api.js');
 
-			if ($resp->isSuccess())
+			if (! empty($_POST['g-recaptcha-response']))
 				{
-				$this->isValid = true;
+				$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
+				$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+
+				if ($resp->isSuccess())
+					{
+					$this->isValid = true;
+					}
+				else
+					{
+					$this->errors = $resp->getErrorCodes();
+					}
 				}
-			else
-				{
-				$this->errors = $resp->getErrorCodes();
-				}
+			}
+		else
+			{
+			$this->isValid = true;
 			}
 		}
 
