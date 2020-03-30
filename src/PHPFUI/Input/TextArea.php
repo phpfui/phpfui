@@ -26,31 +26,14 @@ class TextArea extends Input
 		}
 
 	/**
-	 * enable html editing using froala wysiwyg-editor
+	 * enable html editing using a JavaScript Editor
 	 *
-	 * @link https://www.froala.com/wysiwyg-editor
 	 * @param Page $page requires JS
 	 */
-	public function htmlEditing(\PHPFUI\Page $page, \PHPFUI\FroalaModel $model) : TextArea
+	public function htmlEditing(\PHPFUI\Page $page, \PHPFUI\HTMLEditorInterface $model) : TextArea
 		{
 		$id = $this->getId();
-
-		foreach ($model->getEvents() as $event => $parameters)
-			{
-			$function = '(function(e,editor,$param){$.ajax(' . \PHPFUI\TextHelper::arrayToJS($parameters) . ')})';
-			$page->addJavaScript('$' . "('#{$id}').on('{$event}',{$function});");
-			}
-
-		$page->addJavaScript('$.FroalaEditor.DEFAULTS.key="' . $model->getKey() . '"');
-		$page->addJavaScript('$("textarea#' . $id . '").froalaEditor(' . \PHPFUI\TextHelper::arrayToJS($model->getParameters()) . ')');
-		$page->addStyleSheet('froala/css/froala_editor.min.css');
-		$page->addStyleSheet('froala/css/froala_style.min.css');
-		$page->addTailScript('froala/js/froala_editor.min.js');
-
-		foreach ($model->getPlugins() as $plugin)
-			{
-			$this->addPlugIn($page, $plugin);
-			}
+		$model->updatePage($page, $id);
 
 		return $this;
 		}
@@ -100,16 +83,5 @@ class TextArea extends Input
 		$output .= $this->value;
 
 		return $output;
-		}
-
-	private function addPlugIn(\PHPFUI\Page $page, $plugin) : void
-		{
-		$page->addTailScript("froala/js/plugins/{$plugin}.min.js");
-		$css = "froala/css/plugins/{$plugin}.min.css";
-
-		if (file_exists($_SERVER['DOCUMENT_ROOT'] . $page->getResourcePath($css)))
-			{
-			$page->addStyleSheet($css);
-			}
 		}
 	}

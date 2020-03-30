@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-abstract class FroalaModel
+abstract class FroalaModel implements HTMLEditorInterface
 	{
 	private $events = [];
 
@@ -157,4 +157,31 @@ abstract class FroalaModel
 		{
 		return false;
 		}
+
+	public function updatePage(\PHPFUI\Page $page, string $id) : void
+		{
+		foreach ($this->getEvents() as $event => $parameters)
+			{
+			$function = '(function(e,editor,$param){$.ajax(' . \PHPFUI\TextHelper::arrayToJS($parameters) . ')})';
+			$page->addJavaScript('$' . "('#{$id}').on('{$event}',{$function});");
+			}
+
+		$page->addJavaScript('$.FroalaEditor.DEFAULTS.key="' . $this->getKey() . '"');
+		$page->addJavaScript('$("textarea#' . $id . '").froalaEditor(' . \PHPFUI\TextHelper::arrayToJS($this->getParameters()) . ')');
+		$page->addStyleSheet('froala/css/froala_editor.min.css');
+		$page->addStyleSheet('froala/css/froala_style.min.css');
+		$page->addTailScript('froala/js/froala_editor.min.js');
+
+		foreach ($this->getPlugins() as $plugin)
+			{
+			$page->addTailScript("froala/js/plugins/{$plugin}.min.js");
+			$css = "froala/css/plugins/{$plugin}.min.css";
+
+			if (file_exists($_SERVER['DOCUMENT_ROOT'] . $page->getResourcePath($css)))
+				{
+				$page->addStyleSheet($css);
+				}
+			}
+		}
+
 	}
