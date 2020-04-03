@@ -16,6 +16,7 @@ namespace PHPFUI;
  */
 class Table extends HTML5Element
 	{
+	protected $alwaysOutput = false;
 	protected $caption = '';
 	protected $colspans = [];
 	protected $columnAttributes = [];
@@ -23,16 +24,15 @@ class Table extends HTML5Element
 	protected $footers = [];
 
 	protected $headers = [];
-	protected $rowAttributes = [];
 	protected $nextRowAttributes = [];
 	protected $page = null;
 	protected $recordId = '';
+	protected $rowAttributes = [];
 	protected $rows = [];
 	protected $sortableBodyClass = '';
 	protected $sortableTrClass = '';
 	protected $strict = false;
 	protected $widths = [];
-	protected $alwaysOutput = false;
 
 	public function __construct()
 		{

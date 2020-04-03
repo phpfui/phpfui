@@ -147,7 +147,7 @@ class HTML5Element extends Base
 
 		foreach ($this->attributes as $type => $value)
 			{
-			if ($value === false)
+			if (false === $value)
 				{
 				$output .= ' ' . $type;
 				}

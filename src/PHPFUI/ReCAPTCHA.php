@@ -36,6 +36,7 @@ class ReCAPTCHA extends HTML5Element
 	public function __construct(Page $page, string $publicKey, string $secretKey)
 		{
 		parent::__construct('div');
+
 		if ($publicKey && $secretKey)
 			{
 			$this->addClass('g-recaptcha');

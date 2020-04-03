@@ -27,8 +27,8 @@ class Page extends Base
 	private $ieComments = [];
 	private $IEMobile = false;
 	private $ios = false;
-	private $javascriptFirst = [];
 	private $javascript = [];
+	private $javascriptFirst = [];
 	private $javascriptLast = [];
 	private $language = 'en';
 	private $pageName = 'Created with Foundation';
