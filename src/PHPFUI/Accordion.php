@@ -22,9 +22,11 @@ class Accordion extends UnorderedList
 	 * @param string $tabText what the tab will show to the user
 	 * @param string $content html shown when the tab is clicked
 	 * @param bool $active set to true to expand on initial load,
-	 *                     default false
+	 *  			default false
+	 *
+	 * @return AccordionItem that was added
 	 */
-	public function addTab(string $tabText, string $content, bool $active = false) : Accordion
+	public function addTab(string $tabText, string $content, bool $active = false) : AccordionItem
 		{
 		$listItem = new AccordionItem($tabText);
 
@@ -36,7 +38,7 @@ class Accordion extends UnorderedList
 		$listItem->addContent($content);
 		$this->addItem($listItem);
 
-		return $this;
+		return $listItem;
 		}
 
 	/**
