@@ -51,7 +51,15 @@ class Select extends Input implements \Countable
 	 */
 	public function addOption(string $label, string $value = null, bool $selected = false, bool $disabled = false) : Select
 		{
-		$this->options[] = ['label'    => \PHPFUI\TextHelper::htmlentities($label),
+		if ($label === '' || $label === null)
+			{
+			$label = '&nbsp;';
+			}
+		else
+			{
+			$label = \PHPFUI\TextHelper::htmlentities($label);
+			}
+		$this->options[] = ['label'    => $label,
 												'value'    => $value,
 												'selected' => $selected ? 'selected' : '',
 												'disabled' => $disabled ? 'disabled' : '',];

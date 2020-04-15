@@ -30,12 +30,20 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function addOption(string $label, string $value = '', bool $selected = false, bool $disabled = false) : OptGroup
 		{
+		if ($label === '' || $label === null)
+			{
+			$label = '&nbsp;';
+			}
+		else
+			{
+			$label = \PHPFUI\TextHelper::htmlentities($label);
+			}
 		if (null === $value || (is_string($value) && '' == $value))
 			{
 			$value = $label;
 			}
 
-		$this->options[] = ['label'    => \PHPFUI\TextHelper::htmlentities($label),
+		$this->options[] = ['label'    => $label,
                         'value'    => $value,
                         'selected' => $selected ? 'selected' : '',
                         'disabled' => $disabled ? 'disabled' : '',];
