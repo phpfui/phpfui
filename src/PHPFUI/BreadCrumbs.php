@@ -21,7 +21,7 @@ class BreadCrumbs extends HTML5Element implements \Countable
 	 * Add a crumb
 	 *
 	 * @param string $text of the breadcrumb
-	 * @param string $link when clicked, empty for disablee
+	 * @param string $link when clicked, empty for disabled
 	 */
 	public function addCrumb(string $text, string $link = '') : BreadCrumbs
 		{

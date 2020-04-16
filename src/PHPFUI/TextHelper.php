@@ -94,4 +94,15 @@ class TextHelper
 		{
 		return htmlspecialchars_decode($string, ENT_QUOTES | ENT_HTML5);
 		}
+
+	public static function replace_unicode_escape_sequence(array $match) : string
+		{
+		return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
+		}
+
+	public static function unicode_decode(string $str) : string
+		{
+		return preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'static::replace_unicode_escape_sequence', $str);
+		}
+
 	}
