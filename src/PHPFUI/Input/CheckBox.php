@@ -63,8 +63,9 @@ class CheckBox extends Input
 				$label->addClass('disabled-label');
 				}
 
+			$name = $this->name ? "name='{$this->name}'" : '';
 			$label->add($this->getToolTip($this->label));
-			$label->add("<input type='checkbox' id='{$id}' {$this->checked} name='{$this->name}' value='{$this->value}' {$extra}><span class='checkmark'></span>");
+			$label->add("<input type='checkbox' id='{$id}' {$this->checked} {$name} value='{$this->value}' {$extra}><span class='checkmark'></span>");
 			$this->row->add($label);
 			}
 
