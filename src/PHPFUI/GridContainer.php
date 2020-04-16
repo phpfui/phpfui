@@ -17,10 +17,14 @@ class GridContainer extends HTML5Element
 	public function setFluid() : GridContainer
 		{
 		$this->addClass('fluid');
+
+		return $this;
 		}
 
 	public function setFull() : GridContainer
 		{
 		$this->addClass('full');
+
+		return $this;
 		}
 	}
