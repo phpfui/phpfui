@@ -35,241 +35,293 @@ TimedCellUpdate *
  */
 class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{
-	private $form;
-
 	private $page;
-	private $submit;
 
 	public function setUp() : void
 		{
 		$this->page = new \PHPFUI\Page();
-		$this->submit = new \PHPFUI\Submit();
-		$this->form = new \PHPFUI\Form($this->page, $this->submit);
 		}
 
 	public function testAutoComplete() : void
 		{
 		$autoComplete = new \PHPFUI\Input\AutoComplete($this->page, function() : void{}, 'text', 'autoComplete', 'AutoComplete');
-		$this->assertValidHtml($autoComplete);
-		$this->form->add($autoComplete);
+		$this->page->add($autoComplete);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testCheckBox() : void
 		{
 		$checkBox = new \PHPFUI\Input\CheckBox('checkBox', 'CheckBox');
-		$this->assertValidHtml($checkBox);
-		$this->form->add($checkBox);
+		$this->assertFalse($checkBox->getChecked());
+		$checkBox->setChecked();
+		$this->assertTrue($checkBox->getChecked());
+		$this->page->add($checkBox);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testCheckBoxBoolean() : void
 		{
 		$checkBoxBoolean = new \PHPFUI\Input\CheckBoxBoolean('checkBoxBoolean', 'CheckBoxBoolean');
-		$this->assertValidHtml($checkBoxBoolean);
-		$this->form->add($checkBoxBoolean);
+		$this->assertFalse($checkBoxBoolean->getChecked());
+		$checkBoxBoolean->setChecked();
+		$this->assertTrue($checkBoxBoolean->getChecked());
+		$this->page->add($checkBoxBoolean);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testColor() : void
 		{
 		$color = new \PHPFUI\Input\Color('color', 'Color');
 		$color->deleteAttribute('pattern'); // not valid html but foundation uses it
-		$this->assertValidHtml($color);
-		$this->form->add($color);
+		$this->page->add($color);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testDate() : void
 		{
 		$date = new \PHPFUI\Input\Date($this->page, 'date', 'Date');
-		$this->assertValidHtml($date);
-		$this->form->add($date);
+		$this->page->add($date);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testDateTime() : void
 		{
 		$dateTime = new \PHPFUI\Input\DateTime($this->page, 'dateTime', 'DateTime');
 		$dateTime->deleteAttribute('pattern'); // not valid html but foundation uses it
-		$this->assertValidHtml($dateTime);
-		$this->form->add($dateTime);
+		$this->page->add($dateTime);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testEmail() : void
 		{
 		$email = new \PHPFUI\Input\Email('email', 'Email');
-		$this->assertValidHtml($email);
-		$this->form->add($email);
+		$this->page->add($email);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testFile() : void
 		{
 		$file = new \PHPFUI\Input\File($this->page, 'file', 'File');
 		$file->setAllowedExtensions(['jpg', 'png', 'jpeg']);
-		$this->assertValidHtml($file);
-		$this->form->add($file);
+		$this->page->add($file);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testHidden() : void
 		{
 		$hidden = new \PHPFUI\Input\Hidden('hidden', 'Hidden');
-		$this->assertValidHtml($hidden);
-		$this->form->add($hidden);
+		$this->page->add($hidden);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testImage() : void
 		{
 		$image = new \PHPFUI\Input\Image('image', 'Image');
-		$this->assertValidHtml($image);
-		$this->form->add($image);
+		$this->page->add($image);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testLimitSelect() : void
 		{
 		$limitSelect = new \PHPFUI\Input\LimitSelect($this->page, 50);
-		$this->assertValidHtml($limitSelect);
-		$this->form->add($limitSelect);
+		$this->page->add($limitSelect);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testMonth() : void
 		{
 		$month = new \PHPFUI\Input\Month('month', 'Month');
-		$this->assertValidHtml($month);
-		$this->form->add($month);
+		$this->page->add($month);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testMonthYear() : void
 		{
 		$monthYear = new \PHPFUI\Input\MonthYear($this->page, 'monthYear', 'MonthYear');
-		$this->assertValidHtml($monthYear);
-		$this->form->add($monthYear);
+		$monthYear->setMinYear(2000);
+		$monthYear->setMaxYear(2010);
+		$this->page->add($monthYear);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testMultiSelect() : void
 		{
 		$multiSelect = new \PHPFUI\Input\MultiSelect('multiSelect', 'MultiSelect');
-		$this->assertValidHtml($multiSelect);
-		$this->form->add($multiSelect);
+		$multiSelect->selectAll();
+		$multiSelect->setColumns(2);
+
+		$multiSelect->addOption('');
+		$multiSelect->addOption('one');
+		$multiSelect->addOption('two', 2, true);
+		$multiSelect->addOption('three', 3, true);
+		$multiSelect->addOption('four', 4, false, true);
+		$this->assertEquals($multiSelect->count(), 5);
+		$this->assertEquals(count($multiSelect), 5);
+		$this->page->add($multiSelect);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testNumber() : void
 		{
 		$number = new \PHPFUI\Input\Number('number', 'Number');
-		$this->assertValidHtml($number);
-		$this->form->add($number);
-		}
-
-	public function testPage() : void
-		{
-		$this->form->add($this->submit);
+		$this->page->add($number);
 		$this->assertValidHtml($this->page);
 		}
 
 	public function testPassword() : void
 		{
 		$password = new \PHPFUI\Input\Password('password', 'Password');
-		$this->assertValidHtml($password);
-		$this->form->add($password);
+		$this->page->add($password);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testRadio() : void
 		{
 		$radio = new \PHPFUI\Input\Radio('radio', 'Radio');
-		$this->assertValidHtml($radio);
-		$this->form->add($radio);
+		$radio->setChecked();
+		$this->page->add($radio);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testRadioGroup() : void
 		{
-		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', 'RadioGroup');
-		$this->assertValidHtml($radioGroup);
-		$this->form->add($radioGroup);
+		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', 'RadioGroup', 4);
+		$radioGroup->addButton('');
+		$radioGroup->addButton('one');
+		$radioGroup->addButton('two', 2);
+		$radioGroup->addButton('three', 3, true);
+		$radioGroup->addButton('four', 4);
+		$this->assertEquals($radioGroup->count(), 5);
+		$this->assertEquals(count($radioGroup), 5);
+
+		$this->page->add($radioGroup);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testRange() : void
 		{
 		$range = new \PHPFUI\Input\Range('range', 'Range');
-		$this->assertValidHtml($range);
-		$this->form->add($range);
+		$this->page->add($range);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testSearch() : void
 		{
 		$search = new \PHPFUI\Input\Search('search', 'Search');
-		$this->assertValidHtml($search);
-		$this->form->add($search);
+		$this->page->add($search);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testSelect() : void
 		{
 		$select = new \PHPFUI\Input\Select('select', 'Select');
-		$this->assertValidHtml($select);
-		$this->form->add($select);
+		$select->addLabelClass('test');
+
+		$select->addOption('');
+		$select->addOption('one');
+		$select->addOption('two', 2);
+		$select->addOption('three', 3, true);
+		$select->addOption('four', 4, false, true);
+
+		$optGroup = new \PHPFUI\Input\OptGroup('Option Group');
+		$optGroup->addOption('');
+		$optGroup->addOption('one');
+		$optGroup->addOption('two', 2);
+		$optGroup->addOption('three', 3);
+		$optGroup->addOption('four', 4, false, true);
+		$this->assertEquals($optGroup->count(), 5);
+		$this->assertEquals(count($optGroup), 5);
+
+		$select->addOptGroup($optGroup);
+		$this->assertEquals($select->count(), 6);
+		$this->assertEquals(count($select), 6);
+		$this->page->add($select);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testSelectAutoComplete() : void
 		{
-		$selectAutoComplete = new \PHPFUI\Input\SelectAutoComplete($this->page, 'selectAutoComplete', 'SelectAutoComplete', true);
-		$this->assertValidHtml($selectAutoComplete);
-		$this->form->add($selectAutoComplete);
+		$select = new \PHPFUI\Input\SelectAutoComplete($this->page, 'selectAutoComplete', 'SelectAutoComplete', true);
+		$select->addLabelClass('test');
+
+		$select->addOption('');
+		$select->addOption('one');
+		$select->addOption('two', 2);
+		$select->addOption('three', 3, true);
+		$select->addOption('four', 4, false, true);
+
+		$this->assertEquals($select->count(), 5);
+		$this->assertEquals(count($select), 5);
+		$this->page->add($select);
+		$this->assertValidHtml($this->page);
+
 		}
 
 	public function testSwitchCheckBox() : void
 		{
 		$switchCheckBox = new \PHPFUI\Input\SwitchCheckBox('switchCheckBox', 'SwitchCheckBox');
-		$this->assertValidHtml($switchCheckBox);
-		$this->form->add($switchCheckBox);
+		$switchCheckBox->setChecked();
+		$this->page->add($switchCheckBox);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testSwitchRadio() : void
 		{
 		$switchRadio = new \PHPFUI\Input\SwitchRadio('switchRadio', 'SwitchRadio');
-		$this->assertValidHtml($switchRadio);
-		$this->form->add($switchRadio);
+		$switchRadio->setChecked();
+		$switchRadio->setActiveLabel('on');
+		$switchRadio->setInactiveLabel('off');
+		$this->page->add($switchRadio);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testTel() : void
 		{
 		$tel = new \PHPFUI\Input\Tel($this->page, 'tel', 'Tel');
-		$this->assertValidHtml($tel);
-		$this->form->add($tel);
+		$this->page->add($tel);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testText() : void
 		{
 		$text = new \PHPFUI\Input\Text('text', 'Text');
-		$this->assertValidHtml($text);
-		$this->form->add($text);
+		$this->page->add($text);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testTextArea() : void
 		{
 		$textArea = new \PHPFUI\Input\TextArea('textArea', 'TextArea');
-		$this->assertValidHtml($textArea);
-		$this->form->add($textArea);
+		$textArea->setRows(3);
+		$this->page->add($textArea);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testTime() : void
 		{
 		$time = new \PHPFUI\Input\Time($this->page, 'time', 'Time');
-		$this->assertValidHtml($time);
-		$this->form->add($time);
+		$this->page->add($time);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testUrl() : void
 		{
 		$url = new \PHPFUI\Input\Url('url', 'Url');
-		$this->assertValidHtml($url);
-		$this->form->add($url);
+		$this->page->add($url);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testWeek() : void
 		{
 		$week = new \PHPFUI\Input\Week('week', 'Week');
-		$this->assertValidHtml($week);
-		$this->form->add($week);
+		$this->page->add($week);
+		$this->assertValidHtml($this->page);
 		}
 
 	public function testZip() : void
 		{
 		$zip = new \PHPFUI\Input\Zip($this->page, 'zip', 'Zip');
-		$this->assertValidHtml($zip);
-		$this->form->add($zip);
+		$this->page->add($zip);
+		$this->assertValidHtml($this->page);
 		}
 	}
