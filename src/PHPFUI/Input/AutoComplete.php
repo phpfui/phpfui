@@ -93,7 +93,7 @@ class AutoComplete extends Input
 			'serviceUrl'             => "'{$this->page->getBaseURL()}'",
 			'params'                 => ['fieldName' => "'{$name}'", $csrfField => $csrf],
 			'onSelect'               => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};" .
-																	"{$dollar}('#'+id+'hidden').val(suggestion.data);" .
+																	"{$dollar}('#'+id+'hidden').val(suggestion.data).change();" .
 																	"{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:'{$name}',{$this->className}:suggestion.data}})}",
 			];
 		}
