@@ -23,4 +23,12 @@ class Submit extends Button
 		$this->addAttribute('name', $name);
 		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 		}
+
+	/**
+	 * Return true if this submit button was pressed based on parameters passed (normally $_POST)
+	 */
+	public function submitted(array $parameters) : bool
+		{
+		return (isset($parameters[$this->getAttribute('name')]) && $parameters[$this->getAttribute('name')] == $this->getAttribute('value'));
+		}
 	}
