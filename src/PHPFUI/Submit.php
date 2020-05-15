@@ -29,6 +29,6 @@ class Submit extends Button
 	 */
 	public function submitted(array $parameters) : bool
 		{
-		return (isset($parameters[$this->getAttribute('name')]) && $parameters[$this->getAttribute('name')] == $this->getAttribute('value'));
+		return isset($parameters[$this->getAttribute('name')]) && $parameters[$this->getAttribute('name')] == $this->getAttribute('value');
 		}
 	}

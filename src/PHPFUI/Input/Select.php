@@ -51,7 +51,7 @@ class Select extends Input implements \Countable
 	 */
 	public function addOption(string $label, string $value = null, bool $selected = false, bool $disabled = false) : Select
 		{
-		if ($label === '' || $label === null)
+		if ('' === $label || null === $label)
 			{
 			$label = '&nbsp;';
 			}

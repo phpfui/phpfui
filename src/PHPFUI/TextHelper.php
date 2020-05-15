@@ -85,6 +85,11 @@ class TextHelper
 		return htmlentities($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
 		}
 
+	public static function replace_unicode_escape_sequence(array $match) : string
+		{
+		return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
+		}
+
 	/**
 	 * Decode hmtl entities
 	 *
@@ -93,11 +98,6 @@ class TextHelper
 	public static function unhtmlentities(?string $string) : string
 		{
 		return htmlspecialchars_decode($string, ENT_QUOTES | ENT_HTML5);
-		}
-
-	public static function replace_unicode_escape_sequence(array $match) : string
-		{
-		return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
 		}
 
 	public static function unicode_decode(string $str) : string
