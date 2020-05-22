@@ -8,17 +8,21 @@ namespace PHPFUI\PayPal;
  * ### Usage:
  *
  * 1. Create a Checkout object passing in the page and your client id from PayPal.
- * 2. Set the CreateOrderUrl path. This will be called as a GET.
- * 3. In CreateOrderUrl, create an Order according to [PayPal docs](https://developer.paypal.com/docs/api/orders/v2/#orders_capture) using the \PHPFUI\PayPal\Order class.
- * 4. Return the orderId from \PayPalCheckoutSdk\Orders\OrdersCreateRequest as JSON
- * 5. Set the ExecuteUrl path. This will be called as a POST with the JSON data from PayPal confirming the transaction. Process the information as you see fit.
- * 6. Add the Checkout object to the page where you want it to appear.
+ * 2. Use setFunctionJavaScript to specify the JavaScript to be executed for each of the following actions: onCancel, createOrder, onApprove and optionally onError
+ * 3. Create createOrder and onApprove callbacks in PHP according to [PayPal docs](https://developer.paypal.com/docs/api/orders/v2/#orders_capture) using the \PHPFUI\PayPal\Order class.
+ * 4. Add the Checkout object to the page where you want it to appear.
  */
 class Checkout extends \PHPFUI\HTML5Element
 	{
-	private $executeUrl = '';
-	private $createOrderUrl = '';
 	private $page;
+	private $functions = [];
+	private $styles = [
+		'layout'  => 'vertical',
+		'size'    => 'responsive',
+		'shape'   => 'pill',
+		'color'   => 'gold',
+		'label'   => 'checkout',
+	];
 
 	public function __construct(\PHPFUI\Page $page, string $clientId)
 		{
@@ -27,52 +31,54 @@ class Checkout extends \PHPFUI\HTML5Element
 		$this->page->addHeadScript('https://www.paypal.com/sdk/js?client-id=' . $clientId);
 		}
 
-	public function setExecuteUrl(string $url) : self
+	/**
+	 * You can [style the PayPal buttons](https://developer.paypal.com/docs/archive/checkout/how-to/customize-button/#)
+	 */
+	public function addStyle(string $style, ?string $value = null) : self
 		{
-		$this->executeUrl = $url;
+		if (null === $value)
+			{
+			unset($this->styles[$style]);
+			}
+		else
+			{
+			$this->styles[$style] = $value;
+			}
 
 		return $this;
 		}
 
-	public function setCreateOrderUrl(string $url) : self
+	public function getStyle() : array
 		{
-		$this->createOrderUrl = $url;
+		return $this->styles;
+		}
+
+	public function setStyles(array $styles) : self
+		{
+		$this->styles = $styles;
+
+		return $this;
+		}
+
+	/**
+	 * Set the JavaScript for the function specified. data, actions are passed as parameters to the JavaScript
+	 */
+	public function setFunctionJavaScript(string $function, string $js) : self
+		{
+		$this->functions[$function] = $js;
 
 		return $this;
 		}
 
 	protected function getStart() : string
 		{
-		if (! $this->executeUrl)
-			{
-			throw new \Exception(__CLASS__ . ' executeUrl is not set');
-			}
-
-		if (! $this->createOrderUrl)
-			{
-			throw new \Exception(__CLASS__ . ' createOrderUrl is not set');
-			}
-
 		$id = $this->getId();
-		$js = "paypal.Buttons({createOrder:function(){return fetch('{$this->createOrderUrl}',{
-    method:'post',headers:{'content-type':'application/json'}
-  }).then(function(res){console.log('createOrder.then res');console.log(res);return res.json();
-  }).then(function(data){console.log('createOrder.then data');console.log(data);return data.orderID;
-  });
-},
-			onApprove: function(data,actions) {console.log('onApprove');
-console.log(data);console.log(actions);
-  return fetch('{$this->executeUrl}', {
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: data
-  }).then(function(res) {console.log('onApprove.then res');console.log(res);return res.json();
-  }).then(function(details) {console.log('onApprove.then details');console.log(details);
-			alert('Transaction funds captured from ' + details.payer_given_name);
-  })
-}
-		}).render('#{$id}');";
+		$js = "paypal.Buttons({style:" . \PHPFUI\TextHelper::arrayToJS($this->styles, "'");
+		foreach ($this->functions as $function => $javaScript)
+			{
+			$js .= ",{$function}:function(data,actions){" . $javaScript . "}\n";
+			}
+		$js .= "\n}).render('#{$id}')";
 
 		$this->page->addJavaScript($js);
 

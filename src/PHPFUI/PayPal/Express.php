@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Express extends HTML5Element
+class Express extends \PHPFUI\HTML5Element
 	{
 	private $executeUrl;
 
@@ -16,7 +16,7 @@ class Express extends HTML5Element
 	];
 	private $type = 'sandbox';
 
-	public function __construct(Page $page, string $clientId)
+	public function __construct(\PHPFUI\Page $page, string $clientId)
 		{
 		parent::__construct('div');
 		$this->page = $page;
