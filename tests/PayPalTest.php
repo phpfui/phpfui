@@ -67,7 +67,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testEnumValidation() : void
 		{
-		$applicationContent = new ApplicationContent();
+		$applicationContent = new ApplicationContext();
 
 		$this->expectException(\Exception::class);
 		$applicationContent->landing_page = 'TOM';
@@ -192,14 +192,14 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 
 		$order = new Order('CAPTURE');
-		$applicationContent = new ApplicationContent();
-		$applicationContent->brand_name = 'EXAMPLE INC';
-		$applicationContent->locale = 'en-US';
-		$applicationContent->landing_page = 'BILLING';
-		$applicationContent->shipping_preferences = 'SET_PROVIDED_ADDRESS';
-		$applicationContent->user_action = 'PAY_NOW';
+		$applicationContext = new ApplicationContext();
+		$applicationContext->brand_name = 'EXAMPLE INC';
+		$applicationContext->locale = 'en-US';
+		$applicationContext->landing_page = 'BILLING';
+		$applicationContext->shipping_preferences = 'SET_PROVIDED_ADDRESS';
+		$applicationContext->user_action = 'PAY_NOW';
 
-		$order->setApplicationContent($applicationContent);
+		$order->application_context = $applicationContext;
 
 		$purchase_unit = new PurchaseUnit();
 		$purchase_unit->reference_id = 'PUHF';

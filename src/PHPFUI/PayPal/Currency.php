@@ -12,7 +12,6 @@ class Currency extends Base
 
 	public function __construct(float $value = 0.0, string $currency_code = 'USD')
 		{
-		parent::__construct();
 		$this->value = $value;
 		$this->currency_code = $currency_code;
 		}

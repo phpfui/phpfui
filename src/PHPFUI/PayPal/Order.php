@@ -2,21 +2,16 @@
 
 namespace PHPFUI\PayPal;
 
-class Order
+class Order extends Base
 	{
-
-	private $application_context = null;
-	private $intent = '';
+	protected static $validFields = [
+		'application_context' => ApplicationContext::class,
+		'intent' => ['CAPTURE', 'AUTHORIZE'],
+		];
 	private $purchase_units = [];
 
 	public function __construct(string $intent)
 		{
-		$validIntents = ['CAPTURE', 'AUTHORIZE'];
-
-		if (! in_array($intent, $validIntents))
-			{
-			throw new \Exception(__METHOD__ . ': $intent must be ' . implode(' or ', $validIntents));
-			}
 		$this->intent = $intent;
 		}
 
@@ -48,12 +43,4 @@ class Order
 
 		return $result;
 		}
-
-	public function setApplicationContent(ApplicationContent $application_context) : Order
-		{
-		$this->application_context = $application_context;
-
-		return $this;
-		}
-
 	}

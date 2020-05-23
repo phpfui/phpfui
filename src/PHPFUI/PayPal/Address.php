@@ -14,9 +14,4 @@ class Address extends Base
 		'country_code' => 'string',
 		];
 
-	public function __construct()
-		{
-		parent::__construct();
-		}
-
 	}

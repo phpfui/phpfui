@@ -7,20 +7,8 @@ class Amount extends Base
 	protected static $validFields = [
 		'currency_code' => 'string',
 		'value' => 'string',
-		'breakdown' => '',
+		'breakdown' => Breakdown::class,
 		];
-
-	private static $initialized = false;
-
-	public function __construct()
-		{
-		if (! self::$initialized)
-			{
-			self::$validFields['breakdown'] = new Breakdown();
-			self::$initialized = true;
-			}
-		parent::__construct();
-		}
 
 	public function setCurrency(Currency $currency) : self
 		{

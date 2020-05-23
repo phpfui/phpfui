@@ -10,24 +10,11 @@ class PurchaseUnit extends Base
 		'custom_id' => 'string',
 		'invoice_id' => 'string',
 		'soft_descriptor' => 'string',
-		'amount' => '',
-		'shipping' => '',
+		'amount' => Amount::class,
+		'shipping' => Shipping::class,
 		];
 
-	private static $initialized = false;
-
-	private $items = [];
-
-	public function __construct()
-		{
-		if (! self::$initialized)
-			{
-			self::$validFields['amount'] = new Amount();
-			self::$validFields['shipping'] = new Shipping();
-			self::$initialized = true;
-			}
-		parent::__construct();
-		}
+	protected $items = [];
 
 	public function addItem(Item $item) : self
 		{

@@ -7,10 +7,6 @@ abstract class Base
 	protected static $validFields = [];
 	private $data = [];
 
-	public function __construct()
-		{
-		}
-
 	/**
 	 * Unset fields will return null
 	 */
@@ -37,11 +33,6 @@ abstract class Base
 		if ('object' == $type)
 			{
 			$type = get_class($value);
-			}
-
-		if ('object' == gettype($expectedType))
-			{
-			$expectedType = get_class($expectedType);
 			}
 
 		if (is_array($expectedType))
@@ -85,6 +76,11 @@ abstract class Base
 			}
 
 		return $result;
+		}
+
+	public function getJSON() : string
+		{
+		return json_encode($this->getData(), JSON_PRETTY_PRINT);
 		}
 
 	/**
