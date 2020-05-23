@@ -52,10 +52,13 @@ abstract class Base
 			case 'string':
 				// limit strings to 127 characters
 				$value = substr($value, 0, 127);
+
 				break;
+
 			case 'double':
 				// 2 decimal paces
 				$value = number_format($value, 2);
+
 				break;
 			}
 

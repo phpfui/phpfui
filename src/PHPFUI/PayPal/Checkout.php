@@ -14,8 +14,8 @@ namespace PHPFUI\PayPal;
  */
 class Checkout extends \PHPFUI\HTML5Element
 	{
-	private $page;
 	private $functions = [];
+	private $page;
 	private $styles = [
 		'layout'  => 'vertical',
 		'size'    => 'responsive',
@@ -53,13 +53,6 @@ class Checkout extends \PHPFUI\HTML5Element
 		return $this->styles;
 		}
 
-	public function setStyles(array $styles) : self
-		{
-		$this->styles = $styles;
-
-		return $this;
-		}
-
 	/**
 	 * Set the JavaScript for the function specified. data, actions are passed as parameters to the JavaScript
 	 */
@@ -70,10 +63,18 @@ class Checkout extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	public function setStyles(array $styles) : self
+		{
+		$this->styles = $styles;
+
+		return $this;
+		}
+
 	protected function getStart() : string
 		{
 		$id = $this->getId();
-		$js = "paypal.Buttons({style:" . \PHPFUI\TextHelper::arrayToJS($this->styles, "'");
+		$js = 'paypal.Buttons({style:' . \PHPFUI\TextHelper::arrayToJS($this->styles, "'");
+
 		foreach ($this->functions as $function => $javaScript)
 			{
 			$js .= ",{$function}:function(data,actions){" . $javaScript . "}\n";

@@ -4,6 +4,8 @@ namespace PHPFUI\PayPal;
 
 class PurchaseUnit extends Base
 	{
+
+	protected $items = [];
 	protected static $validFields = [
 		'reference_id' => 'string',
 		'description' => 'string',
@@ -13,8 +15,6 @@ class PurchaseUnit extends Base
 		'amount' => Amount::class,
 		'shipping' => Shipping::class,
 		];
-
-	protected $items = [];
 
 	public function addItem(Item $item) : self
 		{
