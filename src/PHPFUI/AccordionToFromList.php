@@ -3,12 +3,12 @@
 namespace PHPFUI;
 
 /**
- * AccordionToFromList work the same as ToFromList, except the $inGroup and $notInGroup arrays
+ * AccordionToFromList works the same as ToFromList, except the $inGroup and $notInGroup arrays
  * should be indexed by the accordion name you want to display.  Each index will contain arrays
  * conforming to the requirements of ToFromList
  *
- * Currently when items are dragged from one pane to the other, then end up being inserted without a
- * group at the top of the pane.w
+ * Currently when items are dragged from one pane to the other, they end up being inserted without a
+ * group at the top of the pane.
  */
 class AccordionToFromList extends ToFromList
 	{

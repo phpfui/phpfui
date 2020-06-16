@@ -51,14 +51,8 @@ Since major versions of Foundation have in the past depreciated and obsoleted th
 ## Documentation
 Via [PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI)
 
-## Examples
-##### Add the following files to a public directory for testing
-* [kitchenSink.php](https://github.com/phpfui/phpfui/blob/master/examples/kitchenSink.php) examples to show most classes.
-* [paginate.php](https://github.com/phpfui/phpfui/blob/master/examples/paginate.php) allows you to test pagination parameters.
-* [sortableTable.php](https://github.com/phpfui/phpfui/blob/master/examples/sortableTable.php) interactive SortableTable example with pagination.
-* [abide.php](https://github.com/phpfui/phpfui/blob/master/examples/abide.php) a more realistic Abide demo.
-##### Also good for some basic usage examples
-* [PHPFUI\KitchenSink.php](https://github.com/phpfui/phpfui/blob/master/src/PHPFUI/KitchenSink.php) Example generating class used for unit testing.
+## Live Examples
+Via [PHPFUI/Examples](http://phpfui.com/Examples/index.php)
 
 ## Unit Testing
 Full unit testing using [phpfui/html-unit-tester](https://packagist.org/packages/phpfui/html-unit-tester)
