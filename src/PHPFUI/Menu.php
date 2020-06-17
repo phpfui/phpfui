@@ -130,6 +130,7 @@ class Menu extends HTML5Element
 	public function sort() : Menu
 		{
 		$this->sorted = true;
+		ksort($this->menuItems);
 
 		return $this;
 		}
