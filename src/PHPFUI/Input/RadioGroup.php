@@ -86,7 +86,8 @@ class RadioGroup extends Input implements \Countable
 
 			if ($this->separateRows)
 				{
-				$rows->add('<br>');
+				$output->add($rows);
+				$rows = new \PHPFUI\GridX();
 				}
 			}
 
