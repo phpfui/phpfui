@@ -22,6 +22,7 @@ class Zip extends Input
 		$this->setAttribute('size', 10);
 		$this->setAttribute('maxLength', 10);
 		$this->setAttribute('pattern', 'zip');
+		$this->setDataMask($page, '00000-0000');
 		$page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');
 		}
 	}
