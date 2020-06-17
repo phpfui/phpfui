@@ -152,11 +152,7 @@ class SelectAutoComplete extends Select
 				{
 				if (! $option['disabled'])
 					{
-					$label = $option['label'];
-					$label = str_replace('&amp;', '&', $label); // need both to remove pesky &amp;!
-					$label = \PHPFUI\TextHelper::unhtmlentities($label);  // need this too!
-					$label = str_replace("'", "\'", $label);
-					$js .= "{$comma}{data:'{$option['value']}',value:'{$label}'}";
+					$js .= "{$comma}{data:'{$this->escapeData($option['value'])}',value:'{$this->escapeData($option['label'])}'}";
 					$comma = ',';
 					}
 				}
@@ -173,6 +169,15 @@ class SelectAutoComplete extends Select
 		$this->page->addJavaScript($js);
 
 		return '';
+		}
+
+	private function escapeData(string $data) : string
+		{
+		$data = str_replace('&amp;', '&', $data); // need both to remove pesky &amp;!
+		$data = \PHPFUI\TextHelper::unhtmlentities($data);  // need this too!
+		$data = str_replace("'", "\'", $data);
+
+		return $data;
 		}
 
 	protected function getStart() : string
