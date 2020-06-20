@@ -16,6 +16,6 @@ class Cancel extends Button
 	public function __construct($name = 'Cancel')
 		{
 		parent::__construct($name, '#');
-		$this->addClass('close-reveal-reveal');
+		$this->addAttribute('data-close');
 		}
 	}
