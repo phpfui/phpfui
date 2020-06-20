@@ -41,7 +41,7 @@ class Reveal extends HTML5Element
 	 */
 	public function closeOnClick(Button $button) : Reveal
 		{
-		$button->addAttribute('onclick', '$("#' . $this->getId() . '").foundation("close")');
+		$button->addAttribute('onclick', '$("#' . $this->getId() . '").on("formvalid.zf.abide",function(ev,frm){$("#' . $this->getId() . '").foundation("close")})');
 
 		return $this;
 		}
