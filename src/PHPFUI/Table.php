@@ -362,7 +362,7 @@ class Table extends HTML5Element
 			reset($attribute);
 			$inSpan = 0;
 
-			foreach ($this->headers as $field => $value)
+			foreach (array_keys($this->headers) as $field)
 				{
 				$tdclass = $td;
 

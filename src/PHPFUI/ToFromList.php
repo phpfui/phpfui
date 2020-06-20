@@ -209,11 +209,9 @@ class ToFromList extends Base
 
 	private function processRequest() : void
 		{
-		if (Session::checkCSRF())
+		if (Session::checkCSRF() && isset($_GET['action']))
 			{
-			if (isset($_GET['action']))
-				{
-				switch ($_GET['action'])
+			switch ($_GET['action'])
 					{
 					case 'getDragDropItem':
 						{
@@ -236,7 +234,6 @@ class ToFromList extends Base
 						break;
 						}
 					}
-				}
 			}
 		}
 	}

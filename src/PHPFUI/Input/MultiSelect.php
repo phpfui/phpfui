@@ -88,7 +88,7 @@ class MultiSelect extends Select
 		$gridx = new \PHPFUI\GridX();
 		$row = 0;
 
-		foreach ($this->options as $index => $option)
+		foreach ($this->options as $option)
 			{
 			if (0 == $row)
 				{

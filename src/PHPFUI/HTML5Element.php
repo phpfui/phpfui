@@ -437,7 +437,7 @@ class HTML5Element extends Base
 		{
 		$returnValue = clone $to;
 
-		foreach ($to as $key => $value)
+		foreach (array_keys($to) as $key)
 			{
 			$returnValue->{$key} = $from->{$key};
 			}

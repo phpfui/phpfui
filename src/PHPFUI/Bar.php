@@ -42,7 +42,7 @@ abstract class Bar extends HTML5Element
 	 */
 	public function pushLeft($item) : Bar
 		{
-		array_push($this->left, $item);
+		$this->left[] = $item;
 
 		return $this;
 		}
@@ -52,7 +52,7 @@ abstract class Bar extends HTML5Element
 	 */
 	public function pushRight($item) : Bar
 		{
-		array_push($this->right, $item);
+		$this->right[] = $item;
 
 		return $this;
 		}

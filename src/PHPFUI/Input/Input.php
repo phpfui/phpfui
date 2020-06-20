@@ -193,12 +193,9 @@ abstract class Input extends \PHPFUI\Input
 			$label->add($this->getToolTip($this->label));
 			}
 
-		if ($this->required)
+		if ($this->required && $label)
 			{
-			if ($label)
-				{
-				$label->add(' <small>Required</small>');
-				}
+			$label->add(' <small>Required</small>');
 			}
 
 		if (! $this->error && $this->errorMessages && ! $this->started)

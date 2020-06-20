@@ -32,7 +32,7 @@ class CheckBox extends Input
 
 	public function getChecked() : bool
 		{
-		return $this->checked ? true : false;
+		return (bool) $this->checked;
 		}
 
 	public function setChecked(?bool $checked = true) : CheckBox

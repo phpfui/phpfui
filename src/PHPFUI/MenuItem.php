@@ -45,11 +45,9 @@ class MenuItem extends HTML5Element
 
 		$name = $this->name;
 
-		if ($this->link)
+		if ($this->link !== '' && $this->graphic)
 			{
-			if ($this->graphic)
-				{
-				if (in_array($this->align, ['right', 'bottom']))
+			if (in_array($this->align, ['right', 'bottom']))
 					{
 					$name = "<span>{$name}</span> {$this->graphic}";
 					}
@@ -57,7 +55,6 @@ class MenuItem extends HTML5Element
 					{
 					$name = "{$this->graphic} <span>{$name}</span>";
 					}
-				}
 			}
 		$this->generatedLink = new Link($this->link, $name, false);
 

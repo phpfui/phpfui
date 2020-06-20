@@ -34,7 +34,7 @@ class RadioTable extends Input implements \Countable
 
 	public function addClassesToTable(Table $table) : RadioTableCell
 		{
-		foreach ($this->buttons as $name => $button)
+		foreach (array_keys($this->buttons) as $name)
 			{
 			$table->addColumnAttribute($name, ['class' => 'RadioTableCell']);
 			}

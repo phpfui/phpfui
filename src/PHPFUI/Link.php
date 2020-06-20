@@ -87,14 +87,7 @@ class Link extends HTML5Element
 			$subject = '?subject=' . urlencode($subject);
 			}
 
-		if (filter_var($email, FILTER_VALIDATE_EMAIL))
-			{
-			$email = "mailto:{$email}{$subject}";
-			}
-		else
-			{
-			$email = '#';
-			}
+		$email = filter_var($email, FILTER_VALIDATE_EMAIL) ? "mailto:{$email}{$subject}" : '#';
 
 		return new Link($email, $text, false);
 		}
