@@ -64,7 +64,7 @@ class SelectAutoComplete extends Select
 	 *
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
-	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\SelectAutoComplete
+	public function addAutoCompleteOption(string $option, string $value) : self
 		{
 		$this->autoCompleteOptions[$option] = $value;
 
@@ -86,7 +86,7 @@ class SelectAutoComplete extends Select
 	/**
 	 * Called recursively by Reveal to force fixed postion autocomplete hints.
 	 */
-	public function inReveal(bool $isInRevealModal = true) : \PHPFUI\Input\SelectAutoComplete
+	public function inReveal(bool $isInRevealModal = true) : self
 		{
 		return $this->addAutoCompleteOption('forceFixPosition', $isInRevealModal);
 		}
@@ -97,7 +97,7 @@ class SelectAutoComplete extends Select
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 * @param string $option to remove
 	 */
-	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\SelectAutoComplete
+	public function removeAutoCompleteOption(string $option) : self
 		{
 		unset($this->autoCompleteOptions[$option]);
 
@@ -114,7 +114,7 @@ class SelectAutoComplete extends Select
 	 *
 	 * @param string $name of array
 	 */
-	public function setArray($name) : \PHPFUI\Input\SelectAutoComplete
+	public function setArray($name) : self
 		{
 		$this->arrayName = $name;
 
@@ -222,8 +222,13 @@ class SelectAutoComplete extends Select
 		return $text->output() . $this->hidden->output();
 		}
 
-	private function escapeData(string $data) : string
+	private function escapeData(?string $data) : string
 		{
+		if (null === $data)
+			{
+			return '';
+			}
+
 		$data = str_replace('&amp;', '&', $data); // need both to remove pesky &amp;!
 		$data = \PHPFUI\TextHelper::unhtmlentities($data);  // need this too!
 		$data = str_replace("'", "\'", $data);
