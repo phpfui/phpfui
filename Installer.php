@@ -30,10 +30,15 @@ class Installer
 		$vendor['igorescobar/jquery-mask-plugin'] = [
 			'dist/jquery.mask.min.js' => '',
 			];
-		$vendor['froala/wysiwyg-editor'] = [
-			'css/*' => 'froala/css',
-			'js/*' => 'froala/js',
-			];
+
+		if (in_array('froala', $argv))
+			{
+			$vendor['froala/wysiwyg-editor'] = [
+				'css/*' => 'froala/css',
+				'js/*' => 'froala/js',
+				];
+			}
+
 		$vendor['components/jquery'] = [
 			'jquery.min.js' => '',
 			];
@@ -89,9 +94,12 @@ class Installer
 			'anypicker.min.js' => 'anypicker',
 			];
 
-		$js['froala'] = [
+		if (in_array('froala', $argv))
+			{
+			$js['froala'] = [
 			'js' => 'froala',
 			];
+			}
 
 		$this->copyFiles('js', $js);
 

@@ -4,8 +4,6 @@ namespace PHPFUI\Input;
 
 /**
  * A text area wrapper with support for WYSIWYG html editing
- *
- * @link https://www.froala.com/wysiwyg-editor
  */
 class TextArea extends Input
 	{
