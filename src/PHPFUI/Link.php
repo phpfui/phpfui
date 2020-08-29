@@ -100,11 +100,6 @@ class Link extends HTML5Element
 	 */
 	public static function localUrl(string $link, string $text = '') : Link
 		{
-		if (false === strpos($link, '//'))
-			{
-			$link = 'https://' . $_SERVER['SERVER_NAME'] . $link;
-			}
-
 		return new Link($link, $text, false);
 		}
 

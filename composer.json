@@ -7,26 +7,23 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Bruce Wells",
-            "email": "brucekwells@gmail.com"
+        "name": "Bruce Wells",
+        "email": "brucekwells@gmail.com"
         }
     ],
     "require": {
         "php": ">=7.1",
         "zurb/foundation": "^6.6",
-        "froala/wysiwyg-editor": "^2.9",
         "fortawesome/font-awesome": "^5.2",
         "igorescobar/jquery-mask-plugin": "^1.14",
         "components/jquery": "^3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",
-        "phpfui/html-unit-tester": "^1.0"
+        "phpfui/html-unit-tester": "^1.0",
+        "phpfui/phpunit-syntax-coverage": "^1.0"
     },
     "autoload": {
         "psr-0": {"PHPFUI\\": "src/"}
-    },
-    "config": {
-        "bin-dir": "bin"
     }
 }

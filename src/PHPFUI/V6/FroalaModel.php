@@ -7,7 +7,7 @@ namespace PHPFUI\V6;
  *
  * @link https://www.froala.com/wysiwyg-editor
  */
-abstract class FroalaModel implements HTMLEditorInterface
+abstract class FroalaModel implements \PHPFUI\HTMLEditorInterface
 	{
 	private $events = [];
 
