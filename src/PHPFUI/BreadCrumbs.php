@@ -14,7 +14,6 @@ class BreadCrumbs extends HTML5Element implements \Countable
 		{
 		parent::__construct('nav');
 		$this->addAttribute('aria-label', 'You are here:');
-		$this->addAttribute('role', 'navigation');
 		}
 
 	/**
