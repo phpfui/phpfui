@@ -25,14 +25,14 @@ namespace PHPFUI;
 class NanoController
 	{
 
-	private string $rootNamespace;
-	private array $get;
-	private array $post;
-	private array $files;
-	private string $missingClass;
-	private string $missingMethod;
-	private array $errors = [];
-	private string $invokedPath = '';
+	private $rootNamespace;
+	private $get;
+	private $post;
+	private $files;
+	private $missingClass;
+	private $missingMethod;
+	private $errors = [];
+	private $invokedPath = '';
 
 	public function __construct()
 		{
