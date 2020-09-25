@@ -129,7 +129,6 @@ abstract class Base implements \Countable
 	/**
 	 * Output the object (convert to string)
 	 *
-	 * @return string
 	 */
 	public function output() : string
 		{

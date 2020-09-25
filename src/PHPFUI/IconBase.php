@@ -62,6 +62,7 @@ class IconBase extends HTML5Element
 				}
 
 			$target = $this->getAttribute('target');
+
 			if ($target)
 				{
 				$target = "target='{$target}' ";

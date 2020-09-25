@@ -45,7 +45,7 @@ class MenuItem extends HTML5Element
 
 		$name = $this->name;
 
-		if ($this->link !== '' && $this->graphic)
+		if ('' !== $this->link && $this->graphic)
 			{
 			if (in_array($this->align, ['right', 'bottom']))
 					{

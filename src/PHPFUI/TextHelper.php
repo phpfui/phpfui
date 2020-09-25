@@ -76,6 +76,29 @@ class TextHelper
 		}
 
 	/**
+	 * Split a string into words based on capital letters
+	 */
+	public static function capitalSplit(string $key) : string
+		{
+		$len = strlen($key);
+		$space = $output = '';
+
+		for ($i =  0; $i < $len; ++$i)
+			{
+			$char = $key[$i];
+
+			if (ctype_upper($char))
+				{
+				$output .= $space;
+				$space = ' ';
+				}
+			$output .= $char;
+			}
+
+		return $output;
+		}
+
+	/**
 	 * Shorthand to encode a string in UTF-8
 	 *
 	 * @param ?string $string to encode
@@ -103,29 +126,6 @@ class TextHelper
 	public static function unicode_decode(string $str) : string
 		{
 		return preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'static::replace_unicode_escape_sequence', $str);
-		}
-
-	/**
-	 * Split a string into words based on capital letters
-	 */
-	public static function capitalSplit(string $key) : string
-		{
-		$len = strlen($key);
-		$space = $output = '';
-
-		for ($i =  0; $i < $len; ++$i)
-			{
-			$char = $key[$i];
-
-			if (ctype_upper($char))
-				{
-				$output .= $space;
-				$space = ' ';
-				}
-			$output .= $char;
-			}
-
-		return $output;
 		}
 
 	}

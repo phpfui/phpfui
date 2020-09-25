@@ -103,7 +103,6 @@ class Select extends Input implements \Countable
 	 * Select an option based on the value passed
 	 *
 	 * @param string $selection to be selected
-	 * @return Select
 	 */
 	public function select($selection) : Select
 		{
