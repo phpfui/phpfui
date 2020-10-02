@@ -135,8 +135,7 @@ class NanoController
 		 * look at previous
 		 */
 		$urlParts = parse_url($this->uri);
-		$parts = explode('/', $urlParts['path']);
-		array_shift($parts);
+		$parts = explode('/', trim($urlParts['path'], '/'));
 		$class = explode('\\', $this->rootNamespace);
 
 		foreach ($parts as $index => $method)
