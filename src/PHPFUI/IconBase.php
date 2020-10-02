@@ -66,10 +66,10 @@ class IconBase extends HTML5Element
 			if ($target)
 				{
 				$target = "target='{$target}' ";
-				$this->deleteAttribute('target');
 				}
 			$output = "<a {$target}id='{$id}a' {$link}>";
 			}
+		$this->deleteAttribute('target');
 
 		return $output . $this->getToolTip(parent::getStart() . parent::getBody() . parent::getEnd());
 		}

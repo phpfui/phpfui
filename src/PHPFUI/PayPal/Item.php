@@ -11,7 +11,7 @@ class Item extends Base
 		'description' => 'string',
 		'sku' => 'string',
 		'tax' => Currency::class,
-		'category' => 'string',
+		'category' => ['DIGITAL_GOODS', 'PHYSICAL_GOODS'],
 		'unit_amount' => Currency::class,
 		];
 

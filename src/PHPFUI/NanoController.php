@@ -28,7 +28,7 @@ namespace PHPFUI;
  * |/Account/Users/friends/4321/5810/23704/17639/699382|\App\Account|Users|friends(int $id, array $friends)| (int)4321, ['5810', '23704', '17639', '699382'] |
  * |/Account/Users/Fiends|\App|Missing| __construct(NanoController) | none (class not defined) |
  *
- * You can change the root namespace from App to anything by calling setRootNamespace('App\Controller') for example.
+ * You can change the root namespace from App to anything by calling setRootNamespace('App\\Controller') for example.
  * ### What about GET, POST, PUT, and DELETE?
  * Unlike complicated routing tables, **NanoController** leaves the handling of HTTP methods to the class. Since browsers only support GET and POST, you have to hack PUT and DELETE methods anyway, so just deal with the HTTP method how ever you see fit.
  */
