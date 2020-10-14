@@ -10,12 +10,12 @@ class Reset extends Button
 
 	/**
 	 * @param string $name of the field
-	 * @param string $value defaults to empty
 	 */
-	public function __construct(string $name = 'Reset', string $value = 'Reset')
+	public function __construct(string $name = 'Reset')
 		{
-		parent::__construct($name);
+		parent::__construct('');
 		$this->setAttribute('type', 'reset');
-		$this->setAttribute('value', $value);
+		$this->setAttribute('value', $name);
+		$this->setElement('input');
 		}
 	}
