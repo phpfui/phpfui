@@ -684,6 +684,15 @@ class KitchenSink
 		return $unorderedList;
 		}
 
+	public function extraDebug() : Container
+		{
+		$container = new \PHPFUI\Container();
+
+		$container->add(new Debug($this, 'Debug $this!'));
+
+		return $container;
+		}
+
 	public function extraIcon() : Container
 		{
 		$container = new \PHPFUI\Container();
