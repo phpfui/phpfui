@@ -15,7 +15,7 @@ class MultiSelect extends Select
 	 * Construct a MultiSelect
 	 *
 	 * @param string $name of the field
-	 * @param ?string $label for the user, default empty
+	 * @param ?string $label for the user, default empty does not provide an enclosing box.
 	 */
 	public function __construct(string $name, ?string $label = '')
 		{
@@ -69,7 +69,14 @@ class MultiSelect extends Select
 
 	protected function getStart() : string
 		{
-		$fieldSet = new \PHPFUI\FieldSet($this->getToolTip($this->label));
+		if ($this->label)
+			{
+			$fieldSet = new \PHPFUI\FieldSet($this->getToolTip($this->label));
+			}
+		else
+			{
+			$fieldSet = new \PHPFUI\Container();
+			}
 
 		// Get the number of rows we will need
 		// count / number of columns, truncated to int, then add one if odd number
