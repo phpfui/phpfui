@@ -42,7 +42,7 @@ class Table extends HTML5Element
 	/**
 	 * Allow arrow keys to move up and down rows with edit controls in them.
 	 */
-	public function addArrowNavigation(Page $page) : Table
+	public function addArrowNavigation(\PHPFUI\Interfaces\Page $page) : Table
 		{
 		$page->addTailScript('jquery.arrow_nav.js');
 		$this->addClass('arrow-nav');

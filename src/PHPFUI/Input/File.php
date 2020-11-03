@@ -19,7 +19,7 @@ class File extends Input
 	 * @param string $name of input field
 	 * @param string $label optional label for use
 	 */
-	public function __construct(\PHPFUI\Page $page, string $name, string $label = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '')
 		{
 		parent::__construct('file', $name, $label, null);
 		$this->page = $page;

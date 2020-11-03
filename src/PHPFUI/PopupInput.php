@@ -9,7 +9,7 @@ class PopupInput
 
 	private $updateFieldId;
 
-	public function __construct(Page $page, Input $input)
+	public function __construct(\PHPFUI\Interfaces\Page $page, Input $input)
 		{
 		$button = new Button('reveal');
 		$reveal = new Reveal($page, $button);

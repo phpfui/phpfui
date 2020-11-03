@@ -51,7 +51,7 @@ class AutoComplete extends Input
 	 * @param ?string $value initial value, optional
 	 *
 	 */
-	public function __construct(\PHPFUI\Page $page, callable $callback, string $type, string $name, string $label = null, ?string $value = null)
+	public function __construct(\PHPFUI\Interfaces\Page $page, callable $callback, string $type, string $name, string $label = null, ?string $value = null)
 		{
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
 		$name .= 'Text';

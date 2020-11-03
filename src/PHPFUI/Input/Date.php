@@ -24,7 +24,7 @@ class Date extends Input
 	 * @param string $label optional
 	 * @param ?string $value optional in YYYY-MM-DD format
 	 */
-	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', ?string $value = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', ?string $value = '')
 		{
 		$this->page = $page;
 

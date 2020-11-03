@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class OrderableTable extends Table
 	{
-	public function __construct(Page $page)
+	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{
 		parent::__construct();
 		$this->page = $page;

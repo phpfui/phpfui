@@ -12,7 +12,7 @@ namespace PHPFUI;
  */
 class AccordionToFromList extends ToFromList
 	{
-	public function __construct(Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
 		{
 		parent::__construct($page, $name, $inGroup, $notInGroup, $callbackIndex, $callback);
 		}

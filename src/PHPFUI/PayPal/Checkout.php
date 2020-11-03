@@ -24,7 +24,7 @@ class Checkout extends \PHPFUI\HTML5Element
 		'label'   => 'checkout',
 	];
 
-	public function __construct(\PHPFUI\Page $page, string $clientId)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)
 		{
 		parent::__construct('div');
 		$this->page = $page;

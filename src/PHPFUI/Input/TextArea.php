@@ -28,7 +28,7 @@ class TextArea extends Input
 	 *
 	 * @param Page $page requires JS
 	 */
-	public function htmlEditing(\PHPFUI\Page $page, \PHPFUI\HTMLEditorInterface $model) : TextArea
+	public function htmlEditing(\PHPFUI\Interfaces\Page $page, \PHPFUI\Interfaces\HTMLEditor $model) : TextArea
 		{
 		$id = $this->getId();
 		$model->updatePage($page, $id);

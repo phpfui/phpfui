@@ -21,9 +21,9 @@ class Time extends Input
 	 */
 	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', ?string $value = '', int $interval = 15)
 		{
-		if ($page->isAndroid())
-			{  // use a native picker for Android in hh:mm:ss format
-
+		if ($page->isAndroid() || $page->isIOS())
+			{
+			// use a native picker for Android in hh:mm:ss format
 			$value = self::toMilitary($value);
 			parent::__construct('time', $name, $label, $value);
 			// use a native picker for Android in hh:mm:ss format

@@ -114,7 +114,7 @@ abstract class Input extends \PHPFUI\Input
 		return $this->label;
 		}
 
-	public function setDataMask(\PHPFUI\Page $page, string $mask) : Input
+	public function setDataMask(\PHPFUI\Interfaces\Page $page, string $mask) : Input
 		{
 		$page->addTailScript('jquery.mask.min.js');
 		$this->setAttribute('data-mask', $mask);

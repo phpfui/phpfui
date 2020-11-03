@@ -48,7 +48,7 @@ class ToFromList extends Base
 	 * @param string $callbackIndex is used to identify records by index in your master set of data.
 	 * @param callable $callback used to format the text used to drag and drop.
 	 */
-	public function __construct(Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
 		{
 		parent::__construct();
 		$this->page = $page;

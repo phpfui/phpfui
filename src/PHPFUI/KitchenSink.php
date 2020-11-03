@@ -25,7 +25,7 @@ class KitchenSink
 
 	private $page;
 
-	public function __construct(Page $page)
+	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{
 		$this->page = $page;
 		$index = 0;

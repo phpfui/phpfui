@@ -7,7 +7,7 @@ namespace PHPFUI\V6;
  *
  * @link https://www.froala.com/wysiwyg-editor
  */
-abstract class FroalaModel implements \PHPFUI\HTMLEditorInterface
+abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 	{
 	private $events = [];
 
@@ -163,7 +163,7 @@ abstract class FroalaModel implements \PHPFUI\HTMLEditorInterface
 		return false;
 		}
 
-	public function updatePage(\PHPFUI\Page $page, string $id) : void
+	public function updatePage(\PHPFUI\Interfaces\Page $page, string $id) : void
 		{
 		foreach ($this->getEvents() as $event => $parameters)
 			{

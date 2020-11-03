@@ -33,7 +33,7 @@ class ReCAPTCHA extends HTML5Element
 	 * @param string $publicKey your public key
 	 * @param string $secretKey your private key
 	 */
-	public function __construct(Page $page, string $publicKey, string $secretKey)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $publicKey, string $secretKey)
 		{
 		parent::__construct('div');
 

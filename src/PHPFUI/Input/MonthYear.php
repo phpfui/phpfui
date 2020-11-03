@@ -25,12 +25,12 @@ class MonthYear extends \PHPFUI\Base
 	/**
 	 * Construct a MonthYear field
 	 *
-	 * @param \PHPFUI\Page $page required JS
+	 * @param \PHPFUI\Interfaces\Page $page required JS
 	 * @param string $name of field
 	 * @param string $label optional
 	 * @param ?string $value optional
 	 */
-	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', ?string $value = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', ?string $value = '')
 		{
 		parent::__construct();
 		$this->page = $page;

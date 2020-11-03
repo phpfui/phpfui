@@ -36,7 +36,7 @@ class SelectAutoComplete extends Select
 	 * @param bool $freeformInput if true allow anything to be
 	 *  					 entered, but will suggest options
 	 */
-	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', bool $freeformInput = false)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', bool $freeformInput = false)
 		{
 		$this->freeformInput = $freeformInput;
 		$suffix = '';

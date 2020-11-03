@@ -23,7 +23,7 @@ class ReCAPTCHAv3
 	 * @param string $publicKey your public key
 	 * @param string $secretKey your private key
 	 */
-	public function __construct(Page $page, string $publicKey, string $secretKey, callable $callback)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $publicKey, string $secretKey, callable $callback)
 		{
 		// do nothing if keys are not set
 		if (empty($publicKey) && empty($secretKey))

@@ -25,7 +25,7 @@ class TimedCellUpdate extends Base
 	 * @param string $offString if the callback returns this string, the timer will be turned off.
 	 *  						 Default is blank, so if the callback returns blank, the timer is turned off.
 	 */
-	public function __construct(Page $page, string $callbackId, callable $callback, int $timeoutSeconds = 30, string $offString = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $callbackId, callable $callback, int $timeoutSeconds = 30, string $offString = '')
 		{
 		parent::__construct();
 		$this->callbackId = $callbackId;

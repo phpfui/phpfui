@@ -13,7 +13,7 @@ class RadioTable extends Input implements \Countable
 	 * @param string $name of the button
 	 * @param ?string $value initial value
 	 */
-	public function __construct(Page $page, string $name, ?string $value = null)
+	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, ?string $value = null)
 		{
 		parent::__construct('text', $name, null, $value);
 

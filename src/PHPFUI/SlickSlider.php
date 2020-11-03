@@ -15,7 +15,7 @@ class SlickSlider extends HTML5Element
 	/**
 	 * @param Page $page to add JS
 	 */
-	public function __construct(Page $page)
+	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{
 		parent::__construct('div');
 		$this->addClass('slick-slider');

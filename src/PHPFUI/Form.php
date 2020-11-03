@@ -27,7 +27,7 @@ class Form extends HTML5Element
 	 *  						 from the POST, which is set via
 	 *  						 Page::setResponse or setRawResponse
 	 */
-	public function __construct(Page $page, Submit $submit = null, string $successFunctionName = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, Submit $submit = null, string $successFunctionName = '')
 		{
 		parent::__construct('form');
 		$this->addAttribute('novalidate');

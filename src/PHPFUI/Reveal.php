@@ -19,7 +19,7 @@ class Reveal extends HTML5Element
 	 * @param HTML5Element $openingElement that user will activate
 	 *                           to call up the reveal dialog
 	 */
-	public function __construct(Page $page, HTML5Element $openingElement)
+	public function __construct(\PHPFUI\Page $page, HTML5Element $openingElement)
 		{
 		parent::__construct('div');
 		$this->page = $page;
