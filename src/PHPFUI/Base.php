@@ -7,8 +7,9 @@ namespace PHPFUI;
  *
  * Overrides string output for easy output and concatination
  */
-abstract class Base implements \Countable
+abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	{
+	use \PHPFUI\Traits\Walkable;
 
 	public const DEBUG_SOURCE = 1;
 
@@ -232,30 +233,6 @@ abstract class Base implements \Countable
 		if (! $this->isDone())
 			{
 			$this->setRawResponse(json_encode(['response' => $response, 'color' => $color,]));
-			}
-
-		return $this;
-		}
-
-	/**
-	 * Recursively walks all objects and calls the passed method on each object where it exists
-	 */
-	public function walk(string $method) : Base
-		{
-		foreach ($this->items as $item)
-			{
-			if (is_object($item))
-				{
-				if (method_exists($item, $method))
-					{
-					call_user_func([$item, $method]);
-					}
-
-				if ($item instanceof Base)
-					{
-					$item->walk($method);
-					}
-				}
 			}
 
 		return $this;

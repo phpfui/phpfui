@@ -17,6 +17,6 @@ interface HTMLEditor
 	 * @param \PHPFUI\Interfaces\Page $page current page
 	 * @param string $id of the textarea that ends editing support
 	 */
-	public function updatePage(\PHPFUI\Page $page, string $id) : void;
+	public function updatePage(\PHPFUI\Interfaces\Page $page, string $id) : void;
 
 	}

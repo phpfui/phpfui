@@ -110,7 +110,7 @@ class Reveal extends HTML5Element
 	protected function getStart() : string
 		{
 		// call inReveal for any object that needs to know it is in a Reveal (autocomplete stuff for now).
-		$this->walk('inReveal');
+		$this->walk('inReveal', true);
 
 		return parent::getStart();
 		}

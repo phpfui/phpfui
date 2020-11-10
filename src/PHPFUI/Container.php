@@ -6,10 +6,15 @@ namespace PHPFUI;
  * A container class that conforms to an interface needed by PHPFUI.  The Container class does not impart any html
  * or other formatting, but simply contains items that will be output in the order they were added to the collection.
  */
-class Container implements \Countable
+class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	{
+	use \PHPFUI\Traits\Walkable;
+
 	private $objects = [];
 
+	/**
+	 * Construct a Container.  Any arguments passed to the constructor will be added to the container.
+	 */
 	public function __construct()
 		{
 		$this->objects = func_get_args();
@@ -77,8 +82,7 @@ class Container implements \Countable
 	 */
 	public function prepend($object) : Container
 		{
-		array_unshift($this->objects, $object);
-
-		return $this;
+		return $this->addAsFirst($object);
 		}
+
 	}
