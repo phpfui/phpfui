@@ -24,7 +24,7 @@ trait Walkable
 				{
 				if (method_exists($item, $method))
 					{
-					if ($argument !== null)
+					if (null !== $argument)
 						{
 						call_user_func([$item, $method], $argument);
 						}

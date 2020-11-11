@@ -134,7 +134,7 @@ class HTML5Element extends Base
 	 */
 	public function getAttribute(string $attribute) : ?string
 		{
-		return isset($this->attributes[$attribute]) ? $this->attributes[$attribute] : null;
+		return $this->attributes[$attribute] ?? null;
 		}
 
 	/**

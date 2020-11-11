@@ -161,18 +161,6 @@ class VanillaPage extends Base implements \PHPFUI\Interfaces\Page
 		}
 
 	/**
-	 * Remove a javascript file
-	 *
-	 * @param string $module path to script to remove
-	 */
-	public function removeTailScript(string $module) : \PHPFUI\Interfaces\Page
-		{
-		unset($this->tailScripts[$module]);
-
-		return $this;
-		}
-
-	/**
 	 * Return just the base URI without the query string
 	 */
 	public function getBaseURL() : string
@@ -345,6 +333,18 @@ class VanillaPage extends Base implements \PHPFUI\Interfaces\Page
 			{
 			$this->addHeadTag("<meta http-equiv='refresh' content='{$timeout};url={$url}{$parameters}'>");
 			}
+
+		return $this;
+		}
+
+	/**
+	 * Remove a javascript file
+	 *
+	 * @param string $module path to script to remove
+	 */
+	public function removeTailScript(string $module) : \PHPFUI\Interfaces\Page
+		{
+		unset($this->tailScripts[$module]);
 
 		return $this;
 		}
