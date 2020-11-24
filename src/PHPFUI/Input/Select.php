@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * A wrapper for Select controls that is Countable
  */
-class Select extends Input implements \Countable
+class Select extends \PHPFUI\Input\Input implements \Countable
 	{
 	protected $labelClass = [];
 

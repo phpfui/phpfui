@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * A text area wrapper with support for WYSIWYG html editing
  */
-class TextArea extends Input
+class TextArea extends \PHPFUI\Input\Input
 	{
 	private $rows = 10;
 

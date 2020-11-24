@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Implements a ButtonGroup and Countable
  */
-class ButtonGroup extends HTML5Element implements \Countable
+class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
 	protected $buttons = [];
 	private $started = false;

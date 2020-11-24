@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class ListItem extends HTML5Element
+class ListItem extends \PHPFUI\HTML5Element
 	{
 
 	/**

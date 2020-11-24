@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class OffCanvas extends Base
+class OffCanvas extends \PHPFUI\Base
 	{
 	private $mainContent;
 	private $offCanvas;

@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * ToolTips are very handy.  They are disabled by default for mobile.
  */
-class ToolTip extends HTML5Element
+class ToolTip extends \PHPFUI\HTML5Element
 	{
 
 	/**

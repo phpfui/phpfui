@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * A multiSelect is a Select, but allows multiple choices
  */
-class MultiSelect extends Select
+class MultiSelect extends \PHPFUI\Input\Select
 	{
 	private $gridSize = 12;
 	private $numberColumns = 1;

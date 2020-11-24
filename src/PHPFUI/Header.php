@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for headers
  */
-class Header extends HTML5Element
+class Header extends \PHPFUI\HTML5Element
 	{
 
 	/**

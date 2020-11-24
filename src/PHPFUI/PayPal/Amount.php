@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Amount extends Base
+class Amount extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'currency_code' => 'string',

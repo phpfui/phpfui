@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * A simple wrapper for ProgressBar
  */
-class ProgressBar extends HTML5Element
+class ProgressBar extends \PHPFUI\HTML5Element
 	{
 	private $current = 0;
 

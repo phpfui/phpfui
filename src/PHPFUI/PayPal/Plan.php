@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Plan extends Base
+class Plan extends \PHPFUI\PayPal\Base
 	{
 
 	protected $billing_cycles = [];

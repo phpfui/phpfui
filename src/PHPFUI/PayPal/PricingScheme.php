@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class PricingScheme extends Base
+class PricingScheme extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'version' => 'integer',

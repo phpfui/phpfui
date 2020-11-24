@@ -6,7 +6,7 @@ namespace PHPFUI;
  * The basic HTML5Element that handles common Foundation things and HTML closing tags
  *
  */
-class HTML5Element extends Base
+class HTML5Element extends \PHPFUI\Base
 	{
 	private $attributes = [];
 	private $classes = [];

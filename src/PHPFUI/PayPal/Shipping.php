@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Shipping extends Base
+class Shipping extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
     'method' => 'string',

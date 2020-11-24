@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class PaymentPreferences extends Base
+class PaymentPreferences extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'auto_bill_outstanding' => 'boolean',

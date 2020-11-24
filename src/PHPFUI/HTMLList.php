@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple abstract wrapper for a list (OL or UL tags)
  */
-abstract class HTMLList extends HTML5Element
+abstract class HTMLList extends \PHPFUI\HTML5Element
 	{
 	public function __construct($type)
 		{

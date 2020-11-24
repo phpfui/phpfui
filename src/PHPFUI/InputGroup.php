@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Generic input class with default error handling
  */
-class InputGroup extends HTML5Element
+class InputGroup extends \PHPFUI\HTML5Element
 	{
 
 	public function __construct()

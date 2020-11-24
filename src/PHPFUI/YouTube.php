@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for YouTube videos
  */
-class YouTube extends Embed
+class YouTube extends \PHPFUI\Embed
 	{
 
   /**

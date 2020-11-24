@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Order extends Base
+class Order extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'application_context' => ApplicationContext::class,

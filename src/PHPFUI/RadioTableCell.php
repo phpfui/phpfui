@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class RadioTableCell extends HTML5Element
+class RadioTableCell extends \PHPFUI\HTML5Element
 	{
 	private $disabled = '';
 	private $disabledColor = 'gray';

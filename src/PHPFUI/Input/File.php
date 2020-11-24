@@ -8,7 +8,7 @@ namespace PHPFUI\Input;
  *
  * @link http://jeremyfagis.github.io/dropify/
  */
-class File extends Input
+class File extends \PHPFUI\Input\Input
 	{
 	protected $page;
 

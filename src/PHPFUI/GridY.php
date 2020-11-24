@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for grid-y
  */
-class GridY extends HTML5Element
+class GridY extends \PHPFUI\HTML5Element
 	{
 
 	public function __construct(string $height)

@@ -7,7 +7,7 @@ namespace PHPFUI;
  * it to the page.  You need to supply a link that will open the
  * reveal.
  */
-class Reveal extends HTML5Element
+class Reveal extends \PHPFUI\HTML5Element
 	{
 	private $page;
 

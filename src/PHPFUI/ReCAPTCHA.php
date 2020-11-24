@@ -18,7 +18,7 @@ namespace PHPFUI;
  * else print_r($captcha->getErrors());
  * ```
  */
-class ReCAPTCHA extends HTML5Element
+class ReCAPTCHA extends \PHPFUI\HTML5Element
 	{
 	private $errors = [];
 

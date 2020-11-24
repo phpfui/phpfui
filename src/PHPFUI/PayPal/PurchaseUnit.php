@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class PurchaseUnit extends Base
+class PurchaseUnit extends \PHPFUI\PayPal\Base
 	{
 
 	protected $items = [];

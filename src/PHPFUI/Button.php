@@ -6,7 +6,7 @@ namespace PHPFUI;
  * Implements a button which can be used to open a reveal dialog
  * among other things.
  */
-class Button extends HTML5Element
+class Button extends \PHPFUI\HTML5Element
 	{
 	protected $link;
 	protected $text;

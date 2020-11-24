@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Radio Buttons for inserting a table
  */
-class RadioTable extends Input implements \Countable
+class RadioTable extends \PHPFUI\Input implements \Countable
 	{
 	protected $buttons = [];
 

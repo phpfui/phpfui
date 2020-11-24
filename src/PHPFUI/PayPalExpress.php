@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class PayPalExpress extends PayPal\Express
+class PayPalExpress extends \PHPFUI\PayPal\Express
 	{
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)

@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Show a check box as a switch
  */
-class SwitchCheckBox extends SwitchRadio
+class SwitchCheckBox extends \PHPFUI\Input\SwitchRadio
 	{
 	public function __construct(string $name, $value = 0, string $title = '')
 		{

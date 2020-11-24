@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple SplitButton wrapper
  */
-class SplitButton extends Button
+class SplitButton extends \PHPFUI\Button
 	{
 	private $items = [];
 	private $menu;

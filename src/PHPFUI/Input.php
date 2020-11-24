@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Generic input class with default error handling
  */
-class Input extends HTML5Element
+class Input extends \PHPFUI\HTML5Element
 	{
 	protected $disabled;
 	protected $name = '';

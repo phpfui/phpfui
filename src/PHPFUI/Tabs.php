@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Tabs extends Base
+class Tabs extends \PHPFUI\Base
 	{
 	private $contentSection;
 

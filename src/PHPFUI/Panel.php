@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Basic wrapper for Panels
  */
-class Panel extends HTML5Element
+class Panel extends \PHPFUI\HTML5Element
 	{
 	protected $text;
 

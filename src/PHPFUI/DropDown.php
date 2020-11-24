@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for DropDown links
  */
-class DropDown extends Base
+class DropDown extends \PHPFUI\Base
 	{
 	private $dropDown;
 	private $hover;

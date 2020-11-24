@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Frequency extends Base
+class Frequency extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'interval_unit' => ['DAY', 'WEEK', 'MONTH', 'YEAR'],

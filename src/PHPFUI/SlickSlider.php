@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Wrapper for a carousel http://kenwheeler.github.io/slick/
  */
-class SlickSlider extends HTML5Element
+class SlickSlider extends \PHPFUI\HTML5Element
 	{
 	private $attributes = [];
 

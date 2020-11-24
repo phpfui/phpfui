@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * A container to add objects to that will output a fully formed Foundation page.
  */
-class Page extends VanillaPage implements \PHPFUI\Interfaces\Page
+class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	{
 	private $plugins = [];
 	private $reveals = [];

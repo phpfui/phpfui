@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for FieldSets
  */
-class FieldSet extends HTML5Element
+class FieldSet extends \PHPFUI\HTML5Element
 	{
 
 	/**

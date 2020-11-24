@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Address extends Base
+class Address extends \PHPFUI\PayPal\Base
 	{
 
 	protected static $validFields = [

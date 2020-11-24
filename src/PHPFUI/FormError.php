@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * FormErrors are automatically shown if there is an error in the form.
  */
-class FormError extends HTML5Element
+class FormError extends \PHPFUI\HTML5Element
 	{
 	public function __construct(string $message = 'Please correct the errors shown.')
 		{

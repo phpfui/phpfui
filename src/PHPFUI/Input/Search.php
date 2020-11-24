@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Search input fields
  */
-class Search extends Input
+class Search extends \PHPFUI\Input\Input
 	{
 
 	/**

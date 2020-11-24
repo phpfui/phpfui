@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for DateTime input fields
  */
-class DateTime extends Input
+class DateTime extends \PHPFUI\Input\Input
 	{
 
 	/**

@@ -6,7 +6,7 @@ namespace PHPFUI\Input;
  * Simple Time input wrapper that uses the mobile control if
  * possible
  */
-class Time extends Input
+class Time extends \PHPFUI\Input\Input
 	{
 
 	/**

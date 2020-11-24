@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * A container to add objects to that will output a fully formed Foundation page.
  */
-class VanillaPage extends Base implements \PHPFUI\Interfaces\Page
+class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	{
 	private $android = false;
 	private $chrome = false;

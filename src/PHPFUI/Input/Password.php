@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Password input fields
  */
-class Password extends Input
+class Password extends \PHPFUI\Input\Input
 	{
 
 	/**

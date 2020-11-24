@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-abstract class DescriptionItem extends HTML5Element
+abstract class DescriptionItem extends \PHPFUI\HTML5Element
 	{
 
 	/**

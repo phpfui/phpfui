@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Wrapper for Font Awesome V5 icons
  */
-class FAIcon extends IconBase
+class FAIcon extends \PHPFUI\IconBase
 	{
 
 	private static $prefixes = [

@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * AccordionMenu has main sections that accordion to reveal submenu sections
  */
-class AccordionMenu extends Menu
+class AccordionMenu extends \PHPFUI\Menu
 	{
 	private $separator = '~|~';
 	private $started = false;
@@ -51,7 +51,7 @@ class AccordionMenu extends Menu
 
 			foreach ($this->menuItems as $label => $item)
 				{
-				if ($item instanceof MenuItem)
+				if ($item instanceof \PHPFUI\MenuItem)
 					{
 					$this->add($item);
 					}

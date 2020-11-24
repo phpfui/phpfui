@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple CheckBox wrapper
  */
-class CheckBox extends Input
+class CheckBox extends \PHPFUI\Input\Input
 	{
 	protected $alwaysSet;
 	protected $center = false;

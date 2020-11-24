@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class AccordionItem extends ListItem
+class AccordionItem extends \PHPFUI\ListItem
 	{
 
 	/**

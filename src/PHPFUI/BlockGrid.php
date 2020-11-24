@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class BlockGrid extends HTML5Element
+class BlockGrid extends \PHPFUI\HTML5Element
 	{
 	protected $large = 0;
 	protected $medium = 0;

@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Color input fields
  */
-class Color extends Input
+class Color extends \PHPFUI\Input\Input
 	{
 
 	/**

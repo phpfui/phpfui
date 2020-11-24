@@ -16,7 +16,7 @@ namespace PHPFUI\Input;
  *
  * Default limits are 10, 25, 50 and 100
  */
-class LimitSelect extends Select
+class LimitSelect extends \PHPFUI\Input\Select
 	{
 	private $currentLimit;
 	private $limitName;

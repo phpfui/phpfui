@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class DescriptionList extends HTML5Element
+class DescriptionList extends \PHPFUI\HTML5Element
 	{
 
 	public function __construct()

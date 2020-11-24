@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * A class to handle Zip codes with better mobile validation
  */
-class Zip extends Input
+class Zip extends \PHPFUI\Input\Input
 	{
 
 	/**

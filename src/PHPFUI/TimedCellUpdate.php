@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Update a cell on a timer
  */
-class TimedCellUpdate extends Base
+class TimedCellUpdate extends \PHPFUI\Base
 	{
 	protected $callback;
 	protected $callbackId;

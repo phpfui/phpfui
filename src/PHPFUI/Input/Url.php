@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Url input fields
  */
-class Url extends Input
+class Url extends \PHPFUI\Input\Input
 	{
 
 	/**

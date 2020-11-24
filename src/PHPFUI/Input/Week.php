@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Week input fields
  */
-class Week extends Input
+class Week extends \PHPFUI\Input\Input
 	{
 
 	/**

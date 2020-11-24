@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class DescriptionTitle extends DescriptionItem
+class DescriptionTitle extends \PHPFUI\DescriptionItem
 	{
 
 	/**

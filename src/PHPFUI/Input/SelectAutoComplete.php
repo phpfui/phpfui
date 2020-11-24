@@ -7,7 +7,7 @@ namespace PHPFUI\Input;
  *
  * Use instead of a Select if you have a long list
  */
-class SelectAutoComplete extends Select
+class SelectAutoComplete extends \PHPFUI\Input\Select
 	{
 	protected $acFieldId;
 	protected $acInput;

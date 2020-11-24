@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Thumbnails can be a Model link
  */
-class Thumbnail extends HTML5Element
+class Thumbnail extends \PHPFUI\HTML5Element
 	{
 
 	/**

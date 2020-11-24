@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class ToFromList extends Base
+class ToFromList extends \PHPFUI\Base
 	{
 	protected $callback;
 	protected $callbackIndex;

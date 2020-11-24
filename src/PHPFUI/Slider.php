@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Slider extends HTML5Element
+class Slider extends \PHPFUI\HTML5Element
 	{
 	private $max = 100;
 

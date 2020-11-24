@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Utility class to properly format various forms of links.
  */
-class Link extends HTML5Element
+class Link extends \PHPFUI\HTML5Element
 	{
 
 	/**

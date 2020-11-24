@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Passing a Page to the constructor will allow the list item to be dragged and dropped
  */
-class UnorderedList extends HTMLList
+class UnorderedList extends \PHPFUI\HTMLList
 	{
 	private $sortable;
 

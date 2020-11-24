@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Refund extends Base
+class Refund extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'amount' => Currency::class,

@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Callout extends HTML5Element
+class Callout extends \PHPFUI\HTML5Element
 	{
 
 	/**

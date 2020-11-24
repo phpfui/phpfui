@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple Accordian wrapper
  */
-class Accordion extends UnorderedList
+class Accordion extends \PHPFUI\UnorderedList
 	{
 
 	public function __construct()

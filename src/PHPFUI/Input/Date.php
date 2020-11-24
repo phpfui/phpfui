@@ -8,7 +8,7 @@ namespace PHPFUI\Input;
  *
  * @link http://foundation-datepicker.peterbeno.com
  */
-class Date extends Input
+class Date extends \PHPFUI\Input\Input
 	{
 	protected $options = ['closeButton' => true];
 

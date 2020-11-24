@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Menu extends HTML5Element
+class Menu extends \PHPFUI\HTML5Element
 	{
 	protected $menuItems = [];
 	protected $sorted = false;
@@ -149,7 +149,7 @@ class Menu extends HTML5Element
 
 			foreach ($this->menuItems as $label => $item)
 				{
-				if ($item instanceof MenuItem)
+				if ($item instanceof \PHPFUI\MenuItem)
 					{
 					$somethingActive |= $item->getActive();
 

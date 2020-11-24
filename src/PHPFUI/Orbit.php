@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Orbit extends HTML5Element
+class Orbit extends \PHPFUI\HTML5Element
 	{
 	private $animation;
 	private $bullets;

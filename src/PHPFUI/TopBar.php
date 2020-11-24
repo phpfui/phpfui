@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class TopBar extends Bar
+class TopBar extends \PHPFUI\Bar
 	{
 
 	public function __construct()

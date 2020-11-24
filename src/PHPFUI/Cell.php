@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for Cells
  */
-class Cell extends HTML5Element
+class Cell extends \PHPFUI\HTML5Element
 	{
 	protected $large;
 	protected $medium;

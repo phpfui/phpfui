@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Equalizer extends HTML5Element
+class Equalizer extends \PHPFUI\HTML5Element
 	{
 	private $base;
 

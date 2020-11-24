@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Radio Button group that implements Countable
  */
-class RadioGroup extends Input implements \Countable
+class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	{
 	protected $buttons = [];
 	protected $separateRows = false;

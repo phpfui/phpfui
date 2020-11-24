@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class SubHeader extends Header
+class SubHeader extends \PHPFUI\Header
 	{
 
 	/**

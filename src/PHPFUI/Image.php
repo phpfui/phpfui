@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Image extends HTML5Element
+class Image extends \PHPFUI\HTML5Element
 	{
 	public function __construct(string $path, string $alt = 'photo')
 		{

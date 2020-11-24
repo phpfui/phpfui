@@ -14,7 +14,7 @@ namespace PHPFUI;
  *  	}
  * ```
  */
-class Table extends HTML5Element
+class Table extends \PHPFUI\HTML5Element
 	{
 	protected $alwaysOutput = false;
 	protected $caption = '';

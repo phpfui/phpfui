@@ -8,7 +8,7 @@ namespace PHPFUI\Input;
  *
  * @link https://github.com/devbridge/jQuery-Autocomplete
  */
-class AutoComplete extends Input
+class AutoComplete extends \PHPFUI\Input\Input
 	{
 	protected $callback;
 	protected $className;

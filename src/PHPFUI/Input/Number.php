@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Number input fields
  */
-class Number extends Input
+class Number extends \PHPFUI\Input\Input
 	{
 
 	/**

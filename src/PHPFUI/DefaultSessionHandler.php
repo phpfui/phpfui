@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class DefaultSessionHandler implements SessionHandler
+class DefaultSessionHandler implements \PHPFUI\SessionHandler
 	{
 	private $csrfValue = '';
 

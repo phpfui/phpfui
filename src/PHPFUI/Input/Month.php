@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Month input fields
  */
-class Month extends Input
+class Month extends \PHPFUI\Input\Input
 	{
 
 	/**

@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class CloseButton extends Button
+class CloseButton extends \PHPFUI\Button
 	{
 
 	/**

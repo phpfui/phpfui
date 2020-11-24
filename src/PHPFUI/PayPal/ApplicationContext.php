@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class ApplicationContext extends Base
+class ApplicationContext extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'brand_name' => 'string',

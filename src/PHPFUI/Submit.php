@@ -6,7 +6,7 @@ namespace PHPFUI;
  * Submit buttons are actual buttons.  Due to the implementation of Foundation 6.6
  * they can not be input fields, but will function like a traditional input type.
  */
-class Submit extends Button
+class Submit extends \PHPFUI\Button
 	{
 
 	/**

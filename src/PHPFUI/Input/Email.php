@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Email input fields
  */
-class Email extends Input
+class Email extends \PHPFUI\Input\Input
 	{
 
 	/**

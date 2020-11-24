@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class DrillDownMenu extends Menu
+class DrillDownMenu extends \PHPFUI\Menu
 	{
 	public function __construct()
 		{

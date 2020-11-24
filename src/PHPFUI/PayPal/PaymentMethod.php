@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class PaymentMethod extends Base
+class PaymentMethod extends \PHPFUI\PayPal\Base
 	{
 
 	protected static $validFields = [

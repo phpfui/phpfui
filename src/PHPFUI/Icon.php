@@ -9,7 +9,7 @@ namespace PHPFUI;
  *  						longer support Font Awesome V4, use FAIcon for
  *  						Font Awesome 5 icons
  */
-class Icon extends IconBase
+class Icon extends \PHPFUI\IconBase
 	{
 
 	/**

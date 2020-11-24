@@ -7,7 +7,7 @@ namespace PHPFUI;
  *
  * @depreciated 6.1.0 IconBase will become Icon
  */
-class IconBase extends HTML5Element
+class IconBase extends \PHPFUI\HTML5Element
 	{
 	private $link;
 

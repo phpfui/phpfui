@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Makes a Button displayable in all email clients
  */
-class EMailButton extends Button
+class EMailButton extends \PHPFUI\Button
 	{
 	protected $backgroundColor = '008cba';
 	protected $backgroundImage = '';

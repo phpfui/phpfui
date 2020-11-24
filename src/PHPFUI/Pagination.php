@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Pagination extends HTML5Element
+class Pagination extends \PHPFUI\HTML5Element
 	{
 	private $baseUrl;
 	private $ff = 0;

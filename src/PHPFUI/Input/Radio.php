@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Radio Button
  */
-class Radio extends Input
+class Radio extends \PHPFUI\Input\Input
 	{
 	private $checked = '';
 

@@ -2,7 +2,7 @@
 
 namespace PHPFUI\PayPal;
 
-class Breakdown extends Base
+class Breakdown extends \PHPFUI\PayPal\Base
 	{
 	protected static $validFields = [
 		'discount' => Currency::class,

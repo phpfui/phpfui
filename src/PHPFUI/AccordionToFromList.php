@@ -10,7 +10,7 @@ namespace PHPFUI;
  * Currently when items are dragged from one pane to the other, they end up being inserted without a
  * group at the top of the pane.
  */
-class AccordionToFromList extends ToFromList
+class AccordionToFromList extends \PHPFUI\ToFromList
 	{
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, callable $callback)
 		{

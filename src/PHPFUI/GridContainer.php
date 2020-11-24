@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for grid-container
  */
-class GridContainer extends HTML5Element
+class GridContainer extends \PHPFUI\HTML5Element
 	{
 
 	public function __construct()

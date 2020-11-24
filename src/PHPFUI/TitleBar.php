@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class TitleBar extends Bar
+class TitleBar extends \PHPFUI\Bar
 	{
 	private $title;
 

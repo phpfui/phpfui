@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Create a table that is sortedable
  */
-class SortableTable extends Table
+class SortableTable extends \PHPFUI\Table
 	{
 	private $columnParameter = 'c';
 	private $parameters = [];

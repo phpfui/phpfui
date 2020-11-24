@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Sticky extends HTML5Element
+class Sticky extends \PHPFUI\HTML5Element
 	{
 
 	/**

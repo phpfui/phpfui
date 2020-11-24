@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * A cancel button which will close a reveal
  */
-class Cancel extends Button
+class Cancel extends \PHPFUI\Button
 	{
 
   /**

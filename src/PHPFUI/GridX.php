@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for grid-x
  */
-class GridX extends HTML5Element
+class GridX extends \PHPFUI\HTML5Element
 	{
 
 	public function __construct()

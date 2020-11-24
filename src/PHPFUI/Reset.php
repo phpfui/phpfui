@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for Reset input fields
  */
-class Reset extends Button
+class Reset extends \PHPFUI\Button
 	{
 
 	/**

@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class MediaObject extends HTML5Element
+class MediaObject extends \PHPFUI\HTML5Element
 	{
 	public function __construct()
 		{
@@ -36,7 +36,7 @@ class MediaObject extends HTML5Element
 			$section->addClass($align);
 			}
 
-		if ($content instanceof Image)
+		if ($content instanceof \PHPFUI\Image)
 			{
 			$thumbnail = new HTML5Element('div');
 			$thumbnail->addClass('thumbnail');

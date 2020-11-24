@@ -34,7 +34,7 @@ trait Walkable
 						}
 					}
 
-				if ($item instanceof Base)
+				if ($item instanceof \PHPFUI\Base)
 					{
 					$item->walk($method, $argument);
 					}

@@ -7,7 +7,7 @@ namespace PHPFUI;
  * setting up validation, a CSRF field and handling a submit button. Form submissions can be
  * detected with isMyCallback.  If it returns true, you should do appropriate work
  */
-class Form extends HTML5Element
+class Form extends \PHPFUI\HTML5Element
 	{
 	private $areYouSure = true;
 	private $page;

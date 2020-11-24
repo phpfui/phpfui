@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class MenuItem extends HTML5Element
+class MenuItem extends \PHPFUI\HTML5Element
 	{
 	private $active = false;
 	private $align;

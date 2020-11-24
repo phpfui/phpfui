@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-abstract class Bar extends HTML5Element
+abstract class Bar extends \PHPFUI\HTML5Element
 	{
 	protected $left = [];
 	protected $right = [];

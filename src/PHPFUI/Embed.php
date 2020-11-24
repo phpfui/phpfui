@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Simple wrapper for FlexVideo
  */
-class Embed extends HTML5Element
+class Embed extends \PHPFUI\HTML5Element
 	{
 	public function __construct(string $ratio = 'widescreen')
 		{

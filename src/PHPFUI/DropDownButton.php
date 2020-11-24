@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * A fancy button with a drop down
  */
-class DropDownButton extends Button
+class DropDownButton extends \PHPFUI\Button
 	{
 	private $dropDown;
 	private $items = [];

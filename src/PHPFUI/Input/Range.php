@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Range input fields
  */
-class Range extends Input
+class Range extends \PHPFUI\Input\Input
 	{
 
   /**

@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * Create a table that is orderable via drag and drop
  */
-class OrderableTable extends Table
+class OrderableTable extends \PHPFUI\Table
 	{
 	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{

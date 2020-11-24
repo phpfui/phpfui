@@ -2,7 +2,7 @@
 
 namespace PHPFUI;
 
-class Card extends HTML5Element
+class Card extends \PHPFUI\HTML5Element
 	{
 	public function __construct()
 		{
