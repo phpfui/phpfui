@@ -25,6 +25,7 @@ class SliderHandle extends \PHPFUI\HTML5Element
 		if ($bind)
 			{
 			$this->addAttribute('aria-controls', $bind->getId());
+			$bind->setValue($value);
 			}
 		else
 			{

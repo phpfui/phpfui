@@ -110,33 +110,32 @@ class SortableTable extends \PHPFUI\Table
 		}
 
 	/**
-	 * Get the correct current sort indicator based on the column passed.
+	 * Get the correct header with sort indicator based on the column and title passed.
 	 */
-	protected function getSortIndicator(string $column) : string
+	protected function getSortHeader(string $column, string $title) : string
 		{
 		if (! isset($this->sortableColumns[$column]))
 			{
-			return '';
+			return $title;
 			}
 
 		$downUrl = $this->getDownUrl($column);
-		$down = '&Or;';
-		$upUrl = $this->getUpUrl($column);
-		$up = '&And;';
-		$indicator = "<a href='{$upUrl}'>{$up}</a><a href='{$downUrl}'>{$down}</a>";
+		$url = $upUrl = $this->getUpUrl($column);
 
+		$icon = new \PHPFUI\FAIcon('fas', 'sort', $upUrl);
 		if ($column == $this->sortedColumn)
 			{
 			if ('d' == $this->sortedOrder)
 				{
-				$indicator = "<a href='{$upUrl}'>{$down}</a>";
+				$icon = new \PHPFUI\FAIcon('fas', 'sort-down', $upUrl);
 				}
 			else
 				{
-				$indicator = "<a href='{$downUrl}'>{$up}</a>";
+				$icon = new \PHPFUI\FAIcon('fas', 'sort-up', $downUrl);
+				$url = $downUrl;
 				}
 			}
 
-		return "<span class='float-right'>{$indicator}</span>";
+		return $icon . new \PHPFUI\Link($url, $title, false);
 		}
 	}

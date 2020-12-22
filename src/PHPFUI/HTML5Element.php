@@ -75,7 +75,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Add a class to an object
 	 *
-	 * @param string $class name to add
+	 * @param string $class name(s) to add
 	 */
 	public function addClass(string $class) : HTML5Element
 		{
@@ -147,7 +147,7 @@ class HTML5Element extends \PHPFUI\Base
 
 		foreach ($this->attributes as $type => $value)
 			{
-			if (false === $value)
+			if (! strlen($value))
 				{
 				$output .= ' ' . $type;
 				}

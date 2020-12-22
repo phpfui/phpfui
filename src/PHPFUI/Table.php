@@ -302,9 +302,9 @@ class Table extends \PHPFUI\HTML5Element
 		return parent::getEnd() . '</div>';
 		}
 
-	protected function getSortIndicator(string $field) : string
+	protected function getSortHeader(string $field, string $title) : string
 		{
-		return '';
+		return $title;
 		}
 
 	protected function getStart() : string
@@ -387,7 +387,7 @@ class Table extends \PHPFUI\HTML5Element
 
 				if ('th' == $td)
 					{
-					$final .= $this->getSortIndicator($field);
+					$final = $this->getSortHeader($field, $final);
 					}
 
 				$id = '';
