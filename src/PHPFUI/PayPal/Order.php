@@ -7,7 +7,8 @@ class Order extends \PHPFUI\PayPal\Base
 	protected static $validFields = [
 		'application_context' => ApplicationContext::class,
 		'intent' => ['CAPTURE', 'AUTHORIZE'],
-		];
+	];
+
 	private $purchase_units = [];
 
 	public function __construct(string $intent)

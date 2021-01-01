@@ -11,7 +11,6 @@ namespace PHPFUI;
  */
 class Icon extends \PHPFUI\IconBase
 	{
-
 	/**
 	 * Construct an Icon.
 	 *
@@ -26,5 +25,4 @@ class Icon extends \PHPFUI\IconBase
 		$this->addClass('fa-2x');
 		$this->addClass('fa-' . $icon);
 		}
-
 	}

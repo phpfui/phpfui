@@ -7,7 +7,6 @@ namespace PHPFUI\Interfaces;
  */
 interface Page
 	{
-
 	/**
 	 * Add dedupped inline css
 	 */
@@ -165,5 +164,4 @@ interface Page
 	 * $resoursePath should start from the public root directory and include a trailing forward slash
 	 */
 	public function setResourcePath(string $resoursePath = '/') : self;
-
 	}

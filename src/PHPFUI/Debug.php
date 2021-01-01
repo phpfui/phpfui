@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Debug
 	{
-
 	private $message = '';
 
 	/**
@@ -37,5 +36,4 @@ class Debug
 		{
 		return '<pre>' . htmlspecialchars($this->message) . '</pre>';
 		}
-
 	}

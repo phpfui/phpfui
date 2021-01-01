@@ -10,5 +10,5 @@ class BillingCycle extends \PHPFUI\PayPal\Base
 		'tenure_type' => ['REGULAR', 'TRIAL'],
 		'sequence' => 'integer',
 		'total_cycles' => 'integer',
-		];
+	];
 	}

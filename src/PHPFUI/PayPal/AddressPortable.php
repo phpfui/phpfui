@@ -14,6 +14,5 @@ class AddressPortable extends \PHPFUI\PayPal\Base
 		'admin_area_4' => 'string',
 		'postal_code' => 'string',
 		'country_code' => 'string',
-		];
-
+	];
 	}

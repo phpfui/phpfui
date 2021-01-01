@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Cancel extends \PHPFUI\Button
 	{
-
   /**
    * Construct a cancel button
    *

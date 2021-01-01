@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class ToolTip extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * @param mixed $content that needs a tooltip
 	 * @param string $tip text of the tip. Do not include markup as it will not be rendered correctly.

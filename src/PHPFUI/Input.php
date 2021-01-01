@@ -8,35 +8,39 @@ namespace PHPFUI;
 class Input extends \PHPFUI\HTML5Element
 	{
 	protected $disabled;
+
 	protected $name = '';
+
 	protected $placeholder = '';
 
 	protected $type = '';
+
 	protected $value = '';
+
 	private static $validInputs = [
-    'button',
-    'checkbox',
-    'color',
-    'date',
-    'datetime-local',
-    'email',
-    'file',
-    'hidden',
-    'image',
-    'month',
-    'number',
-    'password',
-    'radio',
-    'range',
-    'reset',
-    'search',
-    'submit',
-    'tel',
-    'text',
-    'time',
-    'url',
-    'week',
-  ];
+		'button',
+		'checkbox',
+		'color',
+		'date',
+		'datetime-local',
+		'email',
+		'file',
+		'hidden',
+		'image',
+		'month',
+		'number',
+		'password',
+		'radio',
+		'range',
+		'reset',
+		'search',
+		'submit',
+		'tel',
+		'text',
+		'time',
+		'url',
+		'week',
+	];
 
 	/**
 	 * Construct a raw input field

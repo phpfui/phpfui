@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class Sticky extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * Create a Sticky object.  You must create it with the parent
 	 * object you want that will contain the Sticky element inside. The

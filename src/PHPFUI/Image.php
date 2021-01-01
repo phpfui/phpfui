@@ -30,5 +30,4 @@ class Image extends \PHPFUI\HTML5Element
 
 		return $this;
 		}
-
 	}

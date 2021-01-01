@@ -8,7 +8,9 @@ namespace PHPFUI;
 class DropDownButton extends \PHPFUI\Button
 	{
 	private $dropDown;
+
 	private $items = [];
+
 	private $maxLength = 0;
 
 	private $sorted = false;

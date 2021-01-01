@@ -22,9 +22,9 @@ class Embed extends \PHPFUI\HTML5Element
 	public function setRatio(string $ratio) : Embed
 		{
 		$validRatios = ['vertical',
-                    'panorama',
-                    'square',
-                    'widescreen',];
+			'panorama',
+			'square',
+			'widescreen', ];
 
 		if (! in_array($ratio, $validRatios))
 			{

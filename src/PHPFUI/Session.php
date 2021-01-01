@@ -30,7 +30,9 @@ namespace PHPFUI;
 class Session
 	{
 	public const DEBUG_HTML = 1;
+
 	public const DEBUG_JAVASCRIPT = 2;
+
 	private static $flash = [];
 
 	private static $handler = null;

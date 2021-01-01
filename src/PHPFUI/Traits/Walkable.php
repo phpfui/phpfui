@@ -7,7 +7,6 @@ namespace PHPFUI\Traits;
  */
 trait Walkable
 	{
-
 	/**
 	 * Recursively walks all objects and calls the passed method on each object where it exists
 	 *
@@ -43,5 +42,4 @@ trait Walkable
 
 		return $this;
 		}
-
 	}

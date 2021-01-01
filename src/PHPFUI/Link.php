@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Link extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * Format a standard html link with proper noopener and
 	 * noreferrer and target=_blank attributes.
@@ -32,11 +31,11 @@ class Link extends \PHPFUI\HTML5Element
 
 		// break up long urls so they wrap better
 		$targets = ['.',
-								'@',
-								'?',
-								'+',
-								'!',
-								':'];
+			'@',
+			'?',
+			'+',
+			'!',
+			':', ];
 		$replacements = [];
 
 		foreach ($targets as $string)

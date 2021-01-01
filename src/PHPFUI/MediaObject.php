@@ -23,10 +23,10 @@ class MediaObject extends \PHPFUI\HTML5Element
 		if ($alignment)
 			{
 			$validAlignments = ['middle',
-													'bottom',
-													'square',
-													'align-self-middle',
-													'align-self-bottom',];
+				'bottom',
+				'square',
+				'align-self-middle',
+				'align-self-bottom', ];
 
 			if (! in_array($ratio, $validRatios))
 				{

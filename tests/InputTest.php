@@ -44,7 +44,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 	public function testAutoComplete() : void
 		{
-		$autoComplete = new \PHPFUI\Input\AutoComplete($this->page, function() : void{}, 'text', 'autoComplete', 'AutoComplete');
+		$autoComplete = new \PHPFUI\Input\AutoComplete($this->page, static function() : void{}, 'text', 'autoComplete', 'AutoComplete');
 		$this->page->add($autoComplete);
 		$this->assertValidHtml($this->page);
 		}

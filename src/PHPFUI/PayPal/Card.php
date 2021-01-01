@@ -10,5 +10,5 @@ class Card extends \PHPFUI\PayPal\Base
 		'expiry' => 'string',
 		'security_code' => 'integer',
 		'billing_address' => AddressPortable::class,
-		];
+	];
 	}

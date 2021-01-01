@@ -5,6 +5,7 @@ namespace PHPFUI;
 class PopupInput
 	{
 	private $inputId;
+
 	private $revealId;
 
 	private $updateFieldId;

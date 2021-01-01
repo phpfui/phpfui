@@ -10,10 +10,13 @@ namespace PHPFUI;
 class Form extends \PHPFUI\HTML5Element
 	{
 	private $areYouSure = true;
+
 	private $page;
+
 	private $started = false;
 
 	private $submitName = '';
+
 	private $submitValue = '';
 
 	/**

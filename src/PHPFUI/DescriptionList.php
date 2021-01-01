@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class DescriptionList extends \PHPFUI\HTML5Element
 	{
-
 	public function __construct()
 		{
 		parent::__construct('dl');
@@ -14,5 +13,4 @@ class DescriptionList extends \PHPFUI\HTML5Element
 		{
 		parent::add($element);
 		}
-
 	}

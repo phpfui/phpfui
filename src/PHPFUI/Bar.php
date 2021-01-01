@@ -5,9 +5,11 @@ namespace PHPFUI;
 abstract class Bar extends \PHPFUI\HTML5Element
 	{
 	protected $left = [];
+
 	protected $right = [];
 
 	private $className;
+
 	private $started = false;
 
 	public function __construct(string $className)

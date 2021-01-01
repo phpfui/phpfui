@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class ListItem extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * Simple wrapper for a ListItem <li>
 	 *

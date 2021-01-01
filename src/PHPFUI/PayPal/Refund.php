@@ -8,5 +8,5 @@ class Refund extends \PHPFUI\PayPal\Base
 		'amount' => Currency::class,
 		'invoice_id' => 'string',
 		'note_to_payer' => 'string',
-		];
+	];
 	}

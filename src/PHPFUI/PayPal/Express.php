@@ -7,13 +7,16 @@ class Express extends \PHPFUI\HTML5Element
 	private $executeUrl;
 
 	private $page;
+
 	private $paymentUrl;
+
 	private $styles = [
 		'layout' => 'vertical',
-		'size'   => 'medium',
-		'shape'  => 'pill',
-		'color'  => 'gold',
+		'size' => 'medium',
+		'shape' => 'pill',
+		'color' => 'gold',
 	];
+
 	private $type = 'sandbox';
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)

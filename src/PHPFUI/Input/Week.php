@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Week extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Week input
 	 *

@@ -10,20 +10,27 @@ namespace PHPFUI\Input;
 class SelectAutoComplete extends \PHPFUI\Input\Select
 	{
 	protected $acFieldId;
+
 	protected $acInput;
+
 	protected $arrayName;
+
 	protected $autoCompleteOptions = [
-		'minChars'        => 1,
-		'type'            => "'POST'",
+		'minChars' => 1,
+		'type' => "'POST'",
 		'autoSelectFirst' => 'true',
-		'lookup'          => 'arrayName',
-		'onSelect'        => 'function(suggestion){ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}',
+		'lookup' => 'arrayName',
+		'onSelect' => 'function(suggestion){ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}',
 	];
+
 	protected $freeformInput;
+
 	protected $hidden;
 
 	protected $page;
+
 	protected $realName;
+
 	protected $toolTip;
 
 	/**

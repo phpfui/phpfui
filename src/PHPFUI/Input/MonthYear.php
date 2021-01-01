@@ -10,16 +10,27 @@ namespace PHPFUI\Input;
 class MonthYear extends \PHPFUI\Base
 	{
 	protected $hidden;
+
 	protected $label;
+
 	protected $monthSelect;
+
 	protected $name;
+
 	protected $page;
+
 	protected $yearSelect;
+
 	private $day = 1;
+
 	private $maxYear = 2100;
+
 	private $minYear = 2000;
+
 	private $month;
+
 	private $required;
+
 	private $year;
 
 	/**
@@ -40,9 +51,9 @@ class MonthYear extends \PHPFUI\Base
 		$this->year = date('Y');
 		$this->month = date('n');
 		$array = explode('/', str_replace(['-',
-																			 '.',
-																			 '\\',
-																			 ' ',], '/', $value));
+			'.',
+			'\\',
+			' ', ], '/', $value));
 
 		if (3 == count($array))
 			{

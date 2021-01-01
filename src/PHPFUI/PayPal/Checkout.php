@@ -15,13 +15,15 @@ namespace PHPFUI\PayPal;
 class Checkout extends \PHPFUI\HTML5Element
 	{
 	private $functions = [];
+
 	private $page;
+
 	private $styles = [
-		'layout'  => 'vertical',
-		'size'    => 'responsive',
-		'shape'   => 'pill',
-		'color'   => 'gold',
-		'label'   => 'checkout',
+		'layout' => 'vertical',
+		'size' => 'responsive',
+		'shape' => 'pill',
+		'color' => 'gold',
+		'label' => 'checkout',
 	];
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)

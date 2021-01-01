@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class DateTime extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a DateTime input
 	 *

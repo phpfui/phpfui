@@ -52,10 +52,10 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	public function addOption(string $label, string $value = null, bool $selected = false, bool $disabled = false) : Select
 		{
 		$label = '' === $label || null === $label ? '&nbsp;' : \PHPFUI\TextHelper::htmlentities($label);
-		$this->options[] = ['label'    => $label,
-												'value'    => $value,
-												'selected' => $selected ? 'selected' : '',
-												'disabled' => $disabled ? 'disabled' : '',];
+		$this->options[] = ['label' => $label,
+			'value' => $value,
+			'selected' => $selected ? 'selected' : '',
+			'disabled' => $disabled ? 'disabled' : '', ];
 
 		return $this;
 		}

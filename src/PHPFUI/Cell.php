@@ -8,6 +8,7 @@ namespace PHPFUI;
 class Cell extends \PHPFUI\HTML5Element
 	{
 	protected $large;
+
 	protected $medium;
 
 	protected $small;

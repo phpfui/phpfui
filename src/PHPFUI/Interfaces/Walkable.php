@@ -7,13 +7,9 @@ namespace PHPFUI\Interfaces;
  */
 interface Walkable
 	{
-
 	/**
-	 * @param \PHPFUI\Interfaces\Page $page current page
-	 * @param string $id of the textarea that ends editing support
 	 *
 	 * @return $this
 	 */
 	public function walk(string $method, $argument = null);
-
 	}

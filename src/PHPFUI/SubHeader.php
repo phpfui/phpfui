@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class SubHeader extends \PHPFUI\Header
 	{
-
 	/**
 	 * Simple wrapper for a <H3> element
 	 *

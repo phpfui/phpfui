@@ -4,7 +4,6 @@ namespace PHPFUI\PayPal;
 
 class PayPalTest extends \PHPUnit\Framework\TestCase
 	{
-
 	public function testAddress() : void
 		{
 		$address = new Address();
@@ -37,7 +36,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 					'currency_code' => 'USD',
 					'value' => '180.00',
 				],
-			];
+		];
 		$this->assertEquals($breakdownExample, $breakdown->getData());
 
 		$breakdownExample['shipping'] = ['currency_code' => 'USD', 'value' => '20.00', ];
@@ -442,5 +441,4 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 		$this->assertEquals($expected, $subscription->getData());
 		}
-
 	}

@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class DescriptionTitle extends \PHPFUI\DescriptionItem
 	{
-
 	/**
 	 * Simple wrapper for a DescriptionTitle <dt>
 	 *
@@ -15,5 +14,4 @@ class DescriptionTitle extends \PHPFUI\DescriptionItem
 		parent::__construct('dt');
 		$this->add($content);
 		}
-
 	}

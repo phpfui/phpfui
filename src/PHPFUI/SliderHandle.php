@@ -5,7 +5,9 @@ namespace PHPFUI;
 class SliderHandle extends \PHPFUI\HTML5Element
 	{
 	private $bind = null;
+
 	private $input = null;
+
 	private $value;
 
 	/**

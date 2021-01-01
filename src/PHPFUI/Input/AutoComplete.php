@@ -11,10 +11,15 @@ namespace PHPFUI\Input;
 class AutoComplete extends \PHPFUI\Input\Input
 	{
 	protected $callback;
+
 	protected $className;
+
 	protected $hidden;
+
 	protected $noFreeForm = false;
+
 	protected $options = [];
+
 	protected $page;
 
 	/**
@@ -85,17 +90,17 @@ class AutoComplete extends \PHPFUI\Input\Input
 		$csrfField = \PHPFUI\Session::csrfField();
 		$dollar = '$';
 		$this->options = [
-			'minChars'               => 3,
-			'type'                   => "'POST'",
-			'autoSelectFirst'        => true,
+			'minChars' => 3,
+			'type' => "'POST'",
+			'autoSelectFirst' => true,
 			'showNoSuggestionNotice' => true,
-			'paramName'              => "'{$this->className}'",
-			'serviceUrl'             => "'{$this->page->getBaseURL()}'",
-			'params'                 => ['fieldName' => "'{$name}'", $csrfField => $csrf],
-			'onSelect'               => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};" .
+			'paramName' => "'{$this->className}'",
+			'serviceUrl' => "'{$this->page->getBaseURL()}'",
+			'params' => ['fieldName' => "'{$name}'", $csrfField => $csrf],
+			'onSelect' => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};" .
 																	"{$dollar}('#'+id+'hidden').val(suggestion.data).change();" .
 																	"{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:'{$name}',{$this->className}:suggestion.data}})}",
-			];
+		];
 		}
 
 	/**
@@ -191,5 +196,4 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 		return parent::getStart();
 		}
-
 	}

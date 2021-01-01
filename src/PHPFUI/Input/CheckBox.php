@@ -8,10 +8,13 @@ namespace PHPFUI\Input;
 class CheckBox extends \PHPFUI\Input\Input
 	{
 	protected $alwaysSet;
+
 	protected $center = false;
 
 	protected $checked;
+
 	protected $row;
+
 	private $started = false;
 
 	/**

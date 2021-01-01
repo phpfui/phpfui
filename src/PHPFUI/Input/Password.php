@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Password extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Password input
 	 *

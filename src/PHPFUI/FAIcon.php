@@ -7,14 +7,13 @@ namespace PHPFUI;
  */
 class FAIcon extends \PHPFUI\IconBase
 	{
-
 	private static $prefixes = [
 		'fas' => true,
 		'far' => true,
 		'fal' => true,
 		'fad' => true,
 		'fab' => true,
-		];
+	];
 
 	/**
 	 * Construct an Icon.
@@ -36,5 +35,4 @@ class FAIcon extends \PHPFUI\IconBase
 		$this->addClass('fa-2x');
 		$this->addClass('fa-' . $icon);
 		}
-
 	}

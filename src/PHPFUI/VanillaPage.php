@@ -8,24 +8,43 @@ namespace PHPFUI;
 class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	{
 	private $android = false;
+
 	private $chrome = false;
+
 	private $css = [];
+
 	private $edgeVersion = 0;
+
 	private $favIcon;
+
 	private $fireFoxVersion = 0;
+
 	private $headJavascript = [];
+
 	private $headScripts = [];
+
 	private $headTags = [];
+
 	private $ieComments = [];
+
 	private $IEMobile = false;
+
 	private $ios = false;
+
 	private $javascript = [];
+
 	private $javascriptFirst = [];
+
 	private $javascriptLast = [];
+
 	private $language = 'en';
+
 	private $pageName = '';
+
 	private $resourcePath = '/';
+
 	private $styleSheets = [];
+
 	private $tailScripts = [];
 
 	public function __construct()
@@ -479,5 +498,4 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		return $output;
 		}
-
 	}

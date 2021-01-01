@@ -5,6 +5,7 @@ namespace PHPFUI\PayPal;
 abstract class Base
 	{
 	protected static $validFields = [];
+
 	private $data = [];
 
 	/**
@@ -93,5 +94,4 @@ abstract class Base
 		{
 		return static::$validFields();
 		}
-
 	}

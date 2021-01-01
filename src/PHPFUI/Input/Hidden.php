@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Hidden extends \PHPFUI\Input
 	{
-
 	/**
 	 * Construct a Hidden input
 	 *

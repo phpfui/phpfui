@@ -9,7 +9,9 @@ namespace PHPFUI;
 class Button extends \PHPFUI\HTML5Element
 	{
 	protected $link;
+
 	protected $text;
+
 	private $started = false;
 
 	/**

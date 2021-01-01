@@ -34,7 +34,9 @@ namespace PHPFUI;
 class MultiColumn extends \PHPFUI\GridX implements \Countable
 	{
 	private $objects = [];
+
 	private $smallColumn = 12;
+
 	private $started = false;
 
 	public function __construct()

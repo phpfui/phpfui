@@ -7,7 +7,9 @@ class Tabs extends \PHPFUI\Base
 	private $contentSection;
 
 	private $tabs = [];
+
 	private $tabSection;
+
 	private $vertical = false;
 
 	/**
@@ -27,7 +29,7 @@ class Tabs extends \PHPFUI\Base
 	public function addTab(string $tabText, string $content, bool $active = false) : Tabs
 		{
 		$this->tabs[$tabText] = ['content' => $content,
-                                'active'  => $active];
+			'active' => $active, ];
 
 		return $this;
 		}

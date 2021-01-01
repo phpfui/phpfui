@@ -35,14 +35,21 @@ namespace PHPFUI;
 class NanoController
 	{
 	private $errors = [];
+
 	private $files = [];
+
 	private $get = [];
+
 	private $invokedPath = '';
+
 	private $missingClass = '';
+
 	private $missingMethod = '';
+
 	private $post = [];
 
 	private $rootNamespace = '';
+
 	private $uri = '';
 
 	/**
@@ -99,6 +106,7 @@ class NanoController
 		{
 		return $this->get;
 		}
+
 	/**
 	 * Returns the URI path that was finally loaded
 	 */
@@ -335,5 +343,4 @@ class NanoController
 
 		return new $this->missingClass($this);
 		}
-
 	}

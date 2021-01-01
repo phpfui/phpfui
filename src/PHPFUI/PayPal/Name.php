@@ -8,5 +8,5 @@ class Name extends \PHPFUI\PayPal\Base
 		'given_name' => 'string',
 		'surname' => 'string',
 		'full_name' => 'string',
-		];
+	];
 	}

@@ -12,5 +12,5 @@ class Subscription extends \PHPFUI\PayPal\Base
 		'subscriber' => Subscriber::class,
 		'auto_renewal' => 'boolean',
 		'application_context' => ApplicationContext::class,
-		];
+	];
 	}

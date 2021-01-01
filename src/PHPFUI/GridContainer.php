@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class GridContainer extends \PHPFUI\HTML5Element
 	{
-
 	public function __construct()
 		{
 		parent::__construct('div');

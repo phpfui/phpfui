@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Header extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * Constuct a header with a default size of 2
 	 *

@@ -37,10 +37,10 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 			$value = $label;
 			}
 
-		$this->options[] = ['label'    => $label,
-                        'value'    => $value,
-                        'selected' => $selected ? 'selected' : '',
-                        'disabled' => $disabled ? 'disabled' : '',];
+		$this->options[] = ['label' => $label,
+			'value' => $value,
+			'selected' => $selected ? 'selected' : '',
+			'disabled' => $disabled ? 'disabled' : '', ];
 
 		return $this;
 		}

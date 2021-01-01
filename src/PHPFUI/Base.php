@@ -14,8 +14,11 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	public const DEBUG_SOURCE = 1;
 
 	private static $debug = 0;
+
 	private static $done = false;
+
 	private $items = [];
+
 	private $response = '';
 
 	public function __construct()
@@ -232,7 +235,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (! $this->isDone())
 			{
-			$this->setRawResponse(json_encode(['response' => $response, 'color' => $color,]));
+			$this->setRawResponse(json_encode(['response' => $response, 'color' => $color, ]));
 			}
 
 		return $this;

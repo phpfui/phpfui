@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Tel extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Tel input
 	 *

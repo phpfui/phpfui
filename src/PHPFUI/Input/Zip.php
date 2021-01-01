@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Zip extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * A simple responsive control for a US zip code, 10 digit max. Will display the numeric keyboard on mobile devices.
 	 *

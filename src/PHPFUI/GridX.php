@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class GridX extends \PHPFUI\HTML5Element
 	{
-
 	public function __construct()
 		{
 		parent::__construct('div');

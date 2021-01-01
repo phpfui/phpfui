@@ -8,7 +8,9 @@ namespace PHPFUI;
 class CheckBoxGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
 	protected $checkboxes = [];
+
 	protected $separateRows = false;
+
 	protected $label;
 
 	/**

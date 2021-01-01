@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Thumbnail extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * @param string $url for optional link
 	 */

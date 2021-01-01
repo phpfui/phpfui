@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class CloseButton extends \PHPFUI\Button
 	{
-
 	/**
 	 * Add a CloseButton to objects you want to show as closeable.
 	 * Use the closeAction to specify any animation you want on

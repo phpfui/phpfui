@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class CheckBoxBoolean extends CheckBox
 	{
-
 	/**
 	 * Construct a CheckBoxBoolean
 	 *

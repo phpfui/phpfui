@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 abstract class DescriptionItem extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * Base for DescriptionTitle and DescriptionDetail
 	 */
@@ -12,5 +11,4 @@ abstract class DescriptionItem extends \PHPFUI\HTML5Element
 		{
 		parent::__construct($type);
 		}
-
 	}

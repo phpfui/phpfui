@@ -7,11 +7,17 @@ class Slider extends \PHPFUI\HTML5Element
 	private $max = 100;
 
 	private $min = 0;
+
 	private $rangeHandle = null;
+
 	private $sliderHandle;
+
 	private $started = false;
+
 	private $step = 1;
+
 	private $value;
+
 	private $vertical = false;
 
 	/**
@@ -24,7 +30,7 @@ class Slider extends \PHPFUI\HTML5Element
 		$this->value = $value;
 		$this->addClass('slider');
 		$this->setAttribute('data-slider');
-		$this->sliderHandle = $handle ? : new SliderHandle($value);
+		$this->sliderHandle = $handle ?: new SliderHandle($value);
 		}
 
 	/**
@@ -53,7 +59,7 @@ class Slider extends \PHPFUI\HTML5Element
 	public function setNonLinear(int $base = 5, string $function = 'log') : Slider
 		{
 		$functions = ['log',
-                  'pow'];
+			'pow', ];
 
 		if (! in_array($function, $functions))
 			{

@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Accordion extends \PHPFUI\UnorderedList
 	{
-
 	public function __construct()
 		{
 		parent::__construct();

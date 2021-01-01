@@ -8,7 +8,7 @@ class Amount extends \PHPFUI\PayPal\Base
 		'currency_code' => 'string',
 		'value' => 'string',
 		'breakdown' => Breakdown::class,
-		];
+	];
 
 	public function setCurrency(Currency $currency) : self
 		{
@@ -19,5 +19,4 @@ class Amount extends \PHPFUI\PayPal\Base
 
 		return $this;
 		}
-
 	}

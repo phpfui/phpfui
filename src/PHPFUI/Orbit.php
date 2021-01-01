@@ -5,9 +5,13 @@ namespace PHPFUI;
 class Orbit extends \PHPFUI\HTML5Element
 	{
 	private $animation;
+
 	private $bullets;
+
 	private $container;
+
 	private $controls;
+
 	private $started = false;
 
 	private $wrapper;

@@ -15,7 +15,9 @@ class ReCAPTCHAv3
 	private $errors = null;
 
 	private $publicKey;
+
 	private $result = 0.0;
+
 	private $threshold = 0.5;
 
 	/**

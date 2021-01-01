@@ -8,12 +8,17 @@ namespace PHPFUI;
 class SortableTable extends \PHPFUI\Table
 	{
 	private $columnParameter = 'c';
+
 	private $parameters = [];
 
 	private $sortableColumns = [];
+
 	private $sortedColumn = '';
+
 	private $sortedOrder = '';
+
 	private $sortParameter = 's';
+
 	private $url;
 
 	public function __construct()
@@ -123,6 +128,7 @@ class SortableTable extends \PHPFUI\Table
 		$url = $upUrl = $this->getUpUrl($column);
 
 		$icon = new \PHPFUI\FAIcon('fas', 'sort', $upUrl);
+
 		if ($column == $this->sortedColumn)
 			{
 			if ('d' == $this->sortedOrder)

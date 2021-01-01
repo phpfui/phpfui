@@ -5,14 +5,23 @@ namespace PHPFUI;
 class ToFromList extends \PHPFUI\Base
 	{
 	protected $callback;
+
 	protected $callbackIndex;
+
 	protected $inGroup;
+
 	protected $inIcon;
+
 	protected $inName = 'In';
+
 	protected $name;
+
 	protected $notInGroup;
+
 	protected $outIcon;
+
 	protected $outName = 'Out';
+
 	protected $page;
 
 	private static $outputJs = false;

@@ -12,5 +12,5 @@ class Breakdown extends \PHPFUI\PayPal\Base
 		'shipping' => Currency::class,
 		'shipping_discount' => Currency::class,
 		'tax_total' => Currency::class,
-		];
+	];
 	}

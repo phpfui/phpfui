@@ -8,7 +8,6 @@ namespace PHPFUI;
  */
 class Submit extends \PHPFUI\Button
 	{
-
 	/**
 	 * @param string $text of button, defaults to 'Save'
 	 * @param string $name of field to be submitted, will be 'submit' unless provided

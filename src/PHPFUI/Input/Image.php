@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Image extends \PHPFUI\HTML5Element
 	{
-
   /**
    * Construct a Image input
    *

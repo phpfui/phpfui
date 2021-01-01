@@ -11,7 +11,6 @@
  */
 class SyntaxTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 	{
-
 	public function testDirectory() : void
 		{
 		$this->assertValidPHPDirectory(__DIR__ . '/../src/PHPFUI', 'PHPFUI directory has an error');
@@ -21,5 +20,4 @@ class SyntaxTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 		{
 		$this->assertValidPHPFile(__DIR__ . '/../update.php', 'update file is bad');
 		}
-
 	}

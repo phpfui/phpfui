@@ -5,14 +5,21 @@ namespace PHPFUI;
 class Pagination extends \PHPFUI\HTML5Element
 	{
 	private $baseUrl;
+
 	private $ff = 0;
+
 	private $next = 'Next';
+
 	private $of;
+
 	private $page;
+
 	private $previous = 'Previous';
+
 	private $started = false;
 
 	private $ul;
+
 	private $window = 3;
 
 	/**

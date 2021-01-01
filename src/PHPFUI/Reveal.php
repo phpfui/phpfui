@@ -114,5 +114,4 @@ class Reveal extends \PHPFUI\HTML5Element
 
 		return parent::getStart();
 		}
-
 	}

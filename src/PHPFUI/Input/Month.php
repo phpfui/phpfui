@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Month extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Month input
 	 *

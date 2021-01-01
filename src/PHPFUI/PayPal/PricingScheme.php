@@ -9,5 +9,5 @@ class PricingScheme extends \PHPFUI\PayPal\Base
 		'fixed_price' => Currency::class,
 		'create_time' => 'string',
 		'update_time' => 'string',
-		];
+	];
 	}

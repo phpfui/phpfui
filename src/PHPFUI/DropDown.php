@@ -8,6 +8,7 @@ namespace PHPFUI;
 class DropDown extends \PHPFUI\Base
 	{
 	private $dropDown;
+
 	private $hover;
 
 	/**
@@ -34,8 +35,8 @@ class DropDown extends \PHPFUI\Base
 	public function setAlignment(string $alignment) : DropDown
 		{
 		$validAlignments = ['left',
-												'center',
-												'right'];
+			'center',
+			'right', ];
 
 		if (! in_array($alignment, $validAlignments))
 			{
@@ -67,9 +68,9 @@ class DropDown extends \PHPFUI\Base
 	public function setPosition(string $position) : DropDown
 		{
 		$validPositions = ['top',
-											 'bottom',
-											 'left',
-											 'right'];
+			'bottom',
+			'left',
+			'right', ];
 
 		if (! in_array($position, $validPositions))
 			{

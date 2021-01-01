@@ -19,10 +19,13 @@ namespace PHPFUI\Input;
 class LimitSelect extends \PHPFUI\Input\Select
 	{
 	private $currentLimit;
+
 	private $limitName;
+
 	private $limits;
 
 	private $page;
+
 	private $pageName;
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, int $currentLimit)

@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Url extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Url input
 	 *

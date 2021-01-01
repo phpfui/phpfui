@@ -84,5 +84,4 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		return $this->addAsFirst($object);
 		}
-
 	}

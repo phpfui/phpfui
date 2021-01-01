@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class YouTube extends \PHPFUI\Embed
 	{
-
   /**
    * Just pass the video code and we do the rest
    *

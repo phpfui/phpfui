@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Text extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Text input
 	 *

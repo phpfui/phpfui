@@ -8,6 +8,7 @@ namespace PHPFUI;
 class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	{
 	private $plugins = [];
+
 	private $reveals = [];
 
 	public function __construct()
@@ -66,5 +67,4 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 
 		return parent::getStart();
 		}
-
 	}

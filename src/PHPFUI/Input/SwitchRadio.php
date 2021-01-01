@@ -8,8 +8,11 @@ namespace PHPFUI\Input;
 class SwitchRadio extends \PHPFUI\HTML5Element
 	{
 	protected $input;
+
 	private $active = '';
+
 	private $inactive = '';
+
 	private $started = false;
 
 	private $title = '';

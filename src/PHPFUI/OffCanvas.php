@@ -5,9 +5,11 @@ namespace PHPFUI;
 class OffCanvas extends \PHPFUI\Base
 	{
 	private $mainContent;
+
 	private $offCanvas;
 
 	private $offCanvasCollection = [];
+
 	private $wrapper = false;
 
 	public function __construct(HTML5Element $mainContent)
@@ -71,9 +73,9 @@ class OffCanvas extends \PHPFUI\Base
 		{
 		$this->validateId($id);
 		$positions = ['left',
-									'right',
-									'top',
-									'bottom'];
+			'right',
+			'top',
+			'bottom', ];
 
 		if (! in_array($position, $positions))
 			{
@@ -103,7 +105,7 @@ class OffCanvas extends \PHPFUI\Base
 		{
 		$this->validateId($id);
 		$transitions = ['over',
-										'push',];
+			'push', ];
 
 		if (! in_array($transition, $transitions))
 			{
@@ -158,8 +160,8 @@ class OffCanvas extends \PHPFUI\Base
 		{
 		$this->validateId($id);
 		$sizes = ['small',
-							'medium',
-							'large',];
+			'medium',
+			'large', ];
 
 		if (! in_array($size, $sizes))
 			{

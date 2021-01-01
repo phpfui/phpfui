@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class FieldSet extends \PHPFUI\HTML5Element
 	{
-
 	/**
 	 * Make a field set
 	 *

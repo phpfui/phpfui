@@ -4,8 +4,8 @@ namespace PHPFUI\PayPal;
 
 class Plan extends \PHPFUI\PayPal\Base
 	{
-
 	protected $billing_cycles = [];
+
 	protected static $validFields = [
 		'product_id' => 'string',
 		'description' => 'string',
@@ -14,7 +14,7 @@ class Plan extends \PHPFUI\PayPal\Base
 		'payment_preferences' => PaymentPreferences::class,
 		'taxes' => Taxes::class,
 		'quantity_supported' => 'boolean',
-		];
+	];
 
 	public function addBillingCycle(BillingCycle $billing_cycle) : self
 		{

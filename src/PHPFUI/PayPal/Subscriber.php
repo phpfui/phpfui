@@ -10,5 +10,5 @@ class Subscriber extends \PHPFUI\PayPal\Base
 		'payer_id' => 'string',
 		'shipping_address' => ShippingDetail::class,
 		'payment_source' => PaymentSource::class,
-		];
+	];
 	}

@@ -4,7 +4,6 @@ namespace PHPFUI;
 
 class AccordionItem extends \PHPFUI\ListItem
 	{
-
 	/**
 	 * Simple wrapper for a ListItem <li>
 	 *

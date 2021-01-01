@@ -8,7 +8,6 @@ namespace PHPFUI\Input;
  */
 class Time extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Constuct a Time input field supporting hours and minutes
 	 *

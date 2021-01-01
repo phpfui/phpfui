@@ -9,5 +9,5 @@ class PaymentPreferences extends \PHPFUI\PayPal\Base
 		'setup_fee' => Currency::class,
 		'setup_fee_failure_action' => ['CONTINUE', 'CANCEL'],
 		'payment_failure_threshold' => 'integer',
-		];
+	];
 	}

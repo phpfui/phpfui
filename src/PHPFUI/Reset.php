@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class Reset extends \PHPFUI\Button
 	{
-
 	/**
 	 * @param string $name of the field
 	 */

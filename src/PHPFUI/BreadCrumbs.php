@@ -8,6 +8,7 @@ namespace PHPFUI;
 class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 	{
 	protected $links = [];
+
 	private $started = false;
 
 	public function __construct()

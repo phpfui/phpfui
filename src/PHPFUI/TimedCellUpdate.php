@@ -8,6 +8,7 @@ namespace PHPFUI;
 class TimedCellUpdate extends \PHPFUI\Base
 	{
 	protected $callback;
+
 	protected $callbackId;
 
 	private static $callbackNumber = 0;

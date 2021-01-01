@@ -5,12 +5,17 @@ namespace PHPFUI;
 class MenuItem extends \PHPFUI\HTML5Element
 	{
 	private $active = false;
+
 	private $align;
+
 	private $generatedLink;
+
 	private $graphic;
 
 	private $link;
+
 	private $name;
+
 	private $started = false;
 
 	public function __construct(string $name, string $link = '')

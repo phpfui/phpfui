@@ -5,6 +5,7 @@ namespace PHPFUI;
 class AJAX
 	{
 	protected $conditions = [];
+
 	protected $name;
 
 	protected $question;

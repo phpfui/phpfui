@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Number extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Number input
 	 *

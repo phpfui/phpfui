@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Range extends \PHPFUI\Input\Input
 	{
-
   /**
    * Construct a Range input
    *

@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 interface SessionHandler
 	{
-
 	/**
 	 * Returns true if the CSRF token is correct
 	 */
@@ -24,5 +23,4 @@ interface SessionHandler
 	 * Get the name of the csrf field
 	 */
 	public function csrfField() : string;
-
 	}

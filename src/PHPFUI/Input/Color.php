@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Color extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Color input
 	 *

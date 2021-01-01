@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class Search extends \PHPFUI\Input\Input
 	{
-
 	/**
 	 * Construct a Search input
 	 *

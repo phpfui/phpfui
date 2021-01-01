@@ -12,25 +12,25 @@ abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 	private $events = [];
 
 	private $parameters = [
-		'requestWithCORS'                => false,
-		'toolbarInline'                  => false,
+		'requestWithCORS' => false,
+		'toolbarInline' => false,
 		'toolbarVisibleWithoutSelection' => true,
-		'linkAutoPrefix'                 => '""',
-		'spellcheck'                     => true,
-		'enter'                          => '$.FroalaEditor.ENTER_BR',
-		'fontSize'                       => ['8',
-																				 '9',
-																				 '10',
-																				 '11',
-																				 '12',
-																				 '14',
-																				 '16',
-																				 '18',
-																				 '20',
-																				 '24',
-																				 '30',
-																				 '36'],
-		'toolbarButtons'                 => [
+		'linkAutoPrefix' => '""',
+		'spellcheck' => true,
+		'enter' => '$.FroalaEditor.ENTER_BR',
+		'fontSize' => ['8',
+			'9',
+			'10',
+			'11',
+			'12',
+			'14',
+			'16',
+			'18',
+			'20',
+			'24',
+			'30',
+			'36', ],
+		'toolbarButtons' => [
 			'"bold"',
 			'"italic"',
 			'"underline"',
@@ -57,18 +57,19 @@ abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 			'"html"',
 		],
 	];
+
 	private $plugins = [
-		'colors'          => true,
-		'link'            => true,
-		'code_view'       => true,
+		'colors' => true,
+		'link' => true,
+		'code_view' => true,
 		'code_beautifier' => true,
-		'entities'        => true,
-		'word_paste'      => true,
-		'align'           => true,
-		'font_family'     => true,
-		'font_size'       => true,
-		'lists'           => true,
-		'table'           => true,
+		'entities' => true,
+		'word_paste' => true,
+		'align' => true,
+		'font_family' => true,
+		'font_size' => true,
+		'lists' => true,
+		'table' => true,
 	];
 
 	public function addEventCallback(string $event, array $ajaxParameters) : void
@@ -188,5 +189,4 @@ abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 				}
 			}
 		}
-
 	}

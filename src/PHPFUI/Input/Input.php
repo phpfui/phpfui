@@ -8,12 +8,17 @@ namespace PHPFUI\Input;
 abstract class Input extends \PHPFUI\Input
 	{
 	protected $error;
+
 	protected $errorMessages = [];
+
 	protected $hint;
+
 	protected $hintText = '';
+
 	protected $label;
 
 	protected $required = false;
+
 	private $started = false;
 
 	/**
@@ -47,7 +52,7 @@ abstract class Input extends \PHPFUI\Input
 				break;
 
 			case 'number':
-				$this->errorMessages[] = 'Numbers (0-9.) only';       ;
+				$this->errorMessages[] = 'Numbers (0-9.) only';
 
 				break;
 

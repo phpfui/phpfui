@@ -5,7 +5,9 @@ namespace PHPFUI;
 class Menu extends \PHPFUI\HTML5Element
 	{
 	protected $menuItems = [];
+
 	protected $sorted = false;
+
 	private $started = false;
 
 	private $type = '';
@@ -108,9 +110,9 @@ class Menu extends \PHPFUI\HTML5Element
 	public function setIconAlignment(string $type) : Menu
 		{
 		$types = ['top',
-							'right',
-							'bottom',
-							'left'];
+			'right',
+			'bottom',
+			'left', ];
 
 		if (! in_array($type, $types))
 			{

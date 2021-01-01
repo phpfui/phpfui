@@ -21,6 +21,7 @@ namespace PHPFUI;
 class KitchenSink
 	{
 	private $index = 0;
+
 	private $lines = [];
 
 	private $page;
@@ -81,7 +82,6 @@ class KitchenSink
 		return $container;
 		}
 
-
 	public function baseBreadCrumbs() : BreadCrumbs
 		{
 		$breadCrumbs = new BreadCrumbs();
@@ -136,7 +136,6 @@ class KitchenSink
 
 		return $group;
 		}
-
 
 	public function baseCallout() : Container
 		{
@@ -733,7 +732,6 @@ class KitchenSink
 
 		return $panel;
 		}
-
 
 	public function extraSlickSlider() : SlickSlider
 		{

@@ -13,5 +13,5 @@ class ApplicationContext extends \PHPFUI\PayPal\Base
 		'payment_method' => PaymentMethod::class,
 		'return_url' => 'string',
 		'cancel_url' => 'string',
-		];
+	];
 	}

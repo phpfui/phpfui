@@ -7,7 +7,5 @@ namespace PHPFUI;
  */
 interface NanoClassInterface
 	{
-
 	public function __construct(NanoController $controller);
-
 	}

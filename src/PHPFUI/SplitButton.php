@@ -8,6 +8,7 @@ namespace PHPFUI;
 class SplitButton extends \PHPFUI\Button
 	{
 	private $menu;
+
 	private $started = false;
 
 	public function __construct(string $text, string $link)
@@ -46,6 +47,7 @@ class SplitButton extends \PHPFUI\Button
 			$this->started = true;
 			$dropDown = new DropDownButton('');
 			$dropDown->addClass('arrow-only');
+
 			foreach ($this->menu->getMenuItems() as $item)
 				{
 				$dropDown->addMenuItem($item);

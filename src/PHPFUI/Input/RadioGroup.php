@@ -8,6 +8,7 @@ namespace PHPFUI\Input;
 class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	{
 	protected $buttons = [];
+
 	protected $separateRows = false;
 
 	/**
@@ -36,9 +37,9 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 			$value = $label;
 			}
 
-		$this->buttons[] = ['label'    => $label,
-												'value'    => $value,
-												'disabled' => $disabled ? 'disabled' : '',];
+		$this->buttons[] = ['label' => $label,
+			'value' => $value,
+			'disabled' => $disabled ? 'disabled' : '', ];
 
 		return $this;
 		}
@@ -87,6 +88,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 		foreach ($this->buttons as $button)
 			{
 			$radio = new Radio($this->name, $button['label'], $button['value']);
+
 			if ($this->required)
 				{
 				$radio->setRequired();

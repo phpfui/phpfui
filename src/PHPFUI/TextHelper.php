@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class TextHelper
 	{
-
 	/**
 	 * Converts a PHP array to a JavaScript array that can be used
 	 * directly as JavaScript (not JSON)
@@ -83,7 +82,7 @@ class TextHelper
 		$len = strlen($key);
 		$space = $output = '';
 
-		for ($i =  0; $i < $len; ++$i)
+		for ($i = 0; $i < $len; ++$i)
 			{
 			$char = $key[$i];
 
@@ -127,5 +126,4 @@ class TextHelper
 		{
 		return preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'static::replace_unicode_escape_sequence', $str);
 		}
-
 	}
