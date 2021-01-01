@@ -36,6 +36,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 		{
 		$span = new HTML5Element('span');
 		$span->addClass('input-group-label');
+		$span->add($label);
 		$this->add($span);
 
 		return $this;

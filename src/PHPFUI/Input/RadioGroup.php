@@ -64,14 +64,21 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 		return $this;
 		}
 
+	protected function getEnd() : string
+		{
+		$label = $this->label ? '</label>' : '';
+
+		return parent::getEnd() . $label . $this->getHint();
+		}
+
 	protected function getStart() : string
 		{
 		$output = new \PHPFUI\Container();
 
 		if ($this->label)
 			{
-			$label = new \PHPFUI\HTML5Element('label');
-			$label->add($this->getToolTip($this->label));
+			$label = '<label>';
+			$label .= $this->getToolTip($this->label);
 			$output->add($label);
 			}
 
@@ -80,6 +87,10 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 		foreach ($this->buttons as $button)
 			{
 			$radio = new Radio($this->name, $button['label'], $button['value']);
+			if ($this->required)
+				{
+				$radio->setRequired();
+				}
 			$radio->setChecked($button['value'] == $this->value);
 			$radio->setDisabled($button['disabled']);
 			$rows->add($radio);

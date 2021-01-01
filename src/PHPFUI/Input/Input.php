@@ -35,19 +35,19 @@ abstract class Input extends \PHPFUI\Input
 		switch ($this->type)
 			{
 			case 'email':
-				$this->errorMessages['Must be a valid email address with @ sign and domain'] = true;
+				$this->errorMessages[] = 'Must be a valid email address with @ sign and domain';
 				$this->addAttribute('pattern', $this->type);
 
 				break;
 
 			case 'url':
-				$this->errorMessages['Valid URL required. https://www.google.com for example'] = true;
+				$this->errorMessages[] = 'Valid URL required. https://www.google.com for example';
 				$this->addAttribute('pattern', $this->type);
 
 				break;
 
 			case 'number':
-				$this->errorMessages['Numbers (0-9.) only'] = true;
+				$this->errorMessages[] = 'Numbers (0-9.) only';       ;
 
 				break;
 
@@ -70,7 +70,19 @@ abstract class Input extends \PHPFUI\Input
 	 */
 	public function addErrorMessage(string $error) : Input
 		{
-		$this->errorMessages[$error] = true;
+		$this->errorMessages[] = $error;
+
+		return $this;
+		}
+
+	/**
+	 * Set all error messages
+	 *
+	 * @param array $errors to display on form validation
+	 */
+	public function setErrorMessages(array $errors) : Input
+		{
+		$this->errorMessages = $errors;
 
 		return $this;
 		}
@@ -86,7 +98,7 @@ abstract class Input extends \PHPFUI\Input
 			{
 			$this->error = new \PHPFUI\HTML5Element('label');
 			$this->error->addClass('form-error');
-			$this->error->add(implode('', array_keys($this->errorMessages)));
+			$this->error->add(implode('', $this->errorMessages));
 			$this->error->addAttribute('data-form-error-for', $this->getId());
 			}
 
@@ -179,30 +191,32 @@ abstract class Input extends \PHPFUI\Input
 
 	protected function getEnd() : string
 		{
-		return parent::getEnd() . $this->getHint();
+		$label = $this->label ? '</label>' : '';
+
+		return parent::getEnd() . $label . $this->getHint();
 		}
 
 	protected function getStart() : string
 		{
 		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
-		$label = null;
+		$label = '';
 
 		if ($this->label)
 			{
-			$label = new \PHPFUI\HTML5Element('label');
-			$label->add($this->getToolTip($this->label));
+			$label = '<label>';
+			$label .= $this->getToolTip($this->label);
 			}
 
 		if ($this->required && $label)
 			{
-			$label->add(' <small>Required</small>');
+			$label .= ' <small>Required</small>';
 			}
 
 		if (! $this->error && $this->errorMessages && ! $this->started)
 			{
 			$this->started = true;
 			$error = new \PHPFUI\HTML5Element('span');
-			$error->add(implode('', array_keys($this->errorMessages)));
+			$error->add(implode('', $this->errorMessages));
 			$error->addClass('form-error');
 			$this->addAttribute('aria-errormessage', $error->getId());
 			$this->add($error);

@@ -148,7 +148,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 			{
 			$error = new \PHPFUI\HTML5Element('span');
 			$error->add('<br>');
-			$error->add(implode('', array_keys($this->errorMessages)));
+			$error->add(implode('', $this->errorMessages));
 			$error->addClass('form-error');
 			$this->addAttribute('aria-errormessage', $error->getId());
 			}

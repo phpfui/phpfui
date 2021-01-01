@@ -22,6 +22,7 @@ class IconBase extends \PHPFUI\HTML5Element
 		{
 		$this->link = $link;
 		parent::__construct('i');
+		$this->addClass($icon);
 		}
 
 	/**

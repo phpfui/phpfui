@@ -21,7 +21,7 @@ class Icon extends \PHPFUI\IconBase
 	 */
 	public function __construct(string $icon, string $link = '')
 		{
-		parent::__construct($icon, $link);
+		parent::__construct('', $link);
 		$this->addClass('fa');
 		$this->addClass('fa-2x');
 		$this->addClass('fa-' . $icon);

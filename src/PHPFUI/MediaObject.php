@@ -10,7 +10,7 @@ class MediaObject extends \PHPFUI\HTML5Element
 		$this->addClass('media-object');
 		}
 
-	public function addSection(HTML5Element $content, bool $main = false, string $alignment = '') : MediaObject
+	public function addSection(string $content, bool $main = false, string $alignment = '') : MediaObject
 		{
 		$section = new HTML5Element('div');
 		$section->addClass('media-object-section');
@@ -36,17 +36,7 @@ class MediaObject extends \PHPFUI\HTML5Element
 			$section->addClass($align);
 			}
 
-		if ($content instanceof \PHPFUI\Image)
-			{
-			$thumbnail = new HTML5Element('div');
-			$thumbnail->addClass('thumbnail');
-			$thumbnail->add($content);
-			$section->add($thumbnail);
-			}
-		else
-			{
-			$section->add($content);
-			}
+		$section->add($content);
 
 		$this->add($section);
 
