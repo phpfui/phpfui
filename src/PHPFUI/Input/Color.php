@@ -17,4 +17,10 @@ class Color extends \PHPFUI\Input\Input
 		{
 		parent::__construct('color', $name, $value);
 		}
+
+	public function setRequired(bool $required = true) : Input
+		{
+		return $this;
+		}
+
 	}

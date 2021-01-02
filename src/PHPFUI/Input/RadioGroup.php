@@ -67,9 +67,9 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 
 	protected function getEnd() : string
 		{
-		$label = $this->label ? '</label>' : '';
+		$label = $this->label ? '</fieldset>' : '';
 
-		return parent::getEnd() . $label . $this->getHint();
+		return $label . $this->getHint();
 		}
 
 	protected function getStart() : string
@@ -78,9 +78,10 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 
 		if ($this->label)
 			{
-			$label = '<label>';
-			$label .= $this->getToolTip($this->label);
-			$output->add($label);
+			$output->add('<fieldset>');
+			$legend = new \PHPFUI\HTML5Element('legend');
+			$legend->add($this->getToolTip($this->label));
+			$output->add($legend);
 			}
 
 		$rows = new \PHPFUI\GridX();

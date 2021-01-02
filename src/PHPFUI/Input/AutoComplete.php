@@ -193,6 +193,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 		$js = "function {$id}(id,fieldName,noFreeForm){var noFF=noFreeForm;";
 		$js .= '$("#"+id).devbridgeAutocomplete(' . \PHPFUI\TextHelper::arrayToJS($this->options) . ')}';
 		$this->page->addJavaScript($js);
+		$this->label = null;
 
 		return parent::getStart();
 		}

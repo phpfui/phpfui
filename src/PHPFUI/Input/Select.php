@@ -116,7 +116,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 
 	protected function getStart() : string
 		{
-		$label = $error = null;
+		$label = $error = '';
 		$id = $this->getId();
 
 		if ($this->label)
@@ -147,7 +147,6 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		if ($this->errorMessages)
 			{
 			$error = new \PHPFUI\HTML5Element('span');
-			$error->add('<br>');
 			$error->add(implode('', $this->errorMessages));
 			$error->addClass('form-error');
 			$this->addAttribute('aria-errormessage', $error->getId());
@@ -156,24 +155,27 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		$class = $this->getClass();
 		$attributes = $this->getAttributes();
 
-		$this->add("<select id='{$id}'{$class}{$attributes} name='{$this->getName()}'>");
+		$select = $this->label ? $label : $this;
+		$select->add("<select id='{$id}'{$class}{$attributes} name='{$this->getName()}'>");
 
 		foreach ($this->options as $option)
 			{
 			if (is_object($option))
 				{
-				$this->add($option);
+				$select->add($option);
 				}
 			else
 				{
 				$selected = $option['selected'];
 				$disabled = $option['disabled'];
-				$this->add("<option value='{$option['value']}' {$selected} {$disabled}>{$option['label']}</option>");
+				$select->add("<option value='{$option['value']}' {$selected} {$disabled}>{$option['label']}</option>");
 				}
 			}
 
-		$this->add('</select>');
+		$select->add('</select>');
+		$select->add($error);
+		$this->label = null;
 
-		return $label . $error;
+		return $label;
 		}
 	}

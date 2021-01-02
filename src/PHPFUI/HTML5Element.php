@@ -154,7 +154,7 @@ class HTML5Element extends \PHPFUI\Base
 
 		foreach ($this->attributes as $type => $value)
 			{
-			if (! strlen($value))
+			if (! strlen(trim($value)))
 				{
 				$output .= ' ' . $type;
 				}

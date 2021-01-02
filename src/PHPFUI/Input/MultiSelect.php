@@ -136,6 +136,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 			}
 
 		$fieldSet->add($gridx);
+		$this->label = false;
 
 		return "{$fieldSet}";
 		}
