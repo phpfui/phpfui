@@ -214,13 +214,16 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	/**
 	 * Sets the page response directly
 	 */
-	public function setRawResponse(string $response) : Base
+	public function setRawResponse(string $response, bool $asJSON = true) : Base
 		{
 		if (! $this->isDone())
 			{
 			$this->response = $response;
 			$this->done();
-			header('Content-Type: application/json');
+			if ($asJSON)
+				{
+				header('Content-Type: application/json');
+				}
 			}
 
 		return $this;

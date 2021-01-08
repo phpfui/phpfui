@@ -58,7 +58,7 @@ class Button extends \PHPFUI\HTML5Element
 	 *
 	 * @param bool $disabled defaults to true
 	 */
-	public function setDisabled($disabled = true) : Button
+	public function setDisabled(bool $disabled = true) : Button
 		{
 		if ($disabled)
 			{
