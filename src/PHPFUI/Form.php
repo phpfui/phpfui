@@ -15,9 +15,7 @@ class Form extends \PHPFUI\HTML5Element
 
 	private $started = false;
 
-	private $submitName = '';
-
-	private $submitValue = '';
+	private $submitValue = [];
 
 	/**
 	 * Form needs a Page, as it adds things to the page to handle automatic abide validation
@@ -30,7 +28,7 @@ class Form extends \PHPFUI\HTML5Element
 	 *  						 from the POST, which is set via
 	 *  						 Page::setResponse or setRawResponse
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, Submit $submit = null, string $successFunctionName = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, \PHPFUI\Submit $submit = null, string $successFunctionName = '')
 		{
 		parent::__construct('form');
 		$this->addAttribute('novalidate');
@@ -39,72 +37,106 @@ class Form extends \PHPFUI\HTML5Element
 		$this->setAttribute('method', 'post');
 		$this->addAttribute('accept-charset', 'UTF-8');
 		$this->addAttribute('enctype', 'multipart/form-data');
-
 		if ($submit)
 			{
-			$submitButtonId = $submit->getId();
-			$this->submitName = $submit->getAttribute('name');
-			$this->submitValue = $submit->getAttribute('value');
-			$id = $this->getId();
-			$this->page->addJavaScript("$(document).ready(function(){formInit($('#{$id}'),$('#{$submitButtonId}'),'{$this->submitName}','{$this->submitValue}','{$successFunctionName}');})");
-			$js = <<<JAVASCRIPT
-function formInit(form,submit,submitName,submitValue,successFunction){
-form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',function(e){
-	var color=submit.css('background-color'), text=submit.html();
-	e.preventDefault();
-	var btn=$(this).find('button.submit:focus');
-	if (!btn.length) {/* macHack! Safari does not keep the pressed submit button in focus, so get the first */
-		btn=$(this).find('button.submit');
-		}
-	if(btn[0].name!=submitName||btn[0].value!=submitValue){
-		form.submit();/* submit the form if not the button passed for special handling */
-		return 0;
-		}
-	$.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
-		beforeSend:function(request){
-			submit.html('Saving').css('background-color','black');
-			request.setRequestHeader('Upgrade-Insecure-Requests', '1');
-			request.setRequestHeader('Accept', 'application/json');
-	},
-	success:function(response){
-		var data;
-		try{
-			data=JSON.parse(response);
-		}catch(e){
-			alert('Error: '+response);
-		}
-		submit.html(data.response).css('background-color',data.color);
-		if(successFunction>'')window[successFunction](data);
-		setTimeout(function(){
-			submit.html(text).css('background-color',color);},3000);
-	},
-	error:function (xhr, ajaxOptions, thrownError){
-		submit.html(ajaxOptions+': '+xhr.status+' '+thrownError).css('background-color','red');
-		setTimeout(function(){
-			submit.html(text).css('background-color',color);},3000);
-	},})})}
-JAVASCRIPT;
-			$js = str_replace(["\t", "\n"], '', $js);
-			$page->addJavaScript($js);
+			$this->addSubmitButtonCallback($submit, $successFunctionName);
 			}
 		}
 
-	/**
-	 * Returns true if the submit button passed in the ctor was pressed by the user.
-	 */
-	public function isMyCallback() : bool
+	public function addSubmitButtonCallback(\PHPFUI\Submit $submit, string $successFunctionName) : self
 		{
-		return Session::checkCSRF() && $this->submitName && ! empty($_POST[$this->submitName]) && $_POST[$this->submitName] == $this->submitValue;
+		$submitButtonId = $submit->getId();
+		$name = $submit->getAttribute('name');
+		$value = $submit->getAttribute('value');
+		$this->submitValue[$name] = $value;
+		$id = $this->getId();
+		$this->page->addJavaScript("$(document).ready(function(){formInit($('#{$id}'),$('#{$submitButtonId}'),'{$name}','{$value}','{$successFunctionName}');})");
+		$js = <<<JAVASCRIPT
+function formInit(form,submit,submitName,submitValue,successFunction){
+	form.on("submit", function(ev) {ev.preventDefault();}).on('formvalid.zf.abide',function(e){
+		var color=submit.css('background-color'), text=submit.html();
+		e.preventDefault();
+		var btn=$(this).find('button.submit:focus');
+		if (!btn.length) {/* macHack! Safari does not keep the pressed submit button in focus, so get the first */
+			btn=$(this).find('button.submit');
+			}
+		if(btn[0].name!=submitName||btn[0].value!=submitValue){
+			form.submit();/* submit the form if not the button passed for special handling */
+			return 0;
+			}
+		$.ajax({type:'POST',dataType:'html',data:form.serialize()+'&'+btn[0].name+'='+btn[0].value,
+			beforeSend:function(request){
+				submit.html('Saving').css('background-color','black');
+				request.setRequestHeader('Upgrade-Insecure-Requests', '1');
+				request.setRequestHeader('Accept', 'application/json');
+			},
+		success:function(response){
+			var data;
+			try{
+				data=JSON.parse(response);
+			}catch(e){
+				alert('Error: '+response);
+			}
+			submit.html(data.response).css('background-color',data.color);
+			if(successFunction>'')window[successFunction](data);
+			setTimeout(function(){
+				submit.html(text).css('background-color',color);},3000);
+			},
+		error:function (xhr, ajaxOptions, thrownError){
+			submit.html(ajaxOptions+': '+xhr.status+' '+thrownError).css('background-color','red');
+			setTimeout(function(){
+				submit.html(text).css('background-color',color);},3000);
+			},
+		})
+	})
+}
+JAVASCRIPT;
+		$js = str_replace(["\t", "\n"], '', $js);
+		$this->page->addJavaScript($js);
+
+		return $this;
+		}
+
+	/**
+	 * Returns true if the submit button passed in the ctor or here was pressed by the user.
+	 */
+	public function isMyCallback(\PHPFUI\Submit $submit = null) : bool
+		{
+		list($name, $value) = $this->getSubmitValues($submit);
+		return Session::checkCSRF() && $name && ! empty($_POST[$name]) && $_POST[$name] == $value;
+		}
+
+	private function getSubmitValues(\PHPFUI\Submit $submit = null) : array
+		{
+		if ($submit)
+			{
+			$name = $submit->getAttribute('name');
+			$value = $submit->getAttribute('value');
+			}
+		else
+			{
+			$name = $value = '';
+			foreach ($this->submitValue as $name => $value)
+				{
+				break; // just want first entry in the array
+				}
+			}
+
+		return [$name, $value];
 		}
 
 	/**
 	 * Any clickable element passed to this function will issue an AJAX call to save the form.
+	 *
+	 * @param \PHPFUI\HTML5Element $button to click (generally to do something else on the form, but not the save button)
+	 * @param \PHPFUI\Submit $submit optional button to emulate a click for, defaults to Submit button used in the ctor
 	 */
-	public function saveOnClick(HTML5Element $button) : Form
+	public function saveOnClick(\PHPFUI\HTML5Element $button, \PHPFUI\Submit $submit = null) : Form
 		{
+		list($name, $value) = $this->getSubmitValues($submit);
 		$id = $this->getId();
-		$js = "var form{$id}=$(\"#{$this->getId()}\");";
-		$js .= "$.ajax({type:\"POST\",dataType:\"html\",data:form{$id}.serialize()+\"&{$this->submitName}={$this->submitValue}\"});";
+		$js = "var form{$id}=$(\"#{$id}\");";
+		$js .= "$.ajax({type:\"POST\",dataType:\"html\",data:form{$id}.serialize()+\"&{$name}={$value}\"});";
 
 		if ($this->areYouSure)
 			{
