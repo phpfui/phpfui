@@ -10,14 +10,14 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	{
 	use \PHPFUI\Traits\Walkable;
 
-	private $objects = [];
+	private $items = [];
 
 	/**
 	 * Construct a Container.  Any arguments passed to the constructor will be added to the container.
 	 */
 	public function __construct()
 		{
-		$this->objects = func_get_args();
+		$this->items = func_get_args();
 		}
 
 	public function __toString() : string
@@ -34,7 +34,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (null !== $object)
 			{
-			$this->objects[] = $object;
+			$this->items[] = $object;
 			}
 
 		return $this;
@@ -49,7 +49,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (null !== $object)
 			{
-			array_unshift($this->objects, $object);
+			array_unshift($this->items, $object);
 			}
 
 		return $this;
@@ -60,14 +60,14 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	 */
 	public function count() : int
 		{
-		return count($this->objects);
+		return count($this->items);
 		}
 
 	public function output() : string
 		{
 		$output = '';
 
-		foreach ($this->objects as $object)
+		foreach ($this->items as $object)
 			{
 			$output .= $object;
 			}

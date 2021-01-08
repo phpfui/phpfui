@@ -32,8 +32,7 @@ trait Walkable
 						call_user_func([$item, $method]);
 						}
 					}
-
-				if ($item instanceof \PHPFUI\Base)
+				if ($item instanceof \PHPFUI\Base || $item instanceof \PHPFUI\Container)
 					{
 					$item->walk($method, $argument);
 					}
