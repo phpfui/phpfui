@@ -229,6 +229,20 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 		}
 
 	/**
+	 * Returns the query string with leading ? if set
+	 */
+	public function getQueryString() : string
+		{
+		$parameters = $this->getQueryParameters();
+		if ($parameters)
+			{
+			return '?' . http_build_query($parameters);
+			}
+
+		return '';
+		}
+
+	/**
 	 * Get fully qualified resource path root relative with resource if passed
 	 *
 	 * A $resource starting with / or http is not modified
