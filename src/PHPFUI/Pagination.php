@@ -12,7 +12,11 @@ class Pagination extends \PHPFUI\HTML5Element
 
 	private $of;
 
+	private $onPage;
+
 	private $page;
+
+	private $pageText;
 
 	private $previous = 'Previous';
 
@@ -39,6 +43,10 @@ class Pagination extends \PHPFUI\HTML5Element
 		$this->addAttribute('aria-label', 'Pagination');
 		$this->ul = new UnorderedList();
 		$this->ul->addClass('pagination');
+		$this->next = \PHPFUI\Language::$next;
+		$this->previous = \PHPFUI\Language::$previous;
+		$this->pageText = \PHPFUI\Language::$page;
+		$this->onPage = \PHPFUI\Language::$onPage;
 		}
 
 	/**
@@ -102,7 +110,7 @@ class Pagination extends \PHPFUI\HTML5Element
 				{
 				$item = new ListItem();
 				$item->addClass('pagination-previous');
-				$text = "{$this->previous} <span class='show-for-sr'>page</span>";
+				$text = "{$this->previous} <span class='show-for-sr'>{$this->pageText}</span>";
 
 				if ($this->page <= 0)
 					{
@@ -112,7 +120,7 @@ class Pagination extends \PHPFUI\HTML5Element
 				else
 					{
 					$prevUrl = $this->getUrl($this->page - 1);
-					$item->add("<a href='{$prevUrl}' aria-label='{$this->previous} page'>{$text}</a>");
+					$item->add("<a href='{$prevUrl}' aria-label='{$this->previous} {$this->pageText}'>{$text}</a>");
 					}
 				$this->ul->addItem($item);
 				$this->ul->addItem($this->getPageItem(0));
@@ -160,7 +168,7 @@ class Pagination extends \PHPFUI\HTML5Element
 				$this->ul->addItem($this->getPageItem($this->of - 1));
 				$item = new ListItem();
 				$item->addClass('pagination-next');
-				$text = "{$this->next} <span class='show-for-sr'>page</span>";
+				$text = "{$this->next} <span class='show-for-sr'>{$this->pageText}</span>";
 
 				if ($this->page == $this->of - 1)
 					{
@@ -170,7 +178,7 @@ class Pagination extends \PHPFUI\HTML5Element
 				else
 					{
 					$nextUrl = $this->getUrl($this->page + 1);
-					$item->add("<a href='{$nextUrl}' aria-label='{$this->next} page'>{$text}</a>");
+					$item->add("<a href='{$nextUrl}' aria-label='{$this->next} {$this->pageText}'>{$text}</a>");
 					}
 				$this->ul->addItem($item);
 				}
@@ -207,7 +215,7 @@ class Pagination extends \PHPFUI\HTML5Element
 				$item->addClass('pagination-next');
 				}
 			$url = $this->getUrl($page);
-			$item->add("<a href='{$url}' aria-label='Page {$page}'>{$sign}{$ff}</a>");
+			$item->add("<a href='{$url}' aria-label='{$this->pageText} {$page}'>{$sign}{$ff}</a>");
 			}
 		else
 			{
@@ -229,13 +237,13 @@ class Pagination extends \PHPFUI\HTML5Element
 			{
 			++$page;
 			$item->addClass('current');
-			$item->add("<span class='show-for-sr'>You're on page</span> {$page}");
+			$item->add("<span class='show-for-sr'>{$this->onPage}</span> {$page}");
 			}
 		else
 			{
 			$url = $this->getUrl($page);
 			++$page;
-			$item->add("<a href='{$url}' aria-label='Page {$page}'>{$page}</a>");
+			$item->add("<a href='{$url}' aria-label='{$this->pageText} {$page}'>{$page}</a>");
 			}
 
 		return $item;

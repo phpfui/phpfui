@@ -9,11 +9,15 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	{
 	private $current = 0;
 
-	private $label = '';
-
 	private $max = 100;
 
 	private $min = 0;
+
+	private $meter = null;
+
+	private $labelText = '';
+
+	private $label = null;
 
 	/**
 	 * Construct a ProgressBar.  Defaults to 0%
@@ -21,16 +25,45 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	public function __construct(string $label = '')
 		{
 		parent::__construct('div');
-		$this->label = $label;
+		$this->labelText = $label;
 		$this->addClass('primary');
 		$this->addClass('progress');
 		$this->addAttribute('role', 'progressbar');
 		$this->addAttribute('tabindex', '0');
 		}
 
+	public function getLabel() : \PHPFUI\HTML5Element
+		{
+		if (! $this->label)
+			{
+			$this->label = new \PHPFUI\HTML5Element('span');
+			$this->label->add($this->labelText);
+			$this->label->addClass('progress-meter-text');
+			}
+
+		return $this->label;
+		}
+
+	public function getMeter() : \PHPFUI\HTML5Element
+		{
+		if (! $this->meter)
+			{
+			$this->meter = new \PHPFUI\HTML5Element('div');
+			$this->meter->addClass('progress-meter');
+			$this->meter->setAttribute('style', 'width:' . $this->current . '%');
+			$this->meter->add($this->getLabel());
+			}
+
+		return $this->meter;
+		}
+
 	public function setCurrent(int $current) : ProgressBar
 		{
 		$this->current = $current;
+		if (! $this->labelText)
+			{
+			$this->labelText = $current;
+			}
 
 		return $this;
 		}
@@ -59,22 +92,14 @@ class ProgressBar extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	protected function getBody() : string
-		{
-		return '<div class="progress-meter" style="width:' . $this->current . '%"><p class="progress-meter-text">' . $this->label . '</p></div>';
-		}
-
 	protected function getStart() : string
 		{
-		if ('' === $this->label)
-			{
-			$this->label = "{$this->current}%";
-			}
-
-		$this->setAttribute('aria-valuetext', $this->label);
+		$this->setAttribute('aria-valuetext', $this->labelText);
 		$this->setAttribute('aria-valuenow', $this->current);
 		$this->setAttribute('aria-valuemin', $this->min);
 		$this->setAttribute('aria-valuemax', $this->max);
+
+		$this->add($this->getMeter());
 
 		return parent::getStart();
 		}

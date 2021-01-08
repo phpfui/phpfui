@@ -332,7 +332,7 @@ class Table extends \PHPFUI\HTML5Element
 				$spanCount = count($this->rows[0] ?? []);
 				}
 
-			$placeholder = "<tr><td colspan='{$spanCount}'><span class='center'>Drop Row Here</span></td></tr>";
+			$placeholder = "<tr><td colspan='{$spanCount}'><span class='center'>" . \PHPFUI\Language::$dropRowHere . '</span></td></tr>';
 			$this->page->addJavaScript('sortable(".table-sortable",{items:"tr.row-sortable",forcePlaceholderSize:true,placeholder:"' . $placeholder . '",handle:"td.handle"})');
 			}
 

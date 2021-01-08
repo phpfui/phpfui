@@ -134,7 +134,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 * Output the object (convert to string)
 	 *
 	 */
-	public function output() : string
+	private function output() : string
 		{
 		if ($this->isDone())
 			{

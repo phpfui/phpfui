@@ -134,11 +134,11 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 
 		if ($this->required)
 			{
-			$this->addErrorMessage('Please select.');
+			$this->addErrorMessage(\PHPFUI\Language::$selectError);
 
 			if ($label)
 				{
-				$label->add(' <small>Required</small>');
+				$label->add(\PHPFUI\Language::$required);
 				}
 
 			$this->addAttribute('required');

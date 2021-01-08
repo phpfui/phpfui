@@ -40,19 +40,28 @@ abstract class Input extends \PHPFUI\Input
 		switch ($this->type)
 			{
 			case 'email':
-				$this->errorMessages[] = 'Must be a valid email address with @ sign and domain';
+				if (\PHPFUI\Language::$emailError)
+					{
+					$this->errorMessages[] = \PHPFUI\Language::$emailError;
+					}
 				$this->addAttribute('pattern', $this->type);
 
 				break;
 
 			case 'url':
-				$this->errorMessages[] = 'Valid URL required. https://www.google.com for example';
+				if (\PHPFUI\Language::$urlError)
+					{
+					$this->errorMessages[] = \PHPFUI\Language::$urlError;
+					}
 				$this->addAttribute('pattern', $this->type);
 
 				break;
 
 			case 'number':
-				$this->errorMessages[] = 'Numbers (0-9.) only';
+				if (\PHPFUI\Language::$numberError)
+					{
+					$this->errorMessages[] = \PHPFUI\Language::$numberError;
+					}
 
 				break;
 
@@ -214,7 +223,7 @@ abstract class Input extends \PHPFUI\Input
 
 		if ($this->required && $label)
 			{
-			$label .= ' <small>Required</small>';
+			$label .= \PHPFUI\Language::$required;
 			}
 
 		if (! $this->error && $this->errorMessages && ! $this->started)

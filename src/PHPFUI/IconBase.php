@@ -36,7 +36,7 @@ class IconBase extends \PHPFUI\HTML5Element
 	/**
 	 * Set the link
 	 */
-	public function setLink(string $link) : Icon
+	public function setLink(string $link) : self
 		{
 		$this->link = $link;
 

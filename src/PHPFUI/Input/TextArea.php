@@ -68,7 +68,7 @@ class TextArea extends \PHPFUI\Input\Input
 
 		if ($this->required)
 			{
-			$label->add(' <small>Required</small>');
+			$label->add(\PHPFUI\Language::$required);
 			}
 		$label->addAttribute('for', $this->getId());
 

@@ -22,7 +22,14 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 
 	public function __toString() : string
 		{
-		return $this->output();
+		$output = '';
+
+		foreach ($this->items as $object)
+			{
+			$output .= $object;
+			}
+
+		return $output;
 		}
 
 	/**
@@ -61,18 +68,6 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	public function count() : int
 		{
 		return count($this->items);
-		}
-
-	public function output() : string
-		{
-		$output = '';
-
-		foreach ($this->items as $object)
-			{
-			$output .= $object;
-			}
-
-		return $output;
 		}
 
 	/**

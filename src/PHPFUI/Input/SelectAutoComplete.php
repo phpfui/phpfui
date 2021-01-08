@@ -226,7 +226,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 
 		$this->acFieldId = $text->getId();
 
-		return $text->output() . $this->hidden->output();
+		return $text . $this->hidden;
 		}
 
 	private function escapeData(?string $data) : string
