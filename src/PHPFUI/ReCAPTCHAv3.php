@@ -14,62 +14,60 @@ class ReCAPTCHAv3
 	{
 	private $errors = null;
 
-	private $publicKey;
-
 	private $result = 0.0;
 
 	private $threshold = 0.5;
 
+	private $results = [];
+
 	/**
-	 * @param Page $page since we need to add JS
-	 * @param string $publicKey your public key
+	 * @param Form $form since we need to add things to the form
+	 * @param Button $button button to protect with CAPTCHA
+	 * @param string $siteKey your public key
 	 * @param string $secretKey your private key
+	 * @param array $post the posted data (generally $_POST)
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $publicKey, string $secretKey, callable $callback)
+	public function __construct(\PHPFUI\Form $form, \PHPFUI\Button $button, string $siteKey, string $secretKey, array $post)
 		{
 		// do nothing if keys are not set
-		if (empty($publicKey) && empty($secretKey))
+		if (empty($siteKey) || empty($secretKey))
 			{
 			return;
 			}
-		$callbackKey = 'Google-{__CLASS__}-Response';
-		$this->publicKey = $publicKey;
-		$page->addHeadScript('https://www.google.com/recaptcha/api.js?render=' . $this->publicKey);
-		// action is the page name
-		$action = $page->getBaseURL();
-		$jsCallback = <<<JAVASCRIPT
-alert(token);
-$.ajax({type:'POST',dataType:'html',data:token,
-success:function(response){
-  var data;
-  try{
-    data=JSON.parse(response);
-    alert(response);
-  } catch(e){
-    alert('Error: '+response);
-  }
-		}
-		});
-JAVASCRIPT;
 
-		$js = "grecaptcha.ready(function(){grecaptcha.execute('{$secretKey}',{action:'{$action}'}).then(function(token){ {$jsCallback} });});";
-		$page->addJavaScript($js);
-
-		if (! empty($_POST[$callbackKey]))
+		if ($post)
 			{
-			$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
-			$resp = $recaptcha->verify($_POST[$callbackKey], $_SERVER['REMOTE_ADDR']);
-			$callable($resp);
-
-			if ($resp->isSuccess())
+			\App\Tools\Logger::get()->debug($post);
+			}
+		if (isset($post['g-recaptcha-response']))
+			{
+			$captcha = $post['g-recaptcha-response'];
+			$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secretKey . "&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+			$this->results = json_decode($response, true);
+			if ($this->results['success'])
 				{
-				$this->isValid = true;
-				}
-			else
-				{
-				$this->errors = $resp->getErrorCodes();
+				$this->result = $this->results['score'];
 				}
 			}
+
+		$page = $form->getPage();
+		$page->addHeadScript('https://www.google.com/recaptcha/api.js?render=' . $siteKey);
+		// action is the page name
+		$action = $page->getBaseURL();
+
+		// add attributes to the passed button
+		$formId = $form->getId();
+		$button->addClass('g-recaptcha');
+		$button->addAttribute('data-sitekey', $siteKey);
+		$button->addAttribute('data-callback', 'onClick' . $formId);
+		$button->addAttribute('data-action', 'submit');
+
+		$hidden = new \PHPFUI\Input\Hidden('g-recaptcha-response');
+		$hiddenId = $hidden->getId();
+		$form->add($hidden);
+
+		$js = "function onClick{$formId}(e){e.preventDefault();grecaptcha.ready(function(){grecaptcha.execute('{$siteKey}',{action:'submit'}).then(function(token){alert('execute');document.getElementById('{$hiddenId}').value=token;document.getElementById('{$formId}').submit();})})};";
+		$page->addJavaScript($js);
 		}
 
 	/**
@@ -78,6 +76,14 @@ JAVASCRIPT;
 	public function getErrors() : array
 		{
 		return $this->errors;
+		}
+
+	/**
+	 * Returns results from Google
+	 */
+	public function getResults() : array
+		{
+		return $this->results;
 		}
 
 	/**
@@ -97,4 +103,5 @@ JAVASCRIPT;
 
 		return $this;
 		}
+
 	}
