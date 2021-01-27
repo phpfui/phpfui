@@ -37,6 +37,7 @@ class Form extends \PHPFUI\HTML5Element
 		$this->setAttribute('method', 'post');
 		$this->addAttribute('accept-charset', 'UTF-8');
 		$this->addAttribute('enctype', 'multipart/form-data');
+
 		if ($submit)
 			{
 			$this->addSubmitButtonCallback($submit, $successFunctionName);
@@ -102,27 +103,9 @@ JAVASCRIPT;
 	 */
 	public function isMyCallback(\PHPFUI\Submit $submit = null) : bool
 		{
-		list($name, $value) = $this->getSubmitValues($submit);
+		[$name, $value] = $this->getSubmitValues($submit);
+
 		return Session::checkCSRF() && $name && ! empty($_POST[$name]) && $_POST[$name] == $value;
-		}
-
-	private function getSubmitValues(\PHPFUI\Submit $submit = null) : array
-		{
-		if ($submit)
-			{
-			$name = $submit->getAttribute('name');
-			$value = $submit->getAttribute('value');
-			}
-		else
-			{
-			$name = $value = '';
-			foreach ($this->submitValue as $name => $value)
-				{
-				break; // just want first entry in the array
-				}
-			}
-
-		return [$name, $value];
 		}
 
 	/**
@@ -133,7 +116,7 @@ JAVASCRIPT;
 	 */
 	public function saveOnClick(\PHPFUI\HTML5Element $button, \PHPFUI\Submit $submit = null) : Form
 		{
-		list($name, $value) = $this->getSubmitValues($submit);
+		[$name, $value] = $this->getSubmitValues($submit);
 		$id = $this->getId();
 		$js = "var form{$id}=$(\"#{$id}\");";
 		$js .= "$.ajax({type:\"POST\",dataType:\"html\",data:form{$id}.serialize()+\"&{$name}={$value}\"});";
@@ -180,5 +163,25 @@ JAVASCRIPT;
 			}
 
 		return parent::getStart();
+		}
+
+	private function getSubmitValues(\PHPFUI\Submit $submit = null) : array
+		{
+		if ($submit)
+			{
+			$name = $submit->getAttribute('name');
+			$value = $submit->getAttribute('value');
+			}
+		else
+			{
+			$name = $value = '';
+
+			foreach ($this->submitValue as $name => $value)
+				{
+				break; // just want first entry in the array
+				}
+			}
+
+		return [$name, $value];
 		}
 	}

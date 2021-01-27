@@ -60,6 +60,7 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	public function setCurrent(int $current) : ProgressBar
 		{
 		$this->current = $current;
+
 		if (! $this->labelText)
 			{
 			$this->labelText = $current;

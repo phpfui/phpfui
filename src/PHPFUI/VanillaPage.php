@@ -234,6 +234,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	public function getQueryString() : string
 		{
 		$parameters = $this->getQueryParameters();
+
 		if ($parameters)
 			{
 			return '?' . http_build_query($parameters);

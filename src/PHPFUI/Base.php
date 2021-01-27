@@ -131,6 +131,80 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		}
 
 	/**
+	 * Add an object in front of existing object
+	 */
+	public function prepend($item) : Base
+		{
+		array_unshift($this->items, $item);
+
+		return $this;
+		}
+
+	/**
+	 * Set the debug level, 1 or higher is on
+	 */
+	public static function setDebug(int $level = 0) : void
+		{
+		if ($level)
+			{
+			self::$debug |= $level;
+			}
+		else
+			{
+			self::$debug = 0;
+			}
+		}
+
+	/**
+	 * Sets the page response directly
+	 */
+	public function setRawResponse(string $response, bool $asJSON = true) : Base
+		{
+		if (! $this->isDone())
+			{
+			$this->response = $response;
+			$this->done();
+
+			if ($asJSON)
+				{
+				header('Content-Type: application/json');
+				}
+			}
+
+		return $this;
+		}
+
+	/**
+	 * Set a response in the standard format ('reponse' and 'color' array)
+	 *
+	 * @param string $color used for the save button
+	 */
+	public function setResponse(string $response, string $color = 'lime') : Base
+		{
+		if (! $this->isDone())
+			{
+			$this->setRawResponse(json_encode(['response' => $response, 'color' => $color, ]));
+			}
+
+		return $this;
+		}
+
+	/**
+	 * You must provide a getBody function.  It will be called after start and before end.
+	 */
+	abstract protected function getBody() : string;
+
+	/**
+	 * You must provide a getEnd function.  It will be called last on output.
+	 */
+	abstract protected function getEnd() : string;
+
+	/**
+	 * You must provide a getStart function.  It will be called first on output.
+	 */
+	abstract protected function getStart() : string;
+
+	/**
 	 * Output the object (convert to string)
 	 *
 	 */
@@ -185,77 +259,4 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 
 		return $output;
 		}
-
-	/**
-	 * Add an object in front of existing object
-	 */
-	public function prepend($item) : Base
-		{
-		array_unshift($this->items, $item);
-
-		return $this;
-		}
-
-	/**
-	 * Set the debug level, 1 or higher is on
-	 */
-	public static function setDebug(int $level = 0) : void
-		{
-		if ($level)
-			{
-			self::$debug |= $level;
-			}
-		else
-			{
-			self::$debug = 0;
-			}
-		}
-
-	/**
-	 * Sets the page response directly
-	 */
-	public function setRawResponse(string $response, bool $asJSON = true) : Base
-		{
-		if (! $this->isDone())
-			{
-			$this->response = $response;
-			$this->done();
-			if ($asJSON)
-				{
-				header('Content-Type: application/json');
-				}
-			}
-
-		return $this;
-		}
-
-	/**
-	 * Set a response in the standard format ('reponse' and 'color' array)
-	 *
-	 * @param string $color used for the save button
-	 */
-	public function setResponse(string $response, string $color = 'lime') : Base
-		{
-		if (! $this->isDone())
-			{
-			$this->setRawResponse(json_encode(['response' => $response, 'color' => $color, ]));
-			}
-
-		return $this;
-		}
-
-	/**
-	 * You must provide a getBody function.  It will be called after start and before end.
-	 */
-	abstract protected function getBody() : string;
-
-	/**
-	 * You must provide a getEnd function.  It will be called last on output.
-	 */
-	abstract protected function getEnd() : string;
-
-	/**
-	 * You must provide a getStart function.  It will be called first on output.
-	 */
-	abstract protected function getStart() : string;
 	}

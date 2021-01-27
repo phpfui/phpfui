@@ -72,6 +72,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 	public function testCheckBoxGroup() : void
 		{
 		$checkBoxes = new \PHPFUI\CheckBoxGroup('Check these out');
+
 		for ($i = 1; $i <= 3; ++$i)
 			{
 			$field = 'CB' . $i;

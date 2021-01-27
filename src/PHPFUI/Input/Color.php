@@ -22,5 +22,4 @@ class Color extends \PHPFUI\Input\Input
 		{
 		return $this;
 		}
-
 	}

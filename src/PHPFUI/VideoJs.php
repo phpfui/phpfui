@@ -7,7 +7,6 @@ namespace PHPFUI;
  */
 class VideoJs extends \PHPFUI\HTML5Element
 	{
-
 	private $sources = [];
 
 	public function __construct(\PHPFUI\Interfaces\Page $page)
@@ -29,6 +28,7 @@ class VideoJs extends \PHPFUI\HTML5Element
 		if (! $type)
 			{
 			$index = strrpos($path, '.');
+
 			if ($index)
 				{
 				$type = substr($path, $index + 1);
@@ -56,5 +56,4 @@ class VideoJs extends \PHPFUI\HTML5Element
 
 		return parent::getStart();
 		}
-
 	}
