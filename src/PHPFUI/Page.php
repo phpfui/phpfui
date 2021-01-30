@@ -48,7 +48,7 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 
 	protected function getStart() : string
 		{
-		if (count($this->reveals))
+		if (\count($this->reveals))
 			{
 			foreach ($this->reveals as &$reveal)
 				{

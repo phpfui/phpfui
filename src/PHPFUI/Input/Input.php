@@ -112,7 +112,7 @@ abstract class Input extends \PHPFUI\Input
 			{
 			$this->error = new \PHPFUI\HTML5Element('label');
 			$this->error->addClass('form-error');
-			$this->error->add(implode('', $this->errorMessages));
+			$this->error->add(\implode('', $this->errorMessages));
 			$this->error->addAttribute('data-form-error-for', $this->getId());
 			}
 
@@ -230,7 +230,7 @@ abstract class Input extends \PHPFUI\Input
 			{
 			$this->started = true;
 			$error = new \PHPFUI\HTML5Element('span');
-			$error->add(implode('', $this->errorMessages));
+			$error->add(\implode('', $this->errorMessages));
 			$error->addClass('form-error');
 			$this->addAttribute('aria-errormessage', $error->getId());
 			$this->add($error);

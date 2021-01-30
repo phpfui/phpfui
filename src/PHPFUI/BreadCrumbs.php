@@ -25,7 +25,7 @@ class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function addCrumb(string $text, string $link = '') : BreadCrumbs
 		{
-		$this->links[$text . '|' . count($this)] = $link;
+		$this->links[$text . '|' . \count($this)] = $link;
 
 		return $this;
 		}
@@ -35,7 +35,7 @@ class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->links);
+		return \count($this->links);
 		}
 
 	protected function getStart() : string
@@ -45,12 +45,12 @@ class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 			$this->started = true;
 			$ul = new UnorderedList();
 			$ul->addClass('breadcrumbs');
-			$count = count($this->links);
+			$count = \count($this->links);
 			$i = 1;
 
 			foreach ($this->links as $text => $link)
 				{
-				[$text, $junk] = explode('|', $text);
+				[$text, $junk] = \explode('|', $text);
 
 				if ($count == $i)
 					{

@@ -15,8 +15,8 @@ class Header extends \PHPFUI\HTML5Element
 	 */
 	public function __construct(string $title, int $size = 2)
 		{
-		$size = max(1, $size);
-		$size = min(6, $size);
+		$size = \max(1, $size);
+		$size = \min(6, $size);
 		parent::__construct("h{$size}");
 		$this->add($title);
 		}

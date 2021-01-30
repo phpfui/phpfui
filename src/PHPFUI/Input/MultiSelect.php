@@ -35,14 +35,14 @@ class MultiSelect extends \PHPFUI\Input\Select
 	 */
 	public function select($selections) : Select
 		{
-		if (! is_array($selections))
+		if (! \is_array($selections))
 			{
 			$selections = [$selections];
 			}
 
 		foreach ($this->options as &$values)
 			{
-			$values['selected'] = in_array($values['value'], $selections) ? 'selected' : '';
+			$values['selected'] = \in_array($values['value'], $selections) ? 'selected' : '';
 			}
 
 		return $this;

@@ -30,7 +30,7 @@ class AccordionToFromList extends \PHPFUI\ToFromList
 
 			foreach ($group as $line)
 				{
-				$tabContent .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
+				$tabContent .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, \call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
 				}
 
 			$accordion->addTab($tabText, $tabContent);

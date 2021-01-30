@@ -27,11 +27,11 @@ class VideoJs extends \PHPFUI\HTML5Element
 		{
 		if (! $type)
 			{
-			$index = strrpos($path, '.');
+			$index = \strrpos($path, '.');
 
 			if ($index)
 				{
-				$type = substr($path, $index + 1);
+				$type = \substr($path, $index + 1);
 				}
 			}
 		$this->sources[$path] = $type;

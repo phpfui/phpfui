@@ -29,7 +29,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		foreach ($this->items as $key => $item)
 			{
-			if (is_object($item))
+			if (\is_object($item))
 				{
 				$this->items[$key] = clone $item;
 				}
@@ -77,7 +77,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (null !== $item)
 			{
-			array_unshift($this->items, $item);
+			\array_unshift($this->items, $item);
 			}
 
 		return $this;
@@ -88,7 +88,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 */
 	public function count() : int
 		{
-		return count($this->items);
+		return \count($this->items);
 		}
 
 	/**
@@ -135,7 +135,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 */
 	public function prepend($item) : Base
 		{
-		array_unshift($this->items, $item);
+		\array_unshift($this->items, $item);
 
 		return $this;
 		}
@@ -167,7 +167,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 
 			if ($asJSON)
 				{
-				header('Content-Type: application/json');
+				\header('Content-Type: application/json');
 				}
 			}
 
@@ -183,7 +183,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (! $this->isDone())
 			{
-			$this->setRawResponse(json_encode(['response' => $response, 'color' => $color, ]));
+			$this->setRawResponse(\json_encode(['response' => $response, 'color' => $color, ]));
 			}
 
 		return $this;

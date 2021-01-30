@@ -28,14 +28,14 @@ class DropDownButton extends \PHPFUI\Button
 
 	public function addLink(string $link, string $name) : DropDownButton
 		{
-		$this->maxLength = max($this->maxLength, strlen($name));
+		$this->maxLength = \max($this->maxLength, \strlen($name));
 
 		return $this->addMenuItem(new MenuItem($name, $link));
 		}
 
 	public function addMenuItem(MenuItem $item) : DropDownButton
 		{
-		$this->maxLength = max($this->maxLength, strlen($item->getName()));
+		$this->maxLength = \max($this->maxLength, \strlen($item->getName()));
 		$this->items[$item->getName()] = $item;
 
 		return $this;
@@ -46,7 +46,7 @@ class DropDownButton extends \PHPFUI\Button
 	 */
 	public function count() : int
 		{
-		return count($this->items);
+		return \count($this->items);
 		}
 
 	/**
@@ -68,7 +68,7 @@ class DropDownButton extends \PHPFUI\Button
 		{
 		if ($this->sorted)
 			{
-			ksort($this->items);
+			\ksort($this->items);
 			}
 
 		if (! $this->dropDown)

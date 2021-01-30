@@ -38,7 +38,7 @@ class CheckBoxGroup extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->checkboxes);
+		return \count($this->checkboxes);
 		}
 
 	/**

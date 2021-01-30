@@ -47,7 +47,7 @@ class AccordionMenu extends \PHPFUI\Menu
 
 			if ($this->sorted)
 				{
-				ksort($this->menuItems);
+				\ksort($this->menuItems);
 				}
 
 			foreach ($this->menuItems as $label => $item)
@@ -58,7 +58,7 @@ class AccordionMenu extends \PHPFUI\Menu
 					}
 				else
 					{
-					[$label, $link] = explode($this->separator, $label);
+					[$label, $link] = \explode($this->separator, $label);
 					$menuItem = new MenuItem($label, $link);
 
 					if ($item->getActive())

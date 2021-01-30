@@ -77,9 +77,9 @@ class OffCanvas extends \PHPFUI\Base
 			'top',
 			'bottom', ];
 
-		if (! in_array($position, $positions))
+		if (! \in_array($position, $positions))
 			{
-			throw new \Exception(__METHOD__ . ": {$position} must be one of " . implode(',', $positions));
+			throw new \Exception(__METHOD__ . ": {$position} must be one of " . \implode(',', $positions));
 			}
 
 		$this->offCanvas->addClass("position-{$position}");
@@ -107,9 +107,9 @@ class OffCanvas extends \PHPFUI\Base
 		$transitions = ['over',
 			'push', ];
 
-		if (! in_array($transition, $transitions))
+		if (! \in_array($transition, $transitions))
 			{
-			throw new \Exception(__METHOD__ . ": {$transition} must be one of " . implode(',', $transitions));
+			throw new \Exception(__METHOD__ . ": {$transition} must be one of " . \implode(',', $transitions));
 			}
 
 		$this->offCanvas->setAttribute('data-transition', $transition);
@@ -163,16 +163,16 @@ class OffCanvas extends \PHPFUI\Base
 			'medium',
 			'large', ];
 
-		if (! in_array($size, $sizes))
+		if (! \in_array($size, $sizes))
 			{
-			$attributes = explode('-', $attribute);
+			$attributes = \explode('-', $attribute);
 
 			foreach ($attributes as $index => $name)
 				{
-				$attributes[$index] = ucwords($name);
+				$attributes[$index] = \ucwords($name);
 				}
 
-			throw new \Exception(__CLASS__ . "::set{$attribute}: {$screenSize} must be one of " . implode(',', $sizes));
+			throw new \Exception(__CLASS__ . "::set{$attribute}: {$screenSize} must be one of " . \implode(',', $sizes));
 			}
 
 		$this->offCanvas->setAttribute($attribute . '-' . $screen);

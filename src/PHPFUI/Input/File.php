@@ -41,14 +41,14 @@ class File extends \PHPFUI\Input\Input
 	 */
 	public function setAllowedExtensions(array $extensions) : File
 		{
-		$this->addAttribute('data-allowed-file-extensions', implode(' ', $extensions));
+		$this->addAttribute('data-allowed-file-extensions', \implode(' ', $extensions));
 
 		foreach ($extensions as &$value)
 			{
 			$value = '.' . $value;
 			}
 
-		$this->addAttribute('accept', implode(',', $extensions));
+		$this->addAttribute('accept', \implode(',', $extensions));
 
 		return $this;
 		}

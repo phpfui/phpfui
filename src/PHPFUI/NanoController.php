@@ -66,7 +66,7 @@ class NanoController
 			{
 			$name = $method->name;
 
-			if (0 === strpos($name, 'set'))
+			if (0 === \strpos($name, 'set'))
 				{
 				// call the set function with default parameters
 				$this->{$name}();
@@ -94,7 +94,7 @@ class NanoController
 	 */
 	public function getErrors() : array
 		{
-		return array_keys($this->errors);
+		return \array_keys($this->errors);
 		}
 
 	public function getFiles() : array
@@ -112,9 +112,9 @@ class NanoController
 	 */
 	public function getInvokedPath() : string
 		{
-		$invokedPath = str_replace($this->rootNamespace . '\\', '', $this->invokedPath);
+		$invokedPath = \str_replace($this->rootNamespace . '\\', '', $this->invokedPath);
 
-		return str_replace('\\', '/', $invokedPath);
+		return \str_replace('\\', '/', $invokedPath);
 		}
 
 	public function getPost() : array
@@ -142,13 +142,13 @@ class NanoController
 		 * Lower case letter indicates a method name
 		 * look at previous
 		 */
-		$urlParts = parse_url($this->uri);
-		$parts = explode('/', trim($urlParts['path'], '/'));
-		$class = explode('\\', $this->rootNamespace);
+		$urlParts = \parse_url($this->uri);
+		$parts = \explode('/', \trim($urlParts['path'], '/'));
+		$class = \explode('\\', $this->rootNamespace);
 
 		foreach ($parts as $index => $method)
 			{
-			if (strlen($method) && ctype_lower($method[0]))
+			if (\strlen($method) && \ctype_lower($method[0]))
 				{
 				$classObject = $this->invokeClassMethod($class, $method, $parts, $index);
 
@@ -156,12 +156,12 @@ class NanoController
 					{
 					return $classObject;
 					}
-				else
-					{
+
+
 					return $this->punt($class);
-					}
+
 				}
-			elseif (! ctype_alpha($parts[0]))
+			elseif (! \ctype_alpha($parts[0]))
 				{
 				// not alpha start, need to punt
 				return $this->punt($class);
@@ -231,7 +231,7 @@ class NanoController
 	 */
 	private function invokeClassMethod(array $class, string $method, array $parts = [], int $index = 0) : ?NanoClassInterface
 		{
-		$className = implode('\\', $class);
+		$className = \implode('\\', $class);
 		// if we are at the rool namespace, we are done
 		if ($className == $this->rootNamespace)
 			{
@@ -239,14 +239,14 @@ class NanoController
 			}
 
 		// should have method name and class, try to invoke
-		if (! class_exists($className))
+		if (! \class_exists($className))
 			{
 			$this->errors['Class ' . $className . ' does not exist, returning Missing'] = true;
 
 			return new $this->missingClass($this);
 			}
 
-		if (! method_exists($className, $method))
+		if (! \method_exists($className, $method))
 			{
 			$this->errors['Class Method ' . $className . '::' . $method . ' does not exist'] = true;
 
@@ -257,8 +257,8 @@ class NanoController
 		$this->invokedPath = $className . '\\' . $method;
 		$reflection = new \ReflectionClass($classObject);
 		$reflectionMethod = $reflection->getMethod($method);
-		$args = ($index + 1) < count($parts) ? array_slice($parts, $index + 1) : [];
-		$numberArgs = count($args);
+		$args = ($index + 1) < \count($parts) ? \array_slice($parts, $index + 1) : [];
+		$numberArgs = \count($args);
 		$argNumber = 0;
 
 		foreach ($reflectionMethod->getParameters() as $parameter)
@@ -279,8 +279,8 @@ class NanoController
 					switch ($type->getName())
 						{
 						case 'array': // remaining arguments are put into this parameter and processing stops
-							$arg = array_slice($args, $argNumber);
-							$args = array_slice($args, 0, $argNumber);
+							$arg = \array_slice($args, $argNumber);
+							$args = \array_slice($args, 0, $argNumber);
 							$argNumber = $numberArgs;
 
 							break;
@@ -320,9 +320,9 @@ class NanoController
 	 */
 	private function punt(array $classParts) : NanoClassInterface
 		{
-		while (count($classParts))
+		while (\count($classParts))
 			{
-			$className = implode('\\', $classParts);
+			$className = \implode('\\', $classParts);
 			// if we are at the rool namespace, we are done
 			if ($className == $this->rootNamespace)
 				{
@@ -338,7 +338,7 @@ class NanoController
 					return $classObject;
 					}
 				}
-			array_pop($classParts);
+			\array_pop($classParts);
 			}
 
 		return new $this->missingClass($this);

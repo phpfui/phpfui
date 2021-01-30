@@ -19,21 +19,21 @@ class Debug
 		{
 		$location = '';
 
-		if (strlen($message))
+		if (\strlen($message))
 			{
 			$message .= ': ';
 			}
-		$bt = debug_backtrace();
+		$bt = \debug_backtrace();
 
 		if (isset($bt[0]['file']))
 			{
 			$location = $bt[0]['file'] . ' ' . $bt[0]['line'] . ': ';
 			}
-		$this->message = $location . $message . print_r($variable, true);
+		$this->message = $location . $message . \print_r($variable, true);
 		}
 
 	public function __toString() : string
 		{
-		return '<pre>' . htmlspecialchars($this->message) . '</pre>';
+		return '<pre>' . \htmlspecialchars($this->message) . '</pre>';
 		}
 	}

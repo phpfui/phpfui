@@ -27,21 +27,21 @@ class BlockGrid extends \PHPFUI\HTML5Element
 
 	public function setLarge($number) : BlockGrid
 		{
-		$this->large = (int) $number;
+		$this->large = (int)$number;
 
 		return $this;
 		}
 
 	public function setMedium($number) : BlockGrid
 		{
-		$this->medium = (int) $number;
+		$this->medium = (int)$number;
 
 		return $this;
 		}
 
 	public function setSmall($number) : BlockGrid
 		{
-		$this->small = (int) $number;
+		$this->small = (int)$number;
 
 		return $this;
 		}

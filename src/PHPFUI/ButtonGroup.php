@@ -49,7 +49,7 @@ class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->buttons);
+		return \count($this->buttons);
 		}
 
 	/**
@@ -61,7 +61,7 @@ class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function setButton($index, Button $button) : ButtonGroup
 		{
-		if ($index >= 0 && $index < count($this->buttons))
+		if ($index >= 0 && $index < \count($this->buttons))
 			{
 			$this->buttons[$index] = $button;
 			}

@@ -51,21 +51,21 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 		{
 		parent::__construct();
 		$client = $_SERVER['HTTP_USER_AGENT'] ?? '';
-		$this->android = preg_match('/Android|Silk/i', $client);
-		$this->ios = preg_match('/iPhone|iPad|iPod/i', $client);
-		$this->IEMobile = preg_match('/IEMobile/i', $client);
+		$this->android = \preg_match('/Android|Silk/i', $client);
+		$this->ios = \preg_match('/iPhone|iPad|iPod/i', $client);
+		$this->IEMobile = \preg_match('/IEMobile/i', $client);
 
-		if ($index = strpos($client, ' Firefox/'))
+		if ($index = \strpos($client, ' Firefox/'))
 			{
-			$this->fireFoxVersion = (int)substr($client, $index + 9);
+			$this->fireFoxVersion = (int)\substr($client, $index + 9);
 			}
-		elseif ($index = strpos($client, ' Edge/'))
+		elseif ($index = \strpos($client, ' Edge/'))
 			{
-			$this->edgeVersion = (int)substr($client, $index + 6);
+			$this->edgeVersion = (int)\substr($client, $index + 6);
 			}
 		else
 			{
-			$this->chrome = strpos($client, ' Chrome/') > 0;
+			$this->chrome = \strpos($client, ' Chrome/') > 0;
 			}
 		}
 
@@ -74,7 +74,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function addCSS(string $css) : \PHPFUI\Interfaces\Page
 		{
-		$this->css[sha1($css)] = $css;
+		$this->css[\sha1($css)] = $css;
 
 		return $this;
 		}
@@ -84,7 +84,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function addHeadJavaScript(string $js) : \PHPFUI\Interfaces\Page
 		{
-		$this->headJavascript[sha1($js)] = $js;
+		$this->headJavascript[\sha1($js)] = $js;
 
 		return $this;
 		}
@@ -130,7 +130,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function addJavaScript(string $js) : \PHPFUI\Interfaces\Page
 		{
-		$this->javascript[sha1($js)] = $js;
+		$this->javascript[\sha1($js)] = $js;
 
 		return $this;
 		}
@@ -140,7 +140,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function addJavaScriptFirst(string $js) : \PHPFUI\Interfaces\Page
 		{
-		$this->javascriptFirst[sha1($js)] = $js;
+		$this->javascriptFirst[\sha1($js)] = $js;
 
 		return $this;
 		}
@@ -150,7 +150,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function addJavaScriptLast(string $js) : \PHPFUI\Interfaces\Page
 		{
-		$this->javascriptLast[sha1($js)] = $js;
+		$this->javascriptLast[\sha1($js)] = $js;
 
 		return $this;
 		}
@@ -185,11 +185,11 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	public function getBaseURL() : string
 		{
 		$url = $_SERVER['REQUEST_URI'] ?? '';
-		$queryStart = strpos($url, '?');
+		$queryStart = \strpos($url, '?');
 
 		if ($queryStart)
 			{
-			$url = substr($url, 0, $queryStart);
+			$url = \substr($url, 0, $queryStart);
 			}
 
 		return $url;
@@ -218,11 +218,11 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 		{
 		$parameters = [];
 		$url = $_SERVER['REQUEST_URI'] ?? '';
-		$queryStart = strpos($url, '?');
+		$queryStart = \strpos($url, '?');
 
 		if ($queryStart)
 			{
-			parse_str(substr($url, $queryStart + 1), $parameters);
+			\parse_str(\substr($url, $queryStart + 1), $parameters);
 			}
 
 		return $parameters;
@@ -237,7 +237,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		if ($parameters)
 			{
-			return '?' . http_build_query($parameters);
+			return '?' . \http_build_query($parameters);
 			}
 
 		return '';
@@ -255,7 +255,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			return $this->resourcePath;
 			}
 
-		if ('/' == $resource[0] || 0 === stripos($resource, 'http'))
+		if ('/' == $resource[0] || 0 === \stripos($resource, 'http'))
 			{
 			return $resource;
 			}
@@ -333,21 +333,21 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 		if (empty($url))
 			{
 			$url = $this->getBaseURL();
-			$questionIndex = strpos($url, '?');
+			$questionIndex = \strpos($url, '?');
 
 			if ($questionIndex)
 				{
-				$url = substr($url, 0, $questionIndex);
+				$url = \substr($url, 0, $questionIndex);
 				}
 			}
 
 		if (! empty($parameters))
 			{
-			$pos = strpos($url, '?');
+			$pos = \strpos($url, '?');
 
 			if ($pos > 0)
 				{
-				$url = substr($url, 0, $pos);
+				$url = \substr($url, 0, $pos);
 				}
 
 			if ('?' != $parameters[0])
@@ -356,11 +356,11 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 				}
 			}
 
-		$timeout = (int) $timeout;
+		$timeout = (int)$timeout;
 
 		if (! $timeout)
 			{
-			header("location: {$url}{$parameters}");
+			\header("location: {$url}{$parameters}");
 			$this->done();
 			}
 		else
@@ -451,7 +451,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= "{$js};{$nl}";
 			}
 
-		$this->javascript = array_merge($this->javascript, $this->javascriptLast);
+		$this->javascript = \array_merge($this->javascript, $this->javascriptLast);
 
 		foreach ($this->javascript as $js)
 			{
@@ -506,7 +506,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		if ($this->css)
 			{
-			$output .= '<style>' . implode(';', $this->css) . '</style>' . $nl;
+			$output .= '<style>' . \implode(';', $this->css) . '</style>' . $nl;
 			}
 
 		$output .= '</head><body>';

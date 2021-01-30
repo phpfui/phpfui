@@ -50,14 +50,14 @@ class MonthYear extends \PHPFUI\Base
 		$this->name = $name;
 		$this->label = $label;
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
-		$this->year = date('Y');
-		$this->month = date('n');
-		$array = explode('/', str_replace(['-',
+		$this->year = \date('Y');
+		$this->month = \date('n');
+		$array = \explode('/', \str_replace(['-',
 			'.',
 			'\\',
 			' ', ], '/', $value));
 
-		if (3 == count($array))
+		if (3 == \count($array))
 			{
 			[$this->year, $this->month, $this->day] = $array;
 			}

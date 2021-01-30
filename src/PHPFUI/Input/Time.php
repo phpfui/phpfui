@@ -52,16 +52,16 @@ class Time extends \PHPFUI\Input\Input
 	 */
 	public static function toMilitary(string $timeString) : string
 		{
-		$timeString = str_replace('P', ' P', strtoupper($timeString));
-		$timeString = str_replace('A', ' A', $timeString);
-		$timeString = str_replace(':', ' ', $timeString);
-		$timeString = str_replace('  ', ' ', $timeString);
-		$array = explode(' ', $timeString);
-		$positions = count($array);
+		$timeString = \str_replace('P', ' P', \strtoupper($timeString));
+		$timeString = \str_replace('A', ' A', $timeString);
+		$timeString = \str_replace(':', ' ', $timeString);
+		$timeString = \str_replace('  ', ' ', $timeString);
+		$array = \explode(' ', $timeString);
+		$positions = \count($array);
 		$ampm = 'AM';
 		$hour = $minute = $second = 0;
 
-		if (strpos($timeString, 'A') || strpos($timeString, 'P'))
+		if (\strpos($timeString, 'A') || \strpos($timeString, 'P'))
 			{
 			switch ($positions)
 						{
@@ -81,12 +81,12 @@ class Time extends \PHPFUI\Input\Input
 					break;
 
 				case 1:
-					$hour = (int) $timeString;
+					$hour = (int)$timeString;
 
 					break;
 						}
 
-			if (false !== strpos($ampm, 'P'))
+			if (false !== \strpos($ampm, 'P'))
 				{
 				$hour += 12;
 				}
@@ -106,7 +106,7 @@ class Time extends \PHPFUI\Input\Input
 					break;
 
 				case 1:
-					$hour = (int) $timeString;
+					$hour = (int)$timeString;
 
 					break;
 						}
@@ -116,9 +116,9 @@ class Time extends \PHPFUI\Input\Input
 			{
 			return '';
 			}
-		$hour = sprintf('%02d', $hour);
-		$minute = sprintf('%02d', $minute);
-		$second = sprintf('%02d', $second);
+		$hour = \sprintf('%02d', $hour);
+		$minute = \sprintf('%02d', $minute);
+		$second = \sprintf('%02d', $second);
 
 		return "{$hour}:{$minute}:{$second}";
 		}

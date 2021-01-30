@@ -183,7 +183,7 @@ abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 			$page->addTailScript("froala/js/plugins/{$plugin}.min.js");
 			$css = "froala/css/plugins/{$plugin}.min.css";
 
-			if (file_exists($_SERVER['DOCUMENT_ROOT'] . $page->getResourcePath($css)))
+			if (\file_exists($_SERVER['DOCUMENT_ROOT'] . $page->getResourcePath($css)))
 				{
 				$page->addStyleSheet($css);
 				}

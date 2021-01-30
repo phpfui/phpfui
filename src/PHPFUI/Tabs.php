@@ -36,7 +36,7 @@ class Tabs extends \PHPFUI\Base
 
 	public function count() : int
 		{
-		return count($this->tabs);
+		return \count($this->tabs);
 		}
 
 	/**

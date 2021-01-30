@@ -42,10 +42,10 @@ class Animation
 
 	/**
 	 * Return all valid animation strings
-	*/
+	 */
 	public static function allAnimations() : array
 		{
-		return array_keys(self::$animations);
+		return \array_keys(self::$animations);
 		}
 
 	/**

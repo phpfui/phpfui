@@ -57,9 +57,9 @@ class Input extends \PHPFUI\HTML5Element
 		parent::__construct('input');
 		$this->name = $name;
 		$this->value = $value;
-		$this->type = strtolower($type);
+		$this->type = \strtolower($type);
 
-		if (! in_array($type, self::$validInputs))
+		if (! \in_array($type, self::$validInputs))
 			{
 			throw new \Exception("{$type} is not a valid HTML input type.");
 			}
@@ -152,7 +152,7 @@ class Input extends \PHPFUI\HTML5Element
 
 		if (null !== $this->value)
 			{
-			$this->addAttribute('value', str_replace("'", '&#39;', $this->value));
+			$this->addAttribute('value', \str_replace("'", '&#39;', $this->value));
 			}
 
 		if ($this->placeholder)

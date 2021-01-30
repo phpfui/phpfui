@@ -17,7 +17,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	 */
 	public function __construct()
 		{
-		$this->items = func_get_args();
+		$this->items = \func_get_args();
 		}
 
 	public function __toString() : string
@@ -56,7 +56,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (null !== $object)
 			{
-			array_unshift($this->items, $object);
+			\array_unshift($this->items, $object);
 			}
 
 		return $this;
@@ -67,7 +67,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	 */
 	public function count() : int
 		{
-		return count($this->items);
+		return \count($this->items);
 		}
 
 	/**

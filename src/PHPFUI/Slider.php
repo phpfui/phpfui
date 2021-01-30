@@ -61,9 +61,9 @@ class Slider extends \PHPFUI\HTML5Element
 		$functions = ['log',
 			'pow', ];
 
-		if (! in_array($function, $functions))
+		if (! \in_array($function, $functions))
 			{
-			throw new Exception('ERROR: ' . __METHOD__ . ' $function must be ' . implode(' or ', $functions));
+			throw new Exception('ERROR: ' . __METHOD__ . ' $function must be ' . \implode(' or ', $functions));
 			}
 
 		$this->setAttribute('data-position-value-function', $function);

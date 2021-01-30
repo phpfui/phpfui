@@ -19,17 +19,17 @@ trait Walkable
 		{
 		foreach ($this->items as $item)
 			{
-			if (is_object($item))
+			if (\is_object($item))
 				{
-				if (method_exists($item, $method))
+				if (\method_exists($item, $method))
 					{
 					if (null !== $argument)
 						{
-						call_user_func([$item, $method], $argument);
+						\call_user_func([$item, $method], $argument);
 						}
 					else
 						{
-						call_user_func([$item, $method]);
+						\call_user_func([$item, $method]);
 						}
 					}
 

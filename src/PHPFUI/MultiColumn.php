@@ -43,7 +43,7 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 		{
 		parent::__construct();
 		$this->setMargin();
-		$this->objects = func_get_args();
+		$this->objects = \func_get_args();
 		$this->addClass('align-middle');
 		}
 
@@ -65,7 +65,7 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->objects);
+		return \count($this->objects);
 		}
 
 	/**
@@ -88,7 +88,7 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 			{
 			$this->started = true;
 
-			if ($number = count($this->objects))
+			if ($number = \count($this->objects))
 				{
 				$sizes = [0, 12, 6, 4, 3, 2, 2, ];
 

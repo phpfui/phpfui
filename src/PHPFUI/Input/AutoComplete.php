@@ -58,18 +58,18 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 * @param ?string $value initial value, optional
 	 *
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, callable $callback, string $type, string $name, string $label = null, ?string $value = null)
+	public function __construct(\PHPFUI\Interfaces\Page $page, callable $callback, string $type, string $name, ?string $label = null, ?string $value = null)
 		{
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
 		$name .= 'Text';
 		parent::__construct($type, $name, $label, $value);
 		$this->hidden->setId($this->getId() . 'hidden');
 		$this->add($this->hidden);
-		$this->className = basename(__CLASS__);
+		$this->className = \basename(__CLASS__);
 
-		if (false !== ($pos = strrpos($this->className, '\\')))
+		if (false !== ($pos = \strrpos($this->className, '\\')))
 			{
-			$this->className = substr($this->className, $pos + 1);
+			$this->className = \substr($this->className, $pos + 1);
 			}
 
 		$this->page = $page;
@@ -79,13 +79,13 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 		if (isset($_POST[$this->className]) && \PHPFUI\Session::checkCSRF() && $_POST['fieldName'] == $name)
 			{
-			$returnValue = json_encode(call_user_func($this->callback, $_POST));
+			$returnValue = \json_encode(\call_user_func($this->callback, $_POST));
 
 			if ($returnValue)
 				{
-				$returnValue = str_replace('&amp;', '&', $returnValue); // need both to remove pesky &amp;!
-        $returnValue = \PHPFUI\TextHelper::unhtmlentities($returnValue);  // need this too!
-        $this->page->setRawResponse($returnValue);
+				$returnValue = \str_replace('&amp;', '&', $returnValue); // need both to remove pesky &amp;!
+		$returnValue = \PHPFUI\TextHelper::unhtmlentities($returnValue);  // need this too!
+		$this->page->setRawResponse($returnValue);
 				}
 			}
 		$csrf = \PHPFUI\Session::csrf("'");
@@ -177,7 +177,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	protected function getEnd() : string
 		{
 		$id = $this->getId();
-		$noFreeForm = (int) ($this->noFreeForm);
+		$noFreeForm = (int)($this->noFreeForm);
 		$this->page->addJavaScript("{$id}('{$id}','{$this->name}',{$noFreeForm})");
 
 		return '';

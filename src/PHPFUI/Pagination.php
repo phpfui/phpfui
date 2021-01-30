@@ -193,7 +193,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	 */
 	protected function getUrl(int $page) : string
 		{
-		return str_replace('PAGE', $page, $this->baseUrl);
+		return \str_replace('PAGE', $page, $this->baseUrl);
 		}
 
 	private function getEllipsisItem(int $ff) : ListItem
@@ -202,7 +202,7 @@ class Pagination extends \PHPFUI\HTML5Element
 
 		if ($ff && $this->page + $ff > 0 && $this->page + $ff < $this->of)
 			{
-			$page = min(max(0, $this->page + $ff), $this->of - 1);
+			$page = \min(\max(0, $this->page + $ff), $this->of - 1);
 			$sign = '';
 
 			if ($ff < 0)

@@ -38,9 +38,9 @@ class DropDown extends \PHPFUI\Base
 			'center',
 			'right', ];
 
-		if (! in_array($alignment, $validAlignments))
+		if (! \in_array($alignment, $validAlignments))
 			{
-			throw new \Exception(__METHOD__ . ': $alignment must be one of (' . implode(',', $validAlignments) . ')');
+			throw new \Exception(__METHOD__ . ': $alignment must be one of (' . \implode(',', $validAlignments) . ')');
 			}
 
 		$this->dropDown->addAttribute('data-alignment', $alignment);
@@ -72,9 +72,9 @@ class DropDown extends \PHPFUI\Base
 			'left',
 			'right', ];
 
-		if (! in_array($position, $validPositions))
+		if (! \in_array($position, $validPositions))
 			{
-			throw new \Exception(__METHOD__ . ': $position must be one of (' . implode(',', $validPositions) . ')');
+			throw new \Exception(__METHOD__ . ': $position must be one of (' . \implode(',', $validPositions) . ')');
 			}
 
 		$this->dropDown->addAttribute('data-position', $position);

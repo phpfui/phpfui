@@ -18,7 +18,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 		parent::__construct('text', $name, null, $value);
 
 		$page->addJavaScript('function checkRadioTable(id,foregroundColor,backgroundColor){var cb=$("#"+id);' .
-        'cb.parent().prop("style","background-color:"+backgroundColor+";color:"+foregroundColor+";");};');
+		'cb.parent().prop("style","background-color:"+backgroundColor+";color:"+foregroundColor+";");};');
 		}
 
 	/**
@@ -34,7 +34,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 
 	public function addClassesToTable(Table $table) : RadioTableCell
 		{
-		foreach (array_keys($this->buttons) as $name)
+		foreach (\array_keys($this->buttons) as $name)
 			{
 			$table->addColumnAttribute($name, ['class' => 'RadioTableCell']);
 			}
@@ -47,7 +47,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->buttons);
+		return \count($this->buttons);
 		}
 
 	/**

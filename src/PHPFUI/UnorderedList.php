@@ -12,7 +12,7 @@ class UnorderedList extends \PHPFUI\HTMLList
 	/**
 	 * @param Page $page if supplied, then the unordered list will allow drag and drop
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page = null)
+	public function __construct(?\PHPFUI\Interfaces\Page $page = null)
 		{
 		parent::__construct('ul');
 		$this->sortable = null !== $page;

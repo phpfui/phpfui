@@ -31,7 +31,7 @@ class TimedCellUpdate extends \PHPFUI\Base
 		parent::__construct();
 		$this->callbackId = $callbackId;
 		$this->callback = $callback;
-		$cbn = str_replace('\\', '', __CLASS__ . (++self::$callbackNumber));
+		$cbn = \str_replace('\\', '', __CLASS__ . (++self::$callbackNumber));
 		$timeoutSeconds *= 1000;
 		$csrf = Session::csrf();
 		$csrfField = Session::csrfField();
@@ -47,7 +47,7 @@ class TimedCellUpdate extends \PHPFUI\Base
 
 	protected function getBody() : string
 		{
-		return call_user_func($this->callback, $this->callbackId);
+		return \call_user_func($this->callback, $this->callbackId);
 		}
 
 	protected function getEnd() : string

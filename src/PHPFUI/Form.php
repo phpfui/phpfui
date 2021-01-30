@@ -31,7 +31,7 @@ class Form extends \PHPFUI\HTML5Element
 	 *  						 from the POST, which is set via
 	 *  						 Page::setResponse or setRawResponse
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, \PHPFUI\Submit $submit = null, string $successFunctionName = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, ?\PHPFUI\Submit $submit = null, string $successFunctionName = '')
 		{
 		parent::__construct('form');
 		$this->addAttribute('novalidate');
@@ -95,7 +95,7 @@ function formInit(form,submit,submitName,submitValue,successFunction){
 	})
 }
 JAVASCRIPT;
-		$js = str_replace(["\t", "\n"], '', $js);
+		$js = \str_replace(["\t", "\n"], '', $js);
 		$this->page->addJavaScript($js);
 
 		return $this;
@@ -104,7 +104,7 @@ JAVASCRIPT;
 	/**
 	 * Returns true if the submit button passed in the ctor or here was pressed by the user.
 	 */
-	public function isMyCallback(\PHPFUI\Submit $submit = null) : bool
+	public function isMyCallback(?\PHPFUI\Submit $submit = null) : bool
 		{
 		[$name, $value] = $this->getSubmitValues($submit);
 
@@ -117,7 +117,7 @@ JAVASCRIPT;
 	 * @param \PHPFUI\HTML5Element $button to click (generally to do something else on the form, but not the save button)
 	 * @param \PHPFUI\Submit $submit optional button to emulate a click for, defaults to Submit button used in the ctor
 	 */
-	public function saveOnClick(\PHPFUI\HTML5Element $button, \PHPFUI\Submit $submit = null) : Form
+	public function saveOnClick(\PHPFUI\HTML5Element $button, ?\PHPFUI\Submit $submit = null) : Form
 		{
 		[$name, $value] = $this->getSubmitValues($submit);
 		$id = $this->getId();
@@ -159,7 +159,7 @@ JAVASCRIPT;
 				$this->page->addJavaScript('$("#' . $id . '").on("submit",function(){$("#' . $id . '").trigger("reinitialize.areYouSure")}).areYouSure({"addRemoveFieldsMarksDirty":true})');
 				}
 
-			if ('get' != strtolower($this->getAttribute('method')))
+			if ('get' != \strtolower($this->getAttribute('method')))
 				{
 				$this->add(new \PHPFUI\Input\Hidden(Session::csrfField(), Session::csrf()));
 				}
@@ -168,7 +168,7 @@ JAVASCRIPT;
 		return parent::getStart();
 		}
 
-	private function getSubmitValues(\PHPFUI\Submit $submit = null) : array
+	private function getSubmitValues(?\PHPFUI\Submit $submit = null) : array
 		{
 		if ($submit)
 			{

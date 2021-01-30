@@ -26,9 +26,9 @@ class Embed extends \PHPFUI\HTML5Element
 			'square',
 			'widescreen', ];
 
-		if (! in_array($ratio, $validRatios))
+		if (! \in_array($ratio, $validRatios))
 			{
-			throw new \Exception(__METHOD__ . ': $ratio must be one of (' . implode(',', $validRatios) . ')');
+			throw new \Exception(__METHOD__ . ': $ratio must be one of (' . \implode(',', $validRatios) . ')');
 			}
 
 		$this->addClass($ratio);

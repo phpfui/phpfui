@@ -43,7 +43,7 @@ class Link extends \PHPFUI\HTML5Element
 			$replacements[] = $string . '<wbr>';
 			}
 
-		$text = str_replace($targets, $replacements, $text);
+		$text = \str_replace($targets, $replacements, $text);
 
 		if ('#' == $link || ! $validate)
 			{
@@ -51,12 +51,12 @@ class Link extends \PHPFUI\HTML5Element
 			}
 		elseif ($validate)
 			{
-			if (false === strpos($link, '//'))
+			if (false === \strpos($link, '//'))
 				{
 				$link = "https://{$link}";
 				}
 
-			if (filter_var($link, FILTER_VALIDATE_URL))
+			if (\filter_var($link, FILTER_VALIDATE_URL))
 				{
 				$this->addAttribute('href', $link);
 				$this->addAttribute('rel', 'noopener noreferrer');
@@ -83,10 +83,10 @@ class Link extends \PHPFUI\HTML5Element
 
 		if (! empty($subject))
 			{
-			$subject = '?subject=' . urlencode($subject);
+			$subject = '?subject=' . \urlencode($subject);
 			}
 
-		$email = filter_var($email, FILTER_VALIDATE_EMAIL) ? "mailto:{$email}{$subject}" : '#';
+		$email = \filter_var($email, FILTER_VALIDATE_EMAIL) ? "mailto:{$email}{$subject}" : '#';
 
 		return new Link($email, $text, false);
 		}

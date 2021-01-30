@@ -49,7 +49,7 @@ class ToFromList extends \PHPFUI\Base
 	 *
 	 * ```
 	 * function (string $fieldName, string $index, mixed $userData, string $type) : string
-   * ```
+	 * ```
 	 *
 	 * @param Page $page needed for JavaScript
 	 * @param string $name identifying this ToFromList from others on the same page.  Needs to be
@@ -95,17 +95,17 @@ class ToFromList extends \PHPFUI\Base
 			$csrf = Session::csrf();
 			$csrfField = Session::csrfField();
 			$js = 'function allowDropToFromList(e){if(e.preventDefault)e.preventDefault();e.dataTransfer.effectAllowed="move";return true;}' .
-        'function moveToFromList(e,parentid){$("#"+e).remove();' .
-        "var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:e,DropParentId:'#'+parentid};" .
-        '$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}})};' .
-        'function dragStartToFromList(e){e.dataTransfer.setData("text","#"+e.target.getAttribute("id"));return true;}' .
-        'function dropToFromList(e,fieldName){e.preventDefault();var draggedid=e.dataTransfer.getData("text");' .
-        // could drop on any element in container, keep going up till we have the container
-        'var node=e.target;var parentid;' .
-        "while(node&&((parentid=node.getAttribute('id'))==null||!(parentid==fieldName+'_in'||parentid==fieldName+'_out'))){node=node.parentNode;}" .
-        "if(!node)return false;var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:draggedid,DropParentId:'#'+parentid};" .
-        '$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}});' .
-        '$(draggedid).remove();e.stopPropagation();return true;}';
+		'function moveToFromList(e,parentid){$("#"+e).remove();' .
+		"var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:e,DropParentId:'#'+parentid};" .
+		'$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}})};' .
+		'function dragStartToFromList(e){e.dataTransfer.setData("text","#"+e.target.getAttribute("id"));return true;}' .
+		'function dropToFromList(e,fieldName){e.preventDefault();var draggedid=e.dataTransfer.getData("text");' .
+		// could drop on any element in container, keep going up till we have the container
+		'var node=e.target;var parentid;' .
+		"while(node&&((parentid=node.getAttribute('id'))==null||!(parentid==fieldName+'_in'||parentid==fieldName+'_out'))){node=node.parentNode;}" .
+		"if(!node)return false;var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:draggedid,DropParentId:'#'+parentid};" .
+		'$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}});' .
+		'$(draggedid).remove();e.stopPropagation();return true;}';
 			$this->page->addJavaScript($js);
 			}
 
@@ -162,7 +162,7 @@ class ToFromList extends \PHPFUI\Base
 
 		foreach ($group as $line)
 			{
-			$output .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
+			$output .= $this->makeDiv($this->name . '_' . $line[$this->callbackIndex], $type, \call_user_func($this->callback, $this->name, $this->callbackIndex, $line[$this->callbackIndex], $type));
 			}
 
 		$output .= '</div>';
@@ -226,15 +226,15 @@ class ToFromList extends \PHPFUI\Base
 					{
 					case 'getDragDropItem':
 						{
-						$dragDropId = trim($_GET['DraggedId'], '#');
-						[$name, $id] = explode('_', $dragDropId);
+						$dragDropId = \trim($_GET['DraggedId'], '#');
+						[$name, $id] = \explode('_', $dragDropId);
 
 						if ($name == $this->name)
 							{ // it is us, process
 
 							/** @noinspection PhpUnusedLocalVariableInspection */
-							[$junk, $type] = explode('_', $_GET['DropParentId']);
-							$html = call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
+							[$junk, $type] = \explode('_', $_GET['DropParentId']);
+							$html = \call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
 
 							if ($html)
 								{

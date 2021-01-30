@@ -77,7 +77,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 	 */
 	public function count() : int
 		{
-		return count($this->slides);
+		return \count($this->slides);
 		}
 
 	protected function getBody() : string

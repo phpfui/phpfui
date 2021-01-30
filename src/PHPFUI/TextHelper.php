@@ -21,7 +21,7 @@ class TextHelper
 	 */
 	public static function arrayToJS(array $array, string $stringQuote = '', string $newLine = '') : string
 		{
-		$normalArray = is_numeric(key($array));
+		$normalArray = \is_numeric(\key($array));
 		$js = $normalArray ? '[' : '{';
 		$comma = '';
 
@@ -31,7 +31,7 @@ class TextHelper
 
 			if (! $normalArray)
 				{ // use object notation
-				if (! ctype_alpha($key[0]))
+				if (! \ctype_alpha($key[0]))
 					{
 					$key = "{$stringQuote}{$key}{$stringQuote}";
 					}
@@ -39,11 +39,11 @@ class TextHelper
 				}
 			$comma = ',' . $newLine;
 
-			switch (gettype($value))
+			switch (\gettype($value))
 				{
 				/** @noinspection PhpMissingBreakStatementInspection */
 				case 'object':
-					$value = json_decode(json_encode($value), true);
+					$value = \json_decode(\json_encode($value), true);
 					// Intentionally fall through
 				case 'array':
 					$js .= self::arrayToJS($value, $stringQuote);
@@ -79,14 +79,14 @@ class TextHelper
 	 */
 	public static function capitalSplit(string $key) : string
 		{
-		$len = strlen($key);
+		$len = \strlen($key);
 		$space = $output = '';
 
 		for ($i = 0; $i < $len; ++$i)
 			{
 			$char = $key[$i];
 
-			if (ctype_upper($char))
+			if (\ctype_upper($char))
 				{
 				$output .= $space;
 				$space = ' ';
@@ -104,12 +104,12 @@ class TextHelper
 	 */
 	public static function htmlentities(?string $string) : string
 		{
-		return htmlentities($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
+		return \htmlentities($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
 		}
 
 	public static function replace_unicode_escape_sequence(array $match) : string
 		{
-		return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
+		return \mb_convert_encoding(\pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
 		}
 
 	/**
@@ -119,11 +119,11 @@ class TextHelper
 	 */
 	public static function unhtmlentities(?string $string) : string
 		{
-		return htmlspecialchars_decode($string, ENT_QUOTES | ENT_HTML5);
+		return \htmlspecialchars_decode($string, ENT_QUOTES | ENT_HTML5);
 		}
 
 	public static function unicode_decode(string $str) : string
 		{
-		return preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'static::replace_unicode_escape_sequence', $str);
+		return \preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'static::replace_unicode_escape_sequence', $str);
 		}
 	}

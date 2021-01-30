@@ -43,8 +43,8 @@ class ReCAPTCHAv3
 		if (isset($post['g-recaptcha-response']))
 			{
 			$captcha = $post['g-recaptcha-response'];
-			$response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $captcha . '&remoteip=' . $_SERVER['REMOTE_ADDR']);
-			$this->results = json_decode($response, true);
+			$response = \file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $captcha . '&remoteip=' . $_SERVER['REMOTE_ADDR']);
+			$this->results = \json_decode($response, true);
 
 			if ($this->results['success'])
 				{

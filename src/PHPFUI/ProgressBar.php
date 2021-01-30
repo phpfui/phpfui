@@ -88,7 +88,7 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	 */
 	public function setPercent(int $width) : ProgressBar
 		{
-		$this->current = max($this->min, min($this->max, $width));
+		$this->current = \max($this->min, \min($this->max, $width));
 
 		return $this;
 		}

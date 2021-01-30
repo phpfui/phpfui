@@ -49,7 +49,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	 *                     this option
 	 * @param bool $disabled default false
 	 */
-	public function addOption(string $label, string $value = null, bool $selected = false, bool $disabled = false) : Select
+	public function addOption(string $label, ?string $value = null, bool $selected = false, bool $disabled = false) : Select
 		{
 		$label = '' === $label || null === $label ? '&nbsp;' : \PHPFUI\TextHelper::htmlentities($label);
 		$this->options[] = ['label' => $label,
@@ -65,7 +65,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->options);
+		return \count($this->options);
 		}
 
 	/**
@@ -147,7 +147,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		if ($this->errorMessages)
 			{
 			$error = new \PHPFUI\HTML5Element('span');
-			$error->add(implode('', $this->errorMessages));
+			$error->add(\implode('', $this->errorMessages));
 			$error->addClass('form-error');
 			$this->addAttribute('aria-errormessage', $error->getId());
 			}
@@ -160,7 +160,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 
 		foreach ($this->options as $option)
 			{
-			if (is_object($option))
+			if (\is_object($option))
 				{
 				$select->add($option);
 				}

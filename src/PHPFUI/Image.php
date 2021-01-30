@@ -13,7 +13,7 @@ class Image extends \PHPFUI\HTML5Element
 
 	public function base64EncodeFile(string $filePath) : Image
 		{
-		$binaryImage = @file_get_contents($filePath);
+		$binaryImage = @\file_get_contents($filePath);
 
 		if (! $binaryImage)
 			{
@@ -25,7 +25,7 @@ class Image extends \PHPFUI\HTML5Element
 
 	public function base64EncodeString(string $binaryImage) : Image
 		{
-		$data = base64_encode($binaryImage);
+		$data = \base64_encode($binaryImage);
 		$this->setAttribute('src', "data:image/jpeg;base64,{$data}");
 
 		return $this;

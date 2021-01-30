@@ -528,7 +528,7 @@ class KitchenSink
 		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
 		$table->setHeaders($headers);
 		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
-		$table->setFooters(array_combine($headers, $headers));
+		$table->setFooters(\array_combine($headers, $headers));
 
 		for ($i = 0; $i < 10; ++$i)
 			{
@@ -536,7 +536,7 @@ class KitchenSink
 
 			foreach ($headers as $field)
 				{
-				$numbers[$field] = rand();
+				$numbers[$field] = \rand();
 				}
 
 			$numbers['Edit'] = new Input\Text('edit[]');
@@ -548,36 +548,36 @@ class KitchenSink
 		}
 
   public function baseTabs() : Container
-    {
-    $container = new Container();
+	{
+	$container = new Container();
 
-    $tabs = new Tabs();
-    $tabs->addTab('One', 'Check me out! I\'m a super cool Tab panel with text content!');
-    $image = new Image('/images/rectangle-1.jpg');
-    $tabs->addTab('Two', $image);
-    $tabs->addTab('Three', '', true);
-    $tabs->addTab('Four', $image);
-    $container->add($tabs);
+	$tabs = new Tabs();
+	$tabs->addTab('One', 'Check me out! I\'m a super cool Tab panel with text content!');
+	$image = new Image('/images/rectangle-1.jpg');
+	$tabs->addTab('Two', $image);
+	$tabs->addTab('Three', '', true);
+	$tabs->addTab('Four', $image);
+	$container->add($tabs);
 
-    $grid = new GridX();
-    $grid->setMargin();
-    $cell = new Cell(3, 2, 1);
-    $vtabs = new Tabs(true);
-    $vtabs->addTab('One', 'Check me out! I\'m VERTICAL!');
-    $vtabs->addTab('Two', $image);
-    $vtabs->addTab('Three', '', true);
-    $vtabs->addTab('Four', $image);
-    $cell->add($vtabs->getTabs());
-    $grid->add($cell);
-    $content = new Cell();
-    $content->add($vtabs->getContent());
-    $grid->add($content);
-    $gridContainer = new GridContainer();
-    $gridContainer->add($grid);
-    $container->add($gridContainer);
+	$grid = new GridX();
+	$grid->setMargin();
+	$cell = new Cell(3, 2, 1);
+	$vtabs = new Tabs(true);
+	$vtabs->addTab('One', 'Check me out! I\'m VERTICAL!');
+	$vtabs->addTab('Two', $image);
+	$vtabs->addTab('Three', '', true);
+	$vtabs->addTab('Four', $image);
+	$cell->add($vtabs->getTabs());
+	$grid->add($cell);
+	$content = new Cell();
+	$content->add($vtabs->getContent());
+	$grid->add($content);
+	$gridContainer = new GridContainer();
+	$gridContainer->add($grid);
+	$container->add($gridContainer);
 
-    return $container;
-    }
+	return $container;
+	}
 
 	public function baseThumbnail() : Container
 		{
@@ -701,7 +701,7 @@ class KitchenSink
 		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
 		$table->setHeaders($headers);
 		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
-		$table->setFooters(array_combine($headers, $headers));
+		$table->setFooters(\array_combine($headers, $headers));
 
 		for ($i = 0; $i < 10; ++$i)
 			{
@@ -709,7 +709,7 @@ class KitchenSink
 
 			foreach ($headers as $field)
 				{
-				$numbers[$field] = rand();
+				$numbers[$field] = \rand();
 				}
 
 			$numbers['Edit'] = new Input\Text('edit[]');
@@ -766,9 +766,9 @@ class KitchenSink
 		{
 		$index = 'id';
 		$callback = [$this, 'getToFromListName'];
-		$split = mt_rand(0, count($this->lines) - 1);
-		$notInGroup = array_slice($this->lines, $split);
-		$inGroup = array_slice($this->lines, 0, $split);
+		$split = \mt_rand(0, \count($this->lines) - 1);
+		$notInGroup = \array_slice($this->lines, $split);
+		$inGroup = \array_slice($this->lines, 0, $split);
 		$toFromList = new \PHPFUI\ToFromList($this->page, 'groups', $inGroup, $notInGroup, $index, $callback);
 		$toFromList->setInName('In Group');
 		$toFromList->setOutName('Out Group');
@@ -777,22 +777,22 @@ class KitchenSink
 		}
 
 	/**
-		 * Get all the example functions
-		 *
-		 * return array of method names indexed by English name
-		 */
+	 * Get all the example functions
+	 *
+	 * return array of method names indexed by English name
+	 */
 	public function getExamples(string $prefix = 'base') : array
 		{
 		$examples = [];
 
-		$prefixLen = strlen($prefix);
-		$methods = get_class_methods(self::class);
+		$prefixLen = \strlen($prefix);
+		$methods = \get_class_methods(self::class);
 
 		foreach ($methods as $methodName)
 			{
-			if (0 === strpos($methodName, $prefix))
+			if (0 === \strpos($methodName, $prefix))
 				{
-				$name = substr($methodName, $prefixLen);
+				$name = \substr($methodName, $prefixLen);
 				$examples[$name] = $methodName;
 				}
 			}
@@ -814,7 +814,7 @@ class KitchenSink
 
 		$examples = $this->getExamples($type);
 
-		ksort($examples);
+		\ksort($examples);
 
 		$hr = '';
 		$realHr = new HTML5Element('hr');
@@ -838,14 +838,14 @@ class KitchenSink
 
 	public function timedCellUpdateCallback(string $id) : string
 		{
-		return gmdate('H:i:s') . ' ' . $id;
+		return \gmdate('H:i:s') . ' ' . $id;
 		}
 
 	private function generateMenu(string $name, int $count, bool $active = false) : Menu
 		{
 		$names = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 		$menu = new Menu();
-		$count = min($count, 10);
+		$count = \min($count, 10);
 
 		for ($i = 0; $i < $count; ++$i)
 			{

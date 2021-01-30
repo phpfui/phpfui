@@ -16,7 +16,6 @@ namespace PHPFUI;
  */
 class Table extends \PHPFUI\HTML5Element
 	{
-	use \PHPFUI\Traits\Page;
 
 	protected $alwaysOutput = false;
 
@@ -153,7 +152,7 @@ class Table extends \PHPFUI\HTML5Element
 	 */
 	public function count() : int
 		{
-		return count($this->rows);
+		return \count($this->rows);
 		}
 
 	/**
@@ -217,7 +216,7 @@ class Table extends \PHPFUI\HTML5Element
 
 		foreach ($headers as $key => $header)
 			{
-			if (is_string($key))
+			if (\is_string($key))
 				{
 				$this->headers[$key] = $header;
 				}
@@ -284,7 +283,7 @@ class Table extends \PHPFUI\HTML5Element
 		{
 		$output = '';
 
-		if (count($this->rows) || $this->alwaysOutput)
+		if (\count($this->rows) || $this->alwaysOutput)
 			{
 			if ($this->caption)
 				{
@@ -297,14 +296,14 @@ class Table extends \PHPFUI\HTML5Element
 				}
 
 			$output .= "<tbody{$this->sortableBodyClass}>";
-			reset($this->colspans);
-			reset($this->rowAttributes);
+			\reset($this->colspans);
+			\reset($this->rowAttributes);
 
 			foreach ($this->rows as $row)
 				{
-				$output .= $this->outputRow('td', $row, '', current($this->rowAttributes), current($this->colspans));
-				next($this->colspans);
-				next($this->rowAttributes);
+				$output .= $this->outputRow('td', $row, '', \current($this->rowAttributes), \current($this->colspans));
+				\next($this->colspans);
+				\next($this->rowAttributes);
 				}
 
 			$output .= '</tbody>' . $this->outputRow('td', $this->footers, 'tfoot');
@@ -327,11 +326,11 @@ class Table extends \PHPFUI\HTML5Element
 		{
 		if ($this->page && $this->sortableBodyClass)
 			{
-			$spanCount = count($this->headers);
+			$spanCount = \count($this->headers);
 
 			if (! $spanCount)
 				{
-				$spanCount = count($this->rows[0] ?? []);
+				$spanCount = \count($this->rows[0] ?? []);
 				}
 
 			$placeholder = "<tr><td colspan='{$spanCount}'><span class='center'>" . \PHPFUI\Language::$dropRowHere . '</span></td></tr>';
@@ -343,7 +342,7 @@ class Table extends \PHPFUI\HTML5Element
 
 	protected function outputRow(string $td, array $row, string $type = '', array $rowAttributes = [], array $attribute = [], string $attributeName = 'colspan') : string
 		{
-		if (! count($row))
+		if (! \count($row))
 			{
 			return '';
 			}
@@ -368,17 +367,17 @@ class Table extends \PHPFUI\HTML5Element
 
 		foreach ($rowAttributes as $rowAttribute => $value)
 			{
-			$rowAttributeString .= " {$rowAttribute}='" . implode(' ', $value) . "' ";
+			$rowAttributeString .= " {$rowAttribute}='" . \implode(' ', $value) . "' ";
 			}
 
 		$output .= "<tr{$id}{$rowAttributeString}{$this->sortableTrClass}>";
 
-		if (count($this->headers))
+		if (\count($this->headers))
 			{
-			reset($attribute);
+			\reset($attribute);
 			$inSpan = 0;
 
-			foreach (array_keys($this->headers) as $field)
+			foreach (\array_keys($this->headers) as $field)
 				{
 				$tdclass = $td;
 
@@ -413,7 +412,7 @@ class Table extends \PHPFUI\HTML5Element
 					$id = " id='{$field}-{$recordId}'";
 					}
 
-				if ($span = current($attribute))
+				if ($span = \current($attribute))
 					{
 					$inSpan = $span;
 					$output .= "<{$tdclass} {$attributeName}='{$span}'{$id}>{$final}</{$td}>";
@@ -428,7 +427,7 @@ class Table extends \PHPFUI\HTML5Element
 					$output .= "<{$tdclass}{$id}>{$final}</{$td}>";
 					}
 
-				next($attribute);
+				\next($attribute);
 				}
 			}
 		else

@@ -35,7 +35,7 @@ class CheckBox extends \PHPFUI\Input\Input
 
 	public function getChecked() : bool
 		{
-		return (bool) $this->checked;
+		return (bool)$this->checked;
 		}
 
 	public function setChecked(?bool $checked = true) : CheckBox

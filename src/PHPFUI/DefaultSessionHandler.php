@@ -22,7 +22,7 @@ class DefaultSessionHandler implements \PHPFUI\SessionHandler
 			{
 			if (empty($this->csrfValue))
 				{
-				$this->csrfValue = sha1(mt_rand());
+				$this->csrfValue = \sha1(\mt_rand());
 				}
 			$_SESSION[$this->csrfField()] = $this->csrfValue;
 			}

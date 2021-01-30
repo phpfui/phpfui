@@ -48,7 +48,7 @@ class HTML5Element extends \PHPFUI\Base
 		{
 		parent::__construct();
 		$this->element = $element;
-		$this->noEndTag = isset(self::$noEndTags[strtolower($element)]);
+		$this->noEndTag = isset(self::$noEndTags[\strtolower($element)]);
 		}
 
 	public function __clone()
@@ -86,7 +86,7 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function addClass(string $class) : HTML5Element
 		{
-		foreach (explode(' ', $class) as $oneClass)
+		foreach (\explode(' ', $class) as $oneClass)
 			{
 			$this->classes[$oneClass] = true;
 			}
@@ -154,7 +154,7 @@ class HTML5Element extends \PHPFUI\Base
 
 		foreach ($this->attributes as $type => $value)
 			{
-			if (! strlen(trim($value)))
+			if (! \strlen(\trim($value)))
 				{
 				$output .= ' ' . $type;
 				}
@@ -172,9 +172,9 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function getClass() : string
 		{
-		if (count($this->classes))
+		if (\count($this->classes))
 			{
-			return "class='" . implode(' ', array_keys($this->classes)) . "' ";
+			return "class='" . \implode(' ', \array_keys($this->classes)) . "' ";
 			}
 
 		return '';
@@ -185,7 +185,7 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function getClasses() : array
 		{
-		return array_keys($this->classes);
+		return \array_keys($this->classes);
 		}
 
 	/**
@@ -235,7 +235,7 @@ class HTML5Element extends \PHPFUI\Base
 
 		if ($this->tooltip)
 			{
-			if ('string' == gettype($this->tooltip))
+			if ('string' == \gettype($this->tooltip))
 				{
 				$toolTip = new ToolTip($label, $this->tooltip);
 				}
@@ -316,7 +316,7 @@ class HTML5Element extends \PHPFUI\Base
 	public function setElement($element) : HTML5Element
 		{
 		$this->element = $element;
-		$this->noEndTag = isset(self::$noEndTags[strtolower($element)]);
+		$this->noEndTag = isset(self::$noEndTags[\strtolower($element)]);
 
 		return $this;
 		}
@@ -342,9 +342,9 @@ class HTML5Element extends \PHPFUI\Base
 		{
 		if ($tip)
 			{
-			$type = gettype($tip);
+			$type = \gettype($tip);
 
-			if ('string' == $type || ('object' == $type && get_class($tip) == __NAMESPACE__ . '\ToolTip'))
+			if ('string' == $type || ('object' == $type && \get_class($tip) == __NAMESPACE__ . '\ToolTip'))
 				{
 				$this->tooltip = $tip;
 				}
@@ -389,7 +389,7 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function transferAttributes(HTML5Element $from) : HTML5Element
 		{
-		$this->attributes = array_merge($this->attributes, $from->attributes);
+		$this->attributes = \array_merge($this->attributes, $from->attributes);
 		$from->attributes = [];
 
 		return $this;
@@ -400,7 +400,7 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function transferClasses(HTML5Element $from) : HTML5Element
 		{
-		$this->classes = array_merge($this->classes, $from->classes);
+		$this->classes = \array_merge($this->classes, $from->classes);
 		$from->classes = [];
 
 		return $this;

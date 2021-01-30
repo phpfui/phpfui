@@ -50,7 +50,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->buttons);
+		return \count($this->buttons);
 		}
 
 	/**

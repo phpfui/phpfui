@@ -56,9 +56,9 @@ class LimitSelect extends \PHPFUI\Input\Select
 		unset($parameters[$this->pageName], $parameters[$this->limitName]);
 
 
-		$query = http_build_query($parameters);
+		$query = \http_build_query($parameters);
 
-		if (strlen($query))
+		if (\strlen($query))
 			{
 			$query .= '&';
 			}

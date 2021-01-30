@@ -39,10 +39,10 @@ class DropDownMenu extends \PHPFUI\Menu
 			{
 			foreach ($this->menuItems as $item)
 				{
-				$this->width = max($this->width, strlen($item->getName()));
+				$this->width = \max($this->width, \strlen($item->getName()));
 				}
 
-			$this->width = (int) ($this->width * 0.8);
+			$this->width = (int)($this->width * 0.8);
 			}
 
 		if ($this->width)

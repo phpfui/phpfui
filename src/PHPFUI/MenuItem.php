@@ -52,7 +52,7 @@ class MenuItem extends \PHPFUI\HTML5Element
 
 		if ('' !== $this->link && $this->graphic)
 			{
-			if (in_array($this->align, ['right', 'bottom']))
+			if (\in_array($this->align, ['right', 'bottom']))
 					{
 					$name = "<span>{$name}</span> {$this->graphic}";
 					}

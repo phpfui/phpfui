@@ -32,7 +32,7 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 		{
 		$label = '' === $label || null === $label ? '&nbsp;' : \PHPFUI\TextHelper::htmlentities($label);
 
-		if (null === $value || (is_string($value) && '' == $value))
+		if (null === $value || (\is_string($value) && '' == $value))
 			{
 			$value = $label;
 			}
@@ -50,7 +50,7 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 	 */
 	public function count() : int
 		{
-		return count($this->options);
+		return \count($this->options);
 		}
 
 	protected function getBody() : string

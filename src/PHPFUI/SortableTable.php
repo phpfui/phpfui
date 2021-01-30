@@ -26,12 +26,12 @@ class SortableTable extends \PHPFUI\Table
 		parent::__construct();
 
 		$this->url = $url = $_SERVER['REQUEST_URI'] ?? '';
-		$queryStart = strpos($this->url, '?');
+		$queryStart = \strpos($this->url, '?');
 
 		if ($queryStart)
 			{
-			$this->url = substr($url, 0, $queryStart);
-			parse_str(substr($url, $queryStart + 1), $this->parameters);
+			$this->url = \substr($url, 0, $queryStart);
+			\parse_str(\substr($url, $queryStart + 1), $this->parameters);
 			}
 		}
 
@@ -52,7 +52,7 @@ class SortableTable extends \PHPFUI\Table
 		$parameters[$this->columnParameter] = $column;
 		$parameters[$this->sortParameter] = 'd';
 
-		return $this->url . '?' . http_build_query($parameters);
+		return $this->url . '?' . \http_build_query($parameters);
 		}
 
 	/**
@@ -72,7 +72,7 @@ class SortableTable extends \PHPFUI\Table
 		$parameters[$this->columnParameter] = $column;
 		$parameters[$this->sortParameter] = 'a';
 
-		return $this->url . '?' . http_build_query($parameters);
+		return $this->url . '?' . \http_build_query($parameters);
 		}
 
 	/**
@@ -91,7 +91,7 @@ class SortableTable extends \PHPFUI\Table
 	 */
 	public function setSortableColumns(array $columns) : SortableTable
 		{
-		$this->sortableColumns = array_flip($columns);
+		$this->sortableColumns = \array_flip($columns);
 
 		return $this;
 		}
@@ -101,9 +101,9 @@ class SortableTable extends \PHPFUI\Table
 	 */
 	public function setSortedColumnOrder(string $column, string $order) : SortableTable
 		{
-		$order = strtolower($order);
+		$order = \strtolower($order);
 
-		if (! in_array($order, ['a', 'd']))
+		if (! \in_array($order, ['a', 'd']))
 			{
 			$order = 'a';
 			}
