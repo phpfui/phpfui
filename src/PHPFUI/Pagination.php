@@ -222,6 +222,7 @@ class Pagination extends \PHPFUI\HTML5Element
 			$item->addClass('ellipsis');
 			}
 		$item->addAttribute('aria-hidden', 'true');
+		$item->addAttribute('style', 'display:inline-block');
 
 		return $item;
 		}

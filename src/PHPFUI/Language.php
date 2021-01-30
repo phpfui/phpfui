@@ -37,7 +37,7 @@ class Language
 	// Pagination
 	public static $next = 'Next';
 
-	public static $previous = 'Previous';
+	public static $previous = 'Prev';
 
 	public static $page = 'page';
 
