@@ -7,6 +7,8 @@ namespace PHPFUI;
  */
 class SlickSlider extends \PHPFUI\HTML5Element
 	{
+	use \PHPFUI\Traits\Page;
+
 	private $attributes = [];
 
 	private $page;

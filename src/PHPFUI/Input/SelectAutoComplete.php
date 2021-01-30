@@ -9,6 +9,8 @@ namespace PHPFUI\Input;
  */
 class SelectAutoComplete extends \PHPFUI\Input\Select
 	{
+	use \PHPFUI\Traits\Page;
+
 	protected $acFieldId;
 
 	protected $acInput;

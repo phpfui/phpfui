@@ -4,6 +4,8 @@ namespace PHPFUI;
 
 class ToFromList extends \PHPFUI\Base
 	{
+	use \PHPFUI\Traits\Page;
+
 	protected $callback;
 
 	protected $callbackIndex;

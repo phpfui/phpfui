@@ -14,6 +14,8 @@ namespace PHPFUI\PayPal;
  */
 class Checkout extends \PHPFUI\HTML5Element
 	{
+	use \PHPFUI\Traits\Page;
+
 	private $functions = [];
 
 	private $page;

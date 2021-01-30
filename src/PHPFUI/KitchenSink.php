@@ -20,6 +20,8 @@ namespace PHPFUI;
  */
 class KitchenSink
 	{
+	use \PHPFUI\Traits\Page;
+
 	private $index = 0;
 
 	private $lines = [];

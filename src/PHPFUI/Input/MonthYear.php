@@ -9,6 +9,8 @@ namespace PHPFUI\Input;
  */
 class MonthYear extends \PHPFUI\Base
 	{
+	use \PHPFUI\Traits\Page;
+
 	protected $hidden;
 
 	protected $label;

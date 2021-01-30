@@ -18,6 +18,8 @@ namespace PHPFUI\Input;
  */
 class LimitSelect extends \PHPFUI\Input\Select
 	{
+	use \PHPFUI\Traits\Page;
+
 	private $currentLimit;
 
 	private $limitName;

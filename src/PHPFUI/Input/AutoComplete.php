@@ -10,6 +10,8 @@ namespace PHPFUI\Input;
  */
 class AutoComplete extends \PHPFUI\Input\Input
 	{
+	use \PHPFUI\Traits\Page;
+
 	protected $callback;
 
 	protected $className;

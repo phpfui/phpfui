@@ -9,6 +9,9 @@ namespace PHPFUI;
  */
 class Form extends \PHPFUI\HTML5Element
 	{
+
+	use \PHPFUI\Traits\Page;
+
 	private $areYouSure = true;
 
 	private $page;

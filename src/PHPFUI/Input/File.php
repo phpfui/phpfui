@@ -10,6 +10,8 @@ namespace PHPFUI\Input;
  */
 class File extends \PHPFUI\Input\Input
 	{
+	use \PHPFUI\Traits\Page;
+
 	protected $page;
 
 	/**

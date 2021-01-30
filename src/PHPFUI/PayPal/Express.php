@@ -4,6 +4,8 @@ namespace PHPFUI\PayPal;
 
 class Express extends \PHPFUI\HTML5Element
 	{
+	use \PHPFUI\Traits\Page;
+
 	private $executeUrl;
 
 	private $page;

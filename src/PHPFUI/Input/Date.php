@@ -10,6 +10,8 @@ namespace PHPFUI\Input;
  */
 class Date extends \PHPFUI\Input\Input
 	{
+	use \PHPFUI\Traits\Page;
+
 	protected $options = ['closeButton' => true];
 
 	protected $page;
