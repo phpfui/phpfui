@@ -506,7 +506,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		if ($this->css)
 			{
-			$output .= '<style>' . \implode(';', $this->css) . '</style>' . $nl;
+			$output .= '<style>' . \implode($nl, $this->css) . '</style>' . $nl;
 			}
 
 		$output .= '</head><body>';

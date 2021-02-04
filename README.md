@@ -2,7 +2,7 @@
 
 PHP Wrapper for the Foundation CSS Framework
 
-**PHPFUI**, **PHP** **F**oundation **U**ser **I**nterface, is a 7.1 PHP library that produces HTML formated for [Foundation](https://get.foundation/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of an OO language. It currently uses Foundation 6.6 and PHP 7.1 or higher.
+**PHPFUI**, **PHP** **F**oundation **U**ser **I**nterface, is a [modern](#php-versions) PHP library that produces HTML formated for [Foundation](https://get.foundation/sites/docs/).  It does everything you need for a fully functional Foundation page, with the power of an OO language. It currently uses Foundation 6.6.
 
 > "I was surprised that people were prepared to write HTML. In my initial requirements for this thing, I had assumed, as an absolute pre-condition, that nobody would have to do HTML or deal with URLs. If you use the original World Wide Web program, you never see a URL or have to deal with HTML. You're presented with the raw information. You then input more information. So you are linking information to information--like using a word processor. That was a surprise to me--that people were prepared to painstakingly write HTML."
 
@@ -41,11 +41,9 @@ Then run **update.php** from the vendor/phpfui/phpfui directory and supply the p
 The PHPFUI library defaults to your-public-directory/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. **update.php** should be run when ever you update PHPFUI.
 
 ## Versioning
-
 Versioning will match the [Foundation versions](https://github.com/foundation/foundation-sites/releases) for Major semantic versions. PHPUI will always support the most recent version of Foundation possible for the Major version. PHPFUI Minor version will include breaking changes and may incorporate changes for the latest version of Foundation. The PHPFUI Patch version will include non breaking changes or additions.  So PHPFUI Version 6.0.0 would be the first version of the library, 6.0.1 would be the first patch of PHPFUI. Both should work with any Foundation 6.x version.  PHPFUI 6.1.0 would be a breaking change to PHPFUI, but still track Foundation 6.x.  PHPFUI 7.0.0 would track Foundation 7.x series.
 
 ## Depreciation and Foundation changes
-
 Since major versions of Foundation have in the past depreciated and obsoleted things, PHPFUI will track the latest version of Foundation for class names and functionality. However, when Foundation makes a breaking change or removes something, PHPFUI will continue to support the old functionality as best as possible in the new Foundation framework. Depreciated classes will be put in the \PHPFUI\Vx namespace (where x would be the prior Major Foundation version containing that feature). So if something gets depreciated in a newer version of Foundation, you simply will need to change your code from \PHPFUI\Example to \PHPFUI\V6\Example.  The depreciated namespace will only be supported for one Major version of PHPFUI, so it is recommended you migrate off of it in a timely manor.
 
 ## Documentation
@@ -59,3 +57,6 @@ Full unit testing using [phpfui/html-unit-tester](https://packagist.org/packages
 
 ## License
 PHPFUI is distributed under the MIT License.
+
+### PHP Versions
+This library only supports **modern** versions of PHP which still receive security updates. While we would love to support PHP from the late Ming Dynasty, the advantages of modern PHP versions far out weigh quaint notions of backward compatibility. Time to upgrade.

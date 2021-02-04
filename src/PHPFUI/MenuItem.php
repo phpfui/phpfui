@@ -18,7 +18,7 @@ class MenuItem extends \PHPFUI\HTML5Element
 
 	private $started = false;
 
-	public function __construct(string $name, string $link = '')
+	public function __construct(string $name = '', string $link = '')
 		{
 		parent::__construct('li');
 		$this->link = $link;
@@ -28,6 +28,14 @@ class MenuItem extends \PHPFUI\HTML5Element
 	public function getActive() : bool
 		{
 		return $this->active;
+		}
+
+	/**
+	 * returns the icon or image if set
+	 */
+	public function getGraphic(Base $graphic) : Base
+		{
+		return $this->graphic;
 		}
 
 	public function getLink() : string
@@ -81,6 +89,16 @@ class MenuItem extends \PHPFUI\HTML5Element
 	public function setAlignment(string $align) : MenuItem
 		{
 		$this->align = $align;
+
+		return $this;
+		}
+
+	/**
+	 * Set a menu graphic other than an icon or image
+	 */
+	public function setGraphic(Base $graphic) : MenuItem
+		{
+		$this->graphic = $graphic;
 
 		return $this;
 		}
