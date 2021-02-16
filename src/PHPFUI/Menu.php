@@ -32,7 +32,7 @@ class Menu extends \PHPFUI\HTML5Element
 		$subMenu->addClass('nested');
 		$name = $item->getName() . ':' . \count($this->menuItems);
 		$this->menuItems[$name] = $subMenu;
-		$this->menuLabels[$name] = $item;
+		$this->menuLabels[$name] = $item->getName();
 
 		return $this;
 		}
@@ -168,12 +168,11 @@ class Menu extends \PHPFUI\HTML5Element
 					}
 				else
 					{
-					$menuTitle = $this->menuLabels[$label];
-					$menuTitle->setLink('#');
+					$menuItem = new MenuItem($this->menuLabels[$label], '#');
 					$somethingActive |= $item->getActive();
-					$menuTitle->setActive($item->getActive());
-					$menuTitle->add($item);
-					$this->add($menuTitle);
+					$menuItem->setActive($item->getActive());
+					$menuItem->add($item);
+					$this->add($menuItem);
 					}
 				}
 
