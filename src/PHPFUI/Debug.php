@@ -5,10 +5,8 @@ namespace PHPFUI;
 /**
  * A quick debug message. Just new with the variable and optional message.  Add to anything to output. Will wrap with pre tags for readability.
  */
-class Debug
+class Debug extends HTML5Element
 	{
-	private $message = '';
-
 	/**
 	 * Make a debug message
 	 *
@@ -17,6 +15,7 @@ class Debug
 	 */
 	public function __construct($variable, string $message = '')
 		{
+		parent::__construct('div');
 		$location = '';
 
 		if (\strlen($message))
@@ -29,11 +28,7 @@ class Debug
 			{
 			$location = $bt[0]['file'] . ' ' . $bt[0]['line'] . ': ';
 			}
-		$this->message = $location . $message . \print_r($variable, true);
+		$this->add($location . $message . \print_r($variable, true));
 		}
 
-	public function __toString() : string
-		{
-		return '<pre>' . \htmlspecialchars($this->message) . '</pre>';
-		}
 	}
