@@ -6,11 +6,11 @@ namespace PHPFUI;
  * # NanoController - A [KISS](https://en.wikipedia.org/wiki/KISS_principle) controller built for speed
  * **NanoController** is an extremely simple and fast controller that uses the URI and not a routing table.
  * ### Why NanoController?
- * Traditional MVC frameworks use a routing table, which ends up being difficult to maintain and not obvious as to what the resulting URI is or what classes end up being invoked.  Routing tables are a level of indirection that are really not needed for projects that define their own pathing, which is basically any business app behind a sign in page. In addition to requiring a complex routing table, the routing table takes up memory and execution time to resolve the route. **NanoController** has virtually no memory footprint and a very  fast lookup algorithm. Reduced memory usage and fast execution times are especially important with an interpreted language such as PHP. Time and memory are cumulative, and best avoided where ever possible.
+ * Traditional MVC frameworks use a routing table, which ends up being difficult to maintain and not obvious as to what the resulting URI is or what classes end up being invoked.  Routing tables are a level of indirection that are really not needed for projects that define their own pathing, which is basically any business app behind a sign in page. In addition to requiring a complex routing table, the routing table takes up memory and execution time to resolve the route. **NanoController** has virtually no memory footprint and a very fast lookup algorithm. Reduced memory usage and fast execution times are especially important with an interpreted language such as PHP. Time and memory are cumulative, and best avoided where ever possible.
  * ### [KISS](https://www.kissonline.com) - [Keep It Simple Stupid](https://en.wikipedia.org/wiki/KISS_principle)
  * The **NanoController** maps namespaces, classes and methods directly to the URI and dispenses with a routing table.  The result is an easy to understand namespace and classs structure that exactly matches your URI. The URI tells you exactly where the class lives, and the class tells you the exact URI. No need to check a routing table to know what is invoked when.
  * ### Naming Conventions
- * **NanoController** follows standard naming conventions to figure out what namespace, class and method to call.  Namespaces and classes should use [Studly Case](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), capitalized first letter and capitalized letter of every word. Methods should follow [camelCase](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), where the first letter is lowercase, with subsequent word's first letter upper cased, although this is not required, as PHP method names are case insensitive (unfortunately). **NanoController** uses the first lower case segment as the method name. The preceding segments form the namespace and class.
+ * **NanoController** follows standard naming conventions to figure out what namespace, class and method to call.  Namespaces and classes should use [Studly Case](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), capitalized first letter and capitalized letter of every word. Methods should follow [camelCase](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), where the first letter is lowercase, with subsequent word's first letter upper cased, although this is not required, as PHP method names are case insensitive (unfortunately). **NanoController** uses the first lower case segment as the method name. The preceding segments form the namespace and class. The method must be public.
  * ### Parameters
  * You can pass parameters with URI segments past the first lower case segment (which is the method name to call in the class) by simply specifying additional segments.  **NanoController** uses method parameter types to cast the  parameters to the right types.  You can specify any scalar (**bool, int, float, string**), and **NanoController** will cast it to the correct type.  If your parameter type is a class, **NanoController** will instantiate the class and pass the constuctor a string representation of the corresponding URI segment. If you specify **array** as the type, **NanoController** will pass all subsequent URI segments as an array of strings. No other parameters will be passed after an **array** parameter.
  * ### Method Call
@@ -157,9 +157,7 @@ class NanoController
 					return $classObject;
 					}
 
-
-					return $this->punt($class);
-
+				return $this->punt($class);
 				}
 			elseif (! \ctype_alpha($parts[0]))
 				{
@@ -232,7 +230,7 @@ class NanoController
 	private function invokeClassMethod(array $class, string $method, array $parts = [], int $index = 0) : ?NanoClassInterface
 		{
 		$className = \implode('\\', $class);
-		// if we are at the rool namespace, we are done
+		// if we are at the root namespace, we are done
 		if ($className == $this->rootNamespace)
 			{
 			return null;
@@ -246,17 +244,25 @@ class NanoController
 			return new $this->missingClass($this);
 			}
 
+		$message = 'Class Method ' . $className . '::' . $method;
 		if (! \method_exists($className, $method))
 			{
-			$this->errors['Class Method ' . $className . '::' . $method . ' does not exist'] = true;
+			$this->errors[$message . ' does not exist'] = true;
 
 			return null;
 			}
 
 		$classObject = new $className($this);
-		$this->invokedPath = $className . '\\' . $method;
 		$reflection = new \ReflectionClass($classObject);
 		$reflectionMethod = $reflection->getMethod($method);
+		if (! $reflectionMethod->isPublic())
+			{
+			$this->errors[$message . ' is not public'] = true;
+
+			return null;
+			}
+
+		$this->invokedPath = $className . '\\' . $method;
 		$args = ($index + 1) < \count($parts) ? \array_slice($parts, $index + 1) : [];
 		$numberArgs = \count($args);
 		$argNumber = 0;
