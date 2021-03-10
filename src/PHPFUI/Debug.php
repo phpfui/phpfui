@@ -15,7 +15,7 @@ class Debug extends HTML5Element
 	 */
 	public function __construct($variable, string $message = '')
 		{
-		parent::__construct('div');
+		parent::__construct('pre');
 		$location = '';
 
 		if (\strlen($message))
@@ -30,5 +30,4 @@ class Debug extends HTML5Element
 			}
 		$this->add($location . $message . \print_r($variable, true));
 		}
-
 	}

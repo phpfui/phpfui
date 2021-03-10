@@ -19,7 +19,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 
 	private $items = [];
 
-	private $response = '';
+	private static $response = '';
 
 	public function __construct()
 		{
@@ -119,7 +119,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 */
 	public function getResponse() : string
 		{
-		return $this->response;
+		return self::$response;
 		}
 
 	/**
@@ -162,7 +162,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if (! $this->isDone())
 			{
-			$this->response = $response;
+			self::$response = $response;
 			$this->done();
 
 			if ($asJSON)
@@ -212,7 +212,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		{
 		if ($this->isDone())
 			{
-			return $this->response;
+			return self::$response;
 			}
 
 		$output = '';
