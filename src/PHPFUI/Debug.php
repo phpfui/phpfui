@@ -28,6 +28,6 @@ class Debug extends HTML5Element
 			{
 			$location = $bt[0]['file'] . ' ' . $bt[0]['line'] . ': ';
 			}
-		$this->add($location . $message . \print_r($variable, true));
+		$this->add($location . $message . \htmlspecialchars(\print_r($variable, true)));
 		}
 	}

@@ -670,9 +670,7 @@ class KitchenSink
 		{
 		$container = new \PHPFUI\Container();
 
-		$iconPlain = new Icon('edit');
-
-		$container->add(new Debug($iconPlain, 'Debug Icon'));
+		$container->add(new Debug($this, 'Debug $this!'));
 
 		return $container;
 		}
