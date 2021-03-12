@@ -75,21 +75,42 @@ class TextHelper
 		}
 
 	/**
-	 * Split a string into words based on capital letters
+	 * Split a string into words based on capital letters. Successive capital letters are considered an appreviation and grouped together.
 	 */
 	public static function capitalSplit(string $key) : string
 		{
 		$len = \strlen($key);
 		$space = $output = '';
+		$lastCapitalized = false;
+		$consecutiveCaps = 0;
 
 		for ($i = 0; $i < $len; ++$i)
 			{
 			$char = $key[$i];
+			if (0 == $i)
+				{
+				$char = strtoupper($char);
+				}
 
 			if (\ctype_upper($char))
 				{
-				$output .= $space;
+				if (! $lastCapitalized)
+					{
+					$output .= $space;
+					}
+				++$consecutiveCaps;
 				$space = ' ';
+				$lastCapitalized = true;
+				}
+			elseif ($lastCapitalized)
+				{
+				$length = strlen($output);
+				if ($length > 1 && $consecutiveCaps > 1)
+					{
+					$output = substr($output, 0, $length - 1) . ' ' . $output[$length - 1];
+					}
+				$consecutiveCaps = 0;
+				$lastCapitalized = false;
 				}
 			$output .= $char;
 			}
