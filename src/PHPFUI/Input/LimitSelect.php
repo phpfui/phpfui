@@ -58,12 +58,11 @@ class LimitSelect extends \PHPFUI\Input\Select
 
 		$query = \http_build_query($parameters);
 
-		if (\strlen($query))
-			{
-			$query .= '&';
-			}
-
-		$js = "function LimitSelect{$this->getId()}(newLimit){window.location='{$this->page->getBaseURL()}?{$query}'+'{$this->limitName}='+newLimit+'&{$this->pageName}='+computePage(newLimit,{$this->currentLimit},{$page})}";
+		$js = "function LimitSelect{$this->getId()}(newLimit){" .
+			"var p=new URLSearchParams('{$query}');" .
+			"p.set('{$this->limitName}',newLimit);" .
+			"p.set('{$this->pageName}',computePage(newLimit,{$this->currentLimit},{$page}));" .
+			"window.location='{$this->page->getBaseURL()}?'+p.toString()}";
 		$this->page->addJavaScript($js);
 
 		return parent::getStart();
