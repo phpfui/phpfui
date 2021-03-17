@@ -134,7 +134,7 @@ class Input extends \PHPFUI\HTML5Element
 	 *
 	 * @param string $value
 	 */
-	public function setValue($value) : Input
+	public function setValue(string $value) : Input
 		{
 		$this->value = $value;
 

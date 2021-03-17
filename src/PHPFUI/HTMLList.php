@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 abstract class HTMLList extends \PHPFUI\HTML5Element
 	{
-	public function __construct($type)
+	public function __construct(string $type)
 		{
 		parent::__construct($type);
 		}

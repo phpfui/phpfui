@@ -10,7 +10,7 @@ class BlockGrid extends \PHPFUI\HTML5Element
 
 	protected $small = 0;
 
-	public function __construct($small = 0, $medium = 0, $large = 0)
+	public function __construct(int $small = 0, int $medium = 0, int $large = 0)
 		{
 		parent::__construct('ul');
 		$this->small = $small;
@@ -18,30 +18,30 @@ class BlockGrid extends \PHPFUI\HTML5Element
 		$this->large = $large;
 		}
 
-	public function addBlock($text) : BlockGrid
+	public function addBlock(string $text) : BlockGrid
 		{
 		$this->add("<li>{$text}</li>");
 
 		return $this;
 		}
 
-	public function setLarge($number) : BlockGrid
+	public function setLarge(int $number) : BlockGrid
 		{
-		$this->large = (int)$number;
+		$this->large = $number;
 
 		return $this;
 		}
 
-	public function setMedium($number) : BlockGrid
+	public function setMedium(int $number) : BlockGrid
 		{
-		$this->medium = (int)$number;
+		$this->medium = $number;
 
 		return $this;
 		}
 
-	public function setSmall($number) : BlockGrid
+	public function setSmall(int $number) : BlockGrid
 		{
-		$this->small = (int)$number;
+		$this->small = $number;
 
 		return $this;
 		}
@@ -56,7 +56,7 @@ class BlockGrid extends \PHPFUI\HTML5Element
 		return parent::getStart();
 		}
 
-	protected function makeClass($size, $setting) : void
+	protected function makeClass(string $size, string $setting) : void
 		{
 		if ($setting)
 			{

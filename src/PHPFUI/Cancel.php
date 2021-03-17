@@ -12,7 +12,7 @@ class Cancel extends \PHPFUI\Button
    *
    * @param string $name defaults to 'Cancel'
    */
-	public function __construct($name = 'Cancel')
+	public function __construct(string $name = 'Cancel')
 		{
 		parent::__construct($name, '#');
 		$this->addAttribute('data-close');
