@@ -15,7 +15,7 @@ class Installer
 
 		if (! $this->directory)
 			{
-			echo 'You must specify your public directory relative to ' . __DIR__ . ' as a parameter to update.php';
+			echo 'You must specify your public directory relative to ' . getcwd() . ' as a parameter to update.php';
 			return false;
 			}
 
@@ -31,7 +31,7 @@ class Installer
 			'dist/jquery.mask.min.js' => '',
 			];
 
-		if (in_array('froala', $argv))
+		if (is_file('vendor/froala/wysiwyg-editor/composer.json'))
 			{
 			$vendor['froala/wysiwyg-editor'] = [
 				'css/*' => 'froala/css',
@@ -42,6 +42,18 @@ class Installer
 		$vendor['components/jquery'] = [
 			'jquery.min.js' => '',
 			];
+
+		if (is_file('vendor/tinymce/tinymce/composer.json'))
+			{
+			$vendor['tinymce/tinymce'] = [
+				'icons/default/*.js' => 'tinymce/icons/default',
+				'plugins/*' => 'tinymce/plugins',
+				'skins/*' => 'tinymce/skins',
+				'themes/*' => 'tinymce/themes',
+				'*.min.js' => 'tinymce',
+				];
+			}
+
 		$vendor['fortawesome/font-awesome'] = [
 			'css/*.min.css' => 'font-awesome/css',
 			'webfonts' => 'font-awesome',
@@ -94,7 +106,7 @@ class Installer
 			'anypicker.min.js' => 'anypicker',
 			];
 
-		if (in_array('froala', $argv))
+		if (is_file('vendor/froala/wysiwyg-editor/composer.json'))
 			{
 			$js['froala'] = [
 			'js' => 'froala',
@@ -113,6 +125,7 @@ class Installer
 			foreach ($sourceFiles as $sourceFile => $copyToPath)
 				{
 				$sourcePath = __DIR__ . '/' . $fromDir . '/' . $sourceDir . '/' . $sourceFile;
+				echo "Copy: $sourcePath\n";
 				foreach (glob($sourcePath) as $source)
 					{
 					$toPath = $this->directory . '/' . $copyToPath;
@@ -121,7 +134,7 @@ class Installer
 					@mkdir($toPath, 0777, true);
 					$parts = explode('\\', $source);
 					$toPath .= '\\' . end($parts);
-					// echo "Copy: {$source} => {$toPath}\n";
+					echo "Copy: {$source} => {$toPath}\n";
 					if (is_dir($source))
 						{
 						$this->copyDirectory($source, $toPath);

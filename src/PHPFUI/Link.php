@@ -35,7 +35,7 @@ class Link extends \PHPFUI\HTML5Element
 			'?',
 			'+',
 			'!',
-			':', ];
+		];
 		$replacements = [];
 
 		foreach ($targets as $string)

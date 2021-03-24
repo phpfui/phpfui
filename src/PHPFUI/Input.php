@@ -132,7 +132,6 @@ class Input extends \PHPFUI\HTML5Element
 	/**
 	 * Set the initial value of the input field
 	 *
-	 * @param string $value
 	 */
 	public function setValue(string $value) : Input
 		{
