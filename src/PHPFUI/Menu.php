@@ -22,7 +22,9 @@ class Menu extends \PHPFUI\HTML5Element
 
 	public function addMenuItem(MenuItem $item) : Menu
 		{
-		$this->menuItems[$item->getName() . ':' . \count($this->menuItems)] = $item;
+		$name = $item->getName() . ':' . \count($this->menuItems);
+		$this->menuItems[$name] = $item;
+		$this->menuLabels[$name] = $item->getName();
 
 		return $this;
 		}
