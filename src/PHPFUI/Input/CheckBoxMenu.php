@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * CheckBoxMenu allows you to create an array of checkboxes in a menu format.  The actual checkboxes are hidden and the user only sees the selected menu options
  *
- * An all button and a submit button are also supported and can be added at any point.
+ * An **All** button and a **Submit** button are also supported and can be added at any point in the menu.
  *
  * The class can be styled with the cbmenu class (similarly to the simple menu class)
  */
@@ -14,6 +14,8 @@ class CheckBoxMenu extends \PHPFUI\Menu
 	private $name;
 
 	private $className;
+
+	private $callbackName = '';
 
 	private $allMenuItem = null;
 
@@ -44,13 +46,16 @@ class CheckBoxMenu extends \PHPFUI\Menu
 	public function addAll(string $name = 'All') : \PHPFUI\MenuItem
 		{
 		$this->allMenuItem = $this->addCheckBox($name, false, '', -1);
-		$this->allMenuItem->setAttribute('onclick', 'var t=$(this);t.toggleClass("is-active");var m=$(".' . $this->className . '");if(t.hasClass("is-active")){m.addClass("is-active");}else{m.removeClass("is-active");};var cb=$("li.' . $this->className . ' a input[type=checkbox]");cb.prop("checked",t.hasClass("is-active"));return false;');
+		$callback = $this->callbackName ? ($this->callbackName . '("' . $name . '","' . $name . '",active);') : '';
+		$this->allMenuItem->setAttribute('onclick', 'var active,t=$(this);active=t.toggleClass("is-active").hasClass("is-active");var m=$(".' . $this->className .
+				'");if(active){m.addClass("is-active");}else{m.removeClass("is-active");};var cb=$("li.' . $this->className .
+				' a input[type=checkbox]");cb.prop("checked",active);' . $callback . 'return false;');
 
 		return $this->allMenuItem;
 		}
 
 	/**
-	 * Add a submit button in the menu style.  It is appended to the previously added checkboxes.
+	 * Add a Submit button in the menu style.  It is appended to the previously added checkboxes.
 	 *
 	 * @param string $name of the posted field
 	 */
@@ -70,7 +75,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 	 * @param string $name to display to the user
 	 * @param bool $active true if you want this checkbox set on initial display
 	 * @param string $value to return when the checkbox is selected
-	 * @param ?int $index option index for the checkbox, defaults to [] (next)
+	 * @param ?int $index optional index for the checkbox, defaults to [] (next), use -1 for no name
 	 *
 	 * @return \PHPFUI\MenuItem for further modification if needed
 	 */
@@ -79,6 +84,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 		if (-1 == $index)
 			{
 			$hidden = new \PHPFUI\Input('checkbox', '', $value);
+			$cbName = '';
 			}
 		else
 			{
@@ -91,7 +97,8 @@ class CheckBoxMenu extends \PHPFUI\Menu
 				{
 				++$otherCount;
 				}
-			$hidden = new \PHPFUI\Input('checkbox', $this->name . '[' . ($index ?? \count($this) - $otherCount) . ']', $value);
+			$cbName = $this->name . '[' . ($index ?? \count($this) - $otherCount) . ']';
+			$hidden = new \PHPFUI\Input('checkbox', $cbName, $value);
 			}
 		$hidden->addAttribute('style', 'display:none');
 		if ($active)
@@ -102,12 +109,29 @@ class CheckBoxMenu extends \PHPFUI\Menu
 		$menuItem = new \PHPFUI\MenuItem($name . $hidden, '#');
 
 		$menuItem->addClass($this->className);
-		$menuItem->addAttribute('onclick', 'var t=$(this);t.toggleClass("is-active");$("#' . $hiddenId . '").prop("checked",t.hasClass("is-active"));return false;');
+		$callback = $this->callbackName ? ($this->callbackName . '("' . $cbName . '","' . $value . '",active);') : '';
+		$menuItem->addAttribute('onclick', 'var active,t=$(this);active=t.toggleClass("is-active").hasClass("is-active");$("#' .
+														$hiddenId . '").prop("checked",active);' . $callback . 'return false;');
 		$menuItem->setActive($active);
 
 		$this->addMenuItem($menuItem);
 
 		return $menuItem;
+		}
+
+	/**
+	 * This javascript function will be called with the field name (including [index]), value and active flag when ever the menu is changed.
+	 * If the All MenuItem is clicked, then the callback is passed the all text for name and value.
+	 *
+	 * This callback must be set before adding anything to the menu. Previously added items will not have the callback.
+	 *
+	 * Parameters for the function are field name with index in [], value and boolean indicating active. No return value is supported.
+	 */
+	public function setJavaScriptCallback(string $functionName) : self
+		{
+		$this->callbackName = $functionName;
+
+		return $this;
 		}
 
 	protected function getStart() : string

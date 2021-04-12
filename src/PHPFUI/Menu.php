@@ -146,7 +146,7 @@ class Menu extends \PHPFUI\HTML5Element
 		if (! $this->started)
 			{
 			$this->started = true;
-			$somethingActive = false;
+			$somethingActive = 0;
 
 			if ($this->sorted)
 				{
@@ -157,7 +157,7 @@ class Menu extends \PHPFUI\HTML5Element
 				{
 				if ($item instanceof \PHPFUI\MenuItem)
 					{
-					$somethingActive |= $item->getActive();
+					$somethingActive |= (int)$item->getActive();
 
 					if ($this->type)
 						{
@@ -169,7 +169,7 @@ class Menu extends \PHPFUI\HTML5Element
 				else
 					{
 					$menuItem = new MenuItem($this->menuLabels[$label], '#');
-					$somethingActive |= $item->getActive();
+					$somethingActive |= (int)$item->getActive();
 					$menuItem->setActive($item->getActive());
 					$menuItem->add($item);
 					$this->add($menuItem);
