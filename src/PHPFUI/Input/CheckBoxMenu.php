@@ -89,10 +89,12 @@ class CheckBoxMenu extends \PHPFUI\Menu
 		else
 			{
 			$otherCount = 0;
+
 			if ($this->allMenuItem)
 				{
 				++$otherCount;
 				}
+
 			if ($this->submitMenuItem)
 				{
 				++$otherCount;
@@ -101,6 +103,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 			$hidden = new \PHPFUI\Input('checkbox', $cbName, $value);
 			}
 		$hidden->addAttribute('style', 'display:none');
+
 		if ($active)
 			{
 			$hidden->addAttribute('checked');

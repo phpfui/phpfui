@@ -30,7 +30,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	 * @param string $value for the button returned on post
 	 * @param bool $disabled default false
 	 */
-	public function addButton($label, $value = null, $disabled = false) : RadioGroup
+	public function addButton(string $label, ?string $value = null, bool $disabled = false) : RadioGroup
 		{
 		if (null === $value)
 			{
@@ -58,7 +58,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	 *
 	 * @param bool $sep default true
 	 */
-	public function setSeparateRows($sep = true) : RadioGroup
+	public function setSeparateRows(bool $sep = true) : RadioGroup
 		{
 		$this->separateRows = $sep;
 

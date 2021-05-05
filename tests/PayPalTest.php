@@ -31,8 +31,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 		$breakdown->item_total = new Currency(180.00);
 		$breakdownExample = [
-			'item_total' =>
-				[
+			'item_total' => [
 					'currency_code' => 'USD',
 					'value' => '180.00',
 				],
@@ -84,87 +83,70 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		{
 		$orderExample = [
 			'intent' => 'CAPTURE',
-			'application_context' =>
-				[
+			'application_context' => [
 					'brand_name' => 'EXAMPLE INC',
 					'locale' => 'en-US',
 					'landing_page' => 'BILLING',
 					'shipping_preference' => 'SET_PROVIDED_ADDRESS',
 					'user_action' => 'PAY_NOW',
 				],
-			'purchase_units' =>
-				[
-					0 =>
-						[
+			'purchase_units' => [
+					0 => [
 							'reference_id' => 'PUHF',
 							'description' => 'Sporting Goods',
 							'custom_id' => 'CUST-HighFashions',
 							'soft_descriptor' => 'HighFashions',
-							'amount' =>
-								[
+							'amount' => [
 									'currency_code' => 'USD',
 									'value' => '220.00',
-									'breakdown' =>
-										[
-											'item_total' =>
-												[
+									'breakdown' => [
+											'item_total' => [
 													'currency_code' => 'USD',
 													'value' => '180.00',
 												],
-											'shipping' =>
-												[
+											'shipping' => [
 													'currency_code' => 'USD',
 													'value' => '20.00',
 												],
-											'handling' =>
-												[
+											'handling' => [
 													'currency_code' => 'USD',
 													'value' => '10.00',
 												],
-											'tax_total' =>
-												[
+											'tax_total' => [
 													'currency_code' => 'USD',
 													'value' => '20.00',
 												],
-											'shipping_discount' =>
-												[
+											'shipping_discount' => [
 													'currency_code' => 'USD',
 													'value' => '10.00',
 												],
 										],
 								],
-							'items' =>
-								[
-									0 =>
-										[
+							'items' => [
+									0 => [
 											'name' => 'T-Shirt',
 											'description' => 'Green XL',
 											'sku' => 'sku01',
-											'unit_amount' =>
-												[
+											'unit_amount' => [
 													'currency_code' => 'USD',
 													'value' => '90.00',
 												],
-											'tax' =>
-												[
+											'tax' => [
 													'currency_code' => 'USD',
 													'value' => '10.00',
 												],
 											'quantity' => '1',
 											'category' => 'PHYSICAL_GOODS',
 										],
-									1 =>
-										[
+									1 => [
 											'name' => 'Shoes',
 											'description' => 'Running, Size 10.5',
 											'sku' => 'sku02',
-											'unit_amount' =>
-												[
+											'unit_amount' => [
 													'currency_code' => 'USD',
 													'value' => '45.00',
 												],
-											'tax' =>
-												[
+											'tax' => [
 													'currency_code' => 'USD',
 													'value' => '5.00',
 												],
@@ -172,11 +154,9 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 											'category' => 'PHYSICAL_GOODS',
 										],
 								],
-							'shipping' =>
-								[
+							'shipping' => [
 									'method' => 'United States Postal Service',
-									'address' =>
-										[
+									'address' => [
 											'address_line_1' => '123 Townsend St',
 											'address_line_2' => 'Floor 6',
 											'admin_area_2' => 'San Francisco',
@@ -253,7 +233,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testPlan() : void
 		{
-		$expected = json_decode('{
+		$expected = \json_decode('{
   "product_id": "PROD-XXCD1234QWER65782",
   "name": "Video Streaming Service Plan",
   "description": "Video Streaming Service basic plan",
@@ -358,7 +338,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testSubscription() : void
 		{
-		$expected = json_decode('{
+		$expected = \json_decode('{
   "plan_id": "P-5ML4271244454362WXNWU5NQ",
   "start_time": "2018-11-01T00:00:00Z",
   "quantity": "20",
@@ -406,16 +386,16 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$subscription->quantity = '20';
 		$subscription->shipping_amount = new Currency('10');
 		$application_context = new ApplicationContext();
-    $application_context->brand_name = 'walmart';
-    $application_context->locale = 'en-US';
-    $application_context->shipping_preference = 'SET_PROVIDED_ADDRESS';
-    $application_context->user_action = 'SUBSCRIBE_NOW';
+	$application_context->brand_name = 'walmart';
+	$application_context->locale = 'en-US';
+	$application_context->shipping_preference = 'SET_PROVIDED_ADDRESS';
+	$application_context->user_action = 'SUBSCRIBE_NOW';
 		$application_context->return_url = 'https://example.com/returnUrl';
 		$application_context->cancel_url = 'https://example.com/cancelUrl';
 		$paymentMethod = new PaymentMethod();
-    $paymentMethod->payer_selected = 'PAYPAL';
-    $paymentMethod->payee_preferred = 'IMMEDIATE_PAYMENT_REQUIRED';
-    $application_context->payment_method = $paymentMethod;
+	$paymentMethod->payer_selected = 'PAYPAL';
+	$paymentMethod->payee_preferred = 'IMMEDIATE_PAYMENT_REQUIRED';
+	$application_context->payment_method = $paymentMethod;
 		$subscription->application_context = $application_context;
 
 		$subscriber = new Subscriber();

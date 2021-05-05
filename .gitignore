@@ -8,7 +8,7 @@ src/PHPFUI/InstaDoc
 src/PHPFUI/PayPal/PayPal.md
 src/PHPFUI/README.md
 composer.lock
-.php_cs.cache
+.php-cs-fixer.cache
 .phpunit.result.cache
 phpunit.xml
 

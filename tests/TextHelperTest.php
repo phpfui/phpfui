@@ -15,5 +15,4 @@ class TextHelperTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals('Two One SQL Info', TextHelper::capitalSplit('twoOneSQLInfo'));
 		$this->assertEquals('SQL Two One SQL Info', TextHelper::capitalSplit('SQLTwoOneSQLInfo'));
 		}
-
 	}

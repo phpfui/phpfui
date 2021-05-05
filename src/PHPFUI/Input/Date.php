@@ -33,7 +33,8 @@ class Date extends \PHPFUI\Input\Input
 		if ($page->isChrome())
 			{
 			parent::__construct('date', $name, $label, $value);
-			$page->addCSS(<<<CHROME_CSS
+			$page->addCSS(
+				<<<CHROME_CSS
 input[type="date"] {position: relative;}
 /* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
 input[type="date"]::-webkit-calendar-picker-indicator {position:absolute;top:0;left:0;right:0;bottom:0;width:auto;height:auto;color:transparent;background:transparent;}
