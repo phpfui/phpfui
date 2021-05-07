@@ -54,8 +54,8 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		$label = '' === $label || null === $label ? '&nbsp;' : \PHPFUI\TextHelper::htmlentities($label);
 		$this->options[] = ['label' => $label,
 			'value' => $value,
-			'selected' => $selected ? 'selected' : '',
-			'disabled' => $disabled ? 'disabled' : '', ];
+			'selected' => $selected ? ' selected' : '',
+			'disabled' => $disabled ? ' disabled' : '', ];
 
 		return $this;
 		}
@@ -108,7 +108,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		{
 		foreach ($this->options as &$values)
 			{
-			$values['selected'] = $values['value'] == $selection ? 'selected' : '';
+			$values['selected'] = $values['value'] == $selection ? ' selected' : '';
 			}
 
 		return $this;
@@ -156,7 +156,12 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		$attributes = $this->getAttributes();
 
 		$select = $this->label ? $label : $this;
-		$select->add("<select id='{$id}'{$class}{$attributes} name='{$this->getName()}'>");
+		$size = '';
+		if ($this->required)
+			{
+			$size = ' size=' . count($this->options);
+			}
+		$select->add("<select id='{$id}'{$class}{$attributes} name='{$this->getName()}'{$size}>");
 
 		foreach ($this->options as $option)
 			{
@@ -168,7 +173,8 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 				{
 				$selected = $option['selected'];
 				$disabled = $option['disabled'];
-				$select->add("<option value='{$option['value']}' {$selected} {$disabled}>{$option['label']}</option>");
+				$value = $option['value'] !== null ? " value='{$option['value']}'" : '';
+				$select->add("<option{$value}{$selected}{$disabled}>{$option['label']}</option>");
 				}
 			}
 

@@ -40,6 +40,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 	public function setUp() : void
 		{
 		$this->page = new \PHPFUI\Page();
+		$this->page->setDebug(\PHPFUI\Base::DEBUG_SOURCE);
 		}
 
 	public function testAutoComplete() : void
@@ -173,7 +174,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$multiSelect->addOption('three', 3, true);
 		$multiSelect->addOption('four', 4, false, true);
 		$this->assertEquals($multiSelect->count(), 5);
-		$this->assertEquals(\count($multiSelect), 5);
+		$this->assertEquals(count($multiSelect), 5);
 		$this->page->add($multiSelect);
 		$this->assertValidHtml($this->page);
 		}
@@ -190,7 +191,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$multiSelect->addOption('three', 3, true);
 		$multiSelect->addOption('four', 4, false, true);
 		$this->assertEquals($multiSelect->count(), 5);
-		$this->assertEquals(\count($multiSelect), 5);
+		$this->assertEquals(count($multiSelect), 5);
 		$this->page->add($multiSelect);
 		$this->assertValidHtml($this->page);
 		}
@@ -238,7 +239,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$radioGroup->addButton('four', 4);
 		$radioGroup->setRequired();
 		$this->assertEquals($radioGroup->count(), 5);
-		$this->assertEquals(\count($radioGroup), 5);
+		$this->assertEquals(count($radioGroup), 5);
 
 		$this->page->add($radioGroup);
 		$this->assertValidHtml($this->page);
@@ -253,7 +254,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$radioGroup->addButton('three', 3, true);
 		$radioGroup->addButton('four', 4);
 		$this->assertEquals($radioGroup->count(), 5);
-		$this->assertEquals(\count($radioGroup), 5);
+		$this->assertEquals(count($radioGroup), 5);
 
 		$this->page->add($radioGroup);
 		$this->assertValidHtml($this->page);
@@ -305,11 +306,11 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$optGroup->addOption('three', 3);
 		$optGroup->addOption('four', 4, false, true);
 		$this->assertEquals($optGroup->count(), 5);
-		$this->assertEquals(\count($optGroup), 5);
+		$this->assertEquals(count($optGroup), 5);
 
 		$select->addOptGroup($optGroup);
 		$this->assertEquals($select->count(), 6);
-		$this->assertEquals(\count($select), 6);
+		$this->assertEquals(count($select), 6);
 		$this->page->add($select);
 		$this->assertValidHtml($this->page);
 		}
@@ -337,7 +338,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$select->addOptGroup($optGroup);
 		$this->assertEquals($select->count(), 6);
-		$this->assertEquals(\count($select), 6);
+		$this->assertEquals(count($select), 6);
 		$this->page->add($select);
 		$this->assertValidHtml($this->page);
 		}
@@ -354,7 +355,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$select->addOption('four', 4, false, true);
 
 		$this->assertEquals($select->count(), 5);
-		$this->assertEquals(\count($select), 5);
+		$this->assertEquals(count($select), 5);
 		$this->page->add($select);
 		$this->assertValidHtml($this->page);
 		}
@@ -371,7 +372,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$select->addOption('four', 4, false, true);
 
 		$this->assertEquals($select->count(), 5);
-		$this->assertEquals(\count($select), 5);
+		$this->assertEquals(count($select), 5);
 		$this->page->add($select);
 		$this->assertValidHtml($this->page);
 		}
