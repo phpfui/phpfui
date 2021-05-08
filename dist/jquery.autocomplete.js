@@ -1,5 +1,5 @@
 /**
-*  Ajax Autocomplete for jQuery, version 1.4.10
+*  Ajax Autocomplete for jQuery, version 1.4.11
 *  (c) 2017 Tomas Kirda
 *
 *  Ajax Autocomplete for jQuery is freely distributable under the terms of an MIT-style license.
@@ -95,6 +95,7 @@
             serviceUrl: null,
             lookup: null,
             onSelect: null,
+            onHint: null,
             width: 'auto',
             minChars: 1,
             maxHeight: 300,
@@ -219,6 +220,10 @@
         onFocus: function () {
             var that = this;
 
+            if (that.disabled) {
+                return;
+            }
+
             that.fixPosition();
 
             if (that.el.val().length >= that.options.minChars) {
@@ -270,7 +275,7 @@
                 'z-index': options.zIndex
             });
 
-            this.options = options;            
+            this.options = options;
         },
 
 
@@ -628,7 +633,7 @@
             that.selectedIndex = -1;
             clearTimeout(that.onChangeTimeout);
             $(that.suggestionsContainer).hide();
-            that.signalHint(null);
+            that.onHint(null);
         },
 
         suggest: function () {
@@ -764,20 +769,24 @@
                 return !foundMatch;
             });
 
-            that.signalHint(bestMatch);
+            that.onHint(bestMatch);
         },
 
-        signalHint: function (suggestion) {
-            var hintValue = '',
-                that = this;
+        onHint: function (suggestion) {
+            var that = this,
+                onHintCallback = that.options.onHint,
+                hintValue = '';
+            
             if (suggestion) {
                 hintValue = that.currentValue + suggestion.value.substr(that.currentValue.length);
             }
             if (that.hintValue !== hintValue) {
                 that.hintValue = hintValue;
                 that.hint = suggestion;
-                (this.options.onHint || $.noop)(hintValue);
-            }
+                if ($.isFunction(onHintCallback)) {
+                    onHintCallback.call(that.element, hintValue);
+                }
+            }  
         },
 
         verifySuggestionsFormat: function (suggestions) {
@@ -918,7 +927,7 @@
                 that.el.val(that.getValue(that.suggestions[index].value));
             }
 
-            that.signalHint(null);
+            that.onHint(null);
         },
 
         onSelect: function (index) {
@@ -932,7 +941,7 @@
                 that.el.val(that.currentValue);
             }
 
-            that.signalHint(null);
+            that.onHint(null);
             that.suggestions = [];
             that.selection = suggestion;
 
