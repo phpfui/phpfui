@@ -170,6 +170,11 @@ abstract class Input extends \PHPFUI\Input
 		return $this;
 		}
 
+	public function getRequired() : bool
+		{
+		return $this->required;
+		}
+
 	/**
 	 * Set required
 	 *
