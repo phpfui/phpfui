@@ -12,7 +12,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 
 	public function __construct()
 		{
-		parent::__construct('div');
+		parent::__construct('span');
 		$this->addClass('input-group');
 		}
 
@@ -32,16 +32,19 @@ class InputGroup extends \PHPFUI\HTML5Element
 	public function addInput(Input $input) : InputGroup
 		{
 		$input->addClass('input-group-field');
-		$this->inputLabel = $input->getLabel();
-		if ($this->inputLabel)
+		if (method_exists($input, 'getLabel'))
 			{
-			$this->inputLabel = $input->getToolTip($this->inputLabel);
-			if ($input->getRequired())
+			$this->inputLabel = $input->getLabel();
+			if ($this->inputLabel)
 				{
-				$this->inputLabel .= \PHPFUI\Language::$required;
+				$this->inputLabel = $input->getToolTip($this->inputLabel);
+				if ($input->getRequired())
+					{
+					$this->inputLabel .= \PHPFUI\Language::$required;
+					}
 				}
+			$input->setLabel('');
 			}
-		$input->setLabel('');
 		$this->add($input);
 
 		return $this;

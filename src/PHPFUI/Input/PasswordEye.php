@@ -25,7 +25,7 @@ class PasswordEye extends \PHPFUI\Input\Password
 	// We need to render an InputGroup, but this object should behave like a regular PHPFUI\Input\Password
 	// So we null out start end end rendering
 	// Then in getBody, we upCastCopy the object into something that is not us (PHPFUI\Input\Password), so our getBody will not be called.
-	// Then we make an InputGroup, add the new password object into it, and the needed label, and yukky JavaScript
+	// Then we make an InputGroup, add the new password object into it, and the yukky JavaScript
 
 	public function getStart() : string
 		{
@@ -36,8 +36,8 @@ class PasswordEye extends \PHPFUI\Input\Password
 		{
 		$inputGroup = new \PHPFUI\InputGroup();
 		$password = $this->upCastCopy(new \PHPFUI\Input\Password('p'), $this);
-		$icon = new \PHPFUI\HTML5Element('icon');
-		$icon->addClass('far fa-eye');
+		$icon = new \PHPFUI\IconBase('fa-eye');
+		$icon->addClass('far');
 		$iconId = $icon->getId();
 		$passwordId = $password->getId();
 		$js = "var iconId=$('#{$iconId}'),passwordId=$('#{$passwordId}'),remove='',add='-slash',type='text';" .
@@ -45,9 +45,9 @@ class PasswordEye extends \PHPFUI\Input\Password
 				"iconId.addClass('fa-eye'+add);passwordId.prop('type',type);";
 		$icon->setAttribute('onclick', str_replace("'", '"', $js));
 		$inputGroup->addInput($password);
-		$inputGroup->addLabel("{$icon}");
+		$inputGroup->addLabel($icon);
 
-		return "{$inputGroup}";
+		return $inputGroup;
 		}
 
 	public function getEnd() : string

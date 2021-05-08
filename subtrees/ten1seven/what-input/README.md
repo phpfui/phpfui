@@ -73,11 +73,11 @@ var whatInput = require('what-input')
 
 requirejs.config({
   paths: {
-    whatInput: 'path/to/what-input'
-  }
+    whatInput: 'path/to/what-input',
+  },
 })
 
-require(['whatInput'], function() {})
+require(['whatInput'], function () {})
 ```
 
 _What Input_ will start doing its thing while you do yours.
@@ -201,7 +201,7 @@ Fire a function when the input or intent changes.
 
 ```javascript
 // create a function to be fired
-var myFunction = function(type) {
+var myFunction = function (type) {
   console.log(type)
 }
 
@@ -220,6 +220,10 @@ whatInput.unRegisterOnChange(myFunction)
 _What Input_ works in all modern browsers.
 
 ## Changelog
+
+### v5.2.8 - 5.2.10
+
+- **Added:** TypeScript definitions via @greypants
 
 ### v5.2.7
 
@@ -300,7 +304,7 @@ _What Input_ works in all modern browsers.
 
 Special thanks to [Viget](http://viget.com/) for their encouragement and commitment to open source projects. Visit [code.viget.com](http://code.viget.com/) to see more projects from [Viget](http://viget.com).
 
-Thanks to [mAAdhaTTah](https://github.com/mAAdhaTTah) for the initial conversion to Webpack.
+Thanks to [mAAdhaTTah](https://github.com/mAAdhaTTah) for the initial conversion to Webpack. Thanks to [greypants](https://github.com/greypants) for adding TypeScript definitions.
 
 _What Input_ is written and maintained by [@ten1seven](https://github.com/ten1seven).
 

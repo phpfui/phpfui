@@ -212,6 +212,15 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($this->page);
 		}
 
+	public function testPasswordEye() : void
+		{
+		$password = new \PHPFUI\Input\PasswordEye('password', 'Password');
+		$password->setToolTip('Click the eye icon on the right to show the password');
+		$password->setRequired();
+		$this->page->add($password);
+		$this->assertValidHtml($this->page);
+		}
+
 	public function testRadio() : void
 		{
 		$radio = new \PHPFUI\Input\Radio('radio', 'Radio');

@@ -15,10 +15,6 @@
     "@types/jquery": "^2.0.32",
     "jquery": ">=1.9"
   },
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-uglify": "^1.0.1"
-  },
   "files": [
     "dist/",
     "typings/jquery-autocomplete/*.d.ts",
