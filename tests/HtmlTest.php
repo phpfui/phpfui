@@ -111,15 +111,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($input);
 		}
 
-	public function testInputGroup() : void
-		{
-		$inputGroup = new \PHPFUI\InputGroup();
-		$inputGroup->addInput(new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy'));
-		$inputGroup->addLabel('Label');
-		$inputGroup->addButton(new \PHPFUI\Button('Button'));
-		$this->assertValidHtml($inputGroup);
-		}
-
 	public function testKitchenSink() : void
 		{
 		$this->assertValidHtml($this->ks->render());

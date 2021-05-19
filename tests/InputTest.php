@@ -8,30 +8,6 @@
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source
  * code
- *
- * Cancel
- * Cell
- * FieldSet
- * Form
- * FormError
- * FroalaModel
- * HTMLList
- * Icon
- * InputGroup
- * Link
- * MediaObject
- * OffCanvas
- * OrderableTable
- * Panel
- * PopupInput
- * RadioTable
- * RadioTableCell
- * Reset
- * SortableTable
- * Sticky
- * Tabs
- * TimedCellUpdate *
- *
  */
 class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{

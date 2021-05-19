@@ -150,31 +150,30 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	protected function getEnd() : string
 		{
 		$js = '';
-
 		if (! $this->arrayName)
 			{
 			$this->arrayName = "{$this->name}Array";
-			$js = "var {$this->arrayName}=[";
-			$comma = '';
-
-			foreach ($this->options as $option)
-				{
-				if (! $option['disabled'])
-					{
-					$js .= "{$comma}{data:'{$this->escapeData($option['value'])}',value:'{$this->escapeData($option['label'])}'}";
-					$comma = ',';
-					}
-				}
-
-			$js .= '];';
 			}
 		else
 			{
 			$this->arrayName .= 'Array';
 			}
 
+		$js = "var {$this->arrayName}=[";
+		$comma = '';
+		foreach ($this->options as $option)
+			{
+			if (! $option['disabled'])
+				{
+				$js .= "{$comma}{data:'{$this->escapeData($option['value'])}',value:'{$this->escapeData($option['label'])}'}";
+				$comma = ',';
+				}
+			}
+		$js .= '];';
+		$this->page->addJavaScript($js);
+
 		$id = $this->getId();
-		$js .= "{$id}('{$this->acFieldId}','{$this->hidden->getId()}',{$this->arrayName})";
+		$js = "{$id}('{$this->acFieldId}','{$this->hidden->getId()}',{$this->arrayName})";
 		$this->page->addJavaScript($js);
 
 		return '';

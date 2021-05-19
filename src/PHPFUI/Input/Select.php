@@ -161,7 +161,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 			{
 			$size = ' size=' . count($this->options);
 			}
-		$select->add("<select id='{$id}'{$class}{$attributes} name='{$this->getName()}'{$size}>");
+		$select->add("<select id='{$id}' {$class}{$attributes} name='{$this->getName()}'{$size}>");
 
 		foreach ($this->options as $option)
 			{

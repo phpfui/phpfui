@@ -10,6 +10,10 @@ class InputGroup extends \PHPFUI\HTML5Element
 
 	private $inputLabel = null;
 
+	private $error = '';
+
+	private $hint = '';
+
 	public function __construct()
 		{
 		parent::__construct('span');
@@ -20,6 +24,11 @@ class InputGroup extends \PHPFUI\HTML5Element
 		{
 		$span = new HTML5Element('span');
 		$span->addClass('input-group-button');
+		if ($button->getElement() == 'button')
+			{
+			$button->setElement('span');
+			$button->deleteAttribute('type');
+			}
 		$span->add($button);
 		$this->add($span);
 
@@ -31,6 +40,15 @@ class InputGroup extends \PHPFUI\HTML5Element
 	 */
 	public function addInput(Input $input) : InputGroup
 		{
+		if (method_exists($input, 'getError'))
+			{
+			$this->error = $input->getError();
+			}
+		if (method_exists($input, 'getHint'))
+			{
+			$this->hint = $input->getHint();
+			$input->setHint('');
+			}
 		$input->addClass('input-group-field');
 		if (method_exists($input, 'getLabel'))
 			{
@@ -63,6 +81,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 	public function getStart() : string
 		{
 		$retVal = '';
+		$this->walk('setHint', '');
 		if ($this->inputLabel)
 			{
 			$retVal .= '<label>' . $this->inputLabel;
@@ -72,11 +91,13 @@ class InputGroup extends \PHPFUI\HTML5Element
 
 	public function getEnd() : string
 		{
-		$retVal = parent::getEnd();
+		$retVal = parent::getEnd() . $this->error;
+
 		if ($this->inputLabel)
 			{
 			$retVal .= '</label>';
 			}
+		$retVal .= $this->hint;
 
 		return $retVal;
 		}

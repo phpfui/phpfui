@@ -7,15 +7,15 @@ namespace PHPFUI\Input;
  */
 abstract class Input extends \PHPFUI\Input
 	{
-	protected $error;
+	protected $error = null;
 
 	protected $errorMessages = [];
 
-	protected $hint;
+	protected $hint = null;
 
 	protected $hintText = '';
 
-	protected $label;
+	protected $label = '';
 
 	protected $required = false;
 
@@ -70,10 +70,6 @@ abstract class Input extends \PHPFUI\Input
 
 				break;
 
-			case 'color':
-				$this->addAttribute('pattern', $this->type);
-
-				break;
 			}
 		}
 
@@ -110,7 +106,7 @@ abstract class Input extends \PHPFUI\Input
 		{
 		if (! $this->error)
 			{
-			$this->error = new \PHPFUI\HTML5Element('label');
+			$this->error = new \PHPFUI\HTML5Element('span'); // not really a label
 			$this->error->addClass('form-error');
 			$this->error->add(\implode('', $this->errorMessages));
 			$this->error->addAttribute('data-form-error-for', $this->getId());
@@ -156,6 +152,7 @@ abstract class Input extends \PHPFUI\Input
 	public function setHint(string $hint) : Input
 		{
 		$this->hintText = $hint;
+		$this->hint = null;
 
 		return $this;
 		}
