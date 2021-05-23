@@ -54,6 +54,26 @@ class Button extends \PHPFUI\HTML5Element
 		}
 
 	/**
+	 * set the button link
+	 */
+	public function setLink(string $link) : self
+		{
+		$this->link = $link;
+
+		return $this;
+		}
+
+	/**
+	 * set the button text
+	 */
+	public function setText(string $text) : self
+		{
+		$this->text = $text;
+
+		return $this;
+		}
+
+	/**
 	 * Set the disabled state of the button
 	 *
 	 * @param bool $disabled defaults to true
