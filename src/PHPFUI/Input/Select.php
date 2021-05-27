@@ -117,7 +117,6 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	protected function getStart() : string
 		{
 		$label = $error = '';
-		$id = $this->getId();
 
 		if ($this->label)
 			{
@@ -128,7 +127,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 				$label->addClass($class);
 				}
 
-			$label->addAttribute('for', $id);
+			$label->addAttribute('for', $this->getId());
 			$label->add($this->getToolTip($this->label));
 			}
 
@@ -161,7 +160,8 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 			{
 			$size = ' size=' . count($this->options);
 			}
-		$select->add("<select id='{$id}' {$class}{$attributes} name='{$this->getName()}'{$size}>");
+		$id = $this->getIdAttribute();
+		$select->add("<select {$id}{$class}{$attributes} name='{$this->getName()}'{$size}>");
 
 		foreach ($this->options as $option)
 			{
@@ -173,8 +173,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 				{
 				$selected = $option['selected'];
 				$disabled = $option['disabled'];
-				$value = $option['value'] !== null ? " value='{$option['value']}'" : '';
-				$select->add("<option{$value}{$selected}{$disabled}>{$option['label']}</option>");
+				$select->add("<option value='{$option['value']}'{$selected}{$disabled}>{$option['label']}</option>");
 				}
 			}
 
