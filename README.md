@@ -32,11 +32,15 @@ echo $page;
 
 ## Installation Instructions
 
-    composer require phpfui/phpfui
+~~~
+composer require phpfui/phpfui
+~~~
 
 Then run **update.php** from the vendor/phpfui/phpfui directory and supply the path to your public directory / the directory for the various JS and CSS files PHPFUI uses. This will copy all required public files into your public directory. For example:
 
-    php vendor/phpfui/phpfui/update.php public/PHPFUI
+~~~
+php vendor/phpfui/phpfui/update.php public/PHPFUI
+~~~
 
 The PHPFUI library defaults to your-public-directory/PHPFUI, it can be overridden, but it is suggested to use PHPFUI to keep everything in one place. **update.php** should be run when ever you update PHPFUI.
 
