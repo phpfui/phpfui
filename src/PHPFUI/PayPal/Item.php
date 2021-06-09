@@ -16,6 +16,7 @@ class Item extends \PHPFUI\PayPal\Base
 
 	public function __construct(string $name, int $quantity, Currency $unit_amount)
 		{
+		parent::__construct();
 		$this->name = $name;
 		$this->quantity = $quantity;
 		$this->unit_amount = $unit_amount;

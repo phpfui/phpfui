@@ -13,6 +13,7 @@ class Order extends \PHPFUI\PayPal\Base
 
 	public function __construct(string $intent)
 		{
+		parent::__construct();
 		$this->intent = $intent;
 		}
 

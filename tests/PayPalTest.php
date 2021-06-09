@@ -29,7 +29,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 		$this->assertEquals([], $breakdown->getData());
 
-		$breakdown->item_total = new Currency(180.00);
+		$breakdown->item_total->value = 180.00;
 		$breakdownExample = [
 			'item_total' => [
 					'currency_code' => 'USD',
@@ -38,8 +38,9 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		];
 		$this->assertEquals($breakdownExample, $breakdown->getData());
 
-		$breakdownExample['shipping'] = ['currency_code' => 'USD', 'value' => '20.00', ];
-		$breakdown->shipping = new Currency(20.00);
+		$breakdownExample['shipping'] = ['currency_code' => 'EUR', 'value' => '20.00', ];
+		$breakdown->shipping->value = 20.00;
+		$breakdown->shipping->currency_code = 'EUR';
 		$this->assertEquals($breakdownExample, $breakdown->getData());
 		}
 
@@ -197,17 +198,13 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$amount->breakdown = $breakdown;
 		$purchase_unit->amount = $amount;
 
-		$shipping = new Shipping();
-		$shipping->method = 'United States Postal Service';
-		$address = new Address();
-		$address->address_line_1 = '123 Townsend St';
-		$address->address_line_2 = 'Floor 6';
-		$address->admin_area_2 = 'San Francisco';
-		$address->admin_area_1 = 'CA';
-		$address->postal_code = '94107';
-		$address->country_code = 'US';
-		$shipping->address = $address;
-		$purchase_unit->shipping = $shipping;
+		$purchase_unit->shipping->method = 'United States Postal Service';
+		$purchase_unit->shipping->address->address_line_1 = '123 Townsend St';
+		$purchase_unit->shipping->address->address_line_2 = 'Floor 6';
+		$purchase_unit->shipping->address->admin_area_2 = 'San Francisco';
+		$purchase_unit->shipping->address->admin_area_1 = 'CA';
+		$purchase_unit->shipping->address->postal_code = '94107';
+		$purchase_unit->shipping->address->country_code = 'US';
 
 		$item = new Item('T-Shirt', 1, new Currency(90.00));
 		$item->description = 'Green XL';
@@ -386,16 +383,16 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$subscription->quantity = '20';
 		$subscription->shipping_amount = new Currency('10');
 		$application_context = new ApplicationContext();
-	$application_context->brand_name = 'walmart';
-	$application_context->locale = 'en-US';
-	$application_context->shipping_preference = 'SET_PROVIDED_ADDRESS';
-	$application_context->user_action = 'SUBSCRIBE_NOW';
+		$application_context->brand_name = 'walmart';
+		$application_context->locale = 'en-US';
+		$application_context->shipping_preference = 'SET_PROVIDED_ADDRESS';
+		$application_context->user_action = 'SUBSCRIBE_NOW';
 		$application_context->return_url = 'https://example.com/returnUrl';
 		$application_context->cancel_url = 'https://example.com/cancelUrl';
 		$paymentMethod = new PaymentMethod();
-	$paymentMethod->payer_selected = 'PAYPAL';
-	$paymentMethod->payee_preferred = 'IMMEDIATE_PAYMENT_REQUIRED';
-	$application_context->payment_method = $paymentMethod;
+		$paymentMethod->payer_selected = 'PAYPAL';
+		$paymentMethod->payee_preferred = 'IMMEDIATE_PAYMENT_REQUIRED';
+		$application_context->payment_method = $paymentMethod;
 		$subscription->application_context = $application_context;
 
 		$subscriber = new Subscriber();

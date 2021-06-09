@@ -8,6 +8,26 @@ abstract class Base
 
 	private $data = [];
 
+	private $setFields = [];
+
+	private static $scalars = [
+		'boolean' => true,
+		'double' => true,
+		'integer' => true,
+		'string' => true,
+		];
+
+	public function __construct()
+		{
+		foreach (static::$validFields as $field => $type)
+			{
+			if (! is_array($type) && ! isset(static::$scalars[$type]))
+				{
+				$this->data[$field] = new $type;
+				}
+			}
+		}
+
 	/**
 	 * Unset fields will return null
 	 */
@@ -18,10 +38,12 @@ abstract class Base
 			throw new \Exception("{$field} is not a valid field for " . \get_class($this));
 			}
 
+		$this->setFields[$field] = true;
+
 		return $this->data[$field] ?? null;
 		}
 
-	public function __set(string $field, $value) : void
+	public function __set(string $field, $value)
 		{
 		$expectedType = static::$validFields[$field] ?? null;
 
@@ -63,7 +85,9 @@ abstract class Base
 				break;
 			}
 
-		$this->data[$field] = $value;
+		$this->setFields[$field] = true;
+
+		return $this->data[$field] = $value;
 		}
 
 	public function getData() : array
@@ -72,11 +96,14 @@ abstract class Base
 
 		foreach ($this->data as $field => $value)
 			{
-			if ('object' == \gettype($value))
+			if (! empty($this->setFields[$field]))
 				{
-				$value = $value->getData();
+				if ('object' == \gettype($value))
+					{
+					$value = $value->getData();
+					}
+				$result[$field] = $value;
 				}
-			$result[$field] = $value;
 			}
 
 		return $result;
@@ -92,6 +119,6 @@ abstract class Base
 	 */
 	public function getValidFields() : array
 		{
-		return static::$validFields();
+		return static::$validFields;
 		}
 	}
