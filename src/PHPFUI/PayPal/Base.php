@@ -21,7 +21,7 @@ abstract class Base
 		{
 		foreach (static::$validFields as $field => $type)
 			{
-			if (! is_array($type) && ! isset(static::$scalars[$type]))
+			if (! is_array($type) && ! isset(self::$scalars[$type]))
 				{
 				$this->data[$field] = new $type;
 				}
