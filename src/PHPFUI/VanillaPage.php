@@ -47,6 +47,8 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private $tailScripts = [];
 
+	private $body;
+
 	public function __construct()
 		{
 		parent::__construct();
@@ -67,6 +69,17 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			{
 			$this->chrome = \strpos($client, ' Chrome/') > 0;
 			}
+		$this->body = new \PHPFUI\HTML5Element('body');
+		}
+
+	/**
+	 * Add to the body element directly
+	 */
+	public function add($item)
+		{
+		$this->body->add($item);
+
+		return $this;
 		}
 
 	/**
@@ -193,6 +206,14 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			}
 
 		return $url;
+		}
+
+	/**
+	 * Direct access to the page body element.  Also accessed via add method.
+	 */
+	public function getBodyElement() : \PHPFUI\HTML5Element
+		{
+		return $this->body;
 		}
 
 	/**
@@ -444,23 +465,16 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= "<script src='{$src}'></script>{$nl}";
 			}
 
-		$output .= '<script>';
+		$js = \array_merge($this->javascriptFirst, $this->javascript, $this->javascriptLast);
 
-		foreach ($this->javascriptFirst as $js)
+		if ($js)
 			{
-			$output .= "{$js};{$nl}";
+			$output .= '<script>' . implode(';' . $nl, $js) . '</script>' . $nl;
 			}
 
-		$this->javascript = \array_merge($this->javascript, $this->javascriptLast);
+		$this->add($output);
 
-		foreach ($this->javascript as $js)
-			{
-			$output .= "{$js};{$nl}";
-			}
-
-		$output .= '</script></body></html>';
-
-		return $output;
+		return $this->body . '</html>';
 		}
 
 	protected function getStart() : string
@@ -499,9 +513,9 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= "<script src='{$src}'></script>{$nl}";
 			}
 
-		foreach ($this->headJavascript as $src)
+		if ($this->headJavascript)
 			{
-			$output .= "<script>{$src}</script>{$nl}";
+			$output .= '<script>' . implode(';' . $nl, $this->headJavascript) . '</script>' . $nl;
 			}
 
 		if ($this->css)
@@ -509,7 +523,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= '<style>' . \implode($nl, $this->css) . '</style>' . $nl;
 			}
 
-		$output .= '</head><body>';
+		$output .= "</head>";
 
 		return $output;
 		}

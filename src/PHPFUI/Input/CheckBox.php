@@ -40,7 +40,7 @@ class CheckBox extends \PHPFUI\Input\Input
 
 	public function setChecked(?bool $checked = true) : CheckBox
 		{
-		$this->checked = $checked ? 'checked' : '';
+		$this->checked = $checked ? ' checked' : '';
 
 		return $this;
 		}
@@ -57,7 +57,7 @@ class CheckBox extends \PHPFUI\Input\Input
 			$this->started = true;
 			$id = $this->getId();
 			$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
-			$extra = $this->getClass() . ' ' . $this->getAttributes();
+			$extra = $this->getClass() . $this->getAttributes();
 			$label = new \PHPFUI\HTML5Element('label');
 			$label->addClass('checkbox-container');
 
@@ -66,9 +66,9 @@ class CheckBox extends \PHPFUI\Input\Input
 				$label->addClass('disabled-label');
 				}
 
-			$name = $this->name ? "name='{$this->name}'" : '';
+			$name = $this->name ? " name='{$this->name}'" : '';
 			$label->add($this->getToolTip($this->label));
-			$label->add("<input type='checkbox' id='{$id}' {$this->checked} {$name} value='{$this->value}' {$extra}><span class='checkmark'></span>");
+			$label->add("<input type='checkbox' id='{$id}'{$this->checked}{$name} value='{$this->value}'{$extra}><span class='checkmark'></span>");
 			$this->row->add($label);
 			}
 

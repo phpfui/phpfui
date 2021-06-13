@@ -174,7 +174,7 @@ class HTML5Element extends \PHPFUI\Base
 		{
 		if (\count($this->classes))
 			{
-			return "class='" . \implode(' ', \array_keys($this->classes)) . "' ";
+			return " class='" . \implode(' ', \array_keys($this->classes)) . "'";
 			}
 
 		return '';
@@ -221,7 +221,7 @@ class HTML5Element extends \PHPFUI\Base
 			return '';
 			}
 
-		return "id='{$this->id}' ";
+		return " id='{$this->id}'";
 		}
 
 	/**
@@ -424,7 +424,7 @@ class HTML5Element extends \PHPFUI\Base
 			return '';
 			}
 
-		$output = "<{$this->element} ";
+		$output = "<{$this->element}";
 		$output .= $this->getIdAttribute();
 		$output .= $this->getClass();
 		$output .= $this->getAttributes();

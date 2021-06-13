@@ -72,7 +72,7 @@ class TextArea extends \PHPFUI\Input\Input
 			}
 		$label->addAttribute('for', $this->getId());
 
-		$output = $label . '<textarea ';
+		$output = $label . '<textarea';
 		$output .= $this->getIdAttribute();
 		$output .= " name='{$this->name}'";
 		$this->deleteAttribute('onkeypress');

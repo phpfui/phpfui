@@ -24,7 +24,7 @@ class Radio extends \PHPFUI\Input\Input
 
 	public function setChecked(?bool $checked = true) : void
 		{
-		$this->checked = $checked ? 'checked' : '';
+		$this->checked = $checked ? ' checked' : '';
 		}
 
 	public function setCheckedValue($value) : void
@@ -54,6 +54,6 @@ class Radio extends \PHPFUI\Input\Input
 			$labelClass .= ' disabled-label';
 			}
 
-		return "<input {$attributes} {$classes} {$this->checked} {$this->disabled}/><label for='{$id}' class='{$labelClass}'>";
+		return "<input{$attributes}{$classes}{$this->checked}{$this->disabled}/><label for='{$id}' class='{$labelClass}'>";
 		}
 	}

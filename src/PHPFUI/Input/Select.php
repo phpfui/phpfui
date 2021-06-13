@@ -160,7 +160,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 
 		$select = $this->label ? $label : $this;
 		$id = $this->getIdAttribute();
-		$select->add("<select {$id}{$class}{$attributes} name='{$this->getName()}'>");
+		$select->add("<select{$id}{$class}{$attributes} name='{$this->getName()}'>");
 
 		foreach ($this->options as $option)
 			{
