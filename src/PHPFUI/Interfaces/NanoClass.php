@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPFUI;
+namespace PHPFUI\Interfaces;
 
 /**
  * Objects returned by NanoController must implement this interface.
  */
-interface NanoClassInterface
+interface NanoClass
 	{
 	public function __construct(NanoController $controller);
 	}
