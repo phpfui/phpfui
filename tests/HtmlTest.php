@@ -38,20 +38,6 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($cell);
 		}
 
-	public function testCheckBoxMenu() : void
-		{
-		$form = new \PHPFUI\Form($this->page);
-		$checkBoxMenu = new \PHPFUI\Input\CheckBoxMenu('cbmenu');
-		$checkBoxMenu->addAll();
-		$checkBoxMenu->addCheckBox('A', true, 'a');
-		$checkBoxMenu->addCheckBox('b', false, 'B');
-		$checkBoxMenu->addSubmit($form, 'Apply');
-		$form->add($checkBoxMenu);
-		$this->page->add($form);
-
-		$this->assertValidHtml($this->page);
-		}
-
 	public function testFieldSet() : void
 		{
 		$fieldSet = new \PHPFUI\FieldSet();

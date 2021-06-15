@@ -27,6 +27,9 @@
         "vimeo/psalm": "^4.7"
     },
     "autoload": {
-        "psr-0": {"PHPFUI\\": "src/"}
+        "psr-4": {"PHPFUI\\": "src/PHPFUI/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Fixtures\\": "tests/Fixtures/"}
     }
 }

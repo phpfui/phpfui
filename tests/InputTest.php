@@ -59,6 +59,20 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($this->page);
 		}
 
+	public function testCheckBoxMenu() : void
+		{
+		$form = new \PHPFUI\Form($this->page);
+		$checkBoxMenu = new \PHPFUI\Input\CheckBoxMenu('cbmenu');
+		$checkBoxMenu->addAll();
+		$checkBoxMenu->addCheckBox('A', true, 'a');
+		$checkBoxMenu->addCheckBox('b', false, 'B');
+		$checkBoxMenu->addSubmit($form, 'Apply');
+		$form->add($checkBoxMenu);
+		$this->page->add($form);
+
+		$this->assertValidHtml($this->page);
+		}
+
 	public function testColor() : void
 		{
 		$color = new \PHPFUI\Input\Color('color', 'Color');
