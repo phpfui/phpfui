@@ -3,7 +3,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.registerTask('build', ['uglify', 'sass', 'cssmin']);
-
+  // Default task(s).
+  grunt.registerTask('default', ['uglify', 'sass', 'cssmin']);
 
   grunt.initConfig({
     uglify: {

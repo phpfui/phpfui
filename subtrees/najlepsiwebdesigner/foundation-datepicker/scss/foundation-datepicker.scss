@@ -74,10 +74,6 @@ $fdatepicker-inline-width: 220px !default;
 		-moz-border-radius: $fdatepicker-ui-border-radius;
 		border-radius: $fdatepicker-ui-border-radius;
 
-		-webkit-box-shadow: $fdatepicker-ui-shadow;
-		-moz-box-shadow: $fdatepicker-ui-shadow;
-		box-shadow: $fdatepicker-ui-shadow;
-
 		-webkit-background-clip: padding-box;
 		-moz-background-clip: padding;
 		background-clip: padding-box;
@@ -166,7 +162,6 @@ $fdatepicker-inline-width: 220px !default;
 		border-left: 7px solid transparent;
 		border-right: 7px solid transparent;
 		border-bottom: 7px solid $fdatepicker-ui-before-color;
-		border-bottom-color: $fdatepicker-ui-border;
 		position: absolute;
 		top: -7px;
 		left: 6px;
