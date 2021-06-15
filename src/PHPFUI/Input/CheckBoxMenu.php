@@ -49,7 +49,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 		$callback = $this->callbackName ? ($this->callbackName . '("' . $name . '","' . $name . '",active);') : '';
 		$this->allMenuItem->setAttribute('onclick', 'var active,t=$(this);active=t.toggleClass("is-active").hasClass("is-active");var m=$(".' . $this->className .
 				'");if(active){m.addClass("is-active");}else{m.removeClass("is-active");};var cb=$("li.' . $this->className .
-				' a input[type=checkbox]");cb.prop("checked",active);' . $callback . 'return false;');
+				' input[type=checkbox]");cb.prop("checked",active);' . $callback . 'return false;');
 
 		return $this->allMenuItem;
 		}
@@ -109,7 +109,8 @@ class CheckBoxMenu extends \PHPFUI\Menu
 			$hidden->addAttribute('checked');
 			}
 		$hiddenId = $hidden->getId();
-		$menuItem = new \PHPFUI\MenuItem($name . $hidden, '#');
+		$menuItem = new \PHPFUI\MenuItem($name, '#');
+		$menuItem->add($hidden);
 
 		$menuItem->addClass($this->className);
 		$callback = $this->callbackName ? ($this->callbackName . '("' . $cbName . '","' . $value . '",active);') : '';
