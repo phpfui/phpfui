@@ -566,7 +566,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= '<script>' . implode(';' . $nl, $js) . '</script>' . $nl;
 			}
 
-		$this->add($output);
+		$this->body->add($output);
 
 		return $this->body . '</html>';
 		}
