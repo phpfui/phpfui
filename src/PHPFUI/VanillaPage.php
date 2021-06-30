@@ -175,7 +175,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function addIEComments(string $comment) : \PHPFUI\Interfaces\Page
 		{
-		$this->ieComments[\sha1($commment)] = $comment;
+		$this->ieComments[\sha1($comment)] = $comment;
 
 		return $this;
 		}
@@ -185,7 +185,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function removeIEComments(string $comment) : \PHPFUI\Interfaces\Page
 		{
-		unset($this->ieComments[\sha1($commment)]);
+		unset($this->ieComments[\sha1($comment)]);
 
 		return $this;
 		}

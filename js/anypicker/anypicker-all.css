@@ -1,4 +1,4 @@
-/* ----------------------------------------------------------------------------- 
+/* -----------------------------------------------------------------------------
 
   AnyPicker - Customizable Picker for Mobile OS
   Version 2.0.9
@@ -54,7 +54,7 @@ body.noscroll
 	background: rgba(0, 0, 0, 0.5);
 }
 
-.ap-layout-fixed, 
+.ap-layout-fixed,
 .ap-layout-popover
 {
 	position: fixed;
@@ -254,7 +254,7 @@ body.noscroll
 	text-align:center;
 }
 
-.ap-theme-default .ap-content-top, 
+.ap-theme-default .ap-content-top,
 .ap-theme-default .ap-content-bottom
 {
 	font-size: 0.7em;
@@ -365,13 +365,13 @@ body.noscroll
 	100% { opacity:1; }
 }
 
-@-webkit-keyframes ap-anim-show 
+@-webkit-keyframes ap-anim-show
 {
   	0% { opacity:0; }
 	100% { opacity:1; }
 }
 
-@-o-keyframes ap-anim-show 
+@-o-keyframes ap-anim-show
 {
   	0% { opacity:0; }
 	100% { opacity:1; }
@@ -413,13 +413,13 @@ body.noscroll
 	100% { opacity:0; }
 }
 
-@-webkit-keyframes ap-anim-hide 
+@-webkit-keyframes ap-anim-hide
 {
   	0% { opacity:1; }
 	100% { opacity:0; }
 }
 
-@-o-keyframes ap-anim-hide 
+@-o-keyframes ap-anim-hide
 {
   	0% { opacity:1; }
 	100% { opacity:0; }
@@ -644,12 +644,12 @@ body.noscroll
   	100% { background: #E0F2F1; }
 }
 
-@-webkit-keyframes ap-anim-default-button-active 
+@-webkit-keyframes ap-anim-default-button-active
 {
   	100% { background: #E0F2F1; }
 }
 
-@-o-keyframes ap-anim-default-button-active 
+@-o-keyframes ap-anim-default-button-active
 {
   	100% { background: #E0F2F1; }
 }
@@ -848,7 +848,7 @@ body.noscroll
 
 
 
-.ap-theme-ios.ap-layout-popup .ap-cont, 
+.ap-theme-ios.ap-layout-popup .ap-cont,
 .ap-theme-ios.ap-layout-popover .ap-cont
 {
 	max-width: 320px;
@@ -857,15 +857,15 @@ body.noscroll
     border: 1px solid #D7D7D7;
 }
 
-.ap-theme-ios.ap-layout-popup, 
-.ap-theme-ios.ap-layout-fixed, 
+.ap-theme-ios.ap-layout-popup,
+.ap-theme-ios.ap-layout-fixed,
 .ap-theme-ios.ap-layout-popover
 {
 	background: rgba(0, 0, 0, 0.4);
 }
 
-.ap-theme-ios .ap-tooltip, 
-.ap-theme-ios .ap-tooltip:after 
+.ap-theme-ios .ap-tooltip,
+.ap-theme-ios .ap-tooltip:after
 {
   	display: inline-block;
  	width: 0;
@@ -878,7 +878,7 @@ body.noscroll
   	z-index: 6;
 }
 
-.ap-theme-ios .ap-tooltip:after 
+.ap-theme-ios .ap-tooltip:after
 {
   	content: " ";
   	border-width: 10px;
@@ -896,14 +896,14 @@ body.noscroll
 	right: 10px;
 }
 
-.ap-theme-ios .ap-tooltip-bottom:after 
+.ap-theme-ios .ap-tooltip-bottom:after
 {
   	top: -8px;
   	left: -10px;
   	border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #FFFFFF rgba(0, 0, 0, 0);
 }
 
-.ap-theme-ios .ap-tooltip-top 
+.ap-theme-ios .ap-tooltip-top
 {
   	bottom: -21px;
   	left: 16px;
@@ -935,7 +935,7 @@ body.noscroll
 	transform: translateY(-50%);
 }
 
-.ap-theme-ios .ap-tooltip-left:after 
+.ap-theme-ios .ap-tooltip-left:after
 {
   	top: -10px;
   	left: -9px;
@@ -945,7 +945,7 @@ body.noscroll
 .ap-theme-ios .ap-tooltip-right
 {
   	top: 50%;
-  	right: -22px;	
+  	right: -22px;
   	border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #D7D7D7;
 
   	-webkit-transform: translateY(-50%);
@@ -955,7 +955,7 @@ body.noscroll
 	transform: translateY(-50%);
 }
 
-.ap-theme-ios .ap-tooltip-right:after 
+.ap-theme-ios .ap-tooltip-right:after
 {
   	top: -10px;
   	left: -11px;
@@ -997,7 +997,7 @@ body.noscroll
   	background: rgba(255, 255, 255, 1);
 }
 
-.ap-theme-ios .ap-content-top, 
+.ap-theme-ios .ap-content-top,
 .ap-theme-ios .ap-content-bottom
 {
 	font-size: 0.9em;
@@ -1101,7 +1101,7 @@ body.noscroll
 	color: #FFFFFF;
 }
 
-.ap-theme-ios .ap-component-plus, 
+.ap-theme-ios .ap-component-plus,
 .ap-theme-ios .ap-component-minus
 {
 	color: #BDBDBD;
@@ -1135,7 +1135,7 @@ body.noscroll
 
 
 
-.ap-theme-android.ap-layout-popup, 
+.ap-theme-android.ap-layout-popup,
 .ap-theme-android .ap-layout-fixed
 {
 	background: rgba(0, 0, 0, 0.6);
@@ -1290,7 +1290,7 @@ body.noscroll
 	color: #FFFFFF;
 }
 
-.ap-theme-android .ap-component-plus, 
+.ap-theme-android .ap-component-plus,
 .ap-theme-android .ap-component-minus
 {
 	color: #BDBDBD;
@@ -1359,12 +1359,12 @@ body.noscroll
   	100% { background: #F5F5F5; }
 }
 
-@-webkit-keyframes ap-anim-android-button-active 
+@-webkit-keyframes ap-anim-android-button-active
 {
   	100% { background: #F5F5F5; }
 }
 
-@-o-keyframes ap-anim-android-button-active 
+@-o-keyframes ap-anim-android-button-active
 {
   	100% { background: #F5F5F5; }
 }
@@ -1376,7 +1376,7 @@ body.noscroll
 
 
 
-.ap-theme-windows.ap-layout-popup, 
+.ap-theme-windows.ap-layout-popup,
 .ap-theme-windows.ap-layout-popup *
 {
 	background: #181C18;
@@ -1469,7 +1469,7 @@ body.noscroll
   	max-width: none;
 }
 
-.ap-theme-windows .ap-content-top, 
+.ap-theme-windows .ap-content-top,
 .ap-theme-windows .ap-content-bottom
 {
 	font-size: 0.9em;
@@ -1592,7 +1592,7 @@ body.noscroll
 
 	font-size: 1.8em;
 	text-align: left;
-	
+
 	width: 100%;
 	height: 80px;
 	line-height: 80px;
@@ -1607,7 +1607,7 @@ body.noscroll
 .ap-theme-windows .ap-row-label
 {
 	background: transparent;
-	
+
 	font-size: 0.7em;
 	text-transform: lowercase;
 	text-align: left;
@@ -1632,7 +1632,7 @@ body.noscroll
 
 .ap-theme-windows .ap-row-selected .ap-row-bg
 {
-	background: #4B4D4A !important;	
+	background: #4B4D4A !important;
 	border: 2px solid #4B4D4A;
 }
 
@@ -1754,7 +1754,7 @@ body.noscroll
 
 [class^="ap-icon-"], [class*=" ap-icon-"] {
 	font-family: 'anypicker-font';
-	speak: none;
+	speak: never;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
