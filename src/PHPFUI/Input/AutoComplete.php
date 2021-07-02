@@ -84,8 +84,8 @@ class AutoComplete extends \PHPFUI\Input\Input
 			if ($returnValue)
 				{
 				$returnValue = \str_replace('&amp;', '&', $returnValue); // need both to remove pesky &amp;!
-		$returnValue = \PHPFUI\TextHelper::unhtmlentities($returnValue);  // need this too!
-		$this->page->setRawResponse($returnValue);
+				$returnValue = \PHPFUI\TextHelper::unhtmlentities($returnValue);  // need this too!
+				$this->page->setRawResponse($returnValue);
 				}
 			}
 		$csrf = \PHPFUI\Session::csrf("'");
