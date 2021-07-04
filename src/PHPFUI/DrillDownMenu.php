@@ -14,8 +14,9 @@ class DrillDownMenu extends \PHPFUI\Menu
 
 	public function addSubMenu(MenuItem $item, Menu $subMenu) : Menu
 		{
+		$subMenu->deleteClass('nested');
 		$subMenu->addClass('vertical');
-		$this->menuItems[$item->getName()] = $subMenu;
+		parent::addSubMenu($item, $subMenu);
 
 		return $this;
 		}
