@@ -37,16 +37,23 @@ class File extends \PHPFUI\Input\Input
 	 * Set allowed extensions. Dropify will validate and open dialog
 	 * will be prepopulated with the restriction
 	 *
-	 * @param array $extensions without the period (.)
+	 * @param array $extensions leading . is optional
 	 */
 	public function setAllowedExtensions(array $extensions) : File
 		{
+		foreach ($extensions as &$value)
+			{
+			$value = ltrim($value, '.');
+			}
+		unset($value);
+
 		$this->addAttribute('data-allowed-file-extensions', \implode(' ', $extensions));
 
 		foreach ($extensions as &$value)
 			{
 			$value = '.' . $value;
 			}
+		unset($value);
 
 		$this->addAttribute('accept', \implode(',', $extensions));
 
