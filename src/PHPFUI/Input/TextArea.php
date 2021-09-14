@@ -64,7 +64,7 @@ class TextArea extends \PHPFUI\Input\Input
 		{
 		$this->addAttribute('rows', $this->rows);
 		$label = new \PHPFUI\HTML5Element('label');
-		$label->add($this->getLabel());
+		$label->add($this->getToolTip($this->getLabel()));
 
 		if ($this->required)
 			{
