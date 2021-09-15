@@ -1,4 +1,4 @@
-# PHPFUI [![Build Status](https://travis-ci.com/phpfui/phpfui.png?branch=master)](https://travis-ci.com/phpfui/phpfui) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpfui.svg)](https://packagist.org/packages/phpfui/phpfui)
+# PHPFUI [![Build Status](https://api.travis-ci.com/phpfui/phpfui.png?branch=master)](https://api.travis-ci.com/phpfui/phpfui) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpfui.svg)](https://packagist.org/packages/phpfui/phpfui)
 
 PHP Wrapper for the Foundation CSS Framework
 
