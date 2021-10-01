@@ -11,7 +11,7 @@
 
 [class^="ap-icon-"], [class*=" ap-icon-"] {
 	font-family: 'anypicker-font';
-	speak: never;
+	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
