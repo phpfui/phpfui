@@ -26,6 +26,14 @@ class AJAX
 		}
 
 	/**
+	 * Return true if the post is from this AJAX call
+	 */
+	public function isMyCallback($post) : bool
+		{
+		return (\PHPFUI\Session::checkCSRF() && ($post['action'] ?? '') == $this->name);
+		}
+
+	/**
 	 * Add a function parameter and the script that matches the
 	 * parameter type according to jQuery.ajax
 	 *
