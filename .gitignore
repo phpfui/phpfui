@@ -1,6 +1,7 @@
 vendor/
 .idea/
 bin/
+src/PHPFUI/ConstantContact
 src/PHPFUI/PHPUnitSyntaxCoverage
 src/PHPFUI/MySQLSlowQuery
 src/PHPFUI/HTMLUnitTester
