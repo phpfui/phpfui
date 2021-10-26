@@ -68,14 +68,19 @@ class InputGroup extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function addLabel(string $label) : InputGroup
+	/**
+	 * Unlike addInput and addButton, addLabel returns the label added, and not the current InputGroup.  This is done so it can be modified by the caller as needed (for example, adding onClick)
+	 *
+	 * @return HTML5Element of the added label
+	 */
+	public function addLabel(string $label) : HTML5Element
 		{
 		$span = new HTML5Element('span');
 		$span->addClass('input-group-label');
 		$span->add($label);
 		$this->add($span);
 
-		return $this;
+		return $span;
 		}
 
 	public function getStart() : string

@@ -43,9 +43,8 @@ class PasswordEye extends \PHPFUI\Input\Password
 		$js = "var iconId=$('#{$iconId}'),passwordId=$('#{$passwordId}'),remove='',add='-slash',type='text';" .
 				"if(iconId.hasClass('fa-eye'+add)){remove=add;add='';type='password'};iconId.removeClass('fa-eye'+remove);" .
 				"iconId.addClass('fa-eye'+add);passwordId.prop('type',type);";
-		$icon->setAttribute('onclick', str_replace("'", '"', $js));
 		$inputGroup->addInput($password);
-		$inputGroup->addLabel($icon);
+		$inputGroup->addLabel($icon)->setAttribute('onclick', str_replace("'", '"', $js));
 
 		return $inputGroup;
 		}
