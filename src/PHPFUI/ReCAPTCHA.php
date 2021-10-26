@@ -5,6 +5,8 @@ namespace PHPFUI;
 /**
  * Implements Googles ReCaptcha
  *
+ * Use ReCAPTCHAv2 if you need to alter Google defaults
+ *
  * This creates a UI element that displays the "I am not a robot" checkbox.
  *
  * Suggested use on a page
@@ -18,11 +20,8 @@ namespace PHPFUI;
  * else print_r($captcha->getErrors());
  * ```
  */
-class ReCAPTCHA extends \PHPFUI\HTML5Element
+class ReCAPTCHA extends \PHPFUI\ReCAPTCHAv2
 	{
-	private $errors = [];
-
-	private $isValid = false;
 
 	/**
 	 * Create a Google ReCAPTCHA.  If either $publicKey or
@@ -35,48 +34,12 @@ class ReCAPTCHA extends \PHPFUI\HTML5Element
 	 */
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $publicKey, string $secretKey)
 		{
-		parent::__construct('div');
-
-		if ($publicKey && $secretKey)
+		$recaptcha = null;
+		if ($secretKey != '')
 			{
-			$this->addClass('g-recaptcha');
-			$this->addAttribute('data-sitekey', $publicKey);
-			$page->addHeadScript('https://www.google.com/recaptcha/api.js');
-
-			if (! empty($_POST['g-recaptcha-response']))
-				{
-				$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
-				$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-
-				if ($resp->isSuccess())
-					{
-					$this->isValid = true;
-					}
-				else
-					{
-					$this->errors = $resp->getErrorCodes();
-					}
-				}
+			$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
 			}
-		else
-			{
-			$this->isValid = true;
-			}
+		parent::__construct($page, $recaptcha, $publicKey);
 		}
 
-	/**
-	 * Returns any errors from Google
-	 */
-	public function getErrors() : array
-		{
-		return $this->errors;
-		}
-
-	/**
-	 * Returns true if OK to proceed
-	 */
-	public function isValid() : bool
-		{
-		return $this->isValid;
-		}
 	}
