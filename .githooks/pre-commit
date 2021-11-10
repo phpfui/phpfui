@@ -35,7 +35,7 @@ else
     exit 1
   fi
 
-  $PHP_CS_FIXER fix --config=.php_cs.dist ${FILES} >/dev/null 2>&1
+  $PHP_CS_FIXER fix --config=.php-cs-fixer.dist.php ${FILES} >/dev/null 2>&1
   git add ${FILES}
 
 #  output=`$PSALM --report=psalmCommitErrors.txt --config=psalmCommit.xml ${FILES} >/dev/null 2>&1`
