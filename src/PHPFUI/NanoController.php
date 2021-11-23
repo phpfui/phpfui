@@ -10,7 +10,7 @@ namespace PHPFUI;
  * ### [KISS](https://www.kissonline.com) - [Keep It Simple Stupid](https://en.wikipedia.org/wiki/KISS_principle)
  * The **NanoController** maps namespaces, classes and methods directly to the URI and dispenses with a routing table.  The result is an easy to understand namespace and classs structure that exactly matches your URI. The URI tells you exactly where the class lives, and the class tells you the exact URI. No need to check a routing table to know what is invoked when.
  * ### Naming Conventions
- * **NanoController** follows standard naming conventions to figure out what namespace, class and method to call.  Namespaces and classes should use [Studly Case](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), capitalized first letter and capitalized letter of every word. Methods should follow [camelCase](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), where the first letter is lowercase, with subsequent word's first letter upper cased, although this is not required, as PHP method names are case insensitive (unfortunately). **NanoController** uses the first lower case segment as the method name. The preceding segments form the namespace and class. The method must be public.
+ * **NanoController** follows standard naming conventions to figure out what namespace, class and method to call.  Namespaces and classes should use [Studly Case](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), capitalized first letter and capitalized letter of every word. Methods should follow [camelCase](https://mentoor.io/posts/studlycase-vs-camelcase-vs-snakecase/1), where the first letter is lowercase, with subsequent word's first letter upper cased, although this is not required, as PHP method names are case insensitive (unfortunately). **NanoController** uses the first lower case segment as the method name. The preceding segments form the namespace and class. **NanoController** will append the request method verb (in Studly Case) to the method name. If this method is not found, the base method name is tried. The method must be public.
  * ### Parameters
  * You can pass parameters with URI segments past the first lower case segment (which is the method name to call in the class) by simply specifying additional segments.  **NanoController** uses method parameter types to cast the  parameters to the right types.  You can specify any scalar (**bool, int, float, string**), and **NanoController** will cast it to the correct type.  If your parameter type is a class, **NanoController** will instantiate the class and pass the constuctor a string representation of the corresponding URI segment. If you specify **array** as the type, **NanoController** will pass all subsequent URI segments as an array of strings. No other parameters will be passed after an **array** parameter.
  * ### Method Call
@@ -31,30 +31,28 @@ namespace PHPFUI;
  * |/Account/Users/Fiends|\App|Missing| __construct(NanoController) | none (class not defined) |
  *
  * You can change the root namespace from App to anything by calling setRootNamespace('App\\Controller') for example.
- * ### What about GET, POST, PUT, and DELETE?
- * Unlike complicated routing tables, **NanoController** leaves the handling of HTTP methods to the class. Since browsers only support GET and POST, you have to hack PUT and DELETE methods anyway, so just deal with the HTTP method how ever you see fit.
  */
 class NanoController implements \PHPFUI\Interfaces\NanoController
 	{
-	private $errors = [];
+	private array $errors = [];
 
-	private $files = [];
+	private array $files = [];
 
-	private $get = [];
+	private array $get = [];
 
-	private $invokedPath = '';
+	private string $invokedPath = '';
 
-	private $homePageClass = '';
+	private string $homePageClass = '';
 
-	private $missingClass = '';
+	private string $missingClass = '';
 
-	private $missingMethod = '';
+	private string $missingMethod = '';
 
-	private $post = [];
+	private array $post = [];
 
-	private $rootNamespace = '';
+	private string $rootNamespace = '';
 
-	private $uri = '';
+	private string $uri = '';
 
 	/**
 	 * Construct the controller.  You generally pass $_SERVER['REQUEST_URI'], but it is up to you.
@@ -249,6 +247,14 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		}
 
 	/**
+	 * Return the StudlyCased request method name
+	 */
+	public function getRequestMethod() : string
+		{
+		return isset($_SERVER['REQUEST_METHOD']) ? \ucfirst(\strtolower($_SERVER['REQUEST_METHOD'])) : 'Get';
+		}
+
+	/**
 	 * Test if the class and method exists, and if so, return the instantiated class with the method called
 	 *
 	 * @return null|\PHPFUI\Interfaces\NanoClass null value indicates class::method was not found
@@ -271,17 +277,24 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 			}
 
 		$message = 'Class Method ' . $className . '::' . $method;
+		$finalMethod = $method . $this->getRequestMethod();
 
-		if (! \method_exists($className, $method))
+		if (! \method_exists($className, $finalMethod))
 			{
-			$this->errors[$message . ' does not exist'] = true;
 
-			return null;
+			if (! \method_exists($className, $method))
+				{
+				$this->errors[$message . ' does not exist'] = true;
+
+				return null;
+				}
+
+			$finalMethod = $method;
 			}
 
 		$classObject = new $className($this);
 		$reflection = new \ReflectionClass($classObject);
-		$reflectionMethod = $reflection->getMethod($method);
+		$reflectionMethod = $reflection->getMethod($finalMethod);
 
 		if (! $reflectionMethod->isPublic())
 			{
@@ -290,7 +303,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 			return null;
 			}
 
-		$this->invokedPath = $className . '\\' . $method;
+		$this->invokedPath = $className . '\\' . $finalMethod;
 		$args = ($index + 1) < \count($parts) ? \array_slice($parts, $index + 1) : [];
 		$numberArgs = \count($args);
 		$argNumber = 0;
