@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class AJAX
 	{
-	protected $conditions = [];
+	protected array $conditions = [];
 
 	protected $name;
 
@@ -30,7 +30,7 @@ class AJAX
 	 */
 	public function isMyCallback($post) : bool
 		{
-		return (\PHPFUI\Session::checkCSRF() && ($post['action'] ?? '') == $this->name);
+		return \PHPFUI\Session::checkCSRF() && ($post['action'] ?? '') == $this->name;
 		}
 
 	/**

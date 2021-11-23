@@ -7,23 +7,23 @@ namespace PHPFUI;
  */
 class EMailButton extends \PHPFUI\Button
 	{
-	protected $backgroundColor = '008cba';
+	protected string $backgroundColor = '008cba';
 
-	protected $backgroundImage = '';
+	protected string $backgroundImage = '';
 
-	protected $borderColor = '008cba';
+	protected string $borderColor = '008cba';
 
-	protected $color = 'ffffff';
+	protected string $color = 'ffffff';
 
-	protected $font = 'sans-serif';
+	protected string $font = 'sans-serif';
 
-	protected $fontSize = 13;
+	protected int $fontSize = 13;
 
-	protected $height = 40;
+	protected int $height = 40;
 
-	protected $radius = 3;
+	protected int $radius = 3;
 
-	protected $width = 150;
+	protected int $width = 150;
 
 	/**
 	 * Construct an EMailButton

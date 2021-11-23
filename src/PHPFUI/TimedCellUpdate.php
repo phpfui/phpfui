@@ -11,7 +11,7 @@ class TimedCellUpdate extends \PHPFUI\Base
 
 	protected $callbackId;
 
-	private static $callbackNumber = 0;
+	private static int $callbackNumber = 0;
 
 	/**
 	 * Construct a TimedCellUpdate.  The cell will be updated with

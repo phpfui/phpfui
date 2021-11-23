@@ -9,11 +9,11 @@ class SlickSlider extends \PHPFUI\HTML5Element
 	{
 	use \PHPFUI\Traits\Page;
 
-	private $attributes = [];
+	private array $attributes = [];
 
 	private $page;
 
-	private $slides = [];
+	private array $slides = [];
 
 	/**
 	 * @param Page $page to add JS

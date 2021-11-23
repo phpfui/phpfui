@@ -9,7 +9,7 @@ class SplitButton extends \PHPFUI\Button
 	{
 	private $menu;
 
-	private $started = false;
+	private bool $started = false;
 
 	public function __construct(string $text, string $link)
 		{

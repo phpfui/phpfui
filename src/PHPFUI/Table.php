@@ -16,37 +16,37 @@ namespace PHPFUI;
  */
 class Table extends \PHPFUI\HTML5Element
 	{
-	protected $alwaysOutput = false;
+	protected bool $alwaysOutput = false;
 
-	protected $caption = '';
+	protected string $caption = '';
 
-	protected $colspans = [];
+	protected array $colspans = [];
 
-	protected $columnAttributes = [];
+	protected array $columnAttributes = [];
 
-	protected $displayHeaders = true;
+	protected bool $displayHeaders = true;
 
-	protected $footers = [];
+	protected array $footers = [];
 
-	protected $headers = [];
+	protected array $headers = [];
 
-	protected $nextRowAttributes = [];
+	protected array $nextRowAttributes = [];
 
 	protected $page = null;
 
-	protected $recordId = '';
+	protected string $recordId = '';
 
-	protected $rowAttributes = [];
+	protected array $rowAttributes = [];
 
-	protected $rows = [];
+	protected array $rows = [];
 
-	protected $sortableBodyClass = '';
+	protected string $sortableBodyClass = '';
 
-	protected $sortableTrClass = '';
+	protected string $sortableTrClass = '';
 
-	protected $strict = false;
+	protected bool $strict = false;
 
-	protected $widths = [];
+	protected array $widths = [];
 
 	public function __construct()
 		{

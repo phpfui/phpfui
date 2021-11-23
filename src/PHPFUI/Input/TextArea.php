@@ -7,7 +7,7 @@ namespace PHPFUI\Input;
  */
 class TextArea extends \PHPFUI\Input\Input
 	{
-	private $rows = 10;
+	private int $rows = 10;
 
 	/**
 	 * Construct a TextArea

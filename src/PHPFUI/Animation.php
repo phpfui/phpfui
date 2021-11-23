@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class Animation
 	{
-	private static $animations = [
+	private static array $animations = [
 		'slide-in-down' => true,
 		'slide-in-left' => true,
 		'slide-in-up' => true,

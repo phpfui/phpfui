@@ -4,15 +4,15 @@ namespace PHPFUI;
 
 class Menu extends \PHPFUI\HTML5Element
 	{
-	protected $menuItems = [];
+	protected array $menuItems = [];
 
-	protected $menuLabels = [];
+	protected array $menuLabels = [];
 
-	protected $sorted = false;
+	protected bool $sorted = false;
 
-	private $started = false;
+	private bool $started = false;
 
-	private $type = '';
+	private string $type = '';
 
 	public function __construct()
 		{

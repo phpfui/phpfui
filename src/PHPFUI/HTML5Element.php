@@ -8,19 +8,19 @@ namespace PHPFUI;
  */
 class HTML5Element extends \PHPFUI\Base
 	{
-	private $attributes = [];
+	private array $attributes = [];
 
-	private $classes = [];
+	private array $classes = [];
 
 	private $element;
 
 	private $id = null;
 
-	private static $masterId = 0;
+	private static int $masterId = 0;
 
-	private $noEndTag = false;
+	private bool $noEndTag = false;
 
-	private static $noEndTags = [
+	private static array $noEndTags = [
 		'area' => true,
 		'base' => true,
 		'br' => true,

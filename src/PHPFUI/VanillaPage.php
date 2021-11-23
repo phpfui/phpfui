@@ -7,45 +7,45 @@ namespace PHPFUI;
  */
 class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	{
-	private $android = false;
+	private bool $android = false;
 
-	private $chrome = false;
+	private bool $chrome = false;
 
-	private $css = [];
+	private array $css = [];
 
-	private $edgeVersion = 0;
+	private int $edgeVersion = 0;
 
 	private $favIcon;
 
-	private $fireFoxVersion = 0;
+	private int $fireFoxVersion = 0;
 
-	private $headJavascript = [];
+	private array $headJavascript = [];
 
-	private $headScripts = [];
+	private array $headScripts = [];
 
-	private $headTags = [];
+	private array $headTags = [];
 
-	private $ieComments = [];
+	private array $ieComments = [];
 
-	private $IEMobile = false;
+	private bool $IEMobile = false;
 
-	private $ios = false;
+	private bool $ios = false;
 
-	private $javascript = [];
+	private array $javascript = [];
 
-	private $javascriptFirst = [];
+	private array $javascriptFirst = [];
 
-	private $javascriptLast = [];
+	private array $javascriptLast = [];
 
-	private $language = 'en';
+	private string $language = 'en';
 
-	private $pageName = '';
+	private string $pageName = '';
 
-	private $resourcePath = '/';
+	private string $resourcePath = '/';
 
-	private $styleSheets = [];
+	private array $styleSheets = [];
 
-	private $tailScripts = [];
+	private array $tailScripts = [];
 
 	private $body;
 
@@ -563,7 +563,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		if ($js)
 			{
-			$output .= '<script>' . implode(';' . $nl, $js) . '</script>' . $nl;
+			$output .= '<script>' . \implode(';' . $nl, $js) . '</script>' . $nl;
 			}
 
 		$this->body->add($output);
@@ -609,7 +609,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		if ($this->headJavascript)
 			{
-			$output .= '<script>' . implode(';' . $nl, $this->headJavascript) . '</script>' . $nl;
+			$output .= '<script>' . \implode(';' . $nl, $this->headJavascript) . '</script>' . $nl;
 			}
 
 		if ($this->css)
@@ -617,7 +617,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= '<style>' . \implode($nl, $this->css) . '</style>' . $nl;
 			}
 
-		$output .= "</head>";
+		$output .= '</head>';
 
 		return $output;
 		}

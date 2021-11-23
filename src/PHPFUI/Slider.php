@@ -4,21 +4,21 @@ namespace PHPFUI;
 
 class Slider extends \PHPFUI\HTML5Element
 	{
-	private $max = 100;
+	private int $max = 100;
 
-	private $min = 0;
+	private int $min = 0;
 
 	private $rangeHandle = null;
 
 	private $sliderHandle;
 
-	private $started = false;
+	private bool $started = false;
 
-	private $step = 1;
+	private int $step = 1;
 
 	private $value;
 
-	private $vertical = false;
+	private bool $vertical = false;
 
 	/**
 	 * @param int $value the initial slider value

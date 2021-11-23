@@ -4,7 +4,7 @@ namespace PHPFUI\PayPal;
 
 class Subscription extends \PHPFUI\PayPal\Base
 	{
-	protected static $validFields = [
+	protected static array $validFields = [
 		'plan_id' => 'string',
 		'start_time' => 'string',
 		'quantity' => 'string',

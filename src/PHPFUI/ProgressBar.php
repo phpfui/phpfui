@@ -7,15 +7,15 @@ namespace PHPFUI;
  */
 class ProgressBar extends \PHPFUI\HTML5Element
 	{
-	private $current = 0;
+	private int $current = 0;
 
-	private $max = 100;
+	private int $max = 100;
 
-	private $min = 0;
+	private int $min = 0;
 
 	private $meter = null;
 
-	private $labelText = '';
+	private string $labelText = '';
 
 	private $label = null;
 

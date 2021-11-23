@@ -4,7 +4,7 @@ namespace PHPFUI\PayPal;
 
 class BillingCycle extends \PHPFUI\PayPal\Base
 	{
-	protected static $validFields = [
+	protected static array $validFields = [
 		'pricing_scheme' => PricingScheme::class,
 		'frequency' => Frequency::class,
 		'tenure_type' => ['REGULAR', 'TRIAL'],

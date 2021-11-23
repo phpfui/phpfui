@@ -9,13 +9,13 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 	{
 	protected $input;
 
-	private $active = '';
+	private string $active = '';
 
-	private $inactive = '';
+	private string $inactive = '';
 
-	private $started = false;
+	private bool $started = false;
 
-	private $title = '';
+	private string $title = '';
 
 	public function __construct(string $name, $value = 0, string $title = '', string $type = 'radio')
 		{

@@ -9,27 +9,29 @@ namespace PHPFUI;
  */
 class MathCaptcha extends \PHPFUI\MultiColumn
 	{
+	private string $fieldName = 'mathAnswer';
 
-	private $fieldName = 'mathAnswer';
-
-	private $operators = ['plus' => '+', 'minus' => '-', 'times' => '*'];
+	private array $operators = ['plus' => '+', 'minus' => '-', 'times' => '*'];
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, int $limit = 10, string $fieldName = '')
 		{
 		parent::__construct();
 		$this->addClass('clearfix');
+
 		if ($fieldName)
 			{
 			$this->fieldName = $fieldName;
 			}
 		$container = new \PHPFUI\Container();
 		$answers = [];
+
 		for ($i = 0; $i < 10; ++$i)
 			{
-			$operator = mt_rand(0, 2);
-			$type = mt_rand(0, 1);
-			$first = mt_rand(1, $limit);
-			$second = mt_rand(1,$limit);
+			$operator = \mt_rand(0, 2);
+			$type = \mt_rand(0, 1);
+			$first = \mt_rand(1, $limit);
+			$second = \mt_rand(1, $limit);
+
 			if ($first < $second)
 				{
 				$temp = $first;
@@ -37,27 +39,34 @@ class MathCaptcha extends \PHPFUI\MultiColumn
 				$second = $temp;
 				}
 
-			reset($this->operators);
+			\reset($this->operators);
+
 			for ($j = 0; $j < $operator; ++$j)
 				{
-				next($this->operators);
+				\next($this->operators);
 				}
-			switch (current($this->operators))
+
+			switch (\current($this->operators))
 				{
 				case '+':
 					$answer = $first + $second;
+
 					break;
+
 				case '-':
 					$answer = $first - $second;
+
 					break;
+
 				case '*':
 					$answer = $first * $second;
+
 					break;
 				}
 
-			$op = $type ? current($this->operators) : key($this->operators);
+			$op = $type ? \current($this->operators) : \key($this->operators);
 
-			$message = new \PHPFUI\HTML5Element(mt_rand(0,1) ? 'strong' : 'b');
+			$message = new \PHPFUI\HTML5Element(\mt_rand(0, 1) ? 'strong' : 'b');
 			$message->add("Please Solve: {$first} {$op} {$second} = ");
 			$message->addClass('float-right hide');
 			$answers[$message->getId()] = $answer;
@@ -65,13 +74,14 @@ class MathCaptcha extends \PHPFUI\MultiColumn
 			}
 		$this->add($container);
 
-		$oneToShow = mt_rand(0, 9);
+		$oneToShow = \mt_rand(0, 9);
+
 		for ($i = 0; $i < $oneToShow; ++$i)
 			{
-			next($answers);
+			\next($answers);
 			}
-		$page->addJavaScript('$("#' . key($answers) . '").toggleClass("hide")');
-		\PHPFUI\Session::setFlash($this->fieldName, current($answers));
+		$page->addJavaScript('$("#' . \key($answers) . '").toggleClass("hide")');
+		\PHPFUI\Session::setFlash($this->fieldName, \current($answers));
 		$answerInput = new \PHPFUI\Input\Number($this->fieldName);
 		$this->add($answerInput);
 		$this->add('&nbsp;');

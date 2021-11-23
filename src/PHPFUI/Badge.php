@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class Badge extends \PHPFUI\HTML5Element
 	{
-	private $readerText = '';
+	private string $readerText = '';
 
 	/**
 	 * Make a badge.

@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class DefaultSessionHandler implements \PHPFUI\SessionHandler
 	{
-	private $csrfValue = '';
+	private string $csrfValue = '';
 
 	public function checkCSRF(string $request = '') : bool
 		{

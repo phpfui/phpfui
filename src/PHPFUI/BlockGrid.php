@@ -4,11 +4,11 @@ namespace PHPFUI;
 
 class BlockGrid extends \PHPFUI\HTML5Element
 	{
-	protected $large = 0;
+	protected int $large = 0;
 
-	protected $medium = 0;
+	protected int $medium = 0;
 
-	protected $small = 0;
+	protected int $small = 0;
 
 	public function __construct(int $small = 0, int $medium = 0, int $large = 0)
 		{

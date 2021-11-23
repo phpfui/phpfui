@@ -9,17 +9,17 @@ abstract class Input extends \PHPFUI\Input
 	{
 	protected $error = null;
 
-	protected $errorMessages = [];
+	protected array $errorMessages = [];
 
 	protected $hint = null;
 
-	protected $hintText = '';
+	protected string $hintText = '';
 
-	protected $label = '';
+	protected string $label = '';
 
-	protected $required = false;
+	protected bool $required = false;
 
-	private $started = false;
+	private bool $started = false;
 
 	/**
 	 * Construct an input field for Abide validation and label

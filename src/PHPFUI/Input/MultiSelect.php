@@ -7,11 +7,11 @@ namespace PHPFUI\Input;
  */
 class MultiSelect extends \PHPFUI\Input\Select
 	{
-	private $gridSize = 12;
+	private int $gridSize = 12;
 
-	private $numberColumns = 1;
+	private int $numberColumns = 1;
 
-	private $selectAll = '';
+	private string $selectAll = '';
 
 	/**
 	 * Construct a MultiSelect

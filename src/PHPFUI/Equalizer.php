@@ -8,7 +8,7 @@ class Equalizer extends \PHPFUI\HTML5Element
 
 	private $watchId;
 
-	private static $watchMaster = 0;
+	private static int $watchMaster = 0;
 
 	public function __construct(?HTML5Element $base = null)
 		{

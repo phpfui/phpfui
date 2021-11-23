@@ -12,14 +12,14 @@ class Express extends \PHPFUI\HTML5Element
 
 	private $paymentUrl;
 
-	private $styles = [
+	private array $styles = [
 		'layout' => 'vertical',
 		'size' => 'medium',
 		'shape' => 'pill',
 		'color' => 'gold',
 	];
 
-	private $type = 'sandbox';
+	private string $type = 'sandbox';
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)
 		{

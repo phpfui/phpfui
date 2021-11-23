@@ -7,9 +7,9 @@ namespace PHPFUI;
  */
 class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
-	protected $buttons = [];
+	protected array $buttons = [];
 
-	private $started = false;
+	private bool $started = false;
 
 	public function __construct()
 		{

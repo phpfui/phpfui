@@ -12,7 +12,7 @@ class Orbit extends \PHPFUI\HTML5Element
 
 	private $controls;
 
-	private $started = false;
+	private bool $started = false;
 
 	private $wrapper;
 

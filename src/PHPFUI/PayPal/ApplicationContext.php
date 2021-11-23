@@ -4,7 +4,7 @@ namespace PHPFUI\PayPal;
 
 class ApplicationContext extends \PHPFUI\PayPal\Base
 	{
-	protected static $validFields = [
+	protected static array $validFields = [
 		'brand_name' => 'string',
 		'locale' => 'string',
 		'landing_page' => ['LOGIN', 'BILLING', 'NO_PREFERENCE'],

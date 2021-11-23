@@ -4,26 +4,26 @@ namespace PHPFUI\PayPal;
 
 abstract class Base
 	{
-	protected static $validFields = [];
+	protected static array $validFields = [];
 
-	private $data = [];
+	private array $data = [];
 
-	private $setFields = [];
+	private array $setFields = [];
 
-	private static $scalars = [
+	private static array $scalars = [
 		'boolean' => true,
 		'double' => true,
 		'integer' => true,
 		'string' => true,
-		];
+	];
 
 	public function __construct()
 		{
 		foreach (static::$validFields as $field => $type)
 			{
-			if (! is_array($type) && ! isset(self::$scalars[$type]))
+			if (! \is_array($type) && ! isset(self::$scalars[$type]))
 				{
-				$this->data[$field] = new $type;
+				$this->data[$field] = new $type();
 				}
 			}
 		}
@@ -35,7 +35,7 @@ abstract class Base
 		{
 		if (! isset(static::$validFields[$field]))
 			{
-			throw new \Exception("{$field} is not a valid field for " . \get_class($this));
+			throw new \Exception("{$field} is not a valid field for " . static::class);
 			}
 
 		$this->setFields[$field] = true;
@@ -49,7 +49,7 @@ abstract class Base
 
 		if (null === $expectedType)
 			{
-			throw new \Exception("{$field} is not a valid field for " . \get_class($this));
+			throw new \Exception("{$field} is not a valid field for " . static::class);
 			}
 		$type = \gettype($value);
 
@@ -62,12 +62,12 @@ abstract class Base
 			{
 			if (! \in_array($value, $expectedType))
 				{
-				throw new \Exception("{$field} is {$value} but must be one of " . \implode(', ', $expectedType) . ' for ' . \get_class($this));
+				throw new \Exception("{$field} is {$value} but must be one of " . \implode(', ', $expectedType) . ' for ' . static::class);
 				}
 			}
 		elseif ($expectedType != $type)
 			{
-			throw new \Exception("{$field} is of type {$type} but should be type {$expectedType} for " . \get_class($this));
+			throw new \Exception("{$field} is of type {$type} but should be type {$expectedType} for " . static::class);
 			}
 		// Do additional formatting
 		switch ($type)

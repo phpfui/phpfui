@@ -4,9 +4,9 @@ namespace PHPFUI\PayPal;
 
 class PurchaseUnit extends \PHPFUI\PayPal\Base
 	{
-	protected $items = [];
+	protected array $items = [];
 
-	protected static $validFields = [
+	protected static array $validFields = [
 		'reference_id' => 'string',
 		'description' => 'string',
 		'custom_id' => 'string',

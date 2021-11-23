@@ -6,9 +6,9 @@ class Pagination extends \PHPFUI\HTML5Element
 	{
 	private $baseUrl;
 
-	private $ff = 0;
+	private int $ff = 0;
 
-	private $next = 'Next';
+	private string $next = 'Next';
 
 	private $of;
 
@@ -18,13 +18,13 @@ class Pagination extends \PHPFUI\HTML5Element
 
 	private $pageText;
 
-	private $previous = 'Previous';
+	private string $previous = 'Previous';
 
-	private $started = false;
+	private bool $started = false;
 
 	private $ul;
 
-	private $window = 3;
+	private int $window = 3;
 
 	/**
 	 * Show a pagination nav. If there is only one page, the paginator will not be generated.

@@ -12,20 +12,20 @@ namespace PHPFUI;
 class Language
 	{
 	// Input
-	public static $required = ' <small>Required</small>';
+	public static string $required = ' <small>Required</small>';
 
-	public static $emailError = 'Must be a valid email address with @ sign and domain';
+	public static string $emailError = 'Must be a valid email address with @ sign and domain';
 
-	public static $urlError = 'Valid URL required. https://www.google.com for example';
+	public static string $urlError = 'Valid URL required. https://www.google.com for example';
 
-	public static $numberError = 'Numbers (0-9.) only';
+	public static string $numberError = 'Numbers (0-9.) only';
 
-	public static $selectError = 'Please select.';
+	public static string $selectError = 'Please select.';
 
 	// OrderableTable
-	public static $updownarrow = '&updownarrow;';
+	public static string $updownarrow = '&updownarrow;';
 
-	public static $dropRowHere = 'Drop Row Here';
+	public static string $dropRowHere = 'Drop Row Here';
 
 	// SortableTable
 	public static $sortIcon = null;
@@ -35,13 +35,13 @@ class Language
 	public static $sortUpIcon = null;
 
 	// Pagination
-	public static $next = 'Next';
+	public static string $next = 'Next';
 
-	public static $previous = 'Prev';
+	public static string $previous = 'Prev';
 
-	public static $page = 'page';
+	public static string $page = 'page';
 
-	public static $onPage = "You're on page";
+	public static string $onPage = "You're on page";
 
 	public static function getSortIcon(string $type = '') : \PHPFUI\IconBase
 		{

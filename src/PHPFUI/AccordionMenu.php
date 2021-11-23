@@ -7,9 +7,9 @@ namespace PHPFUI;
  */
 class AccordionMenu extends \PHPFUI\Menu
 	{
-	private $separator = '~|~';
+	private string $separator = '~|~';
 
-	private $started = false;
+	private bool $started = false;
 
 	public function __construct()
 		{

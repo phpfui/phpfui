@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class VideoJs extends \PHPFUI\HTML5Element
 	{
-	private $sources = [];
+	private array $sources = [];
 
 	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{

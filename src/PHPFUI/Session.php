@@ -33,7 +33,7 @@ class Session
 
 	public const DEBUG_JAVASCRIPT = 2;
 
-	private static $flash = [];
+	private static array $flash = [];
 
 	private static $handler = null;
 

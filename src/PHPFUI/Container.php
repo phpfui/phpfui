@@ -10,7 +10,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	{
 	use \PHPFUI\Traits\Walkable;
 
-	private $items = [];
+	private array $items = [];
 
 	/**
 	 * Construct a Container.  Any arguments passed to the constructor will be added to the container.

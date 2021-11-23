@@ -20,9 +20,9 @@ namespace PHPFUI;
  */
 class ReCAPTCHAv2 extends \PHPFUI\HTML5Element
 	{
-	private $errors = [];
+	private array $errors = [];
 
-	private $isValid = false;
+	private bool $isValid = false;
 
 	/**
 	 * Create a Google ReCAPTCHA.  If either $publicKey or
@@ -37,7 +37,7 @@ class ReCAPTCHAv2 extends \PHPFUI\HTML5Element
 		{
 		parent::__construct('div');
 
-		if ($publicKey && $recaptcha !== null)
+		if ($publicKey && null !== $recaptcha)
 			{
 			$this->addClass('g-recaptcha');
 			$this->addAttribute('data-sitekey', $publicKey);
@@ -79,4 +79,3 @@ class ReCAPTCHAv2 extends \PHPFUI\HTML5Element
 		return $this->isValid;
 		}
 	}
-

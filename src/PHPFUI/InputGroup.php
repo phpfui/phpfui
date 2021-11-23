@@ -7,12 +7,11 @@ namespace PHPFUI;
  */
 class InputGroup extends \PHPFUI\HTML5Element
 	{
-
 	private $inputLabel = null;
 
-	private $error = '';
+	private string $error = '';
 
-	private $hint = '';
+	private string $hint = '';
 
 	public function __construct()
 		{
@@ -24,7 +23,8 @@ class InputGroup extends \PHPFUI\HTML5Element
 		{
 		$span = new HTML5Element('span');
 		$span->addClass('input-group-button');
-		if ($button->getElement() == 'button')
+
+		if ('button' == $button->getElement())
 			{
 			$button->setElement('span');
 			$button->deleteAttribute('type');
@@ -40,22 +40,26 @@ class InputGroup extends \PHPFUI\HTML5Element
 	 */
 	public function addInput(Input $input) : InputGroup
 		{
-		if (method_exists($input, 'getError'))
+		if (\method_exists($input, 'getError'))
 			{
 			$this->error = $input->getError();
 			}
-		if (method_exists($input, 'getHint'))
+
+		if (\method_exists($input, 'getHint'))
 			{
 			$this->hint = $input->getHint();
 			$input->setHint('');
 			}
 		$input->addClass('input-group-field');
-		if (method_exists($input, 'getLabel'))
+
+		if (\method_exists($input, 'getLabel'))
 			{
 			$this->inputLabel = $input->getLabel();
+
 			if ($this->inputLabel)
 				{
 				$this->inputLabel = $input->getToolTip($this->inputLabel);
+
 				if ($input->getRequired())
 					{
 					$this->inputLabel .= \PHPFUI\Language::$required;
@@ -87,10 +91,12 @@ class InputGroup extends \PHPFUI\HTML5Element
 		{
 		$retVal = '';
 		$this->walk('setHint', '');
+
 		if ($this->inputLabel)
 			{
 			$retVal .= '<label>' . $this->inputLabel;
 			}
+
 		return $retVal . parent::getStart();
 		}
 
@@ -106,5 +112,4 @@ class InputGroup extends \PHPFUI\HTML5Element
 
 		return $retVal;
 		}
-
 	}

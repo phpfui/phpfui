@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class MenuItem extends \PHPFUI\HTML5Element
 	{
-	private $active = false;
+	private bool $active = false;
 
 	private $align;
 
@@ -16,7 +16,7 @@ class MenuItem extends \PHPFUI\HTML5Element
 
 	private $name;
 
-	private $started = false;
+	private bool $started = false;
 
 	public function __construct(string $name = '', string $link = '')
 		{

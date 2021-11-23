@@ -4,7 +4,7 @@ namespace PHPFUI\PayPal;
 
 class AddressPortable extends \PHPFUI\PayPal\Base
 	{
-	protected static $validFields = [
+	protected static array $validFields = [
 		'address_line_1' => 'string',
 		'address_line_2' => 'string',
 		'address_line_3' => 'string',

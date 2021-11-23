@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class RadioTable extends \PHPFUI\Input implements \Countable
 	{
-	protected $buttons = [];
+	protected array $buttons = [];
 
 	/**
 	 * @param string $name of the button

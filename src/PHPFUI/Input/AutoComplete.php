@@ -18,9 +18,9 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 	protected $hidden;
 
-	protected $noFreeForm = false;
+	protected bool $noFreeForm = false;
 
-	protected $options = [];
+	protected array $options = [];
 
 	protected $page;
 

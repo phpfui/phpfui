@@ -4,9 +4,9 @@ namespace PHPFUI\PayPal;
 
 class Plan extends \PHPFUI\PayPal\Base
 	{
-	protected $billing_cycles = [];
+	protected array $billing_cycles = [];
 
-	protected static $validFields = [
+	protected static array $validFields = [
 		'product_id' => 'string',
 		'description' => 'string',
 		'name' => 'string',

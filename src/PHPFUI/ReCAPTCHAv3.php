@@ -14,11 +14,11 @@ class ReCAPTCHAv3
 	{
 	private $errors = null;
 
-	private $result = 0.0;
+	private float $result = 0.0;
 
-	private $threshold = 0.5;
+	private float $threshold = 0.5;
 
-	private $results = [];
+	private array $results = [];
 
 	/**
 	 * @param Form $form since we need to add things to the form

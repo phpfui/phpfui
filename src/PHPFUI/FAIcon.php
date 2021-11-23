@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class FAIcon extends \PHPFUI\IconBase
 	{
-	private static $prefixes = [
+	private static array $prefixes = [
 		'fas' => true,
 		'far' => true,
 		'fal' => true,

@@ -9,16 +9,15 @@ namespace PHPFUI;
  */
 class Form extends \PHPFUI\HTML5Element
 	{
-
 	use \PHPFUI\Traits\Page;
 
-	private $areYouSure = true;
+	private bool $areYouSure = true;
 
 	private $page;
 
-	private $started = false;
+	private bool $started = false;
 
-	private $submitValue = [];
+	private array $submitValue = [];
 
 	/**
 	 * Form needs a Page, as it adds things to the page to handle automatic abide validation

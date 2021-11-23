@@ -7,9 +7,9 @@ namespace PHPFUI\Input;
  */
 class Select extends \PHPFUI\Input\Input implements \Countable
 	{
-	protected $labelClass = [];
+	protected array $labelClass = [];
 
-	protected $options = [];
+	protected array $options = [];
 
 	/**
 	 * Construct a Select
@@ -51,7 +51,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	 */
 	public function addOption(string $label, ?string $value = null, bool $selected = false, bool $disabled = false) : Select
 		{
-		if ($value === null)
+		if (null === $value)
 			{
 			$value = $label;
 			}

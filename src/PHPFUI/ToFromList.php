@@ -14,7 +14,7 @@ class ToFromList extends \PHPFUI\Base
 
 	protected $inIcon;
 
-	protected $inName = 'In';
+	protected string $inName = 'In';
 
 	protected $name;
 
@@ -22,11 +22,11 @@ class ToFromList extends \PHPFUI\Base
 
 	protected $outIcon;
 
-	protected $outName = 'Out';
+	protected string $outName = 'Out';
 
 	protected $page;
 
-	private static $outputJs = false;
+	private static bool $outputJs = false;
 
 	/**
 	 * The ToFromList implements a two side by side panes that uses can drag and drop from one side to
@@ -225,7 +225,7 @@ class ToFromList extends \PHPFUI\Base
 			switch ($_GET['action'])
 					{
 					case 'getDragDropItem':
-						{
+
 						$dragDropId = \trim($_GET['DraggedId'], '#');
 						[$name, $id] = \explode('_', $dragDropId);
 
@@ -243,7 +243,7 @@ class ToFromList extends \PHPFUI\Base
 							}
 
 						break;
-						}
+
 					}
 			}
 		}

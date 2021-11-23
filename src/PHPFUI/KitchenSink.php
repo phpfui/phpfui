@@ -22,9 +22,9 @@ class KitchenSink
 	{
 	use \PHPFUI\Traits\Page;
 
-	private $index = 0;
+	private int $index = 0;
 
-	private $lines = [];
+	private array $lines = [];
 
 	private $page;
 

@@ -7,9 +7,9 @@ namespace PHPFUI;
  */
 class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	{
-	private $plugins = [];
+	private array $plugins = [];
 
-	private $reveals = [];
+	private array $reveals = [];
 
 	public function __construct()
 		{

@@ -16,11 +16,11 @@ class Checkout extends \PHPFUI\HTML5Element
 	{
 	use \PHPFUI\Traits\Page;
 
-	private $functions = [];
+	private array $functions = [];
 
 	private $page;
 
-	private $styles = [
+	private array $styles = [
 		'layout' => 'vertical',
 		'size' => 'responsive',
 		'shape' => 'pill',

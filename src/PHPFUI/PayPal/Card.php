@@ -4,7 +4,7 @@ namespace PHPFUI\PayPal;
 
 class Card extends \PHPFUI\PayPal\Base
 	{
-	protected static $validFields = [
+	protected static array $validFields = [
 		'name' => 'string',
 		'number' => 'string',
 		'expiry' => 'string',

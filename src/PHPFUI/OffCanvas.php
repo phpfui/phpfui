@@ -8,9 +8,9 @@ class OffCanvas extends \PHPFUI\Base
 
 	private $offCanvas;
 
-	private $offCanvasCollection = [];
+	private array $offCanvasCollection = [];
 
-	private $wrapper = false;
+	private bool $wrapper = false;
 
 	public function __construct(HTML5Element $mainContent)
 		{

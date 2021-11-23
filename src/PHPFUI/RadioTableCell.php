@@ -4,19 +4,19 @@ namespace PHPFUI;
 
 class RadioTableCell extends \PHPFUI\HTML5Element
 	{
-	private $disabled = '';
+	private string $disabled = '';
 
-	private $disabledColor = 'gray';
+	private string $disabledColor = 'gray';
 
 	private $name;
 
-	private $offBackgroundColor = 'lightgray';
+	private string $offBackgroundColor = 'lightgray';
 
-	private $offColor = 'white';
+	private string $offColor = 'white';
 
-	private $onBackgroundColor = 'white';
+	private string $onBackgroundColor = 'white';
 
-	private $onColor = 'black';
+	private string $onColor = 'black';
 
 	private $parent = null;
 

@@ -9,11 +9,11 @@ class DropDownButton extends \PHPFUI\Button
 	{
 	private $dropDown;
 
-	private $items = [];
+	private array $items = [];
 
-	private $maxLength = 0;
+	private int $maxLength = 0;
 
-	private $sorted = false;
+	private bool $sorted = false;
 
 	/**
 	 * Make a drop down button

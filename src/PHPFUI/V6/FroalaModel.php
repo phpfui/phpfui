@@ -9,9 +9,9 @@ namespace PHPFUI\V6;
  */
 abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 	{
-	private $events = [];
+	private array $events = [];
 
-	private $parameters = [
+	private array $parameters = [
 		'requestWithCORS' => false,
 		'toolbarInline' => false,
 		'toolbarVisibleWithoutSelection' => true,
@@ -58,7 +58,7 @@ abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 		],
 	];
 
-	private $plugins = [
+	private array $plugins = [
 		'colors' => true,
 		'link' => true,
 		'code_view' => true,

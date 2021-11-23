@@ -17,7 +17,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 
 	protected $arrayName;
 
-	protected $autoCompleteOptions = [
+	protected array $autoCompleteOptions = [
 		'minChars' => 1,
 		'type' => "'POST'",
 		'autoSelectFirst' => 'true',
@@ -150,6 +150,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	protected function getEnd() : string
 		{
 		$js = '';
+
 		if (! $this->arrayName)
 			{
 			$this->arrayName = "{$this->name}Array";
@@ -161,6 +162,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 
 		$js = "var {$this->arrayName}=[";
 		$comma = '';
+
 		foreach ($this->options as $option)
 			{
 			if (! $option['disabled'])

@@ -23,11 +23,11 @@ class MonthYear extends \PHPFUI\Base
 
 	protected $yearSelect;
 
-	private $day = 1;
+	private int $day = 1;
 
-	private $maxYear = 2100;
+	private int $maxYear = 2100;
 
-	private $minYear = 2000;
+	private int $minYear = 2000;
 
 	private $month;
 

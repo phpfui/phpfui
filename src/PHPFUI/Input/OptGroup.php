@@ -7,7 +7,7 @@ namespace PHPFUI\Input;
  */
 class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
-	protected $options = [];
+	protected array $options = [];
 
 	/**
 	 * Construct a OptGroup
@@ -55,7 +55,7 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 			{
 			$selected = $option['selected'];
 			$disabled = $option['disabled'];
-			$value = $option['value'] !== null ? " value='{$option['value']}'" : '';
+			$value = null !== $option['value'] ? " value='{$option['value']}'" : '';
 			$output .= "<option{$value}{$selected}{$disabled}>{$option['label']}</option>";
 			}
 

@@ -15,7 +15,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 
 	private $className;
 
-	private $callbackName = '';
+	private string $callbackName = '';
 
 	private $allMenuItem = null;
 

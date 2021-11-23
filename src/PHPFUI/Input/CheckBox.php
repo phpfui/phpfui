@@ -9,13 +9,13 @@ class CheckBox extends \PHPFUI\Input\Input
 	{
 	protected $alwaysSet;
 
-	protected $center = false;
+	protected bool $center = false;
 
 	protected $checked;
 
 	protected $row;
 
-	private $started = false;
+	private bool $started = false;
 
 	/**
 	 * Construct a CheckBox

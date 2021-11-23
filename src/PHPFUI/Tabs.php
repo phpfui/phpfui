@@ -6,11 +6,11 @@ class Tabs extends \PHPFUI\Base
 	{
 	private $contentSection;
 
-	private $tabs = [];
+	private array $tabs = [];
 
 	private $tabSection;
 
-	private $vertical = false;
+	private bool $vertical = false;
 
 	/**
 	 * @param bool $vertical default false, pass true for a vertical tab structure

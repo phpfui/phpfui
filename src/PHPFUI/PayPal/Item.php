@@ -4,7 +4,7 @@ namespace PHPFUI\PayPal;
 
 class Item extends \PHPFUI\PayPal\Base
 	{
-	protected static $validFields = [
+	protected static array $validFields = [
 		'name' => 'string',
 		'quantity' => 'integer',
 		'description' => 'string',
