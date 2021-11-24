@@ -6,9 +6,9 @@ class AJAX
 	{
 	protected array $conditions = [];
 
-	protected $name;
+	protected string $name;
 
-	protected $question;
+	protected string $question;
 
 	/**
 	 * Set up an AJAX callback
@@ -76,8 +76,8 @@ class AJAX
 	 */
 	public function getPageJS() : string
 		{
-		$csrf = Session::csrf();
-		$csrfField = Session::csrfField();
+		$csrf = \PHPFUI\Session::csrf();
+		$csrfField = \PHPFUI\Session::csrfField();
 		$js = 'function ' . $this->name . '(data){';
 		$extra = '';
 

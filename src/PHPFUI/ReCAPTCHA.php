@@ -22,7 +22,6 @@ namespace PHPFUI;
  */
 class ReCAPTCHA extends \PHPFUI\ReCAPTCHAv2
 	{
-
 	/**
 	 * Create a Google ReCAPTCHA.  If either $publicKey or
 	 * $secretKey are blank, the ReCAPTCHA will not be added to the
@@ -35,11 +34,11 @@ class ReCAPTCHA extends \PHPFUI\ReCAPTCHAv2
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $publicKey, string $secretKey)
 		{
 		$recaptcha = null;
-		if ($secretKey != '')
+
+		if ('' != $secretKey)
 			{
 			$recaptcha = new \ReCaptcha\ReCaptcha($secretKey);
 			}
 		parent::__construct($page, $recaptcha, $publicKey);
 		}
-
 	}

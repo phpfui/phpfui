@@ -7,7 +7,6 @@ namespace PHPFUI\Input;
  */
 class PasswordEye extends \PHPFUI\Input\Password
 	{
-
 	/**
 	 * Construct a Password input
 	 *
@@ -44,7 +43,7 @@ class PasswordEye extends \PHPFUI\Input\Password
 				"if(iconId.hasClass('fa-eye'+add)){remove=add;add='';type='password'};iconId.removeClass('fa-eye'+remove);" .
 				"iconId.addClass('fa-eye'+add);passwordId.prop('type',type);";
 		$inputGroup->addInput($password);
-		$inputGroup->addLabel($icon)->setAttribute('onclick', str_replace("'", '"', $js));
+		$inputGroup->addLabel($icon)->setAttribute('onclick', \str_replace("'", '"', $js));
 
 		return $inputGroup;
 		}
@@ -53,6 +52,4 @@ class PasswordEye extends \PHPFUI\Input\Password
 		{
 		return '';
 		}
-
 	}
-

@@ -7,15 +7,15 @@ namespace PHPFUI\Input;
  */
 abstract class Input extends \PHPFUI\Input
 	{
-	protected $error = null;
+	protected ?\PHPFUI\HTML5Element $error = null;
 
 	protected array $errorMessages = [];
 
-	protected $hint = null;
+	protected ?string $hint = null;
 
 	protected string $hintText = '';
 
-	protected string $label = '';
+	protected ?string $label = '';
 
 	protected bool $required = false;
 

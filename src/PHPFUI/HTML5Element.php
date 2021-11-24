@@ -12,9 +12,9 @@ class HTML5Element extends \PHPFUI\Base
 
 	private array $classes = [];
 
-	private $element;
+	private string $element;
 
-	private $id = null;
+	private ?string $id = null;
 
 	private static int $masterId = 0;
 
@@ -39,7 +39,7 @@ class HTML5Element extends \PHPFUI\Base
 		'wbr' => true,
 	];
 
-	private $tooltip;
+	private $tooltip = null;
 
 	/**
 	 * Construct an object with the tag name, ie. DIV, SPAN, TEXTAREA, etc
@@ -237,7 +237,7 @@ class HTML5Element extends \PHPFUI\Base
 			{
 			if ('string' == \gettype($this->tooltip))
 				{
-				$toolTip = new ToolTip($label, $this->tooltip);
+				$toolTip = new \PHPFUI\ToolTip($label, $this->tooltip);
 				}
 			else
 				{
@@ -360,7 +360,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Will toggle the provided element on click with the provided animation.
 	 */
-	public function toggleAnimate(HTML5Element $element, string $animation) : HTML5Element
+	public function toggleAnimate(\PHPFUI\HTML5Element $element, string $animation) : HTML5Element
 		{
 		$this->addAttribute('data-toggle', $element->getId());
 		$this->addAttribute('aria-controls', $element->getId());
@@ -374,7 +374,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Will toggle the class on the provided element on click.
 	 */
-	public function toggleClass(HTML5Element $element, string $class) : HTML5Element
+	public function toggleClass(\PHPFUI\HTML5Element $element, string $class) : HTML5Element
 		{
 		$this->addAttribute('data-toggle', $element->getId());
 		$this->addAttribute('aria-controls', $element->getId());
@@ -387,7 +387,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 *  Moves attributes into this object from the passed object
 	 */
-	public function transferAttributes(HTML5Element $from) : HTML5Element
+	public function transferAttributes(\PHPFUI\HTML5Element $from) : HTML5Element
 		{
 		$this->attributes = \array_merge($this->attributes, $from->attributes);
 		$from->attributes = [];
@@ -398,7 +398,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 *  Moves classes into this object from the passed object
 	 */
-	public function transferClasses(HTML5Element $from) : HTML5Element
+	public function transferClasses(\PHPFUI\HTML5Element $from) : HTML5Element
 		{
 		$this->classes = \array_merge($this->classes, $from->classes);
 		$from->classes = [];
@@ -440,7 +440,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Clones the first object and fills it with properties from the second object
 	 */
-	protected function upCastCopy(HTML5Element $to, HTML5Element $from) : HTML5Element
+	protected function upCastCopy(\PHPFUI\HTML5Element $to, HTML5Element $from) : HTML5Element
 		{
 		$returnValue = clone $to;
 

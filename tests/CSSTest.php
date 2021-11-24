@@ -11,17 +11,15 @@
  */
 class CSSTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{
-
-	public function testValidCSS()
+	public function testValidCSS() : void
 		{
 		$this->assertDirectory('ValidCSS', __DIR__ . '/../js');
 		$this->assertDirectory('ValidCSS', __DIR__ . '/../subtrees');
 		}
 
-	public function testWarningCSS()
+	public function testWarningCSS() : void
 		{
 		$this->assertDirectory('NotWarningCSS', __DIR__ . '/../js');
 		$this->assertDirectory('NotWarningCSS', __DIR__ . '/../subtrees');
 		}
-
 	}

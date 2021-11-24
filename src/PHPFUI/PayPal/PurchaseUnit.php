@@ -12,8 +12,8 @@ class PurchaseUnit extends \PHPFUI\PayPal\Base
 		'custom_id' => 'string',
 		'invoice_id' => 'string',
 		'soft_descriptor' => 'string',
-		'amount' => Amount::class,
-		'shipping' => Shipping::class,
+		'amount' => \PHPFUI\PayPal\Amount::class,
+		'shipping' => \PHPFUI\PayPal\Shipping::class,
 	];
 
 	public function addItem(Item $item) : self

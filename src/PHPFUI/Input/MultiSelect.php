@@ -88,7 +88,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 
 		if ($this->selectAll)
 			{
-			$selectAll = new CheckBox('', "<b>{$this->selectAll}</b>", 0);
+			$selectAll = new \PHPFUI\Input\CheckBox('', "<b>{$this->selectAll}</b>", 0);
 			$selectAllId = $selectAll->getId();
 			$selectAll->addAttribute('onClick', '$(".' . $selectAllId . '").prop("checked",this.checked)');
 			$fieldSet->add($selectAll);
@@ -104,7 +104,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 				$cell = new \PHPFUI\Cell($this->gridSize / $this->numberColumns);
 				}
 
-			$checkBox = new CheckBox($this->name, $option['label'], $option['value']);
+			$checkBox = new \PHPFUI\Input\CheckBox($this->name, $option['label'], $option['value']);
 
 			if ($selectAllId)
 				{

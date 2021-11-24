@@ -15,7 +15,7 @@ class CloseButton extends \PHPFUI\Button
 	 *
 	 * @throws \Exception on bad $closeAction
 	 */
-	public function __construct(HTML5Element $element, string $closeAction = '')
+	public function __construct(\PHPFUI\HTML5Element $element, string $closeAction = '')
 		{
 		parent::__construct('<span aria-hidden="true">&times;</span>');
 		$this->deleteClass('button');
@@ -25,7 +25,7 @@ class CloseButton extends \PHPFUI\Button
 
 		if ($closeAction)
 			{
-			if (! Animation::isValid($closeAction))
+			if (! \PHPFUI\Animation::isValid($closeAction))
 				{
 				throw new \Exception(__CLASS__ . ": {$closeAction} is not a valid annimation type");
 				}

@@ -32,7 +32,7 @@ class Table extends \PHPFUI\HTML5Element
 
 	protected array $nextRowAttributes = [];
 
-	protected $page = null;
+	protected ?\PHPFUI\Interfaces\Page $page = null;
 
 	protected string $recordId = '';
 

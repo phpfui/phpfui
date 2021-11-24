@@ -26,7 +26,7 @@ class KitchenSink
 
 	private array $lines = [];
 
-	private $page;
+	private \PHPFUI\Interfaces\Page $page;
 
 	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{
@@ -42,7 +42,7 @@ class KitchenSink
 
 	public function baseAccordion() : Accordion
 		{
-		$accordion = new Accordion();
+		$accordion = new \PHPFUI\Accordion();
 		$accordion->addTab('Accordion 1', 'some text');
 		$accordion->addTab('Accordion 2', 'more some text');
 		$accordion->addTab('Accordion 3', 'even more text text');
@@ -52,32 +52,32 @@ class KitchenSink
 
 	public function baseAccordionMenu() : AccordionMenu
 		{
-		$accordionMenu = $this->makeMenu(new AccordionMenu(), 'Accordion Menu', '', $this->subMenu());
+		$accordionMenu = $this->makeMenu(new \PHPFUI\AccordionMenu(), 'Accordion Menu', '', $this->subMenu());
 
 		return $accordionMenu;
 		}
 
 	public function baseBadge() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$primaryBadge = new Badge('1');
+		$primaryBadge = new \PHPFUI\Badge('1');
 		$primaryBadge->addClass('primary');
 		$container->add($primaryBadge);
 
-		$secondaryBadge = new Badge('2');
+		$secondaryBadge = new \PHPFUI\Badge('2');
 		$secondaryBadge->addClass('secondary');
 		$container->add($secondaryBadge);
 
-		$successBadge = new Badge('3');
+		$successBadge = new \PHPFUI\Badge('3');
 		$successBadge->addClass('success');
 		$container->add($successBadge);
 
-		$alertBadge = new Badge('A');
+		$alertBadge = new \PHPFUI\Badge('A');
 		$alertBadge->addClass('alert');
 		$container->add($alertBadge);
 
-		$warningBadge = new Badge('B');
+		$warningBadge = new \PHPFUI\Badge('B');
 		$warningBadge->addClass('warning');
 		$container->add($warningBadge);
 
@@ -86,7 +86,7 @@ class KitchenSink
 
 	public function baseBreadCrumbs() : BreadCrumbs
 		{
-		$breadCrumbs = new BreadCrumbs();
+		$breadCrumbs = new \PHPFUI\BreadCrumbs();
 		$breadCrumbs->addCrumb('Home', '#');
 		$breadCrumbs->addCrumb('Features', '#');
 		$breadCrumbs->addCrumb('Gene Splicing');
@@ -97,32 +97,32 @@ class KitchenSink
 
 	public function baseButton() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add(new Button('Learn More', '#0'));
-		$container->add(new Button('View All Features', '#features'));
+		$container->add(new \PHPFUI\Button('Learn More', '#0'));
+		$container->add(new \PHPFUI\Button('View All Features', '#features'));
 
-		$save = new Button('Save');
+		$save = new \PHPFUI\Button('Save');
 		$save->addClass('success');
 		$container->add($save);
 
-		$save = new Button('Delete');
+		$save = new \PHPFUI\Button('Delete');
 		$save->addClass('alert');
 		$container->add($save);
 
-		$tiny = new Button('So Tiny', '#0');
+		$tiny = new \PHPFUI\Button('So Tiny', '#0');
 		$tiny->addClass('tiny');
 		$container->add($tiny);
 
-		$small = new Button('So Small', '#0');
+		$small = new \PHPFUI\Button('So Small', '#0');
 		$small->addClass('small');
 		$container->add($small);
 
-		$large = new Button('So Large', '#0');
+		$large = new \PHPFUI\Button('So Large', '#0');
 		$large->addClass('large');
 		$container->add($large);
 
-		$expand = new Button('Such Expand', '#0');
+		$expand = new \PHPFUI\Button('Such Expand', '#0');
 		$expand->addClass('expanded');
 		$container->add($expand);
 
@@ -131,21 +131,21 @@ class KitchenSink
 
 	public function baseButtonGroup() : ButtonGroup
 		{
-		$group = new ButtonGroup();
-		$group->addButton(new Button('One'));
-		$group->addButton(new Button('Two'));
-		$group->addButton(new Button('Three'));
+		$group = new \PHPFUI\ButtonGroup();
+		$group->addButton(new \PHPFUI\Button('One'));
+		$group->addButton(new \PHPFUI\Button('Two'));
+		$group->addButton(new \PHPFUI\Button('Three'));
 
 		return $group;
 		}
 
 	public function baseCallout() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
 		foreach (['', 'primary', 'secondary', 'success', 'warning', 'alert'] as $type)
 			{
-			$callout = new Callout($type);
+			$callout = new \PHPFUI\Callout($type);
 			$callout->add("<h5>This is a {$type} callout.</h5><p>It has an easy to override visual style, and is appropriately subdued.</p><a href='#'>It's dangerous to go alone, take this.</a>");
 			$container->add($callout);
 			}
@@ -155,9 +155,9 @@ class KitchenSink
 
 	public function baseCard() : Card
 		{
-		$card = new Card();
-		$card->addDivider(new Header("I'm featured", 4));
-		$card->addImage(new Image('https://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg'));
+		$card = new \PHPFUI\Card();
+		$card->addDivider(new \PHPFUI\Header("I'm featured", 4));
+		$card->addImage(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/rectangle-1.jpg'));
 		$card->addSection('This card makes use of the card-divider element.');
 
 		return $card;
@@ -165,17 +165,17 @@ class KitchenSink
 
 	public function baseCloseButton() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$closeBox = new Callout();
-		$close = new CloseButton($closeBox);
+		$closeBox = new \PHPFUI\Callout();
+		$close = new \PHPFUI\CloseButton($closeBox);
 		$closeBox->add('<p>You can so totally close this!</p>');
 		$closeBox->add($close);
 		$container->add($closeBox);
 
-		$closeBox = new Callout();
+		$closeBox = new \PHPFUI\Callout();
 		$closeBox->addClass('success');
-		$close = new CloseButton($closeBox, 'slide-out-right');
+		$close = new \PHPFUI\CloseButton($closeBox, 'slide-out-right');
 		$closeBox->add('<p>You can close me too, and I close using a Motion UI animation.</p>');
 		$closeBox->add($close);
 		$container->add($closeBox);
@@ -185,11 +185,11 @@ class KitchenSink
 
 	public function baseDrillDownMenu() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add($this->makeMenu(new DrillDownMenu(), 'Drill Down Menu', '', $this->subMenu()));
+		$container->add($this->makeMenu(new \PHPFUI\DrillDownMenu(), 'Drill Down Menu', '', $this->subMenu()));
 
-		$drillDown = $this->makeMenu(new DrillDownMenu(), 'Drill Down Menu Auto Height', '', $this->subMenu());
+		$drillDown = $this->makeMenu(new \PHPFUI\DrillDownMenu(), 'Drill Down Menu Auto Height', '', $this->subMenu());
 		$drillDown->setAutoHeight();
 		$container->add($drillDown);
 
@@ -198,29 +198,29 @@ class KitchenSink
 
 	public function baseDropDownButton() : DropDown
 		{
-		$dropDownButton = new DropDownButton('Drop Down Button');
-		$dropMenu = new Menu();
+		$dropDownButton = new \PHPFUI\DropDownButton('Drop Down Button');
+		$dropMenu = new \PHPFUI\Menu();
 		$dropMenu->addClass('vertical');
 		$dropMenu->addAttribute('data-hover', 'true');
 		$dropMenu->addAttribute('data-hover-pane', 'true');
-		$dropMenu->addMenuItem(new MenuItem('Option 4', '#'));
-		$dropMenu->addMenuItem(new MenuItem('Option 3', '#'));
-		$dropMenu->addMenuItem(new MenuItem('Option 5', '#'));
-		$dropMenu->addMenuItem(new MenuItem('Option 1', '#'));
-		$dropMenu->addMenuItem(new MenuItem('Option 2', '#'));
+		$dropMenu->addMenuItem(new \PHPFUI\MenuItem('Option 4', '#'));
+		$dropMenu->addMenuItem(new \PHPFUI\MenuItem('Option 3', '#'));
+		$dropMenu->addMenuItem(new \PHPFUI\MenuItem('Option 5', '#'));
+		$dropMenu->addMenuItem(new \PHPFUI\MenuItem('Option 1', '#'));
+		$dropMenu->addMenuItem(new \PHPFUI\MenuItem('Option 2', '#'));
 		$dropMenu->sort();
 
-		$dropDown = new DropDown($dropDownButton, $dropMenu);
+		$dropDown = new \PHPFUI\DropDown($dropDownButton, $dropMenu);
 
 		return $dropDown;
 		}
 
 	public function baseDropDownMenu() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add($this->makeMenu(new DropDownMenu(), 'Drop Down Menu', '', $this->subMenu()));
-		$dropDown = $this->makeMenu(new DropDownMenu(), 'Drop Down Menu Vertical', 'vertical', $this->subMenu());
+		$container->add($this->makeMenu(new \PHPFUI\DropDownMenu(), 'Drop Down Menu', '', $this->subMenu()));
+		$dropDown = $this->makeMenu(new \PHPFUI\DropDownMenu(), 'Drop Down Menu Vertical', 'vertical', $this->subMenu());
 		$dropDown->computeWidth();
 		$container->add($dropDown);
 
@@ -229,20 +229,20 @@ class KitchenSink
 
 	public function baseDropDownPane() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$toggleDropdownButton = new Button('Toggle Dropdown');
-		$panel = new HTML5Element('div');
+		$toggleDropdownButton = new \PHPFUI\Button('Toggle Dropdown');
+		$panel = new \PHPFUI\HTML5Element('div');
 		$panel->add('Just some junk that needs to be said. Or not. Your choice.');
 
-		$toggleDropdown = new Dropdown($toggleDropdownButton, $panel);
+		$toggleDropdown = new \PHPFUI\Dropdown($toggleDropdownButton, $panel);
 		$container->add($toggleDropdown);
 
-		$hoverDropdownButton = new Button('Hoverable Dropdown');
-		$panel = new HTML5Element('div');
+		$hoverDropdownButton = new \PHPFUI\Button('Hoverable Dropdown');
+		$panel = new \PHPFUI\HTML5Element('div');
 		$panel->add('Just some junk that needs to be said. Or not. Your choice.');
 
-		$hoverDropdown = new Dropdown($hoverDropdownButton, $panel);
+		$hoverDropdown = new \PHPFUI\Dropdown($hoverDropdownButton, $panel);
 		$hoverDropdown->setHover();
 		$container->add($hoverDropdown);
 
@@ -251,21 +251,21 @@ class KitchenSink
 
 	public function baseEqualizer() : Equalizer
 		{
-		$innerEqualizer = new Equalizer(new Callout());
-		$co1 = new Callout('primary');
+		$innerEqualizer = new \PHPFUI\Equalizer(new \PHPFUI\Callout());
+		$co1 = new \PHPFUI\Callout('primary');
 		$co1->add('This is a callout');
-		$co2 = new Callout('warning');
+		$co2 = new \PHPFUI\Callout('warning');
 		$co2->add('Warning Will Robinson');
-		$co3 = new Callout('error');
+		$co3 = new \PHPFUI\Callout('error');
 		$co3->add('Stack Overflow with much more text and it just keeps going and going.  I wish there was some way to autogenerate text in PHP.');
 		$innerEqualizer->addElement($co1);
 		$innerEqualizer->addElement($co2);
 		$innerEqualizer->addElement($co3);
 
-		$equalizer = new Equalizer();
-		$co2 = new Callout();
+		$equalizer = new \PHPFUI\Equalizer();
+		$co2 = new \PHPFUI\Callout();
 		$co2->add('This is a callout with much more text and it just keeps going and going.  I wish there was some way to autogenerate text in PHP.');
-		$co3 = new Callout();
+		$co3 = new \PHPFUI\Callout();
 		$co3->add('This is a callout with medium size text, but not huge.');
 		$equalizer->addColumn($innerEqualizer);
 		$equalizer->addColumn($co2);
@@ -289,25 +289,25 @@ class KitchenSink
 
 	public function baseLabel() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$label = new Label('Primary Label');
+		$label = new \PHPFUI\Label('Primary Label');
 		$label->addClass('primary');
 		$container->add($label);
 
-		$label = new Label('Secondary Label');
+		$label = new \PHPFUI\Label('Secondary Label');
 		$label->addClass('secondary');
 		$container->add($label);
 
-		$label = new Label('Success Label');
+		$label = new \PHPFUI\Label('Success Label');
 		$label->addClass('success');
 		$container->add($label);
 
-		$label = new Label('Alert Label');
+		$label = new \PHPFUI\Label('Alert Label');
 		$label->addClass('alert');
 		$container->add($label);
 
-		$label = new Label('Warning Label');
+		$label = new \PHPFUI\Label('Warning Label');
 		$label->addClass('warning');
 		$container->add($label);
 
@@ -316,30 +316,30 @@ class KitchenSink
 
 	public function baseMenu() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add($this->makeMenu(new Menu(), 'Menu'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Right', 'align-right'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Center', 'align-center'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Expanded', 'expanded'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Vertical', 'vertical'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Vertical Right', 'vertical align-right'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Vertical Center', 'vertical align-center'));
-		$container->add($this->makeMenu(new Menu(), 'Menu Simple', 'simple'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Right', 'align-right'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Center', 'align-center'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Expanded', 'expanded'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Vertical', 'vertical'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Vertical Right', 'vertical align-right'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Vertical Center', 'vertical align-center'));
+		$container->add($this->makeMenu(new \PHPFUI\Menu(), 'Menu Simple', 'simple'));
 
 		return $container;
 		}
 
 	public function baseOffCanvas() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$main = new HTML5Element('div');
+		$main = new \PHPFUI\HTML5Element('div');
 		$main->add('This is the main content for the off canvas');
 
-		$offCanvas = new OffCanvas($main);
+		$offCanvas = new \PHPFUI\OffCanvas($main);
 
-		$off = new HTML5Element('div');
+		$off = new \PHPFUI\HTML5Element('div');
 		$off->add('
 				<button class="close-button" aria-label="Close menu" type="button" data-close>
 					<span aria-hidden="true">&times;</span>
@@ -353,7 +353,7 @@ class KitchenSink
 					<li><a href="#">Sites</a></li>
 				</ul>');
 
-		$toggle = new Button('Toggle OffCanvas');
+		$toggle = new \PHPFUI\Button('Toggle OffCanvas');
 		$offCanvas->addOff($off, $toggle);
 
 		$container->add($offCanvas);
@@ -364,11 +364,11 @@ class KitchenSink
 
 	public function baseOrbit() : Orbit
 		{
-		$orbit = new Orbit('Some out of the world images');
-		$orbit->addImageSlide(new Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg'), 'Space, the final frontier.');
-		$orbit->addImageSlide(new Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg'), 'Lets Rocket!', true);
-		$orbit->addImageSlide(new Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg'), 'Encapsulating');
-		$orbit->addImageSlide(new Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg'), 'Outta This World');
+		$orbit = new \PHPFUI\Orbit('Some out of the world images');
+		$orbit->addImageSlide(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg'), 'Space, the final frontier.');
+		$orbit->addImageSlide(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg'), 'Lets Rocket!', true);
+		$orbit->addImageSlide(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg'), 'Encapsulating');
+		$orbit->addImageSlide(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg'), 'Outta This World');
 
 		return $orbit;
 		}
@@ -385,24 +385,24 @@ class KitchenSink
 
 	public function baseProgressBar() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$bar = new ProgressBar();
+		$bar = new \PHPFUI\ProgressBar();
 		$bar->addClass('primary');
 		$bar->setCurrent(25);
 		$container->add($bar);
 
-		$bar = new ProgressBar();
+		$bar = new \PHPFUI\ProgressBar();
 		$bar->addClass('warning');
 		$bar->setCurrent(50);
 		$container->add($bar);
 
-		$bar = new ProgressBar();
+		$bar = new \PHPFUI\ProgressBar();
 		$bar->addClass('alert');
 		$bar->setCurrent(75);
 		$container->add($bar);
 
-		$bar = new ProgressBar();
+		$bar = new \PHPFUI\ProgressBar();
 		$bar->addClass('success');
 		$bar->setCurrent(100);
 		$container->add($bar);
@@ -412,56 +412,56 @@ class KitchenSink
 
 	public function baseResponsiveEmbed() : Embed
 		{
-		$embed = new Embed();
-		$embed->add(new YouTube('WUgvvPRH7Oc'));
+		$embed = new \PHPFUI\Embed();
+		$embed->add(new \PHPFUI\YouTube('WUgvvPRH7Oc'));
 
 		return $embed;
 		}
 
 	public function baseReveal() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$openButton = new Button('Click me for a modal');
+		$openButton = new \PHPFUI\Button('Click me for a modal');
 		$container->add($openButton);
 
-		$reveal = new Reveal($this->page, $openButton);
-		$reveal->add(new Header('Awesome. I Have It.'));
+		$reveal = new \PHPFUI\Reveal($this->page, $openButton);
+		$reveal->add(new \PHPFUI\Header('Awesome. I Have It.'));
 		$reveal->add('<p class="lead">Your couch. It is mine.</p>');
 		$reveal->add("<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>");
 
-		$nestedButton = new Button('Click me for a nested modal');
+		$nestedButton = new \PHPFUI\Button('Click me for a nested modal');
 		$container->add($nestedButton);
 
-		$nestedReveal = new Reveal($this->page, $nestedButton);
-		$nestedReveal->add(new Header('Awesome!'));
+		$nestedReveal = new \PHPFUI\Reveal($this->page, $nestedButton);
+		$nestedReveal->add(new \PHPFUI\Header('Awesome!'));
 		$nestedReveal->add('<p class="lead">I have another modal inside of me!</p>');
 
-		$nestedRevealButton = new Button('Click me for another modal!');
+		$nestedRevealButton = new \PHPFUI\Button('Click me for another modal!');
 		$nestedReveal->add($nestedRevealButton);
 
-		$nestedReveal2 = new Reveal($this->page, $nestedRevealButton);
-		$nestedReveal2->add(new Header('ANOTHER MODAL!!!'));
+		$nestedReveal2 = new \PHPFUI\Reveal($this->page, $nestedRevealButton);
+		$nestedReveal2->add(new \PHPFUI\Header('ANOTHER MODAL!!!'));
 
 		return $container;
 		}
 
 	public function baseSlider() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add(new Slider(25));
+		$container->add(new \PHPFUI\Slider(25));
 
-		$data = new Input('number', 'data');
-		$slider = new Slider(12, new SliderHandle(12, $data));
+		$data = new \PHPFUI\Input('number', 'data');
+		$slider = new \PHPFUI\Slider(12, new \PHPFUI\SliderHandle(12, $data));
 		$slider->setVertical();
 		$container->add($slider);
 		$container->add($data);
 
-		$firstHandle = new Input('number', 'first');
-		$secondHandle = new Input('number', 'second');
-		$slider = new Slider(25, new SliderHandle(25, $firstHandle));
-		$slider->setRangeHandle(new SliderHandle(75, $secondHandle));
+		$firstHandle = new \PHPFUI\Input('number', 'first');
+		$secondHandle = new \PHPFUI\Input('number', 'second');
+		$slider = new \PHPFUI\Slider(25, new \PHPFUI\SliderHandle(25, $firstHandle));
+		$slider->setRangeHandle(new \PHPFUI\SliderHandle(75, $secondHandle));
 		$container->add($slider);
 		$container->add($firstHandle);
 		$container->add($secondHandle);
@@ -471,12 +471,12 @@ class KitchenSink
 
 	public function baseSplitButton() : SplitButton
 		{
-		$splitButton = new SplitButton('Split', '#');
-		$splitButton->addMenuItem(new MenuItem('Option 4', '#'));
-		$splitButton->addMenuItem(new MenuItem('Option 3', '#'));
-		$splitButton->addMenuItem(new MenuItem('Option 5', '#'));
-		$splitButton->addMenuItem(new MenuItem('Option 1', '#'));
-		$splitButton->addMenuItem(new MenuItem('Option 2', '#'));
+		$splitButton = new \PHPFUI\SplitButton('Split', '#');
+		$splitButton->addMenuItem(new \PHPFUI\MenuItem('Option 4', '#'));
+		$splitButton->addMenuItem(new \PHPFUI\MenuItem('Option 3', '#'));
+		$splitButton->addMenuItem(new \PHPFUI\MenuItem('Option 5', '#'));
+		$splitButton->addMenuItem(new \PHPFUI\MenuItem('Option 1', '#'));
+		$splitButton->addMenuItem(new \PHPFUI\MenuItem('Option 2', '#'));
 		$splitButton->sort();
 
 		return $splitButton;
@@ -494,9 +494,9 @@ class KitchenSink
 
 	public function baseSwitchCheckBox() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$switchCB = new Input\SwitchCheckBox('name', true, 'Do you like me?');
+		$switchCB = new \PHPFUI\Input\SwitchCheckBox('name', true, 'Do you like me?');
 		$switchCB->setActiveLabel('Yes')->setInactiveLabel('No')->addClass('large');
 		$container->add($switchCB);
 
@@ -505,16 +505,16 @@ class KitchenSink
 
 	public function baseSwitchRadio() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$switchRB1 = new Input\SwitchRadio('radio', 1);
+		$switchRB1 = new \PHPFUI\Input\SwitchRadio('radio', 1);
 		$switchRB1->setActiveLabel('Yes')->setInactiveLabel('No')->addClass('large');
 		$container->add($switchRB1);
 
-		$switchRB2 = new Input\SwitchRadio('radio', 2);
+		$switchRB2 = new \PHPFUI\Input\SwitchRadio('radio', 2);
 		$container->add($switchRB2->setChecked());
 
-		$switchRB3 = new Input\SwitchRadio('radio', 3);
+		$switchRB3 = new \PHPFUI\Input\SwitchRadio('radio', 3);
 		$container->add($switchRB3->addClass('tiny'));
 
 		return $container;
@@ -539,8 +539,8 @@ class KitchenSink
 				$numbers[$field] = \rand();
 				}
 
-			$numbers['Edit'] = new Input\Text('edit[]');
-			$numbers['CheckBox'] = new Input\CheckBox('check[]');
+			$numbers['Edit'] = new \PHPFUI\Input\Text('edit[]');
+			$numbers['CheckBox'] = new \PHPFUI\Input\CheckBox('check[]');
 			$table->addRow($numbers);
 			}
 
@@ -549,30 +549,30 @@ class KitchenSink
 
   public function baseTabs() : Container
 	{
-	$container = new Container();
+	$container = new \PHPFUI\Container();
 
-	$tabs = new Tabs();
+	$tabs = new \PHPFUI\Tabs();
 	$tabs->addTab('One', 'Check me out! I\'m a super cool Tab panel with text content!');
-	$image = new Image('/images/rectangle-1.jpg');
+	$image = new \PHPFUI\Image('/images/rectangle-1.jpg');
 	$tabs->addTab('Two', $image);
 	$tabs->addTab('Three', '', true);
 	$tabs->addTab('Four', $image);
 	$container->add($tabs);
 
-	$grid = new GridX();
+	$grid = new \PHPFUI\GridX();
 	$grid->setMargin();
-	$cell = new Cell(3, 2, 1);
-	$vtabs = new Tabs(true);
+	$cell = new \PHPFUI\Cell(3, 2, 1);
+	$vtabs = new \PHPFUI\Tabs(true);
 	$vtabs->addTab('One', 'Check me out! I\'m VERTICAL!');
 	$vtabs->addTab('Two', $image);
 	$vtabs->addTab('Three', '', true);
 	$vtabs->addTab('Four', $image);
 	$cell->add($vtabs->getTabs());
 	$grid->add($cell);
-	$content = new Cell();
+	$content = new \PHPFUI\Cell();
 	$content->add($vtabs->getContent());
 	$grid->add($content);
-	$gridContainer = new GridContainer();
+	$gridContainer = new \PHPFUI\GridContainer();
 	$gridContainer->add($grid);
 	$container->add($gridContainer);
 
@@ -581,18 +581,18 @@ class KitchenSink
 
 	public function baseThumbnail() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add(new Thumbnail(new Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/01.jpg')));
-		$container->add(new Thumbnail(new Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/02.jpg')));
-		$container->add(new Thumbnail(new Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/03.jpg')));
+		$container->add(new \PHPFUI\Thumbnail(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/01.jpg')));
+		$container->add(new \PHPFUI\Thumbnail(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/02.jpg')));
+		$container->add(new \PHPFUI\Thumbnail(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/03.jpg')));
 
 		return $container;
 		}
 
 	public function baseTitleBar() : TitleBar
 		{
-		$titlebar = new TitleBar('TitleBar');
+		$titlebar = new \PHPFUI\TitleBar('TitleBar');
 		$titlebar->addLeft('<button class="menu-icon" type="button"></button>');
 		$titlebar->addRight('<button class="menu-icon" type="button"></button>');
 
@@ -601,31 +601,31 @@ class KitchenSink
 
 	public function baseToggler() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$toggleAll = new Button('Toggle All These');
+		$toggleAll = new \PHPFUI\Button('Toggle All These');
 
-		$image1 = new Thumbnail(new Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/01.jpg'));
-		$image2 = new Thumbnail(new Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/02.jpg'));
-		$image3 = new Thumbnail(new Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/03.jpg'));
+		$image1 = new \PHPFUI\Thumbnail(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/01.jpg'));
+		$image2 = new \PHPFUI\Thumbnail(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/02.jpg'));
+		$image3 = new \PHPFUI\Thumbnail(new \PHPFUI\Image('https://foundation.zurb.com/sites/docs/assets/img/thumbnail/03.jpg'));
 
 		$toggleAll->toggleAnimate($image1, 'hinge-in-from-left spin-out');
 		$toggleAll->toggleAnimate($image2, 'hinge-in-from-bottom fade-out');
 		$toggleAll->toggleAnimate($image3, 'slide-in-down slide-out-up');
 
-		$container->add(new MultiColumn($toggleAll));
+		$container->add(new \PHPFUI\MultiColumn($toggleAll));
 		$container->add($image1);
 		$container->add($image2);
 		$container->add($image3);
 
-		$toggleFocus = new Input\Text('test', 'Toggle on Focus');
+		$toggleFocus = new \PHPFUI\Input\Text('test', 'Toggle on Focus');
 
-		$callout = new Callout('secondary');
+		$callout = new \PHPFUI\Callout('secondary');
 		$callout->add('<p>This is only visible when the above field has focus.</p>');
 
 		$toggleFocus->toggleFocus($callout, 'hinge-in-from-top hinge-out-from-bottom');
 
-		$container->add(new MultiColumn($toggleFocus));
+		$container->add(new \PHPFUI\MultiColumn($toggleFocus));
 		$container->add($callout);
 
 		return $container;
@@ -633,9 +633,9 @@ class KitchenSink
 
 	public function baseToolTip() : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$toolTip = new ToolTip('scarabaeus', 'Fancy word for a beetle');
+		$toolTip = new \PHPFUI\ToolTip('scarabaeus', 'Fancy word for a beetle');
 		$container->add("<p>The {$toolTip} hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>");
 
 		return $container;
@@ -643,14 +643,14 @@ class KitchenSink
 
 	public function baseTopBar() : TopBar
 		{
-		$topbar = new TopBar();
-		$topbar->addLeft($this->makeMenu(new DropDownMenu(), 'Site Title', '', $this->subMenu()));
+		$topbar = new \PHPFUI\TopBar();
+		$topbar->addLeft($this->makeMenu(new \PHPFUI\DropDownMenu(), 'Site Title', '', $this->subMenu()));
 
-		$menu = new Menu();
-		$search = new Input('search', '');
+		$menu = new \PHPFUI\Menu();
+		$search = new \PHPFUI\Input('search', '');
 		$search->addAttribute('placeholder', 'Search');
-		$menu->addMenuItem(new MenuItem($search));
-		$menu->addMenuItem(new MenuItem(new Button('Search')));
+		$menu->addMenuItem(new \PHPFUI\MenuItem($search));
+		$menu->addMenuItem(new \PHPFUI\MenuItem(new \PHPFUI\Button('Search')));
 		$topbar->addRight($menu);
 
 		return $topbar;
@@ -670,7 +670,7 @@ class KitchenSink
 		{
 		$container = new \PHPFUI\Container();
 
-		$container->add(new Debug($this, 'Debug $this!'));
+		$container->add(new \PHPFUI\Debug($this, 'Debug $this!'));
 
 		return $container;
 		}
@@ -679,14 +679,14 @@ class KitchenSink
 		{
 		$container = new \PHPFUI\Container();
 
-		$iconPlain = new Icon('edit');
+		$iconPlain = new \PHPFUI\Icon('edit');
 		$container->add($iconPlain);
-		$iconPlainTip = new Icon('edit');
+		$iconPlainTip = new \PHPFUI\Icon('edit');
 		$iconPlainTip->setTooltip('I am a plain icon with a tooltip');
 		$container->add($iconPlainTip);
-		$iconLink = new Icon('edit', '#');
+		$iconLink = new \PHPFUI\Icon('edit', '#');
 		$container->add($iconLink);
-		$iconLinkTip = new Icon('edit', '#');
+		$iconLinkTip = new \PHPFUI\Icon('edit', '#');
 		$iconLinkTip->setTooltip('I can even have a tooltip and a link!');
 		$container->add($iconLinkTip);
 
@@ -712,8 +712,8 @@ class KitchenSink
 				$numbers[$field] = \rand();
 				}
 
-			$numbers['Edit'] = new Input\Text('edit[]');
-			$numbers['CheckBox'] = new Input\CheckBox('check[]');
+			$numbers['Edit'] = new \PHPFUI\Input\Text('edit[]');
+			$numbers['CheckBox'] = new \PHPFUI\Input\CheckBox('check[]');
 			$table->addRow($numbers);
 			}
 
@@ -722,14 +722,14 @@ class KitchenSink
 
 	public function extraPagination() : Pagination
 		{
-		$pagination = new Pagination(50, 100, '#');
+		$pagination = new \PHPFUI\Pagination(50, 100, '#');
 
 		return $pagination;
 		}
 
 	public function extraPanel() : Panel
 		{
-		$panel = new Panel('This is a panel with a radius');
+		$panel = new \PHPFUI\Panel('This is a panel with a radius');
 		$panel->setRadius();
 
 		return $panel;
@@ -755,9 +755,9 @@ class KitchenSink
 
 	public function extraTimedCellUpdate() : HTML5Element
 		{
-		$div = new HTML5Element('div');
+		$div = new \PHPFUI\HTML5Element('div');
 
-		$timedCellUpdate = new TimedCellUpdate($this->page, $div->getId(), [$this, 'timedCellUpdateCallback'], 1);
+		$timedCellUpdate = new \PHPFUI\TimedCellUpdate($this->page, $div->getId(), [$this, 'timedCellUpdateCallback'], 1);
 
 		return $div;
 		}
@@ -810,19 +810,19 @@ class KitchenSink
 
 	public function render(string $type = 'base') : string
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
 		$examples = $this->getExamples($type);
 
 		\ksort($examples);
 
 		$hr = '';
-		$realHr = new HTML5Element('hr');
+		$realHr = new \PHPFUI\HTML5Element('hr');
 
 		foreach ($examples as $name => $example)
 			{
 			$container->add($hr);
-			$container->add(new Header($name, 3));
+			$container->add(new \PHPFUI\Header($name, 3));
 			$container->add($this->{$example}());
 
 			if ($this->page->isDone())
@@ -844,12 +844,12 @@ class KitchenSink
 	private function generateMenu(string $name, int $count, bool $active = false) : Menu
 		{
 		$names = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
-		$menu = new Menu();
+		$menu = new \PHPFUI\Menu();
 		$count = \min($count, 10);
 
 		for ($i = 0; $i < $count; ++$i)
 			{
-			$item = new MenuItem($names[$i] . ' ' . $name, '#');
+			$item = new \PHPFUI\MenuItem($names[$i] . ' ' . $name, '#');
 			$item->setActive($active);
 			$active = false;
 			$menu->addMenuItem($item);
@@ -858,12 +858,12 @@ class KitchenSink
 		return $menu;
 		}
 
-	private function makeMenu(Menu $menu, string $name, ?string $class = '', ?Menu $subMenu = null) : Menu
+	private function makeMenu(Menu $menu, string $name, ?string $class = '', ?\PHPFUI\Menu $subMenu = null) : Menu
 		{
-		$menu->addMenuItem(new MenuItem($name));
-		$menu->addMenuItem(new MenuItem('One', '#'));
-		$menu->addMenuItem(new MenuItem('Two', '#'));
-		$three = new MenuItem('Three', '#');
+		$menu->addMenuItem(new \PHPFUI\MenuItem($name));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('One', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Two', '#'));
+		$three = new \PHPFUI\MenuItem('Three', '#');
 
 		if ($subMenu)
 			{
@@ -875,7 +875,7 @@ class KitchenSink
 			$menu->addMenuItem($three);
 			}
 
-		$menu->addMenuItem(new MenuItem('Four', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Four', '#'));
 
 		if ($class)
 			{
@@ -887,22 +887,22 @@ class KitchenSink
 
 	private function section(string $name) : Container
 		{
-		$container = new Container();
+		$container = new \PHPFUI\Container();
 
-		$container->add(new HTML5Element('hr'));
-		$container->add(new Header($header, 2));
+		$container->add(new \PHPFUI\HTML5Element('hr'));
+		$container->add(new \PHPFUI\Header($header, 2));
 
 		return $container;
 		}
 
 	private function subMenu() : Menu
 		{
-		$menu = new Menu();
-		$menu->addMenuItem(new MenuItem('One A', '#'));
-		$menu->addMenuItem(new MenuItem('Two A', '#'));
-		$menu->addMenuItem(new MenuItem('Three A', '#'));
-		$menu->addSubMenu(new MenuItem('Four A', '#'), $this->generateMenu('B', 3, true));
-		$menu->addSubMenu(new MenuItem('Five A', '#'), $this->generateMenu('C', 10));
+		$menu = new \PHPFUI\Menu();
+		$menu->addMenuItem(new \PHPFUI\MenuItem('One A', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Two A', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Three A', '#'));
+		$menu->addSubMenu(new \PHPFUI\MenuItem('Four A', '#'), $this->generateMenu('B', 3, true));
+		$menu->addSubMenu(new \PHPFUI\MenuItem('Five A', '#'), $this->generateMenu('C', 10));
 
 		return $menu;
 		}

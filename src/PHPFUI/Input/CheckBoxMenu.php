@@ -11,15 +11,15 @@ namespace PHPFUI\Input;
  */
 class CheckBoxMenu extends \PHPFUI\Menu
 	{
-	private $name;
+	private string $name;
 
-	private $className;
+	private string $className;
 
 	private string $callbackName = '';
 
-	private $allMenuItem = null;
+	private ?\PHPFUI\MenuItem $allMenuItem = null;
 
-	private $submitMenuItem = null;
+	private ?\PHPFUI\MenuItem $submitMenuItem = null;
 
 	/**
 	 * @param string $name is the name of the fields that will be posted as an array

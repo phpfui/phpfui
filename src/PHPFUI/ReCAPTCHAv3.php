@@ -12,7 +12,7 @@ namespace PHPFUI;
  */
 class ReCAPTCHAv3
 	{
-	private $errors = null;
+	private array $errors = [];
 
 	private float $result = 0.0;
 

@@ -16,7 +16,7 @@ class ToolTip extends \PHPFUI\HTML5Element
 		parent::__construct('span');
 		$this->addClass('has-tip');
 		$this->add($content);
-		$this->addAttribute('title', TextHelper::htmlentities($tip));
+		$this->addAttribute('title', \PHPFUI\TextHelper::htmlentities($tip));
 		$this->addAttribute('data-tooltip');
 		$this->addAttribute('aria-haspopup', 'true');
 		$this->addAttribute('data-disable-hover', 'false');

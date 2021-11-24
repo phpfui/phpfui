@@ -27,7 +27,7 @@ class Accordion extends \PHPFUI\UnorderedList
 	 */
 	public function addTab(string $tabText, string $content, bool $active = false) : AccordionItem
 		{
-		$listItem = new AccordionItem($tabText);
+		$listItem = new \PHPFUI\AccordionItem($tabText);
 
 		if ($active)
 			{
@@ -50,7 +50,7 @@ class Accordion extends \PHPFUI\UnorderedList
 	 */
 	public function getTab(string $tabText, bool $active = false) : AccordionItem
 		{
-		$listItem = new AccordionItem($tabText);
+		$listItem = new \PHPFUI\AccordionItem($tabText);
 
 		if ($active)
 			{

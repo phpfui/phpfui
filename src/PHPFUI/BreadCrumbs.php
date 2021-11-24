@@ -43,7 +43,7 @@ class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 		if (! $this->started)
 			{
 			$this->started = true;
-			$ul = new UnorderedList();
+			$ul = new \PHPFUI\UnorderedList();
 			$ul->addClass('breadcrumbs');
 			$count = \count($this->links);
 			$i = 1;
@@ -54,18 +54,18 @@ class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 
 				if ($count == $i)
 					{
-					$item = new ListItem("<span class='show-for-sr'>Current: </span>{$text}");
+					$item = new \PHPFUI\ListItem("<span class='show-for-sr'>Current: </span>{$text}");
 					}
 				elseif ($link)
 					{
-					$a = new HTML5Element('a');
+					$a = new \PHPFUI\HTML5Element('a');
 					$a->add($text);
 					$a->addAttribute('href', $link);
-					$item = new ListItem($a);
+					$item = new \PHPFUI\ListItem($a);
 					}
 				else
 					{
-					$item = new ListItem($text);
+					$item = new \PHPFUI\ListItem($text);
 					$item->addClass('disabled');
 					}
 

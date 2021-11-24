@@ -9,7 +9,7 @@ class TimedCellUpdate extends \PHPFUI\Base
 	{
 	protected $callback;
 
-	protected $callbackId;
+	protected string $callbackId;
 
 	private static int $callbackNumber = 0;
 
@@ -33,8 +33,8 @@ class TimedCellUpdate extends \PHPFUI\Base
 		$this->callback = $callback;
 		$cbn = \str_replace('\\', '', __CLASS__ . (++self::$callbackNumber));
 		$timeoutSeconds *= 1000;
-		$csrf = Session::csrf();
-		$csrfField = Session::csrfField();
+		$csrf = \PHPFUI\Session::csrf();
+		$csrfField = \PHPFUI\Session::csrfField();
 		$dollar = '$';
 		$js = "var startTimer=function(){var timerId=setInterval(function(){{$dollar}.ajax({dataType:'json',type:'POST',traditional:true,data:{{$csrfField}:'{$csrf}',id:'{$callbackId}',callback:'{$cbn}'},success:function(data){{$dollar}('#{$callbackId}').html(data.response);if(data.response=='{$offString}'){clearInterval(timerId);}}})},{$timeoutSeconds})};startTimer();";
 		$page->addJavaScript($js);

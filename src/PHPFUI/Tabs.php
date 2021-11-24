@@ -4,11 +4,11 @@ namespace PHPFUI;
 
 class Tabs extends \PHPFUI\Base
 	{
-	private $contentSection;
+	private \PHPFUI\HTML5Element $contentSection;
 
 	private array $tabs = [];
 
-	private $tabSection;
+	private ?\PHPFUI\UnorderedList $tabSection = null;
 
 	private bool $vertical = false;
 
@@ -49,7 +49,7 @@ class Tabs extends \PHPFUI\Base
 	 * are resposible for adding both the Tabs and content sections
 	 * to the page.
 	 */
-	public function getContent() : HTML5Element
+	public function getContent() : \PHPFUI\HTML5Element
 		{
 		$this->generate();
 
@@ -64,7 +64,7 @@ class Tabs extends \PHPFUI\Base
 	 * the content section immediately after, which you might not
 	 * want.
 	 */
-	public function getTabs() : UnorderedList
+	public function getTabs() : \PHPFUI\UnorderedList
 		{
 		$this->generate();
 
@@ -96,7 +96,7 @@ class Tabs extends \PHPFUI\Base
 		{
 		if (! $this->tabSection)
 			{
-			$this->tabSection = new UnorderedList();
+			$this->tabSection = new \PHPFUI\UnorderedList();
 			$this->tabSection->addAttribute('data-tabs');
 			$this->tabSection->addAttribute('role', 'tablist');
 
@@ -106,17 +106,17 @@ class Tabs extends \PHPFUI\Base
 				}
 
 			$this->tabSection->addClass('tabs');
-			$this->contentSection = new HTML5Element('div');
+			$this->contentSection = new \PHPFUI\HTML5Element('div');
 			$this->contentSection->addClass('tabs-content');
 			$this->contentSection->addAttribute('data-tabs-content', $this->tabSection->getId());
 
 			foreach ($this->tabs as $name => $content)
 				{
-				$div = new HTML5Element('div');
+				$div = new \PHPFUI\HTML5Element('div');
 				$div->addClass('tabs-panel');
 				$div->add($content['content']);
 				$active = $content['active'] ? ' aria-selected="true"' : '';
-				$item = new ListItem("<a href='#{$div->getId()}'{$active} role='tab'>{$name}</a>");
+				$item = new \PHPFUI\ListItem("<a href='#{$div->getId()}'{$active} role='tab'>{$name}</a>");
 				$item->addClass('tabs-title');
 
 				if ($content['active'])

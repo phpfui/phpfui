@@ -20,4 +20,3 @@ class Domain extends \PHPFUI\Input\Input
 		$this->addAttribute('pattern', 'domain');
 		}
 	}
-

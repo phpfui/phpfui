@@ -11,8 +11,8 @@ class Plan extends \PHPFUI\PayPal\Base
 		'description' => 'string',
 		'name' => 'string',
 		'status' => ['CREATED', 'INACTIVE', 'ACTIVE'],
-		'payment_preferences' => PaymentPreferences::class,
-		'taxes' => Taxes::class,
+		'payment_preferences' => \PHPFUI\PayPal\PaymentPreferences::class,
+		'taxes' => \PHPFUI\PayPal\Taxes::class,
 		'quantity_supported' => 'boolean',
 	];
 

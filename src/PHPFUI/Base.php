@@ -217,7 +217,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 
 		$output = '';
 
-		$debug = self::getDebug(Session::DEBUG_HTML) ? "\n" : '';
+		$debug = self::getDebug(\PHPFUI\Session::DEBUG_HTML) ? "\n" : '';
 
 		try
 			{

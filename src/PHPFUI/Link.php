@@ -88,7 +88,7 @@ class Link extends \PHPFUI\HTML5Element
 
 		$email = \filter_var($email, FILTER_VALIDATE_EMAIL) ? "mailto:{$email}{$subject}" : '#';
 
-		return new Link($email, $text, false);
+		return new \PHPFUI\Link($email, $text, false);
 		}
 
 	/**
@@ -99,7 +99,7 @@ class Link extends \PHPFUI\HTML5Element
 	 */
 	public static function localUrl(string $link, string $text = '') : Link
 		{
-		return new Link($link, $text, false);
+		return new \PHPFUI\Link($link, $text, false);
 		}
 
 	/**
@@ -116,7 +116,7 @@ class Link extends \PHPFUI\HTML5Element
 			$text = $number;
 			}
 
-		return new Link('tel:' . $number, $text, false);
+		return new \PHPFUI\Link('tel:' . $number, $text, false);
 		}
 
 	/**
@@ -133,6 +133,6 @@ class Link extends \PHPFUI\HTML5Element
 			$text = $number;
 			}
 
-		return new Link('sms:' . $number, $text, false);
+		return new \PHPFUI\Link('sms:' . $number, $text, false);
 		}
 	}

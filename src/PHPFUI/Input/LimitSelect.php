@@ -20,15 +20,15 @@ class LimitSelect extends \PHPFUI\Input\Select
 	{
 	use \PHPFUI\Traits\Page;
 
-	private $currentLimit;
+	private int $currentLimit;
 
-	private $limitName;
+	private string $limitName;
 
-	private $limits;
+	private array $limits;
 
-	private $page;
+	private \PHPFUI\Interfaces\Page $page;
 
-	private $pageName;
+	private string $pageName;
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, int $currentLimit)
 		{

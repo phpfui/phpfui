@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class TitleBar extends \PHPFUI\Bar
 	{
-	private $title;
+	private string $title;
 
 	public function __construct(string $title = '')
 		{
@@ -16,7 +16,7 @@ class TitleBar extends \PHPFUI\Bar
 		{
 		if ($this->title)
 			{
-			$title = new HTML5Element('span');
+			$title = new \PHPFUI\HTML5Element('span');
 			$title->add($this->title);
 			$title->addClass('title-bar-title');
 			$this->addLeft($title);

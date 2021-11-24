@@ -8,15 +8,15 @@ class Slider extends \PHPFUI\HTML5Element
 
 	private int $min = 0;
 
-	private $rangeHandle = null;
+	private ?\PHPFUI\SliderHandle $rangeHandle = null;
 
-	private $sliderHandle;
+	private ?\PHPFUI\SliderHandle $sliderHandle = null;
 
 	private bool $started = false;
 
 	private int $step = 1;
 
-	private $value;
+	private int $value;
 
 	private bool $vertical = false;
 
@@ -24,13 +24,13 @@ class Slider extends \PHPFUI\HTML5Element
 	 * @param int $value the initial slider value
 	 * @param SliderHandle $handle an optional slider handle. You must supply this if you want a field to be updated by slider changes.
 	 */
-	public function __construct(int $value = 0, ?SliderHandle $handle = null)
+	public function __construct(int $value = 0, ?\PHPFUI\SliderHandle $handle = null)
 		{
 		parent::__construct('div');
 		$this->value = $value;
 		$this->addClass('slider');
 		$this->setAttribute('data-slider');
-		$this->sliderHandle = $handle ?: new SliderHandle($value);
+		$this->sliderHandle = $handle ?: new \PHPFUI\SliderHandle($value);
 		}
 
 	/**
@@ -63,7 +63,7 @@ class Slider extends \PHPFUI\HTML5Element
 
 		if (! \in_array($function, $functions))
 			{
-			throw new Exception('ERROR: ' . __METHOD__ . ' $function must be ' . \implode(' or ', $functions));
+			throw new \PHPFUI\Exception('ERROR: ' . __METHOD__ . ' $function must be ' . \implode(' or ', $functions));
 			}
 
 		$this->setAttribute('data-position-value-function', $function);

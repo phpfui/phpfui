@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple CheckBox wrapper
  */
-class CheckBoxBoolean extends CheckBox
+class CheckBoxBoolean extends \PHPFUI\Input\CheckBox
 	{
 	/**
 	 * Construct a CheckBoxBoolean

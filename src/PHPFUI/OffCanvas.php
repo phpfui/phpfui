@@ -4,18 +4,18 @@ namespace PHPFUI;
 
 class OffCanvas extends \PHPFUI\Base
 	{
-	private $mainContent;
+	private \PHPFUI\HTML5Element $mainContent;
 
-	private $offCanvas;
+	private \PHPFUI\HTML5Element $offCanvas;
 
 	private array $offCanvasCollection = [];
 
 	private bool $wrapper = false;
 
-	public function __construct(HTML5Element $mainContent)
+	public function __construct(\PHPFUI\HTML5Element $mainContent)
 		{
 		$this->mainContent = $mainContent;
-		$this->offCanvas = new HTML5Element('div');
+		$this->offCanvas = new \PHPFUI\HTML5Element('div');
 		$this->offCanvas->addClass('off-canvas');
 		$this->offCanvas->addAttribute('data-off-canvas');
 		}
@@ -32,7 +32,7 @@ class OffCanvas extends \PHPFUI\Base
 	 * @return string id of the content added. Used to specify
 	 *         postion and transition attributes
 	 */
-	public function addOff(HTML5Element $content, HTML5Element $toggle) : string
+	public function addOff(\PHPFUI\HTML5Element $content, HTML5Element $toggle) : string
 		{
 		$toggle->addAttribute('data-toggle', $this->offCanvas->getId());
 		$id = $content->getId();
@@ -121,13 +121,13 @@ class OffCanvas extends \PHPFUI\Base
 		{
 		if ($this->wrapper)
 			{
-			$wrapper = new HTML5Element('div');
+			$wrapper = new \PHPFUI\HTML5Element('div');
 			$wrapper->addClass('');
 			$wrapper->addClass('off-canvas-wrapper');
 			}
 		else
 			{
-			$wrapper = new Container();
+			$wrapper = new \PHPFUI\Container();
 			}
 
 		foreach ($this->offCanvasCollection as $id => $off)
@@ -135,7 +135,7 @@ class OffCanvas extends \PHPFUI\Base
 			$this->offCanvas->add($off);
 			}
 
-		$mainContent = new HTML5Element('div');
+		$mainContent = new \PHPFUI\HTML5Element('div');
 		$mainContent->addClass('off-canvas-content');
 		$mainContent->addAttribute('data-off-canvas-content');
 		$mainContent->add($this->mainContent);

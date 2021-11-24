@@ -7,23 +7,23 @@ namespace PHPFUI;
  */
 class SplitButton extends \PHPFUI\Button
 	{
-	private $menu;
+	private \PHPFUI\Menu $menu;
 
 	private bool $started = false;
 
 	public function __construct(string $text, string $link)
 		{
-		HTML5Element::__construct('div');
+		\PHPFUI\HTML5Element::__construct('div');
 		$this->addClass('button-group');
-		$this->add(new Button($text, $link));
-		$this->menu = new Menu();
+		$this->add(new \PHPFUI\Button($text, $link));
+		$this->menu = new \PHPFUI\Menu();
 		}
 
 	public function addLink(string $link, string $name) : SplitButton
 		{
 		$this->maxLength = \max($this->maxLength, \strlen($name));
 
-		return $this->addMenuItem(new MenuItem($name, $link));
+		return $this->addMenuItem(new \PHPFUI\MenuItem($name, $link));
 		}
 
 	public function addMenuItem(MenuItem $item) : SplitButton
@@ -45,7 +45,7 @@ class SplitButton extends \PHPFUI\Button
 		if (! $this->started)
 			{
 			$this->started = true;
-			$dropDown = new DropDownButton('');
+			$dropDown = new \PHPFUI\DropDownButton('');
 			$dropDown->addClass('arrow-only');
 
 			foreach ($this->menu->getMenuItems() as $item)
@@ -56,6 +56,6 @@ class SplitButton extends \PHPFUI\Button
 			$this->add($dropDown);
 			}
 
-		return HTML5Element::getStart();
+		return \PHPFUI\HTML5Element::getStart();
 		}
 	}

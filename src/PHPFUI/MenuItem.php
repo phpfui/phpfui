@@ -6,15 +6,15 @@ class MenuItem extends \PHPFUI\HTML5Element
 	{
 	private bool $active = false;
 
-	private $align;
+	private string $align = '';
 
-	private $generatedLink;
+	private ?\PHPFUI\Link $generatedLink = null;
 
-	private $graphic;
+	private ?\PHPFUI\Base $graphic = null;
 
-	private $link;
+	private string $link;
 
-	private $name;
+	private string $name;
 
 	private bool $started = false;
 
@@ -33,7 +33,7 @@ class MenuItem extends \PHPFUI\HTML5Element
 	/**
 	 * returns the icon or image if set
 	 */
-	public function getGraphic(Base $graphic) : Base
+	public function getGraphic(\PHPFUI\Base $graphic) : Base
 		{
 		return $this->graphic;
 		}
@@ -69,7 +69,7 @@ class MenuItem extends \PHPFUI\HTML5Element
 					$name = "{$this->graphic} <span>{$name}</span>";
 					}
 			}
-		$this->generatedLink = new Link($this->link, $name, false);
+		$this->generatedLink = new \PHPFUI\Link($this->link, $name, false);
 
 		return $this->generatedLink;
 		}

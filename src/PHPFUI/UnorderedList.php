@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class UnorderedList extends \PHPFUI\HTMLList
 	{
-	private $sortable;
+	private bool $sortable;
 
 	/**
 	 * @param Page $page if supplied, then the unordered list will allow drag and drop

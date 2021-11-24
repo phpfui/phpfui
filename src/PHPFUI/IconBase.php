@@ -9,7 +9,7 @@ namespace PHPFUI;
  */
 class IconBase extends \PHPFUI\HTML5Element
 	{
-	private $link;
+	private string $link;
 
 	/**
 	 * Construct an Icon.

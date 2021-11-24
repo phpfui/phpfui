@@ -4,17 +4,17 @@ namespace PHPFUI;
 
 class SliderHandle extends \PHPFUI\HTML5Element
 	{
-	private $bind = null;
+	private ?\PHPFUI\Input $bind = null;
 
-	private $input = null;
+	private ?\PHPFUI\HTML5Element $input = null;
 
-	private $value;
+	private int $value;
 
 	/**
 	 * @param int $value of the slider on initializion
 	 * @param Input $bind Input field to update when the slider is changed.
 	 */
-	public function __construct(int $value = 0, ?Input $bind = null)
+	public function __construct(int $value = 0, ?\PHPFUI\Input $bind = null)
 		{
 		parent::__construct('span');
 		$this->addClass('slider-handle');
@@ -31,7 +31,7 @@ class SliderHandle extends \PHPFUI\HTML5Element
 			}
 		else
 			{
-			$this->input = new HTML5Element('input');
+			$this->input = new \PHPFUI\HTML5Element('input');
 			$this->input->getId();
 			$this->input->setAttribute('type', 'hidden');
 			$this->input->setAttribute('value', $value);

@@ -18,7 +18,7 @@ class Checkout extends \PHPFUI\HTML5Element
 
 	private array $functions = [];
 
-	private $page;
+	private \PHPFUI\Interfaces\Page $page;
 
 	private array $styles = [
 		'layout' => 'vertical',

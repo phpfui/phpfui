@@ -7,11 +7,11 @@ namespace PHPFUI;
  */
 class Cell extends \PHPFUI\HTML5Element
 	{
-	protected $large;
+	protected int $large;
 
-	protected $medium;
+	protected int $medium;
 
-	protected $small;
+	protected int $small;
 
 	/**
 	 * Construct a Cell.  Pass the number of columns you want an

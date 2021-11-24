@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class DropDownMenu extends \PHPFUI\Menu
 	{
-	private $width = null;
+	private ?int $width = null;
 
 	public function __construct()
 		{

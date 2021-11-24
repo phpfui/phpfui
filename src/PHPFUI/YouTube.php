@@ -15,7 +15,7 @@ class YouTube extends \PHPFUI\Embed
 	public function __construct(string $videoCode, string $ratio = 'widescreen')
 		{
 		parent::__construct($ratio);
-		$iframe = new HTML5Element('iframe');
+		$iframe = new \PHPFUI\HTML5Element('iframe');
 		$iframe->addAttribute('allowfullscreen');
 		$iframe->setAttribute('src', "https://www.youtube.com/embed/{$videoCode}");
 		$this->add($iframe);

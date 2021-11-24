@@ -13,7 +13,7 @@ class Form extends \PHPFUI\HTML5Element
 
 	private bool $areYouSure = true;
 
-	private $page;
+	private \PHPFUI\Interfaces\Page $page;
 
 	private bool $started = false;
 
@@ -107,7 +107,7 @@ JAVASCRIPT;
 		{
 		[$name, $value] = $this->getSubmitValues($submit);
 
-		return Session::checkCSRF() && $name && ! empty($_POST[$name]) && $_POST[$name] == $value;
+		return \PHPFUI\Session::checkCSRF() && $name && ! empty($_POST[$name]) && $_POST[$name] == $value;
 		}
 
 	/**
@@ -160,7 +160,7 @@ JAVASCRIPT;
 
 			if ('get' != \strtolower($this->getAttribute('method')))
 				{
-				$this->add(new \PHPFUI\Input\Hidden(Session::csrfField(), Session::csrf()));
+				$this->add(new \PHPFUI\Input\Hidden(\PHPFUI\Session::csrfField(), \PHPFUI\Session::csrf()));
 				}
 			}
 

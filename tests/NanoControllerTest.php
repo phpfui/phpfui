@@ -11,7 +11,6 @@
  */
 class NanoControllerTest extends \PHPUnit\Framework\TestCase
 	{
-
 	public function setUp() : void
 	 {
 	 $page = new \PHPFUI\Page();
@@ -161,5 +160,4 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$this->assertStringContainsString('Value Double: 1.23', $class, 'multiple double value not found');
 		$this->assertStringContainsString('Value Array: a\b\c', $class, 'multiple array value not found');
 		}
-
 	}

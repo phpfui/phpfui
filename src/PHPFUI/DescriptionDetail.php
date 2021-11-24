@@ -9,7 +9,7 @@ class DescriptionDetail extends \PHPFUI\DescriptionItem
 	 *
 	 * @param mixed $content of the DescriptionDetail
 	 */
-	public function __construct($content = '')
+	public function __construct(string $content = '')
 		{
 		parent::__construct('dd');
 		$this->add($content);

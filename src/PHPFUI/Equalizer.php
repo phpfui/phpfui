@@ -4,17 +4,17 @@ namespace PHPFUI;
 
 class Equalizer extends \PHPFUI\HTML5Element
 	{
-	private $base;
+	private ?\PHPFUI\HTML5Element $base;
 
-	private $watchId;
+	private string $watchId;
 
 	private static int $watchMaster = 0;
 
-	public function __construct(?HTML5Element $base = null)
+	public function __construct(?\PHPFUI\HTML5Element $base = null)
 		{
 		if (! $base)
 			{
-			$base = new GridX();
+			$base = new \PHPFUI\GridX();
 			}
 
 		parent::__construct($base->getElement());
@@ -23,10 +23,10 @@ class Equalizer extends \PHPFUI\HTML5Element
 		$this->addAttribute('data-equalizer', $this->watchId);
 		}
 
-	public function addColumn(HTML5Element $element, string $columnWidthClass = 'medium-4') : Equalizer
+	public function addColumn(\PHPFUI\HTML5Element $element, string $columnWidthClass = 'medium-4') : Equalizer
 		{
 		$element->addAttribute('data-equalizer-watch', $this->watchId);
-		$cell = new Cell();
+		$cell = new \PHPFUI\Cell();
 		$cell->addClass($columnWidthClass);
 		$cell->add($element);
 		$this->add($cell);
@@ -34,7 +34,7 @@ class Equalizer extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function addElement(HTML5Element $element) : Equalizer
+	public function addElement(\PHPFUI\HTML5Element $element) : Equalizer
 		{
 		$element->addAttribute('data-equalizer-watch', $this->watchId);
 		$this->add($element);

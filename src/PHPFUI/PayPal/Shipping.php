@@ -6,6 +6,6 @@ class Shipping extends \PHPFUI\PayPal\Base
 	{
 	protected static array $validFields = [
 		'method' => 'string',
-		'address' => Address::class,
+		'address' => \PHPFUI\PayPal\Address::class,
 	];
 	}

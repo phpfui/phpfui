@@ -4,17 +4,17 @@ namespace PHPFUI;
 
 class Orbit extends \PHPFUI\HTML5Element
 	{
-	private $animation;
+	private ?string $animation = null;
 
-	private $bullets;
+	private \PHPFUI\HTML5Element $bullets;
 
-	private $container;
+	private \PHPFUI\UnorderedList $container;
 
-	private $controls;
+	private ?\PHPFUI\HTML5Element $controls = null;
 
 	private bool $started = false;
 
-	private $wrapper;
+	private \PHPFUI\HTML5Element $wrapper;
 
 	public function __construct(string $label = 'Photo Carousel')
 		{
@@ -23,18 +23,18 @@ class Orbit extends \PHPFUI\HTML5Element
 		$this->addAttribute('role', 'region');
 		$this->addAttribute('aria-label', $label);
 		$this->addAttribute('data-orbit');
-		$this->container = new UnorderedList();
+		$this->container = new \PHPFUI\UnorderedList();
 		$this->container->addClass('orbit-container');
-		$this->wrapper = new HTML5Element('div');
+		$this->wrapper = new \PHPFUI\HTML5Element('div');
 		$this->wrapper->addClass('orbit-wrapper');
 		$this->add($this->wrapper);
-		$this->bullets = new HTML5Element('nav');
+		$this->bullets = new \PHPFUI\HTML5Element('nav');
 		$this->bullets->addClass('orbit-bullets');
 		}
 
-	public function addHTMLSlide(HTML5Element $html, bool $active = false) : Orbit
+	public function addHTMLSlide(\PHPFUI\HTML5Element $html, bool $active = false) : Orbit
 		{
-		$item = new ListItem();
+		$item = new \PHPFUI\ListItem();
 		$item->addClass('orbit-slide');
 
 		if ($active)
@@ -42,7 +42,7 @@ class Orbit extends \PHPFUI\HTML5Element
 			$item->addClass('is-active');
 			}
 
-		$div = new HTML5Element('div');
+		$div = new \PHPFUI\HTML5Element('div');
 		$div->add($html);
 		$item->add($div);
 		$this->container->addItem($item);
@@ -53,7 +53,7 @@ class Orbit extends \PHPFUI\HTML5Element
 
 	public function addImageSlide(Image $image, string $caption = '', bool $active = false) : Orbit
 		{
-		$item = new ListItem();
+		$item = new \PHPFUI\ListItem();
 		$item->addClass('orbit-slide');
 
 		if ($active)
@@ -61,14 +61,14 @@ class Orbit extends \PHPFUI\HTML5Element
 			$item->addClass('is-active');
 			}
 
-		$figure = new HTML5Element('figure');
+		$figure = new \PHPFUI\HTML5Element('figure');
 		$figure->addClass('orbit-figure');
 		$image->addClass('orbit-image');
 		$figure->add($image);
 
 		if ($caption)
 			{
-			$cap = new HTML5Element('figcaption');
+			$cap = new \PHPFUI\HTML5Element('figcaption');
 			$cap->addClass('orbit-caption');
 			$cap->add($caption);
 			$figure->add($cap);
@@ -83,7 +83,7 @@ class Orbit extends \PHPFUI\HTML5Element
 
 	public function getControls() : HTML5Element
 		{
-		$this->controls = new HTML5Element('div');
+		$this->controls = new \PHPFUI\HTML5Element('div');
 		$this->controls->addClass('orbit-controls');
 		$this->controls->add('<button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>');
 		$this->controls->add('<button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>');
@@ -140,7 +140,7 @@ class Orbit extends \PHPFUI\HTML5Element
 		{
 		if ($this->bullets)
 			{
-			$button = new HTML5Element('button');
+			$button = new \PHPFUI\HTML5Element('button');
 			$number = $this->bullets->count();
 			$button->addAttribute('data-slide', $number++);
 			$button->add("<span class='show-for-sr'>Slide {$number}</span>");

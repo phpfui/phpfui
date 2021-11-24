@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class Panel extends \PHPFUI\HTML5Element
 	{
-	protected $text;
+	protected string $text;
 
 	/**
 	 * @param string $text for the Panel

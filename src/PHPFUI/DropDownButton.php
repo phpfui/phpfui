@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class DropDownButton extends \PHPFUI\Button
 	{
-	private $dropDown;
+	private ?\PHPFUI\HTML5Element $dropDown = null;
 
 	private array $items = [];
 
@@ -30,7 +30,7 @@ class DropDownButton extends \PHPFUI\Button
 		{
 		$this->maxLength = \max($this->maxLength, \strlen($name));
 
-		return $this->addMenuItem(new MenuItem($name, $link));
+		return $this->addMenuItem(new \PHPFUI\MenuItem($name, $link));
 		}
 
 	public function addMenuItem(MenuItem $item) : DropDownButton

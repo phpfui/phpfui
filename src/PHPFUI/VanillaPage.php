@@ -15,7 +15,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private int $edgeVersion = 0;
 
-	private $favIcon;
+	private string $favIcon = '';
 
 	private int $fireFoxVersion = 0;
 
@@ -47,7 +47,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private array $tailScripts = [];
 
-	private $body;
+	private \PHPFUI\HTML5Element $body;
 
 	public function __construct()
 		{

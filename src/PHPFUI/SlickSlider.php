@@ -11,7 +11,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 
 	private array $attributes = [];
 
-	private $page;
+	private \PHPFUI\Interfaces\Page $page;
 
 	private array $slides = [];
 
@@ -64,7 +64,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 	 *
 	 * @param mixed $value of any type
 	 */
-	public function addSliderAttribute(string $attribute, $value = '') : Base
+	public function addSliderAttribute(string $attribute, string $value = '') : Base
 		{
 		$this->attributes[$attribute] = $value;
 

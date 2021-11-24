@@ -88,7 +88,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 
 		foreach ($this->buttons as $button)
 			{
-			$radio = new Radio($this->name, $button['label'], $button['value']);
+			$radio = new \PHPFUI\Input\Radio($this->name, $button['label'], $button['value']);
 
 			if ($this->required)
 				{

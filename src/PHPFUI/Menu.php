@@ -122,7 +122,7 @@ class Menu extends \PHPFUI\HTML5Element
 
 		if (! \in_array($type, $types))
 			{
-			throw new Exception(__METHOD__ . ' Error: Icon type {$type} should be one of ' . \implode('', $types));
+			throw new \PHPFUI\Exception(__METHOD__ . ' Error: Icon type {$type} should be one of ' . \implode('', $types));
 			}
 
 		$this->addClass('icons');
@@ -170,7 +170,7 @@ class Menu extends \PHPFUI\HTML5Element
 					}
 				else
 					{
-					$menuItem = new MenuItem($this->menuLabels[$label], '#');
+					$menuItem = new \PHPFUI\MenuItem($this->menuLabels[$label], '#');
 					$somethingActive |= (int)$item->getActive();
 					$menuItem->setActive($item->getActive());
 					$menuItem->add($item);

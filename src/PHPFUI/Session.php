@@ -109,7 +109,7 @@ class Session
 		{
 		if (! self::$handler)
 			{
-			self::$handler = new DefaultSessionHandler();
+			self::$handler = new \PHPFUI\DefaultSessionHandler();
 			}
 
 		return self::$handler;

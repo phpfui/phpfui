@@ -22,7 +22,7 @@ class Card extends \PHPFUI\HTML5Element
 
 	public function addSection(string $text, string $type = 'section') : Card
 		{
-		$div = new HTML5Element('div');
+		$div = new \PHPFUI\HTML5Element('div');
 		$div->addClass('card-' . $type);
 		$div->add($text);
 		$this->add($div);

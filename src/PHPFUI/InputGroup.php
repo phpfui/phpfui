@@ -7,11 +7,11 @@ namespace PHPFUI;
  */
 class InputGroup extends \PHPFUI\HTML5Element
 	{
-	private $inputLabel = null;
+	private ?string $inputLabel = null;
 
 	private string $error = '';
 
-	private string $hint = '';
+	private ?string $hint = '';
 
 	public function __construct()
 		{
@@ -21,7 +21,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 
 	public function addButton(Button $button) : InputGroup
 		{
-		$span = new HTML5Element('span');
+		$span = new \PHPFUI\HTML5Element('span');
 		$span->addClass('input-group-button');
 
 		if ('button' == $button->getElement())
@@ -79,7 +79,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 	 */
 	public function addLabel(string $label) : HTML5Element
 		{
-		$span = new HTML5Element('span');
+		$span = new \PHPFUI\HTML5Element('span');
 		$span->addClass('input-group-label');
 		$span->add($label);
 		$this->add($span);

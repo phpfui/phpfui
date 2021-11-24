@@ -12,7 +12,7 @@ class MediaObject extends \PHPFUI\HTML5Element
 
 	public function addSection(string $content, bool $main = false, string $alignment = '') : MediaObject
 		{
-		$section = new HTML5Element('div');
+		$section = new \PHPFUI\HTML5Element('div');
 		$section->addClass('media-object-section');
 
 		if ($main)

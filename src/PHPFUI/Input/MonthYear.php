@@ -11,17 +11,17 @@ class MonthYear extends \PHPFUI\Base
 	{
 	use \PHPFUI\Traits\Page;
 
-	protected $hidden;
+	protected \PHPFUI\Input\Hidden $hidden;
 
-	protected $label;
+	protected string $label;
 
-	protected $monthSelect;
+	protected \PHPFUI\Input\Select $monthSelect;
 
-	protected $name;
+	protected string $name;
 
-	protected $page;
+	protected \PHPFUI\Interfaces\Page $page;
 
-	protected $yearSelect;
+	protected \PHPFUI\Input\Select $yearSelect;
 
 	private int $day = 1;
 
@@ -29,11 +29,11 @@ class MonthYear extends \PHPFUI\Base
 
 	private int $minYear = 2000;
 
-	private $month;
+	private int $month;
 
-	private $required;
+	private bool $required = false;
 
-	private $year;
+	private int $year;
 
 	/**
 	 * Construct a MonthYear field
@@ -50,8 +50,8 @@ class MonthYear extends \PHPFUI\Base
 		$this->name = $name;
 		$this->label = $label;
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
-		$this->year = \date('Y');
-		$this->month = \date('n');
+		$this->year = (int)\date('Y');
+		$this->month = (int)\date('n');
 		$array = \explode('/', \str_replace(['-',
 			'.',
 			'\\',
@@ -124,7 +124,7 @@ class MonthYear extends \PHPFUI\Base
 
 	protected function getStart() : string
 		{
-		$this->monthSelect = new Select($this->name . 'Month', $this->label . ' Month');
+		$this->monthSelect = new \PHPFUI\Input\Select($this->name . 'Month', $this->label . ' Month');
 		$jd = new \DateTime();
 
 		for ($i = 1; $i <= 12; ++$i)
@@ -133,7 +133,7 @@ class MonthYear extends \PHPFUI\Base
 			$this->monthSelect->addOption($i . ' - ' . $jd->format('F'), $i, $this->month == $jd->format('n'));
 			}
 
-		$this->yearSelect = new Select($this->name . 'Year', $this->label . ' Year', $this->year, 4);
+		$this->yearSelect = new \PHPFUI\Input\Select($this->name . 'Year', $this->label . ' Year', $this->year, 4);
 
 		if ($this->required)
 			{

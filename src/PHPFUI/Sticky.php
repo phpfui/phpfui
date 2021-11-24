@@ -11,7 +11,7 @@ class Sticky extends \PHPFUI\HTML5Element
 	 *
 	 * You can then add anything you want into the Sticky object.
 	 */
-	public function __construct(HTML5Element $parent)
+	public function __construct(\PHPFUI\HTML5Element $parent)
 		{
 		parent::__construct('div');
 		$this->addClass('sticky');

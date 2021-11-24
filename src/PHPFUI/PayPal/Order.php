@@ -5,7 +5,7 @@ namespace PHPFUI\PayPal;
 class Order extends \PHPFUI\PayPal\Base
 	{
 	protected static array $validFields = [
-		'application_context' => ApplicationContext::class,
+		'application_context' => \PHPFUI\PayPal\ApplicationContext::class,
 		'intent' => ['CAPTURE', 'AUTHORIZE'],
 	];
 

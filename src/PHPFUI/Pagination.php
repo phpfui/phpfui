@@ -4,25 +4,25 @@ namespace PHPFUI;
 
 class Pagination extends \PHPFUI\HTML5Element
 	{
-	private $baseUrl;
+	private string $baseUrl;
 
 	private int $ff = 0;
 
 	private string $next = 'Next';
 
-	private $of;
+	private int $of;
 
-	private $onPage;
+	private string $onPage;
 
-	private $page;
+	private int $page;
 
-	private $pageText;
+	private string $pageText;
 
 	private string $previous = 'Previous';
 
 	private bool $started = false;
 
-	private $ul;
+	private \PHPFUI\UnorderedList $ul;
 
 	private int $window = 3;
 
@@ -41,7 +41,7 @@ class Pagination extends \PHPFUI\HTML5Element
 		$this->of = $of;
 		$this->baseUrl = $baseUrl;
 		$this->addAttribute('aria-label', 'Pagination');
-		$this->ul = new UnorderedList();
+		$this->ul = new \PHPFUI\UnorderedList();
 		$this->ul->addClass('pagination');
 		$this->next = \PHPFUI\Language::$next;
 		$this->previous = \PHPFUI\Language::$previous;
@@ -108,7 +108,7 @@ class Pagination extends \PHPFUI\HTML5Element
 
 			if ($this->of > 1)
 				{
-				$item = new ListItem();
+				$item = new \PHPFUI\ListItem();
 				$item->addClass('pagination-previous');
 				$text = "{$this->previous} <span class='show-for-sr'>{$this->pageText}</span>";
 
@@ -166,7 +166,7 @@ class Pagination extends \PHPFUI\HTML5Element
 					}
 
 				$this->ul->addItem($this->getPageItem($this->of - 1));
-				$item = new ListItem();
+				$item = new \PHPFUI\ListItem();
 				$item->addClass('pagination-next');
 				$text = "{$this->next} <span class='show-for-sr'>{$this->pageText}</span>";
 
@@ -198,7 +198,7 @@ class Pagination extends \PHPFUI\HTML5Element
 
 	private function getEllipsisItem(int $ff) : ListItem
 		{
-		$item = new ListItem();
+		$item = new \PHPFUI\ListItem();
 
 		if ($ff && $this->page + $ff > 0 && $this->page + $ff < $this->of)
 			{
@@ -232,7 +232,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	 */
 	private function getPageItem(int $page) : ListItem
 		{
-		$item = new ListItem();
+		$item = new \PHPFUI\ListItem();
 
 		if ($page == $this->page)
 			{

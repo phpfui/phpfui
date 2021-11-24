@@ -11,7 +11,7 @@ class CheckBoxGroup extends \PHPFUI\HTML5Element implements \Countable
 
 	protected bool $separateRows = false;
 
-	protected $label;
+	protected string $label;
 
 	/**
 	 * Construct a CheckBoxGroup
@@ -46,7 +46,7 @@ class CheckBoxGroup extends \PHPFUI\HTML5Element implements \Countable
 	 *
 	 * @param bool $sep default true
 	 */
-	public function setSeparateRows($sep = true) : CheckBoxGroup
+	public function setSeparateRows(bool $sep = true) : CheckBoxGroup
 		{
 		$this->separateRows = $sep;
 

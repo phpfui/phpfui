@@ -8,7 +8,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 
 	private string $disabledColor = 'gray';
 
-	private $name;
+	private string $name;
 
 	private string $offBackgroundColor = 'lightgray';
 
@@ -18,11 +18,11 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 
 	private string $onColor = 'black';
 
-	private $parent = null;
+	private ?\PHPFUI\RadioTable $parent = null;
 
-	private $radioButton = null;
+	private ?\PHPFUI\HTML5Element $radioButton = null;
 
-	private $value;
+	private ?string $value;
 
 	public function __construct(string $name, ?string $value = '')
 		{
@@ -76,7 +76,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 			$value = $this->name;
 			}
 
-		$this->radioButton = new HTML5Element('input');
+		$this->radioButton = new \PHPFUI\HTML5Element('input');
 		$this->radioButton->addAttribute('type', 'radio');
 		$this->radioButton->addAttribute('value', $value);
 		$this->radioButton->addAttribute('name', $this->parent->getName());
@@ -124,7 +124,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function setParent(RadioTable $parent)
+	public function setParent(\PHPFUI\RadioTable $parent)
 		{
 		$this->parent = $parent;
 
@@ -159,7 +159,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 		$this->addClass('RadioTableButton');
 		$this->addAttribute('for', $radioButton->getId());
 		$this->add($radioButton);
-		$name = new HTML5Element('strong');
+		$name = new \PHPFUI\HTML5Element('strong');
 		$name->add($this->name);
 		$this->add($name);
 

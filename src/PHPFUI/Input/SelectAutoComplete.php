@@ -11,11 +11,11 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	{
 	use \PHPFUI\Traits\Page;
 
-	protected $acFieldId;
+	protected string $acFieldId;
 
-	protected $acInput;
+	protected \PHPFUI\Input\Text $acInput;
 
-	protected $arrayName;
+	protected string $arrayName = '';
 
 	protected array $autoCompleteOptions = [
 		'minChars' => 1,
@@ -25,13 +25,13 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 		'onSelect' => 'function(suggestion){ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}',
 	];
 
-	protected $freeformInput;
+	protected bool $freeformInput;
 
-	protected $hidden;
+	protected \PHPFUI\Input\Hidden $hidden;
 
-	protected $page;
+	protected \PHPFUI\Interfaces\Page $page;
 
-	protected $realName;
+	protected string $realName;
 
 	protected $toolTip;
 

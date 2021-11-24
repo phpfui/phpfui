@@ -87,6 +87,7 @@ class TextHelper
 		for ($i = 0; $i < $len; ++$i)
 			{
 			$char = $key[$i];
+
 			if (0 == $i)
 				{
 				$char = \strtoupper($char);
@@ -105,6 +106,7 @@ class TextHelper
 			elseif ($lastCapitalized)
 				{
 				$length = \strlen($output);
+
 				if ($length > 1 && $consecutiveCaps > 1)
 					{
 					$output = \substr($output, 0, $length - 1) . ' ' . $output[$length - 1];

@@ -22,7 +22,7 @@ class AccordionItem extends \PHPFUI\ListItem
 	 */
 	public function addContent(string $content) : AccordionItem
 		{
-		$div = new HTML5Element('div');
+		$div = new \PHPFUI\HTML5Element('div');
 		$div->addClass('accordion-content');
 		$div->addAttribute('data-tab-content');
 		$div->add($content);

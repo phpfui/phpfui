@@ -41,7 +41,7 @@ class TextArea extends \PHPFUI\Input\Input
 	 *
 	 * @param int $rows default 10
 	 */
-	public function setRows($rows = 10) : TextArea
+	public function setRows(int $rows = 10) : TextArea
 		{
 		$this->rows = $rows;
 

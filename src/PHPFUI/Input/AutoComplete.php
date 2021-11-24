@@ -14,15 +14,15 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 	protected $callback;
 
-	protected $className;
+	protected string $className;
 
-	protected $hidden;
+	protected \PHPFUI\Input\Hidden $hidden;
 
 	protected bool $noFreeForm = false;
 
 	protected array $options = [];
 
-	protected $page;
+	protected \PHPFUI\Interfaces\Page $page;
 
 	/**
 	 * Construct a AutoComplete.

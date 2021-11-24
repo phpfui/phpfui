@@ -12,7 +12,7 @@ class File extends \PHPFUI\Input\Input
 	{
 	use \PHPFUI\Traits\Page;
 
-	protected $page;
+	protected \PHPFUI\Interfaces\Page $page;
 
 	/**
 	 * Construct an drag and drop file input field using Dropify
@@ -43,7 +43,7 @@ class File extends \PHPFUI\Input\Input
 		{
 		foreach ($extensions as &$value)
 			{
-			$value = ltrim($value, '.');
+			$value = \ltrim($value, '.');
 			}
 		unset($value);
 

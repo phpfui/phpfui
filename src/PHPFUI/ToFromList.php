@@ -8,23 +8,23 @@ class ToFromList extends \PHPFUI\Base
 
 	protected $callback;
 
-	protected $callbackIndex;
+	protected string $callbackIndex;
 
-	protected $inGroup;
+	protected array $inGroup;
 
-	protected $inIcon;
+	protected \PHPFUI\Container $inIcon;
 
 	protected string $inName = 'In';
 
-	protected $name;
+	protected string $name;
 
-	protected $notInGroup;
+	protected array $notInGroup;
 
-	protected $outIcon;
+	protected \PHPFUI\Container $outIcon;
 
 	protected string $outName = 'Out';
 
-	protected $page;
+	protected \PHPFUI\Interfaces\Page $page;
 
 	private static bool $outputJs = false;
 
@@ -70,21 +70,21 @@ class ToFromList extends \PHPFUI\Base
 		$this->callback = $callback;
 
 		$this->inIcon = new \PHPFUI\Container();
-		$rightIcon = new Icon('arrow-right');
+		$rightIcon = new \PHPFUI\Icon('arrow-right');
 		$rightIcon->addAttribute('style', 'color:green');
 		$rightIcon->addClass('show-for-medium');
 		$this->inIcon->add($rightIcon);
-		$downIcon = new Icon('arrow-down');
+		$downIcon = new \PHPFUI\Icon('arrow-down');
 		$downIcon->addAttribute('style', 'color:green');
 		$downIcon->addClass('show-for-small-only');
 		$this->inIcon->add($downIcon);
 
 		$this->outIcon = new \PHPFUI\Container();
-		$leftIcon = new Icon('arrow-left');
+		$leftIcon = new \PHPFUI\Icon('arrow-left');
 		$leftIcon->addAttribute('style', 'color:red');
 		$leftIcon->addClass('show-for-medium');
 		$this->outIcon->add($leftIcon);
-		$upIcon = new Icon('arrow-up');
+		$upIcon = new \PHPFUI\Icon('arrow-up');
 		$upIcon->addAttribute('style', 'color:red');
 		$upIcon->addClass('show-for-small-only');
 		$this->outIcon->add($upIcon);
@@ -92,8 +92,8 @@ class ToFromList extends \PHPFUI\Base
 		if (! self::$outputJs)
 			{
 			self::$outputJs = true;
-			$csrf = Session::csrf();
-			$csrfField = Session::csrfField();
+			$csrf = \PHPFUI\Session::csrf();
+			$csrfField = \PHPFUI\Session::csrfField();
 			$js = 'function allowDropToFromList(e){if(e.preventDefault)e.preventDefault();e.dataTransfer.effectAllowed="move";return true;}' .
 		'function moveToFromList(e,parentid){$("#"+e).remove();' .
 		"var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:e,DropParentId:'#'+parentid};" .
@@ -172,13 +172,13 @@ class ToFromList extends \PHPFUI\Base
 
 	protected function getBody() : string
 		{
-		$row = new GridX();
-		$in = new Cell();
+		$row = new \PHPFUI\GridX();
+		$in = new \PHPFUI\Cell();
 		$in->setMedium(6);
 		$in->add("<h3>{$this->inName}</h3>");
 		$in->add($this->createWindow($this->inGroup, 'in'));
 		$row->add($in);
-		$out = new Cell();
+		$out = new \PHPFUI\Cell();
 		$out->setMedium(6);
 		$out->add("<h3>{$this->outName}</h3>");
 		$out->add($this->createWindow($this->notInGroup, 'out'));
@@ -199,7 +199,7 @@ class ToFromList extends \PHPFUI\Base
 
 	protected function makeDiv(string $id, string $type, string $html) : string
 		{
-		$span = new HTML5Element('span');
+		$span = new \PHPFUI\HTML5Element('span');
 
 		if ('in' == $type)
 			{
@@ -220,7 +220,7 @@ class ToFromList extends \PHPFUI\Base
 
 	private function processRequest() : void
 		{
-		if (Session::checkCSRF() && isset($_GET['action']))
+		if (\PHPFUI\Session::checkCSRF() && isset($_GET['action']))
 			{
 			switch ($_GET['action'])
 					{

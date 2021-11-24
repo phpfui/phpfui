@@ -19,7 +19,7 @@ class SortableTable extends \PHPFUI\Table
 
 	private string $sortParameter = 's';
 
-	private $url;
+	private string $url;
 
 	public function __construct()
 		{

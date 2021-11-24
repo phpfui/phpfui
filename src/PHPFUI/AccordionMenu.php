@@ -59,7 +59,7 @@ class AccordionMenu extends \PHPFUI\Menu
 				else
 					{
 					[$label, $link] = \explode($this->separator, $label);
-					$menuItem = new MenuItem($label, $link);
+					$menuItem = new \PHPFUI\MenuItem($label, $link);
 
 					if ($item->getActive())
 						{

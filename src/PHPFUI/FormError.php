@@ -15,7 +15,7 @@ class FormError extends \PHPFUI\HTML5Element
 		$this->addAttribute('data-abide-error');
 		$this->addAttribute('aria-live', 'assertive');
 		$this->addAttribute('style', 'display: none;');
-		$icon = new Icon('exclamation-triangle');
+		$icon = new \PHPFUI\Icon('exclamation-triangle');
 		$this->add("<p>{$icon} {$message}</p>");
 		}
 	}

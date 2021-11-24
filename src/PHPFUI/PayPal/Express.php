@@ -6,11 +6,17 @@ class Express extends \PHPFUI\HTML5Element
 	{
 	use \PHPFUI\Traits\Page;
 
-	private $executeUrl;
+	private ?string $errorUrl = null;
 
-	private $page;
+	private ?string $executeUrl = null;
 
-	private $paymentUrl;
+	private ?string $logUrl = null;
+
+	private ?string $paymentUrl = null;
+
+	private \PHPFUI\Interfaces\Page $page;
+
+	private string $clientId;
 
 	private array $styles = [
 		'layout' => 'vertical',

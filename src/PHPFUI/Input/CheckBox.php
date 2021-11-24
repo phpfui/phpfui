@@ -7,13 +7,11 @@ namespace PHPFUI\Input;
  */
 class CheckBox extends \PHPFUI\Input\Input
 	{
-	protected $alwaysSet;
-
 	protected bool $center = false;
 
-	protected $checked;
+	protected string $checked = '';
 
-	protected $row;
+	protected \PHPFUI\HTML5Element $row;
 
 	private bool $started = false;
 

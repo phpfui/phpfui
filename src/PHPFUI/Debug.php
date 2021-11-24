@@ -5,7 +5,7 @@ namespace PHPFUI;
 /**
  * A quick debug message. Just new with the variable and optional message.  Add to anything to output. Will wrap with pre tags for readability.
  */
-class Debug extends HTML5Element
+class Debug extends \PHPFUI\HTML5Element
 	{
 	/**
 	 * Make a debug message

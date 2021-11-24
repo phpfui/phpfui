@@ -94,7 +94,7 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 
 				for ($i = 1; $i <= $number; ++$i)
 					{
-					$cell = new Cell();
+					$cell = new \PHPFUI\Cell();
 
 					if ($i == $number)
 						{

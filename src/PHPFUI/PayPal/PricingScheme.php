@@ -6,7 +6,7 @@ class PricingScheme extends \PHPFUI\PayPal\Base
 	{
 	protected static array $validFields = [
 		'version' => 'integer',
-		'fixed_price' => Currency::class,
+		'fixed_price' => \PHPFUI\PayPal\Currency::class,
 		'create_time' => 'string',
 		'update_time' => 'string',
 	];

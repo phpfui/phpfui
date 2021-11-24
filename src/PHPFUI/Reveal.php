@@ -9,7 +9,7 @@ namespace PHPFUI;
  */
 class Reveal extends \PHPFUI\HTML5Element
 	{
-	private $page;
+	private \PHPFUI\Interfaces\Page $page;
 
 	/**
 	 * Construct a reveal dialog. Add items to the reveal dialog
@@ -19,14 +19,14 @@ class Reveal extends \PHPFUI\HTML5Element
 	 * @param HTML5Element $openingElement that user will activate
 	 *                           to call up the reveal dialog
 	 */
-	public function __construct(\PHPFUI\Page $page, HTML5Element $openingElement)
+	public function __construct(\PHPFUI\Interfaces\Page $page, HTML5Element $openingElement)
 		{
 		parent::__construct('div');
 		$this->page = $page;
 		$this->addClass('reveal');
 		$this->addAttribute('data-reveal');
 		$openingElement->addAttribute('data-open', $this->getId());
-		$closeButton = new CloseButton($this);
+		$closeButton = new \PHPFUI\CloseButton($this);
 		$this->add($closeButton);
 		$page->addReveal($this);
 		$dollar = '$';
@@ -39,7 +39,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	 *
 	 * @param Button $button when pressed will close the modal
 	 */
-	public function closeOnClick(Button $button) : Reveal
+	public function closeOnClick(\PHPFUI\Button $button) : Reveal
 		{
 		$button->addAttribute('onclick', '$("#' . $this->getId() . '").on("formvalid.zf.abide",function(ev,frm){$("#' . $this->getId() . '").foundation("close")})');
 
@@ -54,9 +54,9 @@ class Reveal extends \PHPFUI\HTML5Element
 	 * @param string $cancelText to be shown on the close / cancel
 	 *               button
 	 */
-	public function getButtonAndCancel(Button $button, string $cancelText = 'Cancel') : ButtonGroup
+	public function getButtonAndCancel(\PHPFUI\Button $button, string $cancelText = 'Cancel') : ButtonGroup
 		{
-		$ButtonGroup = new ButtonGroup();
+		$ButtonGroup = new \PHPFUI\ButtonGroup();
 		$ButtonGroup->addButton($button);
 		$ButtonGroup->addButton($this->getCloseButton($cancelText));
 
@@ -70,7 +70,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	 */
 	public function getCloseButton(string $text = 'Cancel') : Button
 		{
-		$button = new Button($text);
+		$button = new \PHPFUI\Button($text);
 		$button->addAttribute('aria-label', 'Close')->addAttribute('data-close')->addClass('hollow')->addClass('secondary');
 
 		return $button;
