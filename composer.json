@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.4 <8.2",
         "zurb/foundation": "^6.6",
         "fortawesome/font-awesome": "^5",
         "igorescobar/jquery-mask-plugin": "^1.14",
