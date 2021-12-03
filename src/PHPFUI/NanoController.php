@@ -145,7 +145,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		 * look at previous
 		 */
 		$urlParts = \parse_url($this->uri);
-		$uri = \trim($urlParts['path'], '/');
+		$uri = \trim($urlParts['path'] ?? '', '/');
 
 		if ('' == $uri)
 			{
