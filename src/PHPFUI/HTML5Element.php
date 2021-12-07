@@ -12,7 +12,7 @@ class HTML5Element extends \PHPFUI\Base
 
 	private array $classes = [];
 
-	private string $element;
+	private string $element = '';
 
 	private ?string $id = null;
 
