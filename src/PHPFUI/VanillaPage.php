@@ -47,7 +47,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private array $tailScripts = [];
 
-	private \PHPFUI\HTML5Element $body;
+	private \PHPFUI\Container $body;
 
 	public function __construct()
 		{
@@ -69,7 +69,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			{
 			$this->chrome = \strpos($client, ' Chrome/') > 0;
 			}
-		$this->body = new \PHPFUI\HTML5Element('body');
+		$this->body = new \PHPFUI\Container();
 		}
 
 	/**
@@ -317,7 +317,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Direct access to the page body element.  Also accessed via add method.
 	 */
-	public function getBodyElement() : \PHPFUI\HTML5Element
+	public function getBodyElement() : \PHPFUI\Collection
 		{
 		return $this->body;
 		}
@@ -551,24 +551,21 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	protected function getEnd() : string
 		{
 		$nl = parent::getDebug() ? "\n" : '';
-		$output = '';
 
 		foreach ($this->tailScripts as $src)
 			{
 			$src = $this->getResourcePath($src);
-			$output .= "<script src='{$src}'></script>{$nl}";
+			$this->body->add("<script src='{$src}'></script>{$nl}");
 			}
 
 		$js = \array_merge($this->javascriptFirst, $this->javascript, $this->javascriptLast);
 
 		if ($js)
 			{
-			$output .= '<script>' . \implode(';' . $nl, $js) . '</script>' . $nl;
+			$this->body->add('<script>' . \implode(';' . $nl, $js) . '</script>' . $nl);
 			}
 
-		$this->body->add($output);
-
-		return $this->body . '</html>';
+		return $this->body . '</body></html>';
 		}
 
 	protected function getStart() : string
@@ -617,7 +614,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= '<style>' . \implode($nl, $this->css) . '</style>' . $nl;
 			}
 
-		$output .= '</head>';
+		$output .= '</head><body>';
 
 		return $output;
 		}
