@@ -71,7 +71,7 @@ class Session
 		{
 		if ($key)
 			{
-			return self::$flash[$key] ?? '';
+			return \json_decode(self::$flash[$key] ?? '', true);
 			}
 
 		return '';
@@ -80,13 +80,13 @@ class Session
 	/**
 	 * Set a flash for the next request. You can sent multiple flashes by specifying different keys
 	 *
-	 * @param mixed $value can by any type that can be stored in a session. Leave empty to delete.
+	 * @param mixed $value can by any type that can be converted to json and stored in a session. Leave empty to delete.
 	 */
 	public static function setFlash(string $key, $value = '') : void
 		{
 		if ($value)
 			{
-			$_SESSION['flash'][$key] = $value;
+			$_SESSION['flash'][$key] = \json_encode($value);
 			}
 		else
 			{
