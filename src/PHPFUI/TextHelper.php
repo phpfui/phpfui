@@ -127,6 +127,11 @@ class TextHelper
 	 */
 	public static function htmlentities(?string $string) : string
 		{
+		if (! $string)
+			{
+			return '';
+			}
+
 		return \htmlentities($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
 		}
 
@@ -142,6 +147,11 @@ class TextHelper
 	 */
 	public static function unhtmlentities(?string $string) : string
 		{
+		if (! $string)
+			{
+			return '';
+			}
+
 		return \htmlspecialchars_decode($string, ENT_QUOTES | ENT_HTML5);
 		}
 
