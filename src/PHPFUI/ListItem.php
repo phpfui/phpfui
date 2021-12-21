@@ -9,7 +9,7 @@ class ListItem extends \PHPFUI\HTML5Element
 	 *
 	 * @param mixed $content of the ListItem
 	 */
-	public function __construct(string $content = '')
+	public function __construct($content = '')
 		{
 		parent::__construct('li');
 		$this->add($content);
