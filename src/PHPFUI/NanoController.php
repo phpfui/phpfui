@@ -18,7 +18,7 @@ namespace PHPFUI;
  * ### Landing Pages
  * If a valid method is not found, but the class is, **NanoController** will attempt to call the default missing method if explicitly defined by calling **setMissingMethod**. This allows for a default landing page if a method is not called.  If a default method is not specified, **NanoController** continues up the URI tree looking for a default method.  If no class and default method are found, then the missing page is returned.
  * ### Home Page
- * If an blank URI (or \) is provided, it will return a class of **App\Missing**, unless **setHomePageClass** has beem called. No method will be called on the HomePage class.
+ * If a blank URI (or &bsol;) is provided, it will return a class of **App\Missing**, unless **setHomePageClass** has been called. No method will be called on the HomePage class.
  * ### Missing Class
  * Users are prone to not typing in URIs exactly, so if **NanoController** can not find a class, or a class and method to instantiate, it will return a missing class of **App\Missing**, which can be overridden if needed by calling **setMissingClass**. If the namespace and class do not exist, the missing class will be returned.  If the class exists, the missing method will be tried, and if not found, the missing method will be searched for back up the URI tree.
  * ### Examples (assuming default App namespace)
