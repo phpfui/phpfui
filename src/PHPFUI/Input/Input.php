@@ -11,7 +11,7 @@ abstract class Input extends \PHPFUI\Input
 
 	protected array $errorMessages = [];
 
-	protected ?string $hint = null;
+	protected ?\PHPFUI\HTML5Element $hint = null;
 
 	protected string $hintText = '';
 
