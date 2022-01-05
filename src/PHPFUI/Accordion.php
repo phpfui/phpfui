@@ -27,13 +27,7 @@ class Accordion extends \PHPFUI\UnorderedList
 	 */
 	public function addTab(string $tabText, string $content, bool $active = false) : AccordionItem
 		{
-		$listItem = new \PHPFUI\AccordionItem($tabText);
-
-		if ($active)
-			{
-			$listItem->addClass('is-active');
-			}
-
+		$listItem = $this->getTab($tabText, $active);
 		$listItem->addContent($content);
 		$this->addItem($listItem);
 
