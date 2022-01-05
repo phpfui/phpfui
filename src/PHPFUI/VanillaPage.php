@@ -3,7 +3,7 @@
 namespace PHPFUI;
 
 /**
- * A container to add objects to that will output a fully formed Foundation page.
+ * A container to add objects to that will output a fully formed HTML page with no Foundation libraries.
  */
 class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	{
