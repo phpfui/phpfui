@@ -22,12 +22,8 @@ class Badge extends \PHPFUI\HTML5Element
 
 	protected function getStart() : string
 		{
-		if ($this->readerText)
-			{
-			$this->add("<span class='show-for-sr'>{$this->readerText}</span>");
-			$this->readerText = '';
-			}
+		$text = $this->readerText ? "<span class='show-for-sr'>{$this->readerText}</span>" : '';
 
-		return parent::getStart();
+		return $text . parent::getStart();
 		}
 	}

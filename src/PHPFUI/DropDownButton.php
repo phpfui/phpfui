@@ -74,17 +74,17 @@ class DropDownButton extends \PHPFUI\Button
 		if (! $this->dropDown)
 			{
 			$this->dropDown = new \PHPFUI\HTML5Element('div');
-			$this->addAttribute('data-toggle', $this->dropDown->getId());
+			$this->setAttribute('data-toggle', $this->dropDown->getId());
 
 			$this->dropDown->addAttribute('style', "width:{$this->maxLength}em;");
 			$this->dropDown->addClass('dropdown-pane');
-			$this->dropDown->addAttribute('data-dropdown');
-			$this->dropDown->addAttribute('data-position', 'bottom');
-			$this->dropDown->addAttribute('data-alignment', 'right');
+			$this->dropDown->setAttribute('data-dropdown');
+			$this->dropDown->setAttribute('data-position', 'bottom');
+			$this->dropDown->setAttribute('data-alignment', 'right');
 
 			// hover
-			$this->dropDown->addAttribute('data-hover', 'true');
-			$this->dropDown->addAttribute('data-hover-pane', 'true');
+			$this->dropDown->setAttribute('data-hover', 'true');
+			$this->dropDown->setAttribute('data-hover-pane', 'true');
 
 
 			$menu = new \PHPFUI\DropDownMenu();

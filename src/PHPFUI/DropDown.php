@@ -96,12 +96,12 @@ class DropDown extends \PHPFUI\Base
 		{
 		if ($this->hover)
 			{
-			$this->dropDown->addAttribute('data-hover', 'true');
-			$this->dropDown->addAttribute('data-hover-pane', 'true');
+			$this->dropDown->setAttribute('data-hover', 'true');
+			$this->dropDown->setAttribute('data-hover-pane', 'true');
 			}
 		else
 			{
-			$this->dropDown->addAttribute('data-auto-focus', 'true');
+			$this->dropDown->setAttribute('data-auto-focus', 'true');
 			}
 
 		return '';

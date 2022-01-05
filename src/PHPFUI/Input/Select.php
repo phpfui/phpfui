@@ -134,6 +134,10 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 			$label->addAttribute('for', $this->getId());
 			$label->add($this->getToolTip($this->label));
 			}
+		else
+			{
+			$label = new \PHPFUI\Container();
+			}
 
 		if ($this->required)
 			{
@@ -158,27 +162,25 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		$class = $this->getClass();
 		$attributes = $this->getAttributes();
 
-		$select = $this->label ? $label : $this;
 		$id = $this->getIdAttribute();
-		$select->add("<select{$id}{$class}{$attributes} name='{$this->getName()}'>");
+		$label->add("<select{$id}{$class}{$attributes} name='{$this->getName()}'>");
 
 		foreach ($this->options as $option)
 			{
 			if (\is_object($option))
 				{
-				$select->add($option);
+				$label->add($option);
 				}
 			else
 				{
 				$selected = $option['selected'];
 				$disabled = $option['disabled'];
-				$select->add("<option value='{$option['value']}'{$selected}{$disabled}>{$option['label']}</option>");
+				$label->add("<option value='{$option['value']}'{$selected}{$disabled}>{$option['label']}</option>");
 				}
 			}
 
-		$select->add('</select>');
-		$select->add($error);
-		$this->label = null;
+		$label->add('</select>');
+		$label->add($error);
 
 		return $label;
 		}
