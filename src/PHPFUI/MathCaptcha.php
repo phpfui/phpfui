@@ -89,7 +89,7 @@ class MathCaptcha extends \PHPFUI\MultiColumn
 
 	public function isValid() : bool
 		{
-		if (\App\Model\Session::checkCSRF() && isset($_POST[$this->fieldName]))
+		if (\PHPFUI\Session::checkCSRF() && isset($_POST[$this->fieldName]))
 			{
 			return (int)$_POST[$this->fieldName] == (int)\PHPFUI\Session::getFlash($this->fieldName);
 			}

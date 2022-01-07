@@ -35,11 +35,6 @@ class ReCAPTCHAv3
 			return;
 			}
 
-		if ($post)
-			{
-			\App\Tools\Logger::get()->debug($post);
-			}
-
 		if (isset($post['g-recaptcha-response']))
 			{
 			$captcha = $post['g-recaptcha-response'];
