@@ -6,7 +6,7 @@ There are two ways to interface easily with PayPal. Checkout is recommended as t
 ```PHP
 $page = new \PHPFUI\Page();
 $express = new \PHPFUI\PayPal\Express($page, $yourClientId);
-$express->setType('sandbox);
+$express->setType('sandbox');
 $express->setPaymentUrl($root . '/Paypal/CreatePayment');
 $express->setExecuteUrl($root . '/Paypal/AuthorizePayment');
 $express->setErrorUrl($root . '/Paypal/ErrorPayment');
