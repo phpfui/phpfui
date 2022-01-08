@@ -127,24 +127,25 @@ class SortableTable extends \PHPFUI\Table
 		$downUrl = $this->getDownUrl($column);
 		$url = $upUrl = $this->getUpUrl($column);
 
-		$icon = clone \PHPFUI\Language::getSortIcon();
-		$icon->setLink($upUrl);
+		$icon = '';
 
 		if ($column == $this->sortedColumn)
 			{
 			if ('d' == $this->sortedOrder)
 				{
 				$icon = clone \PHPFUI\Language::getSortIcon('down');
+				$icon->addClass('float-right');
 				$icon->setLink($upUrl);
 				}
 			else
 				{
 				$icon = clone \PHPFUI\Language::getSortIcon('up');
+				$icon->addClass('float-right');
 				$url = $downUrl;
 				$icon->setLink($downUrl);
 				}
 			}
 
-		return $icon . new \PHPFUI\Link($url, $title, false);
+		return new \PHPFUI\Link($url, $title, false) . $icon;
 		}
 	}
