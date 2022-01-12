@@ -118,6 +118,11 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		return $this;
 		}
 
+	protected function getEnd() : string
+		{
+		return $this->getHint() ?? '';
+		}
+
 	protected function getStart() : string
 		{
 		$label = $error = '';
