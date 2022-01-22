@@ -95,6 +95,17 @@ class HTML5Element extends \PHPFUI\Base
 		}
 
 	/**
+	 * Adds the base PHP class name as a class to this object
+	 */
+	public function addPHPClassName() : HTML5Element
+		{
+		$parts = \explode('\\', static::class);
+		$this->classes[\array_pop($parts)] = true;
+
+		return $this;
+		}
+
+	/**
 	 * Deletes the passed attribute
 	 */
 	public function deleteAttribute(string $attribute) : HTML5Element
