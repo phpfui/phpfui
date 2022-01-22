@@ -26,6 +26,8 @@ class Pagination extends \PHPFUI\HTML5Element
 
 	private int $window = 3;
 
+	private bool $alwaysShow = false;
+
 	/**
 	 * Show a pagination nav. If there is only one page, the paginator will not be generated.
 	 *
@@ -47,6 +49,16 @@ class Pagination extends \PHPFUI\HTML5Element
 		$this->previous = \PHPFUI\Language::$previous;
 		$this->pageText = \PHPFUI\Language::$page;
 		$this->onPage = \PHPFUI\Language::$onPage;
+		}
+
+	/**
+	 * By default, if there is only one page, they paginator will not be shown.  Set to true to get a one page paginator.
+	 */
+	public function alwaysShow(bool $alwaysShow = true) : self
+		{
+		$this->alwaysShow = $alwaysShow;
+
+		return $this;
 		}
 
 	/**
@@ -106,13 +118,13 @@ class Pagination extends \PHPFUI\HTML5Element
 			{
 			$this->started = true;
 
-			if ($this->of > 1)
+			if ($this->of > 1 || $this->alwaysShow)
 				{
 				$item = new \PHPFUI\ListItem();
 				$item->addClass('pagination-previous');
 				$text = "{$this->previous} <span class='show-for-sr'>{$this->pageText}</span>";
 
-				if ($this->page <= 0)
+				if ($this->page <= 0 || ! $this->of)
 					{
 					$item->add($text);
 					$item->disabled();
@@ -165,12 +177,15 @@ class Pagination extends \PHPFUI\HTML5Element
 						}
 					}
 
-				$this->ul->addItem($this->getPageItem($this->of - 1));
+				if ($this->of)
+					{
+					$this->ul->addItem($this->getPageItem($this->of - 1));
+					}
 				$item = new \PHPFUI\ListItem();
 				$item->addClass('pagination-next');
 				$text = "{$this->next} <span class='show-for-sr'>{$this->pageText}</span>";
 
-				if ($this->page == $this->of - 1)
+				if (! $this->of || $this->page == $this->of - 1)
 					{
 					$item->add($text);
 					$item->disabled();
