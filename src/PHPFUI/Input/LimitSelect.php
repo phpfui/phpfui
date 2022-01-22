@@ -35,6 +35,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 		parent::__construct('l');
 		$this->page = $page;
 		$this->currentLimit = $currentLimit;
+		$this->addPHPClassName();
 		$this->setLimits();
 		$this->setLimitName();
 		$this->setPageName();
@@ -47,6 +48,12 @@ class LimitSelect extends \PHPFUI\Input\Select
 		$parameters = $this->page->getQueryParameters();
 		$this->removeAll();
 
+		if (! \in_array($this->currentLimit, $this->limits))
+			{
+			$this->limits[] = $this->currentLimit;
+			\sort($this->limits);
+			}
+
 		foreach ($this->limits as $limit)
 			{
 			$this->addOption($limit, $limit, $limit == $this->currentLimit);
@@ -54,7 +61,6 @@ class LimitSelect extends \PHPFUI\Input\Select
 
 		$page = (int)($parameters[$this->pageName] ?? 1);
 		unset($parameters[$this->pageName], $parameters[$this->limitName]);
-
 
 		$query = \http_build_query($parameters);
 
