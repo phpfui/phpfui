@@ -122,6 +122,13 @@ class Input extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	public function setName(string $name) : Input
+		{
+		$this->name = $name;
+
+		return $this;
+		}
+
 	public function setPlaceholder(string $placeholder) : Input
 		{
 		$this->placeholder = $placeholder;
@@ -131,7 +138,6 @@ class Input extends \PHPFUI\HTML5Element
 
 	/**
 	 * Set the initial value of the input field
-	 *
 	 */
 	public function setValue(string $value) : Input
 		{
