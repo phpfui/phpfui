@@ -28,6 +28,32 @@ class Debug extends \PHPFUI\HTML5Element
 			{
 			$location = $bt[0]['file'] . ' ' . $bt[0]['line'] . ': ';
 			}
-		$this->add($location . $message . \htmlspecialchars(\print_r($variable, true)));
+
+		$src = \file($bt[0]['file']);
+		$line = $src[$bt[0]['line'] - 1] ?? '';
+		\preg_match('#Debug\((.+)\)#', $line, $match);
+		$max = \strlen($match[1] ?? 0);
+		$varname = '';
+		$c = 0;
+
+		for ($i = 0; $i < $max; $i++)
+			{
+			if ('(' == ($match[1][$i] ?? ''))
+				{
+				$c++;
+				}
+			elseif (')' == ($match[1][$i] ?? ''))
+				{
+				$c--;
+				}
+
+			if ($c < 0)
+				{
+				break;
+				}
+			$varname .= ($match[1][$i] ?? '');
+			}
+
+		$this->add($location . $message . $varname . '=' . \htmlspecialchars(\print_r($variable, true)));
 		}
 	}
