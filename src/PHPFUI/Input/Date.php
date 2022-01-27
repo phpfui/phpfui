@@ -67,7 +67,7 @@ CHROME_CSS
 	 * @link http://foundation-datepicker.peterbeno.com
 	 * @param string $option name
 	 */
-	public function addOption(string $option, string $value) : Date
+	public function addOption(string $option, $value) : Date
 		{
 		$this->options[$option] = $value;
 

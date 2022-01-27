@@ -23,7 +23,7 @@ class CheckBox extends \PHPFUI\Input\Input
 	 *               for='id' logic applied
 	 * @param mixed ?$value initial value, default false
 	 */
-	public function __construct(string $name, string $label = '', ?string $value = null)
+	public function __construct(string $name, string $label = '', $value = null)
 		{
 		parent::__construct('checkbox', $name, $label, $value);
 		$this->row = new \PHPFUI\HTML5Element('div');

@@ -35,7 +35,7 @@ class Express extends \PHPFUI\HTML5Element
 		$this->page->addHeadScript('https://www.paypalobjects.com/api/checkout.js');
 		}
 
-	public function addStyle(string $style, ?string $value = null) : self
+	public function addStyle(string $style, $value = null) : self
 		{
 		if (null === $value)
 			{

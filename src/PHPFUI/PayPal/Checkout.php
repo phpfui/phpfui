@@ -38,7 +38,7 @@ class Checkout extends \PHPFUI\HTML5Element
 	/**
 	 * You can [style the PayPal buttons](https://developer.paypal.com/docs/archive/checkout/how-to/customize-button/#)
 	 */
-	public function addStyle(string $style, ?string $value = null) : self
+	public function addStyle(string $style, $value = null) : self
 		{
 		if (null === $value)
 			{

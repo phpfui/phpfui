@@ -9,7 +9,7 @@ class DescriptionTitle extends \PHPFUI\DescriptionItem
 	 *
 	 * @param mixed $content of the DescriptionTitle
 	 */
-	public function __construct(string $content = '')
+	public function __construct($content = '')
 		{
 		parent::__construct('dt');
 		$this->add($content);

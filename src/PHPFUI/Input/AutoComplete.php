@@ -110,7 +110,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 *
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
-	public function addAutoCompleteOption(string $option, string $value) : \PHPFUI\Input\AutoComplete
+	public function addAutoCompleteOption(string $option, $value) : \PHPFUI\Input\AutoComplete
 		{
 		$this->options[$option] = $value;
 
