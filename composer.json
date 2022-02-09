@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.4 <8.2",
         "zurb/foundation": "^6.6",
-        "fortawesome/font-awesome": "^5",
+        "fortawesome/font-awesome": "^5 | ^6",
         "igorescobar/jquery-mask-plugin": "^1.14",
         "components/jquery": "^3.3",
         "google/recaptcha": "^1.2"
