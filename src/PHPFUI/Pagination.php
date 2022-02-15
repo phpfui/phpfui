@@ -177,7 +177,7 @@ class Pagination extends \PHPFUI\HTML5Element
 						}
 					}
 
-				if ($this->of)
+				if ($this->of > 1)
 					{
 					$this->ul->addItem($this->getPageItem($this->of - 1));
 					}
