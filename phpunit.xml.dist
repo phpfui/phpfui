@@ -16,8 +16,4 @@
 			<directory>./tests/</directory>
 		</testsuite>
 	</testsuites>
-	<php>
-		<env name="PHPFUI\HTMLUnitTester\Extensions_url" value="http://validator.w3.org/nu/"/>
-		<env name="PHPFUI\HTMLUnitTester\Extensions_delay" value="500000"/>
-	</php>
 </phpunit>
