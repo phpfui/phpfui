@@ -1,2 +1,7 @@
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.scss linguist-detectable=false
+*.less linguist-detectable=false
+*.html linguist-detectable=false
 js/* linguist-vendored
 subtrees/* linguist-vendored
