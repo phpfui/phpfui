@@ -368,7 +368,7 @@ class Table extends \PHPFUI\HTML5Element
 		$recordId = 0;
 		$id = '';
 
-		if (! empty($this->recordId) && isset($row[$this->recordId]))
+		if (isset($row[$this->recordId]) && \is_scalar($row[$this->recordId]))
 			{
 			$recordId = $row[$this->recordId];
 			$id = " id='{$this->recordId}-{$recordId}'";
