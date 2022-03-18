@@ -35,6 +35,7 @@ abstract class Input extends \PHPFUI\Input
 	public function __construct(string $type, string $name = '', string $label = '', ?string $value = '')
 		{
 		parent::__construct($type, $name, $value);
+		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 		$this->label = $label;
 
 		switch ($this->type)
@@ -214,7 +215,6 @@ abstract class Input extends \PHPFUI\Input
 
 	protected function getStart() : string
 		{
-		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 		$label = '';
 
 		if ($this->label)

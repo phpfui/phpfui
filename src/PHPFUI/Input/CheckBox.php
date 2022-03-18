@@ -28,6 +28,7 @@ class CheckBox extends \PHPFUI\Input\Input
 		parent::__construct('checkbox', $name, $label, $value);
 		$this->row = new \PHPFUI\HTML5Element('div');
 		$this->row->addClass('checkbox-container');
+		$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 		parent::add($this->row);
 		}
 
@@ -54,7 +55,6 @@ class CheckBox extends \PHPFUI\Input\Input
 			{
 			$this->started = true;
 			$id = $this->getId();
-			$this->addAttribute('onkeypress', 'return event.keyCode!=13;');
 			$extra = $this->getClass() . $this->getAttributes();
 			$label = new \PHPFUI\HTML5Element('label');
 			$label->addClass('checkbox-container');
