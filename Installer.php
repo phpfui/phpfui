@@ -47,6 +47,7 @@ class Installer
 			{
 			$vendor['tinymce/tinymce'] = [
 				'icons/default/*.js' => 'tinymce/icons/default',
+				'models/*' => 'tinymce/models',
 				'plugins/*' => 'tinymce/plugins',
 				'skins/*' => 'tinymce/skins',
 				'themes/*' => 'tinymce/themes',
