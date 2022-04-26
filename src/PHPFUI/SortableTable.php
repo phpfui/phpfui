@@ -114,6 +114,16 @@ class SortableTable extends \PHPFUI\Table
 		return $this;
 		}
 
+	public function getSortedColumn() : string
+		{
+		return $this->sortedColumn;
+		}
+
+	public function getSortedOrder() : string
+		{
+		return $this->sortedOrder;
+		}
+
 	/**
 	 * Get the correct header with sort indicator based on the column and title passed.
 	 */
