@@ -16,7 +16,7 @@ class HTML5Element extends \PHPFUI\Base
 
 	private ?string $id = null;
 
-	private static int $masterId = 0;
+	private static array $masterId = [];
 
 	private bool $noEndTag = false;
 
@@ -289,8 +289,10 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function newId() : HTML5Element
 		{
-		++self::$masterId;
-		$this->id = 'id' . self::$masterId;
+		$parts = \explode('\\', static::class);
+		$class = \array_pop($parts);
+		self::$masterId[$class] ??= 0;
+		$this->id = $class . ++self::$masterId[$class];
 
 		return $this;
 		}
