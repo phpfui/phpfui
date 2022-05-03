@@ -87,6 +87,26 @@ abstract class Input extends \PHPFUI\Input
 		}
 
 	/**
+	 * Set the validator for this input field.  You must also add it to the page with addAbideValidator()
+	 */
+	public function setValidator(\PHPFUI\Validator $validator, string $errorMessage = '', $data = null) : Input
+		{
+		$this->setAttribute('data-validator', $validator->getValidatorName());
+
+		if ($errorMessage)
+			{
+			$this->addErrorMessage($errorMessage);
+			}
+
+		if ($data)
+			{
+			$this->setAttribute('data-' . $validator->getValidatorName(), $data);
+			}
+
+		return $this;
+		}
+
+	/**
 	 * Set all error messages
 	 *
 	 * @param array $errors to display on form validation

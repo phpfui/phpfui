@@ -26,12 +26,30 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 
 	/**
 	 * You can add various plugin default parameters
+	 *
+	 * Examples:
+	 *
+	 * $page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');
+	 * $page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
 	 */
 	public function addPluginDefault(string $pluginName, string $property, string $value) : Page
 		{
 		$this->plugins[$pluginName][$property] = $value;
 
 		return $this;
+		}
+
+	public function addAbideValidator(\PHPFUI\Validator $validator) : Page
+		{
+		$js = $validator->getJavaScript();
+
+		if (! $js)
+			{
+			return $this;
+			}
+		$this->addPluginDefault('Abide', "validators['{$validator->getValidatorName()}']", $validator->getFunctionName());
+
+		return $this->addJavaScript($js);
 		}
 
 	/**

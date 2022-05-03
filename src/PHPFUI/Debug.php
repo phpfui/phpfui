@@ -29,7 +29,9 @@ class Debug extends \PHPFUI\HTML5Element
 			$location = $bt[0]['file'] . ' ' . $bt[0]['line'] . ': ';
 			}
 
-		$src = \file($bt[0]['file']);
+		$file = $bt[0]['file'];
+		$file = \substr($file, 0, \strpos($file, '(') ?: \strlen($file));
+		$src = \file($file);
 		$line = $src[$bt[0]['line'] - 1] ?? '';
 		\preg_match('#Debug\((.+)\)#', $line, $match);
 		$max = \strlen($match[1] ?? 0);
