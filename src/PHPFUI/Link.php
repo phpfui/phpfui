@@ -105,12 +105,17 @@ class Link extends \PHPFUI\HTML5Element
 	/**
 	 * Format a telephone number for mobile functionality
 	 *
-	 * @param string $number can contain formatting characters, only
+	 * @param ?string $number can contain formatting characters, only
 	 *                         digits matter
 	 * @param string $text to show user
 	 */
-	public static function phone(string $number, string $text = '') : Link
+	public static function phone(?string $number, string $text = '') : ?Link
 		{
+		if (empty($number))
+			{
+			return null;
+			}
+
 		if (empty($text))
 			{
 			$text = $number;
