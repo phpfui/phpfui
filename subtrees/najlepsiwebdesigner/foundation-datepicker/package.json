@@ -11,7 +11,7 @@
     "url": "https://github.com/najlepsiwebdesigner/foundation-datepicker"
   },
   "devDependencies": {
-    "grunt": "^1.4.1",
+    "grunt": "^1.5.2",
     "grunt-contrib-cssmin": "^4.0.0",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-uglify": "^5.0.1"
