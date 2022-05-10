@@ -8,6 +8,8 @@ namespace PHPFUI\Input;
  */
 class Time extends \PHPFUI\Input\Input
 	{
+	private static ?\PHPFUI\Page $page = null;
+
 	/**
 	 * Constuct a Time input field supporting hours and minutes
 	 *
@@ -20,31 +22,37 @@ class Time extends \PHPFUI\Input\Input
 	 */
 	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', ?string $value = '', int $interval = 15)
 		{
+		$value = self::toMilitary($value);
+
 		if ($page->isAndroid() || $page->isIOS())
 			{
 			// use a native picker for Android in hh:mm:ss format
-			$value = self::toMilitary($value);
 			parent::__construct('time', $name, $label, $value);
 			// use a native picker for Android in hh:mm:ss format
 			$this->addAttribute('pattern', 'military');
 			$page->addPluginDefault('Abide', 'patterns["military"]', '/^(((([0-1][0-9])|(2[0-3])):?[0-5][0-9])|(24:?00))/');
-			$this->addAttribute('step', $interval * 60);
 			}
 		elseif (! $page->hasTimePicker())
 			{  // if we can't use a native, then use JS version
+			parent::__construct('time', $name, $label, $value);
+			$js = "var tp=TimePicker('blue');";
+			$page->addJavaScript($js);
+			$onclickJs = 'let input=$(this);tp.show(input,{callback:function(selected){let timeString=selected instanceof Date?selected.toTimeString().substring(0,8):"";input.attr("value",timeString)}})';
+			$this->addAttribute('onclick', $onclickJs);
+			$page->addStyleSheet('css/timepicker.css');
+			$page->addTailScript('timepicker.js');
 
-			parent::__construct('text', $name, $label, $value);
-			$page->addJavaScript('$("#' . $this->getId() . '").AnyPicker({mode:"datetime",rowsNavigation:"scroller+buttons",selectedDate:"' . $value .
-				'",dateTimeFormat:"h:mm AA",intervals:{h:1,m:' . $interval . '},viewSections:{header:["headerTitle"],contentTop:[],contentBottom:[],footer:["cancelButton","clearButton","setButton"]}});');
-			$page->addStyleSheet('anypicker/anypicker-font.css');
-			$page->addStyleSheet('anypicker/anypicker.min.css');
-			$page->addTailScript('anypicker/anypicker.min.js');
+			if (! self::$page)
+				{
+				$page->add($this->getTemplate());
+				}
+			self::$page = $page;
 			}
 		else
 			{
 			parent::__construct('time', $name, $label, $value);
-			$this->addAttribute('step', $interval * 60);
 			}
+		$this->addAttribute('step', $interval * 60);
 		}
 
 	/**
@@ -64,7 +72,7 @@ class Time extends \PHPFUI\Input\Input
 		if (\strpos($timeString, 'A') || \strpos($timeString, 'P'))
 			{
 			switch ($positions)
-						{
+				{
 				case 4:
 					[$hour, $minute, $second, $ampm] = $array;
 
@@ -84,7 +92,7 @@ class Time extends \PHPFUI\Input\Input
 					$hour = (int)$timeString;
 
 					break;
-						}
+				}
 
 			if (false !== \strpos($ampm, 'P'))
 				{
@@ -94,7 +102,7 @@ class Time extends \PHPFUI\Input\Input
 		else
 			{
 			switch ($positions)
-						{
+				{
 				case 3:
 					[$hour, $minute, $second] = $array;
 
@@ -109,17 +117,67 @@ class Time extends \PHPFUI\Input\Input
 					$hour = (int)$timeString;
 
 					break;
-						}
+				}
 			}
 
 		if ($hour > 23 || $hour < 0 || $minute < 0 || $minute > 59)
 			{
 			return '';
 			}
-		$hour = \sprintf('%02d', $hour);
-		$minute = \sprintf('%02d', $minute);
-		$second = \sprintf('%02d', $second);
 
-		return "{$hour}:{$minute}:{$second}";
+		return \sprintf('%02d:%02d:%02d', $hour, $minute, $second);
+		}
+
+	private function getTemplate()
+		{
+		$menu = new \PHPFUI\Menu();
+		$menu->addClass('align-center');
+		$menu->setId('timepicker-buttons');
+		$now = new \PHPFUI\MenuItem('NOW', '#');
+		$now->setId('timepicker-now-button');
+		$menu->addMenuItem($now);
+
+		$clear = new \PHPFUI\MenuItem('CLEAR', '#');
+		$clear->setId('timepicker-clear-button');
+		$menu->addMenuItem($clear);
+
+		$cancel = new \PHPFUI\MenuItem('CANCEL', '#');
+		$cancel->setId('timepicker-cancel-button');
+		$menu->addMenuItem($cancel);
+
+		$set = new \PHPFUI\MenuItem('SET', '#');
+		$set->setId('timepicker-set-button');
+		$menu->addMenuItem($set);
+
+		return "<div id='timepicker' class='reveal small' data-reveal>
+<div id='timepicker-header' class='timepicker-bg'>
+<div>
+<span id='timepicker-hour'></span>
+<span id='timepicker-mins'></span>
+<span id='timepicker-ampm'></span>
+</div>
+</div>
+<div id='timepicker-am-button' class='timepicker-ampm-button float-left'>AM</div>
+<div id='timepicker-pm-button' class='timepicker-ampm-button float-right'>PM</div>
+<div id='timepicker-flex'>
+<div id='timepicker-clock'>
+<span id='timepicker-hour-hand'></span>
+<span id='timepicker-hour-center'></span>
+<div id='timepicker-hour-1' class='timepicker-hour' data-value='1'></div>
+<div id='timepicker-hour-2' class='timepicker-hour' data-value='2'></div>
+<div id='timepicker-hour-3' class='timepicker-hour' data-value='3'></div>
+<div id='timepicker-hour-4' class='timepicker-hour' data-value='4'></div>
+<div id='timepicker-hour-5' class='timepicker-hour' data-value='5'></div>
+<div id='timepicker-hour-6' class='timepicker-hour' data-value='6'></div>
+<div id='timepicker-hour-7' class='timepicker-hour' data-value='7'></div>
+<div id='timepicker-hour-8' class='timepicker-hour' data-value='8'></div>
+<div id='timepicker-hour-9' class='timepicker-hour' data-value='9'></div>
+<div id='timepicker-hour-10' class='timepicker-hour' data-value='10'></div>
+<div id='timepicker-hour-11' class='timepicker-hour' data-value='11'></div>
+<div id='timepicker-hour-12' class='timepicker-hour' data-value='12'></div>
+</div>
+</div>
+{$menu}
+</div>";
 		}
 	}

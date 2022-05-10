@@ -94,14 +94,6 @@ class Installer
 			'jquery.arrow_nav.js' => '',
 			];
 
-		$js['anypicker'] = [
-			'fonts' => 'anypicker',
-			'i18n' => 'anypicker',
-			'anypicker-font.css' => 'anypicker',
-			'anypicker.min.css' => 'anypicker',
-			'anypicker.min.js' => 'anypicker',
-			];
-
 		if (is_file('vendor/froala/wysiwyg-editor/composer.json'))
 			{
 			$js['froala'] = [
