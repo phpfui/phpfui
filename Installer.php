@@ -64,11 +64,6 @@ class Installer
 
 		// get subtrees
 		$subtrees = [];
-		$subtrees['najlepsiwebdesigner/foundation-datepicker'] = [
-			'css/foundation-datepicker.min.css' => 'datepicker/css',
-			'js/foundation-datepicker.min.js' => 'datepicker/js',
-			'js/locales/*' => 'datepicker/js/locales',
-			];
 		$subtrees['JeremyFagis/dropify'] = [
 			'dist/css/dropify.min.css' => 'dropify/css',
 			'dist/fonts/*' => 'dropify/fonts',

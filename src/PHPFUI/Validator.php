@@ -86,7 +86,7 @@ class Validator
 	 */
 	protected function getJavaScriptTemplate(string $customJavaScript) : string
 		{
-		$js = "function {$this->validatorName}(el,required,parent){let to=el.val();if(to.length==0 && !required)return true;let data=el.attr('data-{$this->validatorName}');let from=$('#'+data)).val();return({$customJavaScript});};";
+		$js = "function {$this->validatorName}(el,required,parent){let to=el.val();if(to.length==0 && !required)return true;let data=el.attr('data-{$this->validatorName}');let from=$('#'+data).val();return({$customJavaScript});};";
 
 		return $js;
 		}

@@ -3,74 +3,29 @@
 namespace PHPFUI\Input;
 
 /**
- * Date input control with support for native mobile input and a
- * custom datepicker for desktops.
- *
- * @link http://foundation-datepicker.peterbeno.com
+ * Date input control.  Now uses build in browser support only.
  */
 class Date extends \PHPFUI\Input\Input
 	{
-	use \PHPFUI\Traits\Page;
-
-	protected array $options = ['closeButton' => true];
-
-	protected \PHPFUI\Interfaces\Page $page;
-
 	/**
-	 * Construct a Date input. Native mobile date controls used
-	 * where possible. Custom date picker based off Bootstrap for
-	 * desktops.
+	 * Construct a Date input. Native controls are always used since there is now full browser support.
 	 *
 	 * @param Page $page for needed JS
+	 * @deprecated $page parameter is no longer used. Will be removed in V7.
 	 * @param string $name of field
 	 * @param string $label optional
 	 * @param ?string $value optional in YYYY-MM-DD format
 	 */
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', ?string $value = '')
 		{
-		$this->page = $page;
-
-		if ($page->isChrome())
-			{
-			parent::__construct('date', $name, $label, $value);
-			$page->addCSS(
-				<<<CHROME_CSS
-input[type="date"] {position: relative;}
-/* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
-input[type="date"]::-webkit-calendar-picker-indicator {position:absolute;top:0;left:0;right:0;bottom:0;width:auto;height:auto;color:transparent;background:transparent;}
-/* adjust increase/decrease button */
-input[type="date"]::-webkit-inner-spin-button {z-index: 1;}
-/* adjust clear button */
-input[type="date"]::-webkit-clear-button {z-index: 1;}
-CHROME_CSS
-			);
-			}
-		elseif (! $page->hasDatePicker())
-			{  // if we can't use a native, then use JS version
-
-			parent::__construct('text', $name, $label, $value);
-			$page->addTailScript('datepicker/js/foundation-datepicker.min.js');
-			$page->addStyleSheet('datepicker/css/foundation-datepicker.min.css');
-			$this->addAttribute('data-date-format', 'yyyy-mm-dd');
-			$this->addOption('format', '"yyyy-mm-dd"');
-			$this->addAttribute('size', '10');
-			}
-		else
-			{
-			parent::__construct('date', $name, $label, $value);
-			}
+		parent::__construct('date', $name, $label, $value);
 		}
 
 	/**
-	 * Add an option for the Foundation Date picker
-	 *
-	 * @link http://foundation-datepicker.peterbeno.com
-	 * @param string $option name
+	 * @deprecated no longer needed. Will be removed in V7.
 	 */
 	public function addOption(string $option, $value) : Date
 		{
-		$this->options[$option] = $value;
-
 		return $this;
 		}
 
@@ -79,11 +34,11 @@ CHROME_CSS
 	 * supported by all browsers.
 	 *
 	 * @param string $date in YYYY/MM/DD format
+	 * @deprecated use addAttribute('max', ...) instead. Will be removed in V7.
 	 */
 	public function setMaxDate(string $date) : Date
 		{
 		$this->addAttribute('max', $date);
-		$this->addOption('endDate', "'{$date}'");
 
 		return $this;
 		}
@@ -93,25 +48,12 @@ CHROME_CSS
 	 * supported by all browsers.
 	 *
 	 * @param string $date in YYYY/MM/DD format
+	 * @deprecated use addAttribute('max', ...) instead. Will be removed in V7.
 	 */
 	public function setMinDate(string $date) : Date
 		{
 		$this->addAttribute('min', $date);
-		$this->addOption('startDate', "'{$date}'");
 
 		return $this;
-		}
-
-	protected function getStart() : string
-		{
-		if (! $this->page->hasDatePicker())
-			{  // if we can't use a native, then use JS version
-
-			$id = $this->getId();
-			$dollar = '$';
-			$this->page->addJavaScript("{$dollar}('#{$id}').fdatepicker(" . \PHPFUI\TextHelper::arrayToJS($this->options) . ');');
-			}
-
-		return parent::getStart();
 		}
 	}
