@@ -38,7 +38,7 @@ class Time extends \PHPFUI\Input\Input
 			$js = "var tp=TimePicker('blue');";
 			$page->addJavaScript($js);
 			$onclickJs = 'let input=$(this);tp.show(input,{callback:function(selected){let timeString=selected instanceof Date?selected.toTimeString().substring(0,8):"";input.attr("value",timeString)}})';
-			$this->addAttribute('onclick', $onclickJs);
+			$this->addAttribute('onfocus', $onclickJs);
 			$page->addStyleSheet('css/timepicker.css');
 			$page->addTailScript('timepicker.js');
 

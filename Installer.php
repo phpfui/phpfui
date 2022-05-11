@@ -5,18 +5,64 @@ namespace PHPFUI;
 class Installer
 	{
 
-	private $directory;
+	private $directory = '';
+
+	private $test = false;
+
+	private $delete = false;
+
+	private $verbose = true;
 
 	public function run(array $argv) : bool
 		{
-		echo 'PHPFUI Update: ';
+		echo "PHPFUI Update:\n";
 
-		$this->directory = $argv[1] ?? '';
-
-		if (! $this->directory)
+		$invalidCount = 0;
+		foreach ($argv as $index => $arg)
 			{
-			echo 'You must specify your public directory relative to ' . getcwd() . ' as a parameter to update.php';
-			return false;
+			if (! $index)
+				{
+				continue;
+				}
+			if ('-' === $arg[0])
+				{
+				$arg .= ' ';
+				$option = strtolower($arg[1]);
+				switch ($option)
+					{
+					case 'q':
+						$this->verbose = false;
+						break;
+					case 't':
+						$this->test = true;
+						break;
+					case 'd':
+						$this->delete = true;
+						break;
+					default:
+						++$invalidCount;
+						break;
+					}
+				}
+			else
+				{
+				$this->directory = $arg;
+				}
+			}
+
+		if (! count($argv) || $invalidCount || ! $this->directory)
+			{
+			echo "\n	Options:\n\n";
+			echo "		-t just list the files copied\n";
+			echo "		-d delete files in directory before copying\n";
+			echo "		-q quiet mode\n\n";
+			echo '	You must specify your public directory relative to ' . getcwd() . ' as a parameter';
+			exit;
+			}
+
+		if ($this->delete && \is_dir($this->directory))
+			{
+			$this->deleteDirectory($this->directory);
 			}
 
 		echo "Copying public files into {$this->directory}\n";
@@ -90,6 +136,7 @@ class Installer
 		// get local js files
 		$js = [];
 		$js['custom'] = [
+			'timepicker.js' => '',
 			'html5sortable.min.js' => '',
 			'jquery.arrow_nav.js' => '',
 			];
@@ -103,33 +150,53 @@ class Installer
 
 		$this->copyFiles('js', $js);
 
+		// get local css files
+		$js = [];
+		$js['css'] = [
+			'timepicker.css' => 'css',
+			];
+
+		$this->copyFiles('', $js);
 		return true;
 		}
 
 	public function copyFiles(string $fromDir, array $files) : Installer
 		{
+		if ($fromDir)
+			{
+			$fromDir .= DIRECTORY_SEPARATOR;
+			}
 		foreach ($files as $sourceDir => $sourceFiles)
 			{
 			foreach ($sourceFiles as $sourceFile => $copyToPath)
 				{
-				$sourcePath = __DIR__ . '/' . $fromDir . '/' . $sourceDir . '/' . $sourceFile;
-				echo "Copy: $sourcePath\n";
+				$sourcePath = __DIR__ . DIRECTORY_SEPARATOR . $fromDir . $sourceDir . DIRECTORY_SEPARATOR . $sourceFile;
+				$sourcePath = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $sourcePath);
 				foreach (glob($sourcePath) as $source)
 					{
-					$toPath = $this->directory . '/' . $copyToPath;
-					$source = str_replace('/', '\\', $source);
-					$toPath = str_replace('/', '\\', $toPath);
-					@mkdir($toPath, 0777, true);
-					$parts = explode('\\', $source);
-					$toPath .= '\\' . end($parts);
-					echo "Copy: {$source} => {$toPath}\n";
+					$toPath = $this->directory . DIRECTORY_SEPARATOR . $copyToPath;
+					$source = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $source);
+					$toPath = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $toPath);
+					if (! $this->test)
+						{
+						@mkdir($toPath, 0777, true);
+						}
+					$parts = explode(DIRECTORY_SEPARATOR, $source);
+					$toPath .= DIRECTORY_SEPARATOR . end($parts);
+					if ($this->verbose)
+						{
+						echo "Copy: {$source} => {$toPath}\n";
+						}
 					if (is_dir($source))
 						{
 						$this->copyDirectory($source, $toPath);
 						}
 					else
 						{
-						copy($source, $toPath);
+						if (! $this->test)
+							{
+							copy($source, $toPath);
+							}
 						}
 					}
 				}
@@ -140,7 +207,7 @@ class Installer
 
 	public function copyDirectory(string $source, string $dest) : Installer
 		{
-		if (! file_exists($dest))
+		if (! file_exists($dest) && ! $this->test)
 			{
 			mkdir($dest, 0755, true);
 			}
@@ -150,20 +217,61 @@ class Installer
 		foreach ($iterator as $item)
 			{
 			$file = $dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName();
-			$file = str_replace('/', '\\', $file);
+			$file = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $file);
 			if ($item->isDir())
 				{
-				if (! file_exists($file))
+				if (! file_exists($file) && ! $this->test)
 					{
 					mkdir($file, 755, true);
 					}
 				}
 			else
 				{
-				copy($item, $file);
+				if ($this->verbose)
+					{
+					echo "Copy: {$item} => {$file}\n";
+					}
+				if (! $this->test)
+					{
+					copy($item, $file);
+					}
 				}
 			}
 
 		return $this;
+		}
+
+	public function deleteDirectory(string $dest) : int
+		{
+		$count = 0;
+		if (! file_exists($dest))
+			{
+			return $count;
+			}
+
+		echo "Deleting files in {$dest}\n";
+
+		$iterator = new \RecursiveIteratorIterator(
+				new \RecursiveDirectoryIterator($dest, \RecursiveDirectoryIterator::SKIP_DOTS),
+				\RecursiveIteratorIterator::SELF_FIRST);
+		foreach ($iterator as $item)
+			{
+			if (! $item->isDir())
+				{
+				$file = $dest . DIRECTORY_SEPARATOR . $iterator->getSubPathName();
+				$file = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $file);
+				if ($this->verbose)
+					{
+					echo "Deleting: {$file}\n";
+					}
+				if (! $this->test)
+					{
+					unlink($file);
+					}
+				}
+			++$count;
+			}
+
+		return $count;
 		}
 	}

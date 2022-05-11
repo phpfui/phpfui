@@ -1,0 +1,176 @@
+#timepicker {
+		padding: 0;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px #000000;
+    border-radius: 6px;
+}
+
+#timepicker-header {
+    opacity: 1.0;
+    text-align: center;
+}
+#timepicker-header p {
+    margin: 0;
+}
+#timepicker-hour {
+    color: rgba(255, 255, 255, 1.0);
+    font-size: 400%;
+    opacity: 0.0;
+    cursor: pointer;
+}
+#timepicker-mins {
+    color: rgba(255, 255, 255, 1.0);
+    font-size: 400%;
+    opacity: 0.0;
+    cursor: pointer;
+}
+#timepicker-ampm {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 200%;
+    opacity: 0.0;
+}
+
+#timepicker-clock {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #e3e6e9;
+    position: relative;
+}
+
+#timepicker-flex {
+		justify-content: center;
+		display: flex;
+}
+.timepicker-hour {
+    position: absolute;
+    left: 114px;
+    top: 117px;
+    display: inline;
+    opacity: 0.0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    padding-top: 4px;
+    text-align: center;
+    z-index: 2003;
+}
+#timepicker-hour-center {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    left: 118px;
+    top: 117px;
+    opacity: 0.9;
+    z-index: 2002;
+    margin-top: 2px;
+}
+#timepicker-hour-hand {
+    width: 3px;
+    height: 150px;
+    position: absolute;
+    left: 122px;
+    top: 50px;
+    opacity: 0.0;
+    z-index: 2001;
+    background: linear-gradient(to top, #e3e6e9 50%, #000000 50%);
+}
+
+.timepicker-ampm-button {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: #e3e6e9;
+    font-weight: bold;
+    color: black;
+    padding-top: .8em;
+    padding-left: .8em;
+    cursor: pointer;
+}
+
+#timepicker-buttons a {
+	padding: .3em;
+}
+
+#timepicker-buttons li {
+	margin-right: .3em;
+	margin-left: .3em;
+}
+
+.rotate0 {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}
+.rotate30 {
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+}
+.rotate60 {
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
+}
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+.rotate120 {
+    -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
+}
+.rotate150 {
+    -webkit-transform: rotate(150deg);
+    -moz-transform: rotate(150deg);
+    -ms-transform: rotate(150deg);
+    -o-transform: rotate(150deg);
+}
+.rotate180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+.rotate210 {
+    -webkit-transform: rotate(210deg);
+    -moz-transform: rotate(210deg);
+    -ms-transform: rotate(210deg);
+    -o-transform: rotate(210deg);
+}
+.rotate240 {
+    -webkit-transform: rotate(240deg);
+    -moz-transform: rotate(240deg);
+    -ms-transform: rotate(240deg);
+    -o-transform: rotate(240deg);
+}
+.rotate270 {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+}
+.rotate300 {
+    -webkit-transform: rotate(300deg);
+    -moz-transform: rotate(300deg);
+    -ms-transform: rotate(300deg);
+    -o-transform: rotate(300deg);
+}
+.rotate330 {
+    -webkit-transform: rotate(330deg);
+    -moz-transform: rotate(330deg);
+    -ms-transform: rotate(330deg);
+    -o-transform: rotate(330deg);
+}
