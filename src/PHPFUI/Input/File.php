@@ -27,7 +27,22 @@ class File extends \PHPFUI\Input\Input
 		$this->page = $page;
 		$this->page->addTailScript('dropify/js/dropify.min.js');
 		$this->page->addStyleSheet('dropify/css/dropify.min.css');
-		$js = '$("#' . $this->getId() . '").dropify()';
+		$preventDropJs = <<<JS
+var dropZones = [];
+function disableNonDropZones(e) {
+  if (! dropZones.includes(e.target.id)) {
+    e.preventDefault();
+    e.dataTransfer.effectAllowed = "none";
+    e.dataTransfer.dropEffect = "none";
+  }
+};
+window.addEventListener("dragenter", disableNonDropZones, false);
+window.addEventListener("dragover", disableNonDropZones);
+window.addEventListener("drop", disableNonDropZones);
+JS;
+		$this->page->addJavaScript($preventDropJs);
+
+		$js = '$("#' . $this->getId() . '").dropify();dropZones.push("' . $this->getId() . '")';
 		$this->page->addJavaScript($js);
 		$this->addAttribute('data-height', 100);
 		$this->addAttribute('style', 'z-index:0');
