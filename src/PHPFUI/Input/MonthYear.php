@@ -55,7 +55,7 @@ class MonthYear extends \PHPFUI\Base
 		$array = \explode('/', \str_replace(['-',
 			'.',
 			'\\',
-			' ', ], '/', $value));
+			' ', ], '/', $value ?? ''));
 
 		if (3 == \count($array))
 			{
