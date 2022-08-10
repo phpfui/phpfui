@@ -20,7 +20,7 @@ namespace PHPFUI;
  * else print_r($captcha->getErrors());
  * ```
  */
-class ReCAPTCHA extends \PHPFUI\ReCAPTCHAv2
+class ReCAPTCHA extends \PHPFUI\ReCAPTCHAv2 implements \PHPFUI\Interfaces\Captcha
 	{
 	/**
 	 * Create a Google ReCAPTCHA.  If either $publicKey or

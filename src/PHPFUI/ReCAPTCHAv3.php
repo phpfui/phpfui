@@ -10,7 +10,7 @@ namespace PHPFUI;
  *
  * Warning: This is a work in progress and not currently working.
  */
-class ReCAPTCHAv3
+class ReCAPTCHAv3 implements \PHPFUI\Interfaces\Captcha
 	{
 	private array $errors = [];
 
