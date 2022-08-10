@@ -177,6 +177,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	/**
 	 * Set a response in the standard format ('reponse' and 'color' array)
 	 *
+	 * @param string $response to return
 	 * @param string $color used for the save button
 	 */
 	public function setResponse(string $response, string $color = 'lime') : Base

@@ -17,7 +17,7 @@ class File extends \PHPFUI\Input\Input
 	/**
 	 * Construct an drag and drop file input field using Dropify
 	 *
-	 * @param Page $page needed to add js and css scrips
+	 * @param \PHPFUI\Interfaces\Page $page needed to add js and css scrips
 	 * @param string $name of input field
 	 * @param string $label optional label for use
 	 */

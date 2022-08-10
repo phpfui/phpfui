@@ -10,7 +10,7 @@ class DateTime extends \PHPFUI\Input\Input
 	/**
 	 * Construct a DateTime input
 	 *
-	 * @param \PHPFUIPage $page for needed JS (unused, reserved for
+	 * @param \PHPFUI\Interfaces\Page $page for needed JS (unused, reserved for
 	 *  			future use)
 	 * @param string $name of the field
 	 * @param string $label defaults to empty

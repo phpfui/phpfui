@@ -3,7 +3,7 @@
 namespace PHPFUI\Interfaces;
 
 /**
- * Basis Page interface
+ * Basic Page interface
  */
 interface Page
 	{
@@ -164,4 +164,17 @@ interface Page
 	 * $resoursePath should start from the public root directory and include a trailing forward slash
 	 */
 	public function setResourcePath(string $resoursePath = '/') : self;
+
+	/**
+	 * Set a response in the standard format ('reponse' and 'color' array)
+	 *
+	 * @param string $response to return
+	 * @param string $color used for the save button
+	 */
+	public function setResponse(string $response, string $color = 'lime') : \PHPFUI\Base;
+
+	/**
+	 * Sets the page response directly
+	 */
+	public function setRawResponse(string $response, bool $asJSON = true) : \PHPFUI\Base;
 	}

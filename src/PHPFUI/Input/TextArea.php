@@ -26,7 +26,7 @@ class TextArea extends \PHPFUI\Input\Input
 	/**
 	 * enable html editing using a JavaScript Editor
 	 *
-	 * @param Page $page requires JS
+	 * @param \PHPFUI\Interfaces\Page $page requires JS
 	 */
 	public function htmlEditing(\PHPFUI\Interfaces\Page $page, \PHPFUI\Interfaces\HTMLEditor $model) : TextArea
 		{

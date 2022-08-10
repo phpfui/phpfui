@@ -21,7 +21,7 @@ class CheckBox extends \PHPFUI\Input\Input
 	 * @param string $name of the checkbox
 	 * @param string $label for the checkbox, will have automatic
 	 *               for='id' logic applied
-	 * @param mixed ?$value initial value, default false
+	 * @param ?mixed $value initial value, default false
 	 */
 	public function __construct(string $name, string $label = '', $value = null)
 		{

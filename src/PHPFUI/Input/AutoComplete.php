@@ -49,7 +49,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 * If **'save'** is specified, the **'suggestions'** value should be an
 	 *  empty array.
 	 *
-	 * @param Page $page requires JS
+	 * @param \PHPFUI\Interfaces\Page $page requires JS
 	 * @param callable $callback See above for correct callback
 	 *                             behavior
 	 * @param string $type of input field

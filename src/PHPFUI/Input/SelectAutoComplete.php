@@ -39,7 +39,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 * Construct a SelectAutoComplete. Add options as you would a
 	 * regular Select
 	 *
-	 * @param Page $page requires JavaScript
+	 * @param \PHPFUI\Interfaces\Page $page requires JavaScript
 	 * @param string $name of the field
 	 * @param string $label optional
 	 * @param bool $freeformInput if true allow anything to be
@@ -133,7 +133,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	/**
 	 * Set the tool tip.  Can either be a ToolTip or a string.  If it is a string, it will be converted to a ToolTip
 	 *
-	 * @param string|ToolTip $tip can be either a string or ToolTip
+	 * @param string|\PHPFUI\ToolTip $tip can be either a string or ToolTip
 	 */
 	public function setToolTip($tip) : \PHPFUI\HTML5Element
 		{

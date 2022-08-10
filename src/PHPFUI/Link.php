@@ -49,7 +49,7 @@ class Link extends \PHPFUI\HTML5Element
 			{
 			$this->addAttribute('href', $link);
 			}
-		elseif ($validate)
+		else
 			{
 			if (false === \strpos($link, '//'))
 				{
@@ -70,7 +70,7 @@ class Link extends \PHPFUI\HTML5Element
 	/**
 	 * Format an email as a link
 	 *
-	 * @param string @email must be a valid address
+	 * @param string $email must be a valid address
 	 * @param string $text to show user (like user's name)
 	 * @param string $subject is optional
 	 */

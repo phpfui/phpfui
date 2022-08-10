@@ -10,7 +10,7 @@ class Zip extends \PHPFUI\Input\Input
 	/**
 	 * A simple responsive control for a US zip code, 10 digit max. Will display the numeric keyboard on mobile devices.
 	 *
-	 * @param Page $page need for validation
+	 * @param \PHPFUI\Page $page need for validation
 	 * @param string $name of the field
 	 * @param string $label to be displayed to the user
 	 * @param ?string $value initial value

@@ -10,7 +10,7 @@ class Date extends \PHPFUI\Input\Input
 	/**
 	 * Construct a Date input. Native controls are always used since there is now full browser support.
 	 *
-	 * @param Page $page for needed JS
+	 * @param \PHPFUI\Interfaces\Page $page for needed JS
 	 * @deprecated $page parameter is no longer used. Will be removed in V7.
 	 * @param string $name of field
 	 * @param string $label optional
