@@ -71,7 +71,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	public function getCloseButton(string $text = 'Cancel') : Button
 		{
 		$button = new \PHPFUI\Button($text);
-		$button->addAttribute('aria-label', 'Close')->addAttribute('data-close')->addClass('hollow')->addClass('secondary');
+		$button->setAttribute('aria-label', 'Close')->setAttribute('data-close')->addClass('hollow')->addClass('secondary');
 
 		return $button;
 		}

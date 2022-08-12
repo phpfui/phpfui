@@ -203,8 +203,8 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 				}
 			}
 
-		$this->addAttribute('placeholder', $initLabel);
-		$this->addAttribute('autocomplete', 'off');
+		$this->setAttribute('placeholder', $initLabel);
+		$this->setAttribute('autocomplete', 'off');
 		$this->hidden->setValue($initValue);
 		$onChange = $this->getAttribute('onchange');
 

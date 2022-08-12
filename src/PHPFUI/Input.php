@@ -112,7 +112,7 @@ class Input extends \PHPFUI\HTML5Element
 		{
 		if ($disabled)
 			{
-			$this->addAttribute('disabled');
+			$this->setAttribute('disabled');
 			}
 		else
 			{
@@ -150,19 +150,19 @@ class Input extends \PHPFUI\HTML5Element
 		{
 		if ($this->name)
 			{
-			$this->addAttribute('name', $this->name);
+			$this->setAttribute('name', $this->name);
 			}
 
-		$this->addAttribute('type', $this->type);
+		$this->setAttribute('type', $this->type);
 
 		if (null !== $this->value)
 			{
-			$this->addAttribute('value', \str_replace("'", '&#39;', $this->value));
+			$this->setAttribute('value', \str_replace("'", '&#39;', $this->value));
 			}
 
 		if ($this->placeholder)
 			{
-			$this->addAttribute('placeholder', $this->placeholder);
+			$this->setAttribute('placeholder', $this->placeholder);
 			}
 
 		return parent::getStart();

@@ -40,10 +40,10 @@ class Radio extends \PHPFUI\Input\Input
 	protected function getStart() : string
 		{
 		$id = $this->getId();
-		$this->addAttribute('type', $this->type);
-		$this->addAttribute('id', $id);
-		$this->addAttribute('name', $this->name);
-		$this->addAttribute('value', $this->value);
+		$this->setAttribute('type', $this->type);
+		$this->setAttribute('id', $id);
+		$this->setAttribute('name', $this->name);
+		$this->setAttribute('value', $this->value);
 		$attributes = $this->getAttributes();
 		$classes = $this->getClass();
 		$this->add($this->getToolTip($this->label));

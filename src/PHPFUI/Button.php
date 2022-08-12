@@ -101,7 +101,7 @@ class Button extends \PHPFUI\HTML5Element
 
 			if ($this->link && ! $this->hasClass('disabled'))
 				{
-				$this->addAttribute('href', $this->link);
+				$this->setAttribute('href', $this->link);
 				}
 			}
 

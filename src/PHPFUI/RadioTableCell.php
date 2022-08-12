@@ -157,7 +157,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 
 		$radioButton->addAttribute('onclick', $onClick);
 		$this->addClass('RadioTableButton');
-		$this->addAttribute('for', $radioButton->getId());
+		$this->setAttribute('for', $radioButton->getId());
 		$this->add($radioButton);
 		$name = new \PHPFUI\HTML5Element('strong');
 		$name->add($this->name);

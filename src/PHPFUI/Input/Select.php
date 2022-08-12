@@ -136,7 +136,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 				$label->addClass($class);
 				}
 
-			$label->addAttribute('for', $this->getId());
+			$label->setAttribute('for', $this->getId());
 			$label->add($this->getToolTip($this->label));
 			}
 		else
@@ -150,7 +150,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 
 			$label->add(\PHPFUI\Language::$required);
 
-			$this->addAttribute('required');
+			$this->setAttribute('required');
 			}
 
 		if ($this->errorMessages)
@@ -158,7 +158,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 			$error = new \PHPFUI\HTML5Element('span');
 			$error->add(\implode('', $this->errorMessages));
 			$error->addClass('form-error');
-			$this->addAttribute('aria-errormessage', $error->getId());
+			$this->setAttribute('aria-errormessage', $error->getId());
 			}
 
 		$class = $this->getClass();

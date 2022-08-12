@@ -43,7 +43,7 @@ class DropDown extends \PHPFUI\Base
 			throw new \Exception(__METHOD__ . ': $alignment must be one of (' . \implode(',', $validAlignments) . ')');
 			}
 
-		$this->dropDown->addAttribute('data-alignment', $alignment);
+		$this->dropDown->setAttribute('data-alignment', $alignment);
 
 		return $this;
 		}
@@ -77,7 +77,7 @@ class DropDown extends \PHPFUI\Base
 			throw new \Exception(__METHOD__ . ': $position must be one of (' . \implode(',', $validPositions) . ')');
 			}
 
-		$this->dropDown->addAttribute('data-position', $position);
+		$this->dropDown->setAttribute('data-position', $position);
 
 		return $this;
 		}

@@ -60,7 +60,7 @@ class BreadCrumbs extends \PHPFUI\HTML5Element implements \Countable
 					{
 					$a = new \PHPFUI\HTML5Element('a');
 					$a->add($text);
-					$a->addAttribute('href', $link);
+					$a->setAttribute('href', $link);
 					$item = new \PHPFUI\ListItem($a);
 					}
 				else

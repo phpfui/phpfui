@@ -71,7 +71,7 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 			$this->add($this->input);
 			$label = new \PHPFUI\HTML5Element('label');
 			$label->addClass('switch-paddle');
-			$label->addAttribute('for', $this->input->getId());
+			$label->setAttribute('for', $this->input->getId());
 			$label->add("<span class='show-for-sr'>{$this->title}</span>");
 
 			if ($this->active)

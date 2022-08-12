@@ -44,8 +44,8 @@ class VideoJs extends \PHPFUI\HTML5Element
 		foreach ($this->sources as $file => $type)
 			{
 			$source = new \PHPFUI\HTML5Element('source');
-			$source->addAttribute('src', $file);
-			$source->addAttribute('type', 'video/' . $type);
+			$source->setAttribute('src', $file);
+			$source->setAttribute('type', 'video/' . $type);
 			$this->add($source);
 			}
 

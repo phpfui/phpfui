@@ -128,9 +128,9 @@ class Slider extends \PHPFUI\HTML5Element
 				$this->setAttribute('data-vertical', 'true');
 				}
 
-			$this->sliderHandle->addAttribute('aria-valuemax', $this->max);
-			$this->sliderHandle->addAttribute('aria-valuemin', $this->min);
-			$this->sliderHandle->addAttribute('aria-valuenow', $this->value);
+			$this->sliderHandle->setAttribute('aria-valuemax', $this->max);
+			$this->sliderHandle->setAttribute('aria-valuemin', $this->min);
+			$this->sliderHandle->setAttribute('aria-valuenow', $this->value);
 			$this->setAttribute('data-initial-end', (float)$this->sliderHandle->getValue());
 			$this->add($this->sliderHandle);
 			$this->add("<span class='slider-fill' data-slider-fill></span>");
@@ -157,10 +157,10 @@ class Slider extends \PHPFUI\HTML5Element
 					{
 					$endInput = $this->rangeHandle->getBind();
 					}
-				$this->setAttribute('data-initial-end', $endInput->getValue());
-				$this->rangeHandle->addAttribute('aria-valuemax', $this->max);
-				$this->rangeHandle->addAttribute('aria-valuemin', $this->min);
-				$this->rangeHandle->addAttribute('aria-valuenow', (int)$endInput->getValue());
+				$this->setAttribute('data-initial-end', $this->rangeHandle->getValue());
+				$this->rangeHandle->setAttribute('aria-valuemax', $this->max);
+				$this->rangeHandle->setAttribute('aria-valuemin', $this->min);
+				$this->rangeHandle->setAttribute('aria-valuenow', $this->rangeHandle->getValue());
 				}
 			}
 

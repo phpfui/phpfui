@@ -204,7 +204,7 @@ abstract class Input extends \PHPFUI\Input
 
 		if ($required)
 			{
-			$this->addAttribute('required', false);
+			$this->setAttribute('required', false);
 			}
 		else
 			{

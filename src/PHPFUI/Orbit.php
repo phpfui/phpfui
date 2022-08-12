@@ -118,11 +118,11 @@ class Orbit extends \PHPFUI\HTML5Element
 
 			if ($this->animation)
 				{
-				$this->addAttribute('data-options', $this->animation);
+				$this->setAttribute('data-options', $this->animation);
 				}
 			else
 				{
-				$this->addAttribute('data-use-m-u-i', 'false');
+				$this->setAttribute('data-use-m-u-i', 'false');
 				}
 
 			$this->wrapper->add($this->container);

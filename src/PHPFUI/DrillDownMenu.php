@@ -23,14 +23,14 @@ class DrillDownMenu extends \PHPFUI\Menu
 
 	public function setAnimateHeight() : DrillDownMenu
 		{
-		$this->addAttribute('data-animate-height', 'true');
+		$this->setAttribute('data-animate-height', 'true');
 
 		return $this;
 		}
 
 	public function setAutoHeight() : DrillDownMenu
 		{
-		$this->addAttribute('data-auto-height', 'true');
+		$this->setAttribute('data-auto-height', 'true');
 
 		return $this;
 		}
