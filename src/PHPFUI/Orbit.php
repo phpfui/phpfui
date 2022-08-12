@@ -6,7 +6,7 @@ class Orbit extends \PHPFUI\HTML5Element
 	{
 	private ?string $animation = null;
 
-	private \PHPFUI\HTML5Element $bullets;
+	private ?\PHPFUI\HTML5Element $bullets;
 
 	private \PHPFUI\UnorderedList $container;
 

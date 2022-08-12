@@ -24,6 +24,7 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 			}
 		$container = new \PHPFUI\Container();
 		$answers = [];
+		$answer = -999;
 
 		for ($i = 0; $i < 10; ++$i)
 			{

@@ -22,8 +22,6 @@ class KitchenSink
 	{
 	use \PHPFUI\Traits\Page;
 
-	private int $index = 0;
-
 	private array $lines = [];
 
 	private \PHPFUI\Interfaces\Page $page;
@@ -50,7 +48,7 @@ class KitchenSink
 		return $accordion;
 		}
 
-	public function baseAccordionMenu() : AccordionMenu
+	public function baseAccordionMenu() : Menu
 		{
 		$accordionMenu = $this->makeMenu(new \PHPFUI\AccordionMenu(), 'Accordion Menu', '', $this->subMenu());
 
@@ -189,8 +187,9 @@ class KitchenSink
 
 		$container->add($this->makeMenu(new \PHPFUI\DrillDownMenu(), 'Drill Down Menu', '', $this->subMenu()));
 
-		$drillDown = $this->makeMenu(new \PHPFUI\DrillDownMenu(), 'Drill Down Menu Auto Height', '', $this->subMenu());
-		$drillDown->setAutoHeight();
+		$drillDownMenu = new \PHPFUI\DrillDownMenu();
+		$drillDownMenu->setAutoHeight();
+		$drillDown = $this->makeMenu($drillDownMenu, 'Drill Down Menu Auto Height', '', $this->subMenu());
 		$container->add($drillDown);
 
 		return $container;
@@ -220,8 +219,9 @@ class KitchenSink
 		$container = new \PHPFUI\Container();
 
 		$container->add($this->makeMenu(new \PHPFUI\DropDownMenu(), 'Drop Down Menu', '', $this->subMenu()));
-		$dropDown = $this->makeMenu(new \PHPFUI\DropDownMenu(), 'Drop Down Menu Vertical', 'vertical', $this->subMenu());
-		$dropDown->computeWidth();
+		$dropDownMenu = new \PHPFUI\DropDownMenu();
+		$dropDownMenu->computeWidth();
+		$dropDown = $this->makeMenu($dropDownMenu, 'Drop Down Menu Vertical', 'vertical', $this->subMenu());
 		$container->add($dropDown);
 
 		return $container;
@@ -235,14 +235,14 @@ class KitchenSink
 		$panel = new \PHPFUI\HTML5Element('div');
 		$panel->add('Just some junk that needs to be said. Or not. Your choice.');
 
-		$toggleDropdown = new \PHPFUI\Dropdown($toggleDropdownButton, $panel);
+		$toggleDropdown = new \PHPFUI\DropDown($toggleDropdownButton, $panel);
 		$container->add($toggleDropdown);
 
 		$hoverDropdownButton = new \PHPFUI\Button('Hoverable Dropdown');
 		$panel = new \PHPFUI\HTML5Element('div');
 		$panel->add('Just some junk that needs to be said. Or not. Your choice.');
 
-		$hoverDropdown = new \PHPFUI\Dropdown($hoverDropdownButton, $panel);
+		$hoverDropdown = new \PHPFUI\DropDown($hoverDropdownButton, $panel);
 		$hoverDropdown->setHover();
 		$container->add($hoverDropdown);
 
@@ -376,9 +376,9 @@ class KitchenSink
 	public function baseOrderedList() : OrderedList
 		{
 		$orderedList = new \PHPFUI\OrderedList();
-		$orderedList->addItem(new \PHPFUI\ListItem('Item 1', '/item#1'));
-		$orderedList->addItem(new \PHPFUI\ListItem('Item 2', '/item#2'));
-		$orderedList->addItem(new \PHPFUI\ListItem('Item 3', '/item#3'));
+		$orderedList->addItem(new \PHPFUI\ListItem('Item 1'));
+		$orderedList->addItem(new \PHPFUI\ListItem('Item 2'));
+		$orderedList->addItem(new \PHPFUI\ListItem('Item 3'));
 
 		return $orderedList;
 		}
@@ -623,7 +623,7 @@ class KitchenSink
 		$callout = new \PHPFUI\Callout('secondary');
 		$callout->add('<p>This is only visible when the above field has focus.</p>');
 
-		$toggleFocus->toggleFocus($callout, 'hinge-in-from-top hinge-out-from-bottom');
+		$toggleFocus->toggleFocus($callout);
 
 		$container->add(new \PHPFUI\MultiColumn($toggleFocus));
 		$container->add($callout);
@@ -659,9 +659,9 @@ class KitchenSink
 	public function baseUnorderedList() : UnorderedList
 		{
 		$unorderedList = new \PHPFUI\UnorderedList();
-		$unorderedList->addItem(new \PHPFUI\ListItem('Item', '/item'));
-		$unorderedList->addItem(new \PHPFUI\ListItem('Item 1', '/item#1'));
-		$unorderedList->addItem(new \PHPFUI\ListItem('Item C', '/item#c'));
+		$unorderedList->addItem(new \PHPFUI\ListItem('Item'));
+		$unorderedList->addItem(new \PHPFUI\ListItem('Item 1'));
+		$unorderedList->addItem(new \PHPFUI\ListItem('Item C'));
 
 		return $unorderedList;
 		}
@@ -739,7 +739,7 @@ class KitchenSink
 		{
 		$slickSlider = new \PHPFUI\SlickSlider($this->page);
 		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg', 'Space, the final frontier.');
-		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg', 'Lets Rocket!', true);
+		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg', 'Lets Rocket!');
 		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg', 'Encapsulating');
 		$slickSlider->addImage('https://foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg', 'Outta This World');
 
@@ -890,7 +890,7 @@ class KitchenSink
 		$container = new \PHPFUI\Container();
 
 		$container->add(new \PHPFUI\HTML5Element('hr'));
-		$container->add(new \PHPFUI\Header($header, 2));
+		$container->add(new \PHPFUI\Header($name, 2));
 
 		return $container;
 		}

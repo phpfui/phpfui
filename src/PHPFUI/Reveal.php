@@ -9,7 +9,7 @@ namespace PHPFUI;
  */
 class Reveal extends \PHPFUI\HTML5Element
 	{
-	private \PHPFUI\Interfaces\Page $page;
+	private \PHPFUI\Page $page;
 
 	/**
 	 * Construct a reveal dialog. Add items to the reveal dialog
@@ -19,7 +19,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	 * @param HTML5Element $openingElement that user will activate
 	 *                           to call up the reveal dialog
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, HTML5Element $openingElement)
+	public function __construct(\PHPFUI\Page $page, HTML5Element $openingElement)
 		{
 		parent::__construct('div');
 		$this->page = $page;

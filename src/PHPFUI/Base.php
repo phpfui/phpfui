@@ -190,6 +190,11 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 		return $this;
 		}
 
+	protected function getItems() : array
+		{
+		return $this->items;
+		}
+
 	/**
 	 * You must provide a getBody function.  It will be called after start and before end.
 	 */

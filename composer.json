@@ -25,6 +25,7 @@
         "phpfui/phpunit-syntax-coverage": "^1.0",
         "roave/security-advisories": "dev-latest",
         "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^1.8",
         "mheap/phpunit-github-actions-printer": "^1.5"
     },
     "autoload": {

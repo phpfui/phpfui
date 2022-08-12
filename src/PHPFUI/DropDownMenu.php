@@ -48,6 +48,7 @@ class DropDownMenu extends \PHPFUI\Menu
 		if ($this->width)
 			{
 			$this->addAttribute('style', "max-width:{$this->width}em;");
+			$this->width = null;
 			}
 
 		return parent::getStart();

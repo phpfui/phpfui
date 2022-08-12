@@ -96,6 +96,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 
 		$gridx = new \PHPFUI\GridX();
 		$row = 0;
+		$cell = new \PHPFUI\Cell($this->gridSize / $this->numberColumns);
 
 		foreach ($this->options as $option)
 			{
@@ -136,7 +137,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 			}
 
 		$fieldSet->add($gridx);
-		$this->label = false;
+		$this->label = '';
 
 		return "{$fieldSet}";
 		}

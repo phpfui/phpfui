@@ -11,6 +11,8 @@ class DescriptionList extends \PHPFUI\HTML5Element
 
 	public function addItem(DescriptionItem $item) : DescriptionList
 		{
-		parent::add($element);
+		parent::add($item);
+
+		return $this;
 		}
 	}

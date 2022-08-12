@@ -177,4 +177,9 @@ interface Page
 	 * Sets the page response directly
 	 */
 	public function setRawResponse(string $response, bool $asJSON = true) : \PHPFUI\Base;
+
+	/**
+	 * Returns true if the page needs no more processing
+	 */
+	public function isDone() : bool;
 	}

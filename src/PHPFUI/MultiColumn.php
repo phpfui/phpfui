@@ -35,8 +35,6 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 	{
 	private array $objects = [];
 
-	private int $smallColumn = 12;
-
 	private bool $started = false;
 
 	public function __construct()
@@ -66,20 +64,6 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 	public function count() : int
 		{
 		return \count($this->objects);
-		}
-
-	/**
-	 * Sometimes you want to overload the number of items in the
-	 * small column.
-	 *
-	 * @param int $column default 12
-	 *
-	 */
-	public function setSmallColumn(int $column = 12) : MultiColumn
-		{
-		$this->smallColumn = $column;
-
-		return $this;
 		}
 
 	protected function getStart() : string

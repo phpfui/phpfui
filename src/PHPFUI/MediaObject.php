@@ -28,12 +28,12 @@ class MediaObject extends \PHPFUI\HTML5Element
 				'align-self-middle',
 				'align-self-bottom', ];
 
-			if (! \in_array($ratio, $validRatios))
+			if (! \in_array($alignment, $validAlignments))
 				{
 				throw new \Exception(__METHOD__ . ': $alignment must be one of (' . \implode(',', $validAlignments) . ')');
 				}
 
-			$section->addClass($align);
+			$section->addClass($alignment);
 			}
 
 		$section->add($content);

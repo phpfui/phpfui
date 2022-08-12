@@ -49,19 +49,6 @@ class OffCanvas extends \PHPFUI\Base
 		}
 
 	/**
-	 * Set the transition canvas position
-	 *
-	 * @param string $id id from addOff when the off canvas was
-	 *               added.
-	 */
-	public function setInCanvasFor(string $id, string $screenSize) : OffCanvas
-		{
-		$this->setScreenAttribute('in-canvas-for-', $id, $screenSize);
-
-		return $this;
-		}
-
-	/**
 	 * Set the incoming canvas position
 	 *
 	 * @param string $id id from addOff when the off canvas was
@@ -83,13 +70,6 @@ class OffCanvas extends \PHPFUI\Base
 			}
 
 		$this->offCanvas->addClass("position-{$position}");
-
-		return $this;
-		}
-
-	public function setRevealFor(string $id, string $screenSize) : OffCanvas
-		{
-		$this->setScreenAttribute('reveal-for-', $id, $screenSize);
 
 		return $this;
 		}
@@ -154,30 +134,6 @@ class OffCanvas extends \PHPFUI\Base
 	protected function getStart() : string
 		{
 		return '';
-		}
-
-	private function setScreenAttribute(string $attribute, string $id, string $screenSize) : OffCanvas
-		{
-		$this->validateId($id);
-		$sizes = ['small',
-			'medium',
-			'large', ];
-
-		if (! \in_array($size, $sizes))
-			{
-			$attributes = \explode('-', $attribute);
-
-			foreach ($attributes as $index => $name)
-				{
-				$attributes[$index] = \ucwords($name);
-				}
-
-			throw new \Exception(__CLASS__ . "::set{$attribute}: {$screenSize} must be one of " . \implode(',', $sizes));
-			}
-
-		$this->offCanvas->setAttribute($attribute . '-' . $screen);
-
-		return $this;
 		}
 
 	private function validateId(string $id) : OffCanvas

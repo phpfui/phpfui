@@ -14,7 +14,7 @@ class InputGroupTest extends \PHPFUI\HTMLUnitTester\Extensions
 	public function testPlainInput() : void
 		{
 		$inputGroup = new \PHPFUI\InputGroup();
-		$inputGroup->addInput(new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy'));
+		$inputGroup->addInput(new \PHPFUI\Input\Text('fred', 'Fred', 'Freddy'));
 		$inputGroup->addLabel('Label');
 		$inputGroup->addButton(new \PHPFUI\Button('Button'));
 		$this->assertValidHtml($inputGroup);

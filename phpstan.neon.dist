@@ -1,0 +1,13 @@
+parameters:
+	level: 4
+	errorFormat: raw
+	editorUrl: '%%file%% %%line%% %%column%%: %%error%%'
+	paths:
+		- src
+		- Tests
+	ignoreErrors:
+		-
+			message: '#Access to an undefined property PHPFUI\\PayPal[a-zA-Z0-9\\_]+::[\$a-zA-Z0-9_]+#'
+			paths:
+				- src/*
+				- Tests/*

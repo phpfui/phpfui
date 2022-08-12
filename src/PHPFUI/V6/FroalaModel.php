@@ -88,7 +88,7 @@ abstract class FroalaModel implements \PHPFUI\Interfaces\HTMLEditor
 			$this->parameters[$parameter] = $value;
 			}
 
-		return this;
+		return $this;
 		}
 
 	public function addParameters(array $parameters) : FroalaModel

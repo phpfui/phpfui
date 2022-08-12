@@ -63,7 +63,7 @@ class ProgressBar extends \PHPFUI\HTML5Element
 
 		if (! $this->labelText)
 			{
-			$this->labelText = $current;
+			$this->labelText = (string)$current;
 			}
 
 		return $this;

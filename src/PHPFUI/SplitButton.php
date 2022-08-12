@@ -21,8 +21,6 @@ class SplitButton extends \PHPFUI\Button
 
 	public function addLink(string $link, string $name) : SplitButton
 		{
-		$this->maxLength = \max($this->maxLength, \strlen($name));
-
 		return $this->addMenuItem(new \PHPFUI\MenuItem($name, $link));
 		}
 

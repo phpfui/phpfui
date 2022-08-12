@@ -107,7 +107,7 @@ class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 	public function testInput() : void
 		{
-		$input = new \PHPFUI\Input('text', 'fred', 'Fred', 'Freddy');
+		$input = new \PHPFUI\Input('text', 'fred', 'Fred');
 		$this->assertValidHtml($input);
 		}
 

@@ -317,7 +317,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Direct access to the page body element.  Also accessed via add method.
 	 */
-	public function getBodyElement() : \PHPFUI\Collection
+	public function getBodyElement() : \PHPFUI\Container
 		{
 		return $this->body;
 		}

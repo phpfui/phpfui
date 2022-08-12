@@ -5,7 +5,7 @@ namespace PHPFUI\Input;
 /**
  * Simple wrapper for Hidden input fields
  */
-class Hidden extends \PHPFUI\Input
+class Hidden extends \PHPFUI\Input\Input
 	{
 	/**
 	 * Construct a Hidden input
@@ -15,6 +15,7 @@ class Hidden extends \PHPFUI\Input
 	 */
 	public function __construct(string $name, ?string $value = '')
 		{
-		parent::__construct('hidden', $name, $value);
+		parent::__construct('hidden', $name, '', $value);
+		$this->deleteAttribute('onkeypress');
 		}
 	}

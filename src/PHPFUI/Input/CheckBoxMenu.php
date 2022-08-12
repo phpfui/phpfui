@@ -61,7 +61,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 	 */
 	public function addSubmit(\PHPFUI\Form $form, string $name = 'Submit') : \PHPFUI\MenuItem
 		{
-		$this->submitMenuItem = new \PHPFUI\MenuItem($name, false, '#');
+		$this->submitMenuItem = new \PHPFUI\MenuItem($name, '#');
 		$formId = $form->getId();
 		$this->submitMenuItem->addAttribute('onclick', '$("#' . $formId . '").submit();return false;');
 		$this->addMenuItem($this->submitMenuItem);

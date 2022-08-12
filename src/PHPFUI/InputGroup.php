@@ -38,7 +38,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 	/**
 	 * Due to necessary modifications to the Input class (redoing the label), the passed Input class should be fully formed before being added to the InputGroup
 	 */
-	public function addInput(Input $input) : InputGroup
+	public function addInput(\PHPFUI\Input\Input $input) : InputGroup
 		{
 		if (\method_exists($input, 'getError'))
 			{

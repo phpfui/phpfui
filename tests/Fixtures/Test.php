@@ -6,7 +6,7 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 	{
 	public function __construct(\PHPFUI\Interfaces\NanoController $controller)
 		{
-		parent::__construct($controller);
+		parent::__construct();
 		}
 
 	public function landingPage() : void

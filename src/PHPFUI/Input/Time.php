@@ -128,7 +128,7 @@ class Time extends \PHPFUI\Input\Input
 		return \sprintf('%02d:%02d:%02d', $hour, $minute, $second);
 		}
 
-	private function getTemplate()
+	private function getTemplate() : string
 		{
 		$menu = new \PHPFUI\Menu();
 		$menu->addClass('align-center');

@@ -75,20 +75,11 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 				}
 			}
 
-		if (isset($_GET))
-			{
-			$this->get = $_GET;
-			}
+		$this->get = $_GET;
 
-		if (isset($_POST))
-			{
-			$this->post = $_POST;
-			}
+		$this->post = $_POST;
 
-		if (isset($_FILES))
-			{
-			$this->files = $_FILES;
-			}
+		$this->files = $_FILES;
 		}
 
 	/**
@@ -319,10 +310,13 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 			if ($parameter->hasType())
 				{
 				$type = $parameter->getType();
+				/** @phpstan-ignore-next-line */
 				$parameterType = $type->getName();
 
+				/** @phpstan-ignore-next-line */
 				if ($type->isBuiltIn())
 					{
+					/** @phpstan-ignore-next-line */
 					switch ($type->getName())
 						{
 						case 'array': // remaining arguments are put into this parameter and processing stops

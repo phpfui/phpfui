@@ -39,7 +39,7 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 		return $this;
 		}
 
-	public function addAbideValidator(\PHPFUI\Validator $validator) : Page
+	public function addAbideValidator(\PHPFUI\Validator $validator) : \PHPFUI\Page
 		{
 		$js = $validator->getJavaScript();
 
@@ -49,7 +49,9 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 			}
 		$this->addPluginDefault('Abide', "validators['{$validator->getValidatorName()}']", $validator->getFunctionName());
 
-		return $this->addJavaScript($js);
+		$this->addJavaScript($js);
+
+		return $this;
 		}
 
 	/**

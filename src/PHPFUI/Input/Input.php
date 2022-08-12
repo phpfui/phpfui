@@ -265,8 +265,8 @@ abstract class Input extends \PHPFUI\Input
 		{
 		$js = 'function AutoCompleteRequired($el,required,parent){var name=$el.attr("name").slice(0,-4);' .
 			'return $("[name=\'"+name+"\']").val().length!=0||$("[name=\'"+name+"Text\']").val().length!=0;};';
-		$this->page->addJavaScript($js);
-		$this->page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
+		$page->addJavaScript($js);
+		$page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
 		$text->deleteAttribute('required');
 		$text->addAttribute('data-validator', 'AutoCompleteRequired');
 		}
