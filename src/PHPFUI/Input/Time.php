@@ -10,8 +10,10 @@ class Time extends \PHPFUI\Input\Input
 	{
 	private static ?\PHPFUI\Interfaces\Page $page = null;
 
+	private array $options = ['callback' => 'function(selected){let timeString=selected instanceof Date?selected.toTimeString().substring(0,8):"";input.attr("value",timeString)}'];
+
 	/**
-	 * Constuct a Time input field supporting hours and minutes
+	 * Constuct a Time input field supporting hours and minutes. Call **setParentReveal** if Time control is in a Reveal.
 	 *
 	 * @param \PHPFUI\Page $page since we need to add JS
 	 * @param string $name of the field
@@ -37,8 +39,6 @@ class Time extends \PHPFUI\Input\Input
 			parent::__construct('time', $name, $label, $value);
 			$js = "var tp=TimePicker('blue');";
 			$page->addJavaScript($js);
-			$onclickJs = 'let input=$(this);tp.show(input,{callback:function(selected){let timeString=selected instanceof Date?selected.toTimeString().substring(0,8):"";input.attr("value",timeString)}})';
-			$this->addAttribute('onfocus', $onclickJs);
 			$page->addStyleSheet('css/timepicker.css');
 			$page->addTailScript('timepicker.js');
 
@@ -52,14 +52,29 @@ class Time extends \PHPFUI\Input\Input
 			{
 			parent::__construct('time', $name, $label, $value);
 			}
-		$this->addAttribute('step', $interval * 60);
+		$this->setAttribute('step', $interval * 60);
 		}
 
 	/**
-	 * Convert a time string to military format, which is the stand format for times in HTML
+	 * If you place a Time control in a Reveal, you must call **setParentReveal** with the reveal, otherwise closing the time dialog will also close the parent Reveal
+	 */
+	public function setParentReveal(\PHPFUI\Reveal $reveal) : self
+		{
+		$this->options['reveal'] = $reveal->getId();
+
+		return $this;
+		}
+
+	/**
+	 * Convert a time string to military format, which is the standard format for times in HTML
 	 */
 	public static function toMilitary(string $timeString) : string
 		{
+		if (empty($timeString))
+			{
+			return $timeString;
+			}
+
 		$timeString = \str_replace('P', ' P', \strtoupper($timeString));
 		$timeString = \str_replace('A', ' A', $timeString);
 		$timeString = \str_replace(':', ' ', $timeString);
@@ -126,6 +141,15 @@ class Time extends \PHPFUI\Input\Input
 			}
 
 		return \sprintf('%02d:%02d:%02d', $hour, $minute, $second);
+		}
+
+	protected function getStart() : string
+		{
+		$js = \PHPFUI\TextHelper::arrayToJS($this->options);
+		$onclickJs = 'let input=$(this);tp.show(input,' . $js . ')';
+		$this->addAttribute('onfocus', $onclickJs);
+
+		return parent::getStart();
 		}
 
 	private function getTemplate() : string

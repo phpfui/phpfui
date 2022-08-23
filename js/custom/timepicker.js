@@ -26,10 +26,11 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
         step : null,
         min : null,
         max : null,
-        readonly : false
+        readonly : false,
+        reveal : null
       }, options);
     if (_setup()) {
-			$('#timepicker').foundation('open');
+      $('#timepicker').foundation('open');
     }
   }
 
@@ -38,7 +39,10 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
    */
   function hide() {
     _hideClockFace();
-		$('#timepicker').foundation('close');
+    $('#timepicker').foundation('close');
+    if (settings.reveal) {
+      $(settings.reveal).foundation('open');
+    }
   }
 
   /**
@@ -53,32 +57,32 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
     settings.readonly = settings.parent.attr('readonly') !== undefined;
     if (settings.datetime === null) {
       let value = settings.parent.attr('value');
-			if (value === undefined || value == '') {
+      if (value === undefined || value == '') {
         value = '00:00:00';
-			}
+      }
       settings.datetime = new Date('2000-01-01T' + value);
-		}
+    }
+
     if (settings.readonly) {
       return false;
     }
     if (settings.datetime === null) {
       settings.datetime = new Date(); 																																																		777
     }
-		const steps = [ 5, 10, 15, 20, 30, 60 ];
+    const steps = [ 5, 10, 15, 20, 30, 60 ];
     if (! steps.includes(settings.stepMinutes)) {
       settings.stepMinutes = 5;
     }
     decrement = settings.stepMinutes / 5;
     step = 12;
-		while (step) {
+    while (step) {
       visibleSteps.push(step);
       step -= decrement;
-		}
+    }
     // round minutes to step
-		if (settings.step && settings.datetime.getMinutes() % settings.stepMinutes)
-			{
+    if (settings.step && settings.datetime.getMinutes() % settings.stepMinutes) {
       settings.datetime.setMinutes(Math.round((settings.datetime.getMinutes() / settings.stepMinutes) + 0.5) * settings.stepMinutes);
-			}
+    }
 
     // Hide Header on small screens
     if ( $(window).height() < 600 ) {
@@ -148,16 +152,14 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
       if ( display === "hours" ) {
         if ( parseInt(val) === parseInt(comp.hour) ) {
           $(this).addClass("selected");
-        }
-        else {
+        } else {
           $(this).removeClass("selected");
         }
       }
       else if ( display === "mins" ) {
         if ( parseInt(val) === parseInt(comp.mins) ) {
           $(this).addClass("selected");
-        }
-        else {
+        } else {
           $(this).removeClass("selected");
         }
       }
@@ -178,10 +180,10 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
       let deg = valToDeg[val];
       if ('mins' == display && ! visibleSteps.includes(parseInt(val))) { // disabled, hide it
         $(this).hide();
-			} else {
+      } else {
         $(this).show();
       }
-			let x = radius * Math.cos(_getRad(deg));
+      let x = radius * Math.cos(_getRad(deg));
       let y = radius * Math.sin(_getRad(deg));
 
       let xd = 1;
@@ -291,12 +293,10 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
     if ( display === "hours" ) {
       if ( selected.getHours() > 12 ) {
         selected.setHours(parseInt(val) + 12);
-      }
-      else {
+      } else {
         selected.setHours(parseInt(val));
       }
-    }
-    else if ( display === "mins" ) {
+    } else if ( display === "mins" ) {
       selected.setMinutes(parseInt(val));
     }
 
@@ -414,26 +414,28 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
       d.setTime(d.getTime() + (60 * 60 * 1000));
       hour = d.getHours();
     }
-    if (mins < 10) {
+
+   if (mins < 10) {
       mins = "0" + mins;
     }
 
     if (hour > 11) {
       ampm = "PM";
-    }
-    else {
+    } else {
       ampm = "AM";
     }
 
     if (hour > 12) {
       hour -= 12;
     }
+
     if (0 === hour) {
       hour = 12;
       ampm = "AM";
     }
-		datetime.setSeconds(0);
-		datetime.setMinutes(mins);
+
+    datetime.setSeconds(0);
+    datetime.setMinutes(mins);
 
     // Return the Components
     return {
@@ -454,11 +456,11 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
   }
 
   function _getAttribute(name, setting) {
-		if (setting === null) {
+    if (setting === null) {
       attribute = settings.parent.attr(name);
       if (attribute !== undefined) {
         return attribute;
-  		}
+      }
     }
     return setting;
   }
@@ -471,27 +473,28 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
    */
   function _minMaxTime(datetime) {
     let seconds = datetime.getHours() * 3600 + datetime.getMinutes() * 60 + datetime.getSeconds();
-		if (settings.min !== null && seconds < settings.min) {
+    if (settings.min !== null && seconds < settings.min) {
       seconds = settings.min;
-		} else if (settings.max !== null && seconds > settings.max) {
+    } else if (settings.max !== null && seconds > settings.max) {
       seconds = settings.max;
     }
     datetime.setHours(Math.floor(seconds / 3600));
     datetime.setMinutes(Math.floor((seconds - datetime.getHours() * 3600) / 60));
-		datetime.setSeconds(seconds % 60);
+    datetime.setSeconds(seconds % 60);
 
     return datetime;
   }
 
-	/**
+  /**
    * @param {string} time
    * @return {integer} seconds
-	 */
+   */
   function _getSeconds(time) {
-		if (time === null) {
+    if (time === null) {
       return time;
-			}
-		let seconds = 0;
+    }
+
+    let seconds = 0;
     let mod = 3600;
     return time.split(':').reduce(function (seconds, v) {
       let value = v + seconds * mod;
