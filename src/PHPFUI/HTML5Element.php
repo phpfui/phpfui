@@ -47,8 +47,8 @@ class HTML5Element extends \PHPFUI\Base
 	public function __construct(string $element)
 		{
 		parent::__construct();
-		$this->element = $element;
-		$this->noEndTag = isset(self::$noEndTags[\strtolower($element)]);
+		$this->element = \strtolower($element);
+		$this->noEndTag = isset(self::$noEndTags[$this->element]);
 		}
 
 	public function __clone()
@@ -442,7 +442,7 @@ class HTML5Element extends \PHPFUI\Base
 		$output .= $this->getClass();
 		$output .= $this->getAttributes();
 
-		if ($this->noEndTag)
+		if ($this->noEndTag && 'input' != $this->element)
 			{
 			$output .= '/';
 			}

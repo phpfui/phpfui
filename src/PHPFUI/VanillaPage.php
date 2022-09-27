@@ -587,7 +587,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 		if ($this->favIcon)
 			{
-			$output .= "<link rel='shortcut icon' href='{$this->favIcon}' />{$nl}";
+			$output .= "<link rel='shortcut icon' href='{$this->favIcon}'>{$nl}";
 			}
 
 		$output .= "<title>{$this->pageName}</title>{$nl}";

@@ -54,6 +54,6 @@ class Radio extends \PHPFUI\Input\Input
 			$labelClass .= ' disabled-label';
 			}
 
-		return "<input{$attributes}{$classes}{$this->checked}{$this->disabled}/><label for='{$id}' class='{$labelClass}'>";
+		return "<input{$attributes}{$classes}{$this->checked}{$this->disabled}><label for='{$id}' class='{$labelClass}'>";
 		}
 	}

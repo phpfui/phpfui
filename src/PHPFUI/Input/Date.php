@@ -18,7 +18,11 @@ class Date extends \PHPFUI\Input\Input
 	 */
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', ?string $value = '')
 		{
-		parent::__construct('date', $name, $label, $value);
+		if ('0000-00-00' == $value)
+			{
+			$value = null;
+			}
+			parent::__construct('date', $name, $label, $value);
 		}
 
 	/**

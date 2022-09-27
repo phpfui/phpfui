@@ -21,7 +21,7 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 		$this->addTailScript('what-input.min.js');
 		$this->addTailScript('foundation/js/foundation.min.js');
 		$this->addHeadTag('<meta charset="utf-8">');
-		$this->addHeadTag('<meta name="viewport" content="width=device-width, initial-scale=1.0" />');
+		$this->addHeadTag('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
 		}
 
 	/**
