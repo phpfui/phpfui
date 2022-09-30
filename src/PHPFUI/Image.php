@@ -23,7 +23,7 @@ class Image extends \PHPFUI\HTML5Element
 		return $this->base64EncodeString($binaryImage);
 		}
 
-	public function base64EncodeString(string $binaryImage) : Image
+	public function base64EncodeString(string $binaryImage) : static
 		{
 		$data = \base64_encode($binaryImage);
 		$this->setAttribute('src', "data:image/jpeg;base64,{$data}");

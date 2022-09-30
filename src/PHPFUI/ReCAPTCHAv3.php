@@ -39,7 +39,7 @@ class ReCAPTCHAv3 implements \PHPFUI\Interfaces\Captcha
 			{
 			$captcha = $post['g-recaptcha-response'];
 			$response = \file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secretKey . '&response=' . $captcha . '&remoteip=' . $_SERVER['REMOTE_ADDR']);
-			$this->results = \json_decode($response, true);
+			$this->results = \json_decode($response, true, 512, JSON_THROW_ON_ERROR);
 
 			if ($this->results['success'])
 				{
@@ -94,7 +94,7 @@ class ReCAPTCHAv3 implements \PHPFUI\Interfaces\Captcha
 	/**
 	 * Set a threshold that user needs to pass.  Default 0.5
 	 */
-	public function setThreshold(float $threshold = 0.5) : ReCAPTCHAv3
+	public function setThreshold(float $threshold = 0.5) : static
 		{
 		$this->threshold = $threshold;
 

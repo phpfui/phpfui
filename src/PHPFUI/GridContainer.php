@@ -13,14 +13,14 @@ class GridContainer extends \PHPFUI\HTML5Element
 		$this->addClass('grid-container');
 		}
 
-	public function setFluid() : GridContainer
+	public function setFluid() : static
 		{
 		$this->addClass('fluid');
 
 		return $this;
 		}
 
-	public function setFull() : GridContainer
+	public function setFull() : static
 		{
 		$this->addClass('full');
 

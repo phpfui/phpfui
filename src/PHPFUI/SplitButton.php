@@ -24,14 +24,14 @@ class SplitButton extends \PHPFUI\Button
 		return $this->addMenuItem(new \PHPFUI\MenuItem($name, $link));
 		}
 
-	public function addMenuItem(MenuItem $item) : SplitButton
+	public function addMenuItem(MenuItem $item) : static
 		{
 		$this->menu->addMenuItem($item);
 
 		return $this;
 		}
 
-	public function sort() : SplitButton
+	public function sort() : static
 		{
 		$this->menu->sort();
 

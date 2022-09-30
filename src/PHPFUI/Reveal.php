@@ -9,8 +9,6 @@ namespace PHPFUI;
  */
 class Reveal extends \PHPFUI\HTML5Element
 	{
-	private \PHPFUI\Interfaces\Page $page;
-
 	/**
 	 * Construct a reveal dialog. Add items to the reveal dialog
 	 * directly. The dialog will automatically be added to the page
@@ -19,10 +17,9 @@ class Reveal extends \PHPFUI\HTML5Element
 	 * @param HTML5Element $openingElement that user will activate
 	 *                           to call up the reveal dialog
 	 */
-	public function __construct(\PHPFUI\Page $page, HTML5Element $openingElement)
+	public function __construct(private \PHPFUI\Page $page, HTML5Element $openingElement)
 		{
 		parent::__construct('div');
-		$this->page = $page;
 		$this->addClass('reveal');
 		$this->addAttribute('data-reveal');
 		$openingElement->addAttribute('data-open', $this->getId());
@@ -39,7 +36,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	 *
 	 * @param Button $button when pressed will close the modal
 	 */
-	public function closeOnClick(\PHPFUI\Button $button) : Reveal
+	public function closeOnClick(\PHPFUI\Button $button) : static
 		{
 		$button->addAttribute('onclick', '$("#' . $this->getId() . '").on("formvalid.zf.abide",function(ev,frm){$("#' . $this->getId() . '").foundation("close")})');
 
@@ -82,7 +79,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	 * @param string $url to load
 	 * @param string $targetId is optional area to load html into, default is entire Reveal window
 	 */
-	public function loadUrlOnOpen(string $url, string $targetId = '') : Reveal
+	public function loadUrlOnOpen(string $url, string $targetId = '') : static
 		{
 		$id = $this->getId();
 
@@ -99,7 +96,7 @@ class Reveal extends \PHPFUI\HTML5Element
 	/**
 	 * Show the model immediately on page load
 	 */
-	public function showOnPageLoad() : Reveal
+	public function showOnPageLoad() : static
 		{
 		$id = $this->getId();
 		$this->page->addJavaScript("$('#{$id}').foundation('open');");

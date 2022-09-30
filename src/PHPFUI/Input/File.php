@@ -12,8 +12,6 @@ class File extends \PHPFUI\Input\Input
 	{
 	use \PHPFUI\Traits\Page;
 
-	protected \PHPFUI\Interfaces\Page $page;
-
 	/**
 	 * Construct an drag and drop file input field using Dropify
 	 *
@@ -21,10 +19,9 @@ class File extends \PHPFUI\Input\Input
 	 * @param string $name of input field
 	 * @param string $label optional label for use
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '')
+	public function __construct(protected \PHPFUI\Interfaces\Page $page, string $name, string $label = '')
 		{
 		parent::__construct('file', $name, $label, null);
-		$this->page = $page;
 		$this->page->addTailScript('dropify/js/dropify.min.js');
 		$this->page->addStyleSheet('dropify/css/dropify.min.css');
 		$preventDropJs = <<<JS
@@ -54,7 +51,7 @@ JS;
 	 *
 	 * @param array $extensions leading . is optional
 	 */
-	public function setAllowedExtensions(array $extensions) : File
+	public function setAllowedExtensions(array $extensions) : static
 		{
 		foreach ($extensions as &$value)
 			{

@@ -23,7 +23,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 		parent::__construct('text', $name, $label);
 		}
 
-	public function addLabelClass(string $class) : Select
+	public function addLabelClass(string $class) : static
 		{
 		$this->labelClass[] = $class;
 
@@ -33,7 +33,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	/**
 	 * Add an OptGroup
 	 */
-	public function addOptGroup(OptGroup $group) : Select
+	public function addOptGroup(OptGroup $group) : static
 		{
 		$this->options[] = $group;
 
@@ -49,7 +49,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	 *                     this option
 	 * @param bool $disabled default false
 	 */
-	public function addOption(string $label, ?string $value = null, bool $selected = false, bool $disabled = false) : Select
+	public function addOption(string $label, ?string $value = null, bool $selected = false, bool $disabled = false) : static
 		{
 		if (null === $value)
 			{
@@ -75,7 +75,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	/**
 	 * Remove all options.
 	 */
-	public function removeAll() : Select
+	public function removeAll() : static
 		{
 		$this->options = [];
 
@@ -108,7 +108,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	 *
 	 * @param string $selection to be selected
 	 */
-	public function select($selection) : Select
+	public function select($selection) : static
 		{
 		foreach ($this->options as &$values)
 			{

@@ -14,10 +14,6 @@ class Express extends \PHPFUI\HTML5Element
 
 	private ?string $paymentUrl = null;
 
-	private \PHPFUI\Interfaces\Page $page;
-
-	private string $clientId;
-
 	private array $styles = [
 		'layout' => 'vertical',
 		'size' => 'medium',
@@ -27,15 +23,13 @@ class Express extends \PHPFUI\HTML5Element
 
 	private string $type = 'sandbox';
 
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)
+	public function __construct(private \PHPFUI\Interfaces\Page $page, private string $clientId)
 		{
 		parent::__construct('div');
-		$this->page = $page;
-		$this->clientId = $clientId;
 		$this->page->addHeadScript('https://www.paypalobjects.com/api/checkout.js');
 		}
 
-	public function addStyle(string $style, $value = null) : self
+	public function addStyle(string $style, $value = null) : static
 		{
 		if (null === $value)
 			{
@@ -54,42 +48,42 @@ class Express extends \PHPFUI\HTML5Element
 		return $this->styles;
 		}
 
-	public function setErrorUrl(string $url) : self
+	public function setErrorUrl(string $url) : static
 		{
 		$this->errorUrl = $url;
 
 		return $this;
 		}
 
-	public function setExecuteUrl(string $url) : self
+	public function setExecuteUrl(string $url) : static
 		{
 		$this->executeUrl = $url;
 
 		return $this;
 		}
 
-	public function setLogUrl(string $url) : self
+	public function setLogUrl(string $url) : static
 		{
 		$this->logUrl = $url;
 
 		return $this;
 		}
 
-	public function setPaymentUrl(string $url) : self
+	public function setPaymentUrl(string $url) : static
 		{
 		$this->paymentUrl = $url;
 
 		return $this;
 		}
 
-	public function setStyles(array $styles) : self
+	public function setStyles(array $styles) : static
 		{
 		$this->styles = $styles;
 
 		return $this;
 		}
 
-	public function setType(string $type = 'sandbox') : self
+	public function setType(string $type = 'sandbox') : static
 		{
 		$this->type = $type;
 
@@ -100,7 +94,7 @@ class Express extends \PHPFUI\HTML5Element
 		{
 		if (! $this->paymentUrl || ! $this->executeUrl)
 			{
-			throw new \Exception(__CLASS__ . ' payment and / or execute urls are not set');
+			throw new \Exception(self::class . ' payment and / or execute urls are not set');
 			}
 
 		$js = "paypal.Button.render({env:'{$this->type}',commit:true,style:" . \PHPFUI\TextHelper::arrayToJS($this->styles, "'") .

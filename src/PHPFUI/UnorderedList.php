@@ -25,7 +25,7 @@ class UnorderedList extends \PHPFUI\HTMLList
 			}
 		}
 
-	public function addItem(ListItem $item) : HTMLList
+	public function addItem(ListItem $item) : static
 		{
 		if ($this->sortable)
 			{

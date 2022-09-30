@@ -6,7 +6,7 @@ namespace PHPFUI;
  * A container class that conforms to an interface needed by PHPFUI.  The Container class does not impart any html
  * or other formatting, but simply contains items that will be output in the order they were added to the collection.
  */
-class Container implements \Countable, \PHPFUI\Interfaces\Walkable
+class Container implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringable
 	{
 	use \PHPFUI\Traits\Walkable;
 
@@ -37,7 +37,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	 *
 	 * @param string|Base $object need to support output interface or __toString
 	 */
-	public function add($object) : Container
+	public function add(string|\PHPFUI\Base $object) : static
 		{
 		if (null !== $object)
 			{
@@ -52,7 +52,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	 *
 	 * @param mixed $object should be convertable to string
 	 */
-	public function addAsFirst($object) : Container
+	public function addAsFirst(mixed $object) : static
 		{
 		if (null !== $object)
 			{
@@ -75,7 +75,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable
 	 *
 	 * @param string|Base $object need to support output interface or __toString
 	 */
-	public function prepend($object) : Container
+	public function prepend(string|\PHPFUI\Base $object) : Container
 		{
 		return $this->addAsFirst($object);
 		}

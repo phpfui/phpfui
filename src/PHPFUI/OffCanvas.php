@@ -4,17 +4,14 @@ namespace PHPFUI;
 
 class OffCanvas extends \PHPFUI\Base
 	{
-	private \PHPFUI\HTML5Element $mainContent;
-
 	private \PHPFUI\HTML5Element $offCanvas;
 
 	private array $offCanvasCollection = [];
 
 	private bool $wrapper = false;
 
-	public function __construct(\PHPFUI\HTML5Element $mainContent)
+	public function __construct(private \PHPFUI\HTML5Element $mainContent)
 		{
-		$this->mainContent = $mainContent;
 		$this->offCanvas = new \PHPFUI\HTML5Element('div');
 		$this->offCanvas->addClass('off-canvas');
 		$this->offCanvas->addAttribute('data-off-canvas');
@@ -41,7 +38,7 @@ class OffCanvas extends \PHPFUI\Base
 		return $id;
 		}
 
-	public function addWrapper() : OffCanvas
+	public function addWrapper() : static
 		{
 		$this->wrapper = true;
 
@@ -56,7 +53,7 @@ class OffCanvas extends \PHPFUI\Base
 	 * @param string $position one of ['left', 'right', 'top',
 	 *               'bottom']
 	 */
-	public function setPosition(string $id, string $position) : OffCanvas
+	public function setPosition(string $id, string $position) : static
 		{
 		$this->validateId($id);
 		$positions = ['left',
@@ -81,7 +78,7 @@ class OffCanvas extends \PHPFUI\Base
 	 *               added.
 	 * @param string $transition one of ['over', 'push']
 	 */
-	public function setTransition(string $id, string $transition) : OffCanvas
+	public function setTransition(string $id, string $transition) : static
 		{
 		$this->validateId($id);
 		$transitions = ['over',
@@ -136,11 +133,11 @@ class OffCanvas extends \PHPFUI\Base
 		return '';
 		}
 
-	private function validateId(string $id) : OffCanvas
+	private function validateId(string $id) : static
 		{
 		if (! isset($this->offCanvasCollection[$id]))
 			{
-			throw new \Exception(__CLASS__ . ": OffCanvas id ({$id}) is not valid");
+			throw new \Exception(self::class . ": OffCanvas id ({$id}) is not valid");
 			}
 
 		return $this;

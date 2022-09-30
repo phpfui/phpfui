@@ -51,7 +51,7 @@ class Link extends \PHPFUI\HTML5Element
 			}
 		else
 			{
-			if (false === \strpos($link, '//'))
+			if (! \str_contains($link, '//'))
 				{
 				$link = "https://{$link}";
 				}

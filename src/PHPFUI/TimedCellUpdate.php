@@ -7,10 +7,6 @@ namespace PHPFUI;
  */
 class TimedCellUpdate extends \PHPFUI\Base
 	{
-	protected $callback;
-
-	protected string $callbackId;
-
 	private static int $callbackNumber = 0;
 
 	/**
@@ -26,12 +22,10 @@ class TimedCellUpdate extends \PHPFUI\Base
 	 * @param string $offString if the callback returns this string, the timer will be turned off.
 	 *  						 Default is blank, so if the callback returns blank, the timer is turned off.
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $callbackId, callable $callback, int $timeoutSeconds = 30, string $offString = '')
+	public function __construct(\PHPFUI\Interfaces\Page $page, protected string $callbackId, protected $callback, int $timeoutSeconds = 30, string $offString = '')
 		{
 		parent::__construct();
-		$this->callbackId = $callbackId;
-		$this->callback = $callback;
-		$cbn = \str_replace('\\', '', __CLASS__ . (++self::$callbackNumber));
+		$cbn = \str_replace('\\', '', self::class . (++self::$callbackNumber));
 		$timeoutSeconds *= 1000;
 		$csrf = \PHPFUI\Session::csrf();
 		$csrfField = \PHPFUI\Session::csrfField();

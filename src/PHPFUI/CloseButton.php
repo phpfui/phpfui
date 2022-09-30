@@ -27,7 +27,7 @@ class CloseButton extends \PHPFUI\Button
 			{
 			if (! \PHPFUI\Animation::isValid($closeAction))
 				{
-				throw new \Exception(__CLASS__ . ": {$closeAction} is not a valid annimation type");
+				throw new \Exception(self::class . ": {$closeAction} is not a valid annimation type");
 				}
 			}
 

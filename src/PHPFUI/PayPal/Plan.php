@@ -16,7 +16,7 @@ class Plan extends \PHPFUI\PayPal\Base
 		'quantity_supported' => 'boolean',
 	];
 
-	public function addBillingCycle(BillingCycle $billing_cycle) : self
+	public function addBillingCycle(BillingCycle $billing_cycle) : static
 		{
 		$this->billing_cycles[] = $billing_cycle;
 

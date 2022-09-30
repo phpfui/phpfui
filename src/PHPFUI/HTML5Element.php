@@ -357,7 +357,7 @@ class HTML5Element extends \PHPFUI\Base
 			{
 			$type = \gettype($tip);
 
-			if ('string' == $type || ('object' == $type && \get_class($tip) == __NAMESPACE__ . '\ToolTip'))
+			if ('string' == $type || ('object' == $type && $tip::class == __NAMESPACE__ . '\ToolTip'))
 				{
 				$this->tooltip = $tip;
 				}
@@ -457,7 +457,7 @@ class HTML5Element extends \PHPFUI\Base
 		{
 		$returnValue = clone $to;
 
-		/** @phpstan-ignore-next-line */
+		// @phpstan-ignore-next-line
 		foreach ($to as $key => $value)
 			{
 			$returnValue->{$key} = $from->{$key};

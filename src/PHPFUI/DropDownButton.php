@@ -33,7 +33,7 @@ class DropDownButton extends \PHPFUI\Button
 		return $this->addMenuItem(new \PHPFUI\MenuItem($name, $link));
 		}
 
-	public function addMenuItem(MenuItem $item) : DropDownButton
+	public function addMenuItem(MenuItem $item) : static
 		{
 		$this->maxLength = \max($this->maxLength, \strlen($item->getName()));
 		$this->items[$item->getName()] = $item;
@@ -52,7 +52,7 @@ class DropDownButton extends \PHPFUI\Button
 	/**
 	 * Sort the drop down items by name
 	 */
-	public function sort() : DropDownButton
+	public function sort() : static
 		{
 		$this->sorted = true;
 

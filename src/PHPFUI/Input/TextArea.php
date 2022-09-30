@@ -28,7 +28,7 @@ class TextArea extends \PHPFUI\Input\Input
 	 *
 	 * @param \PHPFUI\Interfaces\Page $page requires JS
 	 */
-	public function htmlEditing(\PHPFUI\Interfaces\Page $page, \PHPFUI\Interfaces\HTMLEditor $model) : TextArea
+	public function htmlEditing(\PHPFUI\Interfaces\Page $page, \PHPFUI\Interfaces\HTMLEditor $model) : static
 		{
 		$id = $this->getId();
 		$model->updatePage($page, $id);
@@ -41,7 +41,7 @@ class TextArea extends \PHPFUI\Input\Input
 	 *
 	 * @param int $rows default 10
 	 */
-	public function setRows(int $rows = 10) : TextArea
+	public function setRows(int $rows = 10) : static
 		{
 		$this->rows = $rows;
 

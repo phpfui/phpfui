@@ -11,18 +11,15 @@ class SlickSlider extends \PHPFUI\HTML5Element
 
 	private array $attributes = [];
 
-	private \PHPFUI\Interfaces\Page $page;
-
 	private array $slides = [];
 
 	/**
 	 * @param \PHPFUI\Interfaces\Page $page to add JS
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page)
+	public function __construct(private \PHPFUI\Interfaces\Page $page)
 		{
 		parent::__construct('div');
 		$this->addClass('slick-slider');
-		$this->page = $page;
 		$page->addStyleSheet('slick/slick.css');
 		$page->addTailScript('slick/slick.min.js');
 		}
@@ -52,7 +49,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 	/**
 	 * Add a free form slide of html
 	 */
-	public function addSlide(string $html) : SlickSlider
+	public function addSlide(string $html) : static
 		{
 		$this->slides[] = $html;
 
@@ -64,7 +61,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 	 *
 	 * @param mixed $value of any type
 	 */
-	public function addSliderAttribute(string $attribute, $value = '') : Base
+	public function addSliderAttribute(string $attribute, mixed $value = '') : static
 		{
 		$this->attributes[$attribute] = $value;
 

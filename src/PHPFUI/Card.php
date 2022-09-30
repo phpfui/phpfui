@@ -20,7 +20,7 @@ class Card extends \PHPFUI\HTML5Element
 		return $this->addSection($text, 'image');
 		}
 
-	public function addSection(string $text, string $type = 'section') : Card
+	public function addSection(string $text, string $type = 'section') : static
 		{
 		$div = new \PHPFUI\HTML5Element('div');
 		$div->addClass('card-' . $type);

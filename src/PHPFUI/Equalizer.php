@@ -23,7 +23,7 @@ class Equalizer extends \PHPFUI\HTML5Element
 		$this->addAttribute('data-equalizer', $this->watchId);
 		}
 
-	public function addColumn(\PHPFUI\HTML5Element $element, string $columnWidthClass = 'medium-4') : Equalizer
+	public function addColumn(\PHPFUI\HTML5Element $element, string $columnWidthClass = 'medium-4') : static
 		{
 		$element->addAttribute('data-equalizer-watch', $this->watchId);
 		$cell = new \PHPFUI\Cell();
@@ -34,7 +34,7 @@ class Equalizer extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function addElement(\PHPFUI\HTML5Element $element) : Equalizer
+	public function addElement(\PHPFUI\HTML5Element $element) : static
 		{
 		$element->addAttribute('data-equalizer-watch', $this->watchId);
 		$this->add($element);

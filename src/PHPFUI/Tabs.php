@@ -10,15 +10,12 @@ class Tabs extends \PHPFUI\Base
 
 	private ?\PHPFUI\UnorderedList $tabSection = null;
 
-	private bool $vertical = false;
-
 	/**
 	 * @param bool $vertical default false, pass true for a vertical tab structure
 	 */
-	public function __construct(bool $vertical = false)
-		{
-		$this->vertical = $vertical;
-		}
+	public function __construct(private bool $vertical = false)
+ {
+ }
 
 	/**
 	 * @param string $tabText to display on the tab
@@ -26,7 +23,7 @@ class Tabs extends \PHPFUI\Base
 	 *                         selected, can be any Base or plain html
 	 * @param bool $active optional, default false
 	 */
-	public function addTab(string $tabText, string $content, bool $active = false) : Tabs
+	public function addTab(string $tabText, string $content, bool $active = false) : static
 		{
 		$this->tabs[$tabText] = ['content' => $content,
 			'active' => $active, ];

@@ -4,42 +4,33 @@ namespace PHPFUI;
 
 class BlockGrid extends \PHPFUI\HTML5Element
 	{
-	protected int $large = 0;
-
-	protected int $medium = 0;
-
-	protected int $small = 0;
-
-	public function __construct(int $small = 0, int $medium = 0, int $large = 0)
+	public function __construct(protected int $small = 0, protected int $medium = 0, protected int $large = 0)
 		{
 		parent::__construct('ul');
-		$this->small = $small;
-		$this->medium = $medium;
-		$this->large = $large;
 		}
 
-	public function addBlock(string $text) : BlockGrid
+	public function addBlock(string $text) : static
 		{
 		$this->add("<li>{$text}</li>");
 
 		return $this;
 		}
 
-	public function setLarge(int $number) : BlockGrid
+	public function setLarge(int $number) : static
 		{
 		$this->large = $number;
 
 		return $this;
 		}
 
-	public function setMedium(int $number) : BlockGrid
+	public function setMedium(int $number) : static
 		{
 		$this->medium = $number;
 
 		return $this;
 		}
 
-	public function setSmall(int $number) : BlockGrid
+	public function setSmall(int $number) : static
 		{
 		$this->small = $number;
 

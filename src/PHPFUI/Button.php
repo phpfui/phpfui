@@ -10,8 +10,6 @@ class Button extends \PHPFUI\HTML5Element
 	{
 	protected string $link = '';
 
-	protected string $text = '';
-
 	private bool $started = false;
 
 	/**
@@ -20,7 +18,7 @@ class Button extends \PHPFUI\HTML5Element
 	 * @param string $text of button
 	 * @param string $link if needed
 	 */
-	public function __construct(string $text, string $link = '')
+	public function __construct(protected string $text, string $link = '')
 		{
 		if ($link)
 			{
@@ -33,7 +31,6 @@ class Button extends \PHPFUI\HTML5Element
 			}
 
 		$this->link = $link;
-		$this->text = $text;
 		$this->addClass('button');
 		}
 
@@ -56,7 +53,7 @@ class Button extends \PHPFUI\HTML5Element
 	/**
 	 * set the button link
 	 */
-	public function setLink(string $link) : self
+	public function setLink(string $link) : static
 		{
 		$this->link = $link;
 
@@ -66,7 +63,7 @@ class Button extends \PHPFUI\HTML5Element
 	/**
 	 * set the button text
 	 */
-	public function setText(string $text) : self
+	public function setText(string $text) : static
 		{
 		$this->text = $text;
 
@@ -78,7 +75,7 @@ class Button extends \PHPFUI\HTML5Element
 	 *
 	 * @param bool $disabled defaults to true
 	 */
-	public function setDisabled(bool $disabled = true) : Button
+	public function setDisabled(bool $disabled = true) : static
 		{
 		if ($disabled)
 			{

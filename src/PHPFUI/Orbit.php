@@ -32,7 +32,7 @@ class Orbit extends \PHPFUI\HTML5Element
 		$this->bullets->addClass('orbit-bullets');
 		}
 
-	public function addHTMLSlide(\PHPFUI\HTML5Element $html, bool $active = false) : Orbit
+	public function addHTMLSlide(\PHPFUI\HTML5Element $html, bool $active = false) : static
 		{
 		$item = new \PHPFUI\ListItem();
 		$item->addClass('orbit-slide');
@@ -51,7 +51,7 @@ class Orbit extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function addImageSlide(Image $image, string $caption = '', bool $active = false) : Orbit
+	public function addImageSlide(Image $image, string $caption = '', bool $active = false) : static
 		{
 		$item = new \PHPFUI\ListItem();
 		$item->addClass('orbit-slide');
@@ -91,14 +91,14 @@ class Orbit extends \PHPFUI\HTML5Element
 		return $this->controls;
 		}
 
-	public function noBullets() : Orbit
+	public function noBullets() : static
 		{
 		$this->bullets = null;
 
 		return $this;
 		}
 
-	public function setAnimation(string $inLeft = 'slide-in-right', string $inRight = 'slide-in-left', string $outLeft = 'slide-out-left', string $outRight = 'slide-out-right') : Orbit
+	public function setAnimation(string $inLeft = 'slide-in-right', string $inRight = 'slide-in-left', string $outLeft = 'slide-out-left', string $outRight = 'slide-out-right') : static
 		{
 		$this->animation = "animInFromLeft:{$inLeft};animInFromRight:{$inRight};animOutToLeft:{$outLeft};animOutToRight:{$outRight};";
 

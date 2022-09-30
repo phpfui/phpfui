@@ -32,7 +32,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Add an item to the right side after previously added item.
 	 */
-	public function addRight($item) : Bar
+	public function addRight($item) : static
 		{
 		$this->right[] = $item;
 
@@ -42,7 +42,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Add an item on the the left before any previously added items
 	 */
-	public function pushLeft($item) : Bar
+	public function pushLeft($item) : static
 		{
 		$this->left[] = $item;
 
@@ -52,7 +52,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Adds an item before the other items on the right.
 	 */
-	public function pushRight($item) : Bar
+	public function pushRight($item) : static
 		{
 		$this->right[] = $item;
 

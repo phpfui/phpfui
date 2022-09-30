@@ -50,7 +50,7 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 	 *
 	 *
 	 */
-	public function add($object) : MultiColumn
+	public function add($object) : static
 		{
 		$this->objects[] = $object;
 

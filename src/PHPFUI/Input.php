@@ -9,13 +9,9 @@ class Input extends \PHPFUI\HTML5Element
 	{
 	protected bool $disabled = false;
 
-	protected string $name = '';
-
 	protected string $placeholder = '';
 
 	protected string $type = '';
-
-	protected ?string $value = '';
 
 	private static array $validInputs = [
 		'button',
@@ -52,11 +48,9 @@ class Input extends \PHPFUI\HTML5Element
 	 *
 	 * @throws \Exception if an invalid input type or a specific class exists for an input type like Date
 	 */
-	public function __construct(string $type, string $name, ?string $value = '')
+	public function __construct(string $type, protected string $name, protected ?string $value = '')
 		{
 		parent::__construct('input');
-		$this->name = $name;
-		$this->value = $value;
 		$this->type = \strtolower($type);
 
 		if (! \in_array($type, self::$validInputs))
@@ -108,7 +102,7 @@ class Input extends \PHPFUI\HTML5Element
 	/**
 	 * Set disabled
 	 */
-	public function setDisabled(bool $disabled = true) : Input
+	public function setDisabled(bool $disabled = true) : static
 		{
 		if ($disabled)
 			{
@@ -122,14 +116,14 @@ class Input extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function setName(string $name) : Input
+	public function setName(string $name) : static
 		{
 		$this->name = $name;
 
 		return $this;
 		}
 
-	public function setPlaceholder(string $placeholder) : Input
+	public function setPlaceholder(string $placeholder) : static
 		{
 		$this->placeholder = $placeholder;
 
@@ -139,7 +133,7 @@ class Input extends \PHPFUI\HTML5Element
 	/**
 	 * Set the initial value of the input field
 	 */
-	public function setValue(string $value) : Input
+	public function setValue(string $value) : static
 		{
 		$this->value = $value;
 

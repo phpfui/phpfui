@@ -7,7 +7,7 @@ namespace PHPFUI;
  *
  * Overrides string output for easy output and concatination
  */
-abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
+abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringable
 	{
 	use \PHPFUI\Traits\Walkable;
 
@@ -52,10 +52,8 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 * Base add function.  Adds to the end of the current objects
 	 *
 	 * @param mixed $item should be convertable to string
-	 *
-	 * @return Base
 	 */
-	public function add($item)
+	public function add($item) : static
 		{
 		if (null !== $item)
 			{
@@ -70,10 +68,8 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 * object
 	 *
 	 * @param mixed $item should be convertable to string
-	 *
-	 * @return Base
 	 */
-	public function addAsFirst($item)
+	public function addAsFirst(mixed $item) : static
 		{
 		if (null !== $item)
 			{
@@ -94,7 +90,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	/**
 	 * Form is done rendering
 	 */
-	public function done(bool $done = true) : Base
+	public function done(bool $done = true) : static
 		{
 		self::$done = $done;
 
@@ -133,7 +129,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	/**
 	 * Add an object in front of existing object
 	 */
-	public function prepend($item) : Base
+	public function prepend($item) : static
 		{
 		\array_unshift($this->items, $item);
 
@@ -158,7 +154,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	/**
 	 * Sets the page response directly
 	 */
-	public function setRawResponse(string $response, bool $asJSON = true) : Base
+	public function setRawResponse(string $response, bool $asJSON = true) : static
 		{
 		if (! $this->isDone())
 			{
@@ -180,11 +176,11 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 	 * @param string $response to return
 	 * @param string $color used for the save button
 	 */
-	public function setResponse(string $response, string $color = 'lime') : Base
+	public function setResponse(string $response, string $color = 'lime') : static
 		{
 		if (! $this->isDone())
 			{
-			$this->setRawResponse(\json_encode(['response' => $response, 'color' => $color, ]));
+			$this->setRawResponse(\json_encode(['response' => $response, 'color' => $color, ], JSON_THROW_ON_ERROR));
 			}
 
 		return $this;

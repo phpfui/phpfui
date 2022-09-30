@@ -13,7 +13,7 @@ class GridX extends \PHPFUI\HTML5Element
 		$this->addClass('grid-x');
 		}
 
-	public function setMargin() : GridX
+	public function setMargin() : static
 		{
 		$this->addClass('grid-margin-x');
 

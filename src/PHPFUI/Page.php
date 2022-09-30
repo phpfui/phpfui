@@ -32,7 +32,7 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	 * $page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');
 	 * $page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
 	 */
-	public function addPluginDefault(string $pluginName, string $property, string $value) : self
+	public function addPluginDefault(string $pluginName, string $property, string $value) : static
 		{
 		$this->plugins[$pluginName][$property] = $value;
 
@@ -59,7 +59,7 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	 *
 	 * @param Reveal $reveal dialog to store in the page
 	 */
-	public function addReveal(Reveal $reveal) : Page
+	public function addReveal(Reveal $reveal) : static
 		{
 		$this->reveals[] = $reveal;
 

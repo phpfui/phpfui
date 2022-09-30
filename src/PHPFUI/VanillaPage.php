@@ -75,7 +75,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Add to the body element directly
 	 */
-	public function add($item)
+	public function add($item) : static
 		{
 		$this->body->add($item);
 

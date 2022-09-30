@@ -12,8 +12,6 @@ class AutoComplete extends \PHPFUI\Input\Input
 	{
 	use \PHPFUI\Traits\Page;
 
-	protected $callback;
-
 	protected string $className;
 
 	protected \PHPFUI\Input\Hidden $hidden;
@@ -21,8 +19,6 @@ class AutoComplete extends \PHPFUI\Input\Input
 	protected bool $noFreeForm = false;
 
 	protected array $options = [];
-
-	protected \PHPFUI\Page $page;
 
 	/**
 	 * Construct a AutoComplete.
@@ -58,28 +54,25 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 * @param ?string $value initial value, optional
 	 *
 	 */
-	public function __construct(\PHPFUI\Page $page, callable $callback, string $type, string $name, ?string $label = null, ?string $value = null)
+	public function __construct(protected \PHPFUI\Page $page, protected $callback, string $type, string $name, ?string $label = null, ?string $value = null)
 		{
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
 		$name .= 'Text';
 		parent::__construct($type, $name, $label, $value);
 		$this->hidden->setId($this->getId() . 'hidden');
 		$this->add($this->hidden);
-		$this->className = \basename(__CLASS__);
+		$this->className = \basename(self::class);
 
 		if (false !== ($pos = \strrpos($this->className, '\\')))
 			{
 			$this->className = \substr($this->className, $pos + 1);
 			}
-
-		$this->page = $page;
 		$this->page->addTailScript('jquery.autocomplete.js');
-		$this->callback = $callback;
 		$this->addAttribute('autocomplete', 'off');
 
 		if (isset($_POST[$this->className]) && \PHPFUI\Session::checkCSRF() && $_POST['fieldName'] == $name)
 			{
-			$returnValue = \json_encode(\call_user_func($this->callback, $_POST));
+			$returnValue = \json_encode(\call_user_func($this->callback, $_POST), JSON_THROW_ON_ERROR);
 
 			if ($returnValue)
 				{

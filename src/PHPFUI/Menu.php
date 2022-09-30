@@ -20,7 +20,7 @@ class Menu extends \PHPFUI\HTML5Element
 		$this->addClass('menu');
 		}
 
-	public function addMenuItem(MenuItem $item) : Menu
+	public function addMenuItem(MenuItem $item) : static
 		{
 		$name = $item->getName() . ':' . \count($this->menuItems);
 		$this->menuItems[$name] = $item;
@@ -29,7 +29,7 @@ class Menu extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function addSubMenu(MenuItem $item, Menu $subMenu) : Menu
+	public function addSubMenu(MenuItem $item, Menu $subMenu) : static
 		{
 		$subMenu->addClass('nested');
 		$name = $item->getName() . ':' . \count($this->menuItems);
@@ -113,7 +113,7 @@ class Menu extends \PHPFUI\HTML5Element
 	/**
 	 * @param string $type must one of top, right, bottom, left
 	 */
-	public function setIconAlignment(string $type) : Menu
+	public function setIconAlignment(string $type) : static
 		{
 		$types = ['top',
 			'right',
@@ -135,7 +135,7 @@ class Menu extends \PHPFUI\HTML5Element
 	/**
 	 * Sort the menu by name displayed to the user.
 	 */
-	public function sort() : Menu
+	public function sort() : static
 		{
 		$this->sorted = true;
 		\ksort($this->menuItems);

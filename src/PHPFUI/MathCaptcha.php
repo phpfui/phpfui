@@ -28,10 +28,10 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 
 		for ($i = 0; $i < 10; ++$i)
 			{
-			$operator = \mt_rand(0, 2);
-			$type = \mt_rand(0, 1);
-			$first = \mt_rand(1, $limit);
-			$second = \mt_rand(1, $limit);
+			$operator = \random_int(0, 2);
+			$type = \random_int(0, 1);
+			$first = \random_int(1, $limit);
+			$second = \random_int(1, $limit);
 
 			if ($first < $second)
 				{
@@ -67,7 +67,7 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 
 			$op = $type ? \current($this->operators) : \key($this->operators);
 
-			$message = new \PHPFUI\HTML5Element(\mt_rand(0, 1) ? 'strong' : 'b');
+			$message = new \PHPFUI\HTML5Element(\random_int(0, 1) ? 'strong' : 'b');
 			$message->add("Please Solve: {$first} {$op} {$second} = ");
 			$message->addClass('float-right hide');
 			$answers[$message->getId()] = $answer;
@@ -75,7 +75,7 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 			}
 		$this->add($container);
 
-		$oneToShow = \mt_rand(0, 9);
+		$oneToShow = \random_int(0, 9);
 
 		for ($i = 0; $i < $oneToShow; ++$i)
 			{

@@ -19,14 +19,14 @@ class Sticky extends \PHPFUI\HTML5Element
 		$parent->addAttribute('data-sticky-container');
 		}
 
-	public function addBottomAnchor(string $anchor) : Sticky
+	public function addBottomAnchor(string $anchor) : static
 		{
 		$this->setAttribute('data-btm-anchor', "{$anchor}:top");
 
 		return $this;
 		}
 
-	public function addTopAnchor(string $anchor) : Sticky
+	public function addTopAnchor(string $anchor) : static
 		{
 		$this->setAttribute('data-top-anchor', "{$anchor}:top");
 

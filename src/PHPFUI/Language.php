@@ -28,11 +28,11 @@ class Language
 	public static string $dropRowHere = 'Drop Row Here';
 
 	// SortableTable
-	public static $sortIcon = null;
+	public static ?\PHPFUI\FAIcon $sortIcon = null;
 
-	public static $sortDownIcon = null;
+	public static ?\PHPFUI\FAIcon $sortDownIcon = null;
 
-	public static $sortUpIcon = null;
+	public static ?\PHPFUI\FAIcon $sortUpIcon = null;
 
 	// Pagination
 	public static string $next = 'Next';
@@ -75,6 +75,6 @@ class Language
 			return static::$sortDownIcon;
 			}
 
-		throw new \Exception('Invalid icon type in ' . __CLASS__);
+		throw new \Exception('Invalid icon type in ' . self::class);
 		}
 	}

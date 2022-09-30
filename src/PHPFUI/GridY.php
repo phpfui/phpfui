@@ -14,7 +14,7 @@ class GridY extends \PHPFUI\HTML5Element
 		$this->addAttribute('style', "height:{$height};");
 		}
 
-	public function setMargin() : GridY
+	public function setMargin() : static
 		{
 		$this->addClass('grid-margin-y');
 

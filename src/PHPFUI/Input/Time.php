@@ -58,7 +58,7 @@ class Time extends \PHPFUI\Input\Input
 	/**
 	 * If you place a Time control in a Reveal, you must call **setParentReveal** with the reveal, otherwise closing the time dialog will also close the parent Reveal
 	 */
-	public function setParentReveal(\PHPFUI\Reveal $reveal) : self
+	public function setParentReveal(\PHPFUI\Reveal $reveal) : static
 		{
 		$this->options['reveal'] = $reveal->getId();
 
@@ -109,7 +109,7 @@ class Time extends \PHPFUI\Input\Input
 					break;
 				}
 
-			if (false !== \strpos($ampm, 'P'))
+			if (\str_contains($ampm, 'P'))
 				{
 				$hour += 12;
 				}

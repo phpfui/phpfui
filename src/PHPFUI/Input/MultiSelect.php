@@ -33,7 +33,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 	 *              options previously set. If not an array, then
 	 *              just preselect the one value.
 	 */
-	public function select($selections) : Select
+	public function select($selections) : static
 		{
 		if (! \is_array($selections))
 			{
@@ -61,7 +61,7 @@ class MultiSelect extends \PHPFUI\Input\Select
 	/**
 	 * Set the number of columns across
 	 */
-	public function setColumns(int $numberColumns = 1, int $gridSize = 12) : MultiSelect
+	public function setColumns(int $numberColumns = 1, int $gridSize = 12) : static
 		{
 		$this->gridSize = $gridSize;
 		$this->numberColumns = $numberColumns;

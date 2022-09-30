@@ -10,7 +10,7 @@ class Amount extends \PHPFUI\PayPal\Base
 		'breakdown' => \PHPFUI\PayPal\Breakdown::class,
 	];
 
-	public function setCurrency(Currency $currency) : self
+	public function setCurrency(Currency $currency) : static
 		{
 		foreach ($currency->getData() as $field => $value)
 			{

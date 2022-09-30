@@ -56,7 +56,7 @@ class Table extends \PHPFUI\HTML5Element
 	/**
 	 * Allow arrow keys to move up and down rows with edit controls in them.
 	 */
-	public function addArrowNavigation(\PHPFUI\Interfaces\Page $page) : Table
+	public function addArrowNavigation(\PHPFUI\Interfaces\Page $page) : static
 		{
 		$page->addTailScript('jquery.arrow_nav.js');
 		$this->addClass('arrow-nav');
@@ -71,7 +71,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * @param array $attributePairs to add. Example: ['style' =>
 	 *    'text-align:center;']
 	 */
-	public function addColumnAttribute(string $column, array $attributePairs) : Table
+	public function addColumnAttribute(string $column, array $attributePairs) : static
 		{
 		if (! isset($this->columnAttributes[$column]))
 			{
@@ -97,7 +97,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * @param string $field column name
 	 * @param string $footer name displayed to user
 	 */
-	public function addFooter(string $field, string $footer) : Table
+	public function addFooter(string $field, string $footer) : static
 		{
 		$this->footers[$field] = $footer;
 
@@ -110,7 +110,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * @param string $field column name
 	 * @param string $header name displayed to user
 	 */
-	public function addHeader(string $field, string $header) : Table
+	public function addHeader(string $field, string $header) : static
 		{
 		$this->headers[$field] = $header;
 
@@ -122,7 +122,7 @@ class Table extends \PHPFUI\HTML5Element
 	 *
 	 * @param string $field column name
 	 */
-	public function deleteHeader(string $field) : Table
+	public function deleteHeader(string $field) : static
 		{
 		unset($this->headers[$field]);
 
@@ -132,7 +132,7 @@ class Table extends \PHPFUI\HTML5Element
 	/**
 	 * You can add any attribute to the next row (tr) that you want.  This only applies to the next row to be output and is reset for the next row.
 	 */
-	public function addNextRowAttribute(string $attribute, string $value) : Table
+	public function addNextRowAttribute(string $attribute, string $value) : static
 		{
 		$this->nextRowAttributes[$attribute][] = $value;
 
@@ -148,7 +148,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * @param array $colspans are optional, but positional and need not
 	 *                            correspond to the $row indexes
 	 */
-	public function addRow(array $row, array $colspans = []) : Table
+	public function addRow(array $row, array $colspans = []) : static
 		{
 		$this->rows[] = $row;
 		$this->colspans[] = $colspans;
@@ -169,7 +169,7 @@ class Table extends \PHPFUI\HTML5Element
 	/**
 	 * Turn off headers by passing false
 	 */
-	public function displayHeaders(bool $display = true) : Table
+	public function displayHeaders(bool $display = true) : static
 		{
 		$this->displayHeaders = $display;
 
@@ -187,7 +187,7 @@ class Table extends \PHPFUI\HTML5Element
 	/**
 	 * By default, tables will not output if they have no rows
 	 */
-	public function setAlwaysOutput(bool $alwaysOutput = true) : Table
+	public function setAlwaysOutput(bool $alwaysOutput = true) : static
 		{
 		$this->alwaysOutput = $alwaysOutput;
 
@@ -197,7 +197,7 @@ class Table extends \PHPFUI\HTML5Element
 	/**
 	 * Set the table caption
 	 */
-	public function setCaption(string $caption) : Table
+	public function setCaption(string $caption) : static
 		{
 		$this->caption = $caption;
 
@@ -208,7 +208,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * Set the footers for the table. Array indexes should
 	 * correspond to the row indexs.
 	 */
-	public function setFooters(array $footers) : Table
+	public function setFooters(array $footers) : static
 		{
 		$this->footers = $footers;
 
@@ -221,7 +221,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * @param array $headers where index corresponds to the indexes
 	 *                        used for the rows to be added
 	 */
-	public function setHeaders(array $headers) : Table
+	public function setHeaders(array $headers) : static
 		{
 		$this->headers = [];
 
@@ -245,7 +245,7 @@ class Table extends \PHPFUI\HTML5Element
 	 *
 	 * $key should be the index into the row array that uniquely identifies the row in the table.
 	 */
-	public function setRecordId(string $key) : Table
+	public function setRecordId(string $key) : static
 		{
 		$this->recordId = $key;
 
@@ -255,7 +255,7 @@ class Table extends \PHPFUI\HTML5Element
 	/**
 	 * Set all the rows for a table
 	 */
-	public function setRows(array $rows) : Table
+	public function setRows(array $rows) : static
 		{
 		$this->rows = $rows;
 
@@ -267,7 +267,7 @@ class Table extends \PHPFUI\HTML5Element
 	 * have a index corresponding to a header.  Useful for
 	 * debugging.
 	 */
-	public function setStrict(bool $strict = true) : Table
+	public function setStrict(bool $strict = true) : static
 		{
 		$this->strict = $strict;
 
@@ -283,7 +283,7 @@ class Table extends \PHPFUI\HTML5Element
 	 *              not need the keys to correspond to the column
 	 *              names.
 	 */
-	public function setWidths(array $widths) : Table
+	public function setWidths(array $widths) : static
 		{
 		$this->widths = $widths;
 

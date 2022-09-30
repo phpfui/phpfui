@@ -10,7 +10,7 @@ class MediaObject extends \PHPFUI\HTML5Element
 		$this->addClass('media-object');
 		}
 
-	public function addSection(string $content, bool $main = false, string $alignment = '') : MediaObject
+	public function addSection(string $content, bool $main = false, string $alignment = '') : static
 		{
 		$section = new \PHPFUI\HTML5Element('div');
 		$section->addClass('media-object-section');
@@ -43,7 +43,7 @@ class MediaObject extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function stackForSmall() : MediaObject
+	public function stackForSmall() : static
 		{
 		$this->addClass('stack-for-small');
 

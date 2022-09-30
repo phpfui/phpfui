@@ -24,7 +24,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 	/**
 	 * Add a optional button
 	 */
-	public function addButton(RadioTableCell $button) : RadioTable
+	public function addButton(RadioTableCell $button) : static
 		{
 		$button->setParent($this);
 		$this->buttons[$button->getName()] = $button;
@@ -32,7 +32,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 		return $this;
 		}
 
-	public function addClassesToTable(Table $table) : RadioTable
+	public function addClassesToTable(Table $table) : static
 		{
 		foreach (\array_keys($this->buttons) as $name)
 			{

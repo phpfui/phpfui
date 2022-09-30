@@ -4,17 +4,11 @@ namespace PHPFUI;
 
 class Pagination extends \PHPFUI\HTML5Element
 	{
-	private string $baseUrl;
-
 	private int $ff = 0;
 
 	private string $next = 'Next';
 
-	private int $of;
-
 	private string $onPage;
-
-	private int $page;
 
 	private string $pageText;
 
@@ -36,12 +30,9 @@ class Pagination extends \PHPFUI\HTML5Element
 	 * @param string $baseUrl for navigation. The string 'PAGE'
 	 *                         will be replaced by the current page number
 	 */
-	public function __construct(int $page, int $of, string $baseUrl)
+	public function __construct(private int $page, private int $of, private string $baseUrl)
 		{
 		parent::__construct('nav');
-		$this->page = $page;
-		$this->of = $of;
-		$this->baseUrl = $baseUrl;
 		$this->addAttribute('aria-label', 'Pagination');
 		$this->ul = new \PHPFUI\UnorderedList();
 		$this->ul->addClass('pagination');
@@ -54,7 +45,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	/**
 	 * By default, if there is only one page, they paginator will not be shown.  Set to true to get a one page paginator.
 	 */
-	public function alwaysShow(bool $alwaysShow = true) : self
+	public function alwaysShow(bool $alwaysShow = true) : static
 		{
 		$this->alwaysShow = $alwaysShow;
 
@@ -64,7 +55,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	/**
 	 * Center the paginator
 	 */
-	public function center() : Pagination
+	public function center() : static
 		{
 		$this->ul->addClass('text-center');
 
@@ -74,7 +65,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	/**
 	 * Set the fast forward number.  Defaults to no fast forward.
 	 */
-	public function setFastForward(int $ff = 0) : Pagination
+	public function setFastForward(int $ff = 0) : static
 		{
 		$this->ff = $ff;
 
@@ -84,7 +75,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	/**
 	 * Set the next pointer text
 	 */
-	public function setNext(string $next = 'Next') : Pagination
+	public function setNext(string $next = 'Next') : static
 		{
 		$this->next = $next;
 
@@ -94,7 +85,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	/**
 	 * Set the previous pointer text
 	 */
-	public function setPrevious(string $previous = 'Previous') : Pagination
+	public function setPrevious(string $previous = 'Previous') : static
 		{
 		$this->previous = $previous;
 
@@ -105,7 +96,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	 * Set the window size. Number of items on each side of the
 	 * current page
 	 */
-	public function setWindow(int $window) : Pagination
+	public function setWindow(int $window) : static
 		{
 		$this->window = $window;
 

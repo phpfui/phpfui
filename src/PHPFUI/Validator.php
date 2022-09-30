@@ -4,8 +4,6 @@ namespace PHPFUI;
 
 class Validator
 	{
-	protected string $validatorName;
-
 	protected string $functionName;
 
 	protected string $javaScript;
@@ -23,9 +21,8 @@ class Validator
 	 * @param string $validatorName is the validator name used in HTML markup
 	 * @param string $javaScriptFunction called to do the validation
 	 */
-	public function __construct(string $validatorName, string $javaScriptFunction = '')
+	public function __construct(protected string $validatorName, string $javaScriptFunction = '')
 		{
-		$this->validatorName = $validatorName;
 		$this->setJavaScript($javaScriptFunction);
 		}
 

@@ -12,10 +12,8 @@ trait Walkable
 	 *
 	 * @param string $method to call on the object in the collection
 	 * @param mixed $argument to pass to the method
-	 *
-	 * @return $this
 	 */
-	public function walk(string $method, $argument = null)
+	public function walk(string $method, mixed $argument = null) : static
 		{
 		foreach ($this->items as $item)
 			{

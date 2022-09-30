@@ -24,11 +24,8 @@ class KitchenSink
 
 	private array $lines = [];
 
-	private \PHPFUI\Page $page;
-
-	public function __construct(\PHPFUI\Page $page)
+	public function __construct(private \PHPFUI\Page $page)
 		{
-		$this->page = $page;
 		$index = 0;
 		$names = ['Pork', 'Beef', 'Lamb', 'Fish', 'Nuts', 'Fruit', 'Vegtables', 'Bread', 'Pasta', 'Desserts', 'Sugar', ];
 
@@ -536,7 +533,7 @@ class KitchenSink
 
 			foreach ($headers as $field)
 				{
-				$numbers[$field] = \rand();
+				$numbers[$field] = \random_int(0, \mt_getrandmax());
 				}
 
 			$numbers['Edit'] = new \PHPFUI\Input\Text('edit[]');
@@ -709,7 +706,7 @@ class KitchenSink
 
 			foreach ($headers as $field)
 				{
-				$numbers[$field] = \rand();
+				$numbers[$field] = \random_int(0, \mt_getrandmax());
 				}
 
 			$numbers['Edit'] = new \PHPFUI\Input\Text('edit[]');
@@ -766,7 +763,7 @@ class KitchenSink
 		{
 		$index = 'id';
 		$callback = [$this, 'getToFromListName'];
-		$split = \mt_rand(0, \count($this->lines) - 1);
+		$split = \random_int(0, \count($this->lines) - 1);
 		$notInGroup = \array_slice($this->lines, $split);
 		$inGroup = \array_slice($this->lines, 0, $split);
 		$toFromList = new \PHPFUI\ToFromList($this->page, 'groups', $inGroup, $notInGroup, $index, $callback);
@@ -790,7 +787,7 @@ class KitchenSink
 
 		foreach ($methods as $methodName)
 			{
-			if (0 === \strpos($methodName, $prefix))
+			if (\str_starts_with($methodName, $prefix))
 				{
 				$name = \substr($methodName, $prefixLen);
 				$examples[$name] = $methodName;

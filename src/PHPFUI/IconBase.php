@@ -9,8 +9,6 @@ namespace PHPFUI;
  */
 class IconBase extends \PHPFUI\HTML5Element
 	{
-	private string $link;
-
 	/**
 	 * Construct an Icon.
 	 *
@@ -18,9 +16,8 @@ class IconBase extends \PHPFUI\HTML5Element
 	 *               by Font Awesome
 	 * @param string $link optional link
 	 */
-	public function __construct(string $icon, string $link = '')
+	public function __construct(string $icon, private string $link = '')
 		{
-		$this->link = $link;
 		parent::__construct('i');
 		$this->addClass($icon);
 		}
@@ -36,7 +33,7 @@ class IconBase extends \PHPFUI\HTML5Element
 	/**
 	 * Set the link
 	 */
-	public function setLink(string $link) : self
+	public function setLink(string $link) : static
 		{
 		$this->link = $link;
 

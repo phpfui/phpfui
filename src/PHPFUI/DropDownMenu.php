@@ -16,7 +16,7 @@ class DropDownMenu extends \PHPFUI\Menu
 	/**
 	 * Make a good guess as to the width required by this menu
 	 */
-	public function computeWidth() : DropDownMenu
+	public function computeWidth() : static
 		{
 		$this->width = 0;
 
@@ -26,7 +26,7 @@ class DropDownMenu extends \PHPFUI\Menu
 	/**
 	 * Set the width to a fixed number of EMS.
 	 */
-	public function setWidth(int $ems) : DropDownMenu
+	public function setWidth(int $ems) : static
 		{
 		$this->width = $ems;
 

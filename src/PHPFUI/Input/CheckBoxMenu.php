@@ -11,8 +11,6 @@ namespace PHPFUI\Input;
  */
 class CheckBoxMenu extends \PHPFUI\Menu
 	{
-	private string $name;
-
 	private string $className;
 
 	private string $callbackName = '';
@@ -24,11 +22,10 @@ class CheckBoxMenu extends \PHPFUI\Menu
 	/**
 	 * @param string $name is the name of the fields that will be posted as an array
 	 */
-	public function __construct(string $name)
+	public function __construct(private string $name)
 		{
 		parent::__construct();
 		$this->addClass('cbmenu');
-		$this->name = $name;
 		$this->className = $this->getId();
 		}
 
@@ -131,7 +128,7 @@ class CheckBoxMenu extends \PHPFUI\Menu
 	 *
 	 * Parameters for the function are field name with index in [], value and boolean indicating active. No return value is supported.
 	 */
-	public function setJavaScriptCallback(string $functionName) : self
+	public function setJavaScriptCallback(string $functionName) : static
 		{
 		$this->callbackName = $functionName;
 

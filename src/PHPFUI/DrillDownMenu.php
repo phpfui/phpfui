@@ -12,7 +12,7 @@ class DrillDownMenu extends \PHPFUI\Menu
 		$this->addAttribute('data-drilldown');
 		}
 
-	public function addSubMenu(MenuItem $item, Menu $subMenu) : Menu
+	public function addSubMenu(MenuItem $item, Menu $subMenu) : static
 		{
 		$subMenu->deleteClass('nested');
 		$subMenu->addClass('vertical');
@@ -21,14 +21,14 @@ class DrillDownMenu extends \PHPFUI\Menu
 		return $this;
 		}
 
-	public function setAnimateHeight() : DrillDownMenu
+	public function setAnimateHeight() : static
 		{
 		$this->setAttribute('data-animate-height', 'true');
 
 		return $this;
 		}
 
-	public function setAutoHeight() : DrillDownMenu
+	public function setAutoHeight() : static
 		{
 		$this->setAttribute('data-auto-height', 'true');
 

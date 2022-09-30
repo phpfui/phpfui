@@ -28,7 +28,7 @@ class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 	 * @param bool $selected true if selected, default false
 	 * @param bool $disabled default false
 	 */
-	public function addOption(string $label, ?string $value = null, bool $selected = false, bool $disabled = false) : OptGroup
+	public function addOption(string $label, ?string $value = null, bool $selected = false, bool $disabled = false) : static
 		{
 		$label = '' === $label ? '&nbsp;' : \PHPFUI\TextHelper::htmlentities($label);
 		$this->options[] = ['label' => $label,

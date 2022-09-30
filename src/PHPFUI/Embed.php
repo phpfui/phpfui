@@ -19,7 +19,7 @@ class Embed extends \PHPFUI\HTML5Element
 	 *
 	 * @param string $ratio must be one of vertical, panorama, square, widescreen
 	 */
-	public function setRatio(string $ratio) : Embed
+	public function setRatio(string $ratio) : static
 		{
 		$validRatios = ['vertical',
 			'panorama',

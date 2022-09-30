@@ -18,8 +18,6 @@ class Checkout extends \PHPFUI\HTML5Element
 
 	private array $functions = [];
 
-	private \PHPFUI\Interfaces\Page $page;
-
 	private array $styles = [
 		'layout' => 'vertical',
 		'size' => 'responsive',
@@ -28,17 +26,16 @@ class Checkout extends \PHPFUI\HTML5Element
 		'label' => 'checkout',
 	];
 
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $clientId)
+	public function __construct(private \PHPFUI\Interfaces\Page $page, string $clientId)
 		{
 		parent::__construct('div');
-		$this->page = $page;
 		$this->page->addHeadScript('https://www.paypal.com/sdk/js?client-id=' . $clientId);
 		}
 
 	/**
 	 * You can [style the PayPal buttons](https://developer.paypal.com/docs/archive/checkout/how-to/customize-button/#)
 	 */
-	public function addStyle(string $style, $value = null) : self
+	public function addStyle(string $style, $value = null) : static
 		{
 		if (null === $value)
 			{
@@ -60,14 +57,14 @@ class Checkout extends \PHPFUI\HTML5Element
 	/**
 	 * Set the JavaScript for the function specified. data, actions are passed as parameters to the JavaScript
 	 */
-	public function setFunctionJavaScript(string $function, string $js) : self
+	public function setFunctionJavaScript(string $function, string $js) : static
 		{
 		$this->functions[$function] = $js;
 
 		return $this;
 		}
 
-	public function setStyles(array $styles) : self
+	public function setStyles(array $styles) : static
 		{
 		$this->styles = $styles;
 

@@ -17,7 +17,7 @@ class Order extends \PHPFUI\PayPal\Base
 		$this->intent = $intent;
 		}
 
-	public function addPurchaseUnit(PurchaseUnit $purchase_unit) : self
+	public function addPurchaseUnit(PurchaseUnit $purchase_unit) : static
 		{
 		$this->purchase_units[] = $purchase_unit;
 

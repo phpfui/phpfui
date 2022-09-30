@@ -13,8 +13,6 @@ class Form extends \PHPFUI\HTML5Element
 
 	private bool $areYouSure = true;
 
-	private \PHPFUI\Interfaces\Page $page;
-
 	private bool $started = false;
 
 	private array $submitValue = [];
@@ -30,11 +28,10 @@ class Form extends \PHPFUI\HTML5Element
 	 *  						 from the POST, which is set via
 	 *  						 Page::setResponse or setRawResponse
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, ?\PHPFUI\Submit $submit = null, string $successFunctionName = '')
+	public function __construct(private \PHPFUI\Interfaces\Page $page, ?\PHPFUI\Submit $submit = null, string $successFunctionName = '')
 		{
 		parent::__construct('form');
 		$this->addAttribute('novalidate');
-		$this->page = $page;
 		$this->addAttribute('data-abide');
 		$this->setAttribute('method', 'post');
 		$this->addAttribute('accept-charset', 'UTF-8');
@@ -46,7 +43,7 @@ class Form extends \PHPFUI\HTML5Element
 			}
 		}
 
-	public function addSubmitButtonCallback(\PHPFUI\Submit $submit, string $successFunctionName) : self
+	public function addSubmitButtonCallback(\PHPFUI\Submit $submit, string $successFunctionName) : static
 		{
 		$submitButtonId = $submit->getId();
 		$name = $submit->getAttribute('name');
@@ -116,7 +113,7 @@ JAVASCRIPT;
 	 * @param \PHPFUI\HTML5Element $button to click (generally to do something else on the form, but not the save button)
 	 * @param \PHPFUI\Submit $submit optional button to emulate a click for, defaults to Submit button used in the ctor
 	 */
-	public function saveOnClick(\PHPFUI\HTML5Element $button, ?\PHPFUI\Submit $submit = null) : Form
+	public function saveOnClick(\PHPFUI\HTML5Element $button, ?\PHPFUI\Submit $submit = null) : static
 		{
 		[$name, $value] = $this->getSubmitValues($submit);
 		$id = $this->getId();
@@ -137,7 +134,7 @@ JAVASCRIPT;
 	 * user has entered any data.  You can use this to turn off that behavior.  A good example of why
 	 * you might want to do this is search criteria type forms where the data is not normally saved.
 	 */
-	public function setAreYouSure(bool $areYouSure = true) : Form
+	public function setAreYouSure(bool $areYouSure = true) : static
 		{
 		$this->areYouSure = $areYouSure;
 

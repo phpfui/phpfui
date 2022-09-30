@@ -7,12 +7,6 @@ namespace PHPFUI;
  */
 class Cell extends \PHPFUI\HTML5Element
 	{
-	protected int $large;
-
-	protected int $medium;
-
-	protected int $small;
-
 	/**
 	 * Construct a Cell.  Pass the number of columns you want an
 	 * element to take for each breakpoint.
@@ -27,44 +21,41 @@ class Cell extends \PHPFUI\HTML5Element
 	 * You don't have to specify all parameters, subsequent
 	 * parameters will default to the last parameter given.
 	 */
-	public function __construct(int $small = 0, int $medium = 0, int $large = 0)
+	public function __construct(protected int $small = 0, protected int $medium = 0, protected int $large = 0)
 		{
 		parent::__construct('div');
 		$this->addClass('cell');
-		$this->small = $small;
-		$this->medium = $medium;
-		$this->large = $large;
 		}
 
-	public function setAuto() : Cell
+	public function setAuto() : static
 		{
 		$this->addClass('auto');
 
 		return $this;
 		}
 
-	public function setLarge(int $type) : Cell
+	public function setLarge(int $type) : static
 		{
 		$this->large = $type;
 
 		return $this;
 		}
 
-	public function setMedium(int $type) : Cell
+	public function setMedium(int $type) : static
 		{
 		$this->medium = $type;
 
 		return $this;
 		}
 
-	public function setShrink() : Cell
+	public function setShrink() : static
 		{
 		$this->addClass('shrink');
 
 		return $this;
 		}
 
-	public function setSmall(int $type) : Cell
+	public function setSmall(int $type) : static
 		{
 		$this->small = $type;
 

@@ -6,24 +6,18 @@ class AJAX
 	{
 	protected array $conditions = [];
 
-	protected string $name;
-
-	protected string $question;
-
 	/**
 	 * Set up an AJAX callback
 	 *
 	 * @param string $name JavaScript function name to be created
-	 * @param string $confirmQuestion prompt with this question if set
+	 * @param string $question prompt with this question if set
 	 *
 	 * The $name is used as the generated function name. Is is also POSTed to the page as the 'action'
 	 * parameter.
 	 */
-	public function __construct(string $name, string $confirmQuestion = '')
-		{
-		$this->name = $name;
-		$this->question = $confirmQuestion;
-		}
+ public function __construct(protected string $name, protected string $question = '')
+ {
+ }
 
 	/**
 	 * Return true if the post is from this AJAX call

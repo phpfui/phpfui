@@ -16,7 +16,7 @@ class PurchaseUnit extends \PHPFUI\PayPal\Base
 		'shipping' => \PHPFUI\PayPal\Shipping::class,
 	];
 
-	public function addItem(Item $item) : self
+	public function addItem(Item $item) : static
 		{
 		$this->items[] = $item;
 

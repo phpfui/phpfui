@@ -22,7 +22,7 @@ class Panel extends \PHPFUI\HTML5Element
 	/**
 	 * Make it a call out Panel
 	 */
-	public function setCallout() : Panel
+	public function setCallout() : static
 		{
 		$this->addClass('callout');
 
@@ -32,7 +32,7 @@ class Panel extends \PHPFUI\HTML5Element
 	/**
 	 * Make the Panel round
 	 */
-	public function setRadius() : Panel
+	public function setRadius() : static
 		{
 		$this->addClass('radius');
 
@@ -42,7 +42,7 @@ class Panel extends \PHPFUI\HTML5Element
 	/**
 	 * Set text if not set in the constructor
 	 */
-	public function setText($text) : Panel
+	public function setText($text) : static
 		{
 		$this->text = $text;
 

@@ -15,12 +15,9 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 
 	private bool $started = false;
 
-	private string $title = '';
-
-	public function __construct(string $name, $value = 0, string $title = '', string $type = 'radio')
+	public function __construct(string $name, $value = 0, private string $title = '', string $type = 'radio')
 		{
 		parent::__construct('div');
-		$this->title = $title;
 		$this->addClass('switch');
 		$this->input = new \PHPFUI\HTML5Element('input');
 		$this->input->addAttribute('type', $type);
@@ -32,14 +29,14 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 	/**
 	 * Display this label when active
 	 */
-	public function setActiveLabel(string $label) : SwitchRadio
+	public function setActiveLabel(string $label) : static
 		{
 		$this->active = $label;
 
 		return $this;
 		}
 
-	public function setChecked(bool $checked = true) : SwitchRadio
+	public function setChecked(bool $checked = true) : static
 		{
 		if ($checked)
 			{
@@ -56,7 +53,7 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 	/**
 	 * Display this label when not active
 	 */
-	public function setInactiveLabel(string $label) : SwitchRadio
+	public function setInactiveLabel(string $label) : static
 		{
 		$this->inactive = $label;
 

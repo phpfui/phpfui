@@ -29,7 +29,7 @@ class Date extends \PHPFUI\Input\Input
 	/**
 	 * @deprecated no longer needed. Will be removed in V7.
 	 */
-	public function addOption(string $option, $value) : Date
+	public function addOption(string $option, $value) : static
 		{
 		return $this;
 		}
@@ -41,7 +41,7 @@ class Date extends \PHPFUI\Input\Input
 	 * @param string $date in YYYY/MM/DD format
 	 * @deprecated use addAttribute('max', ...) instead. Will be removed in V7.
 	 */
-	public function setMaxDate(string $date) : Date
+	public function setMaxDate(string $date) : static
 		{
 		$this->addAttribute('max', $date);
 
@@ -55,7 +55,7 @@ class Date extends \PHPFUI\Input\Input
 	 * @param string $date in YYYY/MM/DD format
 	 * @deprecated use addAttribute('max', ...) instead. Will be removed in V7.
 	 */
-	public function setMinDate(string $date) : Date
+	public function setMinDate(string $date) : static
 		{
 		$this->addAttribute('min', $date);
 

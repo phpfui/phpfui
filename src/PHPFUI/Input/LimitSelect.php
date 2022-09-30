@@ -20,21 +20,15 @@ class LimitSelect extends \PHPFUI\Input\Select
 	{
 	use \PHPFUI\Traits\Page;
 
-	private int $currentLimit;
-
 	private string $limitName;
 
 	private array $limits;
 
-	private \PHPFUI\Interfaces\Page $page;
-
 	private string $pageName;
 
-	public function __construct(\PHPFUI\Interfaces\Page $page, int $currentLimit)
+	public function __construct(private \PHPFUI\Interfaces\Page $page, private int $currentLimit)
 		{
 		parent::__construct('l');
-		$this->page = $page;
-		$this->currentLimit = $currentLimit;
 		$this->addPHPClassName();
 		$this->setLimits();
 		$this->setLimitName();
@@ -77,7 +71,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 	/**
 	 * Set the parameter name for the limit.  Default is l.
 	 */
-	public function setLimitName(string $limitName = 'l') : LimitSelect
+	public function setLimitName(string $limitName = 'l') : static
 		{
 		$this->limitName = $limitName;
 
@@ -87,7 +81,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 	/**
 	 * Specify the limits to use
 	 */
-	public function setLimits(array $limits = [10, 25, 50, 100]) : LimitSelect
+	public function setLimits(array $limits = [10, 25, 50, 100]) : static
 		{
 		$this->limits = $limits;
 
@@ -97,7 +91,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 	/**
 	 * Set the parameter name for the page.  Default is p.
 	 */
-	public function setPageName(string $pageName = 'p') : LimitSelect
+	public function setPageName(string $pageName = 'p') : static
 		{
 		$this->pageName = $pageName;
 

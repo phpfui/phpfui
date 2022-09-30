@@ -71,7 +71,7 @@ class Session
 		{
 		if ($key)
 			{
-			return \json_decode(self::$flash[$key] ?? '', true);
+			return \json_decode(self::$flash[$key] ?? '', true, 512, JSON_THROW_ON_ERROR);
 			}
 
 		return '';
@@ -82,11 +82,11 @@ class Session
 	 *
 	 * @param mixed $value can by any type that can be converted to json and stored in a session. Leave empty to delete.
 	 */
-	public static function setFlash(string $key, $value = '') : void
+	public static function setFlash(string $key, mixed $value = '') : void
 		{
 		if ($value)
 			{
-			$_SESSION['flash'][$key] = \json_encode($value);
+			$_SESSION['flash'][$key] = \json_encode($value, JSON_THROW_ON_ERROR);
 			}
 		else
 			{

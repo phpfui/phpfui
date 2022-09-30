@@ -15,17 +15,14 @@ class ProgressBar extends \PHPFUI\HTML5Element
 
 	private ?\PHPFUI\HTML5Element $meter = null;
 
-	private string $labelText = '';
-
 	private ?\PHPFUI\HTML5Element $label = null;
 
 	/**
 	 * Construct a ProgressBar.  Defaults to 0%
 	 */
-	public function __construct(string $label = '')
+	public function __construct(private string $labelText = '')
 		{
 		parent::__construct('div');
-		$this->labelText = $label;
 		$this->addClass('primary');
 		$this->addClass('progress');
 		$this->addAttribute('role', 'progressbar');
@@ -57,7 +54,7 @@ class ProgressBar extends \PHPFUI\HTML5Element
 		return $this->meter;
 		}
 
-	public function setCurrent(int $current) : ProgressBar
+	public function setCurrent(int $current) : static
 		{
 		$this->current = $current;
 
@@ -69,14 +66,14 @@ class ProgressBar extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function setMaximum(int $max = 100) : ProgressBar
+	public function setMaximum(int $max = 100) : static
 		{
 		$this->max = $max;
 
 		return $this;
 		}
 
-	public function setMinimum(int $min = 0) : ProgressBar
+	public function setMinimum(int $min = 0) : static
 		{
 		$this->min = $min;
 
@@ -86,7 +83,7 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	/**
 	 * Set the original percentage
 	 */
-	public function setPercent(int $width) : ProgressBar
+	public function setPercent(int $width) : static
 		{
 		$this->current = \max($this->min, \min($this->max, $width));
 

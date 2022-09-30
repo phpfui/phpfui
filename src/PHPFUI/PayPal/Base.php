@@ -55,7 +55,7 @@ abstract class Base
 
 		if ('object' == $type)
 			{
-			$type = \get_class($value);
+			$type = $value::class;
 			}
 
 		if (\is_array($expectedType))

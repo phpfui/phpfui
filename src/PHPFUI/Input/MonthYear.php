@@ -13,13 +13,7 @@ class MonthYear extends \PHPFUI\Base
 
 	protected \PHPFUI\Input\Hidden $hidden;
 
-	protected string $label;
-
 	protected \PHPFUI\Input\Select $monthSelect;
-
-	protected string $name;
-
-	protected \PHPFUI\Interfaces\Page $page;
 
 	protected \PHPFUI\Input\Select $yearSelect;
 
@@ -43,12 +37,9 @@ class MonthYear extends \PHPFUI\Base
 	 * @param string $label optional
 	 * @param ?string $value optional
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', ?string $value = '')
+	public function __construct(protected \PHPFUI\Interfaces\Page $page, protected string $name, protected string $label = '', ?string $value = '')
 		{
 		parent::__construct();
-		$this->page = $page;
-		$this->name = $name;
-		$this->label = $label;
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
 		$this->year = (int)\date('Y');
 		$this->month = (int)\date('n');
@@ -59,7 +50,7 @@ class MonthYear extends \PHPFUI\Base
 
 		if (3 == \count($array))
 			{
-			/** @phpstan-ignore-next-line */
+			// @phpstan-ignore-next-line
 			[$this->year, $this->month, $this->day] = $array;
 			}
 		}
@@ -70,7 +61,7 @@ class MonthYear extends \PHPFUI\Base
 	 *
 	 * @param int $day defaults to today's date
 	 */
-	public function setDay(int $day) : MonthYear
+	public function setDay(int $day) : static
 		{
 		$this->day = $day;
 
@@ -80,7 +71,7 @@ class MonthYear extends \PHPFUI\Base
 	/**
 	 * Set the maximum allowed year (4 digits)
 	 */
-	public function setMaxYear(int $max) : MonthYear
+	public function setMaxYear(int $max) : static
 		{
 		$this->maxYear = $max;
 
@@ -90,14 +81,14 @@ class MonthYear extends \PHPFUI\Base
 	/**
 	 * Set the minimum allowed year (4 digits)
 	 */
-	public function setMinYear(int $min) : MonthYear
+	public function setMinYear(int $min) : static
 		{
 		$this->minYear = $min;
 
 		return $this;
 		}
 
-	public function setRequired(bool $required = true) : MonthYear
+	public function setRequired(bool $required = true) : static
 		{
 		$this->required = $required;
 

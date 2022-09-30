@@ -12,17 +12,11 @@ class MenuItem extends \PHPFUI\HTML5Element
 
 	private ?\PHPFUI\Base $graphic = null;
 
-	private string $link;
-
-	private string $name;
-
 	private bool $started = false;
 
-	public function __construct(string $name = '', string $link = '')
+	public function __construct(private string $name = '', private string $link = '')
 		{
 		parent::__construct('li');
-		$this->link = $link;
-		$this->name = $name;
 		}
 
 	public function getActive() : bool
@@ -79,14 +73,14 @@ class MenuItem extends \PHPFUI\HTML5Element
 		return $this->name;
 		}
 
-	public function setActive(bool $active = true) : MenuItem
+	public function setActive(bool $active = true) : static
 		{
 		$this->active = $active;
 
 		return $this;
 		}
 
-	public function setAlignment(string $align) : MenuItem
+	public function setAlignment(string $align) : static
 		{
 		$this->align = $align;
 
@@ -96,28 +90,28 @@ class MenuItem extends \PHPFUI\HTML5Element
 	/**
 	 * Set a menu graphic other than an icon or image
 	 */
-	public function setGraphic(Base $graphic) : MenuItem
+	public function setGraphic(Base $graphic) : static
 		{
 		$this->graphic = $graphic;
 
 		return $this;
 		}
 
-	public function setIcon(IconBase $icon) : MenuItem
+	public function setIcon(IconBase $icon) : static
 		{
 		$this->graphic = $icon;
 
 		return $this;
 		}
 
-	public function setImage(Image $image) : MenuItem
+	public function setImage(Image $image) : static
 		{
 		$this->graphic = $image;
 
 		return $this;
 		}
 
-	public function setLink(string $link) : MenuItem
+	public function setLink(string $link) : static
 		{
 		$this->link = $link;
 
@@ -127,14 +121,14 @@ class MenuItem extends \PHPFUI\HTML5Element
 	/**
 	 * You can set the link object directly if needed to set specific properties
 	 */
-	public function setLinkObject(Link $linkObject) : MenuItem
+	public function setLinkObject(Link $linkObject) : static
 		{
 		$this->generatedLink = $linkObject;
 
 		return $this;
 		}
 
-	public function setName(string $name) : MenuItem
+	public function setName(string $name) : static
 		{
 		$this->name = $name;
 

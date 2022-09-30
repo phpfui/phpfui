@@ -38,7 +38,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the background color
 	 */
-	public function setBackgroundColor(string $backgroundColor) : EMailButton
+	public function setBackgroundColor(string $backgroundColor) : static
 		{
 		$this->backgroundColor = $backgroundColor;
 
@@ -50,7 +50,7 @@ class EMailButton extends \PHPFUI\Button
 	 *
 	 * @param string $backgroundImage path to image
 	 */
-	public function setBackgroundImage(string $backgroundImage) : EMailButton
+	public function setBackgroundImage(string $backgroundImage) : static
 		{
 		$this->backgroundImage = $backgroundImage;
 
@@ -60,7 +60,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the border color
 	 */
-	public function setBorderColor(string $borderColor) : EMailButton
+	public function setBorderColor(string $borderColor) : static
 		{
 		$this->borderColor = $borderColor;
 
@@ -70,7 +70,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the main button color
 	 */
-	public function setColor(string $color) : EMailButton
+	public function setColor(string $color) : static
 		{
 		$this->color = $color;
 
@@ -80,7 +80,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the font name
 	 */
-	public function setFont(string $font) : EMailButton
+	public function setFont(string $font) : static
 		{
 		$this->font = $font;
 
@@ -90,7 +90,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the font size in pixels
 	 */
-	public function setFontSize(int $fontSize) : EMailButton
+	public function setFontSize(int $fontSize) : static
 		{
 		$this->fontSize = $fontSize;
 
@@ -100,7 +100,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the button height in pixels
 	 */
-	public function setHeight(int $height) : EMailButton
+	public function setHeight(int $height) : static
 		{
 		$this->height = $height;
 
@@ -110,7 +110,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the button radius in pixels
 	 */
-	public function setRadius(int $radius) : EMailButton
+	public function setRadius(int $radius) : static
 		{
 		$this->radius = $radius;
 
@@ -120,7 +120,7 @@ class EMailButton extends \PHPFUI\Button
 	/**
 	 * Set the button width in pixels
 	 */
-	public function setWidth(int $width) : EMailButton
+	public function setWidth(int $width) : static
 		{
 		$this->width = $width;
 

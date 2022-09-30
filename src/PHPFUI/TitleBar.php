@@ -4,12 +4,9 @@ namespace PHPFUI;
 
 class TitleBar extends \PHPFUI\Bar
 	{
-	private string $title;
-
-	public function __construct(string $title = '')
+	public function __construct(private string $title = '')
 		{
 		parent::__construct('title');
-		$this->title = $title;
 		}
 
 	protected function getStart() : string

@@ -9,7 +9,7 @@ class DescriptionList extends \PHPFUI\HTML5Element
 		parent::__construct('dl');
 		}
 
-	public function addItem(DescriptionItem $item) : DescriptionList
+	public function addItem(DescriptionItem $item) : static
 		{
 		parent::add($item);
 

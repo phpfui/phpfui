@@ -19,7 +19,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 		$this->addClass('input-group');
 		}
 
-	public function addButton(Button $button) : InputGroup
+	public function addButton(Button $button) : static
 		{
 		$span = new \PHPFUI\HTML5Element('span');
 		$span->addClass('input-group-button');
@@ -38,7 +38,7 @@ class InputGroup extends \PHPFUI\HTML5Element
 	/**
 	 * Due to necessary modifications to the Input class (redoing the label), the passed Input class should be fully formed before being added to the InputGroup
 	 */
-	public function addInput(\PHPFUI\Input\Input $input) : InputGroup
+	public function addInput(\PHPFUI\Input\Input $input) : static
 		{
 		if (\method_exists($input, 'getError'))
 			{

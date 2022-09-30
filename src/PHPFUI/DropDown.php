@@ -7,8 +7,6 @@ namespace PHPFUI;
  */
 class DropDown extends \PHPFUI\Base
 	{
-	private \PHPFUI\HTML5Element $dropDown;
-
 	private bool $hover = false;
 
 	/**
@@ -17,10 +15,9 @@ class DropDown extends \PHPFUI\Base
 	 * @param HTML5Element $dropTarget what to click on to initite drop down
 	 * @param HTML5Element $dropDown what you are going to drop
 	 */
-	public function __construct(\PHPFUI\HTML5Element $dropTarget, HTML5Element $dropDown)
+	public function __construct(\PHPFUI\HTML5Element $dropTarget, private HTML5Element $dropDown)
 		{
 		parent::__construct();
-		$this->dropDown = $dropDown;
 		$this->dropDown->addClass('dropdown-pane');
 		$this->dropDown->addAttribute('data-dropdown');
 		$dropTarget->addAttribute('data-toggle', $this->dropDown->getId());
@@ -32,7 +29,7 @@ class DropDown extends \PHPFUI\Base
 	 *
 	 * @param string $alignment must be one of left, center, right
 	 */
-	public function setAlignment(string $alignment) : DropDown
+	public function setAlignment(string $alignment) : static
 		{
 		$validAlignments = ['left',
 			'center',
@@ -53,7 +50,7 @@ class DropDown extends \PHPFUI\Base
 	 *
 	 * @param bool $hover default true
 	 */
-	public function setHover(bool $hover = true) : DropDown
+	public function setHover(bool $hover = true) : static
 		{
 		$this->hover = $hover;
 
@@ -65,7 +62,7 @@ class DropDown extends \PHPFUI\Base
 	 *
 	 * @param string $position must be one of top, bottom, left, right
 	 */
-	public function setPosition(string $position) : DropDown
+	public function setPosition(string $position) : static
 		{
 		$validPositions = ['top',
 			'bottom',

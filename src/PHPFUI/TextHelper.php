@@ -43,7 +43,7 @@ class TextHelper
 				{
 				/** @noinspection PhpMissingBreakStatementInspection */
 				case 'object':
-					$value = \json_decode(\json_encode($value), true);
+					$value = \json_decode(\json_encode($value, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
 					// Intentionally fall through
 				case 'array':
 					$js .= self::arrayToJS($value, $stringQuote);

@@ -25,11 +25,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 		'onSelect' => 'function(suggestion){ac.attr("placeholder",suggestion.value);ac.val("");fld.val(suggestion.data);fld.change()}',
 	];
 
-	protected bool $freeformInput;
-
 	protected \PHPFUI\Input\Hidden $hidden;
-
-	protected \PHPFUI\Interfaces\Page $page;
 
 	protected string $realName;
 
@@ -45,9 +41,8 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 * @param bool $freeformInput if true allow anything to be
 	 *  					 entered, but will suggest options
 	 */
-	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', bool $freeformInput = false)
+	public function __construct(protected \PHPFUI\Page $page, string $name, string $label = '', protected bool $freeformInput = false)
 		{
-		$this->freeformInput = $freeformInput;
 		$suffix = '';
 		$nameField = $name;
 
@@ -61,7 +56,6 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 		parent::__construct($nameField, $label);
 		$this->acInput = new \PHPFUI\Input\Text($nameField, $label);
 		$this->realName = $name;
-		$this->page = $page;
 		$this->type = 'text'; // really a text Input field, not a Select
 		$this->page->addTailScript('jquery.autocomplete.js');
 		$this->hidden = new \PHPFUI\Input\Hidden($this->realName);
@@ -73,7 +67,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 *
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
-	public function addAutoCompleteOption(string $option, $value) : self
+	public function addAutoCompleteOption(string $option, $value) : static
 		{
 		$this->autoCompleteOptions[$option] = $value;
 
@@ -106,7 +100,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 * @param string $option to remove
 	 */
-	public function removeAutoCompleteOption(string $option) : self
+	public function removeAutoCompleteOption(string $option) : static
 		{
 		unset($this->autoCompleteOptions[$option]);
 
@@ -123,7 +117,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 *
 	 * @param string $name of array
 	 */
-	public function setArray($name) : self
+	public function setArray($name) : static
 		{
 		$this->arrayName = $name;
 
@@ -219,7 +213,6 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 
 		if ($this->required)
 			{
-			/** @phpstan-ignore-next-line */
 			$this->setAutoCompleteRequired($this->page, $text);
 			}
 

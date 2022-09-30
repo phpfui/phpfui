@@ -16,18 +16,15 @@ class Slider extends \PHPFUI\HTML5Element
 
 	private int $step = 1;
 
-	private int $value;
-
 	private bool $vertical = false;
 
 	/**
 	 * @param int $value the initial slider value
 	 * @param SliderHandle $handle an optional slider handle. You must supply this if you want a field to be updated by slider changes.
 	 */
-	public function __construct(int $value = 0, ?\PHPFUI\SliderHandle $handle = null)
+	public function __construct(private int $value = 0, ?\PHPFUI\SliderHandle $handle = null)
 		{
 		parent::__construct('div');
-		$this->value = $value;
 		$this->addClass('slider');
 		$this->setAttribute('data-slider');
 		$this->sliderHandle = $handle ?: new \PHPFUI\SliderHandle($value);
@@ -36,7 +33,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * The max allowed value
 	 */
-	public function setMax(int $max = 100) : Slider
+	public function setMax(int $max = 100) : static
 		{
 		$this->max = $max;
 
@@ -46,7 +43,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * The min allowed value
 	 */
-	public function setMin(int $min = 0) : Slider
+	public function setMin(int $min = 0) : static
 		{
 		$this->min = $min;
 
@@ -56,7 +53,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * @param string $function algorithm used for non linear function, must be either log or pow
 	 */
-	public function setNonLinear(int $base = 5, string $function = 'log') : Slider
+	public function setNonLinear(int $base = 5, string $function = 'log') : static
 		{
 		$functions = ['log',
 			'pow', ];
@@ -75,7 +72,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * Specify a range handle
 	 */
-	public function setRangeHandle(SliderHandle $handle) : Slider
+	public function setRangeHandle(SliderHandle $handle) : static
 		{
 		$this->rangeHandle = $handle;
 
@@ -85,7 +82,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * Set the step up or down
 	 */
-	public function setStep(int $step = 1) : Slider
+	public function setStep(int $step = 1) : static
 		{
 		$this->step = $step;
 
@@ -95,7 +92,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * Set the initial value for the slider
 	 */
-	public function setValue(int $value) : Slider
+	public function setValue(int $value) : static
 		{
 		$this->value = $value;
 
@@ -105,7 +102,7 @@ class Slider extends \PHPFUI\HTML5Element
 	/**
 	 * Set the slider to be vertical
 	 */
-	public function setVertical(bool $vertical = true) : Slider
+	public function setVertical(bool $vertical = true) : static
 		{
 		$this->vertical = $vertical;
 
