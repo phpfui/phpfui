@@ -20,7 +20,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	 */
 	public function __construct(string $name, string $label = '', ?string $value = null)
 		{
-		parent::__construct('radio', $name, $label, $value);
+		parent::__construct('radio', $name, $label, (string)$value);
 		}
 
 	/**
@@ -38,7 +38,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 			}
 
 		$this->buttons[] = ['label' => $label,
-			'value' => $value,
+			'value' => (string)$value,
 			'disabled' => $disabled ? 'disabled' : '', ];
 
 		return $this;
@@ -107,6 +107,6 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 
 		$output->add($rows);
 
-		return "{$output}";
+		return (string)$output;
 		}
 	}

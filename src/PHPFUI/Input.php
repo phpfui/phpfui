@@ -102,7 +102,7 @@ class Input extends \PHPFUI\HTML5Element
 	 */
 	public function getValue() : string
 		{
-		return "{$this->value}";
+		return (string)$this->value;
 		}
 
 	/**

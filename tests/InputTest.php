@@ -160,9 +160,9 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$multiSelect->addOption('');
 		$multiSelect->addOption('one');
-		$multiSelect->addOption('two', 2, true);
-		$multiSelect->addOption('three', 3, true);
-		$multiSelect->addOption('four', 4, false, true);
+		$multiSelect->addOption('two', '2', true);
+		$multiSelect->addOption('three', '3', true);
+		$multiSelect->addOption('four', '4', false, true);
 		$this->assertEquals($multiSelect->count(), 5);
 		$this->assertEquals(\count($multiSelect), 5);
 		$this->page->add($multiSelect);
@@ -177,9 +177,9 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$multiSelect->addOption('');
 		$multiSelect->addOption('one');
-		$multiSelect->addOption('two', 2, true);
-		$multiSelect->addOption('three', 3, true);
-		$multiSelect->addOption('four', 4, false, true);
+		$multiSelect->addOption('two', '2', true);
+		$multiSelect->addOption('three', '3', true);
+		$multiSelect->addOption('four', '4', false, true);
 		$this->assertEquals($multiSelect->count(), 5);
 		$this->assertEquals(\count($multiSelect), 5);
 		$this->page->add($multiSelect);
@@ -230,12 +230,12 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 	public function testRadioGroup() : void
 		{
-		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', 'RadioGroup', 4);
+		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', 'RadioGroup', '4');
 		$radioGroup->addButton('');
 		$radioGroup->addButton('one');
-		$radioGroup->addButton('two', 2);
-		$radioGroup->addButton('three', 3, true);
-		$radioGroup->addButton('four', 4);
+		$radioGroup->addButton('two', '2');
+		$radioGroup->addButton('three', '3', true);
+		$radioGroup->addButton('four', '4');
 		$radioGroup->setRequired();
 		$this->assertEquals($radioGroup->count(), 5);
 		$this->assertEquals(\count($radioGroup), 5);
@@ -246,12 +246,12 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 	public function testRadioGroupNoLabel() : void
 		{
-		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', '', 4);
+		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', '', '4');
 		$radioGroup->addButton('');
 		$radioGroup->addButton('one');
-		$radioGroup->addButton('two', 2);
-		$radioGroup->addButton('three', 3, true);
-		$radioGroup->addButton('four', 4);
+		$radioGroup->addButton('two', '2');
+		$radioGroup->addButton('three', '3', true);
+		$radioGroup->addButton('four', '4');
 		$this->assertEquals($radioGroup->count(), 5);
 		$this->assertEquals(\count($radioGroup), 5);
 
@@ -294,16 +294,16 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$select->addOption('');
 		$select->addOption('one');
-		$select->addOption('two', 2);
-		$select->addOption('three', 3, true);
-		$select->addOption('four', 4, false, true);
+		$select->addOption('two', '2');
+		$select->addOption('three', '3', true);
+		$select->addOption('four', '4', false, true);
 
 		$optGroup = new \PHPFUI\Input\OptGroup('Option Group');
 		$optGroup->addOption('');
 		$optGroup->addOption('one');
-		$optGroup->addOption('two', 2);
-		$optGroup->addOption('three', 3);
-		$optGroup->addOption('four', 4, false, true);
+		$optGroup->addOption('two', '2');
+		$optGroup->addOption('three', '3');
+		$optGroup->addOption('four', '4', false, true);
 		$this->assertEquals($optGroup->count(), 5);
 		$this->assertEquals(\count($optGroup), 5);
 
@@ -322,16 +322,16 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$select->addOption('');
 		$select->addOption('one');
-		$select->addOption('two', 2);
-		$select->addOption('three', 3, true);
-		$select->addOption('four', 4, false, true);
+		$select->addOption('two', '2');
+		$select->addOption('three', '3', true);
+		$select->addOption('four', '4', false, true);
 
 		$optGroup = new \PHPFUI\Input\OptGroup('Option Group');
 		$optGroup->addOption('');
 		$optGroup->addOption('one');
-		$optGroup->addOption('two', 2);
-		$optGroup->addOption('three', 3);
-		$optGroup->addOption('four', 4, false, true);
+		$optGroup->addOption('two', '2');
+		$optGroup->addOption('three', '3');
+		$optGroup->addOption('four', '4', false, true);
 		$this->assertEquals($optGroup->count(), 5);
 		$this->assertEquals(\count($optGroup), 5);
 
@@ -349,9 +349,9 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$select->addOption('');
 		$select->addOption('one');
-		$select->addOption('two', 2);
-		$select->addOption('three', 3, true);
-		$select->addOption('four', 4, false, true);
+		$select->addOption('two', '2');
+		$select->addOption('three', '3', true);
+		$select->addOption('four', '4', false, true);
 
 		$this->assertEquals($select->count(), 5);
 		$this->assertEquals(\count($select), 5);
@@ -366,9 +366,9 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$select->addOption('');
 		$select->addOption('one');
-		$select->addOption('two', 2);
-		$select->addOption('three', 3, true);
-		$select->addOption('four', 4, false, true);
+		$select->addOption('two', '2');
+		$select->addOption('three', '3', true);
+		$select->addOption('four', '4', false, true);
 
 		$this->assertEquals($select->count(), 5);
 		$this->assertEquals(\count($select), 5);

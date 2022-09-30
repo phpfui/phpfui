@@ -89,7 +89,7 @@ class DropDown extends \PHPFUI\Base
 
 	protected function getEnd() : string
 		{
-		return "{$this->dropDown}";
+		return (string)$this->dropDown;
 		}
 
 	protected function getStart() : string

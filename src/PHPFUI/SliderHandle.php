@@ -20,21 +20,21 @@ class SliderHandle extends \PHPFUI\HTML5Element
 		$this->addClass('slider-handle');
 		$this->setAttribute('data-slider-handle');
 		$this->setAttribute('role', 'slider');
-		$this->setAttribute('tabindex', 1);
+		$this->setAttribute('tabindex', '1');
 		$this->value = $value;
 		$this->bind = $bind;
 
 		if ($bind)
 			{
 			$this->addAttribute('aria-controls', $bind->getId());
-			$bind->setValue($value);
+			$bind->setValue((string)$value);
 			}
 		else
 			{
 			$this->input = new \PHPFUI\HTML5Element('input');
 			$this->input->getId();
 			$this->input->setAttribute('type', 'hidden');
-			$this->input->setAttribute('value', $value);
+			$this->input->setAttribute('value', (string)$value);
 			}
 		}
 

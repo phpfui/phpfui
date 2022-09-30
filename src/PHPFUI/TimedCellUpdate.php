@@ -17,7 +17,7 @@ class TimedCellUpdate extends \PHPFUI\Base
 	 * Construct a TimedCellUpdate.  The cell will be updated with
 	 * the supplied call back and the timeout interval specified
 	 *
-	 * @param Page $page as we need to add JS
+	 * @param \PHPFUI\Interfaces\Page $page as we need to add JS
 	 * @param string $callbackId the id of the element to update
 	 * @param callable $callback PHP callback that will be called
 	 *                             every timeout interval. Should return the new
@@ -41,7 +41,7 @@ class TimedCellUpdate extends \PHPFUI\Base
 
 		if (isset($_POST['callback']) && $_POST['callback'] == $cbn && $_POST[$csrfField] == $csrf && $callbackId == $_POST['id'])
 			{
-			$page->setResponse("{$this}");
+			$page->setResponse((string)$this);
 			}
 		}
 

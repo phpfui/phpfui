@@ -44,7 +44,7 @@ JS;
 
 		$js = '$("#' . $this->getId() . '").dropify();dropZones.push("' . $this->getId() . '")';
 		$this->page->addJavaScript($js);
-		$this->addAttribute('data-height', 100);
+		$this->addAttribute('data-height', '100');
 		$this->addAttribute('style', 'z-index:0');
 		}
 

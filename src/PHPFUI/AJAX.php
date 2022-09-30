@@ -39,7 +39,7 @@ class AJAX
 	 *
 	 * @link https://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings
 	 */
-	public function addFunction(string $function, string $script) : AJAX
+	public function addFunction(string $function, string $script) : static
 		{
 		$this->conditions[$function] = $script;
 

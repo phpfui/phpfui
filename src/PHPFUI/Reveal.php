@@ -9,7 +9,7 @@ namespace PHPFUI;
  */
 class Reveal extends \PHPFUI\HTML5Element
 	{
-	private \PHPFUI\Page $page;
+	private \PHPFUI\Interfaces\Page $page;
 
 	/**
 	 * Construct a reveal dialog. Add items to the reveal dialog

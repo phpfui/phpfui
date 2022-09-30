@@ -48,9 +48,9 @@ class BlockGrid extends \PHPFUI\HTML5Element
 
 	protected function getStart() : string
 		{
-		$this->makeClass('small', $this->small);
-		$this->makeClass('medium', $this->medium);
-		$this->makeClass('large', $this->large);
+		$this->makeClass('small', (string)$this->small);
+		$this->makeClass('medium', (string)$this->medium);
+		$this->makeClass('large', (string)$this->large);
 		$this->addClass('columns');
 
 		return parent::getStart();

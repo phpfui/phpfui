@@ -142,7 +142,7 @@ class Orbit extends \PHPFUI\HTML5Element
 			{
 			$button = new \PHPFUI\HTML5Element('button');
 			$number = $this->bullets->count();
-			$button->addAttribute('data-slide', $number++);
+			$button->addAttribute('data-slide', (string)$number++);
 			$button->add("<span class='show-for-sr'>Slide {$number}</span>");
 
 			if ($active)

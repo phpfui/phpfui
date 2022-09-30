@@ -46,7 +46,7 @@ class CheckBox extends \PHPFUI\Input\Input
 
 	protected function getEnd() : string
 		{
-		return "{$this->getHint()}";
+		return (string)$this->getHint();
 		}
 
 	protected function getStart() : string

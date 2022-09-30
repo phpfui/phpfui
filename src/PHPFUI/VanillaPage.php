@@ -85,7 +85,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Add dedupped inline css
 	 */
-	public function addCSS(string $css) : \PHPFUI\Interfaces\Page
+	public function addCSS(string $css) : static
 		{
 		$this->css[\sha1($css)] = $css;
 
@@ -95,7 +95,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Remove inline css
 	 */
-	public function removeCSS(string $css) : \PHPFUI\Interfaces\Page
+	public function removeCSS(string $css) : static
 		{
 		unset($this->css[\sha1($css)]);
 
@@ -105,7 +105,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Add dedupped JavaScript to the header
 	 */
-	public function addHeadJavaScript(string $js) : \PHPFUI\Interfaces\Page
+	public function addHeadJavaScript(string $js) : static
 		{
 		$this->headJavascript[\sha1($js)] = $js;
 
@@ -115,7 +115,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	/**
 	 * Remove JavaScript from the header
 	 */
-	public function removeHeadJavaScript(string $js) : \PHPFUI\Interfaces\Page
+	public function removeHeadJavaScript(string $js) : static
 		{
 		unset($this->headJavascript[\sha1($js)]);
 
@@ -395,7 +395,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 */
 	public function hasDatePicker() : bool
 		{
-		return $this->android || $this->ios || $this->IEMobile || $this->fireFoxVersion >= 57 || $this->chrome;
+		return $this->android || $this->ios || $this->IEMobile || $this->fireFoxVersion >= 57 || $this->chrome || $this->edgeVersion;
 		}
 
 	/**

@@ -24,9 +24,9 @@ class KitchenSink
 
 	private array $lines = [];
 
-	private \PHPFUI\Interfaces\Page $page;
+	private \PHPFUI\Page $page;
 
-	public function __construct(\PHPFUI\Interfaces\Page $page)
+	public function __construct(\PHPFUI\Page $page)
 		{
 		$this->page = $page;
 		$index = 0;
@@ -805,7 +805,7 @@ class KitchenSink
 		$line = $this->lines[$index];
 		$hidden = new \PHPFUI\Input\Hidden($type . $fieldName . '[]', $line[$indexName]);
 
-		return "{$hidden}" . $line['name'];
+		return (string)$hidden . $line['name'];
 		}
 
 	public function render(string $type = 'base') : string
@@ -833,7 +833,7 @@ class KitchenSink
 			$hr = $realHr;
 			}
 
-		return "{$container}";
+		return (string)$container;
 		}
 
 	public function timedCellUpdateCallback(string $id) : string

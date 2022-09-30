@@ -208,7 +208,7 @@ class Pagination extends \PHPFUI\HTML5Element
 	 */
 	protected function getUrl(int $page) : string
 		{
-		return \str_replace('PAGE', $page, $this->baseUrl);
+		return \str_replace('PAGE', (string)$page, $this->baseUrl);
 		}
 
 	private function getEllipsisItem(int $ff) : ListItem

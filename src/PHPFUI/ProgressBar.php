@@ -96,9 +96,9 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	protected function getStart() : string
 		{
 		$this->setAttribute('aria-valuetext', $this->labelText);
-		$this->setAttribute('aria-valuenow', $this->current);
-		$this->setAttribute('aria-valuemin', $this->min);
-		$this->setAttribute('aria-valuemax', $this->max);
+		$this->setAttribute('aria-valuenow', (string)$this->current);
+		$this->setAttribute('aria-valuemin', (string)$this->min);
+		$this->setAttribute('aria-valuemax', (string)$this->max);
 
 		$this->add($this->getMeter());
 

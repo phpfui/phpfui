@@ -15,7 +15,7 @@ class Hidden extends \PHPFUI\Input\Input
 	 */
 	public function __construct(string $name, ?string $value = '')
 		{
-		parent::__construct('hidden', $name, '', $value);
+		parent::__construct('hidden', $name, '', (string)$value);
 		$this->deleteAttribute('onkeypress');
 		}
 	}

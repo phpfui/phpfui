@@ -65,15 +65,15 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string $value of the attribute, blank for just a plain attribute
 	 */
-	public function addAttribute(string $attribute, string $value = '') : HTML5Element
+	public function addAttribute(string $attribute, string $value = '') : static
 		{
 		if (! isset($this->attributes[$attribute]))
 			{
-			$this->attributes[$attribute] = $value;
+			$this->attributes[$attribute] = (string)$value;
 			}
 		else
 			{
-			$this->attributes[$attribute] .= ' ' . $value;
+			$this->attributes[$attribute] .= " {$value}";
 			}
 
 		return $this;
@@ -84,7 +84,7 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string $class name(s) to add
 	 */
-	public function addClass(string $class) : HTML5Element
+	public function addClass(string $class) : static
 		{
 		foreach (\explode(' ', $class) as $oneClass)
 			{
@@ -97,7 +97,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Adds the base PHP class name as a class to this object
 	 */
-	public function addPHPClassName() : HTML5Element
+	public function addPHPClassName() : static
 		{
 		$parts = \explode('\\', static::class);
 		$this->classes[\array_pop($parts)] = true;
@@ -108,7 +108,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Deletes the passed attribute
 	 */
-	public function deleteAttribute(string $attribute) : HTML5Element
+	public function deleteAttribute(string $attribute) : static
 		{
 		unset($this->attributes[$attribute]);
 
@@ -118,7 +118,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Deletes all attributes
 	 */
-	public function deleteAttributes() : HTML5Element
+	public function deleteAttributes() : static
 		{
 		$this->attributes = [];
 
@@ -128,7 +128,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Delete a class from the object
 	 */
-	public function deleteClass(string $classToDelete) : HTML5Element
+	public function deleteClass(string $classToDelete) : static
 		{
 		unset($this->classes[$classToDelete]);
 
@@ -138,7 +138,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Disabled the element
 	 */
-	public function disabled() : HTML5Element
+	public function disabled() : static
 		{
 		$this->addClass('disabled');
 
@@ -287,7 +287,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Assign a new id to this element.
 	 */
-	public function newId() : HTML5Element
+	public function newId() : static
 		{
 		$parts = \explode('\\', static::class);
 		$class = \array_pop($parts);
@@ -302,9 +302,9 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string $value of the attribute, blank for just a plain attribute
 	 */
-	public function setAttribute(string $attribute, string $value = '') : HTML5Element
+	public function setAttribute(string $attribute, string $value = '') : static
 		{
-		$this->attributes[$attribute] = $value;
+		$this->attributes[$attribute] = (string)$value;
 
 		return $this;
 		}
@@ -314,7 +314,7 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string $text confirm text
 	 */
-	public function setConfirm($text) : HTML5Element
+	public function setConfirm($text) : static
 		{
 		$this->addAttribute('onclick', "return window.confirm(\"{$text}\");");
 
@@ -326,7 +326,7 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string $element
 	 */
-	public function setElement($element) : HTML5Element
+	public function setElement($element) : static
 		{
 		$this->element = $element;
 		$this->noEndTag = isset(self::$noEndTags[\strtolower($element)]);
@@ -339,7 +339,7 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string $id to set. Will be returned as set. It is up to the caller to prevent duplicate ids.
 	 */
-	public function setId($id) : HTML5Element
+	public function setId($id) : static
 		{
 		$this->id = $id;
 
@@ -351,7 +351,7 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @param string|ToolTip $tip
 	 */
-	public function setToolTip($tip) : HTML5Element
+	public function setToolTip($tip) : static
 		{
 		if ($tip)
 			{
@@ -373,7 +373,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Will toggle the provided element on click with the provided animation.
 	 */
-	public function toggleAnimate(\PHPFUI\HTML5Element $element, string $animation) : HTML5Element
+	public function toggleAnimate(\PHPFUI\HTML5Element $element, string $animation) : static
 		{
 		$this->addAttribute('data-toggle', $element->getId());
 		$this->addAttribute('aria-controls', $element->getId());
@@ -387,7 +387,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Will toggle the class on the provided element on click.
 	 */
-	public function toggleClass(\PHPFUI\HTML5Element $element, string $class) : HTML5Element
+	public function toggleClass(\PHPFUI\HTML5Element $element, string $class) : static
 		{
 		$this->addAttribute('data-toggle', $element->getId());
 		$this->addAttribute('aria-controls', $element->getId());
@@ -400,7 +400,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 *  Moves attributes into this object from the passed object
 	 */
-	public function transferAttributes(\PHPFUI\HTML5Element $from) : HTML5Element
+	public function transferAttributes(\PHPFUI\HTML5Element $from) : static
 		{
 		$this->attributes = \array_merge($this->attributes, $from->attributes);
 		$from->attributes = [];
@@ -411,7 +411,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 *  Moves classes into this object from the passed object
 	 */
-	public function transferClasses(\PHPFUI\HTML5Element $from) : HTML5Element
+	public function transferClasses(\PHPFUI\HTML5Element $from) : static
 		{
 		$this->classes = \array_merge($this->classes, $from->classes);
 		$from->classes = [];
@@ -453,10 +453,11 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Clones the first object and fills it with properties from the second object
 	 */
-	protected function upCastCopy(\PHPFUI\HTML5Element $to, HTML5Element $from) : HTML5Element
+	protected function upCastCopy(\PHPFUI\HTML5Element $to, HTML5Element $from)
 		{
 		$returnValue = clone $to;
 
+		/** @phpstan-ignore-next-line */
 		foreach ($to as $key => $value)
 			{
 			$returnValue->{$key} = $from->{$key};

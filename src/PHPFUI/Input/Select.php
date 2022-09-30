@@ -57,7 +57,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 			}
 		$label = '' === $label ? '&nbsp;' : \PHPFUI\TextHelper::htmlentities($label);
 		$this->options[] = ['label' => $label,
-			'value' => $value,
+			'value' => (string)$value,
 			'selected' => $selected ? ' selected' : '',
 			'disabled' => $disabled ? ' disabled' : '', ];
 

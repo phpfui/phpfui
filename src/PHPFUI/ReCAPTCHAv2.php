@@ -29,7 +29,7 @@ class ReCAPTCHAv2 extends \PHPFUI\HTML5Element implements \PHPFUI\Interfaces\Cap
 	 * $secretKey are blank, the ReCAPTCHA will not be added to the
 	 * page and validation will always return true.
 	 *
-	 * @param Page $page since we need to add JS
+	 * @param \PHPFUI\Interfaces\Page $page since we need to add JS
 	 * @param ?\ReCaptcha\ReCaptcha $recaptcha constructed with your private key and configured how you want
 	 * @param string $publicKey your public key
 	 */

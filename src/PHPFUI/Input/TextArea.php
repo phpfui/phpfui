@@ -62,7 +62,7 @@ class TextArea extends \PHPFUI\Input\Input
 
 	protected function getStart() : string
 		{
-		$this->setAttribute('rows', $this->rows);
+		$this->setAttribute('rows', (string)$this->rows);
 		$label = new \PHPFUI\HTML5Element('label');
 		$label->add($this->getToolTip($this->getLabel()));
 

@@ -12,10 +12,10 @@ class Number extends \PHPFUI\Input\Input
 	 *
 	 * @param string $name of the field
 	 * @param string $label defaults to empty
-	 * @param ?string $value defaults to empty
+	 * @param string | int | float | null $value defaults to empty
 	 */
-	public function __construct(string $name, string $label = '', ?string $value = '')
+	public function __construct(string $name, string $label = '', string | int | float | null $value = null)
 		{
-		parent::__construct('number', $name, $label, $value);
+		parent::__construct('number', $name, $label, (string)$value);
 		}
 	}

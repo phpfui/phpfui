@@ -22,7 +22,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Add an item to the left side.
 	 */
-	public function addLeft($item) : Bar
+	public function addLeft($item) : static
 		{
 		$this->left[] = $item;
 

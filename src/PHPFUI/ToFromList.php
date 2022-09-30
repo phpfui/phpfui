@@ -51,7 +51,7 @@ class ToFromList extends \PHPFUI\Base
 	 * function (string $fieldName, string $index, mixed $userData, string $type) : string
 	 * ```
 	 *
-	 * @param Page $page needed for JavaScript
+	 * @param \PHPFUI\Interfaces\Page $page needed for JavaScript
 	 * @param string $name identifying this ToFromList from others on the same page.  Needs to be
 	 *  		 unique per page
 	 * @param array $inGroup data for the selected group.  See below for array requirements.
@@ -184,7 +184,7 @@ class ToFromList extends \PHPFUI\Base
 		$out->add($this->createWindow($this->notInGroup, 'out'));
 		$row->add($out);
 
-		return "{$row}";
+		return (string)$row;
 		}
 
 	protected function getEnd() : string

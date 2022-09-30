@@ -16,6 +16,6 @@ class Text extends \PHPFUI\Input\Input
 	 */
 	public function __construct(string $name, string $label = '', ?string $value = '')
 		{
-		parent::__construct('text', $name, $label, $value);
+		parent::__construct('text', $name, $label, (string)$value);
 		}
 	}

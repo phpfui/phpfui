@@ -12,6 +12,6 @@ class SwitchCheckBox extends \PHPFUI\Input\SwitchRadio
 		parent::__construct($name, 1, $title, 'checkbox');
 		$this->add("<input type='hidden' name='{$name}' value='0'>");
 		$this->setChecked(! empty($value));
-		$this->input->setAttribute('value', 1);
+		$this->input->setAttribute('value', '1');
 		}
 	}

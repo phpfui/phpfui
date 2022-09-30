@@ -18,8 +18,8 @@ class Zip extends \PHPFUI\Input\Input
 	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', ?string $value = '')
 		{
 		parent::__construct('text', $name, $label, $value);
-		$this->setAttribute('size', 10);
-		$this->setAttribute('maxLength', 10);
+		$this->setAttribute('size', '10');
+		$this->setAttribute('maxLength', '10');
 		$this->setAttribute('pattern', 'zip');
 		$this->setDataMask($page, '00000-0000');
 		$page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');

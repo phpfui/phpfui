@@ -19,8 +19,8 @@ class CheckBoxBoolean extends \PHPFUI\Input\CheckBox
 	 */
 	public function __construct(string $name, string $label = '', ?bool $value = false)
 		{
-		$this->add(new \PHPFUI\Input\Hidden($name, 0));
+		$this->add(new \PHPFUI\Input\Hidden($name, '0'));
 		parent::__construct($name, $label, 1);
-		$this->setChecked($value);
+		$this->setChecked((bool)$value);
 		}
 	}

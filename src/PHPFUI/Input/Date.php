@@ -16,6 +16,7 @@ class Date extends \PHPFUI\Input\Input
 	 * @param string $label optional
 	 * @param ?string $value optional in YYYY-MM-DD format
 	 */
+	/** @phpstan-ignore-next-line */
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', ?string $value = '')
 		{
 		if ('0000-00-00' == $value)

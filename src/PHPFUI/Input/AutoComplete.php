@@ -22,7 +22,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 	protected array $options = [];
 
-	protected \PHPFUI\Interfaces\Page $page;
+	protected \PHPFUI\Page $page;
 
 	/**
 	 * Construct a AutoComplete.
@@ -49,7 +49,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 * If **'save'** is specified, the **'suggestions'** value should be an
 	 *  empty array.
 	 *
-	 * @param \PHPFUI\Interfaces\Page $page requires JS
+	 * @param \PHPFUI\Page $page requires JS
 	 * @param callable $callback See above for correct callback
 	 *                             behavior
 	 * @param string $type of input field
@@ -58,7 +58,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 * @param ?string $value initial value, optional
 	 *
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, callable $callback, string $type, string $name, ?string $label = null, ?string $value = null)
+	public function __construct(\PHPFUI\Page $page, callable $callback, string $type, string $name, ?string $label = null, ?string $value = null)
 		{
 		$this->hidden = new \PHPFUI\Input\Hidden($name, $value);
 		$name .= 'Text';
@@ -110,7 +110,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 *
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
-	public function addAutoCompleteOption(string $option, $value) : \PHPFUI\Input\AutoComplete
+	public function addAutoCompleteOption(string $option, $value) : static
 		{
 		$this->options[$option] = $value;
 
@@ -132,7 +132,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	/**
 	 * Called recursively by Reveal to force fixed postion autocomplete hints.
 	 */
-	public function inReveal(bool $isInRevealModal = true) : \PHPFUI\Input\AutoComplete
+	public function inReveal(bool $isInRevealModal = true) : static
 		{
 		return $this->addAutoCompleteOption('forceFixPosition', $isInRevealModal);
 		}
@@ -144,7 +144,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 *
 	 * @param string $option to remove
 	 */
-	public function removeAutoCompleteOption(string $option) : \PHPFUI\Input\AutoComplete
+	public function removeAutoCompleteOption(string $option) : static
 		{
 		unset($this->options[$option]);
 
@@ -156,7 +156,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 * suggested values.  It is off by default allowing the user to
 	 * specify any text and not just suggestions.
 	 */
-	public function setNoFreeForm(bool $on = true) : \PHPFUI\Input\AutoComplete
+	public function setNoFreeForm(bool $on = true) : static
 		{
 		$this->noFreeForm = $on;
 

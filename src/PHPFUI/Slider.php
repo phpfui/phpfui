@@ -67,7 +67,7 @@ class Slider extends \PHPFUI\HTML5Element
 			}
 
 		$this->setAttribute('data-position-value-function', $function);
-		$this->setAttribute('data-non-linear-base', $base);
+		$this->setAttribute('data-non-linear-base', (string)$base);
 
 		return $this;
 		}
@@ -117,10 +117,10 @@ class Slider extends \PHPFUI\HTML5Element
 		if (! $this->started)
 			{
 			$this->started = true;
-			$this->setAttribute('data-initial-start', $this->value);
-			$this->setAttribute('data-start', $this->min);
-			$this->setAttribute('data-end', $this->max);
-			$this->setAttribute('data-step', $this->step);
+			$this->setAttribute('data-initial-start', (string)$this->value);
+			$this->setAttribute('data-start', (string)$this->min);
+			$this->setAttribute('data-end', (string)$this->max);
+			$this->setAttribute('data-step', (string)$this->step);
 
 			if ($this->vertical)
 				{
@@ -128,10 +128,10 @@ class Slider extends \PHPFUI\HTML5Element
 				$this->setAttribute('data-vertical', 'true');
 				}
 
-			$this->sliderHandle->setAttribute('aria-valuemax', $this->max);
-			$this->sliderHandle->setAttribute('aria-valuemin', $this->min);
-			$this->sliderHandle->setAttribute('aria-valuenow', $this->value);
-			$this->setAttribute('data-initial-end', (float)$this->sliderHandle->getValue());
+			$this->sliderHandle->setAttribute('aria-valuemax', (string)$this->max);
+			$this->sliderHandle->setAttribute('aria-valuemin', (string)$this->min);
+			$this->sliderHandle->setAttribute('aria-valuenow', (string)$this->value);
+			$this->setAttribute('data-initial-end', (string)$this->sliderHandle->getValue());
 			$this->add($this->sliderHandle);
 			$this->add("<span class='slider-fill' data-slider-fill></span>");
 
@@ -157,10 +157,10 @@ class Slider extends \PHPFUI\HTML5Element
 					{
 					$endInput = $this->rangeHandle->getBind();
 					}
-				$this->setAttribute('data-initial-end', $this->rangeHandle->getValue());
-				$this->rangeHandle->setAttribute('aria-valuemax', $this->max);
-				$this->rangeHandle->setAttribute('aria-valuemin', $this->min);
-				$this->rangeHandle->setAttribute('aria-valuenow', $this->rangeHandle->getValue());
+				$this->setAttribute('data-initial-end', (string)$this->rangeHandle->getValue());
+				$this->rangeHandle->setAttribute('aria-valuemax', (string)$this->max);
+				$this->rangeHandle->setAttribute('aria-valuemin', (string)$this->min);
+				$this->rangeHandle->setAttribute('aria-valuenow', (string)$this->rangeHandle->getValue());
 				}
 			}
 

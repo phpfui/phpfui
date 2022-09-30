@@ -227,7 +227,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 
 		try
 			{
-			$output .= "{$this->getStart()}";
+			$output .= (string)$this->getStart();
 
 			if ($output)
 				{
@@ -236,21 +236,21 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable
 
 			foreach ($this->items as $item)
 				{
-				$output .= "{$item}";
+				$output .= (string)$item;
 
 				if ($item)
 					{
 					$output .= $debug;
 					}
 				}
-			$body = "{$this->getBody()}";
+			$body = (string)$this->getBody();
 			$output .= $body;
 
 			if ($body)
 				{
 				$output .= $debug;
 				}
-			$end = "{$this->getEnd()}";
+			$end = (string)$this->getEnd();
 			$output .= $end;
 
 			if ($end)

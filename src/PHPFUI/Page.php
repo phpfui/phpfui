@@ -32,14 +32,14 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	 * $page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');
 	 * $page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
 	 */
-	public function addPluginDefault(string $pluginName, string $property, string $value) : Page
+	public function addPluginDefault(string $pluginName, string $property, string $value) : self
 		{
 		$this->plugins[$pluginName][$property] = $value;
 
 		return $this;
 		}
 
-	public function addAbideValidator(\PHPFUI\Validator $validator) : \PHPFUI\Page
+	public function addAbideValidator(\PHPFUI\Validator $validator) : static
 		{
 		$js = $validator->getJavaScript();
 
@@ -70,7 +70,7 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 		{
 		foreach ($this->reveals as &$reveal)
 			{
-			$this->add("{$reveal}");
+			$this->add((string)$reveal);
 			}
 
 		foreach ($this->plugins as $plugin => $options)

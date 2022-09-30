@@ -404,7 +404,7 @@ class Table extends \PHPFUI\HTML5Element
 
 				if (isset($row[$field]))
 					{
-					$final = "{$row[$field]}";
+					$final = (string)$row[$field];
 					}
 				elseif ($this->strict)
 					{

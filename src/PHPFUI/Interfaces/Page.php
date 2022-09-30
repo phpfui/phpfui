@@ -171,12 +171,12 @@ interface Page
 	 * @param string $response to return
 	 * @param string $color used for the save button
 	 */
-	public function setResponse(string $response, string $color = 'lime') : \PHPFUI\Base;
+	public function setResponse(string $response, string $color = 'lime') : static;
 
 	/**
 	 * Sets the page response directly
 	 */
-	public function setRawResponse(string $response, bool $asJSON = true) : \PHPFUI\Base;
+	public function setRawResponse(string $response, bool $asJSON = true) : static;
 
 	/**
 	 * Returns true if the page needs no more processing

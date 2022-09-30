@@ -7,7 +7,7 @@ namespace PHPFUI;
  */
 class AccordionMenu extends \PHPFUI\Menu
 	{
-	private string $separator = '~|~';
+	public const SEPARATOR = '~|~';
 
 	private bool $started = false;
 
@@ -19,7 +19,7 @@ class AccordionMenu extends \PHPFUI\Menu
 		$this->addAttribute('data-accordion-menu');
 		}
 
-	public function addSubMenu(MenuItem $label, Menu $subMenu) : Menu
+	public function addSubMenu(MenuItem $label, Menu $subMenu) : static
 		{
 		$subMenu->addClass('vertical');
 		$subMenu->addClass('nested');
@@ -34,7 +34,7 @@ class AccordionMenu extends \PHPFUI\Menu
 			$this->setAttribute('data-submenu-toggle', 'true');
 			}
 
-		$this->menuItems[$label->getName() . $this->separator . $label->getLink()] = $subMenu;
+		$this->menuItems[$label->getName() . self::SEPARATOR . $label->getLink()] = $subMenu;
 
 		return $this;
 		}
@@ -58,7 +58,7 @@ class AccordionMenu extends \PHPFUI\Menu
 					}
 				else
 					{
-					[$label, $link] = \explode($this->separator, $label);
+					[$label, $link] = \explode(self::SEPARATOR, $label);
 					$menuItem = new \PHPFUI\MenuItem($label, $link);
 
 					if ($item->getActive())

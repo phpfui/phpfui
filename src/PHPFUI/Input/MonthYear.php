@@ -115,7 +115,7 @@ class MonthYear extends \PHPFUI\Base
 		$row->add($columnB);
 		$row->add($this->hidden);
 
-		return "{$row}";
+		return (string)$row;
 		}
 
 	protected function getEnd() : string
@@ -131,7 +131,7 @@ class MonthYear extends \PHPFUI\Base
 		for ($i = 1; $i <= 12; ++$i)
 			{
 			$jd->setDate(2000, $i, 10);
-			$this->monthSelect->addOption($i . ' - ' . $jd->format('F'), $i, $this->month == $jd->format('n'));
+			$this->monthSelect->addOption($i . ' - ' . $jd->format('F'), (string)$i, $this->month == $jd->format('n'));
 			}
 
 		$this->yearSelect = new \PHPFUI\Input\Select($this->name . 'Year', $this->label . ' Year');
@@ -144,7 +144,7 @@ class MonthYear extends \PHPFUI\Base
 
 		for ($i = $this->minYear; $i <= $this->maxYear; ++$i)
 			{
-			$this->yearSelect->addOption($i, $i, $this->year == $i);
+			$this->yearSelect->addOption((string)$i, (string)$i, $this->year == $i);
 			}
 
 		$monthId = $this->monthSelect->getId();

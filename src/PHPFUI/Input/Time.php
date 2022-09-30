@@ -52,7 +52,7 @@ class Time extends \PHPFUI\Input\Input
 			{
 			parent::__construct('time', $name, $label, $value);
 			}
-		$this->setAttribute('step', $interval * 60);
+		$this->setAttribute('step', (string)($interval * 60));
 		}
 
 	/**

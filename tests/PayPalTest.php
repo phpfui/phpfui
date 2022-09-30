@@ -381,7 +381,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$subscription->plan_id = 'P-5ML4271244454362WXNWU5NQ';
 		$subscription->start_time = '2018-11-01T00:00:00Z';
 		$subscription->quantity = '20';
-		$subscription->shipping_amount = new Currency('10');
+		$subscription->shipping_amount = new Currency(10.0);
 		$application_context = new ApplicationContext();
 		$application_context->brand_name = 'walmart';
 		$application_context->locale = 'en-US';

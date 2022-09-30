@@ -20,7 +20,7 @@ class AccordionItem extends \PHPFUI\ListItem
 	/**
 	 * Add content to the AccordionItem
 	 */
-	public function addContent(string $content) : AccordionItem
+	public function addContent(string $content) : static
 		{
 		$div = new \PHPFUI\HTML5Element('div');
 		$div->addClass('accordion-content');

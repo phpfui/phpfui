@@ -39,13 +39,13 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 * Construct a SelectAutoComplete. Add options as you would a
 	 * regular Select
 	 *
-	 * @param \PHPFUI\Interfaces\Page $page requires JavaScript
+	 * @param \PHPFUI\Page $page requires JavaScript
 	 * @param string $name of the field
 	 * @param string $label optional
 	 * @param bool $freeformInput if true allow anything to be
 	 *  					 entered, but will suggest options
 	 */
-	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, string $label = '', bool $freeformInput = false)
+	public function __construct(\PHPFUI\Page $page, string $name, string $label = '', bool $freeformInput = false)
 		{
 		$this->freeformInput = $freeformInput;
 		$suffix = '';
@@ -135,7 +135,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 	 *
 	 * @param string|\PHPFUI\ToolTip $tip can be either a string or ToolTip
 	 */
-	public function setToolTip($tip) : \PHPFUI\HTML5Element
+	public function setToolTip($tip) : static
 		{
 		$this->toolTip = $tip;
 
@@ -219,6 +219,7 @@ class SelectAutoComplete extends \PHPFUI\Input\Select
 
 		if ($this->required)
 			{
+			/** @phpstan-ignore-next-line */
 			$this->setAutoCompleteRequired($this->page, $text);
 			}
 

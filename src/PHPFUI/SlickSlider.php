@@ -16,7 +16,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 	private array $slides = [];
 
 	/**
-	 * @param Page $page to add JS
+	 * @param \PHPFUI\Interfaces\Page $page to add JS
 	 */
 	public function __construct(\PHPFUI\Interfaces\Page $page)
 		{

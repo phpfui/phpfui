@@ -10,7 +10,7 @@ class UnorderedList extends \PHPFUI\HTMLList
 	private bool $sortable;
 
 	/**
-	 * @param Page $page if supplied, then the unordered list will allow drag and drop
+	 * @param ?\PHPFUI\Interfaces\Page $page if supplied, then the unordered list will allow drag and drop
 	 */
 	public function __construct(?\PHPFUI\Interfaces\Page $page = null)
 		{
