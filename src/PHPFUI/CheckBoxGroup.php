@@ -7,6 +7,7 @@ namespace PHPFUI;
  */
 class CheckBoxGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
+	/** @var array<int, \PHPFUI\Input\CheckBox> */
 	protected array $checkboxes = [];
 
 	protected bool $separateRows = false;

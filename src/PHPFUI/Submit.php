@@ -25,6 +25,8 @@ class Submit extends \PHPFUI\Button
 
 	/**
 	 * Return true if this submit button was pressed based on parameters passed (normally $_POST)
+	 *
+	 * @param array<string, string> $parameters
 	 */
 	public function submitted(array $parameters) : bool
 		{

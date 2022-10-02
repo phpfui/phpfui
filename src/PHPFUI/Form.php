@@ -15,6 +15,7 @@ class Form extends \PHPFUI\HTML5Element
 
 	private bool $started = false;
 
+	/** @var array<string, string> */
 	private array $submitValue = [];
 
 	/**
@@ -164,6 +165,7 @@ JAVASCRIPT;
 		return parent::getStart();
 		}
 
+	/** @return array<string> */
 	private function getSubmitValues(?\PHPFUI\Submit $submit = null) : array
 		{
 		if ($submit)

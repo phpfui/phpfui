@@ -34,10 +34,13 @@ namespace PHPFUI;
  */
 class NanoController implements \PHPFUI\Interfaces\NanoController
 	{
+	/** @var array<string> */
 	private array $errors = [];
 
+	/** @var array<string, array<string, string>> */
 	private array $files = [];
 
+	/** @var array<string, string> */
 	private array $get = [];
 
 	private string $invokedPath = '';
@@ -48,6 +51,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 
 	private string $missingMethod = '';
 
+	/** @var array<string, string> */
 	private array $post = [];
 
 	private string $rootNamespace = '';
@@ -80,18 +84,20 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		}
 
 	/**
-	 * @return array of errors found, for diagnostic information
+	 * @return array<string> of errors found, for diagnostic information
 	 */
 	public function getErrors() : array
 		{
 		return \array_keys($this->errors);
 		}
 
+	/** @return array<string, array<string, string>> */
 	public function getFiles() : array
 		{
 		return $this->files;
 		}
 
+	/** @return array<string, string> $files */
 	public function getGet() : array
 		{
 		return $this->get;
@@ -107,6 +113,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		return \str_replace('\\', '/', $invokedPath);
 		}
 
+	/** @return array<string, string> $files */
 	public function getPost() : array
 		{
 		return $this->post;
@@ -173,6 +180,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		return $this->punt($class);
 		}
 
+	/** @param array<string, array<string, string>> $files */
 	public function setFiles(array $files = []) : static
 		{
 		$this->files = $files;
@@ -180,6 +188,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		return $this;
 		}
 
+	/** @param array<string, string> $get */
 	public function setGet(array $get = []) : static
 		{
 		$this->get = $get;
@@ -217,6 +226,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		return $this;
 		}
 
+	/** @param array<string, string> $post */
 	public function setPost(array $post = []) : static
 		{
 		$this->post = $post;
@@ -244,6 +254,9 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 
 	/**
 	 * Test if the class and method exists, and if so, return the instantiated class with the method called
+	 *
+	 * @param array<string> $class
+	 * @param array<string> $parts
 	 *
 	 * @return null|\PHPFUI\Interfaces\NanoClass null value indicates class::method was not found
 	 */
@@ -307,7 +320,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 			if ($parameter->hasType())
 				{
 				$type = $parameter->getType();
-				/** @phpstan-ignore-next-line */
+				// @phpstan-ignore-next-line
 				$parameterType = $type->getName();
 
 				// @phpstan-ignore-next-line
@@ -353,6 +366,8 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 
 	/**
 	 * We can't find a Class\Method pair, so just find a class and check if it has a landing page if defined, else go up one level.
+	 *
+	 * @param array<string> $classParts
 	 *
 	 * @return \PHPFUI\Interfaces\NanoClass object will return the missing class if the missing method can't be loaded
 	 */

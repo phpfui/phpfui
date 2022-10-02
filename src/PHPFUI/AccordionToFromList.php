@@ -12,11 +12,18 @@ namespace PHPFUI;
  */
 class AccordionToFromList extends \PHPFUI\ToFromList
 	{
+	/**
+	 * @param array<int, array<string, string>> $inGroup
+	 * @param array<int, array<string, string>> $notInGroup
+	 */
 	public function __construct(\PHPFUI\Interfaces\Page $page, string $name, array $inGroup, array $notInGroup, string $callbackIndex, $callback)
 		{
 		parent::__construct($page, $name, $inGroup, $notInGroup, $callbackIndex, $callback);
 		}
 
+	/**
+	 * @param array<mixed> $groups
+	 */
 	protected function createWindow(array $groups, string $type) : string
 		{
 		$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";

@@ -13,6 +13,7 @@ class Input extends \PHPFUI\HTML5Element
 
 	protected string $type = '';
 
+	/** @var array<string> */
 	private static array $validInputs = [
 		'button',
 		'checkbox',

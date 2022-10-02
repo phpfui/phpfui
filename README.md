@@ -1,4 +1,4 @@
-# PHPFUI [![Tests](https://github.com/phpfui/phpfui/actions/workflows/tests.yml/badge.svg)](https://github.com/phpfui/phpfui/actions?query=workflow%3Atests) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpfui.svg)](https://packagist.org/packages/phpfui/phpfui) ![](https://img.shields.io/badge/PHPStan-level%205-brightgreen.svg?style=flat)
+# PHPFUI [![Tests](https://github.com/phpfui/phpfui/actions/workflows/tests.yml/badge.svg)](https://github.com/phpfui/phpfui/actions?query=workflow%3Atests) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpfui.svg)](https://packagist.org/packages/phpfui/phpfui) ![](https://img.shields.io/badge/PHPStan-level%206-brightgreen.svg?style=flat)
 
 PHP Wrapper for the Foundation CSS Framework
 

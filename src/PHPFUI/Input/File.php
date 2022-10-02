@@ -49,7 +49,7 @@ JS;
 	 * Set allowed extensions. Dropify will validate and open dialog
 	 * will be prepopulated with the restriction
 	 *
-	 * @param array $extensions leading . is optional
+	 * @param array<string> $extensions leading . is optional
 	 */
 	public function setAllowedExtensions(array $extensions) : static
 		{

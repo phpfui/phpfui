@@ -33,6 +33,7 @@ namespace PHPFUI;
  */
 class MultiColumn extends \PHPFUI\GridX implements \Countable
 	{
+	/** @var array<mixed> */
 	private array $objects = [];
 
 	private bool $started = false;
@@ -50,7 +51,7 @@ class MultiColumn extends \PHPFUI\GridX implements \Countable
 	 *
 	 *
 	 */
-	public function add($object) : static
+	public function add(mixed $object) : static
 		{
 		$this->objects[] = $object;
 

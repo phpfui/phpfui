@@ -22,6 +22,7 @@ class KitchenSink
 	{
 	use \PHPFUI\Traits\Page;
 
+	/** @var array<array<string, int | string>> */
 	private array $lines = [];
 
 	public function __construct(private \PHPFUI\Page $page)
@@ -743,7 +744,7 @@ class KitchenSink
 		return $slickSlider;
 		}
 
-	public function extraSubHeader()
+	public function extraSubHeader() : \PHPFUI\SubHeader
 		{
 		$subHeader = new \PHPFUI\SubHeader('Sub Header');
 
@@ -776,7 +777,7 @@ class KitchenSink
 	/**
 	 * Get all the example functions
 	 *
-	 * return array of method names indexed by English name
+	 * @return array<string, string> of method names indexed by English name
 	 */
 	public function getExamples(string $prefix = 'base') : array
 		{

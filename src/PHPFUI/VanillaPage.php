@@ -11,6 +11,7 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private bool $chrome = false;
 
+	/** @var array<string, string> */
 	private array $css = [];
 
 	private int $edgeVersion = 0;
@@ -19,22 +20,29 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private int $fireFoxVersion = 0;
 
+	/** @var array<string, string> */
 	private array $headJavascript = [];
 
+	/** @var array<string, string> */
 	private array $headScripts = [];
 
+	/** @var array<string, string> */
 	private array $headTags = [];
 
+	/** @var array<string, string> */
 	private array $ieComments = [];
 
 	private bool $IEMobile = false;
 
 	private bool $ios = false;
 
+	/** @var array<string, string> */
 	private array $javascript = [];
 
+	/** @var array<string, string> */
 	private array $javascriptFirst = [];
 
+	/** @var array<string, string> */
 	private array $javascriptLast = [];
 
 	private string $language = 'en';
@@ -43,8 +51,10 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private string $resourcePath = '/';
 
+	/** @var array<string, string> */
 	private array $styleSheets = [];
 
+	/** @var array<string, string> */
 	private array $tailScripts = [];
 
 	private \PHPFUI\Container $body;

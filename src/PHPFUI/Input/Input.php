@@ -9,6 +9,7 @@ abstract class Input extends \PHPFUI\Input
 	{
 	protected ?\PHPFUI\HTML5Element $error = null;
 
+	/** @var array<string> */
 	protected array $errorMessages = [];
 
 	protected ?\PHPFUI\HTML5Element $hint = null;
@@ -86,7 +87,7 @@ abstract class Input extends \PHPFUI\Input
 	/**
 	 * Set the validator for this input field.  You must also add it to the page with addAbideValidator()
 	 */
-	public function setValidator(\PHPFUI\Validator $validator, string $errorMessage = '', $data = null) : static
+	public function setValidator(\PHPFUI\Validator $validator, string $errorMessage = '', ?string $data = null) : static
 		{
 		$this->setAttribute('data-validator', $validator->getValidatorName());
 
@@ -106,7 +107,7 @@ abstract class Input extends \PHPFUI\Input
 	/**
 	 * Set all error messages
 	 *
-	 * @param array $errors to display on form validation
+	 * @param array<string> $errors to display on form validation
 	 */
 	public function setErrorMessages(array $errors) : static
 		{

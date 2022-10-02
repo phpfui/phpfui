@@ -7,6 +7,7 @@ namespace PHPFUI;
  */
 class RadioTable extends \PHPFUI\Input implements \Countable
 	{
+	/** @var array<string, \PHPFUI\RadioTableCell> */
 	protected array $buttons = [];
 
 	/**
@@ -24,7 +25,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 	/**
 	 * Add a optional button
 	 */
-	public function addButton(RadioTableCell $button) : static
+	public function addButton(\PHPFUI\RadioTableCell $button) : static
 		{
 		$button->setParent($this);
 		$this->buttons[$button->getName()] = $button;
@@ -32,7 +33,7 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 		return $this;
 		}
 
-	public function addClassesToTable(Table $table) : static
+	public function addClassesToTable(\PHPFUI\Table $table) : static
 		{
 		foreach (\array_keys($this->buttons) as $name)
 			{
@@ -52,6 +53,8 @@ class RadioTable extends \PHPFUI\Input implements \Countable
 
 	/**
 	 * Get buttons, indexed by name
+	 *
+	 * @return array<string, \PHPFUI\RadioTableCell>
 	 */
 	public function getButtons() : array
 		{

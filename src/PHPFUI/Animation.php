@@ -7,6 +7,7 @@ namespace PHPFUI;
  */
 class Animation
 	{
+	/** @var array<string, true> */
 	private static array $animations = [
 		'slide-in-down' => true,
 		'slide-in-left' => true,
@@ -42,6 +43,8 @@ class Animation
 
 	/**
 	 * Return all valid animation strings
+	 *
+	 * @return array<string>
 	 */
 	public static function allAnimations() : array
 		{

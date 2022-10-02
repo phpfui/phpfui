@@ -7,8 +7,10 @@ namespace PHPFUI\Input;
  */
 class Select extends \PHPFUI\Input\Input implements \Countable
 	{
+	/** @var array<string> */
 	protected array $labelClass = [];
 
+	/** @var array<\PHPFUI\Input\OptGroup | array<string, string>> */
 	protected array $options = [];
 
 	/**
@@ -33,7 +35,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	/**
 	 * Add an OptGroup
 	 */
-	public function addOptGroup(OptGroup $group) : static
+	public function addOptGroup(\PHPFUI\Input\OptGroup $group) : static
 		{
 		$this->options[] = $group;
 
@@ -108,7 +110,7 @@ class Select extends \PHPFUI\Input\Input implements \Countable
 	 *
 	 * @param string $selection to be selected
 	 */
-	public function select($selection) : static
+	public function select(string $selection) : static
 		{
 		foreach ($this->options as &$values)
 			{

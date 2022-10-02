@@ -7,6 +7,7 @@ namespace PHPFUI;
  */
 class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
+	/** @var array<\PHPFUI\Button> */
 	protected array $buttons = [];
 
 	private bool $started = false;
@@ -22,7 +23,7 @@ class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	 *
 	 * @param Button $button to add
 	 */
-	public function addButton(Button $button) : static
+	public function addButton(\PHPFUI\Button $button) : static
 		{
 		$this->buttons[] = $button;
 
@@ -31,10 +32,8 @@ class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 
 	/**
 	 * Add a class to all buttons in group
-	 *
-	 * @param string $class to add
 	 */
-	public function addButtonClass($class) : static
+	public function addButtonClass(string $class) : static
 		{
 		foreach ($this->buttons as &$button)
 			{
@@ -59,7 +58,7 @@ class ButtonGroup extends \PHPFUI\HTML5Element implements \Countable
 	 * @param int $index of the button to replace
 	 * @param Button $button to replace
 	 */
-	public function setButton($index, Button $button) : static
+	public function setButton(int $index, \PHPFUI\Button $button) : static
 		{
 		if ($index >= 0 && $index < \count($this->buttons))
 			{

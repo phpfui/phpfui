@@ -7,6 +7,7 @@ namespace PHPFUI\Input;
  */
 class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 	{
+	/** @var array<array<string, string | bool>> */
 	protected array $buttons = [];
 
 	protected bool $separateRows = false;
@@ -39,7 +40,7 @@ class RadioGroup extends \PHPFUI\Input\Input implements \Countable
 
 		$this->buttons[] = ['label' => $label,
 			'value' => (string)$value,
-			'disabled' => $disabled ? 'disabled' : '', ];
+			'disabled' => $disabled];
 
 		return $this;
 		}

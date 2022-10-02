@@ -15,7 +15,7 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 
 	private bool $started = false;
 
-	public function __construct(string $name, $value = 0, private string $title = '', string $type = 'radio')
+	public function __construct(string $name, string | int | bool $value = 0, private string $title = '', string $type = 'radio')
 		{
 		parent::__construct('div');
 		$this->addClass('switch');
@@ -23,7 +23,7 @@ class SwitchRadio extends \PHPFUI\HTML5Element
 		$this->input->addAttribute('type', $type);
 		$this->input->addAttribute('name', $name);
 		$this->input->addClass('switch-input');
-		$this->input->setAttribute('value', $value);
+		$this->input->setAttribute('value', (string)$value);
 		}
 
 	/**

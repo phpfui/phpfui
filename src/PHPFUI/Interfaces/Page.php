@@ -84,6 +84,8 @@ interface Page
 
 	/**
 	 * Returns array of the current query parameters
+	 *
+	 * @return array<string, string>
 	 */
 	public function getQueryParameters() : array;
 

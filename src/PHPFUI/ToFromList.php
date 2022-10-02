@@ -42,8 +42,8 @@ class ToFromList extends \PHPFUI\Base
 	 * @param \PHPFUI\Interfaces\Page $page needed for JavaScript
 	 * @param string $name identifying this ToFromList from others on the same page.  Needs to be
 	 *  		 unique per page
-	 * @param array $inGroup data for the selected group.  See below for array requirements.
-	 * @param array $notInGroup data for the unselected group.  See below for array requirements.
+	 * @param array<int, array<string, string>> $inGroup data for the selected group.  See below for array requirements.
+	 * @param array<int, array<string, string>> $notInGroup data for the unselected group.  See below for array requirements.
 	 * @param string $callbackIndex is used to identify records by index in your master set of data.
 	 * @param callable $callback used to format the text used to drag and drop.
 	 */
@@ -138,6 +138,7 @@ class ToFromList extends \PHPFUI\Base
 		return $this;
 		}
 
+	/** @param array<array<string>> $group */
 	protected function createWindow(array $group, string $type) : string
 		{
 		$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";

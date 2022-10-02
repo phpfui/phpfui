@@ -42,7 +42,7 @@ class Panel extends \PHPFUI\HTML5Element
 	/**
 	 * Set text if not set in the constructor
 	 */
-	public function setText($text) : static
+	public function setText(string $text) : static
 		{
 		$this->text = $text;
 

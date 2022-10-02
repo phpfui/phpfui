@@ -1,17 +1,15 @@
 parameters:
-	level: 5
+	level: 6
 	errorFormat: raw
 	editorUrl: '%%file%% %%line%% %%column%%: %%error%%'
 	paths:
 		- src
-		- Tests
 	ignoreErrors:
 		-
 			message: '#Access to an undefined property PHPFUI\\PayPal[a-zA-Z0-9\\_]+::[\$a-zA-Z0-9_]+#'
 			paths:
 				- src/*
-				- Tests/*
 		-
-			message: '#haystack of method PHPUnit\\Framework\\Assert::assertStringContainsString\(\) expects string, PHPFUI\\Interfaces\\NanoClass given#'
+			message: '#PHPFUI\\PayPal#'
 			paths:
-				- Tests/*
+				- src/PHPFUI/PayPal/*

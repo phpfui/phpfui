@@ -11,7 +11,7 @@ class TextHelper
 	 * Converts a PHP array to a JavaScript array that can be used
 	 * directly as JavaScript (not JSON)
 	 *
-	 * @param array $array of php values
+	 * @param array<string, mixed> $array of php values
 	 * @param string $stringQuote optional quotes to use for string.
 	 *  						 Include actual quotes in your string if you
 	 *  						 need specify different quotes in different
@@ -43,7 +43,7 @@ class TextHelper
 				{
 				/** @noinspection PhpMissingBreakStatementInspection */
 				case 'object':
-					$value = \json_decode(\json_encode($value, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+					$value = \json_decode(\json_encode($value), true, 512);
 					// Intentionally fall through
 				case 'array':
 					$js .= self::arrayToJS($value, $stringQuote);
@@ -135,6 +135,7 @@ class TextHelper
 		return \htmlentities($string, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
 		}
 
+	/** @param array<string> $match */
 	public static function replace_unicode_escape_sequence(array $match) : string
 		{
 		return \mb_convert_encoding(\pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');

@@ -7,6 +7,7 @@ namespace PHPFUI\Input;
  */
 class OptGroup extends \PHPFUI\HTML5Element implements \Countable
 	{
+	/** @var array<array<string, string | null>> */
 	protected array $options = [];
 
 	/**

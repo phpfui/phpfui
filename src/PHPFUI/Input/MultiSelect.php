@@ -27,13 +27,13 @@ class MultiSelect extends \PHPFUI\Input\Select
 	/**
 	 * Preselect the values
 	 *
-	 * @param string|array $selections what should be selected on
+	 * @param string|array<string> $selections what should be selected on
 	 *              initialization.  If an array, then any value in
 	 *              the array will be selected if it matches the
 	 *              options previously set. If not an array, then
 	 *              just preselect the one value.
 	 */
-	public function select($selections) : static
+	public function select(string | array $selections) : static
 		{
 		if (! \is_array($selections))
 			{

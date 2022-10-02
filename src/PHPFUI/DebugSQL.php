@@ -9,7 +9,7 @@ class DebugSQL extends \PHPFUI\Debug
 	{
 	/**
 	 * @param string $sql you want to output. ? and :var parameters are replaced if $input is provided
-	 * @param array $inputs used to replace ? and :var
+	 * @param array<int|string, mixed> $inputs used to replace ? and :var
 	 */
 	public function __construct(string $sql, array $inputs = [])
 		{

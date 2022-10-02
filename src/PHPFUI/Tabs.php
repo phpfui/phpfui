@@ -6,6 +6,7 @@ class Tabs extends \PHPFUI\Base
 	{
 	private \PHPFUI\HTML5Element $contentSection;
 
+	/** @var array<string, array<string, string | bool>> */
 	private array $tabs = [];
 
 	private ?\PHPFUI\UnorderedList $tabSection = null;

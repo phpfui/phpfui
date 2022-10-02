@@ -11,6 +11,7 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 	{
 	private string $fieldName = 'mathAnswer';
 
+	/** @var array<string, string> */
 	private array $operators = ['plus' => '+', 'minus' => '-', 'times' => '*'];
 
 	public function __construct(\PHPFUI\Interfaces\Page $page, int $limit = 10, string $fieldName = '')

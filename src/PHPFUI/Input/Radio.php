@@ -27,7 +27,7 @@ class Radio extends \PHPFUI\Input\Input
 		$this->checked = $checked ? ' checked' : '';
 		}
 
-	public function setCheckedValue($value) : void
+	public function setCheckedValue(string $value) : void
 		{
 		$this->setChecked($value == $this->value);
 		}

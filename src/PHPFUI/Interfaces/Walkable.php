@@ -7,9 +7,5 @@ namespace PHPFUI\Interfaces;
  */
 interface Walkable
 	{
-	/**
-	 *
-	 * @return $this
-	 */
-	public function walk(string $method, $argument = null);
+	public function walk(string $method, mixed $argument = null) : static;
 	}

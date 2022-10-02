@@ -6,8 +6,6 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 	{
 	private string $disabled = '';
 
-	private string $disabledColor = 'gray';
-
 	private string $offBackgroundColor = 'lightgray';
 
 	private string $offColor = 'white';
@@ -35,23 +33,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 		return $this->name;
 		}
 
-	public function getOffColor($checked)
-		{
-		if ($this->disabled)
-			{
-			return $this->disabledColor;
-			}
-		}
-
-	public function getOnColor($checked)
-		{
-		if ($this->disabled)
-			{
-			return $this->disabledColor;
-			}
-		}
-
-	public function getRadioButton()
+	public function getRadioButton() : \PHPFUI\HTML5Element
 		{
 		if ($this->radioButton)
 			{
@@ -118,7 +100,7 @@ class RadioTableCell extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
-	public function setParent(\PHPFUI\RadioTable $parent)
+	public function setParent(\PHPFUI\RadioTable $parent) : static
 		{
 		$this->parent = $parent;
 

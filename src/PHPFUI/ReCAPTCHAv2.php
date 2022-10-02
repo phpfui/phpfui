@@ -20,6 +20,7 @@ namespace PHPFUI;
  */
 class ReCAPTCHAv2 extends \PHPFUI\HTML5Element implements \PHPFUI\Interfaces\Captcha
 	{
+	/** @var array<string> */
 	private array $errors = [];
 
 	private bool $isValid = false;
@@ -64,7 +65,7 @@ class ReCAPTCHAv2 extends \PHPFUI\HTML5Element implements \PHPFUI\Interfaces\Cap
 		}
 
 	/**
-	 * Returns any errors from Google
+	 * @return array<string> any errors from Google
 	 */
 	public function getErrors() : array
 		{

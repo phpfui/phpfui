@@ -7,8 +7,10 @@ namespace PHPFUI;
  */
 class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	{
+	/** @var array<string, array<string, string>> */
 	private array $plugins = [];
 
+	/** @var array<\PHPFUI\Reveal> */
 	private array $reveals = [];
 
 	public function __construct()
@@ -57,9 +59,9 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 	/**
 	 * Add a reveal dialog to the page
 	 *
-	 * @param Reveal $reveal dialog to store in the page
+	 * @param \PHPFUI\Reveal $reveal dialog to store in the page
 	 */
-	public function addReveal(Reveal $reveal) : static
+	public function addReveal(\PHPFUI\Reveal $reveal) : static
 		{
 		$this->reveals[] = $reveal;
 

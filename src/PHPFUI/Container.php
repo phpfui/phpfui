@@ -10,6 +10,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringable
 	{
 	use \PHPFUI\Traits\Walkable;
 
+	/** @var array<mixed> */
 	private array $items = [];
 
 	/**

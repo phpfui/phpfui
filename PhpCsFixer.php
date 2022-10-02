@@ -40,7 +40,7 @@ return $config
         // Replace multiple nested calls of `dirname` by only one call with second `$level` parameter. Requires PHP >= 7.0.
         'combine_nested_dirname' => true,
         // Comments with annotation should be docblock when used on structural elements.
-        'comment_to_phpdoc' => true,
+        'comment_to_phpdoc' => false,
         // Remove extra spaces in a nullable typehint.
         'compact_nullable_typehint' => true,
         // Concatenation should be spaced according configuration.

@@ -9,8 +9,10 @@ class SortableTable extends \PHPFUI\Table
 	{
 	private string $columnParameter = 'c';
 
+	/** @var array<string, string> */
 	private array $parameters = [];
 
+	/** @var array<string, int> */
 	private array $sortableColumns = [];
 
 	private string $sortedColumn = '';
@@ -57,6 +59,8 @@ class SortableTable extends \PHPFUI\Table
 
 	/**
 	 * Get parameters parsed off the url
+	 *
+	 * @return array<string, string>
 	 */
 	public function getParsedParameters() : array
 		{
@@ -88,6 +92,8 @@ class SortableTable extends \PHPFUI\Table
 
 	/**
 	 * Set the valid sortable columns
+	 *
+	 * @param array<string> $columns
 	 */
 	public function setSortableColumns(array $columns) : static
 		{

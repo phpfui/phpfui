@@ -18,6 +18,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 	protected bool $noFreeForm = false;
 
+	/** @var array<string, mixed> */
 	protected array $options = [];
 
 	/**
@@ -72,7 +73,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 		if (isset($_POST[$this->className]) && \PHPFUI\Session::checkCSRF() && $_POST['fieldName'] == $name)
 			{
-			$returnValue = \json_encode(\call_user_func($this->callback, $_POST), JSON_THROW_ON_ERROR);
+			$returnValue = \json_encode(\call_user_func($this->callback, $_POST));
 
 			if ($returnValue)
 				{
@@ -103,7 +104,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 	 *
 	 * @link https://github.com/devbridge/jQuery-Autocomplete
 	 */
-	public function addAutoCompleteOption(string $option, $value) : static
+	public function addAutoCompleteOption(string $option, mixed $value) : static
 		{
 		$this->options[$option] = $value;
 

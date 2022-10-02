@@ -8,18 +8,22 @@ namespace PHPFUI;
  */
 class HTML5Element extends \PHPFUI\Base
 	{
+	/** @var array<string, string> */
 	private array $attributes = [];
 
+	/** @var array<string, true> */
 	private array $classes = [];
 
 	private string $element = '';
 
 	private ?string $id = null;
 
+	/** @var array<string, int> */
 	private static array $masterId = [];
 
 	private bool $noEndTag = false;
 
+	/** @var array<string, true> */
 	private static array $noEndTags = [
 		'area' => true,
 		'base' => true,
@@ -39,7 +43,7 @@ class HTML5Element extends \PHPFUI\Base
 		'wbr' => true,
 	];
 
-	private $tooltip = null;
+	private string | \PHPFUI\ToolTip | null $tooltip = null;
 
 	/**
 	 * Construct an object with the tag name, ie. DIV, SPAN, TEXTAREA, etc
@@ -193,6 +197,8 @@ class HTML5Element extends \PHPFUI\Base
 
 	/**
 	 * Returns all classes for the object
+	 *
+	 * @return array<string>
 	 */
 	public function getClasses() : array
 		{
@@ -240,7 +246,7 @@ class HTML5Element extends \PHPFUI\Base
 	 *
 	 * @return ToolTip|string return type depends on if the tip was set as a string or ToolTip object.
 	 */
-	public function getToolTip(string $label)
+	public function getToolTip(string $label) : string | \PHPFUI\ToolTip
 		{
 		$toolTip = $label;
 
@@ -348,10 +354,8 @@ class HTML5Element extends \PHPFUI\Base
 
 	/**
 	 * Set the tool tip.  Can either be a ToolTip or a string.  If it is a string, it will be converted to a ToolTip
-	 *
-	 * @param string|ToolTip $tip
 	 */
-	public function setToolTip($tip) : static
+	public function setToolTip(string | \PHPFUI\ToolTip $tip) : static
 		{
 		if ($tip)
 			{
@@ -453,7 +457,7 @@ class HTML5Element extends \PHPFUI\Base
 	/**
 	 * Clones the first object and fills it with properties from the second object
 	 */
-	protected function upCastCopy(\PHPFUI\HTML5Element $to, HTML5Element $from)
+	protected function upCastCopy(\PHPFUI\HTML5Element $to, HTML5Element $from) : object
 		{
 		$returnValue = clone $to;
 

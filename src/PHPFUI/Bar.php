@@ -4,8 +4,10 @@ namespace PHPFUI;
 
 abstract class Bar extends \PHPFUI\HTML5Element
 	{
+	/** @var array<mixed> */
 	protected array $left = [];
 
+	/** @var array<mixed> */
 	protected array $right = [];
 
 	private string $className;
@@ -22,7 +24,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Add an item to the left side.
 	 */
-	public function addLeft($item) : static
+	public function addLeft(mixed $item) : static
 		{
 		$this->left[] = $item;
 
@@ -32,7 +34,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Add an item to the right side after previously added item.
 	 */
-	public function addRight($item) : static
+	public function addRight(mixed $item) : static
 		{
 		$this->right[] = $item;
 
@@ -42,7 +44,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Add an item on the the left before any previously added items
 	 */
-	public function pushLeft($item) : static
+	public function pushLeft(mixed $item) : static
 		{
 		$this->left[] = $item;
 
@@ -52,7 +54,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 	/**
 	 * Adds an item before the other items on the right.
 	 */
-	public function pushRight($item) : static
+	public function pushRight(mixed $item) : static
 		{
 		$this->right[] = $item;
 
@@ -71,6 +73,7 @@ abstract class Bar extends \PHPFUI\HTML5Element
 		return parent::getStart();
 		}
 
+	/** @param array<mixed> $items */
 	private function getSection(array $items, string $class) : ?HTML5Element
 		{
 		$element = null;

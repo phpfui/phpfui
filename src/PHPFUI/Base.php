@@ -17,6 +17,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 
 	private static bool $done = false;
 
+	/** @var array<mixed> */
 	private array $items = [];
 
 	private static string $response = '';
@@ -129,7 +130,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 	/**
 	 * Add an object in front of existing object
 	 */
-	public function prepend($item) : static
+	public function prepend(mixed $item) : static
 		{
 		\array_unshift($this->items, $item);
 
@@ -180,12 +181,13 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 		{
 		if (! $this->isDone())
 			{
-			$this->setRawResponse(\json_encode(['response' => $response, 'color' => $color, ], JSON_THROW_ON_ERROR));
+			$this->setRawResponse(\json_encode(['response' => $response, 'color' => $color, ]));
 			}
 
 		return $this;
 		}
 
+	/** @return array<mixed> */
 	protected function getItems() : array
 		{
 		return $this->items;

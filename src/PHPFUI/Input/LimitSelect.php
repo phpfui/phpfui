@@ -22,6 +22,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 
 	private string $limitName;
 
+	/** @var array<int> */
 	private array $limits;
 
 	private string $pageName;
@@ -50,7 +51,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 
 		foreach ($this->limits as $limit)
 			{
-			$this->addOption($limit, $limit, $limit == $this->currentLimit);
+			$this->addOption((string)$limit, (string)$limit, $limit == $this->currentLimit);
 			}
 
 		$page = (int)($parameters[$this->pageName] ?? 1);
@@ -80,6 +81,8 @@ class LimitSelect extends \PHPFUI\Input\Select
 
 	/**
 	 * Specify the limits to use
+	 *
+	 * @param array<int> $limits
 	 */
 	public function setLimits(array $limits = [10, 25, 50, 100]) : static
 		{

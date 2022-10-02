@@ -27,7 +27,7 @@ class PopupInput
 		$reveal->add($reveal->getButtonAndCancel($revealSubmit));
 		}
 
-	public function getLoadJS(\PHPFUI\HTML5Element $input)
+	public function getLoadJS(\PHPFUI\HTML5Element $input) : string
 		{
 		return '$("#' . $this->inputId . '").val($("#' . $input->getId() . '").val());' . '$("#' . $this->updateFieldId . '").val("' .
 			$input->getId() . '");' . '$("#' . $this->revealId . '").foundation("open");';

@@ -9,6 +9,7 @@ class DropDownButton extends \PHPFUI\Button
 	{
 	private ?\PHPFUI\HTML5Element $dropDown = null;
 
+	/** @var array<string, \PHPFUI\MenuItem> */
 	private array $items = [];
 
 	private int $maxLength = 0;
@@ -26,14 +27,14 @@ class DropDownButton extends \PHPFUI\Button
 		$this->addClass('dropdown');
 		}
 
-	public function addLink(string $link, string $name) : DropDownButton
+	public function addLink(string $link, string $name) : static
 		{
 		$this->maxLength = \max($this->maxLength, \strlen($name));
 
 		return $this->addMenuItem(new \PHPFUI\MenuItem($name, $link));
 		}
 
-	public function addMenuItem(MenuItem $item) : static
+	public function addMenuItem(\PHPFUI\MenuItem $item) : static
 		{
 		$this->maxLength = \max($this->maxLength, \strlen($item->getName()));
 		$this->items[$item->getName()] = $item;
