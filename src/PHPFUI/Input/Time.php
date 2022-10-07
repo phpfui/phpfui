@@ -69,79 +69,14 @@ class Time extends \PHPFUI\Input\Input
 	/**
 	 * Convert a time string to military format, which is the standard format for times in HTML
 	 */
-	public static function toMilitary(string $timeString) : string
+	public static function toMilitary(?string $timeString) : string
 		{
 		if (empty($timeString))
-			{
-			return $timeString;
-			}
-
-		$timeString = \str_replace('P', ' P', \strtoupper($timeString));
-		$timeString = \str_replace('A', ' A', $timeString);
-		$timeString = \str_replace(':', ' ', $timeString);
-		$timeString = \str_replace('  ', ' ', $timeString);
-		$array = \explode(' ', $timeString);
-		$positions = \count($array);
-		$ampm = 'AM';
-		$hour = $minute = $second = 0;
-
-		if (\strpos($timeString, 'A') || \strpos($timeString, 'P'))
-			{
-			switch ($positions)
-				{
-				case 4:
-					[$hour, $minute, $second, $ampm] = $array;
-
-					break;
-
-				case 3:
-					[$hour, $minute, $ampm] = $array;
-
-					break;
-
-				case 2:
-					[$hour, $ampm] = $array;
-
-					break;
-
-				case 1:
-					$hour = (int)$timeString;
-
-					break;
-				}
-
-			if (\str_contains($ampm, 'P'))
-				{
-				$hour += 12;
-				}
-			}
-		else
-			{
-			switch ($positions)
-				{
-				case 3:
-					[$hour, $minute, $second] = $array;
-
-					break;
-
-				case 2:
-					[$hour, $minute] = $array;
-
-					break;
-
-				case 1:
-					$hour = (int)$timeString;
-
-					break;
-				}
-			}
-
-		if ($hour > 23 || $hour < 0 || $minute < 0 || $minute > 59)
 			{
 			return '';
 			}
 
-		return \sprintf('%02d:%02d:%02d', $hour, $minute, $second);
+		return \date('H:i:s', \strtotime($timeString));
 		}
 
 	protected function getStart() : string
