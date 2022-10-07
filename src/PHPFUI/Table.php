@@ -151,9 +151,9 @@ class Table extends \PHPFUI\HTML5Element
 	 * Add a row.  You can also pass column spans which are
 	 * possitional and do not need keys corresponding index to the row.
 	 *
-	 * @param array<string, string> $row array indexes must correspond to headers if
+	 * @param array<string | int, mixed> $row array indexes must correspond to headers if
 	 *                        used.
-	 * @param array<string, array<string>> $colspans are optional, but positional and need not
+	 * @param array<int, string | int> $colspans are optional, but positional and need not
 	 *                            correspond to the $row indexes
 	 */
 	public function addRow(array $row, array $colspans = []) : static

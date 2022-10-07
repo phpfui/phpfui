@@ -46,7 +46,7 @@ class AJAX
 	/**
 	 * Return JavaScript that will execute a function call
 	 *
-	 * @param array<string, string> $parameters anything you want to pass as data to
+	 * @param array<string, mixed> $parameters anything you want to pass as data to
 	 *  						the AJAX call
 	 *
 	 * @return string of JavaScript code to be added to the page
