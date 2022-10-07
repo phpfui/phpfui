@@ -446,11 +446,6 @@ class HTML5Element extends \PHPFUI\Base
 		$output .= $this->getClass();
 		$output .= $this->getAttributes();
 
-		if ($this->noEndTag && 'input' != $this->element)
-			{
-			$output .= '/';
-			}
-
 		return $output . '>';
 		}
 
