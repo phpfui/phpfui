@@ -68,6 +68,31 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 		return $this;
 		}
 
+	/**
+	 * Add copy to clipboard plumbing to the page.  You must still add the $copyOnClick and optional $flashOnCopy to the page in the appropriate locations
+	 */
+	public function addCopyToClipboard(string $textToCopy, \PHPFUI\HTML5Element $copyOnClick, ?\PHPFUI\HTML5Element $flashOnCopy = null, int $flashMilliSeconds = 2000) : static
+		{
+		$hidden = new \PHPFUI\Input('text', '', $textToCopy);
+		$hidden->addClass('hide');
+		$this->add($hidden);
+
+		if ($flashOnCopy)
+			{
+			$flashOnCopy->addClass('hide');
+			$copyOnClick->setAttribute('onclick', 'copyText("' . $hidden->getId() . '","' . $flashOnCopy->getId() . '",' . $flashMilliSeconds . ')');
+			$js = 'function copyText(id,callout,delay){$("#"+callout).toggleClass("hide");$("#"+id).toggleClass("hide").select();document.execCommand("copy");$("#"+id).toggleClass("hide");setTimeout(function(){$("#"+callout).toggleClass("hide")},delay);}';
+			}
+		else
+			{
+			$copyOnClick->setAttribute('onclick', 'copyTextNoFlash("' . $hidden->getId() . '")');
+			$js = 'function copyTextNoFlash(id){$("#"+id).toggleClass("hide").select();document.execCommand("copy");$("#"+id).toggleClass("hide");}';
+			}
+		$this->addJavaScript($js);
+
+		return $this;
+		}
+
 	protected function getStart() : string
 		{
 		foreach ($this->reveals as &$reveal)
