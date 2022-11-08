@@ -95,7 +95,7 @@ class SlickSlider extends \PHPFUI\HTML5Element
 
 	protected function getStart() : string
 		{
-		$js = '$("#' . $this->getId() . '").slick(' . \PHPFUI\TextHelper::arrayToJS($this->attributes) . ');$(".slick-slider").show();';
+		$js = '$("#' . $this->getId() . '").slick(' . \PHPFUI\TextHelper::arrayToJS($this->attributes) . ');$("#' . $this->getId() . '").show();';
 		$this->page->addJavaScript($js);
 
 		return parent::getStart();
