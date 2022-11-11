@@ -26,7 +26,14 @@ class AccordionToFromList extends \PHPFUI\ToFromList
 	 */
 	protected function createWindow(array $groups, string $type) : string
 		{
-		$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";
+		if ($this->readOnly)
+			{
+			$output = "<div id='{$this->name}_{$type}' class='ToFromList'>";
+			}
+		else
+			{
+			$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";
+			}
 		$accordion = new \PHPFUI\Accordion();
 		$accordion->addAttribute('data-multi-expand', 'true');
 		$accordion->addAttribute('data-allow-all-closed', 'true');

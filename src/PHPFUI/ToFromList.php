@@ -14,6 +14,8 @@ class ToFromList extends \PHPFUI\Base
 
 	protected string $outName = 'Out';
 
+	protected bool $readOnly = false;
+
 	private static bool $outputJs = false;
 
 	/**
@@ -71,27 +73,14 @@ class ToFromList extends \PHPFUI\Base
 		$upIcon->addClass('show-for-small-only');
 		$this->outIcon->add($upIcon);
 
-		if (! self::$outputJs)
-			{
-			self::$outputJs = true;
-			$csrf = \PHPFUI\Session::csrf();
-			$csrfField = \PHPFUI\Session::csrfField();
-			$js = 'function allowDropToFromList(e){if(e.preventDefault)e.preventDefault();e.dataTransfer.effectAllowed="move";return true;}' .
-		'function moveToFromList(e,parentid){$("#"+e).remove();' .
-		"var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:e,DropParentId:'#'+parentid};" .
-		'$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}})};' .
-		'function dragStartToFromList(e){e.dataTransfer.setData("text","#"+e.target.getAttribute("id"));return true;}' .
-		'function dropToFromList(e,fieldName){e.preventDefault();var draggedid=e.dataTransfer.getData("text");' .
-		// could drop on any element in container, keep going up till we have the container
-		'var node=e.target;var parentid;' .
-		"while(node&&((parentid=node.getAttribute('id'))==null||!(parentid==fieldName+'_in'||parentid==fieldName+'_out'))){node=node.parentNode;}" .
-		"if(!node)return false;var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:draggedid,DropParentId:'#'+parentid};" .
-		'$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}});' .
-		'$(draggedid).remove();e.stopPropagation();return true;}';
-			$this->page->addJavaScript($js);
-			}
-
 		$this->processRequest();
+		}
+
+	public function setReadOnly() : static
+		{
+		$this->readOnly = true;
+
+		return $this;
 		}
 
 	/**
@@ -141,7 +130,14 @@ class ToFromList extends \PHPFUI\Base
 	/** @param array<array<string>> $group */
 	protected function createWindow(array $group, string $type) : string
 		{
-		$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";
+		if (! $this->readOnly)
+			{
+			$output = "<div id='{$this->name}_{$type}' class='ToFromList' ondrop='dropToFromList(event,\"{$this->name}\")' ondragover='allowDropToFromList(event)'>";
+			}
+		else
+			{
+			$output = "<div id='{$this->name}_{$type}' class='ToFromList'>";
+			}
 
 		foreach ($group as $line)
 			{
@@ -177,6 +173,26 @@ class ToFromList extends \PHPFUI\Base
 
 	protected function getStart() : string
 		{
+		if (! self::$outputJs)
+			{
+			self::$outputJs = true;
+			$csrf = \PHPFUI\Session::csrf();
+			$csrfField = \PHPFUI\Session::csrfField();
+			$js = 'function allowDropToFromList(e){if(e.preventDefault)e.preventDefault();e.dataTransfer.effectAllowed="move";return true;}' .
+		'function moveToFromList(e,parentid){$("#"+e).remove();' .
+		"var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:e,DropParentId:'#'+parentid};" .
+		'$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}})};' .
+		'function dragStartToFromList(e){e.dataTransfer.setData("text","#"+e.target.getAttribute("id"));return true;}' .
+		'function dropToFromList(e,fieldName){e.preventDefault();var draggedid=e.dataTransfer.getData("text");' .
+		// could drop on any element in container, keep going up till we have the container
+		'var node=e.target;var parentid;' .
+		"while(node&&((parentid=node.getAttribute('id'))==null||!(parentid==fieldName+'_in'||parentid==fieldName+'_out'))){node=node.parentNode;}" .
+		"if(!node)return false;var params={{$csrfField}:'{$csrf}',action:'getDragDropItem',DraggedId:draggedid,DropParentId:'#'+parentid};" .
+		'$.ajax({dataType:"json",traditional:true,data:params,success:function(html){$("#"+parentid).prepend(html.response);}});' .
+		'$(draggedid).remove();e.stopPropagation();return true;}';
+			$this->page->addJavaScript($js);
+			}
+
 		return '';
 		}
 
@@ -186,24 +202,35 @@ class ToFromList extends \PHPFUI\Base
 
 		if ('in' == $type)
 			{
-			$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_out")');
+			if (! $this->readOnly)
+				{
+				$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_out")');
+				}
 			$icon = $this->inIcon;
 			}
 		else
 			{
-			$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_in")');
+			if (! $this->readOnly)
+				{
+				$span->addAttribute('onclick', 'moveToFromList("' . $id . '","' . $this->name . '_in")');
+				}
 			$icon = $this->outIcon;
 			}
 
 		$span->add($icon);
 		$span->add($html);
 
-		return "<div id='{$id}' draggable='true' ondragstart='dragStartToFromList(event)' class='draggable'>{$span}</div>";
+		if (! $this->readOnly)
+			{
+			return "<div id='{$id}' draggable='true' ondragstart='dragStartToFromList(event)' class='draggable'>{$span}</div>";
+			}
+
+		return "<div id='{$id}'>{$span}</div>";
 		}
 
 	private function processRequest() : void
 		{
-		if (\PHPFUI\Session::checkCSRF() && isset($_GET['action']))
+		if (! $this->readOnly && \PHPFUI\Session::checkCSRF() && isset($_GET['action']))
 			{
 			switch ($_GET['action'])
 					{
