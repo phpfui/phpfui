@@ -408,12 +408,9 @@ class KitchenSink
 		return $container;
 		}
 
-	public function baseResponsiveEmbed() : Embed
+	public function baseResponsiveEmbed() : \PHPFUI\YouTube
 		{
-		$embed = new \PHPFUI\Embed();
-		$embed->add(new \PHPFUI\YouTube('WUgvvPRH7Oc'));
-
-		return $embed;
+		return new \PHPFUI\YouTube('wCzAAvOijzM');
 		}
 
 	public function baseReveal() : Container
