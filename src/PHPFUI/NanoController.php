@@ -166,18 +166,18 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 					return $classObject;
 					}
 
-				return $this->punt($class);
+				return $this->punt($class, $parts, $index - 1);
 				}
-			elseif (! \ctype_alpha($parts[0]))
+			elseif (! \ctype_alpha($method[0]))
 				{
 				// not alpha start, need to punt
-				return $this->punt($class);
+				return $this->punt($class, $parts, $index);
 				}
 			// add the part the class
 			$class[] = $method;
 			}
 
-		return $this->punt($class);
+		return $this->punt($class, $parts, $index);
 		}
 
 	/** @param array<string, array<string, string>> $files */
@@ -368,10 +368,11 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 	 * We can't find a Class\Method pair, so just find a class and check if it has a landing page if defined, else go up one level.
 	 *
 	 * @param array<string> $classParts
+	 * @param array<string> $parameters
 	 *
 	 * @return \PHPFUI\Interfaces\NanoClass object will return the missing class if the missing method can't be loaded
 	 */
-	private function punt(array $classParts) : \PHPFUI\Interfaces\NanoClass
+	private function punt(array $classParts, array $parameters, int $count) : \PHPFUI\Interfaces\NanoClass
 		{
 		while (\count($classParts))
 			{
@@ -384,7 +385,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 
 			if ($this->missingMethod)
 				{
-				$classObject = $this->invokeClassMethod($classParts, $this->missingMethod);
+				$classObject = $this->invokeClassMethod($classParts, $this->missingMethod, $parameters, $count - 1);
 
 				if ($classObject)
 					{
