@@ -92,7 +92,10 @@ class HTML5Element extends \PHPFUI\Base
 		{
 		foreach (\explode(' ', $class) as $oneClass)
 			{
-			$this->classes[$oneClass] = true;
+			if ($oneClass)
+				{
+				$this->classes[$oneClass] = true;
+				}
 			}
 
 		return $this;
