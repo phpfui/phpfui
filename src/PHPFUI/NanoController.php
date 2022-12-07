@@ -168,7 +168,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 
 				return $this->punt($class, $parts, $index - 1);
 				}
-			elseif (! \ctype_alpha($method[0]))
+			elseif (! \ctype_alpha($method[0] ?? ''))
 				{
 				// not alpha start, need to punt
 				return $this->punt($class, $parts, $index);
