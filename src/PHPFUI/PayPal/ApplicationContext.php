@@ -2,8 +2,19 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property string $brand_name
+ * @property string $locale
+ * @property string $landing_page
+ * @property string $shipping_preference
+ * @property string $user_action
+ * @property ?\PHPFUI\PayPal\PaymentMethod $payment_method
+ * @property string $return_url
+ * @property string $cancel_url
+ */
 class ApplicationContext extends \PHPFUI\PayPal\Base
 	{
+	/** @var array<string, string | array<string>> */
 	protected static array $validFields = [
 		'brand_name' => 'string',
 		'locale' => 'string',

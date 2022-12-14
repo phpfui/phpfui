@@ -4,12 +4,3 @@ parameters:
 	editorUrl: '%%file%% %%line%% %%column%%: %%error%%'
 	paths:
 		- src
-	ignoreErrors:
-		-
-			message: '#Access to an undefined property PHPFUI\\PayPal[a-zA-Z0-9\\_]+::[\$a-zA-Z0-9_]+#'
-			paths:
-				- src/*
-		-
-			message: '#PHPFUI\\PayPal#'
-			paths:
-				- src/PHPFUI/PayPal/*

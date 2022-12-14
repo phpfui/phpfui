@@ -2,6 +2,11 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property string $currency_code
+ * @property string $value
+ * @property ?\PHPFUI\PayPal\Breakdown $breakdown
+ */
 class Amount extends \PHPFUI\PayPal\Base
 	{
 	/** @var array<string, string> */

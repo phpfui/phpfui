@@ -14,6 +14,7 @@ class Express extends \PHPFUI\HTML5Element
 
 	private ?string $paymentUrl = null;
 
+	/** @var array<string, string> */
 	private array $styles = [
 		'layout' => 'vertical',
 		'size' => 'medium',
@@ -29,7 +30,7 @@ class Express extends \PHPFUI\HTML5Element
 		$this->page->addHeadScript('https://www.paypalobjects.com/api/checkout.js');
 		}
 
-	public function addStyle(string $style, $value = null) : static
+	public function addStyle(string $style, ?string $value = null) : static
 		{
 		if (null === $value)
 			{
@@ -43,6 +44,7 @@ class Express extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	/** @return array<string, string> */
 	public function getStyle() : array
 		{
 		return $this->styles;
@@ -76,6 +78,7 @@ class Express extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	/** @param array<string, string> $styles */
 	public function setStyles(array $styles) : static
 		{
 		$this->styles = $styles;

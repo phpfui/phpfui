@@ -4,12 +4,16 @@ namespace PHPFUI\PayPal;
 
 abstract class Base
 	{
+	/** @var array<string, string | array<string>> */
 	protected static array $validFields = [];
 
+	/** @var array<string, string> */
 	private array $data = [];
 
+	/** @var array<string, string> */
 	private array $setFields = [];
 
+	/** @var array<string, true> */
 	private static array $scalars = [
 		'boolean' => true,
 		'double' => true,
@@ -31,7 +35,7 @@ abstract class Base
 	/**
 	 * Unset fields will return null
 	 */
-	public function __get(string $field)
+	public function __get(string $field) : mixed
 		{
 		if (! isset(static::$validFields[$field]))
 			{
@@ -43,7 +47,8 @@ abstract class Base
 		return $this->data[$field] ?? null;
 		}
 
-	public function __set(string $field, $value)
+	// @phpstan-ignore-next-line
+	public function __set(string $field, mixed $value)
 		{
 		$expectedType = static::$validFields[$field] ?? null;
 
@@ -90,6 +95,7 @@ abstract class Base
 		return $this->data[$field] = $value;
 		}
 
+	/** @return array<string, mixed> */
 	public function getData() : array
 		{
 		$result = [];
@@ -116,6 +122,7 @@ abstract class Base
 
 	/**
 	 * Return all the valid fields for the object. Index is field name and value is the type.
+	 * @return array<string, string>
 	 */
 	public function getValidFields() : array
 		{

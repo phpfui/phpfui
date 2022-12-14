@@ -2,10 +2,21 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property string $product_id
+ * @property string $description
+ * @property string $name
+ * @property string $status
+ * @property ?\PHPFUI\PayPal\PaymentPreferences $payment_preferences
+ * @property ?\PHPFUI\PayPal\Taxes $taxes
+ * @property bool $quantity_supported
+ */
 class Plan extends \PHPFUI\PayPal\Base
 	{
+	/** @var array<BillingCycle> */
 	protected array $billing_cycles = [];
 
+	/** @var array<string, string | array<string>> */
 	protected static array $validFields = [
 		'product_id' => 'string',
 		'description' => 'string',

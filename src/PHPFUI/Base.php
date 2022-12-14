@@ -54,7 +54,7 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 	 *
 	 * @param mixed $item should be convertable to string
 	 */
-	public function add($item) : static
+	public function add(mixed $item) : static
 		{
 		if (null !== $item)
 			{

@@ -2,8 +2,13 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property float $value
+ * @property string $currency_code
+ */
 class Currency extends \PHPFUI\PayPal\Base
 	{
+	/** @var array<string, string> */
 	protected static array $validFields = [
 		'value' => 'double',
 		'currency_code' => 'string',

@@ -2,8 +2,18 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property string $name
+ * @property int $quantity
+ * @property string $description
+ * @property string $sku
+ * @property ?\PHPFUI\PayPal\Currency $tax
+ * @property string $category
+ * @property ?\PHPFUI\PayPal\Currency $unit_amount
+ */
 class Item extends \PHPFUI\PayPal\Base
 	{
+	/** @var array<string, string | array<string>> */
 	protected static array $validFields = [
 		'name' => 'string',
 		'quantity' => 'integer',

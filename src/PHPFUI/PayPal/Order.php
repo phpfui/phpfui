@@ -2,13 +2,19 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property ?\PHPFUI\PayPal\ApplicationContext $application_context
+ * @property string $intent
+ */
 class Order extends \PHPFUI\PayPal\Base
 	{
+	/** @var array<string, string | array<string>> */
 	protected static array $validFields = [
 		'application_context' => \PHPFUI\PayPal\ApplicationContext::class,
 		'intent' => ['CAPTURE', 'AUTHORIZE'],
 	];
 
+	/** @var array<PurchaseUnit> */
 	private array $purchase_units = [];
 
 	public function __construct(string $intent)

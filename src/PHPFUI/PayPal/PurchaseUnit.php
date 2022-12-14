@@ -2,10 +2,21 @@
 
 namespace PHPFUI\PayPal;
 
+/**
+ * @property string $reference_id
+ * @property string $description
+ * @property string $custom_id
+ * @property string $invoice_id
+ * @property string $soft_descriptor
+ * @property ?\PHPFUI\PayPal\Amount $amount
+ * @property ?\PHPFUI\PayPal\Shipping $shipping
+ */
 class PurchaseUnit extends \PHPFUI\PayPal\Base
 	{
+	/** @var array<Item> */
 	protected array $items = [];
 
+	/** @var array<string, string> */
 	protected static array $validFields = [
 		'reference_id' => 'string',
 		'description' => 'string',
