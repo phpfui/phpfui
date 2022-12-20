@@ -31,7 +31,14 @@ class Checkout extends \PHPFUI\HTML5Element
 	public function __construct(private \PHPFUI\Interfaces\Page $page, string $clientId)
 		{
 		parent::__construct('div');
-		$this->page->addHeadScript('https://www.paypal.com/sdk/js?client-id=' . $clientId);
+		$this->options['client-id'] = $clientId;
+		}
+
+	public function addOption(string $option, string $value) : static
+		{
+		$this->options[$option] = $value;
+
+		return $this;
 		}
 
 	/**
@@ -77,6 +84,7 @@ class Checkout extends \PHPFUI\HTML5Element
 
 	protected function getStart() : string
 		{
+		$this->page->addHeadScript('https://www.paypal.com/sdk/js?' . \http_build_query($this->options));
 		$id = $this->getId();
 		$js = 'paypal.Buttons({style:' . \PHPFUI\TextHelper::arrayToJS($this->styles, "'");
 

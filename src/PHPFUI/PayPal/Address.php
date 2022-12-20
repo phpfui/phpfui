@@ -3,7 +3,7 @@
 namespace PHPFUI\PayPal;
 
 /**
- * @property string $address_line_
+ * @property string $address_line_1
  * @property string $address_line_2
  * @property string $admin_area_2
  * @property string $admin_area_1
