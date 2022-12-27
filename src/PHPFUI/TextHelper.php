@@ -158,6 +158,6 @@ class TextHelper
 
 	public static function unicode_decode(string $str) : string
 		{
-		return \preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'static::replace_unicode_escape_sequence', $str);
+		return \preg_replace_callback('/\\\\u([0-9a-f]{4})/i', '\PHPFUI\TextHelper::replace_unicode_escape_sequence', $str);
 		}
 	}

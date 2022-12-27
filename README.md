@@ -13,7 +13,7 @@ Using PHPFUI for view output will produce 100% valid HTML and insulate you from 
 Don't write HTML by hand!
 
 ## Usage
-```PHP
+```php
 namespace PHPFUI;
 $page = new Page();
 $form = new Form($page);

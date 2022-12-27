@@ -20,6 +20,9 @@ class Checkout extends \PHPFUI\HTML5Element
 	private array $functions = [];
 
 	/** @var array<string, string> */
+	private array $options = [];
+
+	/** @var array<string, string> */
 	private array $styles = [
 		'layout' => 'vertical',
 		'size' => 'responsive',
