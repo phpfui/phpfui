@@ -56,6 +56,9 @@ class Table extends \PHPFUI\HTML5Element
 	/** @var array<string> */
 	protected array $widths = [];
 
+	/** @var array<string, array<string>> */
+	protected array $footerAttributes = [];
+
 	public function __construct()
 		{
 		parent::__construct('table');
@@ -108,6 +111,18 @@ class Table extends \PHPFUI\HTML5Element
 	public function addFooter(string $field, string $footer) : static
 		{
 		$this->footers[$field] = $footer;
+
+		return $this;
+		}
+
+	/**
+	 * Add a footer row attribute
+	 *
+	 * @param array<string> $values
+	 */
+	public function addFooterAttribute(string $key, array $values) : static
+		{
+		$this->footerAttributes[$key] = $values;
 
 		return $this;
 		}
@@ -301,6 +316,47 @@ class Table extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	/**
+	 * outputFooter returns the table footer for partical table output
+	 */
+	public function outputFooter() : string
+		{
+		return $this->outputRow('td', $this->footers, 'tfoot', $this->footerAttributes);
+		}
+
+	/**
+	 * outputHeader returns the table header for partical table output
+	 */
+	public function outputHeader() : string
+		{
+		if (! $this->displayHeaders)
+			{
+			return '';
+			}
+
+		return $this->outputRow('th', $this->headers, 'thead', [], $this->widths, 'width');
+		}
+
+	/**
+	 * outputBodyRows returns the contents of the table body for partical table output
+	 */
+	public function outputBodyRows() : string
+		{
+		$output = '';
+
+		\reset($this->colspans);
+		\reset($this->rowAttributes);
+
+		foreach ($this->rows as $row)
+			{
+			$output .= $this->outputRow('td', $row, '', \current($this->rowAttributes), \current($this->colspans));
+			\next($this->colspans);
+			\next($this->rowAttributes);
+			}
+
+		return $output;
+		}
+
 	protected function getBody() : string
 		{
 		$output = '';
@@ -312,23 +368,12 @@ class Table extends \PHPFUI\HTML5Element
 				$output .= "<caption>{$this->caption}</caption>";
 				}
 
-			if ($this->displayHeaders)
-				{
-				$output .= $this->outputRow('th', $this->headers, 'thead', [], $this->widths, 'width');
-				}
-
+			$output .= $this->outputHeader();
 			$output .= "<tbody{$this->sortableBodyClass}>";
-			\reset($this->colspans);
-			\reset($this->rowAttributes);
+			$output .= $this->outputBodyRows();
 
-			foreach ($this->rows as $row)
-				{
-				$output .= $this->outputRow('td', $row, '', \current($this->rowAttributes), \current($this->colspans));
-				\next($this->colspans);
-				\next($this->rowAttributes);
-				}
-
-			$output .= '</tbody>' . $this->outputRow('td', $this->footers, 'tfoot');
+			$output .= '</tbody>';
+			$output .= $this->outputFooter();
 			}
 
 		return $output;
