@@ -15,7 +15,7 @@ class Link extends \PHPFUI\HTML5Element
 	 * @param string $text shown to user for link
 	 * @param bool $validate link will be validated via FILTER_VALIDATE_URL unless this is false
 	 */
-	public function __construct(?string $link, string $text = '', bool $validate = true)
+	public function __construct(?string $link, object | string $text = '', bool $validate = true)
 		{
 		parent::__construct('a');
 
@@ -29,21 +29,24 @@ class Link extends \PHPFUI\HTML5Element
 			$text = $link;
 			}
 
-		// break up long urls so they wrap better
-		$targets = ['.',
-			'@',
-			'?',
-			'+',
-			'!',
-		];
-		$replacements = [];
-
-		foreach ($targets as $string)
+		if (\is_string($text))
 			{
-			$replacements[] = $string . '<wbr>';
-			}
+			// break up long urls so they wrap better
+			$targets = ['.',
+				'@',
+				'?',
+				'+',
+				'!',
+			];
+			$replacements = [];
 
-		$text = \str_replace($targets, $replacements, $text);
+			foreach ($targets as $string)
+				{
+				$replacements[] = $string . '<wbr>';
+				}
+
+			$text = \str_replace($targets, $replacements, $text);
+			}
 
 		if ('#' == $link || ! $validate)
 			{
