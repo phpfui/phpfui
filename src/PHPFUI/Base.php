@@ -153,7 +153,9 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 		}
 
 	/**
-	 * Sets the page response directly
+	 * Sets the page response directly and exits the program
+	 *
+	 * @return never | static
 	 */
 	public function setRawResponse(string $response, bool $asJSON = true) : static
 		{
@@ -166,6 +168,10 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 				{
 				\header('Content-Type: application/json');
 				}
+
+			echo self::$response;
+
+			exit();
 			}
 
 		return $this;
@@ -173,9 +179,12 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 
 	/**
 	 * Set a response in the standard format ('reponse' and 'color' array)
+	 * exit will be called after returning the encoded response
 	 *
 	 * @param string $response to return
 	 * @param string $color used for the save button
+	 *
+	 * @return never | static
 	 */
 	public function setResponse(string $response, string $color = 'lime') : static
 		{
