@@ -75,7 +75,7 @@ class TextHelper
 		}
 
 	/**
-	 * Split a string into words based on capital letters. Successive capital letters are considered an appreviation and grouped together.
+	 * Split a string into words based on capital letters. Successive capital letters are considered an abbreviation and grouped together.
 	 */
 	public static function capitalSplit(string $key) : string
 		{

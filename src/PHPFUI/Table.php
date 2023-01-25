@@ -9,9 +9,9 @@ namespace PHPFUI;
  *  $table = new \PHPFUI\Table(); $table->setHeaders({'value' => 'Members Signed In', 'key' => 'In the Past X Days']);
  *  $table->addColumnAttribute('value', ['style' => 'text-align:center;']);
  *  foreach ($results as $key => $value)
- *  	{
+ *    {
  *    $signupTable->addRow(['key' => $key, 'value' => $value]);
- *  	}
+ *    }
  * ```
  */
 class Table extends \PHPFUI\HTML5Element
