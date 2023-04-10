@@ -151,7 +151,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 		if ($this->noFreeForm)
 			{
-			$this->addAttribute('placeholder', $this->value);
+			$this->addAttribute('placeholder', \str_replace("'", '&#39;', $this->value));
 			$this->value = '';
 			}
 		else

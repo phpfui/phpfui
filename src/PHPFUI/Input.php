@@ -157,7 +157,7 @@ class Input extends \PHPFUI\HTML5Element
 
 		if ($this->placeholder)
 			{
-			$this->setAttribute('placeholder', $this->placeholder);
+			$this->setAttribute('placeholder', \str_replace("'", '&#39;', $this->placeholder));
 			}
 
 		return parent::getStart();
