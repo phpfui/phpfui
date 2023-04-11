@@ -53,7 +53,7 @@ class InputGroupTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($page);
 		}
 
-	public function providerSimpleInput()
+	public static function providerSimpleInput()
 		{
 		return [
 			['PHPFUI\\Input\\Email', 'test@example.com'],
