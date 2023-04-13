@@ -839,7 +839,19 @@ class KitchenSink
 		return \gmdate('H:i:s') . ' ' . $id;
 		}
 
-	private function generateMenu(string $name, int $count, bool $active = false) : Menu
+	public static function subMenu() : Menu
+		{
+		$menu = new \PHPFUI\Menu();
+		$menu->addMenuItem(new \PHPFUI\MenuItem('One A', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Two A', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Three A', '#'));
+		$menu->addSubMenu(new \PHPFUI\MenuItem('Four A', '#'), self::generateMenu('B', 3, true));
+		$menu->addSubMenu(new \PHPFUI\MenuItem('Five A', '#'), self::generateMenu('C', 10));
+
+		return $menu;
+		}
+
+	private static function generateMenu(string $name, int $count, bool $active = false) : Menu
 		{
 		$names = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 		$menu = new \PHPFUI\Menu();
@@ -891,17 +903,5 @@ class KitchenSink
 		$container->add(new \PHPFUI\Header($name, 2));
 
 		return $container;
-		}
-
-	private function subMenu() : Menu
-		{
-		$menu = new \PHPFUI\Menu();
-		$menu->addMenuItem(new \PHPFUI\MenuItem('One A', '#'));
-		$menu->addMenuItem(new \PHPFUI\MenuItem('Two A', '#'));
-		$menu->addMenuItem(new \PHPFUI\MenuItem('Three A', '#'));
-		$menu->addSubMenu(new \PHPFUI\MenuItem('Four A', '#'), $this->generateMenu('B', 3, true));
-		$menu->addSubMenu(new \PHPFUI\MenuItem('Five A', '#'), $this->generateMenu('C', 10));
-
-		return $menu;
 		}
 	}
