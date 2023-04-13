@@ -851,24 +851,7 @@ class KitchenSink
 		return $menu;
 		}
 
-	private static function generateMenu(string $name, int $count, bool $active = false) : Menu
-		{
-		$names = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
-		$menu = new \PHPFUI\Menu();
-		$count = \min($count, 10);
-
-		for ($i = 0; $i < $count; ++$i)
-			{
-			$item = new \PHPFUI\MenuItem($names[$i] . ' ' . $name, '#');
-			$item->setActive($active);
-			$active = false;
-			$menu->addMenuItem($item);
-			}
-
-		return $menu;
-		}
-
-	private function makeMenu(Menu $menu, string $name, ?string $class = '', ?\PHPFUI\Menu $subMenu = null) : Menu
+	public static function makeMenu(Menu $menu, string $name, ?string $class = '', ?\PHPFUI\Menu $subMenu = null) : Menu
 		{
 		$menu->addMenuItem(new \PHPFUI\MenuItem($name));
 		$menu->addMenuItem(new \PHPFUI\MenuItem('One', '#'));
@@ -890,6 +873,23 @@ class KitchenSink
 		if ($class)
 			{
 			$menu->addClass($class);
+			}
+
+		return $menu;
+		}
+
+	private static function generateMenu(string $name, int $count, bool $active = false) : Menu
+		{
+		$names = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+		$menu = new \PHPFUI\Menu();
+		$count = \min($count, 10);
+
+		for ($i = 0; $i < $count; ++$i)
+			{
+			$item = new \PHPFUI\MenuItem($names[$i] . ' ' . $name, '#');
+			$item->setActive($active);
+			$active = false;
+			$menu->addMenuItem($item);
 			}
 
 		return $menu;
