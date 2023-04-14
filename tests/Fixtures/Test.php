@@ -20,6 +20,9 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 		$this->add(__METHOD__);
 		}
 
+	/**
+	 * @param array<string> $data
+	 */
 	public function arrayMethod(array $data) : void
 		{
 		$this->add(__METHOD__);
@@ -62,6 +65,9 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 		$this->add(' Value: ' . $data);
 		}
 
+  /**
+   * @param array<string> $a
+   */
 	public function multipleMethod(string $s, int $i, float $f, array $a) : void
 		{
 		$this->add(__METHOD__);

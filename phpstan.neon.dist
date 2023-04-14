@@ -4,3 +4,4 @@ parameters:
 	editorUrl: '%%file%% %%line%% %%column%%: %%error%%'
 	paths:
 		- src
+		- tests

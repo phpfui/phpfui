@@ -11,9 +11,9 @@
  */
 class HtmlTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{
-	private $ks;
+	private \PHPFUI\KitchenSink $ks;
 
-	private $page;
+	private \PHPFUI\Page $page;
 
 	public function setUp() : void
 		{

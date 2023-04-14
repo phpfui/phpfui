@@ -408,7 +408,7 @@ class Table extends \PHPFUI\HTML5Element
 		}
 
 	/**
-	 * @param array<string, string> $row
+	 * @param array<string, string | object> $row
 	 * @param array<string, array<string>> $rowAttributes
 	 * @param array<string> $attribute
 	 */

@@ -18,6 +18,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals($fields, $address->getData());
 
 		$this->expectException(\Exception::class);
+		// @phpstan-ignore-next-line
 		$address->postal_code = 12345;
 		}
 
@@ -75,6 +76,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$zero = new \PHPFUI\PayPal\Currency();
 
 		$this->expectException(\Exception::class);
+		// @phpstan-ignore-next-line
 		$amount = $zero->amount;
 		}
 
@@ -328,6 +330,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$zero = new \PHPFUI\PayPal\Currency();
 
 		$this->expectException(\Exception::class);
+		// @phpstan-ignore-next-line
 		$zero->amount = 10.0;
 		}
 

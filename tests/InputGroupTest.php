@@ -53,7 +53,10 @@ class InputGroupTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($page);
 		}
 
-	public static function providerSimpleInput()
+	/**
+	 * @return array<array<string>>
+	 */
+	public static function providerSimpleInput() : array
 		{
 		return [
 			['PHPFUI\\Input\\Email', 'test@example.com'],
@@ -111,7 +114,10 @@ class InputGroupTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($page);
 		}
 
-	public function providerPageInput()
+	/**
+	 * @return array<int, array<string>>
+	 */
+	public static function providerPageInput() : array
 		{
 		return [
 			['PHPFUI\\Input\\AutoComplete'],

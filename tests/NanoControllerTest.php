@@ -34,7 +34,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::landingPage', $class, 'Landing page not found');
+		$this->assertStringContainsString('::landingPage', "{$class}", 'Landing page not found');
 		}
 
 	public function testMethod() : void
@@ -44,7 +44,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::method', $class, 'method not found');
+		$this->assertStringContainsString('::method', "{$class}", 'method not found');
 		}
 
 	public function testMethodArray() : void
@@ -54,9 +54,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::arrayMethod', $class, 'arrayMethod not found');
-		$this->assertStringContainsString('Type: array', $class, 'type array not found');
-		$this->assertStringContainsString('Value: 1\2\3\a\b\c', $class, 'Array not found');
+		$this->assertStringContainsString('::arrayMethod', "{$class}", 'arrayMethod not found');
+		$this->assertStringContainsString('Type: array', "{$class}", 'type array not found');
+		$this->assertStringContainsString('Value: 1\2\3\a\b\c', "{$class}", 'Array not found');
 		}
 
 	public function testMethodInt() : void
@@ -66,9 +66,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::intMethod', $class, 'intMethod not found');
-		$this->assertStringContainsString('Type: integer', $class, 'type integer not found');
-		$this->assertStringContainsString('Value: 123', $class, 'Int value not found');
+		$this->assertStringContainsString('::intMethod', "{$class}", 'intMethod not found');
+		$this->assertStringContainsString('Type: integer', "{$class}", 'type integer not found');
+		$this->assertStringContainsString('Value: 123', "{$class}", 'Int value not found');
 		}
 
 	public function testMethodIntBadCast() : void
@@ -78,9 +78,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::intMethod', $class, 'intMethod not found');
-		$this->assertStringContainsString('Type: integer', $class, 'type bad cast integer not found');
-		$this->assertStringContainsString('Value: 0', $class, 'Int bad cast value not found');
+		$this->assertStringContainsString('::intMethod', "{$class}", 'intMethod not found');
+		$this->assertStringContainsString('Type: integer', "{$class}", 'type bad cast integer not found');
+		$this->assertStringContainsString('Value: 0', "{$class}", 'Int bad cast value not found');
 		}
 
 	public function testMethodBool() : void
@@ -90,9 +90,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::boolMethod', $class, 'boolMethod not found');
-		$this->assertStringContainsString('Type: boolean', $class, 'type boolean not found');
-		$this->assertStringContainsString('Value: 1', $class, 'bool value not found');
+		$this->assertStringContainsString('::boolMethod', "{$class}", 'boolMethod not found');
+		$this->assertStringContainsString('Type: boolean', "{$class}", 'type boolean not found');
+		$this->assertStringContainsString('Value: 1', "{$class}", 'bool value not found');
 		}
 
 	public function testMethodBoolBadCast() : void
@@ -102,9 +102,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::boolMethod', $class, 'boolMethod not found');
-		$this->assertStringContainsString('Type: boolean', $class, 'type bad cast boolean not found');
-		$this->assertStringContainsString('Value: 1', $class, 'bool bad cast value not found');
+		$this->assertStringContainsString('::boolMethod', "{$class}", 'boolMethod not found');
+		$this->assertStringContainsString('Type: boolean', "{$class}", 'type bad cast boolean not found');
+		$this->assertStringContainsString('Value: 1', "{$class}", 'bool bad cast value not found');
 		}
 
 	public function testMethodDouble() : void
@@ -114,9 +114,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::doubleMethod', $class, 'doubleMethod not found');
-		$this->assertStringContainsString('Type: double', $class, 'type double not found');
-		$this->assertStringContainsString('Value: 1.23', $class, 'double value not found');
+		$this->assertStringContainsString('::doubleMethod', "{$class}", 'doubleMethod not found');
+		$this->assertStringContainsString('Type: double', "{$class}", 'type double not found');
+		$this->assertStringContainsString('Value: 1.23', "{$class}", 'double value not found');
 		}
 
 	public function testMethodString() : void
@@ -126,9 +126,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::stringMethod', $class, 'stringMethod not found');
-		$this->assertStringContainsString('Type: string', $class, 'type string not found');
-		$this->assertStringContainsString('Value: qwerty', $class, 'string value not found');
+		$this->assertStringContainsString('::stringMethod', "{$class}", 'stringMethod not found');
+		$this->assertStringContainsString('Type: string', "{$class}", 'type string not found');
+		$this->assertStringContainsString('Value: qwerty', "{$class}", 'string value not found');
 		}
 
 	public function testMethodClass() : void
@@ -138,9 +138,9 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::classMethod', $class, 'classMethod not found');
-		$this->assertStringContainsString('Type: Fixtures\Model', $class, 'type Fixtures\Model not found');
-		$this->assertStringContainsString('Value: <div>qwerty</div>', $class, 'class value not found');
+		$this->assertStringContainsString('::classMethod', "{$class}", 'classMethod not found');
+		$this->assertStringContainsString('Type: Fixtures\Model', "{$class}", 'type Fixtures\Model not found');
+		$this->assertStringContainsString('Value: <div>qwerty</div>', "{$class}", 'class value not found');
 		}
 
 	public function testMethodMultiple() : void
@@ -150,14 +150,14 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::multipleMethod', $class, 'multipleMethod not found');
-		$this->assertStringContainsString('Type String: string', $class, 'multiple type string not found');
-		$this->assertStringContainsString('Type Integer: integer', $class, 'multiple type integer not found');
-		$this->assertStringContainsString('Type Double: double', $class, 'multiple type double not found');
-		$this->assertStringContainsString('Type Array: array', $class, 'multiple type array not found');
-		$this->assertStringContainsString('Value String: qwerty', $class, 'multiple string value not found');
-		$this->assertStringContainsString('Value Integer: 10', $class, 'multiple integer value not found');
-		$this->assertStringContainsString('Value Double: 1.23', $class, 'multiple double value not found');
-		$this->assertStringContainsString('Value Array: a\b\c', $class, 'multiple array value not found');
+		$this->assertStringContainsString('::multipleMethod', "{$class}", 'multipleMethod not found');
+		$this->assertStringContainsString('Type String: string', "{$class}", 'multiple type string not found');
+		$this->assertStringContainsString('Type Integer: integer', "{$class}", 'multiple type integer not found');
+		$this->assertStringContainsString('Type Double: double', "{$class}", 'multiple type double not found');
+		$this->assertStringContainsString('Type Array: array', "{$class}", 'multiple type array not found');
+		$this->assertStringContainsString('Value String: qwerty', "{$class}", 'multiple string value not found');
+		$this->assertStringContainsString('Value Integer: 10', "{$class}", 'multiple integer value not found');
+		$this->assertStringContainsString('Value Double: 1.23', "{$class}", 'multiple double value not found');
+		$this->assertStringContainsString('Value Array: a\b\c', "{$class}", 'multiple array value not found');
 		}
 	}

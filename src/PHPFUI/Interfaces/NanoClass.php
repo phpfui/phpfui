@@ -8,4 +8,6 @@ namespace PHPFUI\Interfaces;
 interface NanoClass
 	{
 	public function __construct(\PHPFUI\Interfaces\NanoController $controller);
+
+	public function __toString() : string;
 	}

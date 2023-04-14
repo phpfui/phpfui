@@ -11,7 +11,7 @@
  */
 class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{
-	private $page;
+	private \PHPFUI\Page $page;
 
 	public function setUp() : void
 		{
