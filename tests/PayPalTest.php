@@ -1,12 +1,10 @@
 <?php
 
-namespace PHPFUI\PayPal;
-
 class PayPalTest extends \PHPUnit\Framework\TestCase
 	{
 	public function testAddress() : void
 		{
-		$address = new Address();
+		$address = new \PHPFUI\PayPal\Address();
 
 		$fields = [
 			'address_line_1' => '123 Townsend St',
@@ -25,7 +23,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testBreakdown() : void
 		{
-		$breakdown = new Breakdown();
+		$breakdown = new \PHPFUI\PayPal\Breakdown();
 
 		$this->assertEquals([], $breakdown->getData());
 
@@ -46,7 +44,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testCurrency() : void
 		{
-		$zero = new Currency();
+		$zero = new \PHPFUI\PayPal\Currency();
 
 		$data = $zero->getData();
 		$this->assertIsArray($data);
@@ -66,7 +64,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testEnumValidation() : void
 		{
-		$applicationContent = new ApplicationContext();
+		$applicationContent = new \PHPFUI\PayPal\ApplicationContext();
 
 		$this->expectException(\Exception::class);
 		$applicationContent->landing_page = 'TOM';
@@ -74,7 +72,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testGetExceptions() : void
 		{
-		$zero = new Currency();
+		$zero = new \PHPFUI\PayPal\Currency();
 
 		$this->expectException(\Exception::class);
 		$amount = $zero->amount;
@@ -171,8 +169,8 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		];
 
 
-		$order = new Order('CAPTURE');
-		$applicationContext = new ApplicationContext();
+		$order = new \PHPFUI\PayPal\Order('CAPTURE');
+		$applicationContext = new \PHPFUI\PayPal\ApplicationContext();
 		$applicationContext->brand_name = 'EXAMPLE INC';
 		$applicationContext->locale = 'en-US';
 		$applicationContext->landing_page = 'BILLING';
@@ -181,19 +179,19 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 		$order->application_context = $applicationContext;
 
-		$purchase_unit = new PurchaseUnit();
+		$purchase_unit = new \PHPFUI\PayPal\PurchaseUnit();
 		$purchase_unit->reference_id = 'PUHF';
 		$purchase_unit->description = 'Sporting Goods';
 		$purchase_unit->custom_id = 'CUST-HighFashions';
 		$purchase_unit->soft_descriptor = 'HighFashions';
-		$amount = new Amount();
-		$amount->setCurrency(new Currency(220.00));
-		$breakdown = new Breakdown();
-		$breakdown->item_total = new Currency(180.00);
-		$breakdown->shipping = new Currency(20.00);
-		$breakdown->handling = new Currency(10.00);
-		$breakdown->tax_total = new Currency(20.00);
-		$breakdown->shipping_discount = new Currency(10.00);
+		$amount = new \PHPFUI\PayPal\Amount();
+		$amount->setCurrency(new \PHPFUI\PayPal\Currency(220.00));
+		$breakdown = new \PHPFUI\PayPal\Breakdown();
+		$breakdown->item_total = new \PHPFUI\PayPal\Currency(180.00);
+		$breakdown->shipping = new \PHPFUI\PayPal\Currency(20.00);
+		$breakdown->handling = new \PHPFUI\PayPal\Currency(10.00);
+		$breakdown->tax_total = new \PHPFUI\PayPal\Currency(20.00);
+		$breakdown->shipping_discount = new \PHPFUI\PayPal\Currency(10.00);
 
 		$amount->breakdown = $breakdown;
 		$purchase_unit->amount = $amount;
@@ -206,17 +204,17 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$purchase_unit->shipping->address->postal_code = '94107';
 		$purchase_unit->shipping->address->country_code = 'US';
 
-		$item = new Item('T-Shirt', 1, new Currency(90.00));
+		$item = new \PHPFUI\PayPal\Item('T-Shirt', 1, new \PHPFUI\PayPal\Currency(90.00));
 		$item->description = 'Green XL';
 		$item->sku = 'sku01';
-		$item->tax = new Currency(10.00);
+		$item->tax = new \PHPFUI\PayPal\Currency(10.00);
 		$item->category = 'PHYSICAL_GOODS';
 		$purchase_unit->addItem($item);
 
-		$item = new Item('Shoes', 2, new Currency(45.00));
+		$item = new \PHPFUI\PayPal\Item('Shoes', 2, new \PHPFUI\PayPal\Currency(45.00));
 		$item->description = 'Running, Size 10.5';
 		$item->sku = 'sku02';
-		$item->tax = new Currency(5.00);
+		$item->tax = new \PHPFUI\PayPal\Currency(5.00);
 		$item->category = 'PHYSICAL_GOODS';
 		$purchase_unit->addItem($item);
 
@@ -225,7 +223,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$this->assertEquals($orderExample, $order->getData());
 
 		$this->expectException(\Exception::class);
-		$bad = new Order('invalid');
+		$bad = new \PHPFUI\PayPal\Order('invalid');
 		}
 
 	public function testPlan() : void
@@ -282,43 +280,43 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
   }
 }', true);
 
-		$plan = new Plan();
+		$plan = new \PHPFUI\PayPal\Plan();
 		$plan->product_id = 'PROD-XXCD1234QWER65782';
 		$plan->name = 'Video Streaming Service Plan';
 		$plan->description = 'Video Streaming Service basic plan';
 		$plan->status = 'ACTIVE';
-		$taxes = new Taxes();
+		$taxes = new \PHPFUI\PayPal\Taxes();
 		$taxes->percentage = '10';
 		$taxes->inclusive = false;
 		$plan->taxes = $taxes;
 
-		$paymentPreferences = new PaymentPreferences();
+		$paymentPreferences = new \PHPFUI\PayPal\PaymentPreferences();
 		$paymentPreferences->auto_bill_outstanding = true;
-		$paymentPreferences->setup_fee = new Currency(10);
+		$paymentPreferences->setup_fee = new \PHPFUI\PayPal\Currency(10);
 		$paymentPreferences->setup_fee_failure_action = 'CONTINUE';
 		$paymentPreferences->payment_failure_threshold = 3;
 		$plan->payment_preferences = $paymentPreferences;
 
-		$billingCycle = new BillingCycle();
-		$frequency = new Frequency();
+		$billingCycle = new \PHPFUI\PayPal\BillingCycle();
+		$frequency = new \PHPFUI\PayPal\Frequency();
 		$frequency->interval_unit = 'MONTH';
 		$frequency->interval_count = 1;
 		$billingCycle->frequency = $frequency;
 		$billingCycle->tenure_type = 'TRIAL';
 		$billingCycle->sequence = 1;
 		$billingCycle->total_cycles = 1;
-		$pricingScheme = new PricingScheme();
-		$pricingScheme->fixed_price = new Currency(10);
+		$pricingScheme = new \PHPFUI\PayPal\PricingScheme();
+		$pricingScheme->fixed_price = new \PHPFUI\PayPal\Currency(10);
 		$billingCycle->pricing_scheme = $pricingScheme;
 		$plan->addBillingCycle($billingCycle);
 
-		$billingCycle = new BillingCycle();
+		$billingCycle = new \PHPFUI\PayPal\BillingCycle();
 		$billingCycle->frequency = $frequency;
 		$billingCycle->tenure_type = 'REGULAR';
 		$billingCycle->sequence = 2;
 		$billingCycle->total_cycles = 12;
-		$pricingScheme = new PricingScheme();
-		$pricingScheme->fixed_price = new Currency(100);
+		$pricingScheme = new \PHPFUI\PayPal\PricingScheme();
+		$pricingScheme->fixed_price = new \PHPFUI\PayPal\Currency(100);
 		$billingCycle->pricing_scheme = $pricingScheme;
 		$plan->addBillingCycle($billingCycle);
 
@@ -327,7 +325,7 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 
 	public function testSetExceptions() : void
 		{
-		$zero = new Currency();
+		$zero = new \PHPFUI\PayPal\Currency();
 
 		$this->expectException(\Exception::class);
 		$zero->amount = 10.0;
@@ -377,35 +375,35 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
   }
 }', true);
 
-		$subscription = new Subscription();
+		$subscription = new \PHPFUI\PayPal\Subscription();
 		$subscription->plan_id = 'P-5ML4271244454362WXNWU5NQ';
 		$subscription->start_time = '2018-11-01T00:00:00Z';
 		$subscription->quantity = '20';
-		$subscription->shipping_amount = new Currency(10.0);
-		$application_context = new ApplicationContext();
+		$subscription->shipping_amount = new \PHPFUI\PayPal\Currency(10.0);
+		$application_context = new \PHPFUI\PayPal\ApplicationContext();
 		$application_context->brand_name = 'walmart';
 		$application_context->locale = 'en-US';
 		$application_context->shipping_preference = 'SET_PROVIDED_ADDRESS';
 		$application_context->user_action = 'SUBSCRIBE_NOW';
 		$application_context->return_url = 'https://example.com/returnUrl';
 		$application_context->cancel_url = 'https://example.com/cancelUrl';
-		$paymentMethod = new PaymentMethod();
+		$paymentMethod = new \PHPFUI\PayPal\PaymentMethod();
 		$paymentMethod->payer_selected = 'PAYPAL';
 		$paymentMethod->payee_preferred = 'IMMEDIATE_PAYMENT_REQUIRED';
 		$application_context->payment_method = $paymentMethod;
 		$subscription->application_context = $application_context;
 
-		$subscriber = new Subscriber();
-		$name = new Name();
+		$subscriber = new \PHPFUI\PayPal\Subscriber();
+		$name = new \PHPFUI\PayPal\Name();
 		$name->given_name = 'John';
 		$name->surname = 'Doe';
 		$subscriber->name = $name;
 		$subscriber->email_address = 'customer@example.com';
-		$shippingAddress = new ShippingDetail();
-		$name = new Name();
+		$shippingAddress = new \PHPFUI\PayPal\ShippingDetail();
+		$name = new \PHPFUI\PayPal\Name();
 		$name->full_name = 'John Doe';
 		$shippingAddress->name = $name;
-		$address = new Address();
+		$address = new \PHPFUI\PayPal\Address();
 		$address->address_line_1 = '2211 N First Street';
 		$address->address_line_2 = 'Building 17';
 		$address->admin_area_2 = 'San Jose';

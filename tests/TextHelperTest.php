@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPFUI;
+use PHPFUI\TextHelper;
 
 class TextHelperTest extends \PHPUnit\Framework\TestCase
 	{
