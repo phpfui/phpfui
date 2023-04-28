@@ -19,7 +19,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testLanding() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test');
+		$controller = new \PHPFUI\NanoController('/Controller');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -29,7 +29,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethod() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/method');
+		$controller = new \PHPFUI\NanoController('/Controller/method');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -39,7 +39,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodArray() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/arrayMethod/1/2/3/a/b/c');
+		$controller = new \PHPFUI\NanoController('/Controller/arrayMethod/1/2/3/a/b/c');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -51,7 +51,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodBool() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/boolMethod/1');
+		$controller = new \PHPFUI\NanoController('/Controller/boolMethod/1');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -63,7 +63,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodBoolBadCast() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/boolMethod/10');
+		$controller = new \PHPFUI\NanoController('/Controller/boolMethod/10');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -75,7 +75,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodClass() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/classMethod/qwerty');
+		$controller = new \PHPFUI\NanoController('/Controller/classMethod/qwerty');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -87,7 +87,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodDouble() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/doubleMethod/1.23');
+		$controller = new \PHPFUI\NanoController('/Controller/doubleMethod/1.23');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -99,7 +99,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodInt() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/intMethod/123');
+		$controller = new \PHPFUI\NanoController('/Controller/intMethod/123');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -111,7 +111,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodIntBadCast() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/intMethod/sdfsadf');
+		$controller = new \PHPFUI\NanoController('/Controller/intMethod/sdfsadf');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -123,7 +123,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodMultiple() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/multipleMethod/qwerty/10/1.23/a/b/c');
+		$controller = new \PHPFUI\NanoController('/Controller/multipleMethod/qwerty/10/1.23/a/b/c');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
@@ -141,7 +141,7 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 
 	public function testMethodString() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/stringMethod/qwerty');
+		$controller = new \PHPFUI\NanoController('/Controller/stringMethod/qwerty');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
