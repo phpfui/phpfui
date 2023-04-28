@@ -53,6 +53,9 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 
 	private string $resourcePath = '/';
 
+	/** @var array<string, array<string, string>> */
+	private array $scriptAttributes = [];
+
 	/** @var array<string, string> */
 	private array $styleSheets = [];
 
@@ -116,10 +119,13 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 * Add a dedupped header script
 	 *
 	 * @param string $module path to script
+	 * @param array<string,string> $attributes key is attribute, value is option
 	 */
-	public function addHeadScript(string $module) : \PHPFUI\Interfaces\Page
+	public function addHeadScript(string $module, array $attributes = []) : \PHPFUI\Interfaces\Page
 		{
-		$this->headScripts[\sha1($module)] = $module;
+		$sha1 = \sha1($module);
+		$this->headScripts[$sha1] = $module;
+		$this->scriptAttributes[$sha1] = $attributes;
 
 		return $this;
 		}
@@ -194,10 +200,13 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 	 * Add a dedupped script to the end of the page
 	 *
 	 * @param string $module path to script
+	 * @param array<string,string> $attributes key is attribute, value is option
 	 */
-	public function addTailScript(string $module) : \PHPFUI\Interfaces\Page
+	public function addTailScript(string $module, array $attributes = []) : \PHPFUI\Interfaces\Page
 		{
-		$this->tailScripts[\sha1($module)] = $module;
+		$sha1 = \sha1($module);
+		$this->tailScripts[$sha1] = $module;
+		$this->scriptAttributes[$sha1] = $attributes;
 
 		return $this;
 		}
@@ -562,10 +571,11 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 		{
 		$nl = parent::getDebug() ? "\n" : '';
 
-		foreach ($this->tailScripts as $src)
+		foreach ($this->tailScripts as $sha1 => $src)
 			{
 			$src = $this->getResourcePath($src);
-			$this->body->add("<script src='{$src}'></script>{$nl}");
+			$attributes = $this->getAttributes($this->scriptAttributes[$sha1]);
+			$this->body->add("<script {$attributes} src='{$src}'></script>{$nl}");
 			}
 
 		$js = \array_merge($this->javascriptFirst, $this->javascript, $this->javascriptLast);
@@ -608,10 +618,11 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			$output .= "<link rel='stylesheet' href='{$sheet}'>{$nl}";
 			}
 
-		foreach ($this->headScripts as $src)
+		foreach ($this->headScripts as $sha1 => $src)
 			{
 			$src = $this->getResourcePath($src);
-			$output .= "<script src='{$src}'></script>{$nl}";
+			$attributes = $this->getAttributes($this->scriptAttributes[$sha1]);
+			$output .= "<script {$attributes} src='{$src}'></script>{$nl}";
 			}
 
 		if ($this->headJavascript)
@@ -625,6 +636,28 @@ class VanillaPage extends \PHPFUI\Base implements \PHPFUI\Interfaces\Page
 			}
 
 		$output .= '</head><body>';
+
+		return $output;
+		}
+
+	/**
+	 * @param array<string, string> $attributes
+	 */
+	private function getAttributes(array $attributes) : string
+		{
+		$output = '';
+
+		foreach ($attributes as $type => $value)
+			{
+			if (! \strlen(\trim($value)))
+				{
+				$output .= ' ' . $type;
+				}
+			else
+				{
+				$output .= " {$type}='{$value}'";
+				}
+			}
 
 		return $output;
 		}
