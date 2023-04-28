@@ -28,6 +28,9 @@ class Table extends \PHPFUI\HTML5Element
 
 	protected bool $displayHeaders = true;
 
+	/** @var array<string, array<string>> */
+	protected array $footerAttributes = [];
+
 	/** @var array<string, string> */
 	protected array $footers = [];
 
@@ -55,9 +58,6 @@ class Table extends \PHPFUI\HTML5Element
 
 	/** @var array<string> */
 	protected array $widths = [];
-
-	/** @var array<string, array<string>> */
-	protected array $footerAttributes = [];
 
 	public function __construct()
 		{
@@ -141,18 +141,6 @@ class Table extends \PHPFUI\HTML5Element
 		}
 
 	/**
-	 * Delete header field. Deletes the column. Can be called at anytime after a header is set but before output.
-	 *
-	 * @param string $field column name
-	 */
-	public function deleteHeader(string $field) : static
-		{
-		unset($this->headers[$field]);
-
-		return $this;
-		}
-
-	/**
 	 * You can add any attribute to the next row (tr) that you want.  This only applies to the next row to be output and is reset for the next row.
 	 */
 	public function addNextRowAttribute(string $attribute, string $value) : static
@@ -190,6 +178,18 @@ class Table extends \PHPFUI\HTML5Element
 		}
 
 	/**
+	 * Delete header field. Deletes the column. Can be called at anytime after a header is set but before output.
+	 *
+	 * @param string $field column name
+	 */
+	public function deleteHeader(string $field) : static
+		{
+		unset($this->headers[$field]);
+
+		return $this;
+		}
+
+	/**
 	 * Turn off headers by passing false
 	 */
 	public function displayHeaders(bool $display = true) : static
@@ -205,6 +205,47 @@ class Table extends \PHPFUI\HTML5Element
 	public function getRecordId() : string
 		{
 		return $this->recordId;
+		}
+
+	/**
+	 * outputBodyRows returns the contents of the table body for partical table output
+	 */
+	public function outputBodyRows() : string
+		{
+		$output = '';
+
+		\reset($this->colspans);
+		\reset($this->rowAttributes);
+
+		foreach ($this->rows as $row)
+			{
+			$output .= $this->outputRow('td', $row, '', \current($this->rowAttributes), \current($this->colspans));
+			\next($this->colspans);
+			\next($this->rowAttributes);
+			}
+
+		return $output;
+		}
+
+	/**
+	 * outputFooter returns the table footer for partical table output
+	 */
+	public function outputFooter() : string
+		{
+		return $this->outputRow('td', $this->footers, 'tfoot', $this->footerAttributes);
+		}
+
+	/**
+	 * outputHeader returns the table header for partical table output
+	 */
+	public function outputHeader() : string
+		{
+		if (! $this->displayHeaders)
+			{
+			return '';
+			}
+
+		return $this->outputRow('th', $this->headers, 'thead', [], $this->widths, 'width');
 		}
 
 	/**
@@ -314,47 +355,6 @@ class Table extends \PHPFUI\HTML5Element
 		$this->widths = $widths;
 
 		return $this;
-		}
-
-	/**
-	 * outputFooter returns the table footer for partical table output
-	 */
-	public function outputFooter() : string
-		{
-		return $this->outputRow('td', $this->footers, 'tfoot', $this->footerAttributes);
-		}
-
-	/**
-	 * outputHeader returns the table header for partical table output
-	 */
-	public function outputHeader() : string
-		{
-		if (! $this->displayHeaders)
-			{
-			return '';
-			}
-
-		return $this->outputRow('th', $this->headers, 'thead', [], $this->widths, 'width');
-		}
-
-	/**
-	 * outputBodyRows returns the contents of the table body for partical table output
-	 */
-	public function outputBodyRows() : string
-		{
-		$output = '';
-
-		\reset($this->colspans);
-		\reset($this->rowAttributes);
-
-		foreach ($this->rows as $row)
-			{
-			$output .= $this->outputRow('td', $row, '', \current($this->rowAttributes), \current($this->colspans));
-			\next($this->colspans);
-			\next($this->rowAttributes);
-			}
-
-		return $output;
 		}
 
 	protected function getBody() : string

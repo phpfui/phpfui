@@ -85,38 +85,6 @@ abstract class Input extends \PHPFUI\Input
 		}
 
 	/**
-	 * Set the validator for this input field.  You must also add it to the page with addAbideValidator()
-	 */
-	public function setValidator(\PHPFUI\Validator $validator, string $errorMessage = '', ?string $data = null) : static
-		{
-		$this->setAttribute('data-validator', $validator->getValidatorName());
-
-		if ($errorMessage)
-			{
-			$this->addErrorMessage($errorMessage);
-			}
-
-		if ($data)
-			{
-			$this->setAttribute('data-' . $validator->getValidatorName(), $data);
-			}
-
-		return $this;
-		}
-
-	/**
-	 * Set all error messages
-	 *
-	 * @param array<string> $errors to display on form validation
-	 */
-	public function setErrorMessages(array $errors) : static
-		{
-		$this->errorMessages = $errors;
-
-		return $this;
-		}
-
-	/**
 	 * Get the error message for placement else where. If this is
 	 * called, the error mesage will not be incorporated
 	 * automatically, but must be placed by the caller
@@ -155,10 +123,27 @@ abstract class Input extends \PHPFUI\Input
 		return $this->label;
 		}
 
+	public function getRequired() : bool
+		{
+		return $this->required;
+		}
+
 	public function setDataMask(\PHPFUI\Interfaces\Page $page, string $mask) : static
 		{
 		$page->addTailScript('jquery.mask.min.js');
 		$this->setAttribute('data-mask', $mask);
+
+		return $this;
+		}
+
+	/**
+	 * Set all error messages
+	 *
+	 * @param array<string> $errors to display on form validation
+	 */
+	public function setErrorMessages(array $errors) : static
+		{
+		$this->errorMessages = $errors;
 
 		return $this;
 		}
@@ -186,11 +171,6 @@ abstract class Input extends \PHPFUI\Input
 		return $this;
 		}
 
-	public function getRequired() : bool
-		{
-		return $this->required;
-		}
-
 	/**
 	 * Set required
 	 *
@@ -207,6 +187,26 @@ abstract class Input extends \PHPFUI\Input
 		else
 			{
 			$this->deleteAttribute('required');
+			}
+
+		return $this;
+		}
+
+	/**
+	 * Set the validator for this input field.  You must also add it to the page with addAbideValidator()
+	 */
+	public function setValidator(\PHPFUI\Validator $validator, string $errorMessage = '', ?string $data = null) : static
+		{
+		$this->setAttribute('data-validator', $validator->getValidatorName());
+
+		if ($errorMessage)
+			{
+			$this->addErrorMessage($errorMessage);
+			}
+
+		if ($data)
+			{
+			$this->setAttribute('data-' . $validator->getValidatorName(), $data);
 			}
 
 		return $this;

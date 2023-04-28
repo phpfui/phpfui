@@ -220,14 +220,6 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($this->page);
 		}
 
-	public function testRadioNoLabel() : void
-		{
-		$radio = new \PHPFUI\Input\Radio('radio');
-		$radio->setChecked();
-		$this->page->add($radio);
-		$this->assertValidHtml($this->page);
-		}
-
 	public function testRadioGroup() : void
 		{
 		$radioGroup = new \PHPFUI\Input\RadioGroup('radioGroup', 'RadioGroup', '4');
@@ -256,6 +248,14 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertEquals(\count($radioGroup), 5);
 
 		$this->page->add($radioGroup);
+		$this->assertValidHtml($this->page);
+		}
+
+	public function testRadioNoLabel() : void
+		{
+		$radio = new \PHPFUI\Input\Radio('radio');
+		$radio->setChecked();
+		$this->page->add($radio);
 		$this->assertValidHtml($this->page);
 		}
 
@@ -314,34 +314,6 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($this->page);
 		}
 
-	public function testSelectNoLabel() : void
-		{
-		$select = new \PHPFUI\Input\Select('select');
-		$select->setRequired();
-		$select->addLabelClass('test');
-
-		$select->addOption('');
-		$select->addOption('one');
-		$select->addOption('two', '2');
-		$select->addOption('three', '3', true);
-		$select->addOption('four', '4', false, true);
-
-		$optGroup = new \PHPFUI\Input\OptGroup('Option Group');
-		$optGroup->addOption('');
-		$optGroup->addOption('one');
-		$optGroup->addOption('two', '2');
-		$optGroup->addOption('three', '3');
-		$optGroup->addOption('four', '4', false, true);
-		$this->assertEquals($optGroup->count(), 5);
-		$this->assertEquals(\count($optGroup), 5);
-
-		$select->addOptGroup($optGroup);
-		$this->assertEquals($select->count(), 6);
-		$this->assertEquals(\count($select), 6);
-		$this->page->add($select);
-		$this->assertValidHtml($this->page);
-		}
-
 	public function testSelectAutoComplete() : void
 		{
 		$select = new \PHPFUI\Input\SelectAutoComplete($this->page, 'selectAutoComplete', 'SelectAutoComplete', true);
@@ -372,6 +344,34 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 
 		$this->assertEquals($select->count(), 5);
 		$this->assertEquals(\count($select), 5);
+		$this->page->add($select);
+		$this->assertValidHtml($this->page);
+		}
+
+	public function testSelectNoLabel() : void
+		{
+		$select = new \PHPFUI\Input\Select('select');
+		$select->setRequired();
+		$select->addLabelClass('test');
+
+		$select->addOption('');
+		$select->addOption('one');
+		$select->addOption('two', '2');
+		$select->addOption('three', '3', true);
+		$select->addOption('four', '4', false, true);
+
+		$optGroup = new \PHPFUI\Input\OptGroup('Option Group');
+		$optGroup->addOption('');
+		$optGroup->addOption('one');
+		$optGroup->addOption('two', '2');
+		$optGroup->addOption('three', '3');
+		$optGroup->addOption('four', '4', false, true);
+		$this->assertEquals($optGroup->count(), 5);
+		$this->assertEquals(\count($optGroup), 5);
+
+		$select->addOptGroup($optGroup);
+		$this->assertEquals($select->count(), 6);
+		$this->assertEquals(\count($select), 6);
 		$this->page->add($select);
 		$this->assertValidHtml($this->page);
 		}

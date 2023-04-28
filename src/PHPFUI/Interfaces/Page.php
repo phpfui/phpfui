@@ -122,6 +122,11 @@ interface Page
 	public function isChrome() : bool;
 
 	/**
+	 * Returns true if the page needs no more processing
+	 */
+	public function isDone() : bool;
+
+	/**
 	 * Return true if Windows Mobile browser
 	 */
 	public function isIEMobile() : bool;
@@ -163,6 +168,11 @@ interface Page
 	public function setPageName(string $name) : self;
 
 	/**
+	 * Sets the page response directly
+	 */
+	public function setRawResponse(string $response, bool $asJSON = true) : static;
+
+	/**
 	 * $resoursePath should start from the public root directory and include a trailing forward slash
 	 */
 	public function setResourcePath(string $resoursePath = '/') : self;
@@ -174,14 +184,4 @@ interface Page
 	 * @param string $color used for the save button
 	 */
 	public function setResponse(string $response, string $color = 'lime') : static;
-
-	/**
-	 * Sets the page response directly
-	 */
-	public function setRawResponse(string $response, bool $asJSON = true) : static;
-
-	/**
-	 * Returns true if the page needs no more processing
-	 */
-	public function isDone() : bool;
 	}

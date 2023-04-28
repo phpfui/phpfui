@@ -67,6 +67,16 @@ class SortableTable extends \PHPFUI\Table
 		return $this->parameters;
 		}
 
+	public function getSortedColumn() : string
+		{
+		return $this->sortedColumn;
+		}
+
+	public function getSortedOrder() : string
+		{
+		return $this->sortedOrder;
+		}
+
 	/**
 	 * @return string a link that will sort the column in ascending order
 	 */
@@ -118,16 +128,6 @@ class SortableTable extends \PHPFUI\Table
 		$this->sortedColumn = $column;
 
 		return $this;
-		}
-
-	public function getSortedColumn() : string
-		{
-		return $this->sortedColumn;
-		}
-
-	public function getSortedOrder() : string
-		{
-		return $this->sortedOrder;
 		}
 
 	/**

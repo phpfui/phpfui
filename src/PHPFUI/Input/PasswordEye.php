@@ -19,18 +19,6 @@ class PasswordEye extends \PHPFUI\Input\Password
 		parent::__construct($name, $label, $value);
 		}
 
-	// Special rendering logic:
-	//
-	// We need to render an InputGroup, but this object should behave like a regular PHPFUI\Input\Password
-	// So we null out start end end rendering
-	// Then in getBody, we upCastCopy the object into something that is not us (PHPFUI\Input\Password), so our getBody will not be called.
-	// Then we make an InputGroup, add the new password object into it, and the yukky JavaScript
-
-	public function getStart() : string
-		{
-		return '';
-		}
-
 	public function getBody() : string
 		{
 		$inputGroup = new \PHPFUI\InputGroup();
@@ -49,6 +37,18 @@ class PasswordEye extends \PHPFUI\Input\Password
 		}
 
 	public function getEnd() : string
+		{
+		return '';
+		}
+
+	// Special rendering logic:
+	//
+	// We need to render an InputGroup, but this object should behave like a regular PHPFUI\Input\Password
+	// So we null out start end end rendering
+	// Then in getBody, we upCastCopy the object into something that is not us (PHPFUI\Input\Password), so our getBody will not be called.
+	// Then we make an InputGroup, add the new password object into it, and the yukky JavaScript
+
+	public function getStart() : string
 		{
 		return '';
 		}

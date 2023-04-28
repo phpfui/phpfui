@@ -26,21 +26,6 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 		$this->addHeadTag('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
 		}
 
-	/**
-	 * You can add various plugin default parameters
-	 *
-	 * Examples:
-	 *
-	 * $page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');
-	 * $page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
-	 */
-	public function addPluginDefault(string $pluginName, string $property, string $value) : static
-		{
-		$this->plugins[$pluginName][$property] = $value;
-
-		return $this;
-		}
-
 	public function addAbideValidator(\PHPFUI\Validator $validator) : static
 		{
 		$js = $validator->getJavaScript();
@@ -52,18 +37,6 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 		$this->addPluginDefault('Abide', "validators['{$validator->getValidatorName()}']", $validator->getFunctionName());
 
 		$this->addJavaScript($js);
-
-		return $this;
-		}
-
-	/**
-	 * Add a reveal dialog to the page
-	 *
-	 * @param \PHPFUI\Reveal $reveal dialog to store in the page
-	 */
-	public function addReveal(\PHPFUI\Reveal $reveal) : static
-		{
-		$this->reveals[] = $reveal;
 
 		return $this;
 		}
@@ -89,6 +62,33 @@ class Page extends \PHPFUI\VanillaPage implements \PHPFUI\Interfaces\Page
 			$js = 'function copyTextNoFlash(id){$("#"+id).toggleClass("hide").select();document.execCommand("copy");$("#"+id).toggleClass("hide");}';
 			}
 		$this->addJavaScript($js);
+
+		return $this;
+		}
+
+	/**
+	 * You can add various plugin default parameters
+	 *
+	 * Examples:
+	 *
+	 * $page->addPluginDefault('Abide', 'patterns["zip"]', '/^[0-9-]*$/');
+	 * $page->addPluginDefault('Abide', "validators['AutoCompleteRequired']", 'AutoCompleteRequired');
+	 */
+	public function addPluginDefault(string $pluginName, string $property, string $value) : static
+		{
+		$this->plugins[$pluginName][$property] = $value;
+
+		return $this;
+		}
+
+	/**
+	 * Add a reveal dialog to the page
+	 *
+	 * @param \PHPFUI\Reveal $reveal dialog to store in the page
+	 */
+	public function addReveal(\PHPFUI\Reveal $reveal) : static
+		{
+		$this->reveals[] = $reveal;
 
 		return $this;
 		}

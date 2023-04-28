@@ -43,9 +43,9 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 	/** @var array<string, string> */
 	private array $get = [];
 
-	private string $invokedPath = '';
-
 	private string $homePageClass = '';
+
+	private string $invokedPath = '';
 
 	private string $missingClass = '';
 
@@ -117,6 +117,14 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 	public function getPost() : array
 		{
 		return $this->post;
+		}
+
+	/**
+	 * Return the StudlyCased request method name
+	 */
+	public function getRequestMethod() : string
+		{
+		return isset($_SERVER['REQUEST_METHOD']) ? \ucfirst(\strtolower($_SERVER['REQUEST_METHOD'])) : 'Get';
 		}
 
 	/**
@@ -197,21 +205,21 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		}
 
 	/**
-	 * If no class::method is found in the URI, return an instance of this class.
-	 */
-	public function setMissingClass(string $missingClass = 'App\\Missing') : static
-		{
-		$this->missingClass = $missingClass;
-
-		return $this;
-		}
-
-	/**
 	 * If no URI (or /) is provided, return an instance of this class.
 	 */
 	public function setHomePageClass(string $homePageClass = 'App\\HomePage') : static
 		{
 		$this->homePageClass = $homePageClass;
+
+		return $this;
+		}
+
+	/**
+	 * If no class::method is found in the URI, return an instance of this class.
+	 */
+	public function setMissingClass(string $missingClass = 'App\\Missing') : static
+		{
+		$this->missingClass = $missingClass;
 
 		return $this;
 		}
@@ -242,14 +250,6 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		$this->rootNamespace = $namespace;
 
 		return $this;
-		}
-
-	/**
-	 * Return the StudlyCased request method name
-	 */
-	public function getRequestMethod() : string
-		{
-		return isset($_SERVER['REQUEST_METHOD']) ? \ucfirst(\strtolower($_SERVER['REQUEST_METHOD'])) : 'Get';
 		}
 
 	/**

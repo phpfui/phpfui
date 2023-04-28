@@ -21,16 +21,6 @@ class AJAX
 		}
 
 	/**
-	 * Return true if the post is from this AJAX call
-	 *
-	 * @param array<string, string> $post
-	 */
-	public function isMyCallback(array $post) : bool
-		{
-		return \PHPFUI\Session::checkCSRF() && ($post['action'] ?? '') == $this->name;
-		}
-
-	/**
 	 * Add a function parameter and the script that matches the
 	 * parameter type according to jQuery.ajax
 	 *
@@ -99,5 +89,15 @@ class AJAX
 		$js .= "});{$extra}}";
 
 		return $js;
+		}
+
+	/**
+	 * Return true if the post is from this AJAX call
+	 *
+	 * @param array<string, string> $post
+	 */
+	public function isMyCallback(array $post) : bool
+		{
+		return \PHPFUI\Session::checkCSRF() && ($post['action'] ?? '') == $this->name;
 		}
 	}

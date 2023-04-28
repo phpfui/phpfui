@@ -806,6 +806,33 @@ class KitchenSink
 		return (string)$hidden . $line['name'];
 		}
 
+	public static function makeMenu(Menu $menu, string $name, ?string $class = '', ?\PHPFUI\Menu $subMenu = null) : Menu
+		{
+		$menu->addMenuItem(new \PHPFUI\MenuItem($name));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('One', '#'));
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Two', '#'));
+		$three = new \PHPFUI\MenuItem('Three', '#');
+
+		if ($subMenu)
+			{
+			$menu->addSubMenu($three, $subMenu);
+			}
+		else
+			{
+			$three->setActive(true);
+			$menu->addMenuItem($three);
+			}
+
+		$menu->addMenuItem(new \PHPFUI\MenuItem('Four', '#'));
+
+		if ($class)
+			{
+			$menu->addClass($class);
+			}
+
+		return $menu;
+		}
+
 	public function render(string $type = 'base') : string
 		{
 		$container = new \PHPFUI\Container();
@@ -834,11 +861,6 @@ class KitchenSink
 		return (string)$container;
 		}
 
-	public function timedCellUpdateCallback(string $id) : string
-		{
-		return \gmdate('H:i:s') . ' ' . $id;
-		}
-
 	public static function subMenu() : Menu
 		{
 		$menu = new \PHPFUI\Menu();
@@ -851,31 +873,9 @@ class KitchenSink
 		return $menu;
 		}
 
-	public static function makeMenu(Menu $menu, string $name, ?string $class = '', ?\PHPFUI\Menu $subMenu = null) : Menu
+	public function timedCellUpdateCallback(string $id) : string
 		{
-		$menu->addMenuItem(new \PHPFUI\MenuItem($name));
-		$menu->addMenuItem(new \PHPFUI\MenuItem('One', '#'));
-		$menu->addMenuItem(new \PHPFUI\MenuItem('Two', '#'));
-		$three = new \PHPFUI\MenuItem('Three', '#');
-
-		if ($subMenu)
-			{
-			$menu->addSubMenu($three, $subMenu);
-			}
-		else
-			{
-			$three->setActive(true);
-			$menu->addMenuItem($three);
-			}
-
-		$menu->addMenuItem(new \PHPFUI\MenuItem('Four', '#'));
-
-		if ($class)
-			{
-			$menu->addClass($class);
-			}
-
-		return $menu;
+		return \gmdate('H:i:s') . ' ' . $id;
 		}
 
 	private static function generateMenu(string $name, int $count, bool $active = false) : Menu

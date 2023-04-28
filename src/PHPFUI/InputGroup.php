@@ -7,11 +7,11 @@ namespace PHPFUI;
  */
 class InputGroup extends \PHPFUI\HTML5Element
 	{
-	private ?string $inputLabel = null;
-
 	private string $error = '';
 
 	private ?string $hint = '';
+
+	private ?string $inputLabel = null;
 
 	public function __construct()
 		{
@@ -87,19 +87,6 @@ class InputGroup extends \PHPFUI\HTML5Element
 		return $span;
 		}
 
-	public function getStart() : string
-		{
-		$retVal = '';
-		$this->walk('setHint', '');
-
-		if ($this->inputLabel)
-			{
-			$retVal .= '<label>' . $this->inputLabel;
-			}
-
-		return $retVal . parent::getStart();
-		}
-
 	public function getEnd() : string
 		{
 		$retVal = parent::getEnd() . $this->error;
@@ -111,5 +98,18 @@ class InputGroup extends \PHPFUI\HTML5Element
 		$retVal .= $this->hint;
 
 		return $retVal;
+		}
+
+	public function getStart() : string
+		{
+		$retVal = '';
+		$this->walk('setHint', '');
+
+		if ($this->inputLabel)
+			{
+			$retVal .= '<label>' . $this->inputLabel;
+			}
+
+		return $retVal . parent::getStart();
 		}
 	}

@@ -196,12 +196,6 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 		return $this;
 		}
 
-	/** @return array<mixed> */
-	protected function getItems() : array
-		{
-		return $this->items;
-		}
-
 	/**
 	 * You must provide a getBody function.  It will be called after start and before end.
 	 */
@@ -211,6 +205,12 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 	 * You must provide a getEnd function.  It will be called last on output.
 	 */
 	abstract protected function getEnd() : string;
+
+	/** @return array<mixed> */
+	protected function getItems() : array
+		{
+		return $this->items;
+		}
 
 	/**
 	 * You must provide a getStart function.  It will be called first on output.

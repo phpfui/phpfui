@@ -11,11 +11,11 @@ namespace PHPFUI\Input;
  */
 class CheckBoxMenu extends \PHPFUI\Menu
 	{
-	private string $className;
+	private ?\PHPFUI\MenuItem $allMenuItem = null;
 
 	private string $callbackName = '';
 
-	private ?\PHPFUI\MenuItem $allMenuItem = null;
+	private string $className;
 
 	private ?\PHPFUI\MenuItem $submitMenuItem = null;
 
@@ -30,14 +30,6 @@ class CheckBoxMenu extends \PHPFUI\Menu
 		}
 
 	/**
-	 * Return the class name for the menu items.
-	 */
-	public function getMenuItemClass() : string
-		{
-		return $this->className;
-		}
-
-	/**
 	 * Add a select All button.  It is appended to the previously added checkboxes.
 	 */
 	public function addAll(string $name = 'All') : \PHPFUI\MenuItem
@@ -49,21 +41,6 @@ class CheckBoxMenu extends \PHPFUI\Menu
 				' input[type=checkbox]");cb.prop("checked",active);' . $callback . 'return false;');
 
 		return $this->allMenuItem;
-		}
-
-	/**
-	 * Add a Submit button in the menu style.  It is appended to the previously added checkboxes.
-	 *
-	 * @param string $name of the posted field
-	 */
-	public function addSubmit(\PHPFUI\Form $form, string $name = 'Submit') : \PHPFUI\MenuItem
-		{
-		$this->submitMenuItem = new \PHPFUI\MenuItem($name, '#');
-		$formId = $form->getId();
-		$this->submitMenuItem->addAttribute('onclick', '$("#' . $formId . '").submit();return false;');
-		$this->addMenuItem($this->submitMenuItem);
-
-		return $this->submitMenuItem;
 		}
 
 	/**
@@ -118,6 +95,29 @@ class CheckBoxMenu extends \PHPFUI\Menu
 		$this->addMenuItem($menuItem);
 
 		return $menuItem;
+		}
+
+	/**
+	 * Add a Submit button in the menu style.  It is appended to the previously added checkboxes.
+	 *
+	 * @param string $name of the posted field
+	 */
+	public function addSubmit(\PHPFUI\Form $form, string $name = 'Submit') : \PHPFUI\MenuItem
+		{
+		$this->submitMenuItem = new \PHPFUI\MenuItem($name, '#');
+		$formId = $form->getId();
+		$this->submitMenuItem->addAttribute('onclick', '$("#' . $formId . '").submit();return false;');
+		$this->addMenuItem($this->submitMenuItem);
+
+		return $this->submitMenuItem;
+		}
+
+	/**
+	 * Return the class name for the menu items.
+	 */
+	public function getMenuItemClass() : string
+		{
+		return $this->className;
 		}
 
 	/**

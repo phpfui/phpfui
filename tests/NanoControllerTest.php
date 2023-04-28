@@ -17,16 +17,6 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 	 $page->setDebug(0);
 	 }
 
-	public function testMissing() : void
-		{
-		$controller = new \PHPFUI\NanoController($uri = '/Random/url');
-		$controller->setMissingMethod('landingPage');
-		$controller->setRootNamespace('Fixtures');
-		$controller->setMissingClass(\Fixtures\Missing::class);
-		$class = $controller->run();
-		$this->assertEquals(\Fixtures\Missing::class, \get_class($class), 'Missing class not returned for ' . $uri);
-		}
-
 	public function testLanding() : void
 		{
 		$controller = new \PHPFUI\NanoController('/Test');
@@ -59,30 +49,6 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$this->assertStringContainsString('Value: 1\2\3\a\b\c', "{$class}", 'Array not found');
 		}
 
-	public function testMethodInt() : void
-		{
-		$controller = new \PHPFUI\NanoController('/Test/intMethod/123');
-		$controller->setMissingMethod('landingPage');
-		$controller->setRootNamespace('Fixtures');
-		$controller->setMissingClass(\Fixtures\Missing::class);
-		$class = $controller->run();
-		$this->assertStringContainsString('::intMethod', "{$class}", 'intMethod not found');
-		$this->assertStringContainsString('Type: integer', "{$class}", 'type integer not found');
-		$this->assertStringContainsString('Value: 123', "{$class}", 'Int value not found');
-		}
-
-	public function testMethodIntBadCast() : void
-		{
-		$controller = new \PHPFUI\NanoController('/Test/intMethod/sdfsadf');
-		$controller->setMissingMethod('landingPage');
-		$controller->setRootNamespace('Fixtures');
-		$controller->setMissingClass(\Fixtures\Missing::class);
-		$class = $controller->run();
-		$this->assertStringContainsString('::intMethod', "{$class}", 'intMethod not found');
-		$this->assertStringContainsString('Type: integer', "{$class}", 'type bad cast integer not found');
-		$this->assertStringContainsString('Value: 0', "{$class}", 'Int bad cast value not found');
-		}
-
 	public function testMethodBool() : void
 		{
 		$controller = new \PHPFUI\NanoController('/Test/boolMethod/1');
@@ -107,6 +73,18 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$this->assertStringContainsString('Value: 1', "{$class}", 'bool bad cast value not found');
 		}
 
+	public function testMethodClass() : void
+		{
+		$controller = new \PHPFUI\NanoController('/Test/classMethod/qwerty');
+		$controller->setMissingMethod('landingPage');
+		$controller->setRootNamespace('Fixtures');
+		$controller->setMissingClass(\Fixtures\Missing::class);
+		$class = $controller->run();
+		$this->assertStringContainsString('::classMethod', "{$class}", 'classMethod not found');
+		$this->assertStringContainsString('Type: Fixtures\Model', "{$class}", 'type Fixtures\Model not found');
+		$this->assertStringContainsString('Value: <div>qwerty</div>', "{$class}", 'class value not found');
+		}
+
 	public function testMethodDouble() : void
 		{
 		$controller = new \PHPFUI\NanoController('/Test/doubleMethod/1.23');
@@ -119,28 +97,28 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$this->assertStringContainsString('Value: 1.23', "{$class}", 'double value not found');
 		}
 
-	public function testMethodString() : void
+	public function testMethodInt() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/stringMethod/qwerty');
+		$controller = new \PHPFUI\NanoController('/Test/intMethod/123');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::stringMethod', "{$class}", 'stringMethod not found');
-		$this->assertStringContainsString('Type: string', "{$class}", 'type string not found');
-		$this->assertStringContainsString('Value: qwerty', "{$class}", 'string value not found');
+		$this->assertStringContainsString('::intMethod', "{$class}", 'intMethod not found');
+		$this->assertStringContainsString('Type: integer', "{$class}", 'type integer not found');
+		$this->assertStringContainsString('Value: 123', "{$class}", 'Int value not found');
 		}
 
-	public function testMethodClass() : void
+	public function testMethodIntBadCast() : void
 		{
-		$controller = new \PHPFUI\NanoController('/Test/classMethod/qwerty');
+		$controller = new \PHPFUI\NanoController('/Test/intMethod/sdfsadf');
 		$controller->setMissingMethod('landingPage');
 		$controller->setRootNamespace('Fixtures');
 		$controller->setMissingClass(\Fixtures\Missing::class);
 		$class = $controller->run();
-		$this->assertStringContainsString('::classMethod', "{$class}", 'classMethod not found');
-		$this->assertStringContainsString('Type: Fixtures\Model', "{$class}", 'type Fixtures\Model not found');
-		$this->assertStringContainsString('Value: <div>qwerty</div>', "{$class}", 'class value not found');
+		$this->assertStringContainsString('::intMethod', "{$class}", 'intMethod not found');
+		$this->assertStringContainsString('Type: integer', "{$class}", 'type bad cast integer not found');
+		$this->assertStringContainsString('Value: 0', "{$class}", 'Int bad cast value not found');
 		}
 
 	public function testMethodMultiple() : void
@@ -159,5 +137,27 @@ class NanoControllerTest extends \PHPUnit\Framework\TestCase
 		$this->assertStringContainsString('Value Integer: 10', "{$class}", 'multiple integer value not found');
 		$this->assertStringContainsString('Value Double: 1.23', "{$class}", 'multiple double value not found');
 		$this->assertStringContainsString('Value Array: a\b\c', "{$class}", 'multiple array value not found');
+		}
+
+	public function testMethodString() : void
+		{
+		$controller = new \PHPFUI\NanoController('/Test/stringMethod/qwerty');
+		$controller->setMissingMethod('landingPage');
+		$controller->setRootNamespace('Fixtures');
+		$controller->setMissingClass(\Fixtures\Missing::class);
+		$class = $controller->run();
+		$this->assertStringContainsString('::stringMethod', "{$class}", 'stringMethod not found');
+		$this->assertStringContainsString('Type: string', "{$class}", 'type string not found');
+		$this->assertStringContainsString('Value: qwerty', "{$class}", 'string value not found');
+		}
+
+	public function testMissing() : void
+		{
+		$controller = new \PHPFUI\NanoController($uri = '/Random/url');
+		$controller->setMissingMethod('landingPage');
+		$controller->setRootNamespace('Fixtures');
+		$controller->setMissingClass(\Fixtures\Missing::class);
+		$class = $controller->run();
+		$this->assertEquals(\Fixtures\Missing::class, \get_class($class), 'Missing class not returned for ' . $uri);
 		}
 	}

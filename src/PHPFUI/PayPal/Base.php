@@ -10,9 +10,6 @@ abstract class Base
 	/** @var array<string, string> */
 	private array $data = [];
 
-	/** @var array<string, string> */
-	private array $setFields = [];
-
 	/** @var array<string, true> */
 	private static array $scalars = [
 		'boolean' => true,
@@ -20,6 +17,9 @@ abstract class Base
 		'integer' => true,
 		'string' => true,
 	];
+
+	/** @var array<string, string> */
+	private array $setFields = [];
 
 	public function __construct()
 		{

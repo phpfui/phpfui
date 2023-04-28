@@ -4,11 +4,11 @@ namespace PHPFUI;
 
 class Validator
 	{
+	protected bool $addedToPage = false;
+
 	protected string $functionName;
 
 	protected string $javaScript;
-
-	protected bool $addedToPage = false;
 
 	/**
 	 * Create a custom Abide validator.  Steps for use:
@@ -24,11 +24,6 @@ class Validator
 	public function __construct(protected string $validatorName, string $javaScriptFunction = '')
 		{
 		$this->setJavaScript($javaScriptFunction);
-		}
-
-	public function getValidatorName() : string
-		{
-		return $this->validatorName;
 		}
 
 	public function getFunctionName() : string
@@ -49,6 +44,11 @@ class Validator
 		$this->addedToPage = true;
 
 		return $this->javaScript;
+		}
+
+	public function getValidatorName() : string
+		{
+		return $this->validatorName;
 		}
 
 	public function setJavaScript(string $javaScriptFunction) : self

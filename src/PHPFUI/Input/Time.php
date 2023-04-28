@@ -8,10 +8,10 @@ namespace PHPFUI\Input;
  */
 class Time extends \PHPFUI\Input\Input
 	{
-	private static ?\PHPFUI\Interfaces\Page $page = null;
-
 	/** @var array<string, string> */
 	private array $options = ['callback' => 'function(selected){let timeString=selected instanceof Date?selected.toTimeString().substring(0,8):"";input.attr("value",timeString)}'];
+
+	private static ?\PHPFUI\Interfaces\Page $page = null;
 
 	/**
 	 * Constuct a Time input field supporting hours and minutes. Call **setParentReveal** if Time control is in a Reveal.

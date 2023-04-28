@@ -9,13 +9,13 @@ class ProgressBar extends \PHPFUI\HTML5Element
 	{
 	private int $current = 0;
 
-	private int $max = 100;
+	private ?\PHPFUI\HTML5Element $label = null;
 
-	private int $min = 0;
+	private int $max = 100;
 
 	private ?\PHPFUI\HTML5Element $meter = null;
 
-	private ?\PHPFUI\HTML5Element $label = null;
+	private int $min = 0;
 
 	/**
 	 * Construct a ProgressBar.  Defaults to 0%

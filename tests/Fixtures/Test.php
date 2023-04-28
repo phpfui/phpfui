@@ -10,16 +10,6 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 		parent::__construct();
 		}
 
-	public function landingPage() : void
-		{
-		$this->add(__METHOD__);
-		}
-
-	public function method() : void
-		{
-		$this->add(__METHOD__);
-		}
-
 	/**
 	 * @param array<string> $data
 	 */
@@ -28,27 +18,6 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 		$this->add(__METHOD__);
 		$this->add(' Type: ' . \gettype($data));
 		$this->add(' Value: ' . \implode('\\', $data));
-		}
-
-	public function intMethod(int $data) : void
-		{
-		$this->add(__METHOD__);
-		$this->add(' Type: ' . \gettype($data));
-		$this->add(' Value: ' . $data);
-		}
-
-	public function doubleMethod(float $data) : void
-		{
-		$this->add(__METHOD__);
-		$this->add(' Type: ' . \gettype($data));
-		$this->add(' Value: ' . $data);
-		}
-
-	public function stringMethod(string $data) : void
-		{
-		$this->add(__METHOD__);
-		$this->add(' Type: ' . \gettype($data));
-		$this->add(' Value: ' . $data);
 		}
 
 	public function boolMethod(bool $data) : void
@@ -65,6 +34,30 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 		$this->add(' Value: ' . $data);
 		}
 
+	public function doubleMethod(float $data) : void
+		{
+		$this->add(__METHOD__);
+		$this->add(' Type: ' . \gettype($data));
+		$this->add(' Value: ' . $data);
+		}
+
+	public function intMethod(int $data) : void
+		{
+		$this->add(__METHOD__);
+		$this->add(' Type: ' . \gettype($data));
+		$this->add(' Value: ' . $data);
+		}
+
+	public function landingPage() : void
+		{
+		$this->add(__METHOD__);
+		}
+
+	public function method() : void
+		{
+		$this->add(__METHOD__);
+		}
+
   /**
    * @param array<string> $a
    */
@@ -79,5 +72,12 @@ class Test extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 		$this->add(' Value Double: ' . $f);
 		$this->add(' Type Array: ' . \gettype($a));
 		$this->add(' Value Array: ' . \implode('\\', $a));
+		}
+
+	public function stringMethod(string $data) : void
+		{
+		$this->add(__METHOD__);
+		$this->add(' Type: ' . \gettype($data));
+		$this->add(' Value: ' . $data);
 		}
 	}

@@ -4,6 +4,8 @@ namespace PHPFUI;
 
 class Pagination extends \PHPFUI\HTML5Element
 	{
+	private bool $alwaysShow = false;
+
 	private int $ff = 0;
 
 	private string $next = 'Next';
@@ -19,8 +21,6 @@ class Pagination extends \PHPFUI\HTML5Element
 	private \PHPFUI\UnorderedList $ul;
 
 	private int $window = 3;
-
-	private bool $alwaysShow = false;
 
 	/**
 	 * Show a pagination nav. If there is only one page, the paginator will not be generated.

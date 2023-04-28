@@ -11,37 +11,37 @@ namespace PHPFUI;
  */
 class Language
 	{
-	// Input
-	public static string $required = ' <small>Required</small>';
-
-	public static string $emailError = 'Must be a valid email address with @ sign and domain';
-
-	public static string $urlError = 'Valid URL required. https://www.google.com for example';
-
-	public static string $numberError = 'Numbers (0-9.) only';
-
-	public static string $selectError = 'Please select.';
-
-	// OrderableTable
-	public static string $updownarrow = '&updownarrow;';
-
 	public static string $dropRowHere = 'Drop Row Here';
 
-	// SortableTable
-	public static ?\PHPFUI\FAIcon $sortIcon = null;
-
-	public static ?\PHPFUI\FAIcon $sortDownIcon = null;
-
-	public static ?\PHPFUI\FAIcon $sortUpIcon = null;
+	public static string $emailError = 'Must be a valid email address with @ sign and domain';
 
 	// Pagination
 	public static string $next = 'Next';
 
-	public static string $previous = 'Prev';
+	public static string $numberError = 'Numbers (0-9.) only';
+
+	public static string $onPage = "You're on page";
 
 	public static string $page = 'page';
 
-	public static string $onPage = "You're on page";
+	public static string $previous = 'Prev';
+
+	// Input
+	public static string $required = ' <small>Required</small>';
+
+	public static string $selectError = 'Please select.';
+
+	public static ?\PHPFUI\FAIcon $sortDownIcon = null;
+
+	// SortableTable
+	public static ?\PHPFUI\FAIcon $sortIcon = null;
+
+	public static ?\PHPFUI\FAIcon $sortUpIcon = null;
+
+	// OrderableTable
+	public static string $updownarrow = '&updownarrow;';
+
+	public static string $urlError = 'Valid URL required. https://www.google.com for example';
 
 	public static function getSortIcon(string $type = '') : \PHPFUI\IconBase
 		{

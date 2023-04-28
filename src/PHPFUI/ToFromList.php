@@ -76,13 +76,6 @@ class ToFromList extends \PHPFUI\Base
 		$this->processRequest();
 		}
 
-	public function setReadOnly() : static
-		{
-		$this->readOnly = true;
-
-		return $this;
-		}
-
 	/**
 	 * You can customize the "in" icon (or remove it) by passing in html
 	 *
@@ -123,6 +116,13 @@ class ToFromList extends \PHPFUI\Base
 	public function setOutName(string $outName) : static
 		{
 		$this->outName = $outName;
+
+		return $this;
+		}
+
+	public function setReadOnly() : static
+		{
+		$this->readOnly = true;
 
 		return $this;
 		}

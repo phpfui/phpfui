@@ -51,6 +51,25 @@ class Button extends \PHPFUI\HTML5Element
 		}
 
 	/**
+	 * Set the disabled state of the button
+	 *
+	 * @param bool $disabled defaults to true
+	 */
+	public function setDisabled(bool $disabled = true) : static
+		{
+		if ($disabled)
+			{
+			$this->addClass('disabled');
+			}
+		else
+			{
+			$this->deleteClass('disabled');
+			}
+
+		return $this;
+		}
+
+	/**
 	 * set the button link
 	 */
 	public function setLink(string $link) : static
@@ -66,25 +85,6 @@ class Button extends \PHPFUI\HTML5Element
 	public function setText(string $text) : static
 		{
 		$this->text = $text;
-
-		return $this;
-		}
-
-	/**
-	 * Set the disabled state of the button
-	 *
-	 * @param bool $disabled defaults to true
-	 */
-	public function setDisabled(bool $disabled = true) : static
-		{
-		if ($disabled)
-			{
-			$this->addClass('disabled');
-			}
-		else
-			{
-			$this->deleteClass('disabled');
-			}
 
 		return $this;
 		}
