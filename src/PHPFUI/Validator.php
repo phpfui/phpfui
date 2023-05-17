@@ -46,21 +46,6 @@ class Validator
 		return $this->javaScript;
 		}
 
-	public function getValidatorName() : string
-		{
-		return $this->validatorName;
-		}
-
-	public function setJavaScript(string $javaScriptFunction) : self
-		{
-		$this->addedToPage = false;
-		$this->javaScript = $javaScriptFunction;
-		$javaScriptFunction = \trim(\str_replace('function ', '', $javaScriptFunction));
-		$this->functionName = \trim(\substr($javaScriptFunction, 0, \strpos($javaScriptFunction, '(')));
-
-		return $this;
-		}
-
 	/**
 	 * Most validation JavaScript follows a standard pattern:
 	 *
@@ -81,10 +66,25 @@ class Validator
 	 *
 	 * @return string of JavaScript to be passed to setJavaScript
 	 */
-	protected function getJavaScriptTemplate(string $customJavaScript) : string
+	public function getJavaScriptTemplate(string $customJavaScript) : string
 		{
 		$js = "function {$this->validatorName}(el,required,parent){let to=el.val();if(to.length==0 && !required)return true;let data=el.attr('data-{$this->validatorName}');let from=$('#'+data).val();return({$customJavaScript});};";
 
 		return $js;
+		}
+
+	public function getValidatorName() : string
+		{
+		return $this->validatorName;
+		}
+
+	public function setJavaScript(string $javaScriptFunction) : self
+		{
+		$this->addedToPage = false;
+		$this->javaScript = $javaScriptFunction;
+		$javaScriptFunction = \trim(\str_replace('function ', '', $javaScriptFunction));
+		$this->functionName = \trim(\substr($javaScriptFunction, 0, \strpos($javaScriptFunction, '(')));
+
+		return $this;
 		}
 	}
