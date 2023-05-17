@@ -68,12 +68,10 @@ class AutoComplete extends \PHPFUI\Input\Input
 
 		if (isset($_POST[$this->className]) && \PHPFUI\Session::checkCSRF() && $_POST['fieldName'] == $name)
 			{
-			$returnValue = \json_encode(\call_user_func($this->callback, $_POST));
+			$returnValue = \json_encode(\call_user_func($this->callback, $_POST), JSON_INVALID_UTF8_IGNORE);
 
 			if ($returnValue)
 				{
-				$returnValue = \str_replace('&amp;', '&', $returnValue); // need both to remove pesky &amp;!
-				$returnValue = \PHPFUI\TextHelper::unhtmlentities($returnValue);  // need this too!
 				$this->page->setRawResponse($returnValue);
 				}
 			}
