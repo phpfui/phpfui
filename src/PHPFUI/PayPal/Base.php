@@ -47,8 +47,7 @@ abstract class Base
 		return $this->data[$field] ?? null;
 		}
 
-	// @phpstan-ignore-next-line
-	public function __set(string $field, mixed $value)
+	public function __set(string $field, mixed $value) : void
 		{
 		$expectedType = static::$validFields[$field] ?? null;
 
@@ -91,8 +90,7 @@ abstract class Base
 			}
 
 		$this->setFields[$field] = true;
-
-		return $this->data[$field] = $value;
+		$this->data[$field] = $value;
 		}
 
 	/** @return array<string, mixed> */
