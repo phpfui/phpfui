@@ -83,9 +83,9 @@ class Session
 	 *
 	 * @param mixed $value can by any type that can be converted to json and stored in a session. Leave empty to delete.
 	 */
-	public static function setFlash(string $key, mixed $value = '') : void
+	public static function setFlash(string $key, mixed $value = null) : void
 		{
-		if ($value)
+		if (null !== $value)
 			{
 			$_SESSION['flash'][$key] = \json_encode($value);
 			}

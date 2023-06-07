@@ -93,7 +93,8 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 		{
 		if (\PHPFUI\Session::checkCSRF() && isset($_POST[$this->fieldName]))
 			{
-			return (int)$_POST[$this->fieldName] == (int)\PHPFUI\Session::getFlash($this->fieldName);
+
+			return \strlen($_POST[$this->fieldName]) && $_POST[$this->fieldName] == \PHPFUI\Session::getFlash($this->fieldName);
 			}
 
 		return false;
