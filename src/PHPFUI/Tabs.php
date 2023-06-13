@@ -15,8 +15,8 @@ class Tabs extends \PHPFUI\Base
 	 * @param bool $vertical default false, pass true for a vertical tab structure
 	 */
 	public function __construct(private bool $vertical = false)
- {
- }
+		{
+		}
 
 	/**
 	 * @param string $tabText to display on the tab

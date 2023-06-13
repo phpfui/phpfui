@@ -146,6 +146,34 @@ class Menu extends \PHPFUI\HTML5Element
 		return $this;
 		}
 
+	public function walk(string $method, mixed $argument = null) : static
+		{
+		foreach ($this->menuItems as $item)
+			{
+			if (\is_object($item))
+				{
+				if (\method_exists($item, $method))
+					{
+					if (null !== $argument)
+						{
+						\call_user_func([$item, $method], $argument);
+						}
+					else
+						{
+						\call_user_func([$item, $method]);
+						}
+					}
+
+				if ($item instanceof \PHPFUI\Menu)
+					{
+					$item->walk($method, $argument);
+					}
+				}
+			}
+
+		return $this;
+		}
+
 	protected function getStart() : string
 		{
 		if (! $this->started)

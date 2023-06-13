@@ -31,7 +31,7 @@ trait Walkable
 						}
 					}
 
-				if ($item instanceof \PHPFUI\Base || $item instanceof \PHPFUI\Container)
+				if ($item instanceof \PHPFUI\Base || $item instanceof \PHPFUI\Container || $item instanceof \PHPFUI\Menu)
 					{
 					$item->walk($method, $argument);
 					}
