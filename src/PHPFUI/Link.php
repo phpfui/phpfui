@@ -61,7 +61,7 @@ class Link extends \PHPFUI\HTML5Element
 
 			if (\filter_var($link, FILTER_VALIDATE_URL))
 				{
-				$this->addAttribute('href', $link);
+				$this->addAttribute('href', \str_replace("'", '%27', $link));
 				$this->addAttribute('rel', 'noopener noreferrer');
 				$this->addAttribute('target', '_blank');
 				}
