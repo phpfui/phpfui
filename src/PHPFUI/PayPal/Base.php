@@ -102,7 +102,7 @@ abstract class Base
 			{
 			if (! empty($this->setFields[$field]))
 				{
-				if ('object' == \gettype($value))
+				if ('object' == \gettype($value))	// @phpstan-ignore-line
 					{
 					$value = $value->getData();
 					}

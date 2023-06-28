@@ -31,7 +31,7 @@ trait Walkable
 						}
 					}
 
-				if ($item instanceof \PHPFUI\Base || $item instanceof \PHPFUI\Container || $item instanceof \PHPFUI\Menu)
+				if ($item instanceof \PHPFUI\Base || $item instanceof \PHPFUI\Container || $item instanceof \PHPFUI\Menu) // @phpstan-ignore-line
 					{
 					$item->walk($method, $argument);
 					}

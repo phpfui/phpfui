@@ -360,19 +360,7 @@ class HTML5Element extends \PHPFUI\Base
 	 */
 	public function setToolTip(string | \PHPFUI\ToolTip $tip) : static
 		{
-		if ($tip)
-			{
-			$type = \gettype($tip);
-
-			if ('string' == $type || ('object' == $type && $tip::class == __NAMESPACE__ . '\ToolTip'))
-				{
-				$this->tooltip = $tip;
-				}
-			else
-				{
-				$this->tooltip = 'not a string or ToolTip object';
-				}
-			}
+		$this->tooltip = $tip;
 
 		return $this;
 		}
