@@ -168,10 +168,6 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 				{
 				\header('Content-Type: application/json');
 				}
-
-			echo self::$response;
-
-			exit();
 			}
 
 		return $this;
@@ -225,7 +221,9 @@ abstract class Base implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringa
 		{
 		if ($this->isDone())
 			{
-			return self::$response;
+			echo self::$response;
+
+			exit();
 			}
 
 		$output = '';
