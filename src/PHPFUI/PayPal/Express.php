@@ -24,7 +24,7 @@ class Express extends \PHPFUI\HTML5Element
 
 	private string $type = 'sandbox';
 
-	public function __construct(private \PHPFUI\Interfaces\Page $page, private string $clientId)
+	public function __construct(protected \PHPFUI\Interfaces\Page $page, private string $clientId)
 		{
 		parent::__construct('div');
 		$this->page->addHeadScript('https://www.paypalobjects.com/api/checkout.js');

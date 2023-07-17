@@ -27,7 +27,7 @@ class LimitSelect extends \PHPFUI\Input\Select
 
 	private string $pageName;
 
-	public function __construct(private \PHPFUI\Interfaces\Page $page, private int $currentLimit)
+	public function __construct(protected \PHPFUI\Interfaces\Page $page, private int $currentLimit)
 		{
 		parent::__construct('l');
 		$this->addPHPClassName();

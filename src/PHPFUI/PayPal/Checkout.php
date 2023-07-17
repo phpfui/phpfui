@@ -31,7 +31,7 @@ class Checkout extends \PHPFUI\HTML5Element
 		'label' => 'checkout',
 	];
 
-	public function __construct(private \PHPFUI\Interfaces\Page $page, string $clientId)
+	public function __construct(protected \PHPFUI\Interfaces\Page $page, string $clientId)
 		{
 		parent::__construct('div');
 		$this->options['client-id'] = $clientId;
