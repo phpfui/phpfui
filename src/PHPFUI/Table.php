@@ -208,6 +208,16 @@ class Table extends \PHPFUI\HTML5Element
 		}
 
 	/**
+	 * Return the raw rows in the table
+	 *
+	 * @return array<mixed>
+	 */
+	public function getRows() : array
+		{
+		return $this->rows;
+		}
+
+	/**
 	 * outputBodyRows returns the contents of the table body for partical table output
 	 */
 	public function outputBodyRows() : string

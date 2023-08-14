@@ -132,6 +132,7 @@ class Pagination extends \PHPFUI\HTML5Element
 
 				$startWindow = $this->window * 2;
 				$endWindow = $this->of - $this->window - 1;
+
 				// all pages shown
 				if ($startWindow >= $endWindow)
 					{

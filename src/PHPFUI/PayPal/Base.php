@@ -73,6 +73,7 @@ abstract class Base
 			{
 			throw new \Exception("{$field} is of type {$type} but should be type {$expectedType} for " . static::class);
 			}
+
 		// Do additional formatting
 		switch ($type)
 			{
