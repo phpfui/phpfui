@@ -91,6 +91,10 @@ class Menu extends \PHPFUI\HTML5Element
 					return true;
 					}
 				}
+			elseif ($menuItem->setActiveLink($link))
+				{
+				return true;
+				}
 			}
 
 		return false;

@@ -13,7 +13,7 @@ class Validator
 	/**
 	 * Create a custom Abide validator.  Steps for use:
 	 *
-	 * * Give it name. The current class name is a nice default.
+	 * * Give it a name. The current class name is a nice default.
 	 * * Provide the JavaScript to do the validation (required).  See getJavaScriptTemplate()
 	 * * Call setValidator on \PHPFUI\Input object
 	 * * Add it to the page with addAbideValidator
