@@ -12,6 +12,9 @@ class TextHelper
 	 * directly as JavaScript (not JSON)
 	 *
 	 * @param array<string, mixed> $array of php values
+	 * - PHP scalars (except strings) will be converted to the corresponding JavaScript type
+	 * - strings must contain quoted strings to be represented as a string in JavaScript
+	 * - Unquoted strings will resolve to raw JavaScript
 	 * @param string $stringQuote optional quotes to use for string.
 	 *  						 Include actual quotes in your string if you
 	 *  						 need specify different quotes in different
