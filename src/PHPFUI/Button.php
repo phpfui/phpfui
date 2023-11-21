@@ -8,8 +8,6 @@ namespace PHPFUI;
  */
 class Button extends \PHPFUI\HTML5Element
 	{
-	protected string $link = '';
-
 	private bool $started = false;
 
 	/**
@@ -18,7 +16,7 @@ class Button extends \PHPFUI\HTML5Element
 	 * @param string $text of button
 	 * @param string $link if needed
 	 */
-	public function __construct(protected string $text, string $link = '')
+	public function __construct(protected string $text, protected string $link = '')
 		{
 		if ($link)
 			{
@@ -30,7 +28,6 @@ class Button extends \PHPFUI\HTML5Element
 			$this->addAttribute('type', 'button');
 			}
 
-		$this->link = $link;
 		$this->addClass('button');
 		}
 
