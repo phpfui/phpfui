@@ -15,7 +15,7 @@ abstract class HTMLList extends \PHPFUI\HTML5Element
 	/**
 	 * Adds a ListItem to the list
 	 */
-	public function addItem(ListItem $item) : static
+	public function addItem(\PHPFUI\ListItem | \PHPFUI\HTMLList $item) : static
 		{
 		$this->add($item);
 
