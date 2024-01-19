@@ -6,6 +6,8 @@ namespace PHPFUI;
  * A simple math problem captcha for low traffic sites. Often Google ReCAPTCHA has issues and lets spammers through (and they want to sell you Google ReCAPTCHA hacking service to deliver your message to millions of sites for not much money). This is not a sophisticated captcha involving a hard to solve image, but a simple addition to Google ReCAPTCHA for automated bots that are not wise to two captchas on a page.
  *
  * Works the same way as ReCAPTCHA, just a different contructor.  You really only need to pass the Page.
+ *
+ * Add kwn/number-to-words to your project to support words in addition to numbers to solve the CAPTCHA
  */
 class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Captcha
 	{
@@ -68,7 +70,24 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 
 			$op = $type ? \current($this->operators) : \key($this->operators);
 
-			$message = new \PHPFUI\HTML5Element(\random_int(0, 1) ? 'strong' : 'b');
+			$bold = ['strong', 'b', ];
+			$message = new \PHPFUI\HTML5Element($bold[\random_int(0, \count($bold) - 1)]);
+
+			if (\class_exists(\NumberToWords\NumberToWords::class))
+				{
+				$numberToWords = new \NumberToWords\NumberToWords();
+				$numberTransformer = $numberToWords->getNumberTransformer('en');
+
+				if (\random_int(0, 1))
+					{
+					$first = $numberTransformer->toWords($first);
+					}
+
+				if (\random_int(0, 1))
+					{
+					$second = $numberTransformer->toWords($second);
+					}
+				}
 			$message->add("Please Solve: {$first} {$op} {$second} = ");
 			$message->addClass('float-right hide');
 			$answers[$message->getId()] = $answer;

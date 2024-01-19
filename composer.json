@@ -28,6 +28,9 @@
         "phpstan/phpstan": "^1.8",
         "mheap/phpunit-github-actions-printer": "^1.5"
     },
+    "suggest": {
+        "kwn/number-to-words": "Allows words in addition to numbers for MathCaptcha"
+    },
     "autoload": {
         "psr-4": {"PHPFUI\\": "src/PHPFUI/"}
     },
