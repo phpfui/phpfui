@@ -67,7 +67,7 @@ let TimePicker = function(PRIMARY_COLOR="#00897b") {
       return false;
     }
     if (settings.datetime === null) {
-      settings.datetime = new Date(); 																																																		777
+      settings.datetime = new Date();
     }
     const steps = [ 5, 10, 15, 20, 30, 60 ];
     if (! steps.includes(settings.stepMinutes)) {
