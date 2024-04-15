@@ -14,5 +14,6 @@ src/PHPFUI/README.md
 composer.lock
 .php-cs-fixer.cache
 .phpunit.result.cache
+.phpunit.cache
 phpunit.xml
 

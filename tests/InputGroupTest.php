@@ -9,11 +9,12 @@
  * the LICENSE.md file that was distributed with this source
  * code
  */
+
+use PHPUnit\Framework\Attributes\DataProvider;
+
 class InputGroupTest extends \PHPFUI\HTMLUnitTester\Extensions
 	{
-  /**
-   * @dataProvider providerPageInput
-   */
+	#[DataProvider('providerPageInput')]
 	public function PageInputGroup(string $class) : void
 		{
 		$page = new \PHPFUI\Page();
@@ -101,9 +102,7 @@ class InputGroupTest extends \PHPFUI\HTMLUnitTester\Extensions
 		$this->assertValidHtml($inputGroup);
 		}
 
-	/**
-	 * @dataProvider providerSimpleInput
-	 */
+	#[DataProvider('providerSimpleInput')]
 	public function testSimpleInputGroup(string $class, string $value) : void
 		{
 		$page = new \PHPFUI\Page();
