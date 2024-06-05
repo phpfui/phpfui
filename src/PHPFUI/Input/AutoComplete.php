@@ -85,7 +85,7 @@ class AutoComplete extends \PHPFUI\Input\Input
 			'showNoSuggestionNotice' => true,
 			'paramName' => "'{$this->className}'",
 			'serviceUrl' => "'{$this->page->getBaseURL()}'",
-			'params' => ['fieldName' => "'{$name}'", $csrfField => $csrf],
+			'params' => ['fieldName' => "'{$name}'", $csrfField => $csrf, ],
 			'onSelect' => "function(suggestion){if(noFF){{$dollar}('#'+id).attr('placeholder',suggestion.value).attr('value','');};" .
 																	"{$dollar}('#'+id+'hidden').val(suggestion.data).change();" .
 																	"{$dollar}.ajax({type:'POST',traditional:true,data:{{$csrfField}:{$csrf},save:true,fieldName:'{$name}',{$this->className}:suggestion.data}})}",
@@ -103,6 +103,18 @@ class AutoComplete extends \PHPFUI\Input\Input
 		$this->options[$option] = $value;
 
 		return $this;
+		}
+
+	/**
+	 * Get an option for jQuery-Autocomplete.
+	 *
+	 * @link https://github.com/devbridge/jQuery-Autocomplete
+	 *
+	 * @param string $option to retrieve
+	 */
+	public function getAutoCompleteOption(string $option) : mixed
+		{
+		return $this->options[$option] ?? null;
 		}
 
 	/**
@@ -135,6 +147,20 @@ class AutoComplete extends \PHPFUI\Input\Input
 	public function removeAutoCompleteOption(string $option) : static
 		{
 		unset($this->options[$option]);
+
+		return $this;
+		}
+
+	/**
+	 * Set an option for jQuery-Autocomplete.
+	 *
+	 * @link https://github.com/devbridge/jQuery-Autocomplete
+	 *
+	 * @param string $option name to add
+	 */
+	public function setAutoCompleteOption(string $option, mixed $value) : static
+		{
+		$this->options[$option] = $value;
 
 		return $this;
 		}
