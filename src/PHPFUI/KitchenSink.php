@@ -526,7 +526,7 @@ class KitchenSink
 		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
 		$table->setHeaders($headers);
 		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
-		$table->setFooters(\array_combine($headers, $headers));
+		$table->setFooters(\array_combine($headers, $headers));	// @phpstan-ignore-line
 
 		for ($i = 0; $i < 10; ++$i)
 			{
@@ -699,7 +699,7 @@ class KitchenSink
 		$headers = ['Some', 'Numbers', '4', 'U', 'Edit', 'CheckBox'];
 		$table->setHeaders($headers);
 		$table->addColumnAttribute('Numbers', ['class' => 'warning']);
-		$table->setFooters(\array_combine($headers, $headers));
+		$table->setFooters(\array_combine($headers, $headers));	// @phpstan-ignore-line
 
 		for ($i = 0; $i < 10; ++$i)
 			{

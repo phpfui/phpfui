@@ -48,7 +48,6 @@ class PayPalTest extends \PHPUnit\Framework\TestCase
 		$zero = new \PHPFUI\PayPal\Currency();
 
 		$data = $zero->getData();
-		$this->assertIsArray($data);
 
 		$this->assertArrayHasKey('value', $data);
 		$this->assertArrayHasKey('currency_code', $data);

@@ -4,7 +4,7 @@ namespace PHPFUI;
 
 class Equalizer extends \PHPFUI\HTML5Element
 	{
-	private ?\PHPFUI\HTML5Element $base;
+	private \PHPFUI\HTML5Element $base;
 
 	private string $watchId;
 

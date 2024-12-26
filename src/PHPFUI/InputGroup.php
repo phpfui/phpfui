@@ -40,33 +40,24 @@ class InputGroup extends \PHPFUI\HTML5Element
 	 */
 	public function addInput(\PHPFUI\Input\Input $input) : static
 		{
-		if (\method_exists($input, 'getError'))
-			{
-			$this->error = $input->getError();
-			}
+		$this->error = $input->getError();
 
-		if (\method_exists($input, 'getHint'))
-			{
-			$this->hint = $input->getHint();
-			$input->setHint('');
-			}
+		$this->hint = $input->getHint();
+		$input->setHint('');
 		$input->addClass('input-group-field');
 
-		if (\method_exists($input, 'getLabel'))
+		$this->inputLabel = $input->getLabel();
+
+		if ($this->inputLabel)
 			{
-			$this->inputLabel = $input->getLabel();
+			$this->inputLabel = $input->getToolTip($this->inputLabel);
 
-			if ($this->inputLabel)
+			if ($input->getRequired())
 				{
-				$this->inputLabel = $input->getToolTip($this->inputLabel);
-
-				if ($input->getRequired())
-					{
-					$this->inputLabel .= \PHPFUI\Language::$required;
-					}
+				$this->inputLabel .= \PHPFUI\Language::$required;
 				}
-			$input->setLabel('');
 			}
+		$input->setLabel('');
 		$this->add($input);
 
 		return $this;

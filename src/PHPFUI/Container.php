@@ -40,10 +40,7 @@ class Container implements \Countable, \PHPFUI\Interfaces\Walkable, \Stringable
 	 */
 	public function add(string|\PHPFUI\Base $object) : static
 		{
-		if (null !== $object)
-			{
-			$this->items[] = $object;
-			}
+		$this->items[] = $object;
 
 		return $this;
 		}

@@ -157,24 +157,21 @@ class Menu extends \PHPFUI\HTML5Element
 		{
 		foreach ($this->menuItems as $item)
 			{
-			if (\is_object($item))
+			if (\method_exists($item, $method))
 				{
-				if (\method_exists($item, $method))
+				if (null !== $argument)
 					{
-					if (null !== $argument)
-						{
-						\call_user_func([$item, $method], $argument);
-						}
-					else
-						{
-						\call_user_func([$item, $method]);
-						}
+					\call_user_func([$item, $method], $argument);
 					}
+				else
+					{
+					\call_user_func([$item, $method]);
+					}
+				}
 
-				if ($item instanceof \PHPFUI\Menu)
-					{
-					$item->walk($method, $argument);
-					}
+			if ($item instanceof \PHPFUI\Menu)
+				{
+				$item->walk($method, $argument);
 				}
 			}
 
