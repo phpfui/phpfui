@@ -17,7 +17,7 @@
         "fortawesome/font-awesome": "^5 | ^6",
         "igorescobar/jquery-mask-plugin": "^1.14",
         "components/jquery": "^3.3",
-        "google/recaptcha": "^1.2"
+        "phpfui/recaptcha": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5|^11.0",
