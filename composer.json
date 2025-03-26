@@ -20,7 +20,7 @@
         "phpfui/recaptcha": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.5|^11.0",
+        "phpunit/phpunit": "^10.5|^11.0|^12.0",
         "phpfui/html-unit-tester": "^1.0",
         "phpfui/phpunit-syntax-coverage": "dev-master",
         "roave/security-advisories": "dev-latest",

@@ -77,7 +77,7 @@ class InputTest extends \PHPFUI\HTMLUnitTester\Extensions
 		{
 		$color = new \PHPFUI\Input\Color('color', 'Color');
 		$color->deleteAttribute('pattern'); // not valid html but foundation uses it
-		$color->setRequired();
+		$color->setRequired();	// @phpstan-ignore-line
 		$this->page->add($color);
 		$this->assertValidHtml($this->page);
 		}

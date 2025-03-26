@@ -4,7 +4,6 @@ namespace Fixtures;
 
 class Controller extends \PHPFUI\Page implements \PHPFUI\Interfaces\NanoClass
 	{
-	/** @phpstan-ignore-next-line */
 	public function __construct(\PHPFUI\Interfaces\NanoController $controller)
 		{
 		parent::__construct();

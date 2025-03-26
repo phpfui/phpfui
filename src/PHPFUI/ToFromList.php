@@ -233,28 +233,27 @@ class ToFromList extends \PHPFUI\Base
 		if (! $this->readOnly && \PHPFUI\Session::checkCSRF() && isset($_GET['action']))
 			{
 			switch ($_GET['action'])
-					{
-					case 'getDragDropItem':
+				{
+				case 'getDragDropItem':
 
-						$dragDropId = \trim($_GET['DraggedId'], '#');
-						[$name, $id] = \explode('_', $dragDropId);
+					$dragDropId = \trim($_GET['DraggedId'], '#');
 
-						if ($name == $this->name)
-							{ // it is us, process
+					if (! \str_starts_with($dragDropId, $this->name . '_'))
+						{
+						return;
+						}
+					// it is us, process
+					[$name, $id] = \explode('_', $dragDropId);
 
-							/** @noinspection PhpUnusedLocalVariableInspection */
-							[$junk, $type] = \explode('_', $_GET['DropParentId']);
-							$html = \call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
+					[$junk, $type] = \explode('_', $_GET['DropParentId']);
+					$html = \call_user_func($this->callback, $name, $this->callbackIndex, $id, $type);
 
-							if ($html)
-								{
-								$this->page->setResponse($this->makeDiv($dragDropId, $type, $html));
-								}
-							}
+					if ($html)
+						{
+						$this->page->setResponse($this->makeDiv($dragDropId, $type, $html));
+						}
 
-						break;
-
-					}
+				}
 			}
 		}
 	}
