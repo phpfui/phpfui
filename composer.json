@@ -16,8 +16,7 @@
         "zurb/foundation": "^6.6",
         "fortawesome/font-awesome": "^5 | ^6",
         "igorescobar/jquery-mask-plugin": "^1.14",
-        "components/jquery": "^3.3",
-        "phpfui/recaptcha": "^2.0"
+        "components/jquery": "^3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5|^11.0|^12.0",
@@ -26,10 +25,12 @@
         "roave/security-advisories": "dev-latest",
         "friendsofphp/php-cs-fixer": "*",
         "phpstan/phpstan": "*",
+        "phpfui/recaptcha": "dev-PSR",
         "mheap/phpunit-github-actions-printer": "^1.5"
     },
     "suggest": {
-        "kwn/number-to-words": "Allows words in addition to numbers for MathCaptcha"
+        "kwn/number-to-words": "Allows words in addition to numbers for MathCaptcha",
+        "phpfui/recaptcha": "Supports PHP 8.4 for Google ReCaptcha"
     },
     "autoload": {
         "psr-4": {"PHPFUI\\": "src/PHPFUI/"}
