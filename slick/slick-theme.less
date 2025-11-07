@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-// Default Variables
+/* Default Variables */
 
 @slick-font-path: "./fonts/";
 @slick-font-family: "slick";
@@ -59,8 +59,6 @@
     line-height: 1;
     color: @slick-arrow-color;
     opacity: @slick-opacity-default;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 
     & when ( @slick-font-family = 'slick' ) {
         /* Icons */
@@ -69,7 +67,7 @@
             font-weight: normal;
             font-style: normal;
             src: url('@{slick-font-path}slick.eot');
-            src: url('@{slick-font-path}slick.eot?#iefix') format('embedded-opentype'), url('@{slick-font-path}slick.woff2') format('woff2'), url('@{slick-font-path}slick.woff') format('woff'), url('@{slick-font-path}slick.ttf') format('truetype'), url('@{slick-font-path}slick.svg#slick') format('svg');
+            src: url('@{slick-font-path}slick.eot?#iefix') format('embedded-opentype'), url('@{slick-font-path}slick.woff2') format('woff2'), url('@{slick-font-path}slick.woff') format('woff'), url('@{slick-font-path}slick.ttf') format('truetype');
             font-display: swap;
         }
     }
@@ -157,8 +155,6 @@
                 text-align: center;
                 color: @slick-dot-color;
                 opacity: @slick-opacity-not-active;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
             }
         }
         &.slick-active button:before {
