@@ -14,7 +14,7 @@
     font-display: swap;
 
     src: url('./fonts/slick.eot');
-    src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff2') format('woff2'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
+    src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff2') format('woff2'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype');
     font-display: swap;
 }
 /* Arrows */
@@ -74,9 +74,6 @@
 
     opacity: .75;
     color: white;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .slick-prev
@@ -195,9 +192,6 @@
 
     opacity: .25;
     color: black;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 .slick-dots li.slick-active button:before
 {

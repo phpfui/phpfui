@@ -2,17 +2,11 @@
 .slick-slider
 {
     position: relative;
-
     display: block;
     box-sizing: border-box;
-
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-
+    user-select: text;
     -webkit-touch-callout: none;
-    -khtml-user-select: none;
     -ms-touch-action: pan-y;
         touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
@@ -32,9 +26,13 @@
 {
     outline: none;
 }
-.slick-list.dragging
-{
+.slick-list.draggable {
     cursor: pointer;
+    cursor: grab;
+    user-select: none;
+}
+.slick-list.dragging {
+    cursor: grabbing;
 }
 
 .slick-slider .slick-track,
@@ -92,6 +90,10 @@
 .slick-slide.slick-loading img
 {
     display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
 }
 .slick-initialized .slick-slide
 {
