@@ -19,18 +19,18 @@
         "components/jquery": "^3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.5|^11.0|^12.0",
+        "phpunit/phpunit": "^10.5|^11.0|^12.0|^13.0",
         "phpfui/html-unit-tester": "^1.0",
         "phpfui/phpunit-syntax-coverage": "dev-master",
         "roave/security-advisories": "dev-latest",
-        "friendsofphp/php-cs-fixer": "*",
         "phpstan/phpstan": "*",
         "phpfui/recaptcha": "dev-PSR",
-        "mheap/phpunit-github-actions-printer": "^1.5"
+        "mheap/phpunit-github-actions-printer": "^1.5",
+        "friendsofphp/php-cs-fixer": "^3.94"
     },
     "suggest": {
         "kwn/number-to-words": "Allows words in addition to numbers for MathCaptcha",
-        "phpfui/recaptcha": "Supports PHP 8.4 for Google ReCaptcha"
+        "phpfui/recaptcha": "Supports PHP 8.4+ for Google ReCaptcha"
     },
     "autoload": {
         "psr-4": {"PHPFUI\\": "src/PHPFUI/"}

@@ -11,20 +11,18 @@ namespace PHPFUI;
  */
 class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Captcha
 	{
-	private string $fieldName = 'mathAnswer';
-
 	/** @var array<string, string> */
 	private array $operators = ['plus' => '+', 'minus' => '-', 'times' => '*'];
 
-	public function __construct(\PHPFUI\Interfaces\Page $page, int $limit = 10, string $fieldName = '')
+	public function __construct(private \PHPFUI\Interfaces\Page $page, private int $limit = 10, private string $fieldName = 'mathAnswer')
 		{
 		parent::__construct();
+		}
+
+	public function __toString() : string
+		{
 		$this->addClass('clearfix');
 
-		if ($fieldName)
-			{
-			$this->fieldName = $fieldName;
-			}
 		$container = new \PHPFUI\Container();
 		$answers = [];
 		$answer = -999;
@@ -33,8 +31,8 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 			{
 			$operator = \random_int(0, 2);
 			$type = \random_int(0, 1);
-			$first = \random_int(1, $limit);
-			$second = \random_int(1, $limit);
+			$first = \random_int(1, $this->limit);
+			$second = \random_int(1, $this->limit);
 
 			if ($first < $second)
 				{
@@ -101,11 +99,13 @@ class MathCaptcha extends \PHPFUI\MultiColumn implements \PHPFUI\Interfaces\Capt
 			{
 			\next($answers);
 			}
-		$page->addJavaScript('$("#' . \key($answers) . '").toggleClass("hide")');
+		$this->page->addJavaScript('$("#' . \key($answers) . '").toggleClass("hide")');
 		\PHPFUI\Session::setFlash($this->fieldName, \current($answers));
 		$answerInput = new \PHPFUI\Input\Number($this->fieldName);
 		$this->add($answerInput);
 		$this->add('&nbsp;');
+
+		return parent::__toString();
 		}
 
 	public function isValid() : bool
