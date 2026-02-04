@@ -15,8 +15,8 @@ class Accordion extends \PHPFUI\UnorderedList
 		}
 
 	/**
-	 * Add a tab to the accordion.  Returns the added tab as a
-	 * ListItem
+	 * Add a tab to the accordion.  Returns the added tab as an
+	 * AccordionItem
 	 *
 	 * @param string $tabText what the tab will show to the user
 	 * @param string $content html shown when the tab is clicked
