@@ -112,9 +112,10 @@ class Tabs extends \PHPFUI\Base
 				{
 				$div = new \PHPFUI\HTML5Element('div');
 				$div->addClass('tabs-panel');
+				$div->addAttribute('role', 'tabpanel');
 				$div->add($content['content']);
 				$active = $content['active'] ? ' aria-selected="true"' : '';
-				$item = new \PHPFUI\ListItem("<a href='#{$div->getId()}'{$active} role='tab'>{$name}</a>");
+				$item = new \PHPFUI\ListItem("<a href='#{$div->getId()}'{$active} aria-controls='{$div->getId()}' role='tab'>{$name}</a>");
 				$item->addClass('tabs-title');
 
 				if ($content['active'])
