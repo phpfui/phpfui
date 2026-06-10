@@ -18,6 +18,7 @@ class Link extends \PHPFUI\HTML5Element
 	public function __construct(?string $link, object | string $text = '', bool $validate = true)
 		{
 		parent::__construct('a');
+		$this->setQuoteType('"');
 
 		if (empty($link))
 			{

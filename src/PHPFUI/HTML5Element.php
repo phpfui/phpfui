@@ -45,6 +45,8 @@ class HTML5Element extends \PHPFUI\Base
 
 	private string | \PHPFUI\ToolTip | null $tooltip = null;
 
+	private string $quote = "'";
+
 	/**
 	 * Construct an object with the tag name, ie. DIV, SPAN, TEXTAREA, etc
 	 */
@@ -62,6 +64,13 @@ class HTML5Element extends \PHPFUI\Base
 			$this->newId();
 			}
 		parent::__clone();
+		}
+
+	public function setQuoteType(string $quote) : static
+		{
+		$this->quote = $quote;
+
+		return $this;
 		}
 
 	/**
@@ -178,7 +187,7 @@ class HTML5Element extends \PHPFUI\Base
 				}
 			else
 				{
-				$output .= " {$type}='{$value}'";
+				$output .= " {$type}={$this->quote}{$value}{$this->quote}";
 				}
 			}
 
@@ -192,7 +201,7 @@ class HTML5Element extends \PHPFUI\Base
 		{
 		if (\count($this->classes))
 			{
-			return " class='" . \implode(' ', \array_keys($this->classes)) . "'";
+			return " class={$this->quote}" . \implode(' ', \array_keys($this->classes)) . $this->quote;
 			}
 
 		return '';
@@ -241,7 +250,7 @@ class HTML5Element extends \PHPFUI\Base
 			return '';
 			}
 
-		return " id='{$this->id}'";
+		return " id={$this->quote}{$this->id}{$this->quote}";
 		}
 
 	/**
