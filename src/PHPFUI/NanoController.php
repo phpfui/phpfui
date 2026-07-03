@@ -45,6 +45,8 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 
 	private string $homePageClass = '';
 
+	private string $homePageUri = '';
+
 	private string $invokedPath = '';
 
 	private string $missingClass = '';
@@ -150,7 +152,7 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 		$urlParts = \parse_url($this->uri);
 		$uri = \trim($urlParts['path'] ?? '', '/');
 
-		if ('' == $uri)
+		if ($this->homePageUri == $uri)
 			{
 			if ($this->homePageClass)
 				{
@@ -210,6 +212,16 @@ class NanoController implements \PHPFUI\Interfaces\NanoController
 	public function setHomePageClass(string $homePageClass = 'App\\HomePage') : static
 		{
 		$this->homePageClass = $homePageClass;
+
+		return $this;
+		}
+
+	/**
+	 * If no URI is equal to this, then display the homePageClass
+	 */
+	public function setHomePageUri(string $homePageUri = '') : static
+		{
+		$this->homePageUri = $homePageUri;
 
 		return $this;
 		}
