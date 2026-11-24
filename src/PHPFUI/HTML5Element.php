@@ -43,9 +43,9 @@ class HTML5Element extends \PHPFUI\Base
 		'wbr' => true,
 	];
 
-	private string | \PHPFUI\ToolTip | null $tooltip = null;
-
 	private string $quote = "'";
+
+	private string | \PHPFUI\ToolTip | null $tooltip = null;
 
 	/**
 	 * Construct an object with the tag name, ie. DIV, SPAN, TEXTAREA, etc
@@ -64,13 +64,6 @@ class HTML5Element extends \PHPFUI\Base
 			$this->newId();
 			}
 		parent::__clone();
-		}
-
-	public function setQuoteType(string $quote) : static
-		{
-		$this->quote = $quote;
-
-		return $this;
 		}
 
 	/**
@@ -360,6 +353,13 @@ class HTML5Element extends \PHPFUI\Base
 	public function setId($id) : static
 		{
 		$this->id = $id;
+
+		return $this;
+		}
+
+	public function setQuoteType(string $quote) : static
+		{
+		$this->quote = $quote;
 
 		return $this;
 		}

@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php": ">=8.1 <8.6",
+        "php": ">=8.1 <8.7",
         "zurb/foundation": "^6.6",
         "fortawesome/font-awesome": "^5 | ^6 | ^7",
         "igorescobar/jquery-mask-plugin": "^1.14",
@@ -24,7 +24,7 @@
         "phpfui/phpunit-syntax-coverage": "dev-master",
         "roave/security-advisories": "dev-latest",
         "phpstan/phpstan": "*",
-        "phpfui/recaptcha": "dev-PSR",
+        "google/recaptcha": "^2.0",
         "mheap/phpunit-github-actions-printer": "^1.5",
         "friendsofphp/php-cs-fixer": "^3.94"
     },
